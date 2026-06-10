@@ -13,7 +13,7 @@ Seed KG  (head, relation, tail triples)
 Expanded KG  (2–3× coverage via masked language model)
     │
     ▼ Part 3 — SI Curriculum
-Multi-hop Q&A dataset  →  SFT  →  RL (GRPO)  →  Evaluated reasoning model
+Multi-hop Q&A dataset  →  SFT  →  RL (GRPO)
 ```
 
 ---
