@@ -625,12 +625,3 @@ python 3_si_curriculum/test_models/correctness_similarity.py
 | SLURM OOM | Model too large for allocated GPU | Increase `--gres=gpu:2` or reduce `--max_model_len` / `--tensor_parallel_size` |
 | `ModuleNotFoundError: No module named 'vllm'` | Wrong conda env | vLLM is in `graphrag` env; use that env for inference scripts |
 | `load_metric` import error | Outdated `datasets` version | `pip install --upgrade datasets evaluate` in the graphmert env |
-
----
-
-## Citation
-
-If you use this pipeline, please cite:
-
-- **GraphRAG**: Edge et al., Microsoft Research (2024)
-- **GraphMERT** and **Neuro SI Pipeline**: cite this repository
