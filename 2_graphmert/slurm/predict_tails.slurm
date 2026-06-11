@@ -13,8 +13,8 @@
 #SBATCH --output=slurm_logs/predict_tails_%A_%a.out
 
 module purge
-module load anaconda3
-conda activate graphmert
+# Activate the uv-managed venv (created once — see README "Python environments")
+source ${REPO_DIR}/.venvs/graphmert/bin/activate
 
 # Set these before submitting:
 #   export REPO_DIR=/path/to/neuro_SI_pipeline

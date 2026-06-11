@@ -46,35 +46,55 @@ export OUTPUT_BASE=/scratch/<cluster>/<you>/neuro_pipeline  # base output dir
 export HF_HOME=$OUTPUT_BASE/cache/hf_home     # Hugging Face model cache
 ```
 
-### Conda environments
+### Python environments (uv)
 
-Three separate environments, one per stage:
+Dependencies are managed with [uv](https://docs.astral.sh/uv/). Install it once
+(no admin rights needed — it drops into `~/.local/bin`):
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# On an HPC cluster `module load uv` may also be available — check `module avail uv`
+```
+
+Each stage gets its own isolated virtual environment (different Python versions
+and pinned CUDA wheels make a single shared env impractical). uv resolves and
+installs these far faster than conda. The exact dependency pins live in each
+stage's `requirements.txt`. Create all three venvs under `${REPO_DIR}/.venvs/`
+in one shot with the helper script:
+
+```bash
+./setup.sh                 # creates graphrag, graphmert, si_curriculum
+./setup.sh graphmert       # or (re)create just one
+```
+
+Or set them up manually:
 
 **Part 1 — graphrag**
 ```bash
-conda create -n graphrag python=3.11 -y
-conda activate graphrag
-pip install torch==2.5.1+cu121 --extra-index-url https://download.pytorch.org/whl/cu121
-pip install vllm==0.7.3 transformers datasets pandas pyarrow
+uv venv --python 3.11 ${REPO_DIR}/.venvs/graphrag
+source ${REPO_DIR}/.venvs/graphrag/bin/activate
+uv pip install -r 1_seed_kg/requirements.txt
 ```
 
 **Part 2 — graphmert**
 ```bash
-conda create -n graphmert python=3.10 -y
-conda activate graphmert
-pip install torch==2.5.1+cu121 --extra-index-url https://download.pytorch.org/whl/cu121
-pip install vllm transformers datasets spacy pandas
+uv venv --python 3.10 ${REPO_DIR}/.venvs/graphmert
+source ${REPO_DIR}/.venvs/graphmert/bin/activate
+uv pip install -r 2_graphmert/requirements.txt
 python -m spacy download en_core_web_sm
 ```
 
 **Part 3 — si_curriculum**
 ```bash
-conda create -n si_curriculum python=3.10 -y
-conda activate si_curriculum
-pip install torch==2.4.0+cu121 --extra-index-url https://download.pytorch.org/whl/cu121
-pip install transformers trl peft deepspeed accelerate datasets \
-            google-generativeai openai pandas matplotlib
+uv venv --python 3.10 ${REPO_DIR}/.venvs/si_curriculum
+source ${REPO_DIR}/.venvs/si_curriculum/bin/activate
+uv pip install -r 3_si_curriculum/requirements.txt
 ```
+
+Activate the matching env before each stage with
+`source ${REPO_DIR}/.venvs/<name>/bin/activate` (the SLURM scripts do this for
+you). `uv venv` also creates a bare `python` on the `PATH` once activated, so the
+`python ...` commands below work unchanged.
 
 ---
 
@@ -149,7 +169,7 @@ Inspect the text manually before proceeding — garbage input produces a garbage
 ### 1.2 Size the SLURM array job
 
 ```bash
-conda activate graphrag
+source $REPO_DIR/.venvs/graphrag/bin/activate
 cd $REPO_DIR
 
 python 1_seed_kg/count_text_units.py \
@@ -227,7 +247,7 @@ then generates novel (head, relation, ?) completions to expand the KG.
 ### 2.1 Step 1 — Tokenise corpus & create stable tokenizer
 
 ```bash
-conda activate graphmert
+source $REPO_DIR/.venvs/graphmert/bin/activate
 cd $REPO_DIR
 
 python 2_graphmert/run_tokenization.py \
@@ -416,7 +436,7 @@ Annotate each triple with its minimum graph-hop distance from the seed KG.
 This drives hop-stratified sampling in curriculum generation.
 
 ```bash
-conda activate si_curriculum
+source $REPO_DIR/.venvs/si_curriculum/bin/activate
 cd $REPO_DIR
 
 python 3_si_curriculum/calculate_hops.py \
@@ -583,8 +603,8 @@ sbatch 3_si_curriculum/slurm/rl_training.slurm
 | Zero samples after co-occurrence grounding | Seed KG entities don't appear in corpus | Check entity spelling in KG matches tokenised text; lower co-occurrence threshold |
 | `ValueError: output_dir is required` in rl_training | `--output_dir` not set | Pass `--output_dir /path/to/output` explicitly |
 | SLURM OOM | Model too large for allocated GPU | Increase `--gres=gpu:2` or reduce `--max_model_len` / `--tensor_parallel_size` |
-| `ModuleNotFoundError: No module named 'vllm'` | Wrong conda env | vLLM is in `graphrag` env; use that env for inference scripts |
-| `load_metric` import error | Outdated `datasets` version | `pip install --upgrade datasets evaluate` in the graphmert env |
+| `ModuleNotFoundError: No module named 'vllm'` | Wrong venv active | vLLM is in the `graphrag` env; `source $REPO_DIR/.venvs/graphrag/bin/activate` for inference scripts |
+| `load_metric` import error | Outdated `datasets` version | `uv pip install --upgrade datasets evaluate` in the graphmert env |
 
 ---
 ## Citations

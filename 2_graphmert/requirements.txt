@@ -1,0 +1,13 @@
+# Part 2 — GraphMERT expansion (env: graphmert, Python 3.10)
+# Install into a uv-managed venv:
+#   uv venv --python 3.10 ${REPO_DIR}/.venvs/graphmert
+#   source ${REPO_DIR}/.venvs/graphmert/bin/activate
+#   uv pip install -r 2_graphmert/requirements.txt
+#   python -m spacy download en_core_web_sm
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1+cu121
+vllm
+transformers
+datasets
+spacy
+pandas

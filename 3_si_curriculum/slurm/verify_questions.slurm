@@ -35,8 +35,8 @@ mkdir -p "${VERIFIED_OUTPUT}" logs
 MODEL_IDS="${MODEL_IDS:-Qwen/Qwen3-14B meta-llama/Llama-3.1-8B-Instruct}"
 
 module purge
-# module load anaconda3/2024.02
-# conda activate neuro_si
+# Activate the uv-managed venv (created once — see README "Python environments"):
+# source "${REPO_DIR}/.venvs/si_curriculum/bin/activate"
 
 cd "${REPO_DIR}/3_si_curriculum"
 
