@@ -1,15 +1,16 @@
 # instructions
 
 ## set up environment
+Dependencies are managed with [uv](https://docs.astral.sh/uv/). Install it once
+if you haven't already: `curl -LsSf https://astral.sh/uv/install.sh | sh`.
+
 run these in terminal:
 ```bash
-module purge
-module load anaconda3/2024.6
-conda create -n graphrag python=3.11
-conda activate graphrag ## just do this one from now on 
-pip install torch==2.5.1+cu121 torchvision==0.20.1+cu121 torchaudio==2.5.1+cu121 --extra-index-url https://download.pytorch.org/whl/cu121
-pip install vllm==0.7.3
-pip install poetry
+uv venv --python 3.11 ${REPO_DIR}/.venvs/graphrag
+source ${REPO_DIR}/.venvs/graphrag/bin/activate ## just do this one from now on
+uv pip install torch==2.5.1+cu121 torchvision==0.20.1+cu121 torchaudio==2.5.1+cu121 --extra-index-url https://download.pytorch.org/whl/cu121
+uv pip install vllm==0.7.3
+uv pip install poetry
 poetry install
 
 ```

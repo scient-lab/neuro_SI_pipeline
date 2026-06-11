@@ -41,8 +41,8 @@ export BASE_TOKENIZER_PATH="${BASE_TOKENIZER_PATH:-}"
 mkdir -p "${EVAL_OUTPUT_DIR}" logs
 
 module purge
-# module load anaconda3/2024.02
-# conda activate neuro_si
+# Activate the uv-managed venv (created once — see README "Python environments"):
+# source "${REPO_DIR}/.venvs/si_curriculum/bin/activate"
 
 cd "${REPO_DIR}/3_si_curriculum"
 

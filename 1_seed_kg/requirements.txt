@@ -1,0 +1,12 @@
+# Part 1 — Seed KG generation (env: graphrag, Python 3.11)
+# Install into a uv-managed venv:
+#   uv venv --python 3.11 ${REPO_DIR}/.venvs/graphrag
+#   source ${REPO_DIR}/.venvs/graphrag/bin/activate
+#   uv pip install -r 1_seed_kg/requirements.txt
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1+cu121
+vllm==0.7.3
+transformers
+datasets
+pandas
+pyarrow
