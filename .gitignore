@@ -9,3 +9,5 @@ build/
 wandb/
 wandb_logs/
 *.log
+.venv/
+.venvs/
