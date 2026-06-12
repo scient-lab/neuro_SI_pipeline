@@ -19,3 +19,13 @@ sft:
 rl:
   n_completions: 2
   max_completion_tokens: 256
+
+# RunPod hardware defaults for this scale (read by scripts/launch_runpod.sh).
+runpod:
+  gpu_type: "NVIDIA RTX A4000"
+  cloud_type: COMMUNITY
+  disk_gb: 60
+  num_gpus: 1
+  expected_runtime_min: 60
+  approx_cost_usd: 0.5
+  notes: "End-to-end orchestration + uv venv bootstrap on a real GPU."

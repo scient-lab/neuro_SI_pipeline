@@ -19,3 +19,13 @@ sft:
 rl:
   n_completions: 4
   max_completion_tokens: 512
+
+# RunPod hardware defaults for this scale (read by scripts/launch_runpod.sh).
+runpod:
+  gpu_type: "NVIDIA RTX A6000"
+  cloud_type: SECURE
+  disk_gb: 150
+  num_gpus: 1
+  expected_runtime_min: 240
+  approx_cost_usd: 4
+  notes: "Workstation-equivalent on a faster cloud GPU."

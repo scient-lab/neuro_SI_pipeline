@@ -1,10 +1,19 @@
 # configs/profiles/paper.yaml - paper-faithful full-scale run.
 # Target: replicate the Stephen & Jha 2026 neuroscience paper results.
-# All values left at default.yaml; explicit listing here for visibility.
+# Only lists keys that override configs/default.yaml — everything else
+# inherits from the defaults.
 
-extract: {}
-graphmert: {}
 curriculum:
   num_questions: 30000
-sft: {}
-rl: {}
+
+# RunPod hardware defaults for this scale (read by scripts/launch_runpod.sh).
+# Single-H100 setup; for multi-GPU use --gpu-type / --num-gpus on the CLI
+# (a future paper-multi.yaml may codify the 8x A100 variant from the paper).
+runpod:
+  gpu_type: "NVIDIA H100 80GB HBM3"
+  cloud_type: SECURE
+  disk_gb: 300
+  num_gpus: 1
+  expected_runtime_min: 600
+  approx_cost_usd: 30
+  notes: "Paper-scale corpus on a single H100. ~10h walltime."

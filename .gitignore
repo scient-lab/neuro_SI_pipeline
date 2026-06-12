@@ -2,6 +2,7 @@ __pycache__/
 *.py[cod]
 *.pyo
 .env
+.env.runpod
 *.egg-info/
 dist/
 build/
