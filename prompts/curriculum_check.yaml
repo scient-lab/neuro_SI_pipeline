@@ -1,0 +1,29 @@
+# prompts/curriculum_check.yaml - two-LLM check of generated QA item (Phase 4, step validate_qa).
+# Owner: prompt engineer.
+# Per Prof Jha (2026-06-04): every QA item must pass a two-LLM consensus check.
+
+name: curriculum_check
+phase: curriculum
+
+system: |
+  You are a {{domain}} domain expert reviewing a question-answer-trace produced
+  by another model. Decide whether the QA item is correct AND requires the
+  full trace to answer. Output JSON only.
+
+user: |
+  {{focus_instructions}}
+
+  Question: {{question}}
+  Answer:   {{answer}}
+  Trace:    {{trace}}
+
+  Return JSON with:
+    - answer_correct:   boolean (is the answer factually correct given the trace?)
+    - trace_required:   boolean (does the question genuinely need the full trace, or is a shortcut possible?)
+    - confidence:       float in [0, 1]
+    - issues:           list of strings (each describes one defect, if any; under 20 words each)
+
+generation:
+  temperature: 0.0
+  max_tokens: 768
+  response_format: json

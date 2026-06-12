@@ -1,0 +1,35 @@
+# prompts/curriculum_qa.yaml - multi-hop QA generation (Phase 4, step generate_qa).
+# Owner: prompt engineer.
+# Renders against a KG path (sequence of triples) and emits a question-answer-trace.
+
+name: curriculum_qa
+phase: curriculum
+
+system: |
+  You are a {{domain}} domain expert writing study questions for a small
+  language model. Each question must require multi-hop reasoning over the
+  KG path provided. Output JSON only.
+
+user: |
+  {{focus_instructions}}
+
+  KG path (ordered list of triples):
+  {{path}}
+
+  Hop count: {{hops}}
+
+  Generate one multi-hop question that:
+    - requires the WHOLE path to answer
+    - cannot be answered from any single triple alone
+    - has a single, unambiguous correct answer
+
+  Return JSON with:
+    - question:   string
+    - answer:     string (the final entity or short phrase)
+    - trace:      list of strings (one short sentence per hop, in order)
+    - difficulty: integer 1-5 (subjective; correlates with hop count + ambiguity)
+
+generation:
+  temperature: 0.3
+  max_tokens: 1024
+  response_format: json

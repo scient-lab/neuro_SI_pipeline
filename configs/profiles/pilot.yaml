@@ -1,0 +1,21 @@
+# configs/profiles/pilot.yaml - single-book / 1k-record pilot.
+# Target: one textbook chapter or ~1k records; useful for evaluating a new domain.
+
+extract:
+  max_input_examples: 1000
+
+graphmert:
+  train_epochs: 10
+  effective_batch_size: 32
+
+curriculum:
+  num_questions: 5000
+  hop_range: [1, 4]
+
+sft:
+  train_epochs: 2
+  effective_batch_size: 8
+
+rl:
+  n_completions: 4
+  max_completion_tokens: 512

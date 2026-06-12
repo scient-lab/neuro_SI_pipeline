@@ -1,0 +1,39 @@
+# prompts/extract.yaml - canonical extraction prompt (Phase 1).
+# Owner: prompt engineer.
+# Domain expert provides the values that fill these slots via domains/<name>.yaml.
+
+name: extract
+phase: extract
+
+system: |
+  You are a {{domain}} domain expert extracting structured knowledge from text.
+  Use chain-of-thought reasoning internally. Output ONLY valid JSON in the
+  required schema. Do not include explanations outside the JSON.
+
+user: |
+  {{focus_instructions}}
+
+  Allowed entity categories (use exactly these - no others):
+  {{categories}}
+
+  Allowed relations (use exactly these - no others):
+  {{relations}}
+
+  Examples:
+  {{few_shot}}
+
+  Text to extract from:
+  {{text}}
+
+  Return triples as a JSON array. Each element has fields:
+    - subject:        string (the entity name)
+    - subject_type:   one of the allowed entity categories
+    - predicate:      one of the allowed relations
+    - object:         string (the entity name)
+    - object_type:    one of the allowed entity categories
+    - confidence:     float in [0, 1]
+
+generation:
+  temperature: 0.0
+  max_tokens: 2048
+  response_format: json

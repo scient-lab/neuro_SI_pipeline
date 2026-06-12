@@ -1,0 +1,175 @@
+# domains/neuroscience.yaml - neuroscience SLM domain.
+# Paper-faithful to Stephen & Jha 2026 (Kandel textbook source corpus).
+#
+# Vocabulary ported from 1_seed_kg/prompts_kg.py. Consumed by pipeline_config.py
+# via SI_DOMAIN=neuroscience (the default).
+
+domain: neuroscience
+description: Specialized SLM for neuroscience (Stephen & Jha 2026, Kandel corpus)
+
+# --- Entity categories ---------------------------------------------------
+# 7 main types from prompts_kg.py::PROMPT_TEMPLATE. Subcategories listed in
+# `description` serve as extractor guidance only - the LLM emits ONLY the
+# main type as the entity_type value.
+entity_categories:
+  - id: ANATOMICAL_STRUCTURE
+    description: |
+      Brain Region; Neural Pathway; Tract; Nucleus; Ganglion; Cortical Area;
+      Subcortical Structure; Spinal Region; Peripheral Nerve; Sensory Organ;
+      Motor Structure
+  - id: MOLECULAR_ENTITY
+    description: |
+      Neurotransmitter; Neuromodulator; Receptor; Ion Channel; Protein; Enzyme;
+      Gene; Hormone; Signaling Molecule; Pharmaceutical Agent
+  - id: CELLULAR_COMPONENT
+    description: |
+      Neuron; Glial Cell; Astrocyte; Oligodendrocyte; Microglia; Synapse; Axon;
+      Dendrite; Cell Body; Myelin; Membrane; Organelle; Postsynaptic Density;
+      Synaptic Vesicle
+  - id: PROCESS
+    description: |
+      Synaptic Transmission; Action Potential; Neural Signaling;
+      Neurotransmitter Release; Signal Transduction; Neural Development;
+      Neuroplasticity; Sensory Processing; Motor Control; Depolarization;
+      Repolarization; Exocytosis
+  - id: CLINICAL_ENTITY
+    description: |
+      Neurological Disorder; Neurodegenerative Disease; Psychiatric Disorder;
+      Developmental Disorder; Brain Injury; Seizure; Symptom; Syndrome
+  - id: CONCEPTUAL_ENTITY
+    description: |
+      Cognitive Function; Behavior; Learning; Memory; Perception;
+      Motor Planning; Reflex; Neural Circuit; Central Pattern Generator;
+      Topographic Map; Somatotopic Organization; Computational Principle;
+      Gain Modulation
+  - id: PHYSICAL_ENTITY
+    description: |
+      Ion; Electrical Quantity; Current; Voltage; Membrane Potential;
+      Concentration; Gradient; Frequency; Rate
+
+# --- Relations -----------------------------------------------------------
+# Active list is RELATION_SET_1 (40 relations - the documented baseline).
+# Alternative sets are preserved under `relation_sets` below for
+# experimentation. The legacy env var KG_RELATION_SET (set1/set2/set3) will
+# be retired once the config loader is wired (Phase 4.3+).
+relations:
+  - { id: part_of,                       description: "Compositional containment; X is structurally a piece of Y." }
+  - { id: contains,                      description: "Inverse of part_of; X structurally contains Y." }
+  - { id: located_in,                    description: "Spatial containment without compositional sense." }
+  - { id: connected_to,                  description: "Direct anatomical or functional connection between X and Y." }
+  - { id: projects_to,                   description: "Axonal projection from source region X to target region Y." }
+  - { id: receives_input_from,           description: "Inverse of projects_to; Y projects to X." }
+  - { id: receives_modulatory_input_from, description: "Receives neuromodulatory (not principal) input from." }
+  - { id: innervates,                    description: "Provides innervation to a peripheral target." }
+  - { id: originates_from,               description: "Anatomical or developmental origin." }
+  - { id: terminates_in,                 description: "Anatomical termination point of a pathway/axon." }
+  - { id: expressed_in,                  description: "Gene/protein/molecule is expressed in cell type or region." }
+  - { id: synthesized_in,                description: "Molecule is synthesized in a cell type or compartment." }
+  - { id: releases,                      description: "Cell releases a neurotransmitter/molecule." }
+  - { id: binds_to,                      description: "Ligand-receptor or molecular binding." }
+  - { id: activates,                     description: "Increases activity of the target." }
+  - { id: inhibits,                      description: "Decreases activity of the target." }
+  - { id: modulates,                     description: "Adjusts activity (direction unspecified or context-dependent)." }
+  - { id: regulates,                     description: "Long-term or homeostatic adjustment of activity/expression." }
+  - { id: transports,                    description: "Moves ions/molecules across membranes or through compartments." }
+  - { id: forms_complex_with,            description: "Molecular complex formation." }
+  - { id: responds_to,                   description: "Responds to a stimulus or upstream signal." }
+  - { id: fires_in_response_to,          description: "Neural firing triggered by a stimulus." }
+  - { id: tuned_to,                      description: "Neuron/circuit is tuned to a feature (selectivity)." }
+  - { id: selective_for,                 description: "Selective response to a specific stimulus or feature." }
+  - { id: encodes_representation_of,     description: "Encodes information about a concept/feature." }
+  - { id: participates_in,               description: "Plays a role in a larger process or circuit." }
+  - { id: required_for,                  description: "Necessary condition for a process or function." }
+  - { id: sufficient_for,                description: "Sufficient condition for a process or function." }
+  - { id: oscillates_at,                 description: "Exhibits oscillation at a stated frequency band." }
+  - { id: mediates_signal_for,           description: "Mediates a downstream signal transduction step." }
+  - { id: associated_with,               description: "Statistical or contextual association without mechanism." }
+  - { id: causes,                        description: "Causal relationship between X and Y." }
+  - { id: results_in,                    description: "Direct consequence relationship." }
+  - { id: impaired_in,                   description: "Function/structure is impaired in a clinical condition." }
+  - { id: degenerates_in,                description: "Structure degenerates in a clinical condition." }
+  - { id: risk_factor_for,               description: "Increases risk of developing a condition." }
+  - { id: biomarker_of,                  description: "Measurable indicator of a condition." }
+  - { id: symptom_of,                    description: "Observable manifestation of a condition." }
+  - { id: treated_by,                    description: "Condition is treated by an agent/procedure." }
+  - { id: diagnosed_by,                  description: "Condition is diagnosed by a procedure/marker." }
+
+# Alternative relation lists (kept for experimentation; not active by default).
+# To switch: replace the `relations:` list above with one of these, OR add
+# `active_relation_set` resolution in the config loader (Phase 4.3).
+relation_sets:
+  set2:    # circuit/anatomy heavy (18 relations) - legacy KG_RELATION_SET=set2 default
+    [originates_from, projects_to, innervates, connected_to, receives_input_from,
+     controls, activates, inhibits, regulates, encodes_representation_of,
+     represents, responds_to, forms_complex_with, transports, releases,
+     expressed_in, results_in, participates_in]
+  set3:    # molecular/clinical heavy (30 relations)
+    [part_of, contains, located_in, originates_from, develops_from, projects_to,
+     innervates, connected_to, receives_input_from, controls, mediates_signal_for,
+     modulates, activates, inhibits, regulates, encodes_representation_of,
+     represents, responds_to, binds_to, forms_complex_with, transports,
+     releases, expressed_in, causes, results_in, associated_with, impaired_in,
+     symptom_of, participates_in, required_for]
+
+# --- Few-shot examples ---------------------------------------------------
+# Ported from prompts_kg.py::USER_EXAMPLE + ASSISTANT_EXAMPLE. The canonical
+# format uses [subject, predicate, object] triples; the graphrag entity/strength
+# annotations from the source are dropped here (they belong in the prompt
+# rendering layer, not in the domain vocabulary).
+few_shot_examples:
+  - text: |
+      Voltage-gated sodium channels are responsible for the rising phase of the
+      action potential. The channel protein contains four homologous domains,
+      each with six transmembrane segments. The S4 segment acts as the voltage
+      sensor, moving outward in response to membrane depolarization. This
+      conformational change opens the channel pore, allowing sodium ions to flow
+      into the cell. The resulting inward sodium current causes rapid
+      depolarization of the membrane. Within milliseconds, the channel enters
+      an inactivated state when the inactivation gate occludes the pore.
+      Mutations in the SCN1A gene, which encodes the Nav1.1 sodium channel,
+      cause Dravet syndrome, a severe form of epilepsy characterized by
+      frequent seizures beginning in infancy.
+    triples:
+      - [voltage-gated sodium channels, mediates_signal_for, action potential]
+      - [channel protein, part_of, voltage-gated sodium channels]
+      - [channel protein, contains, four homologous domains]
+      - [four homologous domains, contains, six transmembrane segments]
+      - [s4 segment, part_of, four homologous domains]
+      - [s4 segment, responds_to, membrane depolarization]
+      - [conformational change, results_in, channel pore]
+      - [channel pore, located_in, cell]
+      - [voltage-gated sodium channels, transports, sodium ions]
+      - [inward sodium current, causes, membrane depolarization]
+      - [inactivation gate, modulates, channel pore]
+      - [inactivation gate, required_for, inactivated state]
+      - [scn1a gene, encodes_representation_of, nav1.1 sodium channel]
+      - [scn1a gene, causes, dravet syndrome]
+      - [dravet syndrome, part_of, epilepsy]
+      - [dravet syndrome, symptom_of, seizures]
+
+# --- Focus instructions --------------------------------------------------
+# Free-text extractor guidance - injected into prompts/extract.yaml's
+# {{focus_instructions}} slot. Distilled from the -Role-/-Goal-/-Steps-
+# sections of prompts_kg.py::PROMPT_TEMPLATE.
+focus_instructions: |
+  Extract structured knowledge from neuroscience textbook content about the
+  nervous system, brain function, and neural mechanisms.
+
+  - Extract ONLY information directly stated in the source text. Do not infer,
+    generalize, or use external scientific knowledge.
+  - Maximize coverage: extract every entity and every explicitly stated
+    relationship.
+  - Use lowercase, canonical entity names (e.g. "substantia nigra", not "SN").
+  - Resolve abbreviations to their expanded form (e.g., SNc → substantia nigra
+    pars compacta) when the expansion is in the text.
+  - Treat synonyms like "X projects to Y" and "X innervates Y" as the same
+    relation; pick the one the text uses verbatim.
+  - For each relation, output exactly ONE relation per triple (no compound
+    relations).
+
+# --- Overrides -----------------------------------------------------------
+# Per-domain operational overrides on top of configs/default.yaml.
+# Leave empty unless the domain genuinely needs different settings.
+# overrides:
+#   validate:
+#     consensus_threshold: 0.7

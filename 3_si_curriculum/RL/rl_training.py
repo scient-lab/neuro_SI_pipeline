@@ -19,14 +19,20 @@ V5 changes vs V4:
 
 import os
 import re
+import sys
 import json
 import torch
 import torch.distributed as dist
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Optional, Dict, List, Any, Tuple
 from collections import Counter
 import warnings
 import logging
+
+# Pipeline config loader (repo root, 2 levels up from this file).
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from pipeline_config import get_model_id, get_phase_param  # noqa: E402
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", message=".*Caching is incompatible with gradient checkpointing.*")
@@ -78,30 +84,34 @@ TASK_SPECIFIC_INSTRUCTIONS = "Please provide complete and accurate answers with 
 class TrainingConfig:
     """Configuration for GRPO (RL) training — full fine-tuning."""
 
-    model_name: str = field(default="Qwen/Qwen3-14B", metadata={"help": "Base model name"})
+    model_name: str = field(
+        default_factory=lambda: get_model_id('base_sft', 'Qwen/Qwen3-14B'),
+        metadata={"help": "Base model name (sourced from configs/default.yaml::models.base_sft)"},
+    )
     sft_checkpoint_path: str = field(default="", metadata={"help": "Path to pre-merged SFT model"})
     cache_dir: str = field(default="~/.cache/huggingface/hub")
 
     dataset_path: str = field(default="/path/to/your/rl_dataset")
     output_dir: str = field(default="./rl_models/model-grpo")
 
-    learning_rate: float = field(default=8e-7)
-    beta: float = field(default=0.12, metadata={"help": "KL penalty"})
+    # GRPO params sourced from configs/default.yaml::rl.* (with hardcoded fallbacks).
+    learning_rate: float = field(default_factory=lambda: get_phase_param('rl', 'learning_rate', 8e-7))
+    beta: float = field(default_factory=lambda: get_phase_param('rl', 'beta', 0.12), metadata={"help": "KL penalty"})
 
     deepspeed: Optional[str] = field(default=None)
 
-    num_generations: int = field(default=4)
-    max_completion_length: int = field(default=1280)
+    num_generations: int = field(default_factory=lambda: get_phase_param('rl', 'num_generations', 4))
+    max_completion_length: int = field(default_factory=lambda: get_phase_param('rl', 'max_completion_length', 1280))
 
-    per_device_train_batch_size: int = field(default=1)
-    gradient_accumulation_steps: int = field(default=16)
-    num_train_epochs: int = field(default=10)
-    max_grad_norm: float = field(default=1.0)
+    per_device_train_batch_size: int = field(default_factory=lambda: get_phase_param('rl', 'per_device_train_batch_size', 1))
+    gradient_accumulation_steps: int = field(default_factory=lambda: get_phase_param('rl', 'gradient_accumulation_steps', 16))
+    num_train_epochs: int = field(default_factory=lambda: get_phase_param('rl', 'num_train_epochs', 10))
+    max_grad_norm: float = field(default_factory=lambda: get_phase_param('rl', 'max_grad_norm', 1.0))
 
-    eval_size: int = field(default=100, metadata={"help": "Number of held-out examples for eval"})
-    eval_steps: int = field(default=50)
-    save_steps: int = field(default=100)
-    generation_dump_every: int = field(default=25)
+    eval_size: int = field(default_factory=lambda: get_phase_param('rl', 'eval_size', 100), metadata={"help": "Number of held-out examples for eval"})
+    eval_steps: int = field(default_factory=lambda: get_phase_param('rl', 'eval_steps', 50))
+    save_steps: int = field(default_factory=lambda: get_phase_param('rl', 'save_steps', 100))
+    generation_dump_every: int = field(default_factory=lambda: get_phase_param('rl', 'generation_dump_every', 25))
 
     wandb_project: Optional[str] = field(default=None)
 

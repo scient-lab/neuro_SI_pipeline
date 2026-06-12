@@ -20,14 +20,35 @@ Multi-hop Q&A dataset  →  SFT  →  RL (GRPO)
 
 ---
 
+## Getting started
+
+```bash
+# 1. Install uv (one-time, no admin needed — drops into ~/.local/bin)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 2. Create the 3 phase venvs (different Python versions + pinned CUDA wheels)
+./setup.sh                  # all three
+./setup.sh graphmert        # or just one (graphrag | graphmert | si_curriculum)
+
+# 3. Run a smoke test (~minutes, exercises orchestration end-to-end)
+./scripts/pipeline.sh --profile smoke
+```
+
+See [Prerequisites](#prerequisites) for env vars and manual venv setup,
+[Orchestrator](#orchestrator-quick-start) for more pipeline.sh examples, and
+[Repository Layout](#repository-layout) for the codebase map.
+
+---
+
 ## Table of Contents
 
 1. [Prerequisites](#prerequisites)
 2. [Repository Layout](#repository-layout)
-3. [Part 1 — Seed KG Generation](#part-1--seed-kg-generation)
-4. [Part 2 — GraphMERT Expansion](#part-2--graphmert-expansion)
-5. [Part 3 — SI Curriculum, SFT & RL](#part-3--si-curriculum-sft--rl)
-6. [Troubleshooting](#troubleshooting)
+3. [Orchestrator (quick start)](#orchestrator-quick-start)
+4. [Part 1 — Seed KG Generation](#part-1--seed-kg-generation)
+5. [Part 2 — GraphMERT Expansion](#part-2--graphmert-expansion)
+6. [Part 3 — SI Curriculum, SFT & RL](#part-3--si-curriculum-sft--rl)
+7. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -103,6 +124,27 @@ you). `uv venv` also creates a bare `python` on the `PATH` once activated, so th
 ```
 neuro_SI_pipeline/
 ├── README.md
+├── setup.sh                       # one-time uv venv bootstrap (3 envs)
+├── pipeline_config.py             # config loader (used by Python phases)
+│
+├── domains/
+│   ├── _template.yaml             # schema + docs for new domains
+│   └── neuroscience.yaml          # bundled neuroscience vocabulary
+├── prompts/
+│   ├── extract.yaml               # LLM prompt templates per phase
+│   ├── validate.yaml
+│   ├── curriculum_qa.yaml
+│   └── curriculum_check.yaml
+├── configs/
+│   ├── default.yaml               # operational defaults (model IDs, hyperparams)
+│   ├── profiles/                  # smoke / pilot / paper (scaling)
+│   └── platforms/                 # local / runpod / aws / princeton (hardware)
+├── scripts/
+│   ├── pipeline.sh                # orchestrator entry point
+│   ├── phases/                    # per-phase wrappers (source venv, dispatch)
+│   ├── platforms/                 # per-platform wrappers
+│   └── lib/                       # common.sh + venv.sh helpers
+│
 ├── 1_seed_kg/
 │   ├── graphrag_index.py          # Steps 1–5: extract KG from corpus
 │   ├── count_text_units.py        # Size SLURM array jobs
@@ -149,6 +191,71 @@ neuro_SI_pipeline/
     └── slurm/{generate_curriculum,verify_questions,sft_trainer,
                rl_training,eval_models}.slurm
 ```
+
+---
+
+## Orchestrator (quick start)
+
+For automated end-to-end runs, use the `pipeline.sh` orchestrator instead of
+invoking each step manually. It parses CLI flags, sources the right venv per
+phase, and dispatches the work.
+
+```bash
+# Smoke test — minimal scale, ~minutes
+./scripts/pipeline.sh --profile smoke
+
+# Single phase, or a single step within one
+./scripts/pipeline.sh --phase extract
+./scripts/pipeline.sh --phase extract --step parse_pdf
+
+# Paper-faithful run on RunPod
+./scripts/pipeline.sh --profile paper --platform runpod
+
+# Show all flags
+./scripts/pipeline.sh --help
+```
+
+The 6 phases (engineering view) roll up into 4 stages (customer view):
+
+| # | Phase | Source dir | Venv |
+|---|---|---|---|
+| 1 | `extract` | `1_seed_kg/` | graphrag |
+| 2 | `validate` | `1_seed_kg/` | graphrag |
+| 3 | `graphmert` | `2_graphmert/` | graphmert |
+| 4 | `curriculum` | `3_si_curriculum/curriculum_generator/` | si_curriculum |
+| 5 | `sft` | `3_si_curriculum/training/` | si_curriculum |
+| 6 | `rl` | `3_si_curriculum/RL/` | si_curriculum |
+
+### Configuration
+
+Configuration lives in YAML files at the repo root and is loaded by
+`pipeline_config.py`. Layers are merged in this order (later wins on conflict):
+
+1. `configs/default.yaml` — operational defaults (model IDs, hyperparameters)
+2. `domains/<SI_DOMAIN>.yaml` — vocabulary + few-shot + focus (default: `neuroscience`)
+3. `configs/profiles/<SI_PROFILE>.yaml` — scaling overrides (optional: `smoke`/`pilot`/`paper`)
+4. `configs/platforms/<SI_PLATFORM>.yaml` — hardware/storage overrides (optional)
+
+The env vars `SI_DOMAIN`, `SI_PROFILE`, and `SI_PLATFORM` are set by
+`pipeline.sh` based on `--domain`/`--profile`/`--platform` flags.
+
+### Adding a new domain
+
+```bash
+cp domains/_template.yaml domains/<your-domain>.yaml
+# fill in entity_categories, relations, few_shot_examples, focus_instructions
+./scripts/pipeline.sh --domain <your-domain> --profile smoke
+```
+
+`domains/_template.yaml` is the schema contract; its comments document
+every key.
+
+### Manual per-stage control
+
+For debugging individual steps, custom flags, or original SLURM submission,
+the Part 1/2/3 instructions below remain authoritative. The orchestrator
+delegates to the same scripts but currently stubs the actual Python
+invocations — Phase 4.5+ will wire them through.
 
 ---
 

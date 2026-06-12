@@ -23,21 +23,21 @@ import logging
 import argparse
 from typing import Any, Dict, List
 
+import sys
+from pathlib import Path
+
 from datasets import load_from_disk, concatenate_datasets, Dataset
 from transformers import AutoTokenizer
+
+# Pipeline config loader (repo root, 3 levels up from this file).
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+from pipeline_config import get_relations  # noqa: E402
 
 
 logger = logging.getLogger("clean_llm_relations")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
-ALLOWED_RELATIONS = {
-    "part_of", "participates_in", "modulates", "contains", "located_in", "projects_to",
-    "mediates_signal_for", "causes", "required_for", "controls", "impaired_in", "binds_to",
-    "symptom_of", "associated_with", "connected_to", "receives_input_from", "results_in",
-    "activates", "inhibits", "innervates", "encodes_representation_of", "responds_to",
-    "expressed_in", "represents", "regulates", "transports", "originates_from",
-    "forms_complex_with", "releases",
-}
+ALLOWED_RELATIONS = set(get_relations())
 
 
 def parse_args():

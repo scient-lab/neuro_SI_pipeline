@@ -1,0 +1,98 @@
+# domains/_template.yaml
+#
+# ============================================================================
+# DOMAIN CONFIG SCHEMA - SINGLE SOURCE OF TRUTH
+# ============================================================================
+#
+# This file is BOTH a copy-and-fill template for new domains AND the schema
+# documentation (comments below describe every key).
+#
+# Consumed by: pipeline_config.py::load_config(). The loader merges layers:
+#
+#   1. configs/default.yaml                        (operational defaults)
+#   2. domains/<SI_DOMAIN>.yaml                     (this file's shape)
+#   3. configs/profiles/<SI_PROFILE>.yaml          (optional scaling overrides)
+#   4. configs/platforms/<SI_PLATFORM>.yaml        (optional platform overrides)
+#
+# To add a new domain (e.g., physics):
+#   1. cp domains/_template.yaml domains/physics.yaml
+#   2. Fill in entity_categories, relations, few_shot_examples,
+#      focus_instructions.
+#   3. Run: ./scripts/pipeline.sh --domain physics --profile smoke
+#
+# ============================================================================
+
+# --- Required scalar fields ----------------------------------------------
+# Domain identifier - must match the filename (without .yaml). Used by the
+# loader to dispatch and for run logging.
+domain: <your-domain>
+
+# One-line description. Shown in run logs.
+description: <one-line summary of the corpus and goal>
+
+
+# --- entity_categories ---------------------------------------------------
+# Required. List of {id, description}. 5-10 categories typical.
+# Each appears in the LLM extraction prompt. The LLM emits the `id` value
+# verbatim as the entity_type field of each extracted triple.
+#
+# Conventions:
+#   - id: UPPER_SNAKE_CASE
+#   - description: one paragraph; subcategory hints separated by semicolons
+entity_categories:
+  - id: EXAMPLE_TYPE_A
+    description: "What kind of entity this represents; subcategory hints"
+  - id: EXAMPLE_TYPE_B
+    description: "Another entity type"
+
+
+# --- relations -----------------------------------------------------------
+# Required. List of {id, description}. 20-50 typical.
+# These are the ONLY allowed predicates in extracted triples. The LLM emits
+# the `id` value verbatim as the predicate field.
+#
+# Conventions:
+#   - id: snake_case verb phrase, no spaces
+#   - description: when to use this relation, one sentence
+relations:
+  - id: example_relation
+    description: "Short description of when to apply this relation"
+
+
+# --- few_shot_examples ---------------------------------------------------
+# Required. List of {text, triples}. 1-8 examples typical.
+# Each example is a labelled passage the LLM sees in the extraction prompt.
+# All `triples[*][1]` (the predicate) values MUST exist in the relations list
+# above - if they don't, the LLM is being shown contradictory guidance.
+few_shot_examples:
+  - text: "<a short representative sentence from the corpus>"
+    triples:
+      - [<subject entity>, <relation_id>, <object entity>]
+
+
+# --- focus_instructions --------------------------------------------------
+# Required. Free-text guidance the extractor LLM should follow. 2-6 sentences.
+# This is where domain-specific tone, ambiguity resolution, abbreviation
+# expansion rules, and "treat synonym X as Y" guidance live. It is injected
+# into the {{focus_instructions}} slot of prompts/extract.yaml at render time.
+focus_instructions: |
+  Describe what the extractor should focus on for this domain.
+  Mention domain-specific synonyms, conventions, or ambiguity rules.
+  Keep to 2-6 sentences.
+
+
+# --- overrides (optional) ------------------------------------------------
+# Optional. Same shape as the relevant section of configs/default.yaml. Use
+# ONLY when this domain genuinely needs different operational settings (rare).
+# Leave empty (or remove this block) if the defaults from configs/default.yaml apply.
+#
+# Example:
+#   overrides:
+#     validate:
+#       consensus_threshold: 0.7      # tighter than configs/default.yaml's 0.6
+#     graphmert:
+#       train_epochs: 50              # longer than default 25
+#
+# overrides:
+#   <phase>:
+#     <param>: <value>

@@ -11,6 +11,8 @@ import networkx as nx
 import json
 import random
 import pickle
+import sys
+from pathlib import Path
 from typing import List, Dict, Tuple
 from google import genai
 from typing import Optional
@@ -18,11 +20,17 @@ import os
 import re
 import time
 
+# Pipeline config loader (repo root, 2 levels up from this file).
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from pipeline_config import get_model_id, get_relations  # noqa: E402
+
 # ================= MODEL CONFIGURATION =================
-MODEL_GENERATION = 'gemini-2.5-flash'       # 1. Initial Question Generation
-MODEL_QUALITY = 'gemini-2.0-flash'          # 2. Quality/Formatting Check
-MODEL_TRACE = 'gemini-2.0-flash'            # 3. Thinking Trace/Explanation
-MODEL_CORRECTNESS = 'gemini-2.5-flash'      # 4. Final Verification/Correctness
+# Sourced from configs/default.yaml::models (overridable via domain/profile).
+# Defaults match the Stephen & Jha 2026 paper's curriculum-generation stack.
+MODEL_GENERATION  = get_model_id('curriculum_generation',  'gemini-2.5-flash')   # 1. Initial Question Generation
+MODEL_QUALITY     = get_model_id('curriculum_quality',     'gemini-2.0-flash')   # 2. Quality/Formatting Check
+MODEL_TRACE       = get_model_id('curriculum_trace',       'gemini-2.0-flash')   # 3. Thinking Trace/Explanation
+MODEL_CORRECTNESS = get_model_id('curriculum_correctness', 'gemini-2.5-flash')   # 4. Final Verification/Correctness
 # =======================================================
 
 # ================= CONCISENESS CONFIG ==================
@@ -88,36 +96,10 @@ class PathGenerator:
         if vocab_freq_path is not None and os.path.exists(vocab_freq_path):
             self.vocab_freq = self.__update_vocab_freq(vocab_freq_path)
             print("Updated vocab freq")
-        self.merged_relations = [
-            'associated_with',
-            'binds_to',
-            'causes',
-            'connected_to',
-            'contains',
-            'controls',
-            'encodes_representation_of',
-            'expressed_in',
-            'forms_complex_with',
-            'impaired_in',
-            'inhibits',
-            'innervates',
-            'located_in',
-            'mediates_signal_for',
-            'modulates',
-            'originates_from',
-            'part_of',
-            'participates_in',
-            'projects_to',
-            'receives_input_from',
-            'regulates',
-            'releases',
-            'represents',
-            'required_for',
-            'responds_to',
-            'results_in',
-            'symptom_of',
-            'transports'
-        ]
+        # Active relation list from merged pipeline config (single source of
+        # truth, shared with 2_graphmert/predict_tails_llm.py::ALLOWED_RELATIONS
+        # and 1_seed_kg/prompts_kg.py::get_relation_types()).
+        self.merged_relations = get_relations()
 
         self.HUB_REMOVAL_PERCENTILE = 0.01
         self.PRUNE_TRANSITIVE = True

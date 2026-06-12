@@ -1,0 +1,12 @@
+# configs/platforms/princeton.yaml - Princeton on-prem cluster.
+# Currently behaves like local (no SLURM). Override when SLURM submission is wired.
+
+platform:
+  name: princeton
+  scratch_dir: /scratch/slm-pipeline
+  output_dir: /home/${USER}/slm-pipeline-outputs
+  log_dir: /home/${USER}/slm-pipeline-logs
+
+hardware:
+  gpu_count: 4
+  gpu_memory_gb: 80

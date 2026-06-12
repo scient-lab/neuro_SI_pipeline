@@ -1,139 +1,55 @@
 from __future__ import annotations
 
 import os
-import json
+import sys
+from pathlib import Path
 from typing import List
 
+# Pipeline config loader at the repo root. Sources vocabulary from the
+# domain YAML configured via SI_DOMAIN (default: neuroscience).
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from pipeline_config import (  # noqa: E402
+    get_entity_categories,
+    get_focus_instructions,
+    get_relations,
+)
 
+
+# Legacy filename/log label used by 1_seed_kg/graphrag_index.py to namespace
+# output dirs (e.g. extracted_graph_responses_set2_0-1000.json). The ACTIVE
+# relation list is sourced from the merged pipeline config below, NOT from
+# this label. Kept only for filename backwards-compat with existing runs.
 RELATION_SET_NAME = os.environ.get("KG_RELATION_SET", "set2").strip().lower()
 
 
-def _assert_40(name: str, rels: List[str]) -> None:
-    if len(rels) != 40:
-        raise ValueError(f"{name} must have 40 relations; got {len(rels)}")
-    if len(set(rels)) != 40:
-        raise ValueError(f"{name} has duplicates")
-
-
-# ---------------------------------------------
-# 3x relation sets (each length 40)
-# ---------------------------------------------
-# set1 = your original list (baseline)
-RELATION_SET_1: List[str] = [
-    "part_of",
-    "contains",
-    "located_in",
-    "connected_to",
-    "projects_to",
-    "receives_input_from",
-    "receives_modulatory_input_from",
-    "innervates",
-    "originates_from",
-    "terminates_in",
-    "expressed_in",
-    "synthesized_in",
-    "releases",
-    "binds_to",
-    "activates",
-    "inhibits",
-    "modulates",
-    "regulates",
-    "transports",
-    "forms_complex_with",
-    "responds_to",
-    "fires_in_response_to",
-    "tuned_to",
-    "selective_for",
-    "encodes_representation_of",
-    "participates_in",
-    "required_for",
-    "sufficient_for",
-    "oscillates_at",
-    "mediates_signal_for",
-    "associated_with",
-    "causes",
-    "results_in",
-    "impaired_in",
-    "degenerates_in",
-    "risk_factor_for",
-    "biomarker_of",
-    "symptom_of",
-    "treated_by",
-    "diagnosed_by",
-    # NOTE: original list included "is_a" as #41;
-    # for strict 40-set experiments, we drop it here (you can swap back if desired).
-]
-
-# set2 = circuit/anatomy heavy (still 40)
-RELATION_SET_2 = [
-    "originates_from",
-    "projects_to",
-    "innervates",
-    "connected_to",
-    "receives_input_from",
-    "controls",
-    "activates",
-    "inhibits",
-    "regulates",
-    "encodes_representation_of",
-    "represents",
-    "responds_to",
-    "forms_complex_with",
-    "transports",
-    "releases",
-    "expressed_in",
-    "results_in",
-    "participates_in",
-]
-
-# set3 = molecular/clinical heavy (still 40)
-RELATION_SET_3 = [
-    "part_of",
-    "contains",
-    "located_in",
-    "originates_from",
-    "develops_from",
-    "projects_to",
-    "innervates",
-    "connected_to",
-    "receives_input_from",
-    "controls",
-    "mediates_signal_for",
-    "modulates",
-    "activates",
-    "inhibits",
-    "regulates",
-    "encodes_representation_of",
-    "represents",
-    "responds_to",
-    "binds_to",
-    "forms_complex_with",
-    "transports",
-    "releases",
-    "expressed_in",
-    "causes",
-    "results_in",
-    "associated_with",
-    "impaired_in",
-    "symptom_of",
-    "participates_in",
-    "required_for",
-]
-
 def get_relation_types() -> List[str]:
-    name = RELATION_SET_NAME
-    if name == "set1":
-        return RELATION_SET_1
-    if name == "set2":
-        return RELATION_SET_2
-    if name == "set3":
-        return RELATION_SET_3
-    raise ValueError(f"Unknown KG_RELATION_SET='{name}'. Use set1/set2/set3.")
+    """Return the active relation id list from the merged pipeline config.
+
+    Source of truth: domains/<SI_DOMAIN>.yaml::relations.
+    """
+    return get_relations()
+
+
+def get_entity_types() -> List[str]:
+    """Return the entity category id list from the merged pipeline config.
+
+    Source of truth: domains/<SI_DOMAIN>.yaml::entity_categories.
+    """
+    return get_entity_categories()
+
+
+def get_focus_instructions_text() -> str:
+    """Return the free-text extractor focus instructions, or empty string."""
+    return get_focus_instructions()
 
 
 # ---------------------------------------------
 # PROMPTS
 # ---------------------------------------------
+# Prompt template strings used by 1_seed_kg/graphrag_index.py. The
+# `{relation_list}` slot is filled at render time with the value of
+# get_relation_types(). Kept inline here for now; a future phase may move
+# them to prompts/extract.yaml (see ORCHESTRATION_PLAN.md).
 
 PROMPT_TEMPLATE = """-Role-
 You are an AI assistant specialized in extracting structured information from neuroscience textbook content to build a knowledge graph about the nervous system, brain function, and neural mechanisms.

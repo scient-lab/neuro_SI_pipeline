@@ -1,0 +1,102 @@
+# configs/default.yaml - universal operational defaults.
+#
+# Applied FIRST in the merge chain. Overridden by:
+#   - domains/<domain>.yaml (vocabulary + optional overrides)
+#   - configs/profiles/<profile>.yaml (scale)
+#   - configs/platforms/<platform>.yaml (hardware/storage)
+#   - environment variables
+#
+# Edit this file when defaults apply across ALL domains. Domain-specific
+# overrides go in domains/<domain>.yaml under the `overrides:` key.
+
+# --- Models ---------------------------------------------------------------
+# Default LLM stack per the Stephen & Jha 2026 neuroscience paper.
+# Keys match the variable names used by the consuming Python code so that
+# `pipeline_config.get_model_id(<key>)` reads cleanly at call sites.
+models:
+  # Phase 1: extract (single-LLM extraction)
+  extract: Qwen/Qwen3-14B
+
+  # Phase 2: validate (two-LLM consensus filter on candidate triples)
+  validate_a: openai/gpt-oss-20b
+  validate_b: mistralai/Mistral-Nemo-12B
+
+  # Phase 4: curriculum (4 internal models in generate_questions.py + final
+  # two-LLM consensus check per Jha 2026-06-04 mandate)
+  curriculum_generation: gemini-2.5-flash   # MODEL_GENERATION
+  curriculum_quality: gemini-2.0-flash      # MODEL_QUALITY
+  curriculum_trace: gemini-2.0-flash        # MODEL_TRACE
+  curriculum_correctness: gemini-2.5-flash  # MODEL_CORRECTNESS
+  curriculum_check_a: openai/gpt-oss-20b    # final two-LLM check
+  curriculum_check_b: mistralai/Mistral-Nemo-12B
+
+  # Phase 5: SFT (LoRA base model)
+  base_sft: Qwen/Qwen3-14B
+
+# --- Phase: extract -------------------------------------------------------
+extract:
+  chunk_tokens: 300
+  chunk_overlap: 50
+  max_candidates_per_chunk: 20
+  strip_equations: true
+  strip_references: true
+  # Sampling for the extraction LLM (1_seed_kg/graphrag_index.py)
+  temperature: 0.6
+  top_p: 0.95
+  max_tokens: 8192
+
+# --- Phase: validate -----------------------------------------------------
+validate:
+  consensus_threshold: 0.6   # both must agree above this confidence
+  retry_on_disagreement: false
+
+# --- Phase: graphmert ----------------------------------------------------
+graphmert:
+  # Architecture (run_mlm.py)
+  layers: 6
+  heads: 4
+  hidden: 256
+  ffn: 1024
+  train_epochs: 25
+  effective_batch_size: 64
+  learning_rate: 4.0e-4
+  # Tail prediction (2_graphmert/predict_tails_llm.py)
+  predict_temperature: 0.4
+  predict_top_p: 0.95
+  predict_max_new_tokens: 512
+  predict_tails_max: 50
+  predict_prompt_text_max_chars: 12000
+  predict_tensor_parallel_size: 1
+  predict_max_model_len: 8192
+  predict_gpu_memory_utilization: 0.90
+
+# --- Phase: curriculum ---------------------------------------------------
+curriculum:
+  hop_range: [1, 5]
+  num_questions: 30000   # paper-default; profiles can override
+  prune_fanout: 8
+  qa_check_required: true   # Jha 2026-06-04 mandate
+
+# --- Phase: sft (matches 3_si_curriculum/training/trainer.py) ------------
+sft:
+  lora_r: 32                  # was lora_rank: 16 — code uses 32
+  lora_alpha: 64              # was 32 — code uses 64
+  lora_dropout: 0.05
+  block_size: 32768
+
+# --- Phase: rl (matches 3_si_curriculum/RL/rl_training.py) --------------
+rl:
+  algorithm: grpo
+  learning_rate: 8.0e-7              # was 2.0e-6 — code uses 8e-7
+  beta: 0.12                          # was 0.04 — code uses 0.12 (KL penalty)
+  num_generations: 4                  # was n_completions
+  max_completion_length: 1280         # was max_completion_tokens: 1024
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 16
+  num_train_epochs: 10                # was train_epochs: 3 (in sft section)
+  max_grad_norm: 1.0
+  eval_size: 100
+  eval_steps: 50
+  save_steps: 100
+  generation_dump_every: 25
+  reward_source: kg_path_alignment

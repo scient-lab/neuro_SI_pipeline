@@ -1,0 +1,11 @@
+# configs/platforms/runpod.yaml - RunPod pod execution.
+
+platform:
+  name: runpod
+  scratch_dir: /workspace/scratch
+  output_dir: /workspace/outputs
+  log_dir: /workspace/logs
+
+hardware:
+  gpu_count: 8
+  gpu_memory_gb: 80   # A100 80GB Secure / Community

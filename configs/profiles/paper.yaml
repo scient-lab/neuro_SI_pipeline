@@ -1,0 +1,10 @@
+# configs/profiles/paper.yaml - paper-faithful full-scale run.
+# Target: replicate the Stephen & Jha 2026 neuroscience paper results.
+# All values left at default.yaml; explicit listing here for visibility.
+
+extract: {}
+graphmert: {}
+curriculum:
+  num_questions: 30000
+sft: {}
+rl: {}

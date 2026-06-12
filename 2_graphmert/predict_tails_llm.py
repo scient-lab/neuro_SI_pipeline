@@ -27,11 +27,13 @@ os.environ.pop("TRANSFORMERS_CACHE", None)
 os.environ.setdefault("DATASETS_DISABLE_CACHING", "1")
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
+import sys
 import re
 import json
 import time
 import argparse
 import logging
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import pandas as pd
@@ -39,30 +41,32 @@ from datasets import load_from_disk
 from transformers import AutoTokenizer
 from vllm import LLM, SamplingParams
 
+# Pipeline config loader (repo root). Single source of truth for allowed
+# relations and sampling/vllm settings — see also 1_seed_kg/prompts_kg.py and
+# 3_si_curriculum/curriculum_generator/generate_questions.py.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from pipeline_config import get_phase_param, get_relations  # noqa: E402
+
 
 logger = logging.getLogger("predict_tails_llm")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
 
-ALLOWED_RELATIONS = {
-    "part_of", "participates_in", "modulates", "contains", "located_in", "projects_to",
-    "mediates_signal_for", "causes", "required_for", "controls", "impaired_in", "binds_to",
-    "symptom_of", "associated_with", "connected_to", "receives_input_from", "results_in",
-    "activates", "inhibits", "innervates", "encodes_representation_of", "responds_to",
-    "expressed_in", "represents", "regulates", "transports", "originates_from",
-    "forms_complex_with", "releases",
-}
+ALLOWED_RELATIONS = set(get_relations())
 
-TENSOR_PARALLEL_SIZE = 1
-MAX_MODEL_LEN = 8192
-GPU_MEMORY_UTILIZATION = 0.90
+# Sourced from configs/default.yaml::graphmert.predict_* (fallbacks preserved).
+TENSOR_PARALLEL_SIZE   = get_phase_param('graphmert', 'predict_tensor_parallel_size', 1)
+MAX_MODEL_LEN          = get_phase_param('graphmert', 'predict_max_model_len', 8192)
+GPU_MEMORY_UTILIZATION = get_phase_param('graphmert', 'predict_gpu_memory_utilization', 0.90)
+TEMPERATURE            = get_phase_param('graphmert', 'predict_temperature', 0.4)
+TOP_P                  = get_phase_param('graphmert', 'predict_top_p', 0.95)
+MAX_NEW_TOKENS         = get_phase_param('graphmert', 'predict_max_new_tokens', 512)
+TAILS_MAX              = get_phase_param('graphmert', 'predict_tails_max', 50)
+PROMPT_TEXT_MAX_CHARS  = get_phase_param('graphmert', 'predict_prompt_text_max_chars', 12000)
+
+# Engine flags (not tunable per-run; kept as code constants).
 ENFORCE_EAGER = False
 TRUST_REMOTE_CODE = True
-TEMPERATURE = 0.4
-TOP_P = 0.95
-MAX_NEW_TOKENS = 512
-TAILS_MAX = 50
-PROMPT_TEXT_MAX_CHARS = 12000
 
 
 SYSTEM_PROMPT = """

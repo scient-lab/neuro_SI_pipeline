@@ -1,0 +1,33 @@
+# prompts/validate.yaml - canonical two-LLM consensus validation prompt (Phase 2).
+# Owner: prompt engineer.
+# Run independently with models.validate_a and models.validate_b; consensus
+# decided by configs/default.yaml::validate.consensus_threshold.
+
+name: validate
+phase: validate
+
+system: |
+  You are a {{domain}} domain expert acting as a fact-checker. You will be
+  shown a candidate triple extracted from a source text. Decide whether the
+  triple is supported by the source text. Output JSON only.
+
+user: |
+  {{focus_instructions}}
+
+  Source text:
+  {{text}}
+
+  Candidate triple:
+  - subject:        {{subject}} ({{subject_type}})
+  - predicate:      {{predicate}}
+  - object:         {{object}} ({{object_type}})
+
+  Return JSON with:
+    - supported:    boolean (true if the source text supports the triple)
+    - confidence:   float in [0, 1]
+    - rationale:    string (one-line explanation; under 25 words)
+
+generation:
+  temperature: 0.0
+  max_tokens: 512
+  response_format: json

@@ -60,6 +60,9 @@ from prompts_kg import (
     RELATION_SET_NAME,
 )
 
+# pipeline_config is on sys.path because prompts_kg (imported above) inserts it.
+from pipeline_config import get_phase_param  # noqa: E402
+
 # ------------------------------------------------
 # ARGUMENT PARSING
 # ------------------------------------------------
@@ -128,11 +131,12 @@ def extract_graph(text_units: pd.DataFrame, batch_size: int = 100):
     if not model_id:
         raise ValueError("--model_id is required for step 3")
 
-    temperature = 0.6
-    top_p = 0.95
-    top_k = 20
-    max_tokens = 8192
-    min_p = 0
+    # Sampling sourced from configs/default.yaml::extract.* (fallbacks preserved).
+    temperature = get_phase_param('extract', 'temperature', 0.6)
+    top_p       = get_phase_param('extract', 'top_p', 0.95)
+    max_tokens  = get_phase_param('extract', 'max_tokens', 8192)
+    top_k = 20   # vLLM-specific; kept as code constant
+    min_p = 0    # vLLM-specific; kept as code constant
 
     relation_types = get_relation_types()
     relation_list_str = json.dumps(relation_types)

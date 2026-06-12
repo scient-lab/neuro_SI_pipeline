@@ -1,0 +1,11 @@
+# configs/platforms/local.yaml - workstation or Princeton on-prem.
+
+platform:
+  name: local
+  scratch_dir: ./.pipeline-scratch
+  output_dir: ./outputs
+  log_dir: ./logs
+
+hardware:
+  gpu_count: 1
+  gpu_memory_gb: 12   # conservative default; override on a stronger box

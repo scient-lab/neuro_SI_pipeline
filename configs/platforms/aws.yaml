@@ -1,0 +1,11 @@
+# configs/platforms/aws.yaml - AWS EC2 or SageMaker execution.
+
+platform:
+  name: aws
+  scratch_dir: /mnt/scratch
+  output_dir: s3://slm-pipeline-outputs   # placeholder - set per deployment
+  log_dir: /var/log/slm-pipeline
+
+hardware:
+  gpu_count: 8
+  gpu_memory_gb: 80   # p4d.24xlarge / p5

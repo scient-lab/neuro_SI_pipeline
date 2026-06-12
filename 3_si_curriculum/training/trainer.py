@@ -9,13 +9,19 @@ Adapted from https://github.com/simplescaling/s1/blob/main/train/sft.py
 '''
 
 import os
+import sys
 import gc
 import logging
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import List, Optional
 
 import torch
 import torch.distributed as dist
+
+# Pipeline config loader (repo root, 2 levels up).
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from pipeline_config import get_model_id, get_phase_param  # noqa: E402
 
 # MONKEY PATCH: transformers internally calls dist.fsdp.register_fsdp_forward_method,
 # which does not exist in older PyTorch builds. Must be patched BEFORE transformers import.
@@ -38,17 +44,20 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class TrainingConfig:
-    model_name: str = field(default=os.environ.get("MODEL_NAME", ""),
-                            metadata={"help": "Path to base model (required). Set via --model_name or MODEL_NAME env var."})
-    block_size: int = field(default=32768)
+    model_name: str = field(
+        default_factory=lambda: os.environ.get("MODEL_NAME", "") or get_model_id('base_sft', ''),
+        metadata={"help": "Path to base model. Set via --model_name, MODEL_NAME env var, or configs/default.yaml::models.base_sft."},
+    )
+    block_size: int = field(default_factory=lambda: get_phase_param('sft', 'block_size', 32768))
     wandb_project: str = field(default="sft_neuro_kg")
     wandb_dir: str = field(default=os.environ.get("WANDB_DIR", "./wandb_logs"))
     train_dataset_path: str = field(default=os.environ.get("DATASET_PATH", ""),
                                     metadata={"help": "Path to tokenized training dataset. Set via --train_dataset_path or DATASET_PATH env var."})
     use_lora: bool = field(default=True)
-    lora_r: int = field(default=32)        # updated: was 16
-    lora_alpha: int = field(default=64)    # updated: was 16
-    lora_dropout: float = field(default=0.05)
+    # LoRA params sourced from configs/default.yaml::sft.* (with hardcoded fallbacks).
+    lora_r: int = field(default_factory=lambda: get_phase_param('sft', 'lora_r', 32))
+    lora_alpha: int = field(default_factory=lambda: get_phase_param('sft', 'lora_alpha', 64))
+    lora_dropout: float = field(default_factory=lambda: get_phase_param('sft', 'lora_dropout', 0.05))
     lora_target_modules: List[str] = field(
         default_factory=lambda: [
             "q_proj", "k_proj", "v_proj", "o_proj",
