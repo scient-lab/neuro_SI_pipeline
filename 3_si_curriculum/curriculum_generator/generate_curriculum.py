@@ -26,6 +26,18 @@ import json
 import time
 import random
 import argparse
+from pathlib import Path
+
+# Pipeline config loader (repo root, 2 levels up from this file).
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from pipeline_config import get_phase_param  # noqa: E402
+
+# Profile-driven CLI defaults: read from configs/profiles/<SI_PROFILE>.yaml::curriculum
+# with fallbacks if SI_PROFILE is unset. CLI flags still override at parse time.
+_DEFAULT_TARGET_COUNT = get_phase_param('curriculum', 'num_questions', 5000)
+_DEFAULT_HOP_RANGE    = get_phase_param('curriculum', 'hop_range', [2, 3])
+_DEFAULT_MIN_HOPS     = _DEFAULT_HOP_RANGE[0] if isinstance(_DEFAULT_HOP_RANGE, (list, tuple)) and len(_DEFAULT_HOP_RANGE) >= 1 else 2
+_DEFAULT_MAX_HOPS     = _DEFAULT_HOP_RANGE[1] if isinstance(_DEFAULT_HOP_RANGE, (list, tuple)) and len(_DEFAULT_HOP_RANGE) >= 2 else 3
 import logging
 from datetime import datetime
 from typing import List, Set, Tuple, Dict
@@ -43,12 +55,12 @@ def parse_args():
                     help="Path to all_hops_detailed.csv (output of calculate_hops.py)")
     ap.add_argument("--output_dir", required=True,
                     help="Output directory for generated Q&A JSON files")
-    ap.add_argument("--min_hops", type=int, default=2,
-                    help="Minimum hop distance (default: 2)")
-    ap.add_argument("--max_hops", type=int, default=3,
-                    help="Maximum hop distance (default: 3)")
-    ap.add_argument("--target_count", type=int, default=5000,
-                    help="Target number of Q&A items to generate (default: 5000)")
+    ap.add_argument("--min_hops", type=int, default=_DEFAULT_MIN_HOPS,
+                    help=f"Minimum hop distance (default: {_DEFAULT_MIN_HOPS}; from configs/profiles/<SI_PROFILE>.yaml::curriculum.hop_range)")
+    ap.add_argument("--max_hops", type=int, default=_DEFAULT_MAX_HOPS,
+                    help=f"Maximum hop distance (default: {_DEFAULT_MAX_HOPS}; from configs/profiles/<SI_PROFILE>.yaml::curriculum.hop_range)")
+    ap.add_argument("--target_count", type=int, default=_DEFAULT_TARGET_COUNT,
+                    help=f"Target number of Q&A items to generate (default: {_DEFAULT_TARGET_COUNT}; from configs/profiles/<SI_PROFILE>.yaml::curriculum.num_questions)")
     ap.add_argument("--api_key", default=os.environ.get("GOOGLE_API_KEY", ""),
                     help="Google API key for Gemini (or set GOOGLE_API_KEY env var)")
     ap.add_argument("--seed", type=int, default=42)
