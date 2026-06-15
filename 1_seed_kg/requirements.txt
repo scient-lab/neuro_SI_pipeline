@@ -10,3 +10,9 @@ transformers
 datasets
 pandas
 pyarrow
+
+# Microsoft's graphrag-toolkit — graphrag_index.py + count_text_units.py
+# import `from graphrag.config.load_config import load_config` and friends.
+# Princeton's uv-impl omitted this; runtime crash without it. 1.x API matches
+# the imports used in 1_seed_kg/*. 2.x has breaking changes; pin <2 for now.
+graphrag>=1.0,<2
