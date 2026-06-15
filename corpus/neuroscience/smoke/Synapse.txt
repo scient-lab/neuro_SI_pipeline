@@ -1,0 +1,108 @@
+In the nervous system, a synapse is a structure that allows a neuron to exchange (receive or send) signals with another cell in its immediate vicinity. Synapses can be classified as either chemical or electrical, depending on the mechanism of signal transmission between neurons. In the case of electrical synapses, neurons are coupled bidirectionally with each other through gap junctions and have a connected cytoplasmic milieu. These types of synapses are known to produce synchronous network activity in the brain, but can also result in complicated, chaotic network level dynamics. Therefore, signal directionality cannot always be defined across electrical synapses.
+Synapses are essential for the transmission of neuronal impulses from one neuron to the next, playing a key role in enabling rapid and direct communication by creating circuits. In addition, a synapse serves as a junction where both the transmission and processing of information occur, making it a vital means of communication between neurons. 
+At the synapse, the plasma membrane of the signal-passing neuron (the presynaptic neuron) comes into close apposition with the membrane of the target (postsynaptic) cell. Both the presynaptic and postsynaptic sites contain extensive arrays of molecular machinery that link the two membranes together and carry out the signaling process. In many synapses, the presynaptic part is located on the terminals of axons and the postsynaptic part is located on a dendrite or soma. Astrocytes also exchange information with neurons, responding to synaptic activity and, in turn, regulating neurotransmission. Synapses (at least chemical synapses) are stabilized in position by synaptic adhesion molecules (SAMs)[1] projecting from both the pre- and post-synaptic neuron and sticking together where they overlap; SAMs may also assist in the generation and functioning of synapses. Moreover, SAMs coordinate the formation of synapses, with various types working together to achieve the remarkable specificity of synapses. In essence, SAMs function in both excitatory and inhibitory synapses, likely serving as the mediator for signal transmission.
+
+
+== Definition ==
+According to a classical definition:Synapse is the site of transmission of electric nerve impulses between two nerve cells (neurons) or between a neuron and a gland or muscle cell (efector). This suggests that the source (presynaptic cell) of the signal is always a neuron, while the target (postsynaptic cell) may be a neuron or a non-neuronal cell. However, synapses where a non-neuronal cell is the source of the signal exist in many sensory systems, such as auditory, vestibular or tactile systems, where specialized epithelial receptor cells transmit signals to neurons.
+
+
+== History ==
+Santiago Ramón y Cajal proposed that neurons are not continuous throughout the body, yet still communicate with each other, an idea known as the neuron doctrine. The word "synapse" was introduced in 1897 by the English neurophysiologist Charles Sherrington in Michael Foster's Textbook of Physiology. Sherrington struggled to find a good term that emphasized a union between two separate elements, and the actual term "synapse" was suggested by the English classical scholar Arthur Woollgar Verrall, a friend of Foster. The word was derived from the Greek synapsis (σύναψις), meaning "conjunction", which in turn derives from synaptein (συνάπτειν), from syn (σύν) "together" and haptein (ἅπτειν) "to fasten".
+However, while the synaptic gap remained a theoretical construct, and was sometimes reported as a discontinuity between contiguous axonal terminations and dendrites or cell bodies, histological methods using the best light microscopes of the day could not visually resolve their separation which is now known to be about 20 nm. An electron microscope, which became available only in the 1950s, turned out to be necessary to show the finer structure of the synapse with its separate, parallel pre- and postsynaptic membranes and processes, and the cleft between the two.
+
+
+== Types ==
+Chemical and electrical synapses are two ways of synaptic transmission.
+In a chemical synapse, electrical activity in the presynaptic neuron is converted (via the activation of voltage-gated calcium channels) into the release of a chemical called a neurotransmitter that binds to receptors located in the plasma membrane of the postsynaptic cell. The neurotransmitter may initiate an electrical response or a secondary messenger pathway that may either excite or inhibit the postsynaptic neuron. Chemical synapses can be classified according to the neurotransmitter released: glutamatergic (often excitatory), GABAergic (often inhibitory), cholinergic (e.g. vertebrate neuromuscular junction), and adrenergic (releasing norepinephrine). Because of the complexity of receptor signal transduction, chemical synapses can have complex effects on the postsynaptic cell.
+In an electrical synapse, the presynaptic and postsynaptic cell membranes are connected by special channels called gap junctions that are capable of passing an electric current, causing voltage changes in the presynaptic cell to induce voltage changes in the postsynaptic cell. In fact, gap junctions facilitate the direct flow of electrical current without the need for neurotransmitters, as well as small molecules like calcium. Thus, the main advantage of an electrical synapse is the rapid transfer of signals from one cell to the next.
+Mixed chemical electrical synapses are synaptic sites that feature both a gap junction and neurotransmitter release. This combination allows a signal to have both a fast component (electrical) and a slow component (chemical).
+The formation of neural circuits in nervous systems appears to heavily depend on the crucial interactions between chemical and electrical synapses. Thus these interactions govern the generation of synaptic transmission. Synaptic communication is distinct from an ephaptic coupling, in which communication between neurons occurs via indirect electric fields.  An autapse is a chemical or electrical synapse that forms when the axon of one neuron synapses onto dendrites of the same neuron. 
+
+
+=== Excitatory and inhibitory ===
+Excitatory synapse: Enhances the probability of depolarization in postsynaptic neurons and the initiation of an action potential.
+Inhibitory synapse: Diminishes the probability of depolarization in postsynaptic neurons and the initiation of an action potential.
+An influx of Na+ driven by excitatory neurotransmitters opens cation channels, depolarizing the postsynaptic membrane toward the action potential threshold. In contrast, inhibitory neurotransmitters cause the postsynaptic membrane to become less depolarized by opening either Cl− or K+ channels, reducing firing. Depending on their release location, the receptors they bind to, and the ionic circumstances they encounter, various transmitters can be either excitatory or inhibitory. For instance, acetylcholine can either excite or inhibit depending on the type of receptors it binds to. For example, glutamate serves as an excitatory neurotransmitter, in contrast to GABA, which acts as an inhibitory neurotransmitter. Additionally, dopamine is a neurotransmitter that exerts dual effects, displaying both excitatory and inhibitory impacts through binding to distinct receptors. 
+The membrane potential prevents Cl− from entering the cell, even when its concentration is much higher outside than inside. The reversal potential for Cl− in many neurons is quite negative, nearly equal to the resting potential. Opening Cl− channels tends to buffer the membrane potential, but this effect is countered when the membrane starts to depolarize, allowing more negatively charged Cl− ions to enter the cell. Consequently, it becomes more difficult to depolarize the membrane and excite the cell when Cl− channels are open. Similar effects result from the opening of K+ channels. The significance of inhibitory neurotransmitters is evident from the effects of toxins that impede their activity. For instance, strychnine binds to glycine receptors, blocking the action of glycine and leading to muscle spasms, convulsions, and death.
+
+
+=== Interfaces ===
+Synapses can be classified by the type of cellular structures serving as the pre- and post-synaptic components. The vast majority of synapses in the mammalian nervous system are classical axo-dendritic synapses (axon synapsing upon a dendrite), however, a variety of other arrangements exist. These include but are not limited to axo-axonic, dendro-dendritic, axo-secretory, axo-ciliary, somato-dendritic, dendro-somatic, and somato-somatic synapses.
+In fact, the axon can synapse onto a dendrite, onto a cell body, or onto another axon or axon terminal, as well as into the bloodstream or diffusely into the adjacent nervous tissue.
+
+
+== Conversion of chemical into electrical signals ==
+Neurotransmitters are tiny signal molecules stored in membrane-enclosed synaptic vesicles and released via exocytosis. Indeed, a change in electrical potential in the presynaptic cell triggers the release of these molecules. By attaching to transmitter-gated ion channels, the neurotransmitter causes an electrical alteration in the postsynaptic cell and rapidly diffuses across the synaptic cleft. Once released, the neurotransmitter is swiftly eliminated, either by being absorbed by the nerve terminal that produced it, taken up by nearby glial cells, or broken down by specific enzymes in the synaptic cleft. Numerous Na+-dependent neurotransmitter carrier proteins recycle the neurotransmitters and enable the cells to maintain rapid rates of release. 
+At chemical synapses, transmitter-gated ion channels play a vital role in rapidly converting extracellular chemical impulses into electrical signals. These channels are located in the postsynaptic cell's plasma membrane at the synapse region, and they temporarily open in response to neurotransmitter molecule binding, causing a momentary alteration in the membrane's permeability. Additionally, transmitter-gated channels are comparatively less sensitive to the membrane potential than voltage-gated channels, which is why they are unable to generate self-amplifying excitement on their own. However, they result in graded variations in membrane potential due to local permeability, influenced by the amount and duration of neurotransmitter released at the synapse.
+Recently, mechanical tension, a phenomenon never thought relevant to synapse function has been found to be required for those on hippocampal neurons to fire.
+
+
+== Release of neurotransmitters ==
+Neurotransmitters bind to ionotropic receptors on postsynaptic neurons, either causing their opening or closing. The variations in the quantities of neurotransmitters released from the presynaptic neuron may play a role in regulating the effectiveness of synaptic transmission. In fact, the concentration of cytoplasmic calcium is involved in regulating the release of neurotransmitters from presynaptic neurons.
+The chemical transmission involves several sequential processes:
+
+Synthesizing neurotransmitters within the presynaptic neuron.
+Loading the neurotransmitters into secretory vesicles.
+Controlling the release of neurotransmitters into the synaptic cleft.
+Binding of neurotransmitters to postsynaptic receptors.
+Ceasing the activity of the released neurotransmitters.
+
+
+== Synaptic polarization ==
+The function of neurons depends upon cell polarity. The distinctive structure of nerve cells allows action potentials to travel directionally (from dendrites to cell body down the axon), and for these signals to then be received and carried on by post-synaptic neurons or received by effector cells. Nerve cells have long been used as models for cellular polarization, and of particular interest are the mechanisms underlying the polarized localization of synaptic molecules. PIP2 signaling regulated by IMPase plays an integral role in synaptic polarity.
+Phosphoinositides (PIP, PIP2, and PIP3) are molecules that have been shown to affect neuronal polarity. A gene (ttx-7) was identified in Caenorhabditis elegans that encodes myo-inositol monophosphatase (IMPase), an enzyme that produces inositol by dephosphorylating inositol phosphate. Organisms with mutant ttx-7 genes demonstrated behavioral and localization defects, which were rescued by expression of IMPase. This led to the conclusion that IMPase is required for the correct localization of synaptic protein components. The egl-8 gene encodes a homolog of phospholipase Cβ (PLCβ), an enzyme that cleaves PIP2. When ttx-7 mutants also had a mutant egl-8 gene, the defects caused by the faulty ttx-7 gene were largely reversed. These results suggest that PIP2 signaling establishes polarized localization of synaptic components in living neurons.
+
+
+== Presynaptic modulation ==
+Modulation of neurotransmitter release by G-protein-coupled receptors (GPCRs) is a prominent presynaptic mechanism for regulation of synaptic transmission. The activation of GPCRs located at the presynaptic terminal, can decrease the probability of neurotransmitter release. This presynaptic depression involves activation of Gi/o-type G-proteins that mediate different inhibitory mechanisms, including inhibition of voltage-gated calcium channels, activation of potassium channels, and direct inhibition of the vesicle fusion process.
+Endocannabinoids, synthesized in and released from postsynaptic neuronal elements and their cognate receptors, including the (GPCR) CB1 receptor located at the presynaptic terminal, are involved in this modulation by a retrograde signaling process, in which these compounds are synthesized in and released from postsynaptic neuronal elements and travel back to the presynaptic terminal to act on the CB1 receptor for short-term or long-term synaptic depression, that causes a short or long lasting decrease in neurotransmitter release.
+
+
+== Effects of drugs on ligand-gated ion channels ==
+Drugs have long been considered crucial targets for transmitter-gated ion channels. The majority of medications utilized to treat schizophrenia, anxiety, depression, and sleeplessness work at chemical synapses, and many of these pharmaceuticals function by binding to transmitter-gated channels. For instance, some drugs like barbiturates and tranquilizers bind to GABA receptors and enhance the inhibitory effect of GABA neurotransmitter. Thus, reduced concentration of GABA enables the opening of Cl− channels. 
+Furthermore, psychoactive drugs could potentially target many other synaptic signalling machinery components. In fact, numerous neurotransmitters are released by Na+-driven carriers and are subsequently removed from the synaptic cleft. By inhibiting such carriers, synaptic transmission is strengthened as the action of the transmitter is prolonged. For example, Prozac is an antidepressant medication that works by preventing the absorption of serotonin neurotransmitter. Also, other antidepressants operate by inhibiting the reabsorption of both serotonin and norepinephrine.
+
+
+== Biogenesis ==
+In nerve terminals, synaptic vesicles are produced quickly to compensate for their rapid depletion during neurotransmitter release. Their biogenesis involves segregating synaptic vesicle membrane proteins from other cellular proteins and packaging those distinct proteins into vesicles of appropriate size. Besides, it entails the endocytosis of synaptic vesicle membrane proteins from the plasma membrane.
+Synaptoblastic and synaptoclastic refer to synapse-producing and synapse-removing activities within the biochemical signalling chain. This terminology is associated with the Bredesen Protocol for treating Alzheimer's disease, which conceptualizes Alzheimer's as an imbalance between these processes. As of October 2023, studies concerning this protocol remain small and few results have been obtained within a standardized control framework.
+
+
+== Role in memory ==
+
+
+=== Potentiation and depression ===
+It is widely accepted that the synapse plays a key role in the formation of memory. The stability of long-term memory can persist for many years; nevertheless, synapses, the neurological basis of memory, are very dynamic. The formation of synaptic connections significantly depends on activity-dependent synaptic plasticity observed in various synaptic pathways. Indeed, the connection between memory formation and alterations in synaptic efficacy enables the reinforcement of neuronal interactions between neurons. As neurotransmitters activate receptors across the synaptic cleft, the connection between the two neurons is strengthened when both neurons are active at the same time, as a result of the receptor's signaling mechanisms. The strength of two connected neural pathways is thought to result in the storage of information, resulting in memory. This process of synaptic strengthening is known as long-term potentiation (LTP).
+By altering the release of neurotransmitters, the plasticity of synapses can be controlled in the presynaptic cell. The postsynaptic cell can be regulated by altering the function and number of its receptors. Changes in postsynaptic signaling are most commonly associated with a N-methyl-d-aspartic acid receptor (NMDAR)-dependent LTP and long-term depression (LTD) due to the influx of calcium into the post-synaptic cell, which are the most analyzed forms of plasticity at excitatory synapses.
+
+
+=== Mechanism of protein kinase ===
+Moreover, Ca2+/calmodulin (CaM)-dependent protein kinase II (CaMKII) is best recognized for its roles in the brain, particularly in the neocortex and hippocampal regions because it serves as a ubiquitous mediator of cellular Ca2+ signals. CaMKII is abundant in the nervous system, mainly concentrated in the synapses in the nerve cells. Indeed, CaMKII has been definitively identified as a key regulator of cognitive processes, such as learning, and neural plasticity. The first concrete experimental evidence for the long-assumed function of CaMKII in memory storage was demonstrated
+While Ca2+/CaM binding stimulates CaMKII activity, Ca2+-independent autonomous CaMKII activity can also be produced by a number of other processes. CaMKII becomes active by autophosphorylating itself upon Ca2+/calmodulin binding. CaMKII is still active and phosphorylates itself even after Ca2+ is cleaved; as a result, the brain stores long-term memories using this mechanism. Nevertheless, when the CaMKII enzyme is dephosphorylated by a phosphatase enzyme, it becomes inactive, and memories are lost. Hence, CaMKII plays a vital role in both the induction and maintenance of LTP.
+
+
+== Experimental models ==
+For technical reasons, synaptic structure and function have been historically studied at unusually large model synapses, for example:
+
+Squid giant synapse
+Neuromuscular junction (NMJ), a cholinergic synapse in vertebrates, glutamatergic in insects
+Ciliary calyx in the ciliary ganglion of chicks
+Calyx of Held in the brainstem
+Ribbon synapse in the retina
+Schaffer collateral synapses in the hippocampus. These synapses are small, but their pre- and postsynaptic neurons are well separated (CA3 and CA1, respectively).
+
+
+== Synapses and diseases ==
+Synapses function as ensembles within particular brain networks to control the amount of neuronal activity, which is essential for memory, learning, and behavior. Consequently, synaptic disruptions might have negative effects. In fact, alterations in cell-intrinsic molecular systems or modifications to environmental biochemical processes can lead to synaptic dysfunction. The synapse is the primary unit of information transfer in the nervous system, and correct synaptic contact creation during development is essential for normal brain function. In addition, several mutations have been connected to neurodevelopmental disorders, and that compromised function at different synapse locations is a hallmark of neurodegenerative diseases.
+Synaptic defects are causally associated with early appearing neurological diseases, including autism spectrum disorders (ASD), schizophrenia (SCZ), and bipolar disorder (BP). On the other hand, in late-onset degenerative pathologies, such as Alzheimer's (AD), Parkinson's (PD), and Huntington's (HD) diseases, synaptopathy is thought to be the inevitable end-result of an ongoing pathophysiological cascade. These diseases are identified by a gradual loss in cognitive and behavioral function and a steady loss of brain tissue. Moreover, these deteriorations have been mostly linked to the gradual build-up of protein aggregates in neurons, the composition of which may vary based on the pathology; all have the same deleterious effects on neuronal integrity. Furthermore, the high number of mutations linked to synaptic structure and function, as well as dendritic spine alterations in post-mortem tissue, has led to the association between synaptic defects and neurodevelopmental disorders, such as ASD and SCZ, characterized by abnormal behavioral or cognitive phenotypes.
+Nevertheless, due to limited access to human tissue at late stages and a lack of thorough assessment of the essential components of human diseases in the available experimental animal models, it has been difficult to fully grasp the origin and role of synaptic dysfunction in neurological disorders.
+
+
+== Additional images ==
+
+
+== See also ==
+
+
+== References ==

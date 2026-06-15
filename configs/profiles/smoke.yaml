@@ -7,6 +7,15 @@
 
 extract:
   max_input_examples: 300
+  # Smoke-scale input corpus (committed to the repo for reproducibility).
+  # 10 Wikipedia neuroscience articles, ~360 KB total. See README in that
+  # directory for provenance and regeneration instructions.
+  #
+  # NOT YET WIRED (2026-06-15): graphrag_index.py reads input from
+  # 1_seed_kg/settings.yaml::input.base_dir. Set that to the path below
+  # until the args_mlm/settings.yaml integration lands (deferred from
+  # the orchestration branch — see kg-pipeline/.claude/docs).
+  input_dir: corpus/neuroscience/smoke
 
 # graphmert: architecture inherits Recipe B from default.yaml
 # (6L/4H/256H/1024FFN, scalar LR 4e-4) — that combination was validated
