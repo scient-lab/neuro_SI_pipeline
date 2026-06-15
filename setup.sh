@@ -30,7 +30,15 @@ create_env() {
   uv venv --python "${python}" "${venv}"
   # shellcheck disable=SC1091
   source "${venv}/bin/activate"
-  uv pip install -r "${REPO_DIR}/${reqs}"
+  # --index-strategy unsafe-best-match: required because our requirements
+  # files use --extra-index-url for cu121 torch wheels. The cu121 index has
+  # OLD versions of common packages (e.g. tqdm 4.66.5). uv's default
+  # "first-index-wins" then refuses to use newer versions from PyPI even
+  # when a transitive dep (e.g. graphrag's tqdm>=4.67) requires it. With
+  # unsafe-best-match, uv considers all configured indexes and picks the
+  # best version regardless of which index it came from. Safe in our
+  # use case (all indexes are first-party / PyPI).
+  uv pip install --index-strategy unsafe-best-match -r "${REPO_DIR}/${reqs}"
   if [[ -n "${post}" ]]; then
     eval "${post}"
   fi
