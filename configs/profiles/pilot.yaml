@@ -1,5 +1,6 @@
 # configs/profiles/pilot.yaml - single-book / 1k-record pilot.
-# Target: one textbook chapter or ~1k records; useful for evaluating a new domain.
+# Target: one textbook chapter or ~1k records on an A6000 (48 GB) tier.
+# Keys verified against the consuming code (same caveats as smoke.yaml).
 
 extract:
   max_input_examples: 1000
@@ -7,18 +8,26 @@ extract:
 graphmert:
   train_epochs: 10
   effective_batch_size: 32
+  # NOTE: graphmert TRAINING reads from 2_graphmert/launch_configs/args_mlm.yaml;
+  # this YAML override is documentation-only until that wire is done.
 
 curriculum:
   num_questions: 5000
   hop_range: [1, 4]
 
+# sft: matches trainer.py::TrainingConfig wired fields (lora_r/alpha/dropout
+# inherit from default.yaml). block_size larger than smoke since A6000 has 48 GB.
 sft:
-  train_epochs: 2
-  effective_batch_size: 8
+  block_size: 8192
 
+# rl: keys match rl_training.py::TrainingConfig (NOT n_completions /
+# max_completion_tokens — those names are ignored).
 rl:
-  n_completions: 4
-  max_completion_tokens: 512
+  num_generations: 4
+  max_completion_length: 512
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  num_train_epochs: 3
 
 # RunPod hardware defaults for this scale (read by scripts/launch_runpod.sh).
 runpod:
