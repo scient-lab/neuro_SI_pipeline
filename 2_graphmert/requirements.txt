@@ -7,7 +7,11 @@
 --extra-index-url https://download.pytorch.org/whl/cu121
 torch==2.5.1+cu121
 vllm
-transformers
+# transformers >=4.58 refactored the tokenizer class hierarchy and dropped
+# build_inputs_with_special_tokens from BertTokenizer's MRO. Princeton's
+# 2_graphmert/utils/tokenization_utils.py uses that method (line ~146), so
+# newer transformers breaks step 1 (tokenize). 4.57.6 is the last known-good.
+transformers>=4.55,<4.58
 # datasets 2.14.x (Aug 2023) uses pa.PyExtensionType which was removed in
 # pyarrow 15+. Without this pin, resolution picks the old 2.14.4 against a
 # current pyarrow (24.x) → AttributeError at import time. 2.20+ supports
