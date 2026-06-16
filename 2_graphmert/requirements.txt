@@ -8,6 +8,10 @@
 torch==2.5.1+cu121
 vllm
 transformers
-datasets
+# datasets 2.14.x (Aug 2023) uses pa.PyExtensionType which was removed in
+# pyarrow 15+. Without this pin, resolution picks the old 2.14.4 against a
+# current pyarrow (24.x) → AttributeError at import time. 2.20+ supports
+# modern pyarrow; <4 is a future-proof ceiling.
+datasets>=2.20,<4
 spacy
 pandas
