@@ -205,15 +205,36 @@ def main(yaml_file: str, seed_kg_path: str = None, train_src: str = None,
     logger.info("Loading stable tokenizer from: %s", tokenizer_path)
     tok = AutoTokenizer.from_pretrained(tokenizer_path, use_fast=False)
 
-    # Build and save relation map
-    allowed_relations = [
-        "part_of", "participates_in", "modulates", "contains", "located_in", "projects_to",
-        "mediates_signal_for", "causes", "required_for", "controls", "impaired_in", "binds_to",
-        "symptom_of", "associated_with", "connected_to", "receives_input_from", "results_in",
-        "activates", "inhibits", "innervates", "encodes_representation_of", "responds_to",
-        "expressed_in", "represents", "regulates", "transports", "originates_from",
-        "forms_complex_with", "releases",
-    ]
+    # Build and save relation map. Source: the active domain's relations list
+    # (e.g. domains/neuroscience.yaml::relations). This MUST match the relation
+    # set graphrag used during extraction — otherwise any triple whose relation
+    # isn't in this list is silently dropped during grounding, which (combined
+    # with smoke-scale data sparsity) can produce 0 grounded samples and crash
+    # Dataset.from_list with a "Keys mismatch" error.
+    try:
+        # pipeline_config sits at the repo root. Make sure it's importable
+        # whether this is invoked from scripts/phases/graphmert.sh (which
+        # cd's into 2_graphmert/) or from a different cwd.
+        import sys as _sys
+        _repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+        if _repo_root not in _sys.path:
+            _sys.path.insert(0, _repo_root)
+        from pipeline_config import get_relations  # noqa: WPS433
+        allowed_relations = list(get_relations())
+        if not allowed_relations:
+            raise RuntimeError("domain config has no 'relations' list")
+        logger.info("Loaded %d relations from active domain config", len(allowed_relations))
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Could not load relations from domain config (%s); "
+                       "falling back to hardcoded biomed set.", exc)
+        allowed_relations = [
+            "part_of", "participates_in", "modulates", "contains", "located_in", "projects_to",
+            "mediates_signal_for", "causes", "required_for", "controls", "impaired_in", "binds_to",
+            "symptom_of", "associated_with", "connected_to", "receives_input_from", "results_in",
+            "activates", "inhibits", "innervates", "encodes_representation_of", "responds_to",
+            "expressed_in", "represents", "regulates", "transports", "originates_from",
+            "forms_complex_with", "releases",
+        ]
     rel_map = build_relation_map(allowed_relations)
     rel_map_path = os.path.join(output_dir, "relation_map.json")
     with open(rel_map_path, "w") as f:
