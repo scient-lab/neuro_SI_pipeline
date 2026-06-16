@@ -19,29 +19,39 @@
 #   5. write $SI_HOME/.env with the LLM API keys injected at pod-create time
 #
 # Env vars (all injected by scripts/launch_runpod.sh at pod create time):
-#   SI_HOME          /workspace/neuro_SI_pipeline   (where to clone)
-#   SI_PROFILE       smoke / pilot / paper          (informational; used by pipeline.sh)
-#   GITHUB_TOKEN     PAT with 'repo' scope          (required to clone)
-#   GITHUB_REPO      scient-lab/neuro_SI_pipeline
-#   GITHUB_BRANCH    dev
-#   GEMINI_API_KEY   (required for curriculum phases)
-#   HF_TOKEN         (required for gated HF models)
-#   WANDB_API_KEY    (optional)
-#   STAGES           all | graphrag | graphmert | si_curriculum | csv list
-#                    (which venvs to create; default: all)
+#   SI_HOME              /workspace/neuro_SI_pipeline   (where to clone)
+#   SI_PROFILE           smoke / pilot / paper          (informational; used by pipeline.sh)
+#   GITHUB_TOKEN         PAT with 'repo' scope          (required to clone)
+#   GITHUB_REPO          scient-lab/neuro_SI_pipeline
+#   GITHUB_BRANCH        dev
+#   GRAPHMERT_UMLS_REPO  scient-lab/graphmert_umls      (vendors `graphrag`)
+#   GRAPHMERT_UMLS_BRANCH dev
+#   GEMINI_API_KEY       (required for curriculum phases)
+#   HF_TOKEN             (required for gated HF models)
+#   WANDB_API_KEY        (optional)
+#   STAGES               all | graphrag | graphmert | si_curriculum | csv list
+#                        (which venvs to create; default: all)
 
 set -euo pipefail
 
 SI_HOME="${SI_HOME:-/workspace/neuro_SI_pipeline}"
 GITHUB_REPO="${GITHUB_REPO:-scient-lab/neuro_SI_pipeline}"
 GITHUB_BRANCH="${GITHUB_BRANCH:-dev}"
+# graphmert_umls is cloned as a sibling of SI_HOME because 1_seed_kg/ imports
+# its vendored `graphrag` subpackage (installed editably by setup.sh).
+GRAPHMERT_UMLS_HOME="${GRAPHMERT_UMLS_HOME:-$(dirname "$SI_HOME")/graphmert_umls}"
+GRAPHMERT_UMLS_REPO="${GRAPHMERT_UMLS_REPO:-scient-lab/graphmert_umls}"
+GRAPHMERT_UMLS_BRANCH="${GRAPHMERT_UMLS_BRANCH:-dev}"
 STAGES="${STAGES:-all}"
 
 echo "=== preflight ==="
-echo "  SI_HOME       : $SI_HOME"
-echo "  GITHUB_REPO   : $GITHUB_REPO"
-echo "  GITHUB_BRANCH : $GITHUB_BRANCH"
-echo "  STAGES        : $STAGES"
+echo "  SI_HOME              : $SI_HOME"
+echo "  GITHUB_REPO          : $GITHUB_REPO"
+echo "  GITHUB_BRANCH        : $GITHUB_BRANCH"
+echo "  GRAPHMERT_UMLS_HOME  : $GRAPHMERT_UMLS_HOME"
+echo "  GRAPHMERT_UMLS_REPO  : $GRAPHMERT_UMLS_REPO"
+echo "  GRAPHMERT_UMLS_BRANCH: $GRAPHMERT_UMLS_BRANCH"
+echo "  STAGES               : $STAGES"
 echo
 
 require() {
@@ -70,23 +80,32 @@ if ! command -v uv >/dev/null 2>&1; then
 fi
 echo "  uv: $(uv --version)"
 
-# --- 3. clone repo (idempotent) ------------------------------------------
-if [[ ! -d "$SI_HOME/.git" ]]; then
-    echo "=== clone $GITHUB_REPO@$GITHUB_BRANCH -> $SI_HOME ==="
-    mkdir -p "$(dirname "$SI_HOME")"
-    git clone --branch "$GITHUB_BRANCH" \
-        "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git" "$SI_HOME"
-else
-    echo "=== repo already cloned, pulling latest ==="
-    cd "$SI_HOME"
-    git fetch origin "$GITHUB_BRANCH"
-    git checkout "$GITHUB_BRANCH"
-    git pull --ff-only origin "$GITHUB_BRANCH"
-fi
+# --- 3. clone repos (idempotent) -----------------------------------------
+clone_or_pull() {
+    local home="$1" repo="$2" branch="$3"
+    if [[ ! -d "$home/.git" ]]; then
+        echo "=== clone $repo@$branch -> $home ==="
+        mkdir -p "$(dirname "$home")"
+        git clone --branch "$branch" \
+            "https://${GITHUB_TOKEN}@github.com/${repo}.git" "$home"
+    else
+        echo "=== $home already cloned, pulling latest ==="
+        git -C "$home" fetch origin "$branch"
+        git -C "$home" checkout "$branch"
+        git -C "$home" pull --ff-only origin "$branch"
+    fi
+}
+
+clone_or_pull "$SI_HOME" "$GITHUB_REPO" "$GITHUB_BRANCH"
+# Only needed for the graphrag stage, but cheap and keeps siblings in sync.
+clone_or_pull "$GRAPHMERT_UMLS_HOME" "$GRAPHMERT_UMLS_REPO" "$GRAPHMERT_UMLS_BRANCH"
 
 cd "$SI_HOME"
 
 # --- 4. create venvs ------------------------------------------------------
+# Export GRAPHMERT_UMLS_ROOT so setup.sh installs the vendored graphrag
+# editably (see setup.sh's graphrag-stage post-install hook).
+export GRAPHMERT_UMLS_ROOT="$GRAPHMERT_UMLS_HOME"
 echo "=== ./setup.sh $STAGES ==="
 if [[ "$STAGES" == "all" ]]; then
     ./setup.sh

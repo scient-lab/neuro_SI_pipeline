@@ -14,6 +14,11 @@ set -euo pipefail
 REPO_DIR="${REPO_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)}"
 VENV_ROOT="${REPO_DIR}/.venvs"
 
+# Sibling graphmert_umls repo — ships the vendored `graphrag` package that
+# 1_seed_kg/graphrag_index.py imports. The bootstrap clones it next to
+# REPO_DIR; users on a workstation can override via the env var.
+GRAPHMERT_UMLS_ROOT="${GRAPHMERT_UMLS_ROOT:-$(cd "${REPO_DIR}/.." && pwd)/graphmert_umls}"
+
 if ! command -v uv >/dev/null 2>&1; then
   echo "uv not found on PATH. Install it once with:" >&2
   echo "  curl -LsSf https://astral.sh/uv/install.sh | sh" >&2
@@ -58,7 +63,19 @@ case "${target}" in
 esac
 
 if [[ "${target}" == "all" || "${target}" == "graphrag" ]]; then
-  create_env graphrag      3.11 1_seed_kg/requirements.txt
+  # Verify the vendored graphrag exists before creating the venv — we install
+  # it editably as a post-step (no PyPI graphrag; matches the version Princeton
+  # tested against). Missing = bootstrap didn't clone graphmert_umls; bail with
+  # a clear message rather than a confusing pip error.
+  if [[ ! -f "${GRAPHMERT_UMLS_ROOT}/graphrag/pyproject.toml" ]]; then
+    echo "graphmert_umls/graphrag not found at: ${GRAPHMERT_UMLS_ROOT}/graphrag" >&2
+    echo "Clone it as a sibling of this repo, e.g.:" >&2
+    echo "  git clone -b dev git@github.com:scient-lab/graphmert_umls.git ${GRAPHMERT_UMLS_ROOT}" >&2
+    echo "Or set GRAPHMERT_UMLS_ROOT to point at your existing checkout." >&2
+    exit 1
+  fi
+  create_env graphrag 3.11 1_seed_kg/requirements.txt \
+    "uv pip install --index-strategy unsafe-best-match -e '${GRAPHMERT_UMLS_ROOT}/graphrag'"
 fi
 if [[ "${target}" == "all" || "${target}" == "graphmert" ]]; then
   create_env graphmert     3.10 2_graphmert/requirements.txt "python -m spacy download en_core_web_sm"

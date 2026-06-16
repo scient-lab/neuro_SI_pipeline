@@ -3,6 +3,12 @@
 #   uv venv --python 3.11 ${REPO_DIR}/.venvs/graphrag
 #   source ${REPO_DIR}/.venvs/graphrag/bin/activate
 #   uv pip install -r 1_seed_kg/requirements.txt
+#
+# The `graphrag` package itself is NOT listed here. It's vendored in the
+# sibling `graphmert_umls` repo and installed editably by setup.sh as a
+# post-step (uv pip install -e ${GRAPHMERT_UMLS_ROOT}/graphrag). That keeps
+# us byte-identical to the version Princeton tested against and avoids
+# PyPI version drift (e.g. extract_graph -> extract_entities renaming).
 --extra-index-url https://download.pytorch.org/whl/cu121
 torch==2.5.1+cu121
 vllm==0.7.3
@@ -10,9 +16,3 @@ transformers
 datasets
 pandas
 pyarrow
-
-# Microsoft's graphrag-toolkit — graphrag_index.py + count_text_units.py
-# import `from graphrag.config.load_config import load_config` and friends.
-# Princeton's uv-impl omitted this; runtime crash without it. 1.x API matches
-# the imports used in 1_seed_kg/*. 2.x has breaking changes; pin <2 for now.
-graphrag>=1.0,<2
