@@ -17,5 +17,9 @@ transformers>=4.55,<4.58
 # current pyarrow (24.x) → AttributeError at import time. 2.20+ supports
 # modern pyarrow; <4 is a future-proof ceiling.
 datasets>=2.20,<4
+# transformers Trainer hard-requires accelerate; without this it raises
+# "Using the Trainer with PyTorch requires accelerate>=0.26.0" at
+# TrainingArguments construction. 0.34 covers everything 4.55-4.57 needs.
+accelerate>=0.34,<2
 spacy
 pandas

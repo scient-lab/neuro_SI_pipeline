@@ -45,7 +45,9 @@ for step in "${STEPS[@]}"; do
         path_traversal)
             log_info "curriculum :: path_traversal (calculate_hops.py)"
             KG_PATH="${KG_PATH:-$GRAPHMERT_DIR/final_kg/validated_triples.csv}"
-            SEED_KG="$GRAPHRAG_DIR/output/kg_final.parquet"
+            # calculate_hops.py does pd.read_csv(seed_kg_path); use the CSV
+            # variant (extract.sh writes both .csv and .parquet from graphrag).
+            SEED_KG="$GRAPHRAG_DIR/output/kg_final.csv"
             MANIFEST="$CURRICULUM_DIR/kg_manifest.json"
             ( cd "$REPO_ROOT/3_si_curriculum" && \
               python calculate_hops.py \

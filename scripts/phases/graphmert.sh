@@ -112,10 +112,13 @@ for step in "${STEPS[@]}"; do
             # "clean"; clean_llm_relations.py:~85). Step 4 reads those exact
             # dataset directories — must include the full subpath here.
             log_info "  step 4: run_dataset_preprocessing"
+            # dataset_preprocessing_utils.py does pd.read_csv(seed_kg_path), so we
+            # consume the CSV variant of the seed KG. extract.sh's cache step
+            # writes both kg_final.csv and kg_final.parquet from graphrag.
             ( cd "$REPO_ROOT/2_graphmert" && \
               python run_dataset_preprocessing.py \
                   --yaml_file    "$ARGS_MLM_YAML" \
-                  --seed_kg_path "$GRAPHRAG_DIR/output/kg_final.parquet" \
+                  --seed_kg_path "$GRAPHRAG_DIR/output/kg_final.csv" \
                   --train_src    "$GRAPHMERT_DIR/llm_relations/relations_clean/relations_cleaned_train" \
                   --eval_src     "$GRAPHMERT_DIR/llm_relations/relations_clean/relations_cleaned_eval" \
                   --tokenizer    "$STABLE_TOKENIZER" \

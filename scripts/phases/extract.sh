@@ -88,7 +88,22 @@ for step in "${STEPS[@]}"; do
         cache)
             log_info "extract :: cache (graphrag step 5 — finalize seed KG)"
             graphrag_step 5 || { log_error "extract.cache failed"; exit 1; }
-            log_info "Seed KG written: $GRAPHRAG_DIR/output/kg_final.parquet"
+            # graphrag writes final_relationships.parquet (cols source/target/relation),
+            # but downstream code expects:
+            #   - kg_final.csv      (head, relation, tail) — for graphmert step 4 + curriculum calculate_hops
+            #   - kg_final.parquet  (head, relation, tail) — for graphmert merge_kgs
+            # Materialize both here so all consumers can use $GRAPHRAG_DIR/output/kg_final.*.
+            log_info "extract :: write_seed_kg (convert graphrag → kg_final.{csv,parquet})"
+            ( cd "$REPO_ROOT" && python3 -c "
+import pandas as pd, sys
+src = '$GRAPHRAG_DIR/output/final_relationships.parquet'
+df = pd.read_parquet(src)
+out = df[['source','target','relation']].rename(columns={'source':'head','target':'tail'})
+out.to_csv('$GRAPHRAG_DIR/output/kg_final.csv', index=False)
+out.to_parquet('$GRAPHRAG_DIR/output/kg_final.parquet', index=False)
+print(f'wrote {len(out)} triples to kg_final.csv and kg_final.parquet')
+" ) || { log_error "extract.cache write_seed_kg failed"; exit 1; }
+            log_info "Seed KG written: $GRAPHRAG_DIR/output/kg_final.{csv,parquet}"
             ;;
     esac
 done
