@@ -90,7 +90,10 @@ dataloader_num_workers: 0
 dataloader_prefetch_factor: null
 
 # ===================== EVALUATION =====================
-evaluation_strategy: steps
+# transformers >=4.41 renamed `evaluation_strategy` to `eval_strategy`.
+# The old name is silently ignored, defaulting eval_strategy to "no" and
+# breaking the load_best_model_at_end check (which needs save+eval to match).
+eval_strategy: steps
 logging_strategy: steps
 save_strategy: steps
 eval_steps: 25
