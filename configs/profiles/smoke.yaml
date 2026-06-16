@@ -5,6 +5,15 @@
 # half a day on key-mismatch + OOM. Every key below was verified to match
 # what the consuming code actually reads (see comments next to each section).
 
+models:
+  # default.yaml::models.extract is Qwen/Qwen3-14B (~28 GB fp16) — too big
+  # for smoke-tier GPUs (16-24 GB). Qwen3 also has NO native vllm-0.7.3
+  # implementation, so it would fall back to the slow HF Transformers backend
+  # even if it fit. Qwen2.5-3B-Instruct: ~6 GB fp16, vllm-native, fits
+  # everywhere including the 12 GB RTX 3060 workstation. Smoke validates
+  # pipeline plumbing, not extraction quality — pilot/paper inherit Qwen3-14B.
+  extract: Qwen/Qwen2.5-3B-Instruct
+
 extract:
   max_input_examples: 300
   # Smoke-scale input corpus (committed to the repo for reproducibility).
