@@ -14,6 +14,13 @@
 #   ./scripts/launch_runpod.sh --profile pilot              # bigger GPU
 #   ./scripts/launch_runpod.sh --gpu-type "NVIDIA RTX A6000" --disk-gb 200
 #   ./scripts/launch_runpod.sh --dry-run                    # print POST body, don't send
+#   ./scripts/launch_runpod.sh --discover                   # print discovered GPU chain, don't POST
+#
+# GPU selection (in order of precedence):
+#   1. --gpu-type / RUNPOD_GPU_TYPE       — pin one type, no fallback
+#   2. profile vram_gb_min/max + cloud    — dynamic via GET /v1/gpus, sorted by $/hr
+#   3. profile gpu_types (list)           — static fallback chain
+#   4. profile gpu_type (scalar, legacy)  — single type
 
 set -euo pipefail
 
@@ -60,6 +67,7 @@ GITHUB_REPO="${GITHUB_REPO:-scient-lab/neuro_SI_pipeline}"
 GITHUB_BRANCH="${GITHUB_BRANCH:-dev}"
 SI_HOME="${SI_HOME:-/workspace/neuro_SI_pipeline}"
 DRY_RUN=0
+DISCOVER_ONLY=0
 POD_NAME=""
 
 # Public RunPod image; override via env or --image.
@@ -76,6 +84,7 @@ while [[ $# -gt 0 ]]; do
         --image)      RUNPOD_IMAGE="$2";      shift 2 ;;
         --name)       POD_NAME="$2";          shift 2 ;;
         --dry-run)    DRY_RUN=1;              shift ;;
+        --discover)   DISCOVER_ONLY=1;        shift ;;
         -h|--help)
             sed -n '2,/^$/p' "$0"
             exit 0
@@ -121,12 +130,146 @@ print(val)
 " 2>/dev/null || true
 }
 
-[[ -z "${RUNPOD_GPU_TYPE:-}"   ]] && RUNPOD_GPU_TYPE=$(profile_get gpu_type)
+# Read profile.runpod.gpu_types (list) — falls back to the legacy
+# scalar `gpu_type` key for back-compat. Emits one GPU-type name per line so
+# callers can read into a bash array.
+profile_get_gpu_types() {
+    uv run --no-project --quiet --with pyyaml python3 -c "
+import sys, yaml
+with open('$PROFILE_FILE') as f:
+    data = yaml.safe_load(f) or {}
+runpod = data.get('runpod') or {}
+types = runpod.get('gpu_types')
+if types is None:
+    legacy = runpod.get('gpu_type')
+    types = [legacy] if legacy else []
+if not types:
+    sys.exit(2)
+for t in types:
+    print(t)
+" 2>/dev/null || true
+}
+
+# Query RunPod's GET /v1/gpus, filter by VRAM range + cloud-tier
+# availability, sort by price ascending. Emits one GPU-type ID per line.
+#
+# Args: vram_min  vram_max  cloud_type  ('SECURE' or 'COMMUNITY')
+# vram_max=0 means no upper bound. Returns empty (and exits 0) on any failure
+# so the caller can fall back to a static chain — we don't want a transient
+# RunPod-API hiccup to block a pod launch.
+discover_gpus_by_vram() {
+    local vmin="$1" vmax="$2" cloud="$3"
+    local cloud_field
+    case "$cloud" in
+        SECURE)    cloud_field="secureCloud" ;;
+        COMMUNITY) cloud_field="communityCloud" ;;
+        *)         cloud_field="" ;;
+    esac
+
+    local resp
+    resp=$(curl -sS --max-time 15 \
+        -H "Authorization: Bearer ${RUNPOD_API_KEY}" \
+        "https://rest.runpod.io/v1/gpus" 2>/dev/null) || return 0
+
+    VMIN="$vmin" VMAX="$vmax" CLOUD_FIELD="$cloud_field" \
+    python3 -c "
+import json, os, sys
+try:
+    data = json.loads(os.environ.get('RESP', '') or sys.stdin.read())
+except Exception:
+    sys.exit(0)
+
+# RunPod returns either a bare list or {'data': [...]} depending on version.
+gpus = data if isinstance(data, list) else (data.get('data') or [])
+vmin = int(os.environ['VMIN'])
+vmax_raw = int(os.environ['VMAX'])
+vmax = vmax_raw if vmax_raw > 0 else 10**9
+cloud_field = os.environ.get('CLOUD_FIELD') or ''
+
+def vram_gb(g):
+    for k in ('memoryInGb', 'memory_in_gb', 'gpuMemoryInGb', 'vramGb', 'memoryGB'):
+        v = g.get(k)
+        if isinstance(v, (int, float)):
+            return int(v)
+    return 0
+
+def price(g):
+    # Try several common field names; fall back to large value so unknown-priced
+    # cards rank last but still appear.
+    for k in ('communityPrice', 'securePrice', 'lowestPrice', 'price'):
+        v = g.get(k)
+        if isinstance(v, dict):
+            v = v.get('uninterruptablePrice') or v.get('price') or v.get('amount')
+        if isinstance(v, (int, float)):
+            return float(v)
+    return 999.0
+
+def cloud_ok(g):
+    if not cloud_field:
+        return True
+    val = g.get(cloud_field)
+    if isinstance(val, bool):
+        return val
+    return True  # unknown shape: don't filter out
+
+def gpu_id(g):
+    return g.get('id') or g.get('displayName') or g.get('name') or ''
+
+matches = [g for g in gpus if vmin <= vram_gb(g) <= vmax and cloud_ok(g)]
+matches.sort(key=price)
+for g in matches:
+    gid = gpu_id(g)
+    if gid:
+        print(gid)
+" <<< "$resp" 2>/dev/null || true
+}
+
+# Resolve the GPU chain. Precedence:
+#   1. CLI --gpu-type / env RUNPOD_GPU_TYPE   → single element (explicit = no fallback)
+#   2. profile vram_gb_min                    → dynamic discovery via /v1/gpus
+#   3. profile gpu_types (static list)        → fallback if discovery returns empty
+#   4. profile gpu_type (legacy scalar)       → single element
 [[ -z "${RUNPOD_CLOUD_TYPE:-}" ]] && RUNPOD_CLOUD_TYPE=$(profile_get cloud_type)
 [[ -z "${RUNPOD_DISK_GB:-}"    ]] && RUNPOD_DISK_GB=$(profile_get disk_gb)
 [[ -z "${RUNPOD_NUM_GPUS:-}"   ]] && RUNPOD_NUM_GPUS=$(profile_get num_gpus)
 
-for var in RUNPOD_GPU_TYPE RUNPOD_CLOUD_TYPE RUNPOD_DISK_GB RUNPOD_NUM_GPUS; do
+VRAM_GB_MIN=$(profile_get vram_gb_min)
+VRAM_GB_MAX=$(profile_get vram_gb_max)
+
+GPU_TYPE_CHAIN=()
+DISCOVERY_USED=0
+if [[ -n "${RUNPOD_GPU_TYPE:-}" ]]; then
+    GPU_TYPE_CHAIN=("$RUNPOD_GPU_TYPE")
+elif [[ -n "$VRAM_GB_MIN" ]]; then
+    DISCOVERY_USED=1
+    while IFS= read -r line; do
+        [[ -n "$line" ]] && GPU_TYPE_CHAIN+=("$line")
+    done < <(discover_gpus_by_vram "$VRAM_GB_MIN" "${VRAM_GB_MAX:-0}" "$RUNPOD_CLOUD_TYPE")
+    echo "[discover] /v1/gpus filtered by vram=${VRAM_GB_MIN}-${VRAM_GB_MAX:-∞}GB cloud=${RUNPOD_CLOUD_TYPE} → ${#GPU_TYPE_CHAIN[@]} types"
+fi
+
+# If no chain yet (no explicit override, no vram range, OR discovery returned nothing),
+# fall back to the static gpu_types / gpu_type list from the profile.
+if [[ ${#GPU_TYPE_CHAIN[@]} -eq 0 ]]; then
+    if [[ "$DISCOVERY_USED" -eq 1 ]]; then
+        echo "[discover] empty result, falling back to static gpu_types list"
+    fi
+    while IFS= read -r line; do
+        [[ -n "$line" ]] && GPU_TYPE_CHAIN+=("$line")
+    done < <(profile_get_gpu_types)
+fi
+
+if [[ "$DISCOVER_ONLY" -eq 1 ]]; then
+    echo "[discover] resolved chain (${#GPU_TYPE_CHAIN[@]} types, in attempt order):"
+    for t in "${GPU_TYPE_CHAIN[@]}"; do echo "  - $t"; done
+    exit 0
+fi
+
+if [[ ${#GPU_TYPE_CHAIN[@]} -eq 0 ]]; then
+    echo "✗ no GPU types resolved (profile $SI_PROFILE has no runpod.gpu_types / gpu_type and no CLI/env override)" >&2
+    exit 1
+fi
+for var in RUNPOD_CLOUD_TYPE RUNPOD_DISK_GB RUNPOD_NUM_GPUS; do
     if [[ -z "${!var:-}" ]]; then
         echo "✗ $var not set (profile $SI_PROFILE has no runpod.${var,,} and no CLI/env override)" >&2
         exit 1
@@ -167,13 +310,15 @@ EOF
 }
 
 export SI_PROFILE SI_HOME GITHUB_REPO GITHUB_BRANCH POD_NAME RUNPOD_IMAGE
-export RUNPOD_GPU_TYPE RUNPOD_CLOUD_TYPE RUNPOD_DISK_GB RUNPOD_NUM_GPUS
-
-POD_BODY=$(build_post_body)
+export RUNPOD_CLOUD_TYPE RUNPOD_DISK_GB RUNPOD_NUM_GPUS
 
 if [[ $DRY_RUN -eq 1 ]]; then
-    echo "[dry-run] POST body (secrets masked):"
-    echo "$POD_BODY" | python3 -c "
+    echo "[dry-run] GPU fallback chain (${#GPU_TYPE_CHAIN[@]} types):"
+    for t in "${GPU_TYPE_CHAIN[@]}"; do echo "  - $t"; done
+    echo
+    echo "[dry-run] POST body for first GPU type (secrets masked):"
+    RUNPOD_GPU_TYPE="${GPU_TYPE_CHAIN[0]}" export RUNPOD_GPU_TYPE
+    build_post_body | python3 -c "
 import json, re, sys
 body = json.loads(sys.stdin.read())
 for k in list(body.get('env', {}).keys()):
@@ -184,16 +329,27 @@ print(json.dumps(body, indent=2))
     exit 0
 fi
 
-# --- POST ----------------------------------------------------------------
-echo "[POST] https://rest.runpod.io/v1/pods (profile=$SI_PROFILE, gpu=$RUNPOD_GPU_TYPE, disk=${RUNPOD_DISK_GB}GB)"
+# --- POST loop (try each GPU type until one succeeds) --------------------
+# The RunPod API returns 500 + "no instances currently available" when a
+# specific GPU type has no capacity. We treat that as retryable on the next
+# type in the chain. Any other error (auth, quota, bad payload) aborts.
+ATTEMPTS=()
+POD_ID=""
+LAST_RESP=""
 
-CREATE_RESP=$(curl -sS -X POST \
-    -H "Authorization: Bearer ${RUNPOD_API_KEY}" \
-    -H "Content-Type: application/json" \
-    -d "$POD_BODY" \
-    https://rest.runpod.io/v1/pods)
+for gpu_type in "${GPU_TYPE_CHAIN[@]}"; do
+    export RUNPOD_GPU_TYPE="$gpu_type"
+    POD_BODY=$(build_post_body)
 
-POD_ID=$(echo "$CREATE_RESP" | python3 -c "
+    echo "[POST] https://rest.runpod.io/v1/pods (profile=$SI_PROFILE, gpu=$gpu_type, disk=${RUNPOD_DISK_GB}GB)"
+
+    LAST_RESP=$(curl -sS -X POST \
+        -H "Authorization: Bearer ${RUNPOD_API_KEY}" \
+        -H "Content-Type: application/json" \
+        -d "$POD_BODY" \
+        https://rest.runpod.io/v1/pods)
+
+    POD_ID=$(echo "$LAST_RESP" | python3 -c "
 import json, sys
 try:
     print(json.load(sys.stdin).get('id', ''))
@@ -201,13 +357,48 @@ except Exception:
     pass
 ")
 
+    if [[ -n "$POD_ID" ]]; then
+        ATTEMPTS+=("$gpu_type: ✓ $POD_ID")
+        break
+    fi
+
+    # No pod id → parse the error. If it's "no instances available", try next.
+    ERROR_MSG=$(echo "$LAST_RESP" | python3 -c "
+import json, sys
+try:
+    print(json.load(sys.stdin).get('error', '') or '')
+except Exception:
+    pass
+")
+    ATTEMPTS+=("$gpu_type: ✗ ${ERROR_MSG:-unknown error}")
+
+    if echo "$ERROR_MSG" | grep -qiE 'no instances|not available|out of (stock|capacity)'; then
+        echo "  → no capacity for '$gpu_type', trying next…"
+        continue
+    fi
+
+    # Any other error: stop iterating, surface it.
+    echo "✗ non-capacity error from RunPod, aborting fallback chain:" >&2
+    echo "$LAST_RESP" | python3 -m json.tool >&2 2>/dev/null || echo "$LAST_RESP" >&2
+    echo >&2
+    echo "Attempts:" >&2
+    for a in "${ATTEMPTS[@]}"; do echo "  - $a" >&2; done
+    exit 1
+done
+
 if [[ -z "$POD_ID" ]]; then
-    echo "✗ pod creation failed" >&2
-    echo "$CREATE_RESP" | python3 -m json.tool >&2 2>/dev/null || echo "$CREATE_RESP" >&2
+    echo "✗ no capacity on any GPU type in the chain" >&2
+    echo "Attempts:" >&2
+    for a in "${ATTEMPTS[@]}"; do echo "  - $a" >&2; done
+    echo >&2
+    echo "Options:" >&2
+    echo "  - rerun later (capacity fluctuates by the minute)" >&2
+    echo "  - rerun with --cloud-type SECURE (or COMMUNITY) to switch tiers" >&2
+    echo "  - rerun with --gpu-type \"<exact name>\" to pin a specific type" >&2
     exit 1
 fi
 
-echo "✓ pod created: $POD_ID"
+echo "✓ pod created: $POD_ID (gpu=$RUNPOD_GPU_TYPE)"
 echo
 echo "Next steps — once SSH is reachable on the pod:"
 echo

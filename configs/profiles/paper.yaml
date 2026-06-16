@@ -10,7 +10,15 @@ curriculum:
 # Single-H100 setup; for multi-GPU use --gpu-type / --num-gpus on the CLI
 # (a future paper-multi.yaml may codify the 8x A100 variant from the paper).
 runpod:
-  gpu_type: "NVIDIA H100 80GB HBM3"
+  # Primary: dynamic discovery — 80 GB-class hardware (H100s + A100 80GBs).
+  vram_gb_min: 80
+  vram_gb_max: 96      # also allows H100 NVL (94 GB) if cheaper than H100 SXM
+  # Static fallback if discovery fails / returns empty.
+  gpu_types:
+    - "NVIDIA H100 80GB HBM3"
+    - "NVIDIA H100 PCIe"
+    - "NVIDIA A100 80GB PCIe"
+    - "NVIDIA A100-SXM4-80GB"
   cloud_type: SECURE
   disk_gb: 300
   num_gpus: 1

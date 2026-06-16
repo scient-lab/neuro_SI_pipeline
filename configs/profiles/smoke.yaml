@@ -61,7 +61,20 @@ rl:
 # but the config above is calibrated for 12 GB so the same profile works on
 # either box.
 runpod:
-  gpu_type: "NVIDIA RTX A4000"
+  # Primary GPU selection: dynamic discovery. launch_runpod.sh queries
+  # GET /v1/gpus, filters by this VRAM range and cloud_type, sorts cheapest
+  # first, and attempts each in order (so we pick the cheapest available
+  # instead of failing on a single hardcoded type).
+  vram_gb_min: 16
+  vram_gb_max: 24      # 16-24 GB covers the smoke workload; 0 = no upper bound
+  # Static fallback: used only if discovery returns empty / API hiccup.
+  # Keep this list curated even when relying on discovery.
+  gpu_types:
+    - "NVIDIA RTX A4000"
+    - "NVIDIA RTX 3090"
+    - "NVIDIA RTX A5000"
+    - "NVIDIA RTX 4090"
+    - "NVIDIA L4"
   cloud_type: COMMUNITY
   disk_gb: 60
   num_gpus: 1

@@ -123,6 +123,14 @@ ENV_FILE="$SI_HOME/.env"
     [[ -n "${GEMINI_API_KEY:-}" ]] && echo "GEMINI_API_KEY=$GEMINI_API_KEY"
     [[ -n "${HF_TOKEN:-}"       ]] && echo "HF_TOKEN=$HF_TOKEN"
     [[ -n "${WANDB_API_KEY:-}"  ]] && echo "WANDB_API_KEY=$WANDB_API_KEY"
+    # graphrag's load_config() does Template(text).substitute(os.environ) on
+    # 1_seed_kg/settings.yaml, which references ${GRAPHRAG_API_KEY} for both
+    # default_chat_model and default_embedding_model. Our pipeline_3 path
+    # loads the LLM directly into vLLM (bypassing graphrag's chat model) and
+    # we never call the embedding endpoint either — so the value is unused
+    # at runtime, but must be SOMETHING or the substitution KeyErrors. If
+    # you DO have a real Nebius/OpenAI key set in .env.runpod, that wins.
+    echo "GRAPHRAG_API_KEY=${GRAPHRAG_API_KEY:-vllm-no-api-needed}"
 } > "$ENV_FILE"
 chmod 600 "$ENV_FILE"
 
@@ -139,5 +147,7 @@ echo "✓ bootstrap complete"
 echo
 echo "Run the pipeline:"
 echo "  cd $SI_HOME"
-echo "  source .env"
 echo "  ./scripts/pipeline.sh --profile ${SI_PROFILE:-smoke} --platform runpod"
+echo
+echo "(pipeline.sh auto-sources .env. If you want secrets in your interactive"
+echo " shell — e.g. for debugging — use: set -a; source .env; set +a)"

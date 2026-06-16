@@ -31,7 +31,16 @@ rl:
 
 # RunPod hardware defaults for this scale (read by scripts/launch_runpod.sh).
 runpod:
-  gpu_type: "NVIDIA RTX A6000"
+  # Primary: dynamic discovery — 48 GB-class hardware, cheapest first.
+  vram_gb_min: 48
+  vram_gb_max: 80      # A100 80GB acceptable if 48 GB-class is dry
+  # Static fallback if discovery fails / returns empty.
+  gpu_types:
+    - "NVIDIA RTX A6000"
+    - "NVIDIA L40"
+    - "NVIDIA L40S"
+    - "NVIDIA A40"
+    - "NVIDIA A100 80GB PCIe"
   cloud_type: SECURE
   disk_gb: 150
   num_gpus: 1

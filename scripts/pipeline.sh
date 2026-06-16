@@ -16,6 +16,19 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 # shellcheck source=lib/common.sh
 source "$SCRIPT_DIR/lib/common.sh"
 
+# Auto-source $REPO_ROOT/.env so secrets (GEMINI_API_KEY, HF_TOKEN,
+# GRAPHRAG_API_KEY, …) reach phase subprocesses. `set -a` is critical —
+# without it, plain `source .env` sets variables only in this shell and
+# child Python processes hit KeyError on os.environ['…']. Idempotent: safe
+# to source even if the user already sourced it manually.
+ENV_FILE="${ENV_FILE:-$REPO_ROOT/.env}"
+if [[ -f "$ENV_FILE" ]]; then
+    set -a
+    # shellcheck disable=SC1090
+    source "$ENV_FILE"
+    set +a
+fi
+
 # --- Defaults ---------------------------------------------------------------
 DOMAIN="neuroscience"
 PROFILE=""
