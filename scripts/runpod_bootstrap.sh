@@ -63,15 +63,34 @@ require() {
 require GITHUB_TOKEN || exit 1
 
 # --- 1. apt install ------------------------------------------------------
+# NOTE: we deliberately do NOT apt-install awscli here. The Debian/Ubuntu
+# awscli (v1) rides on the system botocore, which imports
+# `urllib3.util.ssl_.DEFAULT_CIPHERS` — a symbol REMOVED in urllib3 2.0. On a
+# RunPod image where anything has pulled urllib3>=2 into /usr/local, every
+# `aws` call dies on import. We install the self-contained AWS CLI v2 instead
+# (bundles its own Python + deps; immune to system site-packages drift).
 need_apt=()
 command -v git       >/dev/null 2>&1 || need_apt+=(git)
 command -v curl      >/dev/null 2>&1 || need_apt+=(curl)
+command -v unzip     >/dev/null 2>&1 || need_apt+=(unzip)
 command -v envsubst  >/dev/null 2>&1 || need_apt+=(gettext-base)
-command -v aws       >/dev/null 2>&1 || need_apt+=(awscli)
 if [[ ${#need_apt[@]} -gt 0 ]]; then
     echo "=== apt install: ${need_apt[*]} ==="
     apt-get update -qq
     apt-get install -y -qq "${need_apt[@]}"
+fi
+
+# --- 1b. AWS CLI v2 (self-contained) -------------------------------------
+# Reinstall if `aws` is missing OR is a v1 that crashes on import (the
+# urllib3 2.x break above). `aws --version` exiting non-zero catches both.
+if ! aws --version >/dev/null 2>&1; then
+    echo "=== install AWS CLI v2 ==="
+    _arch=$(uname -m)  # x86_64 or aarch64 — both have official bundles
+    curl -sSL "https://awscli.amazonaws.com/awscli-exe-linux-${_arch}.zip" -o /tmp/awscliv2.zip
+    ( cd /tmp && unzip -oq awscliv2.zip && ./aws/install --update )
+    rm -rf /tmp/awscliv2.zip /tmp/aws
+    hash -r
+    echo "  $(aws --version 2>&1)"
 fi
 
 # --- 2. install uv -------------------------------------------------------

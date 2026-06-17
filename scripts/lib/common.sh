@@ -26,23 +26,58 @@ step_enabled() {
     return 1
 }
 
+# _pipeline_config_eval <python-expr>
+# Evaluate a pipeline_config expression and print its value. Two hardening
+# fixes over the old inline `uv run … 2>/dev/null || echo default`:
+#   1. PYTHONPATH=$REPO_ROOT so `import pipeline_config` resolves regardless of
+#      the caller's CWD (the silent root cause when run from a subdir).
+#   2. Tries the ACTIVE interpreter first (phase venvs now ship pyyaml); only
+#      falls back to an ephemeral `uv run --with pyyaml` if that can't import
+#      (e.g. venv not built yet). On TOTAL failure it logs a loud warning with
+#      the real Python error instead of silently returning "" — that silent
+#      empty is exactly what manifested as "needs models.extract".
+# Returns Python's exit code; prints the value on stdout.
+_pipeline_config_eval() {
+    local expr="$1" out rc errfile
+    errfile=$(mktemp)
+    out=$(PYTHONPATH="${REPO_ROOT}${PYTHONPATH:+:$PYTHONPATH}" python3 -c "$expr" 2>"$errfile")
+    rc=$?
+    if [[ $rc -ne 0 ]] && command -v uv >/dev/null 2>&1; then
+        out=$(PYTHONPATH="${REPO_ROOT}${PYTHONPATH:+:$PYTHONPATH}" \
+              uv run --no-project --quiet --with pyyaml python3 -c "$expr" 2>"$errfile")
+        rc=$?
+    fi
+    if [[ $rc -ne 0 ]]; then
+        log_warn "pipeline_config read failed (is the phase venv built with pyyaml?): $(tail -n1 "$errfile" 2>/dev/null)"
+    fi
+    rm -f "$errfile"
+    printf '%s' "$out"
+    return $rc
+}
+
 # get_model_id <key> [default]
-# Read models.<key> from the merged pipeline config. Returns the default
-# (or empty string) if the key is missing.
+# Read models.<key> from the merged pipeline config. Falls back to <default>
+# (with a loud warning) only if the config can't be read — NOT silently.
 get_model_id() {
-    local key="$1" default="${2:-}"
-    uv run --no-project --quiet --with pyyaml python3 -c \
-        "import pipeline_config; print(pipeline_config.get_model_id('$key', '$default') or '')" \
-        2>/dev/null || echo "$default"
+    local key="$1" default="${2:-}" val
+    if val=$(_pipeline_config_eval "import pipeline_config; print(pipeline_config.get_model_id('$key', '$default') or '')"); then
+        printf '%s' "$val"
+    else
+        log_warn "get_model_id('$key') -> falling back to default '${default}'"
+        printf '%s' "$default"
+    fi
 }
 
 # get_phase_param <phase> <key> [default]
-# Read cfg[<phase>][<key>] from the merged pipeline config.
+# Read cfg[<phase>][<key>] from the merged pipeline config (loud on failure).
 get_phase_param() {
-    local phase="$1" key="$2" default="${3:-}"
-    uv run --no-project --quiet --with pyyaml python3 -c \
-        "import pipeline_config; v = pipeline_config.get_phase_param('$phase', '$key', '$default'); print(v if v is not None else '')" \
-        2>/dev/null || echo "$default"
+    local phase="$1" key="$2" default="${3:-}" val
+    if val=$(_pipeline_config_eval "import pipeline_config; v = pipeline_config.get_phase_param('$phase', '$key', '$default'); print(v if v is not None else '')"); then
+        printf '%s' "$val"
+    else
+        log_warn "get_phase_param('$phase','$key') -> falling back to default '${default}'"
+        printf '%s' "$default"
+    fi
 }
 
 # resolve_output_base

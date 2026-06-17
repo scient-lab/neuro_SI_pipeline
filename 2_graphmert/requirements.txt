@@ -23,3 +23,7 @@ datasets>=2.20,<4
 accelerate>=0.34,<2
 spacy
 pandas
+# pipeline_config.py (imported by predict_tails_llm.py, clean_llm_relations.py,
+# dataset_preprocessing_utils.py) reads the YAML config layers via PyYAML.
+# Required at import time, not optional.
+pyyaml

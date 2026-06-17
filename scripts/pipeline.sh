@@ -36,6 +36,7 @@ PLATFORM="local"
 PHASES="all"
 STEPS="all"
 LIST_ONLY=0
+FINAL=0
 
 ALL_PHASES=(extract validate graphmert curriculum sft rl)
 
@@ -55,6 +56,20 @@ Options:
               Only meaningful when a single phase is specified.
   --list      Print available phases and steps, then exit.
               Combine with --phase <name> to show steps for one phase only.
+  --final     Force the run's terminal status to "completed" (+ _SUCCESS) at
+              the end of this invocation, even if the last canonical phase
+              (rl) wasn't selected. Use to close out a partial pipeline.
+
+Run identity:
+  RUN_ID is generated per invocation (<utc>-<profile>-<sha>). To run phases in
+  SEPARATE invocations but have them belong to ONE logical run (one manifest,
+  one logs/<run_id>/ dir, one S3 prefix), export RUN_ID once and reuse it:
+    export RUN_ID=$(date -u +%Y%m%d-%H%M%S)-pilot-$(git rev-parse --short HEAD)
+    ./scripts/pipeline.sh --phase extract
+    ./scripts/pipeline.sh --phase graphmert
+    ./scripts/pipeline.sh --phase curriculum,sft,rl   # rl last -> writes _SUCCESS
+  manifest.py init merges new phases into the existing same-RUN_ID manifest
+  instead of overwriting it.
 
 Examples:
   pipeline.sh                                              # neuroscience + defaults
@@ -122,6 +137,7 @@ while [[ $# -gt 0 ]]; do
         --phase)    PHASES="$2"; shift 2 ;;
         --step)     STEPS="$2"; shift 2 ;;
         --list)     LIST_ONLY=1; shift ;;
+        --final)    FINAL=1; shift ;;
         -h|--help)  usage; exit 0 ;;
         *)          log_error "Unknown flag: $1"; usage; exit 2 ;;
     esac
@@ -168,10 +184,13 @@ mkdir -p "$OUTPUT_BASE"
 
 # RUN_ID format: <UTC timestamp>-<profile>-<git-short-sha>. Sorts chronologically;
 # embedded profile/sha makes it grep-friendly across many runs.
+# If RUN_ID is already exported, REUSE it — that's how phase-wise invocations
+# join one logical run (shared manifest / logs dir / S3 prefix); manifest.py
+# init then merges rather than overwrites.
 _git_sha=$(git -C "$REPO_ROOT" rev-parse --short HEAD 2>/dev/null || echo nogit)
 _git_branch=$(git -C "$REPO_ROOT" rev-parse --abbrev-ref HEAD 2>/dev/null || echo nogit)
 _ts=$(date -u +%Y%m%d-%H%M%S)
-RUN_ID="${_ts}-${PROFILE:-default}-${_git_sha}"
+RUN_ID="${RUN_ID:-${_ts}-${PROFILE:-default}-${_git_sha}}"
 LOG_DIR="$OUTPUT_BASE/logs/$RUN_ID"
 mkdir -p "$LOG_DIR"
 
@@ -276,13 +295,28 @@ for phase in "${selected_phases[@]}"; do
     fi
 done
 
-# Mark the run complete (writes _SUCCESS sentinel) before the final sync so the
-# terminal status reaches S3 too.
-python3 "$SCRIPT_DIR/lib/manifest.py" finalize \
-    --path "$MANIFEST" --status completed 2>/dev/null || true
+# Decide whether THIS invocation closes the logical run. It does when the last
+# canonical phase (rl) was part of it, or when --final was passed. Otherwise
+# (phase-wise execution mid-pipeline) leave run.status = "running" so a later
+# invocation — sharing this RUN_ID — can append more phases and close it then.
+last_canonical="${ALL_PHASES[-1]}"
+finalize_completed="$FINAL"
+for p in "${selected_phases[@]}"; do
+    [[ "$p" == "$last_canonical" ]] && finalize_completed=1
+done
+
+if [[ "$finalize_completed" -eq 1 ]]; then
+    # Mark complete (writes _SUCCESS) before the final sync so terminal status
+    # reaches S3 too.
+    python3 "$SCRIPT_DIR/lib/manifest.py" finalize \
+        --path "$MANIFEST" --status completed 2>/dev/null || true
+    log_info "Pipeline complete. Run ID: $RUN_ID"
+else
+    log_info "Phase(s) done; run still 'running' (last phase '$last_canonical' not yet run)."
+    log_info "  Reuse RUN_ID=$RUN_ID for the next phase, or pass --final to close the run."
+fi
+# Suppress the EXIT trap's failure-finalize — we exited cleanly either way.
 PIPELINE_FINALIZED=1
 
 # Belt-and-suspenders final sync (catches anything the per-phase missed).
 _s3_sync_if_configured
-
-log_info "Pipeline complete. Run ID: $RUN_ID"

@@ -15,3 +15,7 @@ google-generativeai
 openai
 pandas
 matplotlib
+# pipeline_config.py (imported by trainer.py, rl_training.py,
+# generate_curriculum.py, generate_questions.py) reads the YAML config layers
+# via PyYAML. Required at import time, not optional.
+pyyaml

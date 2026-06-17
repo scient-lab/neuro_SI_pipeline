@@ -16,3 +16,6 @@ transformers
 datasets
 pandas
 pyarrow
+# pipeline_config.py (imported by graphrag_index.py + prompts_kg.py) reads the
+# YAML config layers via PyYAML. Required at import time, not optional.
+pyyaml

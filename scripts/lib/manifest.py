@@ -138,17 +138,16 @@ def build_catalog(phases_dir: str, phase_order: list[str]) -> list[dict]:
 # --------------------------------------------------------------------------
 # Subcommands
 # --------------------------------------------------------------------------
-def cmd_init(a) -> None:
-    phase_order = [p for p in a.phase_order.split(",") if p]
-    selected = [p for p in a.selected.split(",") if p]
-    catalog = build_catalog(a.phases_dir, phase_order)
-    cat_by_name = {c["name"]: c for c in catalog}
-
-    run_phases = []
-    for phase in phase_order:
-        if phase not in selected:
-            continue
-        steps = [
+def _fresh_phase(cat_phase: dict) -> dict:
+    """A run-phase record in the initial 'pending' state, from a catalog entry."""
+    return {
+        "name": cat_phase["name"],
+        "status": "pending",
+        "started_at": None,
+        "finished_at": None,
+        "exit_code": None,
+        "log_file": None,
+        "steps": [
             {
                 "name": s["name"],
                 "status": "pending",
@@ -158,27 +157,69 @@ def cmd_init(a) -> None:
                 "log_file": None,
                 "cw_log_stream": None,
             }
-            for s in cat_by_name[phase]["steps"]
-        ]
-        run_phases.append(
-            {
-                "name": phase,
-                "status": "pending",
-                "started_at": None,
-                "finished_at": None,
-                "exit_code": None,
-                "log_file": None,
-                "steps": steps,
-            }
-        )
+            for s in cat_phase["steps"]
+        ],
+    }
 
+
+def cmd_init(a) -> None:
+    phase_order = [p for p in a.phase_order.split(",") if p]
+    selected = [p for p in a.selected.split(",") if p]
+    catalog = build_catalog(a.phases_dir, phase_order)
+    cat_by_name = {c["name"]: c for c in catalog}
+
+    meta = {
+        "status_enum": STATUS_ENUM,
+        "timestamp_format": TIMESTAMP_FORMAT,
+        "phases": catalog,
+    }
+
+    # MERGE path: an existing manifest for the SAME run_id means this is a
+    # phase-wise invocation joining a logical run already in progress. Preserve
+    # the records of phases that already ran; (re)set only the phases selected
+    # NOW to pending; keep the original started_at; union the selected list.
+    # A DIFFERENT run_id (or no/corrupt file) starts fresh, overwriting.
+    existing = None
+    if os.path.exists(a.path):
+        try:
+            prev = _load(a.path)
+            if prev.get("run", {}).get("run_id") == a.run_id:
+                existing = prev
+        except (ValueError, OSError):
+            existing = None
+
+    os.makedirs(os.path.dirname(os.path.abspath(a.path)), exist_ok=True)
+
+    if existing is not None:
+        run = existing["run"]
+        prior = {p["name"]: p for p in run.get("phases", [])}
+        union = set(run.get("selected_phases", [])) | set(selected)
+        new_phases = []
+        for name in phase_order:
+            if name not in union:
+                continue
+            if name in selected:
+                new_phases.append(_fresh_phase(cat_by_name[name]))  # (re)run now
+            else:
+                new_phases.append(prior.get(name, _fresh_phase(cat_by_name[name])))
+        run["phases"] = new_phases
+        run["selected_phases"] = [p for p in phase_order if p in union]
+        run["status"] = "running"
+        run["finished_at"] = None
+        run["current_phase"] = None
+        run["step_filter"] = a.step_filter
+        existing["schema_version"] = SCHEMA_VERSION
+        existing["meta"] = meta
+        with _locked(a.path):
+            _save(a.path, existing)
+        return
+
+    run_phases = [
+        _fresh_phase(cat_by_name[p]) for p in phase_order if p in selected
+    ]
     doc = {
         "schema_version": SCHEMA_VERSION,
-        "meta": {
-            "status_enum": STATUS_ENUM,
-            "timestamp_format": TIMESTAMP_FORMAT,
-            "phases": catalog,
-        },
+        "meta": meta,
         "run": {
             "run_id": a.run_id,
             "status": "running",
@@ -191,11 +232,10 @@ def cmd_init(a) -> None:
             "started_at": now_iso(),
             "finished_at": None,
             "current_phase": None,
-            "selected_phases": selected,
+            "selected_phases": [p for p in phase_order if p in selected],
             "phases": run_phases,
         },
     }
-    os.makedirs(os.path.dirname(os.path.abspath(a.path)), exist_ok=True)
     with _locked(a.path):
         _save(a.path, doc)
 
