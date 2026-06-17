@@ -1,11 +1,21 @@
+# 2_graphmert/launch_configs/args_mlm.yaml — TEMPLATE
+#
+# All path placeholders below use shell-style ${VAR} syntax. graphmert.sh's
+# preprocess and train_mnm steps run `envsubst` against this file at
+# pipeline-time and write the resolved YAML to
+#   ${GRAPHMERT_DIR}/args_mlm.resolved.yaml
+# The Python scripts (run_dataset_preprocessing.py, run_mlm.py) ONLY ever
+# see the resolved file.
+#
+# Variables expected in the environment:
+#   GRAPHMERT_DIR     graphmert outputs root (= $OUTPUT_BASE/graphmert)
+#   STABLE_TOKENIZER  ${GRAPHMERT_DIR}/stable_tokenizer
+#   SEED_KG_CSV       ${GRAPHRAG_DIR}/output/kg_final.csv
+
 # ===================== MODEL & CONFIG =====================
 # GraphMERT architecture (paper configuration):
 #   root_nodes = max_seq_length = 512
 #   num_leaves = 3  =>  max_nodes = 512 * (1 + 3) = 2048
-#
-# To adjust for your data: if triple tails are long (avg > 3 tokens),
-# increase num_leaves to 7 and update max_nodes accordingly.
-
 config_overrides: "max_nodes=2048,root_nodes=512,num_hidden_layers=6,num_attention_heads=12,hidden_size=768,intermediate_size=3072,pretrained_emb_dim=0,mlm_sbo=true"
 warmup_ratio: 0.06
 
@@ -16,33 +26,26 @@ model_revision: main
 
 use_fast_tokenizer: false
 
-# Set cache_dir to a scratch directory on your HPC cluster
-# Example: /scratch/gpfs/<your_netid>/neuro_pipeline/graphmert/model_cache
-cache_dir: <YOUR_SCRATCH>/neuro_pipeline/graphmert/model_cache
+cache_dir: ${GRAPHMERT_DIR}/mlm_cache
 
 # ===================== DATA FILES =====================
-# Raw text files for tokenization (not used directly in MLM — set for reference)
 train_file: null
 validation_file: null
 
 # ===================== PREPROCESSING =====================
-# These paths are used by run_dataset_preprocessing.py.
-# Set to wherever run_tokenization.py wrote its outputs.
-# Example: /scratch/gpfs/<your_netid>/neuro_pipeline/graphmert
+# Where run_dataset_preprocessing.py writes its outputs.
+preprocessing_output_root: ${GRAPHMERT_DIR}/dataset
 
-preprocessing_output_root: <YOUR_SCRATCH>/neuro_pipeline/graphmert/preprocessed
+# Outputs of clean_llm_relations.py (flat layout under llm_relations/).
+train_src: ${GRAPHMERT_DIR}/llm_relations/relations_cleaned_train
+eval_src:  ${GRAPHMERT_DIR}/llm_relations/relations_cleaned_eval
 
-# train_src and eval_src: outputs of clean_llm_relations.py
-# (can also be passed as --train_src / --eval_src to run_dataset_preprocessing.py)
-train_src: <YOUR_SCRATCH>/neuro_pipeline/graphmert/llm_relations/relations_cleaned_train
-eval_src:  <YOUR_SCRATCH>/neuro_pipeline/graphmert/llm_relations/relations_cleaned_eval
+# Seed KG from graphrag (CSV variant for pd.read_csv).
+injections_train_path: ${SEED_KG_CSV}
+injections_eval_path:  ${SEED_KG_CSV}
 
-# seed_kg_path: output of merge_kgs.py from Part 1
-injections_train_path: <YOUR_SCRATCH>/neuro_pipeline/final_seedkg/neuroscience_kg.csv
-injections_eval_path:  <YOUR_SCRATCH>/neuro_pipeline/final_seedkg/neuroscience_kg.csv
-
-# relation_map_path: written by run_dataset_preprocessing.py
-relation_map_path: <YOUR_SCRATCH>/neuro_pipeline/graphmert/preprocessed/relation_map.json
+# Written by run_dataset_preprocessing.py (step 4) for run_mlm.py (step 5).
+relation_map_path: ${GRAPHMERT_DIR}/dataset/relation_map.json
 
 preprocessing_num_workers: 0
 overwrite_cache: true
@@ -61,9 +64,7 @@ mlm_on_leaves_probability: 0.15
 span_upper_length: 2
 
 # ===================== TOKENIZER =====================
-# Set to the stable_tokenizer directory created by run_tokenization.py
-# Example: /scratch/gpfs/<your_netid>/neuro_pipeline/graphmert/stable_tokenizer
-tokenizer_name: <YOUR_SCRATCH>/neuro_pipeline/graphmert/stable_tokenizer
+tokenizer_name: ${STABLE_TOKENIZER}
 subword_token_start: "##"
 use_auth_token: false
 
@@ -74,8 +75,7 @@ validation_split_percentage: 5
 max_seq_length: 512
 
 # ===================== TRAINING =====================
-# Set output_dir to where model checkpoints should be saved
-output_dir: <YOUR_SCRATCH>/neuro_pipeline/graphmert/mlm_output
+output_dir: ${GRAPHMERT_DIR}/mlm_output
 per_device_train_batch_size: 2
 per_device_eval_batch_size: 2
 gradient_accumulation_steps: 16
@@ -90,9 +90,9 @@ dataloader_num_workers: 0
 dataloader_prefetch_factor: null
 
 # ===================== EVALUATION =====================
-# transformers >=4.41 renamed `evaluation_strategy` to `eval_strategy`.
-# The old name is silently ignored, defaulting eval_strategy to "no" and
-# breaking the load_best_model_at_end check (which needs save+eval to match).
+# transformers >=4.41 renamed evaluation_strategy → eval_strategy. The old
+# name is silently ignored, defaulting eval_strategy to "no" and breaking
+# load_best_model_at_end which requires save+eval strategies to match.
 eval_strategy: steps
 logging_strategy: steps
 save_strategy: steps

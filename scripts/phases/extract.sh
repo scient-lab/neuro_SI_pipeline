@@ -32,15 +32,65 @@ source_venv graphrag
 # any FS that doesn't honor symlinks across mounts.
 OUTPUT_BASE=$(resolve_output_base)
 GRAPHRAG_DIR="$OUTPUT_BASE/graphrag"
-INPUT_DIR_REPO=$(get_phase_param extract input_dir "")
 
-if [[ -n "$INPUT_DIR_REPO" && -d "$REPO_ROOT/$INPUT_DIR_REPO" ]]; then
-    mkdir -p "$GRAPHRAG_DIR/input"
-    find "$REPO_ROOT/$INPUT_DIR_REPO" -maxdepth 1 -name '*.txt' -type f \
-        -exec cp -t "$GRAPHRAG_DIR/input" {} +
-    n=$(find "$GRAPHRAG_DIR/input" -maxdepth 1 -name '*.txt' -type f | wc -l)
-    log_info "Staged input: $GRAPHRAG_DIR/input (${n} .txt files from $INPUT_DIR_REPO)"
+# Input path resolution. Symmetric model:
+#     local:  ${REPO_ROOT}/${CORPUS_PATH}
+#     cloud:  ${S3_URI}/${CORPUS_PATH}
+# Precedence (highest first):
+#   1. profile YAML extract.input_dir   (smoke fixture override)
+#   2. $CORPUS_PATH env (from .env)      (pilot/paper — operator's choice)
+#   3. default: corpus/${SI_DOMAIN}/source_txt
+# CORPUS_PATH can be a directory OR a single .txt file.
+# REPO_ROOT is exported by pipeline.sh (computed from script location).
+# On the pod it equals SI_HOME; on the workstation, SI_HOME may be unset.
+INPUT_DIR_REPO=$(get_phase_param extract input_dir "")
+if [[ -z "$INPUT_DIR_REPO" ]]; then
+    INPUT_DIR_REPO="${CORPUS_PATH:-corpus/${SI_DOMAIN:-neuroscience}/source_txt}"
+    log_info "Using CORPUS_PATH-derived input: $INPUT_DIR_REPO"
 fi
+
+ABS_INPUT="$REPO_ROOT/$INPUT_DIR_REPO"
+ABS_INPUT="${ABS_INPUT%/}"
+
+# Auto-pull from S3 when local is missing/empty AND we have both env vars
+# set. Skip auto-pull for committed fixtures (paths containing /smoke/).
+need_pull=0
+if [[ "$INPUT_DIR_REPO" == *"/smoke/"* || "$INPUT_DIR_REPO" == *"/smoke" ]]; then
+    : # committed fixture, never pull
+elif [[ -n "${S3_URI:-}" ]]; then
+    if [[ "$ABS_INPUT" == *.txt ]]; then
+        [[ -f "$ABS_INPUT" ]] || need_pull=1
+    else
+        n_txt=$(find "$ABS_INPUT" -maxdepth 1 -name '*.txt' -type f 2>/dev/null | wc -l)
+        [[ "$n_txt" -eq 0 ]] && need_pull=1
+    fi
+fi
+
+if [[ "$need_pull" -eq 1 ]]; then
+    log_info "Local $INPUT_DIR_REPO is missing/empty — pulling ${S3_URI%/}/$INPUT_DIR_REPO"
+    CORPUS_PATH="$INPUT_DIR_REPO" \
+        "$REPO_ROOT/scripts/data_prep/sync_corpus.sh" --pull \
+        || { log_error "S3 corpus pull failed"; exit 1; }
+fi
+
+# Stage into graphrag's input dir. Handles both single-file and directory modes.
+mkdir -p "$GRAPHRAG_DIR/input"
+if [[ -f "$ABS_INPUT" ]]; then
+    cp "$ABS_INPUT" "$GRAPHRAG_DIR/input/"
+elif [[ -d "$ABS_INPUT" ]]; then
+    find "$ABS_INPUT" -maxdepth 1 -name '*.txt' -type f \
+        -exec cp -t "$GRAPHRAG_DIR/input" {} +
+else
+    log_error "Input path not found: $ABS_INPUT"
+    log_error "  Set CORPUS_PATH in .env / .env.runpod, or drop files locally."
+    exit 1
+fi
+n=$(find "$GRAPHRAG_DIR/input" -maxdepth 1 -name '*.txt' -type f | wc -l)
+if [[ "$n" -eq 0 ]]; then
+    log_error "No .txt files staged from $INPUT_DIR_REPO"
+    exit 1
+fi
+log_info "Staged input: $GRAPHRAG_DIR/input (${n} .txt files from $INPUT_DIR_REPO)"
 
 # graphrag_index.py expects settings.yaml at --root_dir; copy from the
 # bundled 1_seed_kg/settings.yaml if not already present.

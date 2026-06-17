@@ -103,10 +103,13 @@ def main():
         desc="Finding exact positions",
     )
 
+    # Write the Dataset directly to args.output_dir (no hardcoded subdir).
+    # Previous version forced a "neuro_heads_all_with_positions" subdir which
+    # (a) made every consumer hardcode that path and (b) baked "neuro_" into
+    # downstream code, breaking domain portability.
     os.makedirs(args.output_dir, exist_ok=True)
-    out_path = os.path.join(args.output_dir, "neuro_heads_all_with_positions")
-    merged_with_positions.save_to_disk(out_path)
-    logger.info("Saved merged dataset with positions: %s (%d rows)", out_path, len(merged_with_positions))
+    merged_with_positions.save_to_disk(args.output_dir)
+    logger.info("Saved merged dataset with positions: %s (%d rows)", args.output_dir, len(merged_with_positions))
 
 
 if __name__ == "__main__":

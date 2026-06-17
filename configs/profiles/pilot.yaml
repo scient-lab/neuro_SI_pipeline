@@ -4,6 +4,10 @@
 
 extract:
   max_input_examples: 1000
+  # input_dir is intentionally NOT set here — extract.sh defaults to
+  # corpus/${SI_DOMAIN}/ when unset, so pilot picks up whatever .txt files
+  # the operator drops under corpus/<domain>/ (e.g. corpus/neuroscience/).
+  # Smoke explicitly overrides to corpus/<domain>/smoke/ for its fixture.
 
 graphmert:
   train_epochs: 10

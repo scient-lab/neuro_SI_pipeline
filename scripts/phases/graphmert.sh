@@ -39,10 +39,26 @@ VALIDATE_B=$(get_model_id validate_b "")
 # Princeton convention: stable tokenizer dir is reused across steps.
 STABLE_TOKENIZER="$GRAPHMERT_DIR/stable_tokenizer"
 
-# YAML config for run_dataset_preprocessing + run_mlm (HF-argparse YAML).
-# Operator must point this at a valid file with paths substituted for the
-# <YOUR_SCRATCH> placeholders.
-ARGS_MLM_YAML="${ARGS_MLM_YAML:-$REPO_ROOT/2_graphmert/launch_configs/args_mlm.yaml}"
+# Seed KG CSV (the format dataset_preprocessing_utils.py expects).
+SEED_KG_CSV="$GRAPHRAG_DIR/output/kg_final.csv"
+
+# args_mlm.yaml is a TEMPLATE with ${VAR} placeholders. Resolve once at phase
+# start via envsubst so all later steps (preprocess, train_mnm) read the same
+# concrete paths. The resolved file lands in $GRAPHMERT_DIR so it's gitignored
+# and survives across step invocations within a phase run.
+ARGS_MLM_TMPL="${ARGS_MLM_TMPL:-$REPO_ROOT/2_graphmert/launch_configs/args_mlm.yaml}"
+ARGS_MLM_YAML="$GRAPHMERT_DIR/args_mlm.resolved.yaml"
+if [[ -f "$ARGS_MLM_TMPL" ]]; then
+    if ! command -v envsubst >/dev/null 2>&1; then
+        log_error "envsubst not found (apt install gettext-base) — cannot resolve $ARGS_MLM_TMPL"
+        exit 1
+    fi
+    GRAPHMERT_DIR="$GRAPHMERT_DIR" \
+        STABLE_TOKENIZER="$STABLE_TOKENIZER" \
+        SEED_KG_CSV="$SEED_KG_CSV" \
+        envsubst '${GRAPHMERT_DIR} ${STABLE_TOKENIZER} ${SEED_KG_CSV}' \
+        < "$ARGS_MLM_TMPL" > "$ARGS_MLM_YAML"
+fi
 
 # --- Step dispatch -------------------------------------------------------
 for step in "${STEPS[@]}"; do
@@ -89,38 +105,37 @@ for step in "${STEPS[@]}"; do
                   --tokenizer        "$STABLE_TOKENIZER" ) || { log_error "find_heads_positions failed"; exit 1; }
             # Step 3: add_llm_relations + clean_llm_relations
             log_info "  step 3a: add_llm_relations"
-            # find_heads_positions.py hardcodes the subdir name
-            # "neuro_heads_all_with_positions" (Princeton-side biomed naming;
-            # find_heads_positions.py:107). add_llm_relations expects that
-            # exact Dataset directory, not its parent.
+            # find_heads_positions.py now writes the Dataset directly to its
+            # --output_dir (no "neuro_heads_all_with_positions" subdir).
             ( cd "$REPO_ROOT/2_graphmert" && \
               python utils/relation_matching/add_llm_relations.py \
-                  --dataset_path "$GRAPHMERT_DIR/head_positions/neuro_heads_all_with_positions" \
+                  --dataset_path "$GRAPHMERT_DIR/head_positions" \
                   --output_root  "$GRAPHMERT_DIR/llm_relations" \
                   --output_name  relations_all \
                   --model_id     "$EXTRACT_MODEL_ID" \
                   --tokenizer    "$STABLE_TOKENIZER" ) || { log_error "add_llm_relations failed"; exit 1; }
             log_info "  step 3b: clean_llm_relations"
+            # clean_llm_relations.py creates two Dataset dirs under --output_dir:
+            #   <output_dir>/relations_cleaned_train/
+            #   <output_dir>/relations_cleaned_eval/
+            # We point --output_dir directly at llm_relations/ so the two end
+            # up as siblings of relations_all/ (no redundant wrapper dir).
             ( cd "$REPO_ROOT/2_graphmert" && \
               python utils/relation_matching/clean_llm_relations.py \
                   --input_dir  "$GRAPHMERT_DIR/llm_relations/relations_all" \
-                  --output_dir "$GRAPHMERT_DIR/llm_relations/relations_clean" \
+                  --output_dir "$GRAPHMERT_DIR/llm_relations" \
                   --tokenizer  "$STABLE_TOKENIZER" ) || { log_error "clean_llm_relations failed"; exit 1; }
             # Step 4: run_dataset_preprocessing (co-occurrence grounding)
-            # clean_llm_relations.py hardcodes subdir names "relations_cleaned_train"
-            # / "relations_cleaned_eval" under --output_dir (note "cleaned" not
-            # "clean"; clean_llm_relations.py:~85). Step 4 reads those exact
-            # dataset directories — must include the full subpath here.
             log_info "  step 4: run_dataset_preprocessing"
-            # dataset_preprocessing_utils.py does pd.read_csv(seed_kg_path), so we
-            # consume the CSV variant of the seed KG. extract.sh's cache step
-            # writes both kg_final.csv and kg_final.parquet from graphrag.
+            # dataset_preprocessing_utils.py does pd.read_csv(seed_kg_path), so
+            # we consume kg_final.csv (extract.sh's cache step writes both .csv
+            # and .parquet from graphrag).
             ( cd "$REPO_ROOT/2_graphmert" && \
               python run_dataset_preprocessing.py \
                   --yaml_file    "$ARGS_MLM_YAML" \
                   --seed_kg_path "$GRAPHRAG_DIR/output/kg_final.csv" \
-                  --train_src    "$GRAPHMERT_DIR/llm_relations/relations_clean/relations_cleaned_train" \
-                  --eval_src     "$GRAPHMERT_DIR/llm_relations/relations_clean/relations_cleaned_eval" \
+                  --train_src    "$GRAPHMERT_DIR/llm_relations/relations_cleaned_train" \
+                  --eval_src     "$GRAPHMERT_DIR/llm_relations/relations_cleaned_eval" \
                   --tokenizer    "$STABLE_TOKENIZER" \
                   --output_dir   "$GRAPHMERT_DIR/dataset" ) || { log_error "run_dataset_preprocessing failed"; exit 1; }
             ;;
@@ -134,14 +149,13 @@ for step in "${STEPS[@]}"; do
         predict_tails)
             log_info "graphmert :: predict_tails (step 6 — predict_tails_llm.py)"
             CHKPT="${MLM_CHECKPOINT:-$GRAPHMERT_DIR/checkpoints/best}"
-            # --dataset is consumed by load_from_disk → must point at the
-            # actual Dataset dir, which clean_llm_relations.py writes as
-            # <output_dir>/relations_cleaned_eval (same naming as step 4).
+            # --dataset is the eval split written by clean_llm_relations.py
+            # (now flat under llm_relations/, no wrapper dir).
             ( cd "$REPO_ROOT/2_graphmert" && \
               python predict_tails_llm.py \
                   --model_id   "$CHKPT" \
                   --tokenizer  "$STABLE_TOKENIZER" \
-                  --dataset    "$GRAPHMERT_DIR/llm_relations/relations_clean/relations_cleaned_eval" \
+                  --dataset    "$GRAPHMERT_DIR/llm_relations/relations_cleaned_eval" \
                   --output_dir "$GRAPHMERT_DIR/predictions" \
                   --num_shards "${PRED_NUM_SHARDS:-1}" \
                   --shard_id   "${PRED_SHARD_ID:-0}" ) || { log_error "predict_tails failed"; exit 1; }

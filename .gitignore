@@ -12,3 +12,11 @@ wandb_logs/
 *.log
 .venv/
 .venvs/
+
+# Pipeline runtime artifacts — large, per-run, intentionally not committed.
+outputs/
+
+# Corpus content: ignore everything under per-domain source_* dirs
+# (source_txt/, source_pdfs/, source_wikipedia/, source_pmc/, …). Smoke
+# fixtures live in corpus/<domain>/smoke/ and stay committed.
+corpus/*/source_*/

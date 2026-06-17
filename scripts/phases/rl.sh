@@ -60,7 +60,7 @@ for step in "${STEPS[@]}"; do
                   --dataset_path "$RL_DATASET_DIR" \
                   --output_dir   "$RL_CHECKPOINTS_DIR" \
                   --deepspeed    "$DEEPSPEED_CFG" \
-                  --wandb_project "${WANDB_PROJECT:-rl_neuro_kg}" ) \
+                  --wandb_project "${WANDB_PROJECT:-${SI_DOMAIN:-neuroscience}_rl_kg}" ) \
                 || { log_error "rl.train_grpo failed"; exit 1; }
             ;;
 

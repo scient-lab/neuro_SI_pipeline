@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # coding=utf-8
 
+import argparse
 import os
 import shutil
 import json
@@ -30,15 +31,36 @@ ROOT_NODES = 512
 NUM_LEAVES = 3
 MAX_NODES = ROOT_NODES * (1 + NUM_LEAVES)  # 2048
 
-# Paths — set via environment variables or edit here
-MODEL_DIR_ROOT      = os.environ.get("GRAPHMERT_MODEL_DIR", "")
-STABLE_TOKENIZER_DIR = os.environ.get("STABLE_TOKENIZER_DIR", "")
-RELATION_MAP_PATH   = os.environ.get("RELATION_MAP_PATH", "")
-CLEANED_LLM_DATASET = os.environ.get("CLEANED_LLM_DATASET", "")
-OUTPUT_ROOT         = os.environ.get("GRAPHMERT_OUTPUT_ROOT", "")
-
 TOPK = 20
 BATCH_SIZE = 8
+
+
+def parse_args() -> argparse.Namespace:
+    """Resolve paths from CLI flags, with env-var fallbacks for callers that
+    prefer env-based injection. CLI wins. Fails immediately with a clear
+    message if any required path is missing — no silent empty-string fallback.
+    """
+    ap = argparse.ArgumentParser(description="GraphMERT tail prediction (hardwired probe + topk)")
+    ap.add_argument("--model_dir",       default=os.environ.get("GRAPHMERT_MODEL_DIR"),
+                    help="Trained MNM model root (config.json or checkpoint-*). "
+                         "env: GRAPHMERT_MODEL_DIR")
+    ap.add_argument("--tokenizer",       default=os.environ.get("STABLE_TOKENIZER_DIR"),
+                    help="Stable tokenizer dir. env: STABLE_TOKENIZER_DIR")
+    ap.add_argument("--relation_map",    default=os.environ.get("RELATION_MAP_PATH"),
+                    help="relation_map.json from run_dataset_preprocessing.py. "
+                         "env: RELATION_MAP_PATH")
+    ap.add_argument("--dataset",         default=os.environ.get("CLEANED_LLM_DATASET"),
+                    help="Cleaned LLM relations dataset (HF Dataset dir). "
+                         "env: CLEANED_LLM_DATASET")
+    ap.add_argument("--output_root",     default=os.environ.get("GRAPHMERT_OUTPUT_ROOT"),
+                    help="Root dir for predictions output. "
+                         "env: GRAPHMERT_OUTPUT_ROOT")
+    args = ap.parse_args()
+    missing = [k for k in ("model_dir","tokenizer","relation_map","dataset","output_root")
+               if not getattr(args, k)]
+    if missing:
+        ap.error("missing required path(s): " + ", ".join(f"--{m}" for m in missing))
+    return args
 
 logger = logging.getLogger("predict_tails_hardwired")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -137,25 +159,28 @@ def predict_topk_first_leaf_slot(examples, model, tokenizer, topk):
     }
 
 def main():
-    preds_root = os.path.join(OUTPUT_ROOT, "predictions_hardwired_full")
+    args = parse_args()
+
+    # Write directly into args.output_root (caller decides the layout).
+    preds_root = args.output_root
     if os.path.exists(preds_root): shutil.rmtree(preds_root)
     os.makedirs(preds_root, exist_ok=True)
 
-    tokenizer = AutoTokenizer.from_pretrained(STABLE_TOKENIZER_DIR, use_fast=False)
-    with open(RELATION_MAP_PATH, "r") as f:
+    tokenizer = AutoTokenizer.from_pretrained(args.tokenizer, use_fast=False)
+    with open(args.relation_map, "r") as f:
         relation_map = json.load(f)
 
-    actual_model_path = get_best_checkpoint(MODEL_DIR_ROOT)
+    actual_model_path = get_best_checkpoint(args.model_dir)
     config = AutoConfig.from_pretrained(actual_model_path)
-    
+
     # Ensure Model Config matches Hard-Wired Invariants
     config.root_nodes = ROOT_NODES
     config.max_nodes = MAX_NODES
-    
+
     model = GraphMertForMaskedLM.from_pretrained(actual_model_path, config=config).cuda()
     model.eval()
 
-    raw_ds = load_from_disk(CLEANED_LLM_DATASET)
+    raw_ds = load_from_disk(args.dataset)
     pad_id = tokenizer.pad_token_id
     out_rows = []
     

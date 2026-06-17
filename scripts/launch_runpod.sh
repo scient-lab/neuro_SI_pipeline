@@ -288,7 +288,9 @@ env = {
     "GITHUB_REPO":   os.environ["GITHUB_REPO"],
     "GITHUB_BRANCH": os.environ["GITHUB_BRANCH"],
 }
-for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "HF_TOKEN", "WANDB_API_KEY"):
+for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "HF_TOKEN", "WANDB_API_KEY",
+          "S3_URI", "CORPUS_PATH", "AWS_ACCESS_KEY_ID",
+          "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION"):
     v = os.environ.get(k)
     if v:
         env[k] = v

@@ -6,6 +6,10 @@
 curriculum:
   num_questions: 30000
 
+# extract.input_dir is intentionally NOT set — extract.sh defaults to
+# corpus/${SI_DOMAIN}/ when unset. Paper-faithful replication: drop Kandel's
+# Principles of Neural Science .txt files under corpus/<domain>/.
+
 # RunPod hardware defaults for this scale (read by scripts/launch_runpod.sh).
 # Single-H100 setup; for multi-GPU use --gpu-type / --num-gpus on the CLI
 # (a future paper-multi.yaml may codify the 8x A100 variant from the paper).

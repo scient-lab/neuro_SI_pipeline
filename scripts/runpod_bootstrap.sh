@@ -64,8 +64,10 @@ require GITHUB_TOKEN || exit 1
 
 # --- 1. apt install ------------------------------------------------------
 need_apt=()
-command -v git  >/dev/null 2>&1 || need_apt+=(git)
-command -v curl >/dev/null 2>&1 || need_apt+=(curl)
+command -v git       >/dev/null 2>&1 || need_apt+=(git)
+command -v curl      >/dev/null 2>&1 || need_apt+=(curl)
+command -v envsubst  >/dev/null 2>&1 || need_apt+=(gettext-base)
+command -v aws       >/dev/null 2>&1 || need_apt+=(awscli)
 if [[ ${#need_apt[@]} -gt 0 ]]; then
     echo "=== apt install: ${need_apt[*]} ==="
     apt-get update -qq
@@ -123,6 +125,15 @@ ENV_FILE="$SI_HOME/.env"
     [[ -n "${GEMINI_API_KEY:-}" ]] && echo "GEMINI_API_KEY=$GEMINI_API_KEY"
     [[ -n "${HF_TOKEN:-}"       ]] && echo "HF_TOKEN=$HF_TOKEN"
     [[ -n "${WANDB_API_KEY:-}"  ]] && echo "WANDB_API_KEY=$WANDB_API_KEY"
+    # AWS / S3 — symmetric path model:
+    #     local:  ${REPO_ROOT}/${CORPUS_PATH}
+    #     cloud:  ${S3_URI}/${CORPUS_PATH}
+    # extract.sh auto-pulls from cloud when local is missing/empty.
+    [[ -n "${S3_URI:-}"              ]] && echo "S3_URI=$S3_URI"
+    [[ -n "${CORPUS_PATH:-}"         ]] && echo "CORPUS_PATH=$CORPUS_PATH"
+    [[ -n "${AWS_ACCESS_KEY_ID:-}"   ]] && echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID"
+    [[ -n "${AWS_SECRET_ACCESS_KEY:-}" ]] && echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY"
+    [[ -n "${AWS_DEFAULT_REGION:-}"  ]] && echo "AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION"
     # graphrag's load_config() does Template(text).substitute(os.environ) on
     # 1_seed_kg/settings.yaml, which references ${GRAPHRAG_API_KEY} for both
     # default_chat_model and default_embedding_model. Our pipeline_3 path

@@ -64,7 +64,7 @@ for step in "${STEPS[@]}"; do
                 "--train_dataset_path"  "$SFT_DATASET_DIR"
                 "--output_dir"          "$SFT_CHECKPOINTS_DIR"
                 "--wandb_dir"           "$OUTPUT_BASE/wandb_logs"
-                "--wandb_project"       "${WANDB_PROJECT:-sft_neuro_kg}"
+                "--wandb_project"       "${WANDB_PROJECT:-${SI_DOMAIN:-neuroscience}_sft_kg}"
                 # LoRA params come from TrainingConfig defaults wired to merged config.
             )
             if [[ "$NPROC" == "1" ]]; then
@@ -75,7 +75,7 @@ for step in "${STEPS[@]}"; do
                       --train_dataset_path "$SFT_DATASET_DIR" \
                       --output_dir         "$SFT_CHECKPOINTS_DIR" \
                       --wandb_dir          "$OUTPUT_BASE/wandb_logs" \
-                      --wandb_project      "${WANDB_PROJECT:-sft_neuro_kg}" ) \
+                      --wandb_project      "${WANDB_PROJECT:-${SI_DOMAIN:-neuroscience}_sft_kg}" ) \
                     || { log_error "sft.train_lora failed"; exit 1; }
             else
                 "${CMD[@]}" || { log_error "sft.train_lora failed"; exit 1; }
