@@ -30,12 +30,25 @@ source "$SCRIPT_DIR/../lib/venv.sh"
 STEP_FILTER="${1:-all}"
 export PIPELINE_STEP_FILTER="$STEP_FILTER"
 
+PHASE_NAME=validate
 STEPS=(prepare_candidates llm_check_a llm_check_b consensus dedupe_merge emit_seed_kg)
+PHASE_DESC="(no-op) 2-LLM consensus checks happen inline in graphmert + curriculum"
+STEP_DESCS=(
+    "(no-op)"
+    "(no-op)"
+    "(no-op)"
+    "(no-op)"
+    "(no-op)"
+    "(no-op)"
+)
 
 source_venv graphrag
 
+# Every step is an intentional no-op (see header). They still flow through
+# run_step so the manifest records them as completed/skipped with timestamps.
+step_noop() {
+    log_info "validate :: $1 (no-op — two-LLM checks happen in graphmert + curriculum phases)"
+}
 for step in "${STEPS[@]}"; do
-    if step_enabled "$step"; then
-        log_info "validate :: $step (no-op — see header for status; two-LLM checks happen in graphmert + curriculum phases)"
-    fi
+    run_step "$PHASE_NAME" "$step" step_noop "$step" || exit $?
 done

@@ -71,3 +71,85 @@ run_python_step() {
         return 1
     fi
 }
+
+# ==========================================================================
+# Run manifest + per-step logging + optional CloudWatch
+# --------------------------------------------------------------------------
+# pipeline.sh exports PIPELINE_MANIFEST (run_manifest.json path), PIPELINE_LOG_DIR
+# (logs/<run_id>/), and RUN_ID. All helpers below no-op gracefully when those
+# are unset, so a phase script run standalone (`bash phases/extract.sh chunk`)
+# still works — it just runs uninstrumented.
+# ==========================================================================
+
+# _manifest <subcommand...> — update run_manifest.json via the stdlib-only
+# helper. No-op without PIPELINE_MANIFEST; never fatal (a manifest write must
+# not take the pipeline down).
+_manifest() {
+    [[ -n "${PIPELINE_MANIFEST:-}" ]] || return 0
+    python3 "${REPO_ROOT}/scripts/lib/manifest.py" "$@" \
+        || log_warn "manifest update failed: $1"
+}
+
+# _cw_ship <phase> <step> <logfile> — push a finished step log to CloudWatch.
+# No-op unless CW_LOG_GROUP is set; non-fatal (local file + S3 stay canonical).
+_cw_ship() {
+    local phase="$1" step="$2" logfile="$3"
+    [[ -n "${CW_LOG_GROUP:-}" ]] || return 0
+    [[ -f "$logfile" ]] || return 0
+    command -v python3 >/dev/null 2>&1 || return 0
+    python3 "${REPO_ROOT}/scripts/lib/cw_ship.py" \
+        --group "$CW_LOG_GROUP" \
+        --stream "${RUN_ID:-adhoc}/${phase}/${step}" \
+        --file "$logfile" \
+        || log_warn "CloudWatch ship failed for $phase/$step (non-fatal)"
+}
+
+# run_step <phase> <step> <fn> [args...]
+# Instrumented step runner — the single chokepoint every phase step flows
+# through. It:
+#   1. honors PIPELINE_STEP_FILTER (records "skipped" + returns 0 when filtered)
+#   2. stamps the step "running" in the manifest with its log-file path
+#   3. runs <fn> [args...] with stdout+stderr tee'd to
+#      logs/<run_id>/<phase>/<step>.log (path recorded in the manifest)
+#   4. captures the real exit code via PIPESTATUS[0] (NOT tee's)
+#   5. stamps "completed"/"failed" + exit code, then best-effort CloudWatch push
+# <fn> must `return 1` (NOT `exit 1`) on failure so the manifest can be updated.
+# Returns the step's exit code; callers do `run_step ... || exit $?`.
+run_step() {
+    local phase="$1" step="$2" fn="$3"
+    shift 3  # remaining args ("$@") are forwarded to <fn>
+
+    if ! step_enabled "$step"; then
+        log_info "$phase :: $step (skipped — not in step filter)"
+        _manifest skip-step --path "$PIPELINE_MANIFEST" --phase "$phase" --step "$step"
+        return 0
+    fi
+
+    local logdir="${PIPELINE_LOG_DIR:-$(resolve_output_base)/logs/adhoc}/${phase}"
+    mkdir -p "$logdir"
+    local logfile="$logdir/${step}.log"
+    local rellog="${logfile#"${REPO_ROOT}"/}"
+    local cwstream=""
+    [[ -n "${CW_LOG_GROUP:-}" ]] && cwstream="${RUN_ID:-adhoc}/${phase}/${step}"
+
+    _manifest start-step --path "$PIPELINE_MANIFEST" --phase "$phase" --step "$step" \
+        --log-file "$rellog" --cw-stream "$cwstream"
+
+    # set +e around the pipeline so a failing step doesn't abort the phase
+    # before we record its status; PIPESTATUS[0] is the step's code, not tee's.
+    local rc=0
+    set +e
+    { "$fn" "$@"; } 2>&1 | tee "$logfile"
+    rc=${PIPESTATUS[0]}
+    set -e
+
+    _manifest end-step --path "$PIPELINE_MANIFEST" --phase "$phase" --step "$step" \
+        --exit-code "$rc" --log-file "$rellog"
+    _cw_ship "$phase" "$step" "$logfile"
+
+    if [[ "$rc" -ne 0 ]]; then
+        log_error "$phase.$step failed (exit $rc)"
+        return "$rc"
+    fi
+    return 0
+}

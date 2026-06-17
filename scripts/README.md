@@ -179,31 +179,137 @@ All paths below are relative to `$OUTPUT_BASE` (default: `$REPO_ROOT/outputs/`).
 
 ---
 
+## Run identity (RUN_ID + manifest)
+
+Every pipeline.sh invocation generates a `RUN_ID` of the form:
+
+```
+<UTC-timestamp>-<profile>-<git-short-sha>
+e.g. 20260617-141523-pilot-a1b2c3d
+```
+
+Exported to all phases. Lists chronologically; embedded profile + sha make it
+grep-friendly across many runs.
+
+## Run manifest (live status — API-consumable)
+
+`$OUTPUT_BASE/run_manifest.json` is a **live status document**, not a
+write-once record: it is created at run start and rewritten at every phase/step
+transition by the stdlib-only `scripts/lib/manifest.py` (atomic write + flock,
+so a process reading it mid-run — e.g. an API polling the S3 copy — never sees a
+half-written file). It has two halves:
+
+- **`meta`** — STATIC catalog, identical for every run. The `status_enum`, the
+  `timestamp_format`, and the canonical ordered list of phases, each with its
+  ordered steps + descriptions (parsed straight from `phases/<phase>.sh`). A
+  consumer reads this once to learn the whole pipeline shape, including phases/
+  steps that were *not* selected this run.
+- **`run`** — PER-RUN state: which phases/steps were selected, their `status`
+  (`pending → running → completed | failed | skipped`), tz-aware start/end
+  timestamps **per phase AND per step**, exit codes, and per-step `log_file`
+  (+ `cw_log_stream` when CloudWatch is on).
+
+```json
+{
+  "schema_version": "1.0",
+  "meta": {
+    "status_enum": ["pending", "running", "completed", "failed", "skipped"],
+    "timestamp_format": "RFC3339 / ISO-8601 with timezone offset (e.g. 2026-06-17T14:15:23+00:00)",
+    "phases": [
+      { "name": "extract", "description": "Build seed KG …",
+        "steps": [ {"name": "chunk", "description": "Chunk text…"} ] }
+    ]
+  },
+  "run": {
+    "run_id": "20260617-141523-pilot-a1b2c3d",
+    "status": "running",
+    "domain": "neuroscience", "profile": "pilot", "platform": "runpod",
+    "git_sha": "a1b2c3d", "git_branch": "orchestration", "step_filter": "all",
+    "started_at": "2026-06-17T14:15:23+00:00", "finished_at": null,
+    "current_phase": "graphmert",
+    "selected_phases": ["extract", "graphmert"],
+    "phases": [
+      { "name": "extract", "status": "completed",
+        "started_at": "…+00:00", "finished_at": "…+00:00",
+        "exit_code": 0, "log_file": "outputs/logs/<run_id>/extract.log",
+        "steps": [
+          { "name": "chunk", "status": "completed",
+            "started_at": "…+00:00", "finished_at": "…+00:00",
+            "exit_code": 0, "log_file": "outputs/logs/<run_id>/extract/chunk.log",
+            "cw_log_stream": null } ] } ]
+  }
+}
+```
+
+### Completion signals for an API / downstream job
+
+Two integration modes, both reaching S3 alongside the outputs:
+
+- **Rich poll** — read `run_manifest.json`; branch on `run.status` and per-phase/
+  per-step `status`. Good for progress UIs.
+- **Binary check** — on finish, `pipeline.sh` drops a single sentinel next to the
+  manifest: **`_SUCCESS`** (run completed) xor **`_FAILED`** (any phase failed or
+  the run died). Dirt-cheap existence check: `aws s3 ls .../runs/<id>/outputs/_SUCCESS`.
+  An EXIT trap guarantees `_FAILED` even on a `set -e` abort or signal.
+
 ## Logs
 
-Currently **stdout only** — `log_info` / `log_error` from `lib/common.sh` print to terminal, nothing is captured to a file. If the pod dies mid-run, the logs die with it. Two practical patches you can apply:
+Logs are captured to disk **automatically**, at two granularities:
 
-```bash
-# Capture full pipeline log to disk (synchronous, ~zero overhead):
-./scripts/pipeline.sh --profile pilot --platform runpod 2>&1 | tee outputs/pipeline.log
+```
+$OUTPUT_BASE/logs/$RUN_ID/<phase>.log          # whole phase (aggregate)
+$OUTPUT_BASE/logs/$RUN_ID/<phase>/<step>.log   # one file per step
 ```
 
-W&B (training logs only — not the orchestration) IS asynchronous if `WANDB_API_KEY` is set: it uploads to W&B cloud in a background process while training continues. Local mirror lives in `outputs/wandb_logs/`.
+`pipeline.sh` tees each phase to `<phase>.log`; `lib/common.sh::run_step` tees
+each step to `<phase>/<step>.log` and records that path in the manifest. Real
+exit codes are captured via `PIPESTATUS[0]` (not `tee`'s), so a failing step/
+phase still propagates. Synchronous (zero overhead). W&B training logs (sft +
+rl only) are async and live separately at `$OUTPUT_BASE/wandb_logs/`.
 
-**TODO:** plumb `tee outputs/logs/<phase>.log` into pipeline.sh per phase so we always have a phase-by-phase log file, and include the logs dir in the output S3 sync.
+### Optional: ship step logs to AWS CloudWatch
 
-## Output → S3 sync (NOT implemented yet)
+Set `CW_LOG_GROUP` to also push each finished step log to CloudWatch Logs
+(stream `<run_id>/<phase>/<step>`, recorded as `cw_log_stream` in the manifest).
+No-op when unset; non-fatal on failure (local file + S3 stay canonical).
+Requires `boto3` + AWS creds. Implemented in `lib/cw_ship.py` (per-step batch
+push). For *live* tailing instead of per-step batches, install the CloudWatch
+unified agent in `runpod_bootstrap.sh` pointed at `logs/<run_id>/`.
 
-Only **input/corpus** sync is built. Outputs live on the pod's ephemeral disk and **disappear when the pod is shut down**. Discussed three approaches (see history): per-phase sync, end-of-pipeline sync, continuous mirror. Recommended next step:
+## Output → S3 sync
 
-```bash
-# scripts/data_prep/sync_outputs.sh  (companion to sync_corpus.sh)
-# Push the whole outputs/ dir to s3://${S3_URI}/runs/<run-id>/outputs/ at
-# the end of each phase, with --exclude 'graphrag/cache/*' --exclude 'input/*'.
-# run-id = ${SI_PROFILE}-$(date -u +%Y%m%d-%H%M%S)-${git_short_sha}
+`scripts/data_prep/sync_outputs.sh` pushes the entire `$OUTPUT_BASE/` to
+`s3://${S3_URI}/runs/${RUN_ID}/outputs/`. Excludes `graphrag/cache/*`,
+`graphrag/input/*`, `__pycache__/*`, `*.pyc`. Logs ARE included.
+
+`pipeline.sh` calls it:
+- After each phase completes (mid-run crash resilience)
+- Once more at pipeline end (catch-all)
+
+Both calls are **best-effort** — sync failure prints a warning and continues
+(non-fatal). No-op when `S3_URI` is unset (workstation case).
+
+S3 layout produced:
+
+```
+s3://<bucket>/dss/runs/<run-id>/outputs/
+  ├── graphrag/output/kg_final.csv
+  ├── graphmert/final_kg/expanded_kg.parquet
+  ├── curriculum_verified/curriculum_verified.json
+  ├── sft_checkpoints/...
+  ├── rl_checkpoints/...
+  ├── logs/<run-id>/extract.log, graphmert.log, ...        # per-phase
+  ├── logs/<run-id>/extract/chunk.log, ...                 # per-step
+  ├── run_manifest.json
+  └── _SUCCESS  (or _FAILED)                                # completion sentinel
 ```
 
-Once built, hook it at end of each `phases/*.sh` so a mid-run crash doesn't lose progress (per-phase resilience) PLUS one final sync at end of `pipeline.sh`.
+## Discovering phases and steps
+
+```bash
+./scripts/pipeline.sh --list                    # table of all phases + their steps
+./scripts/pipeline.sh --list --phase graphmert  # just graphmert's steps
+```
 
 ---
 

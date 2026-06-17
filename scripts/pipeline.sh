@@ -35,6 +35,7 @@ PROFILE=""
 PLATFORM="local"
 PHASES="all"
 STEPS="all"
+LIST_ONLY=0
 
 ALL_PHASES=(extract validate graphmert curriculum sft rl)
 
@@ -42,7 +43,7 @@ ALL_PHASES=(extract validate graphmert curriculum sft rl)
 usage() {
     cat <<'EOF'
 Usage: pipeline.sh [--domain <name>] [--profile <name>] [--platform <name>]
-                   [--phase <list>] [--step <list>]
+                   [--phase <list>] [--step <list>] [--list]
 
 Options:
   --domain    Domain name (default: neuroscience). Must exist as domains/<name>.yaml.
@@ -52,13 +53,65 @@ Options:
               Phases: extract, validate, graphmert, curriculum, sft, rl
   --step      Comma-separated step names within the phase, or "all" (default).
               Only meaningful when a single phase is specified.
+  --list      Print available phases and steps, then exit.
+              Combine with --phase <name> to show steps for one phase only.
 
 Examples:
   pipeline.sh                                              # neuroscience + defaults
   pipeline.sh --profile smoke
   pipeline.sh --phase extract --step parse_pdf,chunk
   pipeline.sh --domain neuroscience --profile paper --platform runpod
+  pipeline.sh --list                                       # all phases + steps
+  pipeline.sh --list --phase graphmert                     # just graphmert's steps
 EOF
+}
+
+# Extract phase metadata via grep/awk — safer than sourcing the script
+# (which would activate venvs and run side effects).
+_extract_steps_from_phase_file() {
+    grep -E '^STEPS=\(' "$1" | head -1 | sed -E 's/^STEPS=\(//; s/\)[[:space:]]*$//'
+}
+
+_extract_phase_desc() {
+    grep -E '^PHASE_DESC=' "$1" | head -1 | sed -E 's/^PHASE_DESC="//; s/"[[:space:]]*$//'
+}
+
+# Pull the array contents between `STEP_DESCS=(` and the matching closing `)`,
+# yielding one description per line (still quoted) — caller strips quotes.
+_extract_step_descs() {
+    awk '
+        /^STEP_DESCS=\(/ { inside=1; next }
+        inside && /^\)/  { inside=0; next }
+        inside           { print }
+    ' "$1" | sed -E 's/^[[:space:]]*"//; s/"[[:space:]]*$//' | grep -v '^[[:space:]]*$'
+}
+
+list_phases_and_steps() {
+    local target_phase="${1:-}"
+    local first_phase=1
+    for phase in "${ALL_PHASES[@]}"; do
+        [[ -n "$target_phase" && "$phase" != "$target_phase" ]] && continue
+        local pf="$SCRIPT_DIR/phases/${phase}.sh"
+        [[ -f "$pf" ]] || continue
+
+        local desc steps
+        desc=$(_extract_phase_desc "$pf")
+        steps=$(_extract_steps_from_phase_file "$pf")
+        IFS=' ' read -ra step_arr <<< "$steps"
+        mapfile -t desc_arr < <(_extract_step_descs "$pf")
+
+        # Phase header (blank line between phases)
+        [[ $first_phase -eq 0 ]] && echo
+        first_phase=0
+        printf "%s — %s\n" "$phase" "${desc:-<no description>}"
+
+        # Indented step list (left col width: 22 chars)
+        local i=0
+        for s in "${step_arr[@]}"; do
+            printf "    %-22s %s\n" "$s" "${desc_arr[$i]:-}"
+            i=$((i + 1))
+        done
+    done
 }
 
 while [[ $# -gt 0 ]]; do
@@ -68,10 +121,21 @@ while [[ $# -gt 0 ]]; do
         --platform) PLATFORM="$2"; shift 2 ;;
         --phase)    PHASES="$2"; shift 2 ;;
         --step)     STEPS="$2"; shift 2 ;;
+        --list)     LIST_ONLY=1; shift ;;
         -h|--help)  usage; exit 0 ;;
         *)          log_error "Unknown flag: $1"; usage; exit 2 ;;
     esac
 done
+
+# --- Listing mode (no execution) -------------------------------------------
+if [[ "$LIST_ONLY" -eq 1 ]]; then
+    if [[ "$PHASES" != "all" ]]; then
+        list_phases_and_steps "$PHASES"
+    else
+        list_phases_and_steps
+    fi
+    exit 0
+fi
 
 # --- Validation -------------------------------------------------------------
 domain_file="$REPO_ROOT/domains/${DOMAIN}.yaml"
@@ -97,27 +161,128 @@ else
     done
 fi
 
+# --- Run identity + manifest -----------------------------------------------
+# OUTPUT_BASE is the canonical anchor for all per-run artifacts.
+OUTPUT_BASE="${OUTPUT_BASE:-$REPO_ROOT/outputs}"
+mkdir -p "$OUTPUT_BASE"
+
+# RUN_ID format: <UTC timestamp>-<profile>-<git-short-sha>. Sorts chronologically;
+# embedded profile/sha makes it grep-friendly across many runs.
+_git_sha=$(git -C "$REPO_ROOT" rev-parse --short HEAD 2>/dev/null || echo nogit)
+_git_branch=$(git -C "$REPO_ROOT" rev-parse --abbrev-ref HEAD 2>/dev/null || echo nogit)
+_ts=$(date -u +%Y%m%d-%H%M%S)
+RUN_ID="${_ts}-${PROFILE:-default}-${_git_sha}"
+LOG_DIR="$OUTPUT_BASE/logs/$RUN_ID"
+mkdir -p "$LOG_DIR"
+
+# Reproducibility + live-status manifest. Built and mutated by the stdlib-only
+# scripts/lib/manifest.py (atomic, lock-guarded) so it's safe to read mid-run
+# (e.g. an API polling the S3 copy). See that file for the schema:
+#   meta — static catalog (status enum, canonical phases + their steps)
+#   run  — per-run status, tz-aware start/end timestamps per phase AND step,
+#          exit codes, per-step log_file paths.
+MANIFEST="$OUTPUT_BASE/run_manifest.json"
+manifest_selected=$(IFS=,; echo "${selected_phases[*]}")
+manifest_all=$(IFS=,; echo "${ALL_PHASES[*]}")
+python3 "$SCRIPT_DIR/lib/manifest.py" init \
+    --path "$MANIFEST" \
+    --phases-dir "$SCRIPT_DIR/phases" \
+    --phase-order "$manifest_all" \
+    --selected "$manifest_selected" \
+    --run-id "$RUN_ID" \
+    --domain "$DOMAIN" \
+    --profile "${PROFILE:-default}" \
+    --platform "$PLATFORM" \
+    --git-sha "$_git_sha" \
+    --git-branch "$_git_branch" \
+    --step-filter "$STEPS" \
+    || log_warn "manifest init failed — run will proceed uninstrumented"
+
+# Mark the run failed on any unexpected exit (set -e abort, signal, etc.)
+# unless we already finalized successfully. Belt-and-suspenders around the
+# explicit finalize at the end.
+PIPELINE_FINALIZED=0
+_on_exit() {
+    local ec=$?
+    if [[ "$PIPELINE_FINALIZED" -eq 0 ]]; then
+        python3 "$SCRIPT_DIR/lib/manifest.py" finalize --path "$MANIFEST" --status failed 2>/dev/null || true
+    fi
+    exit "$ec"
+}
+trap _on_exit EXIT
+
 # --- Dispatch ---------------------------------------------------------------
+log_info "Run ID   : $RUN_ID"
 log_info "Domain   : $DOMAIN"
 log_info "Profile  : ${PROFILE:-<none>}"
 log_info "Platform : $PLATFORM"
 log_info "Phases   : ${selected_phases[*]}"
 log_info "Steps    : $STEPS"
+log_info "Logs     : $LOG_DIR"
+log_info "Manifest : $MANIFEST"
 
 # Env contract consumed by pipeline_config.py and phase scripts.
 export SI_DOMAIN="$DOMAIN"
 export SI_PROFILE="$PROFILE"
 export SI_PLATFORM="$PLATFORM"
 export PIPELINE_STEP_FILTER="$STEPS"
-export REPO_ROOT
+export REPO_ROOT OUTPUT_BASE RUN_ID
+# Consumed by lib/common.sh::run_step for per-step manifest updates + logging.
+export PIPELINE_MANIFEST="$MANIFEST"
+export PIPELINE_LOG_DIR="$LOG_DIR"
 
 # shellcheck source=platforms/local.sh
 source "$platform_script"
 
+_s3_sync_if_configured() {
+    # Push outputs to s3://$S3_URI/runs/$RUN_ID/outputs/. No-op when S3_URI
+    # isn't set (local workstation case). Non-fatal — sync failure prints a
+    # warning but doesn't kill the pipeline.
+    if [[ -n "${S3_URI:-}" && -x "$SCRIPT_DIR/data_prep/sync_outputs.sh" ]]; then
+        "$SCRIPT_DIR/data_prep/sync_outputs.sh" \
+            || log_warn "S3 output sync failed (non-fatal) — outputs still on local disk"
+    fi
+}
+
 for phase in "${selected_phases[@]}"; do
     phase_script="$SCRIPT_DIR/phases/${phase}.sh"
-    log_info "── Phase: $phase ─────────────────────────────────"
-    exec_phase_on_platform "$phase_script" "$STEPS"
+    log_file="$LOG_DIR/${phase}.log"
+    rel_log="${log_file#"$REPO_ROOT"/}"
+    log_info "── Phase: $phase  (log: ${rel_log}) ─────────────"
+
+    python3 "$SCRIPT_DIR/lib/manifest.py" start-phase \
+        --path "$MANIFEST" --phase "$phase" --log-file "$rel_log" 2>/dev/null || true
+
+    # Capture the phase exit code WITHOUT aborting (so we can record "failed"
+    # and finalize). PIPESTATUS[0] is the phase's code, not tee's — pipefail
+    # alone wouldn't let us run end-phase before set -e kills the script.
+    set +e
+    exec_phase_on_platform "$phase_script" "$STEPS" 2>&1 | tee "$log_file"
+    phase_rc=${PIPESTATUS[0]}
+    set -e
+
+    python3 "$SCRIPT_DIR/lib/manifest.py" end-phase \
+        --path "$MANIFEST" --phase "$phase" --exit-code "$phase_rc" 2>/dev/null || true
+
+    _s3_sync_if_configured
+
+    if [[ "$phase_rc" -ne 0 ]]; then
+        log_error "Phase '$phase' failed (exit $phase_rc) — aborting pipeline."
+        python3 "$SCRIPT_DIR/lib/manifest.py" finalize \
+            --path "$MANIFEST" --status failed 2>/dev/null || true
+        PIPELINE_FINALIZED=1
+        _s3_sync_if_configured
+        exit "$phase_rc"
+    fi
 done
 
-log_info "Pipeline complete."
+# Mark the run complete (writes _SUCCESS sentinel) before the final sync so the
+# terminal status reaches S3 too.
+python3 "$SCRIPT_DIR/lib/manifest.py" finalize \
+    --path "$MANIFEST" --status completed 2>/dev/null || true
+PIPELINE_FINALIZED=1
+
+# Belt-and-suspenders final sync (catches anything the per-phase missed).
+_s3_sync_if_configured
+
+log_info "Pipeline complete. Run ID: $RUN_ID"

@@ -21,7 +21,16 @@ export PIPELINE_STEP_FILTER="$STEP_FILTER"
 #   extract_triples   graphrag step 2 (documents) + step 3 (LLM extraction)
 #   normalize         graphrag step 4 (parse responses)
 #   cache             graphrag step 5 (clean + finalize seed KG)
+PHASE_NAME=extract
 STEPS=(parse_pdf chunk extract_triples normalize cache)
+PHASE_DESC="Build seed KG from text corpus (graphrag)"
+STEP_DESCS=(
+    "(no-op) corpus arrives pre-extracted as .txt"
+    "Chunk text into base units (graphrag #1)"
+    "vLLM extraction of head/relation/tail triples (graphrag #2+#3)"
+    "Parse LLM responses into entity/relationship tables (graphrag #4)"
+    "Clean + finalize seed KG; write kg_final.{csv,parquet} (graphrag #5)"
+)
 
 source_venv graphrag
 
@@ -110,41 +119,43 @@ graphrag_step() {
       python graphrag_index.py --root_dir "$GRAPHRAG_DIR" --step "$n" $extra_args )
 }
 
-# --- Step dispatch -------------------------------------------------------
-for step in "${STEPS[@]}"; do
-    if ! step_enabled "$step"; then continue; fi
+# --- Steps ---------------------------------------------------------------
+# Each step is a function returning non-zero on failure (NOT exit) so run_step
+# can record status/timing/exit-code in the manifest and tee a per-step log.
+step_parse_pdf() {
+    log_info "extract :: parse_pdf (no-op — corpus is .txt; see scripts/pdf_to_text.sh in stash for OCR option)"
+}
 
-    case "$step" in
-        parse_pdf)
-            log_info "extract :: parse_pdf (no-op — corpus is .txt; see scripts/pdf_to_text.sh in stash for OCR option)"
-            ;;
-        chunk)
-            log_info "extract :: chunk (graphrag step 1 — base text units)"
-            graphrag_step 1 || { log_error "extract.chunk failed"; exit 1; }
-            ;;
-        extract_triples)
-            log_info "extract :: extract_triples (graphrag step 2 + step 3)"
-            graphrag_step 2 || { log_error "extract.extract_triples step 2 failed"; exit 1; }
-            if [[ -z "$MODEL_ID" ]]; then
-                log_error "extract.extract_triples step 3 needs models.extract in configs/default.yaml or domain override"
-                exit 1
-            fi
-            graphrag_step 3 "--model_id $MODEL_ID" || { log_error "extract.extract_triples step 3 failed"; exit 1; }
-            ;;
-        normalize)
-            log_info "extract :: normalize (graphrag step 4 — parse LLM responses)"
-            graphrag_step 4 || { log_error "extract.normalize failed"; exit 1; }
-            ;;
-        cache)
-            log_info "extract :: cache (graphrag step 5 — finalize seed KG)"
-            graphrag_step 5 || { log_error "extract.cache failed"; exit 1; }
-            # graphrag writes final_relationships.parquet (cols source/target/relation),
-            # but downstream code expects:
-            #   - kg_final.csv      (head, relation, tail) — for graphmert step 4 + curriculum calculate_hops
-            #   - kg_final.parquet  (head, relation, tail) — for graphmert merge_kgs
-            # Materialize both here so all consumers can use $GRAPHRAG_DIR/output/kg_final.*.
-            log_info "extract :: write_seed_kg (convert graphrag → kg_final.{csv,parquet})"
-            ( cd "$REPO_ROOT" && python3 -c "
+step_chunk() {
+    log_info "extract :: chunk (graphrag step 1 — base text units)"
+    graphrag_step 1 || { log_error "extract.chunk failed"; return 1; }
+}
+
+step_extract_triples() {
+    log_info "extract :: extract_triples (graphrag step 2 + step 3)"
+    graphrag_step 2 || { log_error "extract.extract_triples step 2 failed"; return 1; }
+    if [[ -z "$MODEL_ID" ]]; then
+        log_error "extract.extract_triples step 3 needs models.extract in configs/default.yaml or domain override"
+        return 1
+    fi
+    graphrag_step 3 "--model_id $MODEL_ID" || { log_error "extract.extract_triples step 3 failed"; return 1; }
+}
+
+step_normalize() {
+    log_info "extract :: normalize (graphrag step 4 — parse LLM responses)"
+    graphrag_step 4 || { log_error "extract.normalize failed"; return 1; }
+}
+
+step_cache() {
+    log_info "extract :: cache (graphrag step 5 — finalize seed KG)"
+    graphrag_step 5 || { log_error "extract.cache failed"; return 1; }
+    # graphrag writes final_relationships.parquet (cols source/target/relation),
+    # but downstream code expects:
+    #   - kg_final.csv      (head, relation, tail) — for graphmert step 4 + curriculum calculate_hops
+    #   - kg_final.parquet  (head, relation, tail) — for graphmert merge_kgs
+    # Materialize both here so all consumers can use $GRAPHRAG_DIR/output/kg_final.*.
+    log_info "extract :: write_seed_kg (convert graphrag → kg_final.{csv,parquet})"
+    ( cd "$REPO_ROOT" && python3 -c "
 import pandas as pd, sys
 src = '$GRAPHRAG_DIR/output/final_relationships.parquet'
 df = pd.read_parquet(src)
@@ -152,8 +163,11 @@ out = df[['source','target','relation']].rename(columns={'source':'head','target
 out.to_csv('$GRAPHRAG_DIR/output/kg_final.csv', index=False)
 out.to_parquet('$GRAPHRAG_DIR/output/kg_final.parquet', index=False)
 print(f'wrote {len(out)} triples to kg_final.csv and kg_final.parquet')
-" ) || { log_error "extract.cache write_seed_kg failed"; exit 1; }
-            log_info "Seed KG written: $GRAPHRAG_DIR/output/kg_final.{csv,parquet}"
-            ;;
-    esac
+" ) || { log_error "extract.cache write_seed_kg failed"; return 1; }
+    log_info "Seed KG written: $GRAPHRAG_DIR/output/kg_final.{csv,parquet}"
+}
+
+# --- Step dispatch -------------------------------------------------------
+for step in "${STEPS[@]}"; do
+    run_step "$PHASE_NAME" "$step" "step_$step" || exit $?
 done

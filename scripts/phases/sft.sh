@@ -19,7 +19,15 @@ source "$SCRIPT_DIR/../lib/venv.sh"
 STEP_FILTER="${1:-all}"
 export PIPELINE_STEP_FILTER="$STEP_FILTER"
 
+PHASE_NAME=sft
 STEPS=(prepare_data train_lora merge_lora eval_sft)
+PHASE_DESC="LoRA supervised fine-tuning on verified curriculum"
+STEP_DESCS=(
+    "Tokenize curriculum Q&A into SFT dataset format"
+    "LoRA fine-tune base model on curriculum (trainer.py)"
+    "Merge LoRA adapters into base model weights (merge_lora.py)"
+    "(no-op) run 3_si_curriculum/test_models/eval_models.py manually"
+)
 
 source_venv si_curriculum
 
@@ -37,68 +45,68 @@ fi
 VERIFIED_CURRICULUM="$OUTPUT_BASE/curriculum_verified/curriculum_verified.json"
 SFT_MAX_LENGTH=$(get_phase_param sft block_size 32768)
 
+# --- Steps ---------------------------------------------------------------
+step_prepare_data() {
+    log_info "sft :: prepare_data (data_prep.py)"
+    ( cd "$REPO_ROOT/3_si_curriculum/training" && \
+      python data_prep.py \
+          --input_file  "$VERIFIED_CURRICULUM" \
+          --output_path "$SFT_DATASET_DIR" \
+          --model_name  "$BASE_MODEL" \
+          --max_length  "$SFT_MAX_LENGTH" \
+          --cache_dir   "${HF_HOME:-$HOME/.cache/huggingface}" ) \
+        || { log_error "sft.prepare_data failed"; return 1; }
+}
+
+step_train_lora() {
+    log_info "sft :: train_lora (trainer.py — HfArgumentParser)"
+    # Single-GPU or multi-GPU via torchrun. Operator can set NPROC.
+    local NPROC="${NPROC:-1}"
+    local CMD=(
+        "torchrun" "--nproc_per_node=$NPROC"
+        "$REPO_ROOT/3_si_curriculum/training/trainer.py"
+        "--model_name"          "$BASE_MODEL"
+        "--train_dataset_path"  "$SFT_DATASET_DIR"
+        "--output_dir"          "$SFT_CHECKPOINTS_DIR"
+        "--wandb_dir"           "$OUTPUT_BASE/wandb_logs"
+        "--wandb_project"       "${WANDB_PROJECT:-${SI_DOMAIN:-neuroscience}_sft_kg}"
+        # LoRA params come from TrainingConfig defaults wired to merged config.
+    )
+    if [[ "$NPROC" == "1" ]]; then
+        # When NPROC=1, prefer direct python invocation (faster startup).
+        ( cd "$REPO_ROOT/3_si_curriculum/training" && \
+          python trainer.py \
+              --model_name         "$BASE_MODEL" \
+              --train_dataset_path "$SFT_DATASET_DIR" \
+              --output_dir         "$SFT_CHECKPOINTS_DIR" \
+              --wandb_dir          "$OUTPUT_BASE/wandb_logs" \
+              --wandb_project      "${WANDB_PROJECT:-${SI_DOMAIN:-neuroscience}_sft_kg}" ) \
+            || { log_error "sft.train_lora failed"; return 1; }
+    else
+        "${CMD[@]}" || { log_error "sft.train_lora failed"; return 1; }
+    fi
+}
+
+step_merge_lora() {
+    log_info "sft :: merge_lora (merge_lora.py)"
+    local ADAPTER_DIR="${ADAPTER_DIR:-$(ls -d "$SFT_CHECKPOINTS_DIR"/checkpoint-* 2>/dev/null | tail -1)}"
+    if [[ -z "$ADAPTER_DIR" || ! -d "$ADAPTER_DIR" ]]; then
+        log_error "sft.merge_lora: no checkpoint found in $SFT_CHECKPOINTS_DIR"
+        return 1
+    fi
+    ( cd "$REPO_ROOT/3_si_curriculum/training" && \
+      python merge_lora.py \
+          --base_model   "$BASE_MODEL" \
+          --adapter_path "$ADAPTER_DIR" ) \
+        || { log_error "sft.merge_lora failed"; return 1; }
+    log_info "Merged SFT model: $ADAPTER_DIR/merged_final_model/"
+}
+
+step_eval_sft() {
+    log_info "sft :: eval_sft (no-op — operator runs 3_si_curriculum/test_models/eval_models.py separately)"
+}
+
+# --- Step dispatch -------------------------------------------------------
 for step in "${STEPS[@]}"; do
-    if ! step_enabled "$step"; then continue; fi
-
-    case "$step" in
-        prepare_data)
-            log_info "sft :: prepare_data (data_prep.py)"
-            ( cd "$REPO_ROOT/3_si_curriculum/training" && \
-              python data_prep.py \
-                  --input_file  "$VERIFIED_CURRICULUM" \
-                  --output_path "$SFT_DATASET_DIR" \
-                  --model_name  "$BASE_MODEL" \
-                  --max_length  "$SFT_MAX_LENGTH" \
-                  --cache_dir   "${HF_HOME:-$HOME/.cache/huggingface}" ) \
-                || { log_error "sft.prepare_data failed"; exit 1; }
-            ;;
-
-        train_lora)
-            log_info "sft :: train_lora (trainer.py — HfArgumentParser)"
-            # Single-GPU or multi-GPU via torchrun. Operator can set NPROC.
-            NPROC="${NPROC:-1}"
-            CMD=(
-                "torchrun" "--nproc_per_node=$NPROC"
-                "$REPO_ROOT/3_si_curriculum/training/trainer.py"
-                "--model_name"          "$BASE_MODEL"
-                "--train_dataset_path"  "$SFT_DATASET_DIR"
-                "--output_dir"          "$SFT_CHECKPOINTS_DIR"
-                "--wandb_dir"           "$OUTPUT_BASE/wandb_logs"
-                "--wandb_project"       "${WANDB_PROJECT:-${SI_DOMAIN:-neuroscience}_sft_kg}"
-                # LoRA params come from TrainingConfig defaults wired to merged config.
-            )
-            if [[ "$NPROC" == "1" ]]; then
-                # When NPROC=1, prefer direct python invocation (faster startup).
-                ( cd "$REPO_ROOT/3_si_curriculum/training" && \
-                  python trainer.py \
-                      --model_name         "$BASE_MODEL" \
-                      --train_dataset_path "$SFT_DATASET_DIR" \
-                      --output_dir         "$SFT_CHECKPOINTS_DIR" \
-                      --wandb_dir          "$OUTPUT_BASE/wandb_logs" \
-                      --wandb_project      "${WANDB_PROJECT:-${SI_DOMAIN:-neuroscience}_sft_kg}" ) \
-                    || { log_error "sft.train_lora failed"; exit 1; }
-            else
-                "${CMD[@]}" || { log_error "sft.train_lora failed"; exit 1; }
-            fi
-            ;;
-
-        merge_lora)
-            log_info "sft :: merge_lora (merge_lora.py)"
-            ADAPTER_DIR="${ADAPTER_DIR:-$(ls -d "$SFT_CHECKPOINTS_DIR"/checkpoint-* 2>/dev/null | tail -1)}"
-            if [[ -z "$ADAPTER_DIR" || ! -d "$ADAPTER_DIR" ]]; then
-                log_error "sft.merge_lora: no checkpoint found in $SFT_CHECKPOINTS_DIR"
-                exit 1
-            fi
-            ( cd "$REPO_ROOT/3_si_curriculum/training" && \
-              python merge_lora.py \
-                  --base_model   "$BASE_MODEL" \
-                  --adapter_path "$ADAPTER_DIR" ) \
-                || { log_error "sft.merge_lora failed"; exit 1; }
-            log_info "Merged SFT model: $ADAPTER_DIR/merged_final_model/"
-            ;;
-
-        eval_sft)
-            log_info "sft :: eval_sft (no-op — operator runs 3_si_curriculum/test_models/eval_models.py separately)"
-            ;;
-    esac
+    run_step "$PHASE_NAME" "$step" "step_$step" || exit $?
 done
