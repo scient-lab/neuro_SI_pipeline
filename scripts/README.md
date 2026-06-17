@@ -107,6 +107,106 @@ source .env                                          # picks up GEMINI_API_KEY, 
 
 ---
 
+## Phase I/O reference
+
+All paths below are relative to `$OUTPUT_BASE` (default: `$REPO_ROOT/outputs/`).
+`OUTPUT_BASE` is settable via the env var of the same name.
+
+### Phase 1 — extract  (venv: graphrag)
+
+| Step | Reads | Writes | Format |
+|---|---|---|---|
+| `parse_pdf` | (no-op — we feed pre-extracted `.txt`) | — | — |
+| stage-input | `$REPO_ROOT/$CORPUS_PATH/*.txt` | `graphrag/input/*.txt` | UTF-8 text, copied (not symlinked) |
+| `chunk` (graphrag #1) | `graphrag/input/*.txt`, `graphrag/settings.yaml` | `graphrag/output/text_units` (HF storage) | parquet |
+| `extract_triples` (graphrag #2+#3) | `graphrag/output/text_units` | `graphrag/output/extracted_graph_responses_<RELATION_SET>_<start>-<end>.json` | JSON (vLLM raw output per chunk) |
+| `normalize` (graphrag #4) | `extracted_graph_responses_*.json` + `text_units` | `graphrag/output/entities`, `graphrag/output/relationships` | parquet (graphrag storage) |
+| `cache` (graphrag #5) | `entities`, `relationships` | `graphrag/output/final_entities.parquet`, `final_relationships.parquet`, `kg_final.csv`, `kg_final.parquet`, `relation_counts_<RELATION_SET>_<ts>.txt` | parquet + CSV. `kg_final.{csv,parquet}` are columns `[head, relation, tail]` — the seed KG. |
+
+### Phase 2 — validate
+
+**No-op currently.** The 2-LLM consensus check is done inline in graphmert (fact_score) and curriculum (verify_questions) phases instead. See `phases/validate.sh` for the documented intent.
+
+### Phase 3 — graphmert  (venv: graphmert)
+
+| Step | Reads | Writes | Format |
+|---|---|---|---|
+| `tokenize` (1) | `graphrag/input/*.txt` | `graphmert/stable_tokenizer/`, `graphmert/tokenized_inputs/{train,val}_*/` | HF tokenizer + HF Dataset arrow |
+| `preprocess` 2a (entity_discovery) | `graphmert/tokenized_inputs/train_*/` | `graphmert/entity_discovery/chunk_*/` | HF Dataset (entity head positions per chunk) |
+| `preprocess` 2b (find_heads_positions) | `graphmert/entity_discovery/chunk_*/` | `graphmert/head_positions/` (directly — no sub-name) | HF Dataset |
+| `preprocess` 3a (add_llm_relations) | `graphmert/head_positions/` + extract model | `graphmert/llm_relations/relations_all/` | HF Dataset |
+| `preprocess` 3b (clean_llm_relations) | `graphmert/llm_relations/relations_all/` | `graphmert/llm_relations/relations_cleaned_train/`, `relations_cleaned_eval/` | HF Dataset |
+| `preprocess` 4 (run_dataset_preprocessing) | `graphmert/llm_relations/relations_cleaned_*` + `graphrag/output/kg_final.csv` | `graphmert/dataset/relation_map.json`, `dataset/ready_for_training_{train,eval}/`, `mlm_cache/{train,validation}/ready_for_training/` | JSON + HF Dataset. mlm_cache is the canonical source MLM reads from. |
+| `train_mnm` (5) | `graphmert/mlm_cache/{train,validation}/ready_for_training/` + `graphmert/args_mlm.resolved.yaml` | `graphmert/mlm_output/checkpoint-*/` | HF checkpoint dirs |
+| `predict_tails` (6) | `mlm_output/checkpoint-*/` + `llm_relations/relations_cleaned_eval/` | `graphmert/predictions/predictions_shard_*.csv` | CSV |
+| `validate_predictions` 7a (combine_tails) | `graphmert/predictions/*.csv` | `graphmert/combined/final_kg_all.csv`, `final_kg_scientific_only.csv`, `combined/expanded_triples.csv` | CSV |
+| `validate_predictions` 7b (fact_score) | `graphmert/combined/expanded_triples.csv` + Gemini | `graphmert/final_kg/validated_triples.csv` | CSV (2-LLM-checked triples) |
+| `expand_kg` | `graphmert/final_kg/validated_triples.csv` + `graphrag/output/kg_final.parquet` | `graphmert/final_kg/expanded_kg.parquet` | parquet (seed KG ∪ validated expansions) |
+
+### Phase 4 — curriculum  (venv: si_curriculum)
+
+| Step | Reads | Writes | Format |
+|---|---|---|---|
+| `path_traversal` (calculate_hops) | `graphmert/final_kg/validated_triples.csv` + `graphrag/output/kg_final.csv` | `curriculum/kg_manifest.json` | JSON (n-hop path manifest) |
+| `prune_paths` | (configured via `hop_range` + `HUB_REMOVAL_PERCENTILE` inside generate_curriculum) | — | — |
+| `generate_qa` (generate_curriculum) | `curriculum/kg_manifest.json` + Gemini API | `curriculum/curriculum.json` | JSON (Q&A items, one per path) |
+| `validate_qa` (verify_questions) | `curriculum/curriculum.json` + Gemini (2 calls per item) | `curriculum_verified/curriculum_verified.json` | JSON (filtered) |
+| `assemble_curriculum` | (no-op) | — | — |
+
+### Phase 5 — sft  (venv: si_curriculum)
+
+| Step | Reads | Writes | Format |
+|---|---|---|---|
+| `prepare_data` | `curriculum_verified/curriculum_verified.json` | `sft_dataset/` | HF Dataset (tokenized SFT prompts/responses) |
+| `train_lora` | `sft_dataset/` + base model (HF download) | `sft_checkpoints/checkpoint-*/` | HF checkpoint (LoRA adapters) |
+| `merge_lora` | `sft_checkpoints/checkpoint-*/` | `sft_checkpoints/checkpoint-*/merged_final_model/` | Merged HF model (base + LoRA) |
+| `eval_sft` | (no-op — operator runs `eval_models.py` separately) | — | — |
+
+### Phase 6 — rl  (venv: si_curriculum)
+
+| Step | Reads | Writes | Format |
+|---|---|---|---|
+| `setup_reward` (data_prep) | `curriculum_verified/curriculum_verified.json` | `rl_dataset/` | HF Dataset (GRPO prompts + reward signals) |
+| `train_grpo` (rl_training) | `sft_checkpoints/checkpoint-*/merged_final_model/` + `rl_dataset/` + `3_si_curriculum/RL/deepspeed_config.json` | `rl_checkpoints/checkpoint-*/` | HF checkpoint |
+| `eval_rl` | (no-op — operator runs `eval_models.py` separately) | — | — |
+
+### Cross-phase artifacts (not phase-specific)
+
+| Path | Written by | Read by |
+|---|---|---|
+| `wandb_logs/` | sft + rl | W&B background uploader (if `WANDB_API_KEY` set) |
+| `args_mlm.resolved.yaml` | graphmert phase setup (envsubst from template) | run_dataset_preprocessing.py + run_mlm.py |
+
+---
+
+## Logs
+
+Currently **stdout only** — `log_info` / `log_error` from `lib/common.sh` print to terminal, nothing is captured to a file. If the pod dies mid-run, the logs die with it. Two practical patches you can apply:
+
+```bash
+# Capture full pipeline log to disk (synchronous, ~zero overhead):
+./scripts/pipeline.sh --profile pilot --platform runpod 2>&1 | tee outputs/pipeline.log
+```
+
+W&B (training logs only — not the orchestration) IS asynchronous if `WANDB_API_KEY` is set: it uploads to W&B cloud in a background process while training continues. Local mirror lives in `outputs/wandb_logs/`.
+
+**TODO:** plumb `tee outputs/logs/<phase>.log` into pipeline.sh per phase so we always have a phase-by-phase log file, and include the logs dir in the output S3 sync.
+
+## Output → S3 sync (NOT implemented yet)
+
+Only **input/corpus** sync is built. Outputs live on the pod's ephemeral disk and **disappear when the pod is shut down**. Discussed three approaches (see history): per-phase sync, end-of-pipeline sync, continuous mirror. Recommended next step:
+
+```bash
+# scripts/data_prep/sync_outputs.sh  (companion to sync_corpus.sh)
+# Push the whole outputs/ dir to s3://${S3_URI}/runs/<run-id>/outputs/ at
+# the end of each phase, with --exclude 'graphrag/cache/*' --exclude 'input/*'.
+# run-id = ${SI_PROFILE}-$(date -u +%Y%m%d-%H%M%S)-${git_short_sha}
+```
+
+Once built, hook it at end of each `phases/*.sh` so a mid-run crash doesn't lose progress (per-phase resilience) PLUS one final sync at end of `pipeline.sh`.
+
+---
+
 ## Extension points
 
 ### Add a new phase
