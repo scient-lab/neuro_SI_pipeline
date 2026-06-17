@@ -44,6 +44,41 @@ def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
+def _read_log_tail(path: str, n: int = 30) -> list:
+    """Last n non-empty lines of a log file. Safe — returns [] on any error
+    (missing path, permission, binary garbage, etc.). The log file paths in
+    the manifest are repo-relative; resolve against $REPO_ROOT or pwd."""
+    if not path:
+        return []
+    candidates = [path]
+    repo_root = os.environ.get("REPO_ROOT")
+    if repo_root:
+        candidates.append(os.path.join(repo_root, path))
+    candidates.append(os.path.join(os.getcwd(), path))
+    for c in candidates:
+        try:
+            with open(c, "r", errors="replace") as f:
+                lines = [ln.rstrip() for ln in f.read().splitlines() if ln.strip()]
+                return lines[-n:]
+        except (FileNotFoundError, IsADirectoryError, PermissionError):
+            continue
+        except Exception:
+            return []
+    return []
+
+
+def _capture_error(exit_code: int, log_file: str, explicit_message: str,
+                   tail_lines: int) -> dict:
+    """Build an error dict for a failed phase/step. Always includes message
+    and exit_code; log_tail is best-effort."""
+    msg = explicit_message or f"exit code {exit_code}"
+    return {
+        "message": msg,
+        "exit_code": exit_code,
+        "log_tail": _read_log_tail(log_file, tail_lines),
+    }
+
+
 # --------------------------------------------------------------------------
 # Atomic, lock-guarded read/modify/write
 # --------------------------------------------------------------------------
@@ -260,6 +295,13 @@ def cmd_end_phase(a) -> None:
             p["finished_at"] = now_iso()
             p["exit_code"] = a.exit_code
             p["status"] = "completed" if a.exit_code == 0 else "failed"
+            if a.exit_code != 0:
+                p["error"] = _capture_error(
+                    a.exit_code, a.log_file, a.error_message, a.tail_lines)
+            elif "error" in p:
+                # Successful re-run after a previous failure on this phase —
+                # drop stale error so the manifest reflects current truth.
+                del p["error"]
         d["run"]["current_phase"] = None
 
     _mutate(a.path, fn)
@@ -293,6 +335,11 @@ def cmd_end_step(a) -> None:
             s["status"] = "completed" if a.exit_code == 0 else "failed"
             if a.log_file:
                 s["log_file"] = a.log_file
+            if a.exit_code != 0:
+                s["error"] = _capture_error(
+                    a.exit_code, a.log_file, a.error_message, a.tail_lines)
+            elif "error" in s:
+                del s["error"]
 
     _mutate(a.path, fn)
 
@@ -311,6 +358,26 @@ def cmd_finalize(a) -> None:
         d["run"]["status"] = a.status
         d["run"]["finished_at"] = now_iso()
         d["run"]["current_phase"] = None
+        if a.status == "failed":
+            # Surface the first failed phase (and within it, first failed step
+            # if any) at the top level so consumers don't have to walk the tree.
+            for p in d["run"]["phases"]:
+                if p.get("status") == "failed":
+                    failure = {
+                        "phase": p["name"],
+                        "exit_code": p.get("exit_code"),
+                        "error": p.get("error", {}),
+                    }
+                    for s in p.get("steps", []):
+                        if s.get("status") == "failed":
+                            failure["step"] = s["name"]
+                            failure["step_error"] = s.get("error", {})
+                            break
+                    d["run"]["failure"] = failure
+                    break
+        elif "failure" in d["run"]:
+            # Successful run after a previous failure — clear stale summary.
+            del d["run"]["failure"]
 
     _mutate(a.path, fn)
 
@@ -359,6 +426,9 @@ def main() -> int:
     p.add_argument("--path", required=True)
     p.add_argument("--phase", required=True)
     p.add_argument("--exit-code", type=int, required=True)
+    p.add_argument("--log-file", default="", help="path to phase log; tail captured on failure")
+    p.add_argument("--error-message", default="", help="explicit error msg; default: 'exit code N'")
+    p.add_argument("--tail-lines", type=int, default=30, help="N trailing log lines to capture (default 30)")
     p.set_defaults(func=cmd_end_phase)
 
     p = sub.add_parser("start-step")
@@ -375,6 +445,8 @@ def main() -> int:
     p.add_argument("--step", required=True)
     p.add_argument("--exit-code", type=int, required=True)
     p.add_argument("--log-file", default="")
+    p.add_argument("--error-message", default="", help="explicit error msg; default: 'exit code N'")
+    p.add_argument("--tail-lines", type=int, default=30)
     p.set_defaults(func=cmd_end_step)
 
     p = sub.add_parser("skip-step")

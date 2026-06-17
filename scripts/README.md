@@ -7,11 +7,13 @@ Orchestrator + extension points for the specialized-SLM pipeline.
 | Script | Where to run | What it does |
 |---|---|---|
 | `pipeline.sh` | local OR pod | Entry point. Parses `--domain` / `--profile` / `--platform` / `--phase` / `--step`, sources the matching venv, dispatches phases. |
+| `logs.sh` | local OR pod | View per-run / per-phase / per-step logs. Triage failures via `--error`. See [Viewing logs](#viewing-logs). |
 | `launch_runpod.sh` | local only | POSTs a RunPod pod with secrets injected. Reads `.env.runpod` + `configs/profiles/<profile>.yaml::runpod`. |
 | `runpod_bootstrap.sh` | pod only | First-run pod setup: apt install, install uv, clone repo, run `./setup.sh`, write `.env`. |
 | `phases/<phase>.sh` | (sourced by pipeline.sh) | Per-phase wrapper. Sources the right venv, dispatches by step name. |
 | `platforms/<platform>.sh` | (sourced by pipeline.sh) | Per-platform wrapper. Defines `exec_phase_on_platform`. |
-| `lib/{common,venv}.sh` | (sourced helpers) | Logging, step filtering, venv activation. |
+| `lib/{common,venv,manifest}.sh\|.py` | (sourced helpers) | Logging, step filtering, venv activation, manifest mutations. |
+| `data_prep/{sync_corpus,sync_outputs}.sh` | local + pod | S3 ↔ local sync for input corpus and run outputs. |
 
 ---
 
@@ -22,11 +24,20 @@ Orchestrator + extension points for the specialized-SLM pipeline.
 curl -LsSf https://astral.sh/uv/install.sh | sh   # install uv
 ./setup.sh                                          # create 3 venvs under .venvs/
 
-# Run the pipeline
-./scripts/pipeline.sh --profile smoke               # smallest end-to-end
-./scripts/pipeline.sh --profile smoke --phase extract
-./scripts/pipeline.sh --phase extract --step parse_pdf
-./scripts/pipeline.sh --help                         # full flag reference
+# Run the pipeline (long-running invocations use nohup so SSH disconnects /
+# closed terminals don't kill the run; per-phase logs at outputs/logs/<RUN_ID>/)
+nohup ./scripts/pipeline.sh --profile smoke              > nohup.out 2>&1 &  # smallest end-to-end
+nohup ./scripts/pipeline.sh --profile smoke --phase extract > nohup.out 2>&1 &
+nohup ./scripts/pipeline.sh --phase extract --step parse_pdf > nohup.out 2>&1 &
+
+# Track / inspect
+tail -f nohup.out                                   # orchestrator stdout
+tail -f outputs/logs/*/extract.log                  # latest phase log
+pgrep -af pipeline.sh                               # pid + cmdline
+
+# Interactive (no nohup needed)
+./scripts/pipeline.sh --help                        # full flag reference
+./scripts/pipeline.sh --list                        # phases + steps
 ```
 
 The pipeline reads from the repo's bundled configs/domains/prompts; no
@@ -99,8 +110,10 @@ when you're iterating on the bootstrap itself.
 
 ```bash
 cd $SI_HOME
-source .env                                          # picks up GEMINI_API_KEY, HF_TOKEN, etc.
-./scripts/pipeline.sh --profile $SI_PROFILE --platform runpod
+# pipeline.sh auto-sources .env (set -a wrapper). Use nohup + & so the run
+# survives SSH disconnect; per-phase logs at outputs/logs/<RUN_ID>/<phase>.log.
+nohup ./scripts/pipeline.sh --profile $SI_PROFILE --platform runpod > nohup.out 2>&1 &
+tail -f nohup.out                                    # follow live
 ```
 
 `$SI_HOME` and `$SI_PROFILE` were injected by the launcher.
@@ -266,6 +279,48 @@ each step to `<phase>/<step>.log` and records that path in the manifest. Real
 exit codes are captured via `PIPESTATUS[0]` (not `tee`'s), so a failing step/
 phase still propagates. Synchronous (zero overhead). W&B training logs (sft +
 rl only) are async and live separately at `$OUTPUT_BASE/wandb_logs/`.
+
+### Viewing logs
+
+Use `scripts/logs.sh` instead of digging through `outputs/logs/` by hand:
+
+```bash
+# Latest run, all phases (concatenated with banners between files)
+./scripts/logs.sh
+
+# Just one phase
+./scripts/logs.sh --phase graphmert
+
+# One step within a phase
+./scripts/logs.sh --phase graphmert --step tokenize
+
+# A specific run (prefix-match: '20260617' → latest run from that day)
+./scripts/logs.sh --run 20260617
+
+# Triage view — just the run.failure summary from the manifest
+./scripts/logs.sh --error
+./scripts/logs.sh -e
+
+# Follow live
+./scripts/logs.sh --tail
+./scripts/logs.sh -f --phase graphmert
+
+# Inventory of runs
+./scripts/logs.sh --list
+
+# Paths only (one per line) — chain with vim, grep, xargs:
+./scripts/logs.sh --paths
+./scripts/logs.sh --paths --phase graphmert
+vim $(./scripts/logs.sh --paths --phase graphmert --step tokenize)
+grep -l ERROR $(./scripts/logs.sh --paths)
+```
+
+`--error` reads `run_manifest.json` and prints the failed phase, step, exit
+code, message, and `log_tail` — usually enough to triage without opening any
+log file. Falls back to a "no failure recorded" message on a clean run.
+
+`--list` shows the **current** run with status from the live manifest; older
+runs show as `(historical)` because the manifest only tracks the latest run.
 
 ### Optional: ship step logs to AWS CloudWatch
 

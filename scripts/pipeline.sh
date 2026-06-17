@@ -281,7 +281,8 @@ for phase in "${selected_phases[@]}"; do
     set -e
 
     python3 "$SCRIPT_DIR/lib/manifest.py" end-phase \
-        --path "$MANIFEST" --phase "$phase" --exit-code "$phase_rc" 2>/dev/null || true
+        --path "$MANIFEST" --phase "$phase" --exit-code "$phase_rc" \
+        --log-file "$rel_log" 2>/dev/null || true
 
     _s3_sync_if_configured
 

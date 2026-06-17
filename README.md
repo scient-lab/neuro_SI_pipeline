@@ -30,8 +30,11 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ./setup.sh                  # all three
 ./setup.sh graphmert        # or just one (graphrag | graphmert | si_curriculum)
 
-# 3. Run a smoke test (~minutes, exercises orchestration end-to-end)
-./scripts/pipeline.sh --profile smoke
+# 3. Run a smoke test (~minutes, exercises orchestration end-to-end).
+#    `nohup ... &` detaches from the terminal so SSH disconnects don't kill
+#    the run. Per-phase logs land at outputs/logs/<RUN_ID>/<phase>.log.
+nohup ./scripts/pipeline.sh --profile smoke > nohup.out 2>&1 &
+tail -f nohup.out                              # follow live; Ctrl-C just stops tail
 ```
 
 See [Prerequisites](#prerequisites) for env vars and manual venv setup,
@@ -200,19 +203,34 @@ For automated end-to-end runs, use the `pipeline.sh` orchestrator instead of
 invoking each step manually. It parses CLI flags, sources the right venv per
 phase, and dispatches the work.
 
+All long-running invocations use `nohup ... &` so SSH disconnects don't kill
+the run. `pipeline.sh` writes per-phase logs to `outputs/logs/<RUN_ID>/<phase>.log`
+automatically — `nohup.out` captures the orchestrator's own banner lines
+(RUN_ID, manifest path, etc.).
+
 ```bash
 # Smoke test — minimal scale, ~minutes
-./scripts/pipeline.sh --profile smoke
+nohup ./scripts/pipeline.sh --profile smoke > nohup.out 2>&1 &
 
 # Single phase, or a single step within one
-./scripts/pipeline.sh --phase extract
-./scripts/pipeline.sh --phase extract --step parse_pdf
+nohup ./scripts/pipeline.sh --phase extract > nohup.out 2>&1 &
+nohup ./scripts/pipeline.sh --phase extract --step parse_pdf > nohup.out 2>&1 &
 
 # Paper-faithful run on RunPod
-./scripts/pipeline.sh --profile paper --platform runpod
+nohup ./scripts/pipeline.sh --profile paper --platform runpod > nohup.out 2>&1 &
 
-# Show all flags
+# Track the run
+tail -f nohup.out                              # orchestrator stdout
+tail -f outputs/logs/*/extract.log             # latest phase log
+
+# Stop the run
+kill %1                                         # most recent background job
+# OR find the pid:
+pgrep -af pipeline.sh
+
+# Show all flags (interactive — no nohup needed)
 ./scripts/pipeline.sh --help
+./scripts/pipeline.sh --list                   # phases + steps with descriptions
 ```
 
 The 6 phases (engineering view) roll up into 4 stages (customer view):
@@ -244,7 +262,7 @@ The env vars `SI_DOMAIN`, `SI_PROFILE`, and `SI_PLATFORM` are set by
 ```bash
 cp domains/_template.yaml domains/<your-domain>.yaml
 # fill in entity_categories, relations, few_shot_examples, focus_instructions
-./scripts/pipeline.sh --domain <your-domain> --profile smoke
+nohup ./scripts/pipeline.sh --domain <your-domain> --profile smoke > nohup.out 2>&1 &
 ```
 
 `domains/_template.yaml` is the schema contract; its comments document
