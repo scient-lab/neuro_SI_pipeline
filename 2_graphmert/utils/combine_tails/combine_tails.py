@@ -94,13 +94,12 @@ def load_all_shard_csvs(pred_dir: str) -> pd.DataFrame:
 
 
 def filter_scientific_triples(df: pd.DataFrame, llm: LLM, tokenizer, microbatch: int,
-                              no_think: bool = True) -> pd.DataFrame:
+                              no_think: bool = False) -> pd.DataFrame:
     """Use LLM to filter triples to scientifically plausible ones only.
 
-    no_think: append "/no_think" to suppress Qwen3 <think>. This step is
-    plausibility classification (yes/no), max_tokens=10 in sampling — no
-    space for thinking anyway. Default True. configs/default.yaml::
-    graphmert.combine_tails_no_think.
+    no_think: append "/no_think" to suppress Qwen3 <think>. Default False —
+    empirical regression on Purves showed disabling thinking destroys
+    quality. configs/default.yaml::graphmert.combine_tails_no_think.
     """
     results = []
     t0 = time.time()
@@ -182,10 +181,10 @@ def main():
         if _repo_root not in _sys.path:
             _sys.path.insert(0, _repo_root)
         from pipeline_config import get_phase_param
-        no_think = bool(get_phase_param('graphmert', 'combine_tails_no_think', True))
+        no_think = bool(get_phase_param('graphmert', 'combine_tails_no_think', False))
     except Exception as e:
-        logger.warning("could not read graphmert.combine_tails_no_think (%s) — defaulting True", e)
-        no_think = True
+        logger.warning("could not read graphmert.combine_tails_no_think (%s) — defaulting False", e)
+        no_think = False
 
     filtered = filter_scientific_triples(df, llm, tokenizer, args.internal_microbatch, no_think=no_think)
 

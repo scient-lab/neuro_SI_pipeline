@@ -196,10 +196,10 @@ def explode_queries(ds, tokenizer: AutoTokenizer) -> List[Dict[str, Any]]:
     return out
 
 
-def infer_batch(llm, sys_prompt, batch, no_think: bool = True) -> List[Dict[str, Any]]:
-    # Qwen3 thinking control. Constrained generation (head + rel → tail list
-    # from fixed vocabulary). Default True; configs/default.yaml::graphmert.
-    # predict_tails_no_think.
+def infer_batch(llm, sys_prompt, batch, no_think: bool = False) -> List[Dict[str, Any]]:
+    # Qwen3 thinking control. Default False (thinking ON) — empirical
+    # regression on Purves showed quality collapse without thinking.
+    # configs/default.yaml::graphmert.predict_tails_no_think.
     think_suffix = " /no_think" if no_think else ""
     conversations = [
         [{"role": "system", "content": sys_prompt},
@@ -262,10 +262,10 @@ def main():
         if _repo_root not in _sys.path:
             _sys.path.insert(0, _repo_root)
         from pipeline_config import get_phase_param
-        no_think = bool(get_phase_param('graphmert', 'predict_tails_no_think', True))
+        no_think = bool(get_phase_param('graphmert', 'predict_tails_no_think', False))
     except Exception as e:
-        logger.warning("could not read graphmert.predict_tails_no_think (%s) — defaulting True", e)
-        no_think = True
+        logger.warning("could not read graphmert.predict_tails_no_think (%s) — defaulting False", e)
+        no_think = False
     logger.info("Qwen3 thinking: %s", "OFF (/no_think)" if no_think else "ON")
 
     query_rows, triple_rows = [], []

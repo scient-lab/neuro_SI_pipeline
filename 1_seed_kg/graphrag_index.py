@@ -143,7 +143,7 @@ def extract_graph(text_units: pd.DataFrame, batch_size: int = 100):
     # the model skips <think>...</think> (parser strips it anyway; prompt
     # forbids the inference it does). See configs/default.yaml::
     # extract.extract_triples_no_think.
-    no_think    = get_phase_param('extract', 'extract_triples_no_think', True)
+    no_think    = get_phase_param('extract', 'extract_triples_no_think', False)
     think_directive = " /no_think" if no_think else ""
     # vLLM init knobs — every one configurable per profile so smoke / pilot /
     # paper can match their hardware. Pattern mirrors 2_graphmert/predict_tails_llm.py.

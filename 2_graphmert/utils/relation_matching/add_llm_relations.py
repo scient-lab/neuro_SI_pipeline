@@ -119,15 +119,15 @@ def extract_rightmost_json_object(response: str) -> str:
     return ""
 
 
-def format_vllm_chat_messages(batch, tokenizer, pos_examples, no_think: bool = True):
+def format_vllm_chat_messages(batch, tokenizer, pos_examples, no_think: bool = False):
     prompts: List[List[Dict[str, str]]] = []
     to_call_indices: List[int] = []
     input_ids_list = batch["input_ids"]
     head_positions_list = batch.get("head_positions", [None] * len(input_ids_list))
 
-    # Qwen3 thinking control. Pattern-match relation extraction doesn't
-    # benefit from <think>; suppress with /no_think to reclaim tokens.
-    # Config knob: graphmert.add_llm_relations_no_think (defaults true).
+    # Qwen3 thinking control. Default false (thinking ON) — A/B testing
+    # on Purves showed disabling thinking destroys quality. Config knob:
+    # graphmert.add_llm_relations_no_think (defaults false).
     think_suffix = " /no_think" if no_think else ""
 
     for i in range(len(input_ids_list)):
@@ -174,10 +174,10 @@ def main() -> None:
         if _repo_root not in _sys.path:
             _sys.path.insert(0, _repo_root)
         from pipeline_config import get_phase_param
-        no_think = bool(get_phase_param('graphmert', 'add_llm_relations_no_think', True))
+        no_think = bool(get_phase_param('graphmert', 'add_llm_relations_no_think', False))
     except Exception as e:
-        logger.warning("could not read graphmert.add_llm_relations_no_think (%s) — defaulting True", e)
-        no_think = True
+        logger.warning("could not read graphmert.add_llm_relations_no_think (%s) — defaulting False", e)
+        no_think = False
     logger.info("Qwen3 thinking: %s", "OFF (/no_think)" if no_think else "ON")
 
     logger.info("Loading tokenizer: %s", args.tokenizer)

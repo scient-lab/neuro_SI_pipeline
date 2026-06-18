@@ -104,10 +104,10 @@ def main():
         if _repo_root not in _sys.path:
             _sys.path.insert(0, _repo_root)
         from pipeline_config import get_phase_param
-        no_think = bool(get_phase_param('graphmert', 'entity_discovery_no_think', True))
+        no_think = bool(get_phase_param('graphmert', 'entity_discovery_no_think', False))
     except Exception as e:
-        logger.warning("could not read graphmert.entity_discovery_no_think (%s) — defaulting True", e)
-        no_think = True
+        logger.warning("could not read graphmert.entity_discovery_no_think (%s) — defaulting False", e)
+        no_think = False
     think_suffix = " /no_think" if no_think else ""
     logger.info("Qwen3 thinking: %s", "OFF (/no_think)" if no_think else "ON")
 
