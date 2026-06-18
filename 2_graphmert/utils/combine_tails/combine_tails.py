@@ -27,9 +27,14 @@ import ast
 import sys
 import time
 import argparse
+from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 import numpy as np
+
+# Pipeline config loader (repo root, 3 levels up from this file).
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+from pipeline_config import get_phase_param  # noqa: E402
 import pandas as pd
 
 from vllm import LLM, SamplingParams
@@ -148,7 +153,17 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
 
     logger.info("Loading vLLM model: %s", args.model_id)
-    llm = LLM(model=args.model_id, trust_remote_code=True, max_model_len=4096)
+    # Tunable per profile (graphmert.combine_tails_max_model_len). 4096 is
+    # safe; raise on 80 GB cards for higher concurrent batch.
+    combine_max_model_len = get_phase_param('graphmert', 'combine_tails_max_model_len', 4096)
+    combine_tp_size = get_phase_param('graphmert', 'combine_tails_tensor_parallel_size', 1)
+    combine_gpu_mem = get_phase_param('graphmert', 'combine_tails_gpu_memory_utilization', 0.90)
+    logger.info("vLLM init: max_model_len=%d tp_size=%d gpu_mem_util=%s",
+                combine_max_model_len, combine_tp_size, combine_gpu_mem)
+    llm = LLM(model=args.model_id, trust_remote_code=True,
+              max_model_len=combine_max_model_len,
+              tensor_parallel_size=combine_tp_size,
+              gpu_memory_utilization=combine_gpu_mem)
 
     filtered = filter_scientific_triples(df, llm, tokenizer, args.internal_microbatch)
 

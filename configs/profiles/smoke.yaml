@@ -16,6 +16,10 @@ models:
 
 extract:
   max_input_examples: 300
+  # Smoke runs on 12-16 GB cards (3060 / A4000) with the small Qwen2.5-3B
+  # extract model. Snug max_model_len gives KV cache room for more
+  # concurrent prompts at this scale.
+  max_model_len: 2048
   # Smoke-scale input corpus (committed to the repo for reproducibility).
   # 10 Wikipedia neuroscience articles, ~360 KB total. See README in that
   # directory for provenance and regeneration instructions.

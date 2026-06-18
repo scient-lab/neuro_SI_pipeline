@@ -43,7 +43,22 @@ extract:
   # Sampling for the extraction LLM (1_seed_kg/graphrag_index.py)
   temperature: 0.6
   top_p: 0.95
+  top_k: 20
+  min_p: 0
   max_tokens: 8192
+  # vLLM init knobs — profile-tunable for hardware. KV-cache budget per
+  # sequence; too high causes thrashing on smaller cards (smoke shrinks it,
+  # paper can grow it). Chunk size is 1200 tokens; responses rarely exceed
+  # 2-3K, so 4096 is the safe default.
+  max_model_len: 4096
+  # Single-GPU by default. Paper multi-GPU pilots set this in their profile.
+  tensor_parallel_size: 1
+  # Fraction of GPU memory vLLM is allowed to occupy. 0.90 default; bump up
+  # if you've got dedicated VRAM, drop if other processes share the GPU.
+  gpu_memory_utilization: 0.90
+  # CLI-overridable in graphrag_index.py via --batch_size / --rows_per_job.
+  batch_size: 100         # concurrent prompts per LLM call
+  rows_per_job: 8000      # rows per SLURM array job (SLURM only)
 
 # --- Phase: validate -----------------------------------------------------
 validate:
@@ -69,6 +84,12 @@ graphmert:
   predict_tensor_parallel_size: 1
   predict_max_model_len: 8192
   predict_gpu_memory_utilization: 0.90
+  # Combine-tails LLM init (2_graphmert/utils/combine_tails/combine_tails.py)
+  # — separate keys so combine_tails can run on a different GPU profile than
+  # predict_tails if needed.
+  combine_tails_max_model_len: 4096
+  combine_tails_tensor_parallel_size: 1
+  combine_tails_gpu_memory_utilization: 0.90
 
 # --- Phase: curriculum ---------------------------------------------------
 curriculum:
@@ -83,6 +104,10 @@ sft:
   lora_alpha: 64              # was 32 — code uses 64
   lora_dropout: 0.05
   block_size: 32768
+  # DataLoader workers per rank. RunPod single-node 2 is fine; SLURM with
+  # --cpus-per-task=4 should drop to 1 to avoid oversubscription.
+  dataloader_num_workers: 2
+  dataloader_prefetch_factor: 2
 
 # --- Phase: rl (matches 3_si_curriculum/RL/rl_training.py) --------------
 rl:
@@ -100,3 +125,13 @@ rl:
   save_steps: 100
   generation_dump_every: 25
   reward_source: kg_path_alignment
+  # GRPO rollout sampling — used by GRPOConfig in rl_training.py
+  generation_temperature: 0.6
+  generation_top_p: 0.9
+  generation_repetition_penalty: 1.15
+  # Smooth length-penalty curve. Soft start = no penalty; hard cap = full
+  # penalty. Tunable per domain (long-thinking vs short-answer).
+  length_penalty_soft_start: 550
+  length_penalty_hard_cap: 1500
+  # Path-alignment reward gates on the first N tokens of <think>.
+  path_alignment_thinking_tokens: 550

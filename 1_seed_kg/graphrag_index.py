@@ -75,10 +75,14 @@ def parse_args():
                     help="Path to local vLLM model (required for step 3)")
     ap.add_argument("--step", type=int, default=None,
                     help="Pipeline step to run: 1, 2, 3, 4, or 5. Omit to run all sequentially.")
-    ap.add_argument("--batch_size", type=int, default=100,
-                    help="LLM batch size for step 3 (default: 100)")
-    ap.add_argument("--rows_per_job", type=int, default=8000,
-                    help="Rows processed per SLURM array job in step 3 (default: 8000)")
+    # Defaults come from extract.batch_size / extract.rows_per_job in the
+    # merged config (profile > domain > default). CLI still wins when set.
+    ap.add_argument("--batch_size", type=int,
+                    default=get_phase_param('extract', 'batch_size', 100),
+                    help="LLM batch size for step 3 (config: extract.batch_size)")
+    ap.add_argument("--rows_per_job", type=int,
+                    default=get_phase_param('extract', 'rows_per_job', 8000),
+                    help="Rows per SLURM array job in step 3 (config: extract.rows_per_job)")
     return ap.parse_args()
 
 
@@ -135,20 +139,28 @@ def extract_graph(text_units: pd.DataFrame, batch_size: int = 100):
     temperature = get_phase_param('extract', 'temperature', 0.6)
     top_p       = get_phase_param('extract', 'top_p', 0.95)
     max_tokens  = get_phase_param('extract', 'max_tokens', 8192)
-    top_k = 20   # vLLM-specific; kept as code constant
-    min_p = 0    # vLLM-specific; kept as code constant
+    # vLLM init knobs — every one configurable per profile so smoke / pilot /
+    # paper can match their hardware. Pattern mirrors 2_graphmert/predict_tails_llm.py.
+    max_model_len          = get_phase_param('extract', 'max_model_len', 4096)
+    tensor_parallel_size   = get_phase_param('extract', 'tensor_parallel_size', 1)
+    gpu_memory_utilization = get_phase_param('extract', 'gpu_memory_utilization', 0.90)
+    top_k                  = get_phase_param('extract', 'top_k', 20)
+    min_p                  = get_phase_param('extract', 'min_p', 0)
 
     relation_types = get_relation_types()
     relation_list_str = json.dumps(relation_types)
 
     logger.info(f"Using relation set: {RELATION_SET_NAME} (n={len(relation_types)})")
     logger.info(f"Loading LLM: {model_id}")
+    logger.info(f"vLLM init: max_model_len={max_model_len}  "
+                f"tp_size={tensor_parallel_size}  gpu_mem_util={gpu_memory_utilization}")
 
     llm = LLM(
         model=model_id,
         trust_remote_code=True,
-        max_model_len=20000,
-        tensor_parallel_size=1,
+        max_model_len=max_model_len,
+        tensor_parallel_size=tensor_parallel_size,
+        gpu_memory_utilization=gpu_memory_utilization,
         enable_prefix_caching=True,
     )
     sampling_params = SamplingParams(

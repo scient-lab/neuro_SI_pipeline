@@ -22,14 +22,16 @@ import logging
 
 INPUT_PATH = os.environ.get("INPUT_PATH", "")   # Path to input dataset (set via env var or edit here)
 OUTPUT_PATH = os.environ.get("OUTPUT_PATH", "")  # Path to save processed dataset
-MODE = "rl"                  # "sft" for supervised fine-tuning, "rl" for reinforcement learning
+MODE = os.environ.get("RL_DATA_PREP_MODE", "rl")          # "sft" or "rl"
 
-# Take only the last N items from the dataset. Set to None to use all items.
-LAST_N = 5000                 # e.g. 5000 to take the last 5000 items, None for all
+# Take only the last N items from the dataset; "0" or "all" → use all items.
+# Smoke/pilot can shrink this for fast iteration; paper sets it to all.
+_last_n_raw = os.environ.get("RL_LAST_N", "5000").lower()
+LAST_N = None if _last_n_raw in ("0", "all", "none", "") else int(_last_n_raw)
 
-ENABLE_THINKING = True        # Enable thinking mode for RL preprocessing (adds /think token)
-EVAL_SPLIT_RATIO = 0.02       # Ratio of data to use for evaluation in SFT mode
-MIN_EVAL_SIZE = 200           # Minimum number of examples in eval split
+ENABLE_THINKING = os.environ.get("RL_ENABLE_THINKING", "1").lower() in ("1", "true", "yes", "on")
+EVAL_SPLIT_RATIO = float(os.environ.get("RL_EVAL_SPLIT_RATIO", "0.02"))   # SFT mode only
+MIN_EVAL_SIZE   = int(os.environ.get("RL_MIN_EVAL_SIZE", "200"))         # SFT mode only
 
 # ============================================================
 # END CONFIGURATION

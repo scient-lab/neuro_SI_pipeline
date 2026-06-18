@@ -47,9 +47,12 @@ from trl import GRPOConfig, GRPOTrainer
 from data_prep import preprocess_grpo_dataset
 
 # =====================================================================
-#                       MANUAL OVERRIDES
-DO_EVAL = False             # False = skip the slow eval entirely, True = run eval
-NUM_EVAL_EXAMPLES = 20      # Number of examples to evaluate (overrides config.eval_size)
+#                       MANUAL OVERRIDES (env-var driven)
+# RL_DO_EVAL=1 to run eval (default off — slow); RL_NUM_EVAL_EXAMPLES
+# tunes how many items get evaluated. Originally hardcoded; promoted to
+# env vars so a paid run can switch without source edits.
+DO_EVAL = os.environ.get("RL_DO_EVAL", "").lower() in ("1", "true", "yes", "on")
+NUM_EVAL_EXAMPLES = int(os.environ.get("RL_NUM_EVAL_EXAMPLES", "20"))
 # =====================================================================
 
 
@@ -238,10 +241,19 @@ def repetition_penalty_factor(tokens: List[str], threshold: float = 0.35) -> flo
     return max(0.0, base * run_penalty)
 
 
-def smooth_length_penalty(num_tokens: int, soft_start: int = 550, hard_cap: int = 1500, max_penalty: float = 1.0) -> float:
+# Defaults read once at module load — config-tunable per profile.
+LENGTH_PENALTY_SOFT_START = get_phase_param('rl', 'length_penalty_soft_start', 550)
+LENGTH_PENALTY_HARD_CAP   = get_phase_param('rl', 'length_penalty_hard_cap',   1500)
+PATH_ALIGNMENT_THINKING_TOKENS = get_phase_param('rl', 'path_alignment_thinking_tokens', 550)
+
+
+def smooth_length_penalty(num_tokens: int,
+                          soft_start: int = LENGTH_PENALTY_SOFT_START,
+                          hard_cap: int = LENGTH_PENALTY_HARD_CAP,
+                          max_penalty: float = 1.0) -> float:
     """
-    Smooth length penalty:
-    V5: soft_start raised to 550, hard_cap raised to 1500.
+    Smooth length penalty. Defaults loaded from config at module init
+    (rl.length_penalty_soft_start / rl.length_penalty_hard_cap).
     """
     if num_tokens <= soft_start:
         return 0.0
@@ -250,14 +262,8 @@ def smooth_length_penalty(num_tokens: int, soft_start: int = 550, hard_cap: int 
     return max_penalty * (num_tokens - soft_start) / (hard_cap - soft_start)
 
 
-# ---------------------------------------------------------------------
-# V5: truncate thinking to first 550 tokens
-# ---------------------------------------------------------------------
-
-def truncate_thinking_for_coverage(thinking: str, max_tokens: int = 550) -> str:
-    """
-    V5: Cap the thinking string at its first 550 tokens.
-    """
+def truncate_thinking_for_coverage(thinking: str, max_tokens: int = PATH_ALIGNMENT_THINKING_TOKENS) -> str:
+    """Cap the thinking string at its first N tokens (config: rl.path_alignment_thinking_tokens)."""
     if _TOKENIZER_REF is not None:
         ids = _TOKENIZER_REF.encode(thinking, add_special_tokens=False)
         if len(ids) <= max_tokens:
@@ -564,12 +570,14 @@ def train():
     parser = transformers.HfArgumentParser(TrainingConfig)
     config = parser.parse_args_into_dataclasses()[0]    
 
-    # ---- Apply Manual Overrides ----
+    # ---- Apply env-var overrides (eval scope) ----
+    # `num_train_epochs` is NO LONGER silently overridden — it now flows from
+    # CLI (--num_train_epochs) or rl_training's own config defaults. This used
+    # to be `config.num_train_epochs = 10` which silently ignored CLI/config.
     if not DO_EVAL:
         config.eval_size = 0
     else:
         config.eval_size = NUM_EVAL_EXAMPLES
-    config.num_train_epochs = 10
     if not config.output_dir:
         raise ValueError("output_dir is required. Pass --output_dir to the script.")
 
@@ -660,9 +668,10 @@ def train():
 
         num_generations=config.num_generations,
         max_completion_length=config.max_completion_length,
-        temperature=0.6,
-        top_p=0.9,
-        repetition_penalty=1.15,  # V5: Reverted to 1.15 from 1.22
+        # Sampling for GRPO rollouts — config-tunable.
+        temperature=get_phase_param('rl', 'generation_temperature', 0.6),
+        top_p=get_phase_param('rl', 'generation_top_p', 0.9),
+        repetition_penalty=get_phase_param('rl', 'generation_repetition_penalty', 1.15),
 
         optim="adamw_torch",
 

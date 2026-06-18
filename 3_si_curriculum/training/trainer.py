@@ -375,16 +375,19 @@ def train():
     args.dataset_text_field = 'text'
     args.max_seq_length = config.block_size
     # Limit dataloader workers to avoid IO stalls on /scratch that cascade
-    # into NCCL timeouts
-    args.dataloader_num_workers = 2
-    args.dataloader_prefetch_factor = 2
+    # into NCCL timeouts. Config-tunable per profile because RunPod single-node,
+    # Princeton SLURM cluster, and paper-scale multi-node have very different
+    # I/O profiles and CPU budgets.
+    args.dataloader_num_workers = get_phase_param('sft', 'dataloader_num_workers', 2)
+    args.dataloader_prefetch_factor = get_phase_param('sft', 'dataloader_prefetch_factor', 2)
 
     if is_main:
         print("--- Training Safety Config ---")
         print("  save_strategy         : no (save per-epoch via EpochCheckpointCallback)")
         print("  dataloader_drop_last  : True")
         print("  ddp_timeout           : 7200s")
-        print("  dataloader_num_workers: 2")
+        print(f"  dataloader_num_workers: {args.dataloader_num_workers}")
+        print(f"  dataloader_prefetch  : {args.dataloader_prefetch_factor}")
         print(f"  learning_rate         : {args.learning_rate}")
 
     # ------------------------------------------------------------------ #
