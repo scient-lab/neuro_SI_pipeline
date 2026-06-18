@@ -126,17 +126,29 @@ _manifest() {
 }
 
 # _cw_ship <phase> <step> <logfile> — push a finished step log to CloudWatch.
-# No-op unless CW_LOG_GROUP is set; non-fatal (local file + S3 stay canonical).
+# No-op unless AWS_CLOUDWATCH_LOG_GROUP is set; non-fatal (local file + S3 stay canonical).
 _cw_ship() {
     local phase="$1" step="$2" logfile="$3"
-    [[ -n "${CW_LOG_GROUP:-}" ]] || return 0
+    [[ -n "${AWS_CLOUDWATCH_LOG_GROUP:-}" ]] || return 0
     [[ -f "$logfile" ]] || return 0
-    command -v python3 >/dev/null 2>&1 || return 0
-    python3 "${REPO_ROOT}/scripts/lib/cw_ship.py" \
-        --group "$CW_LOG_GROUP" \
-        --stream "${RUN_ID:-adhoc}/${phase}/${step}" \
-        --file "$logfile" \
-        || log_warn "CloudWatch ship failed for $phase/$step (non-fatal)"
+    # Prefer uv-managed ephemeral env with boto3 injected — keeps the
+    # per-phase venvs (graphrag / graphmert / si_curriculum) free of boto3
+    # pollution. Falls back to system python3 if uv isn't on PATH (the active
+    # venv's python3 will be missing boto3 → cw_ship.py exits 1 → we log_warn).
+    if command -v uv >/dev/null 2>&1; then
+        uv run --no-project --quiet --with 'boto3>=1.34' python3 \
+            "${REPO_ROOT}/scripts/lib/cw_ship.py" \
+            --group "$AWS_CLOUDWATCH_LOG_GROUP" \
+            --stream "${RUN_ID:-adhoc}/${phase}/${step}" \
+            --file "$logfile" \
+            || log_warn "CloudWatch ship failed for $phase/$step (non-fatal)"
+    elif command -v python3 >/dev/null 2>&1; then
+        python3 "${REPO_ROOT}/scripts/lib/cw_ship.py" \
+            --group "$AWS_CLOUDWATCH_LOG_GROUP" \
+            --stream "${RUN_ID:-adhoc}/${phase}/${step}" \
+            --file "$logfile" \
+            || log_warn "CloudWatch ship failed for $phase/$step (non-fatal)"
+    fi
 }
 
 # run_step <phase> <step> <fn> [args...]
@@ -165,7 +177,7 @@ run_step() {
     local logfile="$logdir/${step}.log"
     local rellog="${logfile#"${REPO_ROOT}"/}"
     local cwstream=""
-    [[ -n "${CW_LOG_GROUP:-}" ]] && cwstream="${RUN_ID:-adhoc}/${phase}/${step}"
+    [[ -n "${AWS_CLOUDWATCH_LOG_GROUP:-}" ]] && cwstream="${RUN_ID:-adhoc}/${phase}/${step}"
 
     _manifest start-step --path "$PIPELINE_MANIFEST" --phase "$phase" --step "$step" \
         --log-file "$rellog" --cw-stream "$cwstream"

@@ -155,7 +155,9 @@ ENV_FILE="$SI_HOME/.env"
     [[ -n "${AWS_DEFAULT_REGION:-}"  ]] && echo "AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION"
     # Periodic background output sync — pipeline.sh runs sync_outputs.sh
     # every N sec to catch mid-phase HF Trainer checkpoints. Unset = off.
-    [[ -n "${SYNC_INTERVAL_SEC:-}"   ]] && echo "SYNC_INTERVAL_SEC=$SYNC_INTERVAL_SEC"
+    [[ -n "${S3_SYNC_INTERVAL_SEC:-}"   ]] && echo "S3_SYNC_INTERVAL_SEC=$S3_SYNC_INTERVAL_SEC"
+    # CloudWatch Logs target (per-step ship by lib/common.sh::_cw_ship).
+    [[ -n "${AWS_CLOUDWATCH_LOG_GROUP:-}"        ]] && echo "AWS_CLOUDWATCH_LOG_GROUP=$AWS_CLOUDWATCH_LOG_GROUP"
     # graphrag's load_config() does Template(text).substitute(os.environ) on
     # 1_seed_kg/settings.yaml, which references ${GRAPHRAG_API_KEY} for both
     # default_chat_model and default_embedding_model. Our pipeline_3 path

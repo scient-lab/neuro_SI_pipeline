@@ -263,25 +263,25 @@ _s3_sync_if_configured() {
     fi
 }
 
-# Periodic background S3 sync — opt-in via SYNC_INTERVAL_SEC. Catches
+# Periodic background S3 sync — opt-in via S3_SYNC_INTERVAL_SEC. Catches
 # mid-phase checkpoints (HF Trainer's save_steps writes) so a pod crash at
-# minute N leaves S3 with state up to roughly minute (N - SYNC_INTERVAL_SEC).
+# minute N leaves S3 with state up to roughly minute (N - S3_SYNC_INTERVAL_SEC).
 # aws s3 sync is incremental, so cost is tiny even on a long phase.
 SYNC_BG_PID=""
 _start_background_sync() {
-    if [[ -z "${S3_URI:-}" || -z "${SYNC_INTERVAL_SEC:-}" ]]; then return; fi
+    if [[ -z "${S3_URI:-}" || -z "${S3_SYNC_INTERVAL_SEC:-}" ]]; then return; fi
     if [[ ! -x "$SCRIPT_DIR/data_prep/sync_outputs.sh" ]]; then return; fi
     # Validate interval is a positive integer.
-    if ! [[ "$SYNC_INTERVAL_SEC" =~ ^[0-9]+$ ]] || [[ "$SYNC_INTERVAL_SEC" -lt 10 ]]; then
-        log_warn "SYNC_INTERVAL_SEC='$SYNC_INTERVAL_SEC' invalid (need int >= 10s); skipping background sync"
+    if ! [[ "$S3_SYNC_INTERVAL_SEC" =~ ^[0-9]+$ ]] || [[ "$S3_SYNC_INTERVAL_SEC" -lt 10 ]]; then
+        log_warn "S3_SYNC_INTERVAL_SEC='$S3_SYNC_INTERVAL_SEC' invalid (need int >= 10s); skipping background sync"
         return
     fi
-    log_info "Background S3 sync: every ${SYNC_INTERVAL_SEC}s"
+    log_info "Background S3 sync: every ${S3_SYNC_INTERVAL_SEC}s"
     (
         # Detach from terminal job control; survive SSH-style hangups since
         # the parent pipeline.sh might be under nohup itself.
         trap '' HUP
-        while sleep "$SYNC_INTERVAL_SEC"; do
+        while sleep "$S3_SYNC_INTERVAL_SEC"; do
             "$SCRIPT_DIR/data_prep/sync_outputs.sh" >/dev/null 2>&1 || true
         done
     ) &

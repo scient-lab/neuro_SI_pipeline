@@ -324,11 +324,52 @@ runs show as `(historical)` because the manifest only tracks the latest run.
 
 ### Optional: ship step logs to AWS CloudWatch
 
-Set `CW_LOG_GROUP` to also push each finished step log to CloudWatch Logs
-(stream `<run_id>/<phase>/<step>`, recorded as `cw_log_stream` in the manifest).
-No-op when unset; non-fatal on failure (local file + S3 stay canonical).
-Requires `boto3` + AWS creds. Implemented in `lib/cw_ship.py` (per-step batch
-push). For *live* tailing instead of per-step batches, install the CloudWatch
+Set `AWS_CLOUDWATCH_LOG_GROUP` in `.env.runpod` to push each finished step log to
+CloudWatch Logs. One stream per `(run_id, phase, step)`; recorded as
+`cw_log_stream` in the manifest. No-op when unset; non-fatal on failure
+(local file + S3 stay canonical).
+
+```bash
+# .env.runpod
+AWS_CLOUDWATCH_LOG_GROUP=/enlibra/dss/runs/pipeline
+```
+
+**One-time AWS setup** (do this with admin creds, then never again):
+
+```bash
+USER=kg-si-pipeline
+POLICY=KGSIPipelineCloudWatchLogs
+REGION=us-east-1
+ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+LOG_GROUP=/enlibra/dss/runs/pipeline
+
+# 1. Permission scope: write only under /enlibra/dss/runs/*
+cat > /tmp/${POLICY}.json <<EOF
+{ "Version": "2012-10-17", "Statement": [{
+  "Sid": "WriteToOwnedLogGroup",
+  "Effect": "Allow",
+  "Action": ["logs:CreateLogGroup","logs:CreateLogStream","logs:PutLogEvents",
+             "logs:DescribeLogGroups","logs:DescribeLogStreams"],
+  "Resource": [
+    "arn:aws:logs:${REGION}:${ACCOUNT_ID}:log-group:/enlibra/dss/runs/*",
+    "arn:aws:logs:${REGION}:${ACCOUNT_ID}:log-group:/enlibra/dss/runs/*:log-stream:*"]
+}]}
+EOF
+aws iam put-user-policy --user-name "$USER" --policy-name "$POLICY" \
+    --policy-document file:///tmp/${POLICY}.json
+
+# 2. Pre-create the group with retention
+aws logs create-log-group --log-group-name "$LOG_GROUP"
+aws logs put-retention-policy --log-group-name "$LOG_GROUP" --retention-in-days 30
+```
+
+**On the pod**: `boto3` is NOT installed in the per-phase venvs (would pollute
+the graphrag / graphmert / si_curriculum reqs). Instead, `_cw_ship` runs
+`cw_ship.py` via `uv run --with boto3` — ephemeral env per step boundary, no
+venv contamination. Fallback: if `uv` is missing, falls back to whatever
+`python3` is on PATH and silently skips when boto3 isn't importable.
+
+For *live* tailing instead of per-step batches, install the CloudWatch
 unified agent in `runpod/bootstrap.sh` pointed at `logs/<run_id>/`.
 
 ## Output → S3 sync
@@ -340,7 +381,7 @@ unified agent in `runpod/bootstrap.sh` pointed at `logs/<run_id>/`.
 `pipeline.sh` calls it:
 - After each phase completes (mid-run crash resilience)
 - Once more at pipeline end (catch-all)
-- **Periodically in the background during the run** (opt-in via `SYNC_INTERVAL_SEC`)
+- **Periodically in the background during the run** (opt-in via `S3_SYNC_INTERVAL_SEC`)
 
 All calls are **best-effort** — sync failure prints a warning and continues
 (non-fatal). No-op when `S3_URI` is unset (workstation case).
@@ -352,7 +393,7 @@ single phase (e.g. `graphmert.train_mnm` running hours with HF Trainer
 writing checkpoints every `save_steps`), a pod crash mid-phase loses
 everything since the last phase boundary.
 
-Set `SYNC_INTERVAL_SEC` (e.g. `300` for 5 min) in `.env.runpod` and
+Set `S3_SYNC_INTERVAL_SEC` (e.g. `300` for 5 min) in `.env.runpod` and
 `pipeline.sh` will spawn a background loop that runs `sync_outputs.sh`
 every N seconds for the lifetime of the run. The loop is killed by an
 EXIT trap on success, failure, or `Ctrl-C`. `aws s3 sync` is incremental,
@@ -360,7 +401,7 @@ so cost is tiny even on a 3-hour training step.
 
 ```bash
 # .env.runpod (or exported manually)
-SYNC_INTERVAL_SEC=300        # every 5 min; minimum 10s
+S3_SYNC_INTERVAL_SEC=300        # every 5 min; minimum 10s
 # unset / blank = disabled (current default behavior)
 ```
 

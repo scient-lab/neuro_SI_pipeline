@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Ship one completed step log to AWS CloudWatch Logs (optional, best-effort).
 
-Invoked by common.sh::_cw_ship after a step finishes, ONLY when CW_LOG_GROUP
+Invoked by common.sh::_cw_ship after a step finishes, ONLY when AWS_CLOUDWATCH_LOG_GROUP
 is set. One log stream per (run_id, phase, step) — so a single put_log_events
 batch covers the whole step and we never juggle sequence tokens across calls.
 

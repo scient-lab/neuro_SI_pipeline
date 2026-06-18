@@ -27,7 +27,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+# Two levels up: scripts/runpod/serverless_smoke.sh -> repo root.
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 # --- Defaults ---------------------------------------------------------------
 DEFAULT_ENDPOINT="8d8le1qwbz760l"

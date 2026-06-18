@@ -25,7 +25,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+# Two levels up: scripts/runpod/launch.sh -> repo root.
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 # --help is handled before sourcing the env file so it always works.
 for arg in "$@"; do
@@ -291,7 +292,7 @@ env = {
 for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "HF_TOKEN", "WANDB_API_KEY",
           "S3_URI", "CORPUS_PATH", "AWS_ACCESS_KEY_ID",
           "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION",
-          "SYNC_INTERVAL_SEC"):
+          "S3_SYNC_INTERVAL_SEC", "AWS_CLOUDWATCH_LOG_GROUP"):
     v = os.environ.get(k)
     if v:
         env[k] = v
