@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# launch_runpod.sh - POST a RunPod pod with env vars pre-injected.
+# scripts/runpod/launch.sh — POST a RunPod pod with env vars pre-injected.
 #
 # Reads secrets from .env.runpod (workstation-only, gitignored) and hardware
 # defaults from configs/profiles/<profile>.yaml::runpod (committed). CLI
@@ -10,11 +10,11 @@
 #                              (otherwise bootstrap on the pod will halt)
 #
 # Usage:
-#   ./scripts/launch_runpod.sh                              # smoke profile (default)
-#   ./scripts/launch_runpod.sh --profile pilot              # bigger GPU
-#   ./scripts/launch_runpod.sh --gpu-type "NVIDIA RTX A6000" --disk-gb 200
-#   ./scripts/launch_runpod.sh --dry-run                    # print POST body, don't send
-#   ./scripts/launch_runpod.sh --discover                   # print discovered GPU chain, don't POST
+#   ./scripts/runpod/launch.sh                              # smoke profile (default)
+#   ./scripts/runpod/launch.sh --profile pilot              # bigger GPU
+#   ./scripts/runpod/launch.sh --gpu-type "NVIDIA RTX A6000" --disk-gb 200
+#   ./scripts/runpod/launch.sh --dry-run                    # print POST body, don't send
+#   ./scripts/runpod/launch.sh --discover                   # print discovered GPU chain, don't POST
 #
 # GPU selection (in order of precedence):
 #   1. --gpu-type / RUNPOD_GPU_TYPE       — pin one type, no fallback
@@ -407,11 +407,11 @@ echo
 echo "  # Option A (one-line bootstrap via curl):"
 echo "  ssh root@<pod-host> -p <port> 'bash <(curl -sH \"Authorization: token \$GITHUB_TOKEN\" \\"
 echo "       -H \"Accept: application/vnd.github.v3.raw\" \\"
-echo "       \"https://api.github.com/repos/${GITHUB_REPO}/contents/scripts/runpod_bootstrap.sh?ref=${GITHUB_BRANCH}\")'"
+echo "       \"https://api.github.com/repos/${GITHUB_REPO}/contents/scripts/runpod/bootstrap.sh?ref=${GITHUB_BRANCH}\")'"
 echo
 echo "  # Option B (clone first, then run locally):"
 echo "  ssh root@<pod-host> -p <port>"
-echo "  cd ${SI_HOME} && ./scripts/runpod_bootstrap.sh"
+echo "  cd ${SI_HOME} && ./scripts/runpod/bootstrap.sh"
 echo
 echo "Then run the pipeline:"
 echo "  cd ${SI_HOME} && ./scripts/pipeline.sh --profile ${SI_PROFILE} --platform runpod"

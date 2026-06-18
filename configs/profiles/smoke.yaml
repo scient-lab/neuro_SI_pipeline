@@ -65,12 +65,12 @@ rl:
   # biomed fork-patches (see memory: stage3-rl-12gb-gotchas) before a real
   # GPU smoke. Bare GRPO will OOM on a 3060 even with the small values above.
 
-# RunPod hardware defaults for this scale (read by scripts/launch_runpod.sh).
+# RunPod hardware defaults for this scale (read by scripts/runpod/launch.sh).
 # A4000 (16 GB) is one tier above the 3060 (12 GB) so it has more headroom —
 # but the config above is calibrated for 12 GB so the same profile works on
 # either box.
 runpod:
-  # Primary GPU selection: dynamic discovery. launch_runpod.sh queries
+  # Primary GPU selection: dynamic discovery. scripts/runpod/launch.sh queries
   # GET /v1/gpus, filters by this VRAM range and cloud_type, sorts cheapest
   # first, and attempts each in order (so we pick the cheapest available
   # instead of failing on a single hardcoded type).

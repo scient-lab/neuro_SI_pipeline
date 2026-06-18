@@ -8,8 +8,8 @@ Orchestrator + extension points for the specialized-SLM pipeline.
 |---|---|---|
 | `pipeline.sh` | local OR pod | Entry point. Parses `--domain` / `--profile` / `--platform` / `--phase` / `--step`, sources the matching venv, dispatches phases. |
 | `logs.sh` | local OR pod | View per-run / per-phase / per-step logs. Triage failures via `--error`. See [Viewing logs](#viewing-logs). |
-| `launch_runpod.sh` | local only | POSTs a RunPod pod with secrets injected. Reads `.env.runpod` + `configs/profiles/<profile>.yaml::runpod`. |
-| `runpod_bootstrap.sh` | pod only | First-run pod setup: apt install, install uv, clone repo, run `./setup.sh`, write `.env`. |
+| `runpod/launch.sh` | local only | POSTs a RunPod pod with secrets injected. Reads `.env.runpod` + `configs/profiles/<profile>.yaml::runpod`. |
+| `runpod/bootstrap.sh` | pod only | First-run pod setup: apt install, install uv, clone repo, run `./setup.sh`, write `.env`. |
 | `phases/<phase>.sh` | (sourced by pipeline.sh) | Per-phase wrapper. Sources the right venv, dispatches by step name. |
 | `platforms/<platform>.sh` | (sourced by pipeline.sh) | Per-platform wrapper. Defines `exec_phase_on_platform`. |
 | `lib/{common,venv,manifest}.sh\|.py` | (sourced helpers) | Logging, step filtering, venv activation, manifest mutations. |
@@ -58,15 +58,15 @@ $EDITOR .env.runpod                                  # set RUNPOD_API_KEY, GITHU
                                                      # GEMINI_API_KEY, HF_TOKEN, etc.
 
 # Dry-run first to see the POST body that will be sent (secrets masked)
-./scripts/launch_runpod.sh --profile smoke --dry-run
+./scripts/runpod/launch.sh --profile smoke --dry-run
 
 # Launch a pod
-./scripts/launch_runpod.sh                           # smoke profile (A4000, COMMUNITY)
-./scripts/launch_runpod.sh --profile pilot           # A6000, SECURE, 150GB
-./scripts/launch_runpod.sh --profile paper           # H100 80GB, SECURE, 300GB
+./scripts/runpod/launch.sh                           # smoke profile (A4000, COMMUNITY)
+./scripts/runpod/launch.sh --profile pilot           # A6000, SECURE, 150GB
+./scripts/runpod/launch.sh --profile paper           # H100 80GB, SECURE, 300GB
 
 # Override hardware on the fly (CLI > env > profile defaults)
-./scripts/launch_runpod.sh --profile pilot \
+./scripts/runpod/launch.sh --profile pilot \
     --gpu-type "NVIDIA H100 80GB HBM3" --disk-gb 250 --num-gpus 2
 ```
 
@@ -88,7 +88,7 @@ invoke it on the pod:**
 # On the pod (ssh in first):
 bash <(curl -sH "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3.raw" \
-            "https://api.github.com/repos/$GITHUB_REPO/contents/scripts/runpod_bootstrap.sh?ref=$GITHUB_BRANCH")
+            "https://api.github.com/repos/$GITHUB_REPO/contents/scripts/runpod/bootstrap.sh?ref=$GITHUB_BRANCH")
 ```
 
 `$GITHUB_TOKEN`, `$GITHUB_REPO`, and `$GITHUB_BRANCH` are already exported
@@ -100,7 +100,7 @@ bootstrap script from GitHub and pipes it to bash — no manual clone needed.
 ```bash
 # On the pod (ssh in first):
 git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git $SI_HOME
-cd $SI_HOME && ./scripts/runpod_bootstrap.sh
+cd $SI_HOME && ./scripts/runpod/bootstrap.sh
 ```
 
 Use Option B when you want to inspect the script before running it, or
@@ -329,7 +329,7 @@ Set `CW_LOG_GROUP` to also push each finished step log to CloudWatch Logs
 No-op when unset; non-fatal on failure (local file + S3 stay canonical).
 Requires `boto3` + AWS creds. Implemented in `lib/cw_ship.py` (per-step batch
 push). For *live* tailing instead of per-step batches, install the CloudWatch
-unified agent in `runpod_bootstrap.sh` pointed at `logs/<run_id>/`.
+unified agent in `runpod/bootstrap.sh` pointed at `logs/<run_id>/`.
 
 ## Output → S3 sync
 
@@ -398,8 +398,10 @@ still override on a per-launch basis.
 ```
 scripts/
 ├── pipeline.sh             # orchestrator entry point
-├── launch_runpod.sh        # workstation: POST pod to RunPod API
-├── runpod_bootstrap.sh     # pod: clone + setup.sh + .env
+├── runpod/                 # RunPod-specific orchestration
+│   ├── launch.sh           # workstation: POST pod to RunPod API
+│   ├── bootstrap.sh        # pod: clone + setup.sh + .env
+│   └── serverless_smoke.sh # smoke-test a serverless endpoint
 ├── phases/
 │   ├── extract.sh          # phase 1
 │   ├── validate.sh         # phase 2

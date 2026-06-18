@@ -33,7 +33,7 @@ rl:
   gradient_accumulation_steps: 8
   num_train_epochs: 3
 
-# RunPod hardware defaults for this scale (read by scripts/launch_runpod.sh).
+# RunPod hardware defaults for this scale (read by scripts/runpod/launch.sh).
 runpod:
   # Primary: dynamic discovery — 48 GB-class hardware, cheapest first.
   vram_gb_min: 48

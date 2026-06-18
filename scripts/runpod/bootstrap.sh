@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# runpod_bootstrap.sh - one-shot bootstrap on a fresh RunPod pod.
+# scripts/runpod/bootstrap.sh — one-shot bootstrap on a fresh RunPod pod.
 #
 # Run on the pod (NOT the workstation). Two invocation modes:
 #
 #   1. Curl pipe (no local checkout yet):
 #      bash <(curl -sH "Authorization: token $GITHUB_TOKEN" \
 #                  -H "Accept: application/vnd.github.v3.raw" \
-#                  "https://api.github.com/repos/$GITHUB_REPO/contents/scripts/runpod_bootstrap.sh?ref=$GITHUB_BRANCH")
+#                  "https://api.github.com/repos/$GITHUB_REPO/contents/scripts/runpod/bootstrap.sh?ref=$GITHUB_BRANCH")
 #
 #   2. Local (after the repo is already cloned):
-#      cd $SI_HOME && ./scripts/runpod_bootstrap.sh
+#      cd $SI_HOME && ./scripts/runpod/bootstrap.sh
 #
 # What it does:
 #   1. preflight: apt install git/curl if missing
@@ -18,7 +18,7 @@
 #   4. run ./setup.sh to create the 3 uv venvs (.venvs/graphrag/graphmert/si_curriculum)
 #   5. write $SI_HOME/.env with the LLM API keys injected at pod-create time
 #
-# Env vars (all injected by scripts/launch_runpod.sh at pod create time):
+# Env vars (all injected by scripts/runpod/launch.sh at pod create time):
 #   SI_HOME              /workspace/neuro_SI_pipeline   (where to clone)
 #   SI_PROFILE           smoke / pilot / paper          (informational; used by pipeline.sh)
 #   GITHUB_TOKEN         PAT with 'repo' scope          (required to clone)

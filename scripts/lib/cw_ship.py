@@ -9,7 +9,7 @@ Requires boto3 + AWS creds in the environment (the same creds the S3 sync
 uses). If boto3 is missing this exits non-zero with a clear message and the
 caller treats it as non-fatal — the local file + S3 copy remain the source of
 truth. For LIVE streaming instead of per-step batches, install the CloudWatch
-unified agent in runpod_bootstrap.sh and point it at logs/<run_id>/.
+unified agent in runpod/bootstrap.sh and point it at logs/<run_id>/.
 
 CloudWatch limits handled: <=10,000 events and <=1 MiB per PutLogEvents call;
 oversized logs are truncated to the last N lines with a marker (the full log
