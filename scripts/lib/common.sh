@@ -131,12 +131,14 @@ _cw_ship() {
     local phase="$1" step="$2" logfile="$3"
     [[ -n "${AWS_CLOUDWATCH_LOG_GROUP:-}" ]] || return 0
     [[ -f "$logfile" ]] || return 0
-    # Prefer uv-managed ephemeral env with boto3 injected — keeps the
-    # per-phase venvs (graphrag / graphmert / si_curriculum) free of boto3
-    # pollution. Falls back to system python3 if uv isn't on PATH (the active
-    # venv's python3 will be missing boto3 → cw_ship.py exits 1 → we log_warn).
+    # cw_ship.py declares boto3 as a PEP 723 inline-metadata dep, so
+    # `uv run cw_ship.py` resolves it into an ephemeral env automatically —
+    # no need to pass --with here, no possibility of the `python3` lookup
+    # bypassing uv's env (the bug we just hit). Falls back to system
+    # python3 if uv isn't on PATH (cw_ship.py exits 1 cleanly when boto3
+    # isn't importable; we log_warn).
     if command -v uv >/dev/null 2>&1; then
-        uv run --no-project --quiet --with 'boto3>=1.34' python3 \
+        uv run --no-project --quiet \
             "${REPO_ROOT}/scripts/lib/cw_ship.py" \
             --group "$AWS_CLOUDWATCH_LOG_GROUP" \
             --stream "${RUN_ID:-adhoc}/${phase}/${step}" \

@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["boto3>=1.34"]
+# ///
 """Ship one completed step log to AWS CloudWatch Logs (optional, best-effort).
 
 Invoked by common.sh::_cw_ship after a step finishes, ONLY when AWS_CLOUDWATCH_LOG_GROUP

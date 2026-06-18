@@ -127,13 +127,18 @@ cat > /tmp/${POLICY}.json <<EOF
   "Version": "2012-10-17",
   "Statement": [
     {
+      "Sid": "ListGroupsAccountWide",
+      "Effect": "Allow",
+      "Action": "logs:DescribeLogGroups",
+      "Resource": "*"
+    },
+    {
       "Sid": "WriteToOwnedLogGroup",
       "Effect": "Allow",
       "Action": [
         "logs:CreateLogGroup",
         "logs:CreateLogStream",
         "logs:PutLogEvents",
-        "logs:DescribeLogGroups",
         "logs:DescribeLogStreams"
       ],
       "Resource": [
@@ -151,9 +156,17 @@ aws iam put-user-policy \
     --policy-document file:///tmp/${POLICY}.json
 ```
 
-**What this allows:** create + write log streams under `/enlibra/dss/runs/*`.
-**What it forbids:** writing to other log groups, reading anyone's logs,
-deleting groups.
+**What this allows:** create + write log streams under `/enlibra/dss/runs/*`,
+plus account-wide `DescribeLogGroups` (list group names only — needed for the
+verification commands below and to navigate the CloudWatch console).
+**What it forbids:** writing to other log groups, reading anyone's log
+contents (`logs:GetLogEvents` not granted), deleting groups.
+
+> **AWS gotcha:** `logs:DescribeLogGroups` is a list operation and AWS does
+> **not** support resource-level scoping for it — it always requires
+> `Resource: "*"`. If you put `DescribeLogGroups` in the scoped statement
+> alongside the writes, every `describe-log-groups` call returns
+> `AccessDeniedException` with a malformed-looking ARN.
 
 ## Step 5 — Pre-create the CloudWatch log group with retention
 
