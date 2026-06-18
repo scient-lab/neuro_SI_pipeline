@@ -9,11 +9,19 @@ This script exists because graphrag_index.py's silent-success failure mode
 and no error in the log) is impossible to debug by reading logs. Here we
 capture the raw LLM response and trace it through the parser.
 
-Drops in as a no-GPU diagnostic — any pod, workstation, laptop can run it
-as long as it can reach a vLLM endpoint with the same model loaded.
+Two modes:
+  LOCAL  (DEFAULT) — loads vLLM IN-PROCESS on the local GPU using the EXACT
+         same code path as graphrag_index.py and add_llm_relations.py. This is
+         what the pipeline phases themselves do. Requires GPU + the graphrag
+         venv. Default model_id comes from configs/default.yaml's
+         models.extract (override with --model).
 
-Reads .env.runpod for VLLM_ENDPOINT_URL + VLLM_API_KEY (same vars
-scripts/runpod/vllm_smoke.sh uses). Override via flags.
+  HTTP   (OPT-IN via --endpoint) — POSTs to any OpenAI-compatible vLLM
+         endpoint. Useful when running the diagnostic from a laptop without
+         GPU, or against a known-good external endpoint for A/B comparison.
+         Pass --endpoint and --api-key explicitly; the tool does NOT auto-
+         pick VLLM_ENDPOINT_URL from env because that variable is reserved
+         for a separate vLLM-serving Pod with a different purpose.
 
 Usage:
   # Default text + endpoint from .env.runpod (most common diagnostic)
@@ -96,7 +104,7 @@ def build_messages(text: str) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# Endpoint call
+# HTTP mode (opt-in via --endpoint)
 # ---------------------------------------------------------------------------
 def call_endpoint(messages, endpoint, api_key, model, max_tokens, temperature, top_p, timeout):
     body = {
@@ -118,6 +126,63 @@ def call_endpoint(messages, endpoint, api_key, model, max_tokens, temperature, t
     )
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return json.loads(resp.read())
+
+
+# ---------------------------------------------------------------------------
+# LOCAL mode — in-process vLLM (DEFAULT, mirrors graphrag_index.py)
+# ---------------------------------------------------------------------------
+def call_local(messages, model, max_tokens, temperature, top_p,
+               max_model_len, gpu_memory_utilization):
+    """Load the model in-process and run ONE chat completion. Same code path
+    graphrag_index.py:158 + .py:214 uses, so any bug reproduced here is the
+    same bug the pipeline phases will hit."""
+    try:
+        from vllm import LLM, SamplingParams
+    except ImportError as e:
+        raise RuntimeError(
+            "vllm not importable — are you in the graphrag venv? "
+            "Run: source .venvs/graphrag/bin/activate"
+        ) from e
+
+    print(f"  loading model {model!r} (max_model_len={max_model_len}, "
+          f"gpu_mem_util={gpu_memory_utilization}) — ~30 sec first time…",
+          file=sys.stderr)
+    llm = LLM(
+        model=model,
+        trust_remote_code=True,
+        max_model_len=max_model_len,
+        gpu_memory_utilization=gpu_memory_utilization,
+        enable_prefix_caching=True,
+    )
+    sampling = SamplingParams(
+        temperature=float(temperature),
+        top_p=float(top_p),
+        max_tokens=int(max_tokens),
+    )
+    outputs = llm.chat([messages], sampling_params=sampling)
+    # Same response extraction graphrag_index.py:215 does.
+    text = outputs[0].outputs[0].text
+    # Shape it like an OpenAI response so downstream parser code is mode-agnostic.
+    return {"choices": [{"message": {"role": "assistant", "content": text}}],
+            "_mode": "local"}
+
+
+# ---------------------------------------------------------------------------
+# Resolve default model from configs/default.yaml (LOCAL mode)
+# ---------------------------------------------------------------------------
+def resolve_default_model() -> str | None:
+    """Read models.extract from configs/default.yaml. Falls back to None if
+    unavailable (caller will then require --model)."""
+    cfg = os.path.join(os.path.dirname(HERE), "configs", "default.yaml")
+    if not os.path.exists(cfg):
+        return None
+    try:
+        import yaml
+        with open(cfg) as f:
+            data = yaml.safe_load(f) or {}
+        return ((data.get("models") or {}).get("extract")) or None
+    except Exception:
+        return None
 
 
 # ---------------------------------------------------------------------------
@@ -188,44 +253,51 @@ def main() -> int:
     )
     p.add_argument("--text",        help="inline text chunk to extract from")
     p.add_argument("--file",        help="path to a .txt chunk file")
-    p.add_argument("--endpoint",    help="vLLM URL base (default $VLLM_ENDPOINT_URL)")
-    p.add_argument("--api-key",     help="bearer token (default $VLLM_API_KEY)")
-    p.add_argument("--env-file",    action="append", default=None,
-                                    help="(default tries <repo>/.env.runpod then <repo>/.env; "
-                                         "pass --env-file multiple times to layer additional files)")
-    p.add_argument("--model",       help="model name; many vLLM servers accept empty")
+    p.add_argument("--model",       help="LOCAL: model id (HF repo or path). "
+                                         "HTTP: optional, server picks default. "
+                                         "LOCAL default = models.extract from configs/default.yaml")
+    # HTTP mode (explicit opt-in)
+    p.add_argument("--endpoint",    help="HTTP mode: vLLM URL base (e.g. https://abc-8000.proxy.runpod.net)")
+    p.add_argument("--api-key",     help="HTTP mode: bearer token")
+    # LOCAL mode tuning (mirrors graphrag_index.py knobs)
+    p.add_argument("--max-model-len",
+                   type=int, default=8192,
+                   help="LOCAL: vLLM max_model_len (default 8192; reduce if VRAM tight)")
+    p.add_argument("--gpu-memory-utilization",
+                   type=float, default=0.85,
+                   help="LOCAL: vLLM gpu_memory_utilization (default 0.85)")
+    # Sampling (both modes)
     p.add_argument("--max-tokens",  type=int,   default=4096)
     p.add_argument("--temperature", type=float, default=0.6)
     p.add_argument("--top-p",       type=float, default=0.95)
-    p.add_argument("--timeout",     type=int,   default=180)
+    p.add_argument("--timeout",     type=int,   default=180,
+                   help="HTTP mode only: request timeout in seconds")
     p.add_argument("--out",         help="save full JSON report (raw response + records + summary)")
     args = p.parse_args()
 
-    # --- secrets ------------------------------------------------------------
-    # Load env files in priority order. Explicit --env-file flags take
-    # precedence; absent that, try the workstation default (.env.runpod) then
-    # the pod default (.env). load_env_file uses setdefault so the first file
-    # to set a var wins — matches bash `source` semantics.
-    repo_root = os.path.dirname(HERE)
-    if args.env_file:
-        env_files = args.env_file
+    # --- mode selection -----------------------------------------------------
+    # HTTP mode requires BOTH --endpoint and --api-key (explicit opt-in).
+    # We deliberately do NOT auto-pick VLLM_ENDPOINT_URL from env — that var
+    # is reserved for a separate vLLM-serving Pod (see vllm_smoke.sh).
+    if args.endpoint or args.api_key:
+        if not (args.endpoint and args.api_key):
+            print("ERROR: HTTP mode needs BOTH --endpoint AND --api-key.",
+                  file=sys.stderr)
+            print("       To use LOCAL mode (default), drop both flags.",
+                  file=sys.stderr)
+            return 2
+        mode = "http"
     else:
-        env_files = [
-            os.path.join(repo_root, ".env.runpod"),  # workstation primary
-            os.path.join(repo_root, ".env"),         # pod primary (populated by bootstrap.sh)
-        ]
-    for ef in env_files:
-        load_env_file(ef)
+        mode = "local"
 
-    endpoint = args.endpoint or os.environ.get("VLLM_ENDPOINT_URL", "")
-    api_key  = args.api_key  or os.environ.get("VLLM_API_KEY", "")
-    if not endpoint or not api_key:
-        print("ERROR: need --endpoint + --api-key, OR set VLLM_ENDPOINT_URL +", file=sys.stderr)
-        print("       VLLM_API_KEY in one of:", file=sys.stderr)
-        for ef in env_files:
-            mark = "✓" if os.path.exists(ef) else "✗"
-            print(f"         {mark} {ef}", file=sys.stderr)
-        return 2
+    # --- model resolution ---------------------------------------------------
+    model = args.model
+    if mode == "local" and not model:
+        model = resolve_default_model()
+        if not model:
+            print("ERROR: LOCAL mode needs --model (configs/default.yaml has no "
+                  "models.extract entry).", file=sys.stderr)
+            return 2
 
     # --- input text ---------------------------------------------------------
     if args.text:
@@ -243,22 +315,37 @@ def main() -> int:
     print(text[:400] + ("…" if len(text) > 400 else ""))
     print()
 
-    # --- call endpoint ------------------------------------------------------
-    print(f"=== POST {endpoint.rstrip('/')}/v1/chat/completions"
-          f"  (model={args.model or 'default'}, max_tokens={args.max_tokens}) ===")
+    # --- call LLM (mode-dispatched) -----------------------------------------
     messages = build_messages(text)
-    try:
-        resp = call_endpoint(
-            messages, endpoint, api_key, args.model,
-            args.max_tokens, args.temperature, args.top_p, args.timeout,
-        )
-    except urllib.error.HTTPError as e:
-        print(f"HTTP {e.code} {e.reason}", file=sys.stderr)
-        print(e.read().decode("utf-8", errors="replace")[:1000], file=sys.stderr)
-        return 1
-    except Exception as e:
-        print(f"call failed: {e}", file=sys.stderr)
-        return 1
+    if mode == "http":
+        print(f"=== HTTP mode: POST {args.endpoint.rstrip('/')}/v1/chat/completions"
+              f"  (model={model or 'default'}, max_tokens={args.max_tokens}) ===")
+        try:
+            resp = call_endpoint(
+                messages, args.endpoint, args.api_key, model,
+                args.max_tokens, args.temperature, args.top_p, args.timeout,
+            )
+        except urllib.error.HTTPError as e:
+            print(f"HTTP {e.code} {e.reason}", file=sys.stderr)
+            print(e.read().decode("utf-8", errors="replace")[:1000], file=sys.stderr)
+            return 1
+        except Exception as e:
+            print(f"HTTP call failed: {e}", file=sys.stderr)
+            return 1
+    else:  # mode == "local"
+        print(f"=== LOCAL mode: in-process vLLM"
+              f"  (model={model}, max_tokens={args.max_tokens}) ===")
+        try:
+            resp = call_local(
+                messages, model, args.max_tokens, args.temperature, args.top_p,
+                args.max_model_len, args.gpu_memory_utilization,
+            )
+        except RuntimeError as e:
+            print(f"LOCAL call failed: {e}", file=sys.stderr)
+            return 1
+        except Exception as e:
+            print(f"LOCAL call failed: {type(e).__name__}: {e}", file=sys.stderr)
+            return 1
 
     try:
         response_text = resp["choices"][0]["message"]["content"]
@@ -338,8 +425,9 @@ def main() -> int:
     if args.out:
         os.makedirs(os.path.dirname(os.path.abspath(args.out)) or ".", exist_ok=True)
         report = {
-            "endpoint": endpoint,
-            "model": args.model,
+            "mode": mode,
+            "endpoint": args.endpoint if mode == "http" else None,
+            "model": model,
             "input_chars": len(text),
             "input_text": text,
             "raw_response": response_text,
