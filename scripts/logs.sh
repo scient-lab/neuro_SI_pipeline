@@ -152,6 +152,17 @@ total_dur = (ts_end - ts_start).total_seconds() if ts_start else None
 
 print(f'Run     : {this_run}')
 print(f'Status  : {m.get(\"status\",\"?\"):<11s}  ({_fmt_duration(total_dur)})')
+# ETA is computed + stored by manifest.py (so the API/UI get it too); we just
+# render it, deriving 'remaining' live from the absolute completion estimate.
+if m.get('status') == 'running':
+    eta_at = _parse(m.get('estimated_completion_at'))
+    prog = m.get('progress')
+    if eta_at:
+        rem = (eta_at - datetime.now(timezone.utc)).total_seconds()
+        pct = f'{prog*100:.0f}% done · ' if isinstance(prog, (int, float)) else ''
+        print(f'ETA     : ~{_fmt_duration(max(0, rem))} left  ({pct}~{eta_at.strftime(\"%H:%M\")} UTC · rough)')
+    else:
+        print('ETA     : estimating…')
 print(f'Profile : {m.get(\"profile\",\"\")}    Domain: {m.get(\"domain\",\"\")}    Platform: {m.get(\"platform\",\"\")}')
 print(f'Git     : {m.get(\"git_sha\",\"\")} ({m.get(\"git_branch\",\"\")})')
 print(f'Started : {started_at}')

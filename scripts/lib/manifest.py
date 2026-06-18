@@ -33,15 +33,70 @@ import os
 import re
 import sys
 from contextlib import contextmanager
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 SCHEMA_VERSION = "1.0"
 STATUS_ENUM = ["pending", "running", "completed", "failed", "skipped"]
 TIMESTAMP_FORMAT = "RFC3339 / ISO-8601 with timezone offset (e.g. 2026-06-17T14:15:23+00:00)"
 
+# Rough share of total wall-clock per phase (neuroscience pipeline). curriculum
+# is Gemini-rate-limited and rl/GRPO is heavy, so they carry most weight — an
+# ETA computed BEFORE those phases start will therefore read optimistically.
+# Unknown phases (other domains) fall back to an equal-ish weight.
+PHASE_WEIGHTS = {"extract": 0.12, "validate": 0.0, "graphmert": 0.25,
+                 "curriculum": 0.30, "sft": 0.13, "rl": 0.20}
+
 
 def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def _update_progress_eta(run: dict) -> None:
+    """Recompute run['progress'] (0..1) and run['estimated_completion_at']
+    (absolute RFC3339) from weighted phase/step completion, and store them on
+    the manifest so API/UI consumers — not just logs.sh — get the ETA.
+
+    We store the ABSOLUTE completion timestamp, not a 'remaining' duration: a
+    duration goes stale by the second, an absolute time does not (readers do
+    `remaining = est - now`). NOTE: this is a snapshot at the last transition,
+    so a long single step won't refresh it until the step ends — live readers
+    may recompute against `now` for finer granularity.
+    """
+    phases = run.get("phases", []) or []
+    total_w = done_w = 0.0
+    for p in phases:
+        st = p.get("status", "pending")
+        if st == "skipped":              # won't run -> drop from denominator
+            continue
+        w = PHASE_WEIGHTS.get(p.get("name", ""), 0.17)
+        total_w += w
+        if st == "completed":
+            done_w += w
+        elif st == "running":            # credit partial via step progress
+            steps = p.get("steps", []) or []
+            tot = len(steps)
+            ok = sum(1 for s in steps if s.get("status") == "completed")
+            done_w += w * ((ok / tot) if tot else 0.0)
+
+    progress = (done_w / total_w) if total_w > 0 else 0.0
+    run["progress"] = round(progress, 4)
+
+    status = run.get("status")
+    if status in ("completed", "failed"):
+        run["estimated_completion_at"] = run.get("finished_at")
+        return
+
+    start = run.get("started_at")
+    try:
+        ts = datetime.fromisoformat(start.replace("Z", "+00:00")) if start else None
+    except (ValueError, AttributeError):
+        ts = None
+    if status == "running" and ts and progress > 0:
+        elapsed = (datetime.now(timezone.utc) - ts).total_seconds()
+        est_total = elapsed / progress
+        run["estimated_completion_at"] = (ts + timedelta(seconds=est_total)).isoformat(timespec="seconds")
+    else:
+        run["estimated_completion_at"] = None
 
 
 def _read_log_tail(path: str, n: int = 30) -> list:
@@ -111,10 +166,12 @@ def _save(path: str, data: dict) -> None:
 
 
 def _mutate(path: str, fn) -> None:
-    """Lock, load, apply fn(data) in place, save atomically."""
+    """Lock, load, apply fn(data) in place, refresh progress/ETA, save atomically."""
     with _locked(path):
         data = _load(path)
         fn(data)
+        if isinstance(data.get("run"), dict):
+            _update_progress_eta(data["run"])
         _save(path, data)
 
 
@@ -245,6 +302,7 @@ def cmd_init(a) -> None:
         run["step_filter"] = a.step_filter
         existing["schema_version"] = SCHEMA_VERSION
         existing["meta"] = meta
+        _update_progress_eta(run)
         with _locked(a.path):
             _save(a.path, existing)
         return
@@ -267,10 +325,13 @@ def cmd_init(a) -> None:
             "started_at": now_iso(),
             "finished_at": None,
             "current_phase": None,
+            "progress": 0.0,
+            "estimated_completion_at": None,
             "selected_phases": [p for p in phase_order if p in selected],
             "phases": run_phases,
         },
     }
+    _update_progress_eta(doc["run"])
     with _locked(a.path):
         _save(a.path, doc)
 
