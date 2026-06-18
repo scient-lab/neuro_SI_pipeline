@@ -190,5 +190,9 @@ Entity_types: Anatomical Structure, Molecular Entity, Cellular Component, Proces
 Text:
 {input_text}
 ######################
-Output:
+Output:{think_directive}
 """
+# {think_directive} is filled at format time with either " /no_think" or "".
+# Qwen3 honors the bare "/no_think" control token in the prompt to skip its
+# <think>...</think> block. graphrag_index.py reads extract.no_think from
+# configs/default.yaml and decides which to substitute.

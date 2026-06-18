@@ -24,8 +24,12 @@ Two modes:
          for a separate vLLM-serving Pod with a different purpose.
 
 Usage:
-  # Default text + endpoint from .env.runpod (most common diagnostic)
+  # LOCAL mode (default): in-process vLLM using configs/default.yaml::models.extract
   python3 1_seed_kg/diagnose_llm_extraction.py
+
+  # A/B compare thinking ON vs OFF on the same chunk
+  python3 1_seed_kg/diagnose_llm_extraction.py --file chunk.txt --out with_think.json
+  python3 1_seed_kg/diagnose_llm_extraction.py --file chunk.txt --no-think --out no_think.json
 
   # Test a real chunk from your corpus
   python3 1_seed_kg/diagnose_llm_extraction.py --file corpus/neuroscience/source_txt/snippet.txt
@@ -33,7 +37,8 @@ Usage:
   # Spot-check inline text
   python3 1_seed_kg/diagnose_llm_extraction.py --text "Dopamine modulates the basal ganglia."
 
-  # Explicit endpoint + model
+  # HTTP mode (opt-in — pass BOTH flags; tool deliberately doesn't auto-pick
+  # VLLM_ENDPOINT_URL from env, since that var is reserved for a different Pod)
   python3 1_seed_kg/diagnose_llm_extraction.py \\
       --endpoint https://abc-8000.proxy.runpod.net \\
       --api-key sk-... \\
@@ -53,6 +58,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import textwrap
 import urllib.error
@@ -92,14 +98,29 @@ DEFAULT_TEXT = textwrap.dedent("""\
 # ---------------------------------------------------------------------------
 # Prompt construction (mirrors graphrag_index.py:175-204 exactly)
 # ---------------------------------------------------------------------------
-def build_messages(text: str) -> list[dict]:
+def build_messages(text: str, no_think: bool = False) -> list[dict]:
+    """Build the 4-message conversation graphrag_index.py uses.
+
+    no_think: when True, append "/no_think" control token to user prompt to
+    suppress Qwen3's <think>...</think> block. Matches the pipeline's
+    extract.extract_triples_no_think flag in configs/default.yaml. Default
+    False so the diagnostic shows raw thinking behavior unless explicitly
+    suppressed via --no-think.
+    """
     relation_list_str = json.dumps(get_relation_types())
+    think_directive = " /no_think" if no_think else ""
+    # USER_PROMPT was updated to take {think_directive}; fall back to old
+    # signature if running against an older prompts_kg.py revision.
+    try:
+        user_prompt = USER_PROMPT.format(input_text=text, think_directive=think_directive)
+    except KeyError:
+        user_prompt = USER_PROMPT.format(input_text=text)
     return [
         {"role": "system",    "content": PROMPT_TEMPLATE.format(
             relation_list=relation_list_str, **DELIMS)},
         {"role": "user",      "content": USER_EXAMPLE},
         {"role": "assistant", "content": ASSISTANT_EXAMPLE.format(**DELIMS)},
-        {"role": "user",      "content": USER_PROMPT.format(input_text=text)},
+        {"role": "user",      "content": user_prompt},
     ]
 
 
@@ -160,8 +181,14 @@ def call_local(messages, model, max_tokens, temperature, top_p,
         max_tokens=int(max_tokens),
     )
     outputs = llm.chat([messages], sampling_params=sampling)
-    # Same response extraction graphrag_index.py:215 does.
-    text = outputs[0].outputs[0].text
+    # Same response extraction graphrag_index.py:215 does — but defensively
+    # handle the (rare) case where vLLM returns an output object with no
+    # `.outputs` list (e.g. backend error swallowed). Empty string lets the
+    # parser still run and produce a useful "DROP" / no-relationships verdict
+    # instead of crashing with IndexError.
+    text = ""
+    if outputs and outputs[0].outputs:
+        text = outputs[0].outputs[0].text
     # Shape it like an OpenAI response so downstream parser code is mode-agnostic.
     return {"choices": [{"message": {"role": "assistant", "content": text}}],
             "_mode": "local"}
@@ -198,16 +225,16 @@ def parse_records(response_text: str) -> list[dict]:
     We additionally flag "would-KEEP" cases (same content but different
     quoting) — those reveal a parser-strictness bug rather than an LLM bug.
     """
-    import re as _re
     rows: list[dict] = []
     records = [r.strip() for r in response_text.split(DELIMS["record_delimiter"])]
     for i, rec in enumerate(records):
         if not rec:
             continue
-        # MIRROR graphrag_index.py:305 — strip leading "(" and trailing ")"
-        # BEFORE splitting. Without this we get false-positive "would-keep"
-        # warnings because the first token still has a stray "(" in front.
-        rec_stripped = _re.sub(r"^\(|\)$", "", rec.strip())
+        # MIRROR graphrag_index.py — strip leading "(" and trailing ")" BEFORE
+        # splitting. Without this we get false-positive "would-keep" warnings
+        # because the first token still has a stray "(" in front. The same
+        # re.sub appears in _process_results_directed() in the indexer.
+        rec_stripped = re.sub(r"^\(|\)$", "", rec.strip())
         parts = rec_stripped.split(DELIMS["tuple_delimiter"])
         first = parts[0] if parts else ""
         n = len(parts)
@@ -271,12 +298,21 @@ def main() -> int:
     p.add_argument("--gpu-memory-utilization",
                    type=float, default=0.85,
                    help="LOCAL: vLLM gpu_memory_utilization (default 0.85)")
-    # Sampling (both modes)
-    p.add_argument("--max-tokens",  type=int,   default=4096)
+    # Sampling (both modes). Default 16384 matches the headroom Qwen3 needs
+    # for reasoning + entity emission + relationship emission on a real
+    # ~5k-char chunk WITHOUT triggering false-positive truncation diagnoses.
+    # Bump to 32768 for very dense chunks; drop to 4096 only when explicitly
+    # testing budget edge cases (e.g. simulating the truncation we observed
+    # on the pilot run).
+    p.add_argument("--max-tokens",  type=int,   default=16384)
     p.add_argument("--temperature", type=float, default=0.6)
     p.add_argument("--top-p",       type=float, default=0.95)
     p.add_argument("--timeout",     type=int,   default=180,
                    help="HTTP mode only: request timeout in seconds")
+    p.add_argument("--no-think",    action="store_true",
+                   help="append /no_think to user prompt (Qwen3 control token) "
+                        "to suppress <think>...</think>. Mirrors the pipeline's "
+                        "extract.no_think flag — use this to A/B think vs no-think.")
     p.add_argument("--out",         help="save full JSON report (raw response + records + summary)")
     args = p.parse_args()
 
@@ -321,7 +357,9 @@ def main() -> int:
     print()
 
     # --- call LLM (mode-dispatched) -----------------------------------------
-    messages = build_messages(text)
+    messages = build_messages(text, no_think=args.no_think)
+    if args.no_think:
+        print("  /no_think token appended — Qwen3's <think> block should be empty")
     if mode == "http":
         print(f"=== HTTP mode: POST {args.endpoint.rstrip('/')}/v1/chat/completions"
               f"  (model={model or 'default'}, max_tokens={args.max_tokens}) ===")
@@ -389,9 +427,9 @@ def main() -> int:
     print(f"  KEEP-entity                  : {kept_ent}")
     print(f"  KEEP-relationship            : {kept_rel}")
     print(f"  DROP-would-keep-entity       : {would_keep_ent}  "
-          f"(parser strictness — fix at graphrag_index.py:~333)")
+          f"(parser strictness — see verdict for fix)")
     print(f"  DROP-would-keep-relationship : {would_keep_rel}  "
-          f"(parser strictness — same fix)")
+          f"(parser strictness — see verdict for fix)")
     print(f"  DROP                         : {dropped}")
     print()
 
@@ -413,17 +451,18 @@ def main() -> int:
             print("    On a real chunk, increase --max-tokens (>=16384) or disable thinking.")
         exit_code = 0
     elif kept_ent > 0 and not completion_present:
+        think_marker = "✓ detected" if think_present else "likely"
         print(f"  ✗ Model emitted {kept_ent} entities, ZERO relationships, AND the response")
         print(f"    is MISSING {DELIMS['completion_delimiter']} — TRUNCATED by max_tokens.")
         print("    This is the dominant failure mode for Qwen3-class reasoning models on")
-        print(f"    long chunks: <think>...</think> trace ({think_present and '✓ detected' or 'likely'}) eats the budget,")
+        print(f"    long chunks: <think>...</think> trace ({think_marker}) eats the budget,")
         print("    entities (step 1) get emitted, relationships (step 2) get cut off.")
         print()
         print("    Fix (cheapest first):")
-        print("      1. Bump --max-tokens to 16384 or 32768 (configs/default.yaml::extract.max_tokens).")
-        print("      2. Suppress thinking: append '/no_think' to the user prompt OR use a")
-        print("         non-reasoning model (Qwen2.5-14B-Instruct).")
-        print("      3. Reduce chunk_size in graphrag config so <think> trace stays bounded.")
+        print("      1. Set extract.extract_triples_no_think=true in configs/default.yaml")
+        print("         (or rerun this tool with --no-think to confirm it helps).")
+        print("      2. Bump --max-tokens to 32768 (configs/default.yaml::extract.max_tokens).")
+        print("      3. Reduce extract.chunk_tokens in configs so <think> trace stays bounded.")
         exit_code = 1
     elif kept_ent > 0:
         print(f"  ✗ Model emitted {kept_ent} entities but ZERO relationships (response IS")
@@ -434,9 +473,13 @@ def main() -> int:
         print(f"    Try a denser chunk or larger model. relation_list size: {len(get_relation_types())} types")
         exit_code = 1
     elif would_keep_rel > 0:
+        # Rare: requires model to emit relationship tuples without quotes around
+        # the keyword. graphrag's stock prompt elicits quoted output reliably,
+        # so this branch is mostly defensive against future prompt drift.
         print(f"  ✗ Parser strictness bug. Model emitted {would_keep_rel} valid relationship")
         print("    records but the parser rejected them due to a quoting/format mismatch.")
-        print("    Fix at 1_seed_kg/graphrag_index.py:~333:")
+        print("    Fix at 1_seed_kg/graphrag_index.py (search for the literal")
+        print('    `record_attributes[0] == \\\'"relationship"\\\'` line):')
         print("      before:  if record_attributes[0] == '\"relationship\"' and ...")
         print("      after :  if record_attributes[0].strip('\"') == 'relationship' and ...")
         exit_code = 1

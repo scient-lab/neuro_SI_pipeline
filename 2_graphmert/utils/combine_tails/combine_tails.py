@@ -93,13 +93,21 @@ def load_all_shard_csvs(pred_dir: str) -> pd.DataFrame:
     return df
 
 
-def filter_scientific_triples(df: pd.DataFrame, llm: LLM, tokenizer, microbatch: int) -> pd.DataFrame:
-    """Use LLM to filter triples to scientifically plausible ones only."""
+def filter_scientific_triples(df: pd.DataFrame, llm: LLM, tokenizer, microbatch: int,
+                              no_think: bool = True) -> pd.DataFrame:
+    """Use LLM to filter triples to scientifically plausible ones only.
+
+    no_think: append "/no_think" to suppress Qwen3 <think>. This step is
+    plausibility classification (yes/no), max_tokens=10 in sampling — no
+    space for thinking anyway. Default True. configs/default.yaml::
+    graphmert.combine_tails_no_think.
+    """
     results = []
     t0 = time.time()
+    think_suffix = " /no_think" if no_think else ""
 
     valid = df[df["tail"].notna() & (df["tail"].astype(str).str.strip() != "")].copy()
-    logger.info("Rows with non-empty tails: %d", len(valid))
+    logger.info("Rows with non-empty tails: %d  think=%s", len(valid), "OFF" if no_think else "ON")
 
     for start in range(0, len(valid), microbatch):
         batch = valid.iloc[start:start + microbatch]
@@ -109,7 +117,7 @@ def filter_scientific_triples(df: pd.DataFrame, llm: LLM, tokenizer, microbatch:
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": build_user_prompt(
                     str(row["head"]), str(row["relation"]), str(row["tail"])
-                )},
+                ) + think_suffix},
             ]
             prompts.append(messages)
 
@@ -165,7 +173,21 @@ def main():
               tensor_parallel_size=combine_tp_size,
               gpu_memory_utilization=combine_gpu_mem)
 
-    filtered = filter_scientific_triples(df, llm, tokenizer, args.internal_microbatch)
+    # Qwen3 thinking control. configs/default.yaml::graphmert.combine_tails_no_think
+    try:
+        import os as _os, sys as _sys
+        _repo_root = _os.environ.get("REPO_ROOT") or _os.path.abspath(
+            _os.path.join(_os.path.dirname(__file__), "..", "..", "..")
+        )
+        if _repo_root not in _sys.path:
+            _sys.path.insert(0, _repo_root)
+        from pipeline_config import get_phase_param
+        no_think = bool(get_phase_param('graphmert', 'combine_tails_no_think', True))
+    except Exception as e:
+        logger.warning("could not read graphmert.combine_tails_no_think (%s) — defaulting True", e)
+        no_think = True
+
+    filtered = filter_scientific_triples(df, llm, tokenizer, args.internal_microbatch, no_think=no_think)
 
     scientific_only = filtered[filtered["llm_valid"] == True].drop(columns=["llm_valid"])
     out_csv = os.path.join(args.output_dir, "final_kg_scientific_only.csv")

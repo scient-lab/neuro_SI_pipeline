@@ -93,6 +93,24 @@ def main():
     logger.info("HOST=%s  FILE=%s", socket.gethostname(), os.path.abspath(__file__))
     logger.info("tokenized_dir=%s  output_dir=%s", args.tokenized_dir, args.output_dir)
 
+    # Qwen3 thinking control. Pattern-match step; <think> trace is byproduct
+    # waste here. Default True. Override via configs/default.yaml::graphmert.
+    # entity_discovery_no_think.
+    try:
+        import os as _os, sys as _sys
+        _repo_root = _os.environ.get("REPO_ROOT") or _os.path.abspath(
+            _os.path.join(_os.path.dirname(__file__), "..", "..", "..")
+        )
+        if _repo_root not in _sys.path:
+            _sys.path.insert(0, _repo_root)
+        from pipeline_config import get_phase_param
+        no_think = bool(get_phase_param('graphmert', 'entity_discovery_no_think', True))
+    except Exception as e:
+        logger.warning("could not read graphmert.entity_discovery_no_think (%s) — defaulting True", e)
+        no_think = True
+    think_suffix = " /no_think" if no_think else ""
+    logger.info("Qwen3 thinking: %s", "OFF (/no_think)" if no_think else "ON")
+
     os.makedirs(args.output_dir, exist_ok=True)
 
     logger.info("Loading tokenizer: %s", args.tokenizer)
@@ -131,7 +149,7 @@ def main():
             text = tokenizer.decode(ex["input_ids"], skip_special_tokens=True)
             messages = [
                 {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": USER_TEMPLATE.format(text=text)},
+                {"role": "user", "content": USER_TEMPLATE.format(text=text) + think_suffix},
             ]
             prompts.append(messages)
 

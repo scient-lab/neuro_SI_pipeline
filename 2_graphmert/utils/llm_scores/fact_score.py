@@ -27,8 +27,15 @@ from vllm import LLM, SamplingParams
 from prompts_scores import system_prompt_validity_score as FACT_CHECK_SYSTEM_PROMPT
 
 
-def build_fact_check_user_prompt(head: str, relation: str, tail: str) -> str:
-    return f"Head: {head}\nRelation: {relation}\nTail: {tail}"
+def build_fact_check_user_prompt(head: str, relation: str, tail: str,
+                                  no_think: bool = False) -> str:
+    # validate_predictions is a JUDGMENT task — graphmert.validate_predictions_
+    # no_think defaults False so Qwen3's <think> stays on. Two-LLM consensus
+    # benefits from each model showing its reasoning so the merge step
+    # (combine_tails) can weight votes by reasoning quality. Flip to True via
+    # config only if running a non-reasoning model where /no_think is no-op.
+    suffix = " /no_think" if no_think else ""
+    return f"Head: {head}\nRelation: {relation}\nTail: {tail}{suffix}"
 
 
 logger = logging.getLogger("fact_score")
@@ -50,9 +57,16 @@ def parse_args():
 
 
 def score_triples(df: pd.DataFrame, model_id: str, batch_size: int,
-                  max_model_len: int, tensor_parallel_size: int) -> List[bool]:
-    """Returns a list of booleans — True if model judges the triple as valid."""
-    logger.info("Loading model: %s", model_id)
+                  max_model_len: int, tensor_parallel_size: int,
+                  no_think: bool = False) -> List[bool]:
+    """Returns a list of booleans — True if model judges the triple as valid.
+
+    no_think: when True, append '/no_think' control token to the user prompt
+    so Qwen3-class models skip <think>. Defaults False because this is a
+    judgment task where the reasoning trace genuinely helps consensus.
+    Override via configs/default.yaml::graphmert.validate_predictions_no_think.
+    """
+    logger.info("Loading model: %s  (think=%s)", model_id, "OFF" if no_think else "ON")
     llm = LLM(model=model_id, max_model_len=max_model_len,
                tensor_parallel_size=tensor_parallel_size, trust_remote_code=True)
     sampling = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=10)
@@ -67,7 +81,8 @@ def score_triples(df: pd.DataFrame, model_id: str, batch_size: int,
             messages = [
                 {"role": "system", "content": FACT_CHECK_SYSTEM_PROMPT},
                 {"role": "user", "content": build_fact_check_user_prompt(
-                    str(row["head"]), str(row["relation"]), str(row["tail"])
+                    str(row["head"]), str(row["relation"]), str(row["tail"]),
+                    no_think=no_think,
                 )},
             ]
             prompts.append(messages)
@@ -101,11 +116,29 @@ def main():
         if col not in df.columns:
             raise ValueError(f"Input CSV missing required column: '{col}'")
 
+    # Read Qwen3 thinking control. Default False — judgment task benefits
+    # from <think>. Override via configs/default.yaml::graphmert.
+    # fact_score_no_think (or per-profile).
+    try:
+        import os as _os, sys as _sys
+        _repo_root = _os.environ.get("REPO_ROOT") or _os.path.abspath(
+            _os.path.join(_os.path.dirname(__file__), "..", "..", "..")
+        )
+        if _repo_root not in _sys.path:
+            _sys.path.insert(0, _repo_root)
+        from pipeline_config import get_phase_param
+        no_think = bool(get_phase_param('graphmert', 'fact_score_no_think', False))
+    except Exception as e:
+        logger.warning("could not read graphmert.fact_score_no_think (%s) — defaulting False", e)
+        no_think = False
+
     # Score with both models
     scores_1 = score_triples(df, args.model_ids[0], args.batch_size,
-                              args.max_model_len, args.tensor_parallel_size)
+                              args.max_model_len, args.tensor_parallel_size,
+                              no_think=no_think)
     scores_2 = score_triples(df, args.model_ids[1], args.batch_size,
-                              args.max_model_len, args.tensor_parallel_size)
+                              args.max_model_len, args.tensor_parallel_size,
+                              no_think=no_think)
 
     df["valid_model_1"] = scores_1
     df["valid_model_2"] = scores_2

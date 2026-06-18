@@ -196,10 +196,14 @@ def explode_queries(ds, tokenizer: AutoTokenizer) -> List[Dict[str, Any]]:
     return out
 
 
-def infer_batch(llm, sys_prompt, batch) -> List[Dict[str, Any]]:
+def infer_batch(llm, sys_prompt, batch, no_think: bool = True) -> List[Dict[str, Any]]:
+    # Qwen3 thinking control. Constrained generation (head + rel → tail list
+    # from fixed vocabulary). Default True; configs/default.yaml::graphmert.
+    # predict_tails_no_think.
+    think_suffix = " /no_think" if no_think else ""
     conversations = [
         [{"role": "system", "content": sys_prompt},
-         {"role": "user", "content": build_user_prompt(q["head"], q["relation"], q["text"])}]
+         {"role": "user", "content": build_user_prompt(q["head"], q["relation"], q["text"]) + think_suffix}]
         for q in batch
     ]
     sampling = SamplingParams(temperature=TEMPERATURE, top_p=TOP_P, max_tokens=MAX_NEW_TOKENS, stop=["\n\n\n"])
@@ -249,13 +253,28 @@ def main():
               enforce_eager=ENFORCE_EAGER, trust_remote_code=TRUST_REMOTE_CODE)
     sys_prompt = build_system_prompt_with_examples()
 
+    # Qwen3 thinking control. configs/default.yaml::graphmert.predict_tails_no_think
+    try:
+        import os as _os, sys as _sys
+        _repo_root = _os.environ.get("REPO_ROOT") or _os.path.abspath(
+            _os.path.join(_os.path.dirname(__file__), "..")
+        )
+        if _repo_root not in _sys.path:
+            _sys.path.insert(0, _repo_root)
+        from pipeline_config import get_phase_param
+        no_think = bool(get_phase_param('graphmert', 'predict_tails_no_think', True))
+    except Exception as e:
+        logger.warning("could not read graphmert.predict_tails_no_think (%s) — defaulting True", e)
+        no_think = True
+    logger.info("Qwen3 thinking: %s", "OFF (/no_think)" if no_think else "ON")
+
     query_rows, triple_rows = [], []
     t0 = time.time()
     done = 0
 
     for start in range(0, len(queries), args.batch_size):
         batch = queries[start:start + args.batch_size]
-        batch_res = infer_batch(llm, sys_prompt, batch)
+        batch_res = infer_batch(llm, sys_prompt, batch, no_think=no_think)
 
         for q, r in zip(batch, batch_res):
             tails = r["tails"]

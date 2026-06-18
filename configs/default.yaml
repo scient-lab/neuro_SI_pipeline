@@ -45,7 +45,21 @@ extract:
   top_p: 0.95
   top_k: 20
   min_p: 0
-  max_tokens: 8192
+  # Qwen3 is a reasoning model — emits <think>...</think> before structured
+  # output. On real ~5k-char chunks the thinking trace eats 6-8k tokens, then
+  # entities (step 1 of the prompt) get emitted, then relationships (step 2).
+  # 8192 was insufficient → silent truncation of relationships → 0 triples
+  # downstream. 32768 gives enough room even with thinking on. See
+  # `no_think` below to suppress the trace entirely and reclaim the budget.
+  max_tokens: 32768
+  # Suppress Qwen3's <think>...</think> block in the response. This step is
+  # pure pattern-match (entity types + fixed relation list), and the prompt
+  # EXPLICITLY forbids inference. The parser strips <think> anyway. So the
+  # trace is byproduct waste. true = append "/no_think" control token to the
+  # user prompt (Qwen3 honors it). LLM judgment steps (graphmert.
+  # fact_score_no_think=false) keep thinking ON because there it helps.
+  # Naming: <step_or_substep>_no_think — one knob per LLM-using script.
+  extract_triples_no_think: true
   # vLLM init knobs — profile-tunable for hardware. KV-cache budget per
   # sequence; too high causes thrashing on smaller cards (smoke shrinks it,
   # paper can grow it). Chunk size is 1200 tokens; responses rarely exceed
@@ -89,6 +103,28 @@ graphmert:
   # predict_tails if needed.
   combine_tails_max_model_len: 4096
   combine_tails_tensor_parallel_size: 1
+  # ----- Per-step Qwen3 <think>...</think> control -----
+  # Same trade-off as extract.extract_triples_no_think: pattern-match and
+  # constrained-generation steps waste budget on <think>; judgment steps
+  # benefit from it. Defaults match task type — toggle in a profile if you
+  # need to override per-run. One knob per LLM-using script (6 total
+  # across extract + graphmert).
+  #
+  # Pattern-match: text → entities (substep of preprocess).
+  entity_discovery_no_think: true
+  # Pattern-match: text + heads → relation triples (substep of preprocess).
+  add_llm_relations_no_think: true
+  # Constrained generation: head + relation → list of plausible tails.
+  # Tails come from a fixed vocabulary; minimal reasoning value.
+  predict_tails_no_think: true
+  # Dedup/normalize tail prediction shards (substep of validate_predictions).
+  # Pure formatting; no reasoning.
+  combine_tails_no_think: true
+  # Judgment: (head, relation, tail) → "is this triple factually consistent?"
+  # (substep of validate_predictions, the second LLM in the two-LLM consensus.)
+  # Real reasoning value — keep thinking ON. The merge step (combine_tails)
+  # can weight votes by reasoning quality. ONE asymmetry in this list.
+  fact_score_no_think: false
   combine_tails_gpu_memory_utilization: 0.90
 
 # --- Phase: curriculum ---------------------------------------------------

@@ -119,11 +119,16 @@ def extract_rightmost_json_object(response: str) -> str:
     return ""
 
 
-def format_vllm_chat_messages(batch, tokenizer, pos_examples):
+def format_vllm_chat_messages(batch, tokenizer, pos_examples, no_think: bool = True):
     prompts: List[List[Dict[str, str]]] = []
     to_call_indices: List[int] = []
     input_ids_list = batch["input_ids"]
     head_positions_list = batch.get("head_positions", [None] * len(input_ids_list))
+
+    # Qwen3 thinking control. Pattern-match relation extraction doesn't
+    # benefit from <think>; suppress with /no_think to reclaim tokens.
+    # Config knob: graphmert.add_llm_relations_no_think (defaults true).
+    think_suffix = " /no_think" if no_think else ""
 
     for i in range(len(input_ids_list)):
         hp_raw = head_positions_list[i]
@@ -143,7 +148,7 @@ def format_vllm_chat_messages(batch, tokenizer, pos_examples):
                 {"role": "user", "content": "Explanation:"},
                 {"role": "assistant", "content": e},
             ])
-        query = f"Input:\nsequence: {seq}\nheads: {heads}\n\nOutput:"
+        query = f"Input:\nsequence: {seq}\nheads: {heads}\n\nOutput:{think_suffix}"
         messages.append({"role": "user", "content": query})
         prompts.append(messages)
 
@@ -153,6 +158,27 @@ def format_vllm_chat_messages(batch, tokenizer, pos_examples):
 def main() -> None:
     args = parse_args()
     logger.info("HOST=%s  model=%s", socket.gethostname(), args.model_id)
+
+    # Read Qwen3 thinking control from configs/default.yaml. Same pattern as
+    # graphrag_index.py uses for extract.no_think — pattern-match steps
+    # suppress <think> to avoid wasting the token budget on output that the
+    # downstream parser ignores. Override per-profile to flip if a new model
+    # needs thinking on.
+    try:
+        # pipeline_config.py lives at repo root; sys.path setup mirrors
+        # 1_seed_kg/graphrag_index.py's approach.
+        import os as _os, sys as _sys
+        _repo_root = _os.environ.get("REPO_ROOT") or _os.path.abspath(
+            _os.path.join(_os.path.dirname(__file__), "..", "..", "..")
+        )
+        if _repo_root not in _sys.path:
+            _sys.path.insert(0, _repo_root)
+        from pipeline_config import get_phase_param
+        no_think = bool(get_phase_param('graphmert', 'add_llm_relations_no_think', True))
+    except Exception as e:
+        logger.warning("could not read graphmert.add_llm_relations_no_think (%s) — defaulting True", e)
+        no_think = True
+    logger.info("Qwen3 thinking: %s", "OFF (/no_think)" if no_think else "ON")
 
     logger.info("Loading tokenizer: %s", args.tokenizer)
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer)
@@ -180,7 +206,7 @@ def main() -> None:
 
     def add_relations(batch: Dict[str, Any], indices: List[int]) -> Dict[str, Any]:
         nonlocal seen_debug_raw
-        prompts, to_call_indices = format_vllm_chat_messages(batch, tokenizer, POS_EXAMPLES)
+        prompts, to_call_indices = format_vllm_chat_messages(batch, tokenizer, POS_EXAMPLES, no_think=no_think)
         relations_json: List[str] = [""] * len(batch["input_ids"])
         raw_model_out: List[str] = [""] * len(batch["input_ids"])
 
