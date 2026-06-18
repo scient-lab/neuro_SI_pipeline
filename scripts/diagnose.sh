@@ -5,22 +5,37 @@
 # extract finishes (suspiciously fast/slow) to catch silent-success failures
 # BEFORE they poison graphmert (or later phases).
 #
-# Today it covers extract → graphmert handoff:
-#   1. Corpus presence/size sanity        — wrong-corpus-synced detection
-#   2. Extract output (kg_final.csv)      — empty/header-only detection
-#   3. GraphRAG artifacts                  — did indexing actually produce data?
-#   4. Extract phase log scan              — silent warnings/errors
-#   5. graphmert intermediate state        — stale/empty dataset detection
-#   6. Verdict                             — pass/fail + recommended action
+# Today it covers extract → graphmert handoff. Each section is tagged with
+# a (PHASE, STEP) — use --phase / --step to filter scope, --deep for depth.
+#
+#   §   Title                                Phase       Step
+#   --  -----------------------------------  ---------   --------
+#   1   Corpus presence/size sanity          extract     -
+#   2   Extract output (kg_final.csv)        extract     build_kg
+#   3   GraphRAG artifacts                   extract     index
+#   4   Extract phase log scan               extract     -
+#   5   graphmert intermediate state         graphmert   preprocess
+#   6   GraphRAG internals (--deep)          extract     -
+#   7   graphmert internals (--deep)         graphmert   -
+#   8   Verdict                              (always runs)
+#
+# Filters compose like pipeline.sh:
+#   --phase extract             → §1, §2, §3, §4 (+ §6 with --deep)
+#   --phase extract --step index → §1, §3        (+ §6 with --deep)
+#   --phase graphmert           → §5             (+ §7 with --deep)
+#   no filter                    → all
 #
 # Exit code: 0 if all checks pass, 1 if any FAIL, 2 if WARN-only.
-# Designed to run in <5 sec — read-only, no side effects.
+# Fast mode (~5 sec) by default; --deep adds ~10-15 sec.
 #
 # Usage:
-#   ./scripts/diagnose.sh                   # latest run from $OUTPUT_BASE/logs
-#   ./scripts/diagnose.sh --run <prefix>    # specific (matches prefix like logs.sh)
-#   ./scripts/diagnose.sh --quiet           # only print VERDICT + failed sections
-#   ./scripts/diagnose.sh --tee <file>      # also write to file
+#   ./scripts/diagnose.sh                                       # all phases
+#   ./scripts/diagnose.sh --phase extract                       # scope to extract
+#   ./scripts/diagnose.sh --phase extract --step build_kg       # narrow further
+#   ./scripts/diagnose.sh --phase graphmert --deep              # graphmert internals
+#   ./scripts/diagnose.sh --run <prefix>                        # specific historical run
+#   ./scripts/diagnose.sh --quiet                               # VERDICT + failures only
+#   ./scripts/diagnose.sh --tee <file>                          # also write to file
 #   ./scripts/diagnose.sh --help
 
 set -euo pipefail
@@ -63,18 +78,40 @@ fi
 RUN_ID=""
 QUIET=0
 TEE_FILE=""
+DEEP=0
+PHASE_FILTER=""
+STEP_FILTER=""
 
 usage() { sed -n '2,/^$/p' "${BASH_SOURCE[0]}" | sed 's/^# \?//'; }
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        --run)   RUN_ID="$2"; shift 2 ;;
-        --quiet) QUIET=1; shift ;;
-        --tee)   TEE_FILE="$2"; shift 2 ;;
+        --run)    RUN_ID="$2"; shift 2 ;;
+        --phase)  PHASE_FILTER="$2"; shift 2 ;;
+        --step)   STEP_FILTER="$2"; shift 2 ;;
+        --quiet)  QUIET=1; shift ;;
+        --tee)    TEE_FILE="$2"; shift 2 ;;
+        --deep)   DEEP=1; shift ;;
         --help|-h) usage; exit 0 ;;
         *) echo "unknown arg: $1" >&2; usage >&2; exit 1 ;;
     esac
 done
+
+# should_run <section_phase> [<section_step>]
+# Decides whether a section runs given --phase / --step filters.
+#  - No filters → always run
+#  - --phase set → must match section's phase
+#  - --step set → must also match section's step (sections with no step
+#    are phase-wide and still match)
+should_run() {
+    local sec_phase="$1" sec_step="${2:-}"
+    [[ -z "$PHASE_FILTER" ]] && return 0
+    [[ "$PHASE_FILTER" != "$sec_phase" ]] && return 1
+    [[ -z "$STEP_FILTER" ]] && return 0
+    [[ -z "$sec_step" ]] && return 0
+    [[ "$STEP_FILTER" != "$sec_step" ]] && return 1
+    return 0
+}
 
 # --- output capture (optional tee) ------------------------------------------
 if [[ -n "$TEE_FILE" ]]; then
@@ -117,7 +154,8 @@ echo "Run dir    : ${LOG_DIR#$REPO_ROOT/}"
 echo "Repo       : $REPO_ROOT"
 echo "Generated  : $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
 
-# --- 1. Corpus check --------------------------------------------------------
+# --- 1. Corpus check (phase=extract) ----------------------------------------
+if should_run extract; then
 section "1. Corpus"
 CORPUS_RESOLVED="${CORPUS_PATH:-}"
 if [[ -z "$CORPUS_RESOLVED" ]]; then
@@ -155,7 +193,10 @@ else
     fi
 fi
 
-# --- 2. Extract output: kg_final.csv ----------------------------------------
+fi  # end §1
+
+# --- 2. Extract output: kg_final.csv (phase=extract step=build_kg) ----------
+if should_run extract build_kg; then
 section "2. Extract output (kg_final.csv)"
 KG_FINAL="$OUTPUT_BASE/graphrag/output/kg_final.csv"
 if [[ ! -f "$KG_FINAL" ]]; then
@@ -183,7 +224,10 @@ else
     fi
 fi
 
-# --- 3. GraphRAG artifacts (did indexing produce data even if CSV merge failed?) ---
+fi  # end §2
+
+# --- 3. GraphRAG artifacts (phase=extract step=index) -----------------------
+if should_run extract index; then
 section "3. GraphRAG intermediate artifacts"
 "$PY" - "$OUTPUT_BASE" "$REPO_ROOT" <<'PY' 2>&1 || true
 import glob, os, sys
@@ -232,7 +276,10 @@ for kind, paths in findings.items():
         print(f"  ✗ {kind}: 0 rows across {len(paths)} file(s)")
 PY
 
-# --- 4. Extract phase log scan ----------------------------------------------
+fi  # end §3
+
+# --- 4. Extract phase log scan (phase=extract, all steps) -------------------
+if should_run extract; then
 section "4. Extract phase log scan"
 if [[ ! -d "$EXTRACT_LOG_DIR" ]]; then
     mark_warn "no extract step logs at ${EXTRACT_LOG_DIR#$REPO_ROOT/}"
@@ -279,7 +326,10 @@ else
     fi
 fi
 
-# --- 5. graphmert intermediate state ----------------------------------------
+fi  # end §4
+
+# --- 5. graphmert intermediate state (phase=graphmert step=preprocess) ------
+if should_run graphmert preprocess; then
 section "5. graphmert intermediate state"
 GRAPHMERT_DIR="$OUTPUT_BASE/graphmert"
 if [[ ! -d "$GRAPHMERT_DIR" ]]; then
@@ -337,7 +387,287 @@ if not any_bad:
 PY
 fi
 
-# --- 6. Verdict -------------------------------------------------------------
+fi  # end §5
+
+# --- 6. GraphRAG internals — deep (phase=extract) ---------------------------
+# Drills into graphrag's own state to localize WHY relationship extraction
+# produced 0 rows when entities did not. Covers:
+#   - graphrag config + entry-point script
+#   - LLM cache (was the relation-extraction LLM call ever made?)
+#   - entity sample (does the type taxonomy look right for the domain?)
+#   - relationships sample (when non-zero, show one or two)
+#   - graphrag-side log files for the indexing pipeline
+# Read-only. Adds ~5-10 sec — that's why it's behind --deep.
+if [[ "$DEEP" -eq 1 ]] && should_run extract; then
+    section "6. GraphRAG internals (--deep)"
+    GRAPHRAG_DIR="$OUTPUT_BASE/graphrag"
+    if [[ ! -d "$GRAPHRAG_DIR" ]]; then
+        mark_warn "no graphrag output dir at ${GRAPHRAG_DIR#$REPO_ROOT/}"
+    else
+        # 6a. Config + entry-point
+        note "config:"
+        for f in "$REPO_ROOT/1_seed_kg/graphrag_index.py" \
+                 "$REPO_ROOT/configs/default.yaml" \
+                 "$GRAPHRAG_DIR/settings.yaml" \
+                 "$REPO_ROOT/1_seed_kg/settings.yaml"; do
+            if [[ -f "$f" ]]; then
+                note "  ✓ ${f#$REPO_ROOT/}  ($(stat -c%s "$f" 2>/dev/null || stat -f%z "$f") B)"
+            fi
+        done
+        # graphrag prompt files (custom domain prompts if any)
+        prompts=$(find "$REPO_ROOT/1_seed_kg" "$GRAPHRAG_DIR" -path '*prompt*' -name '*.txt' 2>/dev/null | head -5)
+        if [[ -n "$prompts" ]]; then
+            note "  prompts (custom):"
+            while IFS= read -r p; do
+                note "    ${p#$REPO_ROOT/}"
+            done <<< "$prompts"
+        else
+            note "  prompts : using graphrag built-in defaults (no custom .txt files found)"
+        fi
+
+        # 6b. LLM call cache
+        note "cache:"
+        cache_root=""
+        for c in "$GRAPHRAG_DIR/cache" "$GRAPHRAG_DIR/lancedb_cache" "$GRAPHRAG_DIR/output/cache"; do
+            [[ -d "$c" ]] && { cache_root="$c"; break; }
+        done
+        if [[ -z "$cache_root" ]]; then
+            note "  ⚠ no cache dir found — graphrag may not have cached LLM calls (rerun would re-pay)"
+        else
+            cache_files=$(find "$cache_root" -type f 2>/dev/null | wc -l)
+            cache_bytes=$(du -sb "$cache_root" 2>/dev/null | awk '{print $1}')
+            note "  root  : ${cache_root#$REPO_ROOT/}"
+            note "  files : $cache_files  ($(echo "${cache_bytes:-0}" | human_size))"
+            # Bucket cache files by step name to see relation-extraction call count.
+            for step in entity_extraction extract_graph extract_relationships create_communities summarize_communities; do
+                hits=$(find "$cache_root" -type f -name "*${step}*" 2>/dev/null | wc -l)
+                [[ "$hits" -gt 0 ]] && note "  ${step}: $hits cached calls"
+            done
+            # Sample one cache entry to see what the LLM was asked + returned
+            sample=$(find "$cache_root" -type f 2>/dev/null | head -1)
+            if [[ -n "$sample" ]] && [[ "$QUIET" -eq 0 ]]; then
+                note "  sample : ${sample#$REPO_ROOT/}"
+                note "    (first 400 chars):"
+                head -c 400 "$sample" 2>/dev/null | sed 's/^/      /'
+                echo
+            fi
+        fi
+
+        # 6c. Entity + relationship parquet samples
+        "$PY" - "$GRAPHRAG_DIR" "$REPO_ROOT" <<'PY' 2>&1 || true
+import glob, os, sys
+try:
+    import pandas as pd
+except ImportError:
+    print("  ⚠ pandas unavailable — skipping parquet samples")
+    sys.exit(0)
+gr_dir, repo_root = sys.argv[1], sys.argv[2]
+for kind in ["entities", "relationships"]:
+    paths = sorted(glob.glob(os.path.join(gr_dir, "**", f"{kind}*.parquet"), recursive=True))
+    if not paths:
+        print(f"  ⚠ no {kind} parquet found")
+        continue
+    p = paths[0]
+    rel = p[len(repo_root) + 1:] if p.startswith(repo_root) else p
+    try:
+        df = pd.read_parquet(p)
+        print(f"  {kind}: {len(df):,} rows  columns={list(df.columns)}")
+        if len(df) == 0:
+            print(f"    (empty — no sample to print)")
+        else:
+            # Pick the most informative columns if present.
+            preferred = {
+                "entities": ["title", "type", "description"],
+                "relationships": ["source", "target", "description", "weight"],
+            }
+            cols = [c for c in preferred[kind] if c in df.columns] or list(df.columns)[:4]
+            with pd.option_context("display.max_colwidth", 60, "display.width", 120):
+                print("    sample (first 5 rows, key columns):")
+                for line in df[cols].head(5).to_string(index=False).splitlines():
+                    print(f"      {line}")
+    except Exception as e:
+        print(f"  ⚠ {rel}: read error ({e})")
+PY
+
+        # 6d. GraphRAG-side log files (separate from our phase logs)
+        note "graphrag logs:"
+        gr_logs=$(find "$GRAPHRAG_DIR" -maxdepth 3 -name '*.log' -o -name 'indexing-engine.log' -o -name 'logs.json' 2>/dev/null | head -10)
+        if [[ -z "$gr_logs" ]]; then
+            note "  ⚠ no .log files found under graphrag/ — indexing may not have run with file logging"
+        else
+            while IFS= read -r lg; do
+                sz=$(stat -c%s "$lg" 2>/dev/null || stat -f%z "$lg")
+                note "  ${lg#$REPO_ROOT/}  ($(echo "$sz" | human_size))"
+                # Tail any "error" or "0 ..." lines from each graphrag log
+                set +o pipefail
+                rel_signal=$(grep -hiE 'relation|relationship' "$lg" 2>/dev/null | grep -iE 'error|fail|0\b|empty|none' | tail -3)
+                set -o pipefail
+                if [[ -n "$rel_signal" ]]; then
+                    note "    relationship-related signal:"
+                    echo "$rel_signal" | sed 's/^/      /'
+                fi
+            done <<< "$gr_logs"
+        fi
+    fi
+fi
+
+# --- 7. graphmert internals — deep (phase=graphmert) ------------------------
+# Drills into graphmert's own state. Covers:
+#   - resolved args_mlm.yaml (envsubst gaps, wrong paths)
+#   - stable tokenizer state (vocab size, special tokens)
+#   - per-substep dataset samples (relations_all, relations_cleaned_*)
+#   - graphmert step-log grep for "0 relations" / OOM / skip patterns
+#   - any partial MLM checkpoint state
+if [[ "$DEEP" -eq 1 ]] && should_run graphmert; then
+    section "7. graphmert internals (--deep)"
+    GRAPHMERT_DIR="$OUTPUT_BASE/graphmert"
+    if [[ ! -d "$GRAPHMERT_DIR" ]]; then
+        mark_warn "no graphmert output dir at ${GRAPHMERT_DIR#$REPO_ROOT/}"
+    else
+        # 7a. Resolved args_mlm.yaml — every step downstream reads this
+        note "args_mlm.resolved.yaml:"
+        ARGS_RES="$GRAPHMERT_DIR/args_mlm.resolved.yaml"
+        if [[ ! -f "$ARGS_RES" ]]; then
+            note "  ⚠ not found at ${ARGS_RES#$REPO_ROOT/} — envsubst didn't run"
+        else
+            note "  path : ${ARGS_RES#$REPO_ROOT/}  ($(stat -c%s "$ARGS_RES" 2>/dev/null || stat -f%z "$ARGS_RES") B)"
+            # Hunt unresolved ${VAR} placeholders (envsubst gaps)
+            set +o pipefail
+            unresolved=$(grep -cE '\${[A-Z_][A-Z0-9_]*}' "$ARGS_RES" 2>/dev/null || echo 0)
+            set -o pipefail
+            if [[ "$unresolved" -gt 0 ]]; then
+                mark_fail "$unresolved unresolved \${VAR} placeholders in args_mlm.resolved.yaml — envsubst missed env vars"
+                note "  unresolved patterns:"
+                grep -hE '\${[A-Z_][A-Z0-9_]*}' "$ARGS_RES" | head -5 | sed 's/^/    /'
+            else
+                mark_ok "no unresolved \${VAR} placeholders"
+            fi
+            # Key paths
+            for k in train_src eval_src injections_train_path injections_eval_path \
+                     relation_map_path tokenizer_name preprocessing_output_root; do
+                v=$(grep -E "^${k}:" "$ARGS_RES" 2>/dev/null | head -1 | sed "s/^${k}:[[:space:]]*//")
+                [[ -n "$v" ]] && note "  $k = $v"
+            done
+        fi
+
+        # 7b. Stable tokenizer state
+        note "stable_tokenizer:"
+        TOK_DIR="$GRAPHMERT_DIR/stable_tokenizer"
+        if [[ ! -d "$TOK_DIR" ]]; then
+            mark_warn "tokenizer dir missing at ${TOK_DIR#$REPO_ROOT/}"
+        else
+            tok_files=$(ls "$TOK_DIR" 2>/dev/null | wc -l)
+            tok_size=$(du -sb "$TOK_DIR" 2>/dev/null | awk '{print $1}')
+            note "  path  : ${TOK_DIR#$REPO_ROOT/}  ($tok_files files, $(echo "${tok_size:-0}" | human_size))"
+            # Sanity-check vocab size — small vocab = broken tokenizer
+            "$PY" - "$TOK_DIR" <<'PY' 2>&1 || true
+import json, os, sys
+tok_dir = sys.argv[1]
+for fname in ("tokenizer.json", "vocab.json", "vocab.txt"):
+    p = os.path.join(tok_dir, fname)
+    if not os.path.exists(p):
+        continue
+    try:
+        if fname.endswith(".json"):
+            d = json.load(open(p))
+            # tokenizer.json: model.vocab or added_tokens; vocab.json: dict
+            vocab = d.get("model", {}).get("vocab") or d
+            if isinstance(vocab, dict):
+                print(f"  ✓ {fname}: {len(vocab):,} vocab entries")
+            else:
+                print(f"  ⚠ {fname}: unexpected format")
+        else:
+            with open(p) as f:
+                n = sum(1 for _ in f)
+            print(f"  ✓ {fname}: {n:,} lines")
+    except Exception as e:
+        print(f"  ⚠ {fname}: {e}")
+PY
+        fi
+
+        # 7c. Sample rows from graphmert intermediate datasets
+        "$PY" - "$GRAPHMERT_DIR" "$REPO_ROOT" <<'PY' 2>&1 || true
+import os, sys
+try:
+    from datasets import load_from_disk
+except ImportError:
+    print("  ⚠ datasets unavailable — skipping graphmert dataset samples")
+    sys.exit(0)
+gm_dir, repo_root = sys.argv[1], sys.argv[2]
+candidates = [
+    ("head_positions",                        ["text_token_ids", "head_positions"]),
+    ("llm_relations/relations_all",           ["chunk_id", "relations"]),
+    ("llm_relations/relations_cleaned_train", ["chunk_id", "relation_id", "head", "tail"]),
+    ("llm_relations/relations_cleaned_eval",  ["chunk_id", "relation_id", "head", "tail"]),
+]
+for sub, hint_cols in candidates:
+    d = os.path.join(gm_dir, sub)
+    if not os.path.isdir(d):
+        continue
+    rel = d[len(repo_root) + 1:] if d.startswith(repo_root) else d
+    print(f"  {rel}:")
+    try:
+        ds = load_from_disk(d)
+        print(f"    rows   : {len(ds):,}")
+        print(f"    columns: {ds.column_names}")
+        if len(ds) > 0:
+            row0 = ds[0]
+            # Trim long values for display
+            shown = {}
+            for k, v in row0.items():
+                if isinstance(v, list):
+                    shown[k] = f"[len={len(v)}, head={v[:5]}…]" if len(v) > 5 else v
+                elif isinstance(v, str) and len(v) > 100:
+                    shown[k] = v[:100] + "…"
+                else:
+                    shown[k] = v
+            print(f"    row[0] : {shown}")
+        else:
+            print(f"    ⚠ 0 rows — downstream Dataset.from_list will Keys-mismatch")
+    except Exception as e:
+        print(f"    ⚠ load_from_disk error: {e}")
+PY
+
+        # 7d. Step-log grep for failure signals
+        GM_LOG_DIR="$LOG_DIR/graphmert"
+        note "step logs:"
+        if [[ ! -d "$GM_LOG_DIR" ]]; then
+            note "  ⚠ no graphmert step logs at ${GM_LOG_DIR#$REPO_ROOT/}"
+        else
+            gm_logs=$(find "$GM_LOG_DIR" -name '*.log' -type f 2>/dev/null | sort)
+            if [[ -z "$gm_logs" ]]; then
+                note "  (no .log files)"
+            else
+                set +o pipefail
+                for lg in $gm_logs; do
+                    sz=$(stat -c%s "$lg" 2>/dev/null || stat -f%z "$lg")
+                    note "  ${lg#$REPO_ROOT/}  ($(echo "$sz" | human_size))"
+                    # Grep for known failure modes
+                    sig=$(grep -hiE '0 relations|no heads|empty dataset|OOM|CUDA out of memory|Keys mismatch|skip' "$lg" 2>/dev/null | tail -3)
+                    if [[ -n "$sig" ]]; then
+                        note "    failure signal:"
+                        echo "$sig" | sed 's/^/      /'
+                    fi
+                done
+                set -o pipefail
+            fi
+        fi
+
+        # 7e. Partial MLM checkpoint state
+        CKPT_DIR="$GRAPHMERT_DIR/checkpoints"
+        if [[ -d "$CKPT_DIR" ]]; then
+            note "checkpoints:"
+            for c in "$CKPT_DIR"/*; do
+                [[ -d "$c" ]] || continue
+                cb=$(du -sb "$c" 2>/dev/null | awk '{print $1}')
+                cf=$(ls "$c" 2>/dev/null | wc -l)
+                note "  ${c#$REPO_ROOT/}  ($cf files, $(echo "${cb:-0}" | human_size))"
+            done
+        fi
+    fi
+fi
+
+# --- 8. Verdict -------------------------------------------------------------
 echo
 echo "=== VERDICT $(printf '%.0s=' {1..50})" | head -c 70; echo
 if [[ "$FAILS" -eq 0 && "$WARNS" -eq 0 ]]; then
@@ -373,6 +703,11 @@ if [[ -f "$KG_FINAL" ]]; then
         echo "  3. Fix the root cause, then rerun extract phase only:"
         echo "       rm -rf $OUTPUT_BASE/graphrag $OUTPUT_BASE/graphmert"
         echo "       ./scripts/pipeline.sh --profile <p> --platform <pl> --phase extract"
+        if [[ "$DEEP" -eq 0 ]]; then
+            echo
+            echo "For deeper triage (graphrag config, LLM cache, parquet samples):"
+            echo "       ./scripts/diagnose.sh --phase extract --deep"
+        fi
     fi
 fi
 
