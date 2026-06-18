@@ -292,7 +292,10 @@ env = {
 for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "HF_TOKEN", "WANDB_API_KEY",
           "S3_URI", "CORPUS_PATH", "AWS_ACCESS_KEY_ID",
           "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION",
-          "S3_SYNC_INTERVAL_SEC", "AWS_CLOUDWATCH_LOG_GROUP"):
+          "S3_SYNC_INTERVAL_SEC", "AWS_CLOUDWATCH_LOG_GROUP",
+          # Pod-side diagnostics (vllm_smoke.sh, diagnose_llm_extraction.py)
+          # point at a separate vLLM serving pod via the OpenAI-compatible API.
+          "VLLM_ENDPOINT_URL", "VLLM_API_KEY"):
     v = os.environ.get(k)
     if v:
         env[k] = v

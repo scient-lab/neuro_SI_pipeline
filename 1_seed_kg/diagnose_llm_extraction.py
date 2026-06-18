@@ -190,8 +190,9 @@ def main() -> int:
     p.add_argument("--file",        help="path to a .txt chunk file")
     p.add_argument("--endpoint",    help="vLLM URL base (default $VLLM_ENDPOINT_URL)")
     p.add_argument("--api-key",     help="bearer token (default $VLLM_API_KEY)")
-    p.add_argument("--env-file",    default=os.path.join(os.path.dirname(HERE), ".env.runpod"),
-                                    help="(default: <repo>/.env.runpod)")
+    p.add_argument("--env-file",    action="append", default=None,
+                                    help="(default tries <repo>/.env.runpod then <repo>/.env; "
+                                         "pass --env-file multiple times to layer additional files)")
     p.add_argument("--model",       help="model name; many vLLM servers accept empty")
     p.add_argument("--max-tokens",  type=int,   default=4096)
     p.add_argument("--temperature", type=float, default=0.6)
@@ -201,12 +202,29 @@ def main() -> int:
     args = p.parse_args()
 
     # --- secrets ------------------------------------------------------------
-    load_env_file(args.env_file)
+    # Load env files in priority order. Explicit --env-file flags take
+    # precedence; absent that, try the workstation default (.env.runpod) then
+    # the pod default (.env). load_env_file uses setdefault so the first file
+    # to set a var wins — matches bash `source` semantics.
+    repo_root = os.path.dirname(HERE)
+    if args.env_file:
+        env_files = args.env_file
+    else:
+        env_files = [
+            os.path.join(repo_root, ".env.runpod"),  # workstation primary
+            os.path.join(repo_root, ".env"),         # pod primary (populated by bootstrap.sh)
+        ]
+    for ef in env_files:
+        load_env_file(ef)
+
     endpoint = args.endpoint or os.environ.get("VLLM_ENDPOINT_URL", "")
     api_key  = args.api_key  or os.environ.get("VLLM_API_KEY", "")
     if not endpoint or not api_key:
-        print("ERROR: need --endpoint + --api-key (or VLLM_ENDPOINT_URL + "
-              "VLLM_API_KEY in .env.runpod / env)", file=sys.stderr)
+        print("ERROR: need --endpoint + --api-key, OR set VLLM_ENDPOINT_URL +", file=sys.stderr)
+        print("       VLLM_API_KEY in one of:", file=sys.stderr)
+        for ef in env_files:
+            mark = "✓" if os.path.exists(ef) else "✗"
+            print(f"         {mark} {ef}", file=sys.stderr)
         return 2
 
     # --- input text ---------------------------------------------------------

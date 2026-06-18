@@ -170,6 +170,11 @@ ENV_FILE="$SI_HOME/.env"
     [[ -n "${S3_SYNC_INTERVAL_SEC:-}"   ]] && echo "S3_SYNC_INTERVAL_SEC=$S3_SYNC_INTERVAL_SEC"
     # CloudWatch Logs target (per-step ship by lib/common.sh::_cw_ship).
     [[ -n "${AWS_CLOUDWATCH_LOG_GROUP:-}"        ]] && echo "AWS_CLOUDWATCH_LOG_GROUP=$AWS_CLOUDWATCH_LOG_GROUP"
+    # Separate vLLM serving pod (used by scripts/runpod/vllm_smoke.sh and
+    # 1_seed_kg/diagnose_llm_extraction.py). Different from RUNPOD_API_KEY,
+    # which is for the RunPod control-plane API. Optional.
+    [[ -n "${VLLM_ENDPOINT_URL:-}"               ]] && echo "VLLM_ENDPOINT_URL=$VLLM_ENDPOINT_URL"
+    [[ -n "${VLLM_API_KEY:-}"                    ]] && echo "VLLM_API_KEY=$VLLM_API_KEY"
     # graphrag's load_config() does Template(text).substitute(os.environ) on
     # 1_seed_kg/settings.yaml, which references ${GRAPHRAG_API_KEY} for both
     # default_chat_model and default_embedding_model. Our pipeline_3 path
