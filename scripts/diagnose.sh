@@ -241,15 +241,24 @@ else
     if [[ -z "$EXTRACT_LOGS" ]]; then
         mark_warn "no .log files under ${EXTRACT_LOG_DIR#$REPO_ROOT/}"
     else
+        # Disable pipefail in this block: a grep that finds 0 matches returns
+        # exit 1, which combined with `set -e -o pipefail` will silently kill
+        # the script mid-section. We WANT 0 matches to be a valid result.
+        set +o pipefail
         # shellcheck disable=SC2086
         TOTAL_BYTES=$(cat $EXTRACT_LOGS | wc -c)
         ERR=$(grep -hiE 'error|exception|traceback' $EXTRACT_LOGS 2>/dev/null | grep -vE 'INFO|^$' | wc -l)
         WRN=$(grep -hiE '\bwarn(ing)?\b' $EXTRACT_LOGS 2>/dev/null | wc -l)
         ZERO_HITS=$(grep -hiE '\b0 (entit|relat|trip|rows|results|chunks)' $EXTRACT_LOGS 2>/dev/null | wc -l)
+        # Also scan for graphrag-specific empty-output signals:
+        REL_HITS=$(grep -hiE '(extract_relationships|relationship.*extract).*\b(0|empty|none|fail)' $EXTRACT_LOGS 2>/dev/null | wc -l)
+        set -o pipefail
         note "log size : $(echo "$TOTAL_BYTES" | human_size) across $(echo "$EXTRACT_LOGS" | wc -l) file(s)"
         note "errors   : $ERR matching error/exception/traceback"
         note "warnings : $WRN"
         note "0-counts : $ZERO_HITS log lines mentioning '0 entities/relations/triples/...'"
+        note "rel-hits : $REL_HITS log lines mentioning relationship extraction failures"
+        set +o pipefail
         if [[ "$ZERO_HITS" -gt 0 ]]; then
             mark_warn "extract log mentions zero-result counts ($ZERO_HITS hits) — likely the silent failure"
             note "  recent zero hits:"
@@ -260,7 +269,13 @@ else
             note "  most recent error context:"
             grep -hniE 'error|exception|traceback' $EXTRACT_LOGS 2>/dev/null | tail -3 | sed 's/^/    /'
         fi
-        [[ "$ERR" -eq 0 && "$WRN" -eq 0 && "$ZERO_HITS" -eq 0 ]] && mark_ok "no errors / warnings / zero-result hits in extract logs"
+        if [[ "$REL_HITS" -gt 0 ]]; then
+            mark_warn "extract log mentions relationship-extraction failures ($REL_HITS hits)"
+            note "  recent rel-hits:"
+            grep -hiE '(extract_relationships|relationship.*extract).*\b(0|empty|none|fail)' $EXTRACT_LOGS 2>/dev/null | tail -3 | sed 's/^/    /'
+        fi
+        set -o pipefail
+        [[ "$ERR" -eq 0 && "$WRN" -eq 0 && "$ZERO_HITS" -eq 0 && "$REL_HITS" -eq 0 ]] && mark_ok "no errors / warnings / zero-result hits in extract logs"
     fi
 fi
 
