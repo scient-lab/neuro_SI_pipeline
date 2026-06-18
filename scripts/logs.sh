@@ -10,6 +10,7 @@
 #
 # Flag syntax mirrors pipeline.sh (--phase/--step). Usage examples:
 #   ./scripts/logs.sh                                    # latest run, all phases
+#   ./scripts/logs.sh --summary                          # health-check: per-phase status table
 #   ./scripts/logs.sh --phase graphmert                  # one phase
 #   ./scripts/logs.sh --phase graphmert --step tokenize  # one step
 #   ./scripts/logs.sh --run 20260617 --error             # triage today's failure
@@ -30,6 +31,7 @@ TAIL=0
 LIST_ONLY=0
 ERROR_ONLY=0
 PATHS_ONLY=0
+SUMMARY_ONLY=0
 
 usage() {
     sed -n '2,/^$/p' "${BASH_SOURCE[0]}" | sed 's/^# \?//'
@@ -44,6 +46,7 @@ while [[ $# -gt 0 ]]; do
         --list|-l)  LIST_ONLY=1; shift ;;
         --error|-e) ERROR_ONLY=1; shift ;;
         --paths|-p) PATHS_ONLY=1; shift ;;
+        --summary|-s) SUMMARY_ONLY=1; shift ;;
         --help|-h)  usage; exit 0 ;;
         *) echo "unknown arg: $1" >&2; usage >&2; exit 1 ;;
     esac
@@ -99,6 +102,99 @@ elif [[ ! -d "$LOGS_BASE/$RUN_ID" ]]; then
 fi
 
 LOG_DIR="$LOGS_BASE/$RUN_ID"
+
+# --- --summary / -s (manifest health-check view) ----------------------------
+# Compact run-health table: per-phase status + duration + step counts +
+# top-level failure block if any. Reads the manifest only — no log dump.
+if [[ "$SUMMARY_ONLY" -eq 1 ]]; then
+    [[ -f "$MANIFEST" ]] || { echo "No manifest at $MANIFEST"; exit 1; }
+    REQUESTED="$RUN_ID" python3 -c "
+import json, os, sys
+from datetime import datetime, timezone
+
+m = json.load(open('$MANIFEST'))['run']
+requested = os.environ['REQUESTED']
+this_run = m.get('run_id', '')
+if this_run != requested:
+    print(f'Note: manifest is for {this_run}, requested {requested}')
+    print('(summary is only available for the run whose manifest is current)')
+    sys.exit(0)
+
+def _parse(t):
+    if not t: return None
+    try: return datetime.fromisoformat(t.replace('Z','+00:00'))
+    except Exception: return None
+
+def _fmt_duration(seconds):
+    if seconds is None: return ''
+    seconds = int(seconds)
+    if seconds < 60:  return f'{seconds}s'
+    if seconds < 3600: return f'{seconds//60}m {seconds%60:02d}s'
+    h, rem = divmod(seconds, 3600); mm = rem // 60
+    return f'{h}h {mm:02d}m'
+
+def _phase_duration(p):
+    s, f = _parse(p.get('started_at')), _parse(p.get('finished_at'))
+    if s is None: return None
+    end = f if f else datetime.now(timezone.utc)
+    return (end - s).total_seconds()
+
+STATUS_MARK = {
+    'completed': '✓', 'failed': '✗', 'running': '…',
+    'skipped':  '-', 'pending':  ' ',
+}
+
+# --- header ---
+started_at = m.get('started_at', '')
+finished_at = m.get('finished_at', '')
+ts_start = _parse(started_at); ts_end = _parse(finished_at) if finished_at else datetime.now(timezone.utc)
+total_dur = (ts_end - ts_start).total_seconds() if ts_start else None
+
+print(f'Run     : {this_run}')
+print(f'Status  : {m.get(\"status\",\"?\"):<11s}  ({_fmt_duration(total_dur)})')
+print(f'Profile : {m.get(\"profile\",\"\")}    Domain: {m.get(\"domain\",\"\")}    Platform: {m.get(\"platform\",\"\")}')
+print(f'Git     : {m.get(\"git_sha\",\"\")} ({m.get(\"git_branch\",\"\")})')
+print(f'Started : {started_at}')
+if finished_at:
+    print(f'Finished: {finished_at}')
+print()
+
+# --- per-phase table ---
+phases = m.get('phases', []) or []
+print(f'  {\"PHASE\":<14s} {\"STATUS\":<13s} {\"DURATION\":<11s} {\"STEPS\":>6s}')
+print(f'  {\"-\"*14} {\"-\"*13} {\"-\"*11} {\"-\"*6}')
+for p in phases:
+    name = p.get('name','?')
+    st   = p.get('status', 'pending')
+    mark = STATUS_MARK.get(st, '?')
+    dur  = _fmt_duration(_phase_duration(p)) if st != 'pending' else ''
+    steps = p.get('steps', []) or []
+    ok    = sum(1 for s in steps if s.get('status') == 'completed')
+    total = len(steps)
+    steps_str = f'{ok}/{total}' if total else ''
+    print(f'  {name:<14s} {mark} {st:<11s} {dur:<11s} {steps_str:>6s}')
+
+# --- failure summary ---
+f = m.get('failure')
+if f:
+    print()
+    print('FAILURE:')
+    print(f'  phase     : {f.get(\"phase\")}')
+    print(f'  step      : {f.get(\"step\",\"(none)\")}')
+    print(f'  exit_code : {f.get(\"exit_code\")}')
+    err = f.get('error') or {}
+    print(f'  message   : {err.get(\"message\",\"\")}')
+    tail = err.get('log_tail', [])
+    if tail:
+        print(f'  log tail  : ({len(tail)} lines, last {min(5,len(tail))} shown)')
+        for ln in tail[-5:]:
+            print(f'    {ln}')
+        print()
+        print(f'  Full tail: ./scripts/logs.sh --run {this_run} --error')
+        print(f'  Full log : ./scripts/logs.sh --run {this_run} --phase {f.get(\"phase\")}')
+"
+    exit 0
+fi
 
 # --- --error / -e (manifest triage view) ------------------------------------
 if [[ "$ERROR_ONLY" -eq 1 ]]; then
