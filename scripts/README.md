@@ -340,9 +340,35 @@ unified agent in `runpod/bootstrap.sh` pointed at `logs/<run_id>/`.
 `pipeline.sh` calls it:
 - After each phase completes (mid-run crash resilience)
 - Once more at pipeline end (catch-all)
+- **Periodically in the background during the run** (opt-in via `SYNC_INTERVAL_SEC`)
 
-Both calls are **best-effort** — sync failure prints a warning and continues
+All calls are **best-effort** — sync failure prints a warning and continues
 (non-fatal). No-op when `S3_URI` is unset (workstation case).
+
+### Periodic background sync (mid-phase resilience)
+
+Per-phase sync is great for crashes between phases, but during a long
+single phase (e.g. `graphmert.train_mnm` running hours with HF Trainer
+writing checkpoints every `save_steps`), a pod crash mid-phase loses
+everything since the last phase boundary.
+
+Set `SYNC_INTERVAL_SEC` (e.g. `300` for 5 min) in `.env.runpod` and
+`pipeline.sh` will spawn a background loop that runs `sync_outputs.sh`
+every N seconds for the lifetime of the run. The loop is killed by an
+EXIT trap on success, failure, or `Ctrl-C`. `aws s3 sync` is incremental,
+so cost is tiny even on a 3-hour training step.
+
+```bash
+# .env.runpod (or exported manually)
+SYNC_INTERVAL_SEC=300        # every 5 min; minimum 10s
+# unset / blank = disabled (current default behavior)
+```
+
+When set, you'll see one extra log line at startup:
+
+```
+[14:15:23] INFO  Background S3 sync: every 300s
+```
 
 S3 layout produced:
 

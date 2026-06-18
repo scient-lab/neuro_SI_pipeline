@@ -263,6 +263,39 @@ _s3_sync_if_configured() {
     fi
 }
 
+# Periodic background S3 sync — opt-in via SYNC_INTERVAL_SEC. Catches
+# mid-phase checkpoints (HF Trainer's save_steps writes) so a pod crash at
+# minute N leaves S3 with state up to roughly minute (N - SYNC_INTERVAL_SEC).
+# aws s3 sync is incremental, so cost is tiny even on a long phase.
+SYNC_BG_PID=""
+_start_background_sync() {
+    if [[ -z "${S3_URI:-}" || -z "${SYNC_INTERVAL_SEC:-}" ]]; then return; fi
+    if [[ ! -x "$SCRIPT_DIR/data_prep/sync_outputs.sh" ]]; then return; fi
+    # Validate interval is a positive integer.
+    if ! [[ "$SYNC_INTERVAL_SEC" =~ ^[0-9]+$ ]] || [[ "$SYNC_INTERVAL_SEC" -lt 10 ]]; then
+        log_warn "SYNC_INTERVAL_SEC='$SYNC_INTERVAL_SEC' invalid (need int >= 10s); skipping background sync"
+        return
+    fi
+    log_info "Background S3 sync: every ${SYNC_INTERVAL_SEC}s"
+    (
+        # Detach from terminal job control; survive SSH-style hangups since
+        # the parent pipeline.sh might be under nohup itself.
+        trap '' HUP
+        while sleep "$SYNC_INTERVAL_SEC"; do
+            "$SCRIPT_DIR/data_prep/sync_outputs.sh" >/dev/null 2>&1 || true
+        done
+    ) &
+    SYNC_BG_PID=$!
+    # Ensure the background loop dies with this pipeline (success, failure,
+    # OR ctrl-C). The loop body is `while sleep N; do ...; done` — TERM to
+    # the bash subshell alone leaves the `sleep` child running until natural
+    # expiry (visible as ~Ns hang on exit). Kill children first, then SIGKILL
+    # the subshell so it can't outlive us.
+    trap '[[ -n "$SYNC_BG_PID" ]] && { pkill -KILL -P "$SYNC_BG_PID" 2>/dev/null; kill -KILL "$SYNC_BG_PID" 2>/dev/null; }; wait 2>/dev/null || true' EXIT
+}
+
+_start_background_sync
+
 for phase in "${selected_phases[@]}"; do
     phase_script="$SCRIPT_DIR/phases/${phase}.sh"
     log_file="$LOG_DIR/${phase}.log"

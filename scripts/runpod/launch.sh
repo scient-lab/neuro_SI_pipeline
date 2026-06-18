@@ -290,7 +290,8 @@ env = {
 }
 for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "HF_TOKEN", "WANDB_API_KEY",
           "S3_URI", "CORPUS_PATH", "AWS_ACCESS_KEY_ID",
-          "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION"):
+          "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION",
+          "SYNC_INTERVAL_SEC"):
     v = os.environ.get(k)
     if v:
         env[k] = v

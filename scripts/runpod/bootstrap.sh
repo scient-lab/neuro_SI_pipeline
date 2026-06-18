@@ -153,6 +153,9 @@ ENV_FILE="$SI_HOME/.env"
     [[ -n "${AWS_ACCESS_KEY_ID:-}"   ]] && echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID"
     [[ -n "${AWS_SECRET_ACCESS_KEY:-}" ]] && echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY"
     [[ -n "${AWS_DEFAULT_REGION:-}"  ]] && echo "AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION"
+    # Periodic background output sync — pipeline.sh runs sync_outputs.sh
+    # every N sec to catch mid-phase HF Trainer checkpoints. Unset = off.
+    [[ -n "${SYNC_INTERVAL_SEC:-}"   ]] && echo "SYNC_INTERVAL_SEC=$SYNC_INTERVAL_SEC"
     # graphrag's load_config() does Template(text).substitute(os.environ) on
     # 1_seed_kg/settings.yaml, which references ${GRAPHRAG_API_KEY} for both
     # default_chat_model and default_embedding_model. Our pipeline_3 path
