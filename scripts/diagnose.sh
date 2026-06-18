@@ -708,6 +708,12 @@ if [[ -f "$KG_FINAL" ]]; then
             echo "For deeper triage (graphrag config, LLM cache, parquet samples):"
             echo "       ./scripts/diagnose.sh --phase extract --deep"
         fi
+        echo
+        echo "If --deep shows 0 relationships in entities.parquet vs 0 in"
+        echo "relationships.parquet, isolate prompt vs parser vs model by"
+        echo "replaying ONE chunk against the live vLLM endpoint:"
+        echo "       ./scripts/diagnose_llm_extraction.sh"
+        echo "       ./scripts/diagnose_llm_extraction.sh --file corpus/<domain>/source_txt/<file>"
     fi
 fi
 
