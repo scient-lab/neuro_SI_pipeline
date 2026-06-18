@@ -198,15 +198,20 @@ def parse_records(response_text: str) -> list[dict]:
     We additionally flag "would-KEEP" cases (same content but different
     quoting) — those reveal a parser-strictness bug rather than an LLM bug.
     """
+    import re as _re
     rows: list[dict] = []
     records = [r.strip() for r in response_text.split(DELIMS["record_delimiter"])]
     for i, rec in enumerate(records):
         if not rec:
             continue
-        parts = rec.split(DELIMS["tuple_delimiter"])
+        # MIRROR graphrag_index.py:305 — strip leading "(" and trailing ")"
+        # BEFORE splitting. Without this we get false-positive "would-keep"
+        # warnings because the first token still has a stray "(" in front.
+        rec_stripped = _re.sub(r"^\(|\)$", "", rec.strip())
+        parts = rec_stripped.split(DELIMS["tuple_delimiter"])
         first = parts[0] if parts else ""
         n = len(parts)
-        first_unquoted = first.strip("() \"'\t")
+        first_unquoted = first.strip(" \"'\t")
         verdict = "DROP"
         if first == '"entity"' and n >= 4:
             verdict = "KEEP-entity"
@@ -391,29 +396,49 @@ def main() -> int:
     print()
 
     # --- verdict ------------------------------------------------------------
+    # Token-budget exhaustion is the highest-priority diagnosis because
+    # Qwen3-class reasoning models burn the budget on <think>...</think>
+    # before reaching step-2 (relationships) for any non-trivial input.
+    # Signals: missing <|COMPLETE|> sentinel, OR <think> block present + no
+    # relationships even though entities came through.
+    completion_present = DELIMS["completion_delimiter"] in response_text
+    think_present      = "<think>" in response_text.lower() or "</think>" in response_text.lower()
+
     print("=== Verdict ===")
     if kept_rel > 0:
         print(f"  ✓ Extraction works on this chunk — {kept_rel} relationship(s) parsed.")
-        print("    If your full pipeline still produces 0 relationships, the bug is")
-        print("    downstream (graph merge, dedup, or storage), not in extraction.")
+        if not completion_present:
+            print(f"  ⚠ But response missing {DELIMS['completion_delimiter']} — output was")
+            print("    TRUNCATED by max_tokens. Real (longer) chunks will lose tail records.")
+            print("    On a real chunk, increase --max-tokens (>=16384) or disable thinking.")
         exit_code = 0
-    elif would_keep_rel > 0:
-        print(f"  ✗ Parser strictness bug. Model emitted {would_keep_rel} valid")
-        print("    relationship records but the parser rejected them due to a")
-        print("    quoting/format mismatch.")
+    elif kept_ent > 0 and not completion_present:
+        print(f"  ✗ Model emitted {kept_ent} entities, ZERO relationships, AND the response")
+        print(f"    is MISSING {DELIMS['completion_delimiter']} — TRUNCATED by max_tokens.")
+        print("    This is the dominant failure mode for Qwen3-class reasoning models on")
+        print(f"    long chunks: <think>...</think> trace ({think_present and '✓ detected' or 'likely'}) eats the budget,")
+        print("    entities (step 1) get emitted, relationships (step 2) get cut off.")
         print()
+        print("    Fix (cheapest first):")
+        print("      1. Bump --max-tokens to 16384 or 32768 (configs/default.yaml::extract.max_tokens).")
+        print("      2. Suppress thinking: append '/no_think' to the user prompt OR use a")
+        print("         non-reasoning model (Qwen2.5-14B-Instruct).")
+        print("      3. Reduce chunk_size in graphrag config so <think> trace stays bounded.")
+        exit_code = 1
+    elif kept_ent > 0:
+        print(f"  ✗ Model emitted {kept_ent} entities but ZERO relationships (response IS")
+        print(f"    complete — has {DELIMS['completion_delimiter']}). Possible causes:")
+        print("      - Model genuinely found no relationships in this chunk (sparse text)")
+        print("      - Prompt issue: model misread step 2 as optional")
+        print("      - Few-shot example unbalanced (too many entities, few relationships)")
+        print(f"    Try a denser chunk or larger model. relation_list size: {len(get_relation_types())} types")
+        exit_code = 1
+    elif would_keep_rel > 0:
+        print(f"  ✗ Parser strictness bug. Model emitted {would_keep_rel} valid relationship")
+        print("    records but the parser rejected them due to a quoting/format mismatch.")
         print("    Fix at 1_seed_kg/graphrag_index.py:~333:")
         print("      before:  if record_attributes[0] == '\"relationship\"' and ...")
         print("      after :  if record_attributes[0].strip('\"') == 'relationship' and ...")
-        print("    Apply the same fix to the '\"entity\"' check on the same loop.")
-        exit_code = 1
-    elif kept_ent > 0:
-        print(f"  ✗ Model emitted entities ({kept_ent}) but NO relationship records at all.")
-        print("    Prompt/model issue. Try:")
-        print("      - increase --max-tokens (LLM may be truncating before relationships)")
-        print("      - bigger model (Qwen3-32B / QwQ-Med-3) — relationships need stronger structured output")
-        print("      - check that relation_list reaches the system prompt correctly")
-        print(f"      - relation_list size: {len(get_relation_types())} types")
         exit_code = 1
     else:
         print("  ✗ Model emitted neither entities nor relationships in the expected format.")
