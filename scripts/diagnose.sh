@@ -29,6 +29,27 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 OUTPUT_BASE="${OUTPUT_BASE:-$REPO_ROOT/outputs}"
 
+# Find a python that has pandas (for parquet introspection) and json (always
+# stdlib). Prefer venvs in order graphmert > graphrag > si_curriculum; fall
+# back to system python3. We don't want to fail diagnose if pandas is absent
+# — just degrade gracefully (parquet counts go from rows to file presence).
+pick_py_with_pandas() {
+    local p
+    for p in "$REPO_ROOT/.venvs/graphmert/bin/python" \
+             "$REPO_ROOT/.venvs/graphrag/bin/python" \
+             "$REPO_ROOT/.venvs/si_curriculum/bin/python" \
+             "$(command -v python3 2>/dev/null || echo /nonexistent)"; do
+        [[ -x "$p" ]] || continue
+        if "$p" -c 'import pandas' 2>/dev/null; then
+            echo "$p"; return
+        fi
+    done
+    # No venv has pandas — fall back to system python3 (parquet stats skipped).
+    command -v python3 2>/dev/null || echo ""
+}
+PY="$(pick_py_with_pandas)"
+[[ -z "$PY" ]] && { echo "no python3 found"; exit 1; }
+
 # Auto-source .env to pick up CORPUS_PATH for the wrong-corpus check.
 _env_file="${ENV_FILE:-$REPO_ROOT/.env}"
 if [[ -f "$_env_file" ]]; then
@@ -103,16 +124,26 @@ if [[ -z "$CORPUS_RESOLVED" ]]; then
     mark_warn "CORPUS_PATH not set in .env — skipping corpus size check"
 else
     # CORPUS_PATH is RELATIVE to REPO_ROOT in our symmetric s3-mirror model.
-    CORPUS_DIR="$REPO_ROOT/$CORPUS_RESOLVED"
-    if [[ ! -d "$CORPUS_DIR" ]]; then
-        mark_fail "corpus dir missing: $CORPUS_DIR"
-    else
-        FCOUNT=$(find "$CORPUS_DIR" -type f \( -name '*.txt' -o -name '*.md' -o -name '*.json' \) 2>/dev/null | wc -l)
-        BYTES=$(du -sb "$CORPUS_DIR" 2>/dev/null | awk '{print $1}')
+    # It can point to either a directory OR a single file — handle both.
+    CORPUS_TGT="$REPO_ROOT/$CORPUS_RESOLVED"
+    if [[ -f "$CORPUS_TGT" ]]; then
+        # Single-file corpus (e.g. one textbook).
+        BYTES=$(stat -c%s "$CORPUS_TGT" 2>/dev/null || stat -f%z "$CORPUS_TGT")
         HSIZE=$(echo "$BYTES" | human_size)
-        note "path  : ${CORPUS_DIR#$REPO_ROOT/}"
+        note "path  : ${CORPUS_TGT#$REPO_ROOT/}  (single file)"
+        note "size  : $HSIZE"
+    elif [[ -d "$CORPUS_TGT" ]]; then
+        FCOUNT=$(find "$CORPUS_TGT" -type f \( -name '*.txt' -o -name '*.md' -o -name '*.json' \) 2>/dev/null | wc -l)
+        BYTES=$(du -sb "$CORPUS_TGT" 2>/dev/null | awk '{print $1}')
+        HSIZE=$(echo "$BYTES" | human_size)
+        note "path  : ${CORPUS_TGT#$REPO_ROOT/}  (directory)"
         note "files : $FCOUNT"
         note "size  : $HSIZE"
+    else
+        mark_fail "corpus path missing (neither file nor dir): $CORPUS_TGT"
+        BYTES=0
+    fi
+    if [[ "${BYTES:-0}" -gt 0 ]]; then
         # Smoke fixture is < 100 KB. Pilot/paper Kandel corpus is >5 MB.
         if [[ "$BYTES" -lt 100000 ]]; then
             mark_fail "corpus is tiny ($HSIZE) — looks like a smoke fixture, not a pilot/paper corpus"
@@ -154,7 +185,7 @@ fi
 
 # --- 3. GraphRAG artifacts (did indexing produce data even if CSV merge failed?) ---
 section "3. GraphRAG intermediate artifacts"
-python3 - "$OUTPUT_BASE" "$REPO_ROOT" <<'PY' 2>&1 || true
+"$PY" - "$OUTPUT_BASE" "$REPO_ROOT" <<'PY' 2>&1 || true
 import glob, os, sys
 out_base, repo_root = sys.argv[1], sys.argv[2]
 patterns = {
@@ -240,7 +271,7 @@ if [[ ! -d "$GRAPHMERT_DIR" ]]; then
     note "no graphmert outputs yet (phase has not run on this RUN_ID)"
 else
     # Check each known intermediate save_to_disk target: schema vs row count.
-    python3 - "$GRAPHMERT_DIR" "$REPO_ROOT" <<'PY' 2>&1 || true
+    "$PY" - "$GRAPHMERT_DIR" "$REPO_ROOT" <<'PY' 2>&1 || true
 import json, os, sys
 gm_dir, repo_root = sys.argv[1], sys.argv[2]
 candidates = [
