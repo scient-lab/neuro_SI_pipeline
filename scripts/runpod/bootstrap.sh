@@ -99,6 +99,18 @@ if ! command -v uv >/dev/null 2>&1; then
     curl -LsSf https://astral.sh/uv/install.sh | sh
     export PATH="$HOME/.local/bin:$PATH"
 fi
+# Persist the PATH addition so subsequent SSH sessions / pipeline.sh runs
+# find uv. The installer's own `env` snippet handles interactive shells;
+# this line is idempotent insurance and also covers non-bash shells.
+# `_cw_ship` (lib/common.sh) needs uv to run cw_ship.py with PEP 723 boto3
+# resolution — if uv isn't on PATH, every step's CloudWatch ship silently
+# falls back to system python3 which doesn't have boto3.
+if ! grep -q 'HOME/.local/bin' "$HOME/.bashrc" 2>/dev/null; then
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
+fi
+if ! grep -q 'HOME/.local/bin' "$HOME/.profile" 2>/dev/null; then
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.profile"
+fi
 echo "  uv: $(uv --version)"
 
 # --- 3. clone repos (idempotent) -----------------------------------------
@@ -180,9 +192,15 @@ done
 echo
 echo "✓ bootstrap complete"
 echo
-echo "Run the pipeline:"
+echo "Run the pipeline (detached so SSH disconnects don't kill the run):"
 echo "  cd $SI_HOME"
-echo "  ./scripts/pipeline.sh --profile ${SI_PROFILE:-smoke} --platform runpod"
+echo "  nohup ./scripts/pipeline.sh --profile ${SI_PROFILE:-smoke} --platform runpod > nohup.out 2>&1 &"
+echo
+echo "Track / inspect:"
+echo "  tail -f nohup.out                              # orchestrator stdout"
+echo "  ./scripts/logs.sh --summary                    # run health from manifest"
+echo "  ./scripts/logs.sh --tail                       # latest per-phase log"
+echo "  pgrep -af pipeline.sh                          # pid + cmdline"
 echo
 echo "(pipeline.sh auto-sources .env. If you want secrets in your interactive"
 echo " shell — e.g. for debugging — use: set -a; source .env; set +a)"

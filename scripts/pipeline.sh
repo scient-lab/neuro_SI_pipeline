@@ -13,6 +13,16 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
+# Defensive PATH — the runpod bootstrap installs `uv` into ~/.local/bin and
+# appends to ~/.bashrc, but a non-interactive shell (e.g. ssh non-tty, cron,
+# nohup &) won't source ~/.bashrc. lib/common.sh::_cw_ship needs uv on PATH
+# to run cw_ship.py with PEP 723 boto3 resolution — without it every step's
+# CloudWatch ship silently falls back to system python3 (no boto3).
+case ":$PATH:" in
+    *":$HOME/.local/bin:"*) ;;
+    *) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
+
 # shellcheck source=lib/common.sh
 source "$SCRIPT_DIR/lib/common.sh"
 

@@ -369,6 +369,16 @@ the graphrag / graphmert / si_curriculum reqs). Instead, `_cw_ship` runs
 venv contamination. Fallback: if `uv` is missing, falls back to whatever
 `python3` is on PATH and silently skips when boto3 isn't importable.
 
+> **Gotcha — `uv` must be on PATH at pipeline-run time.** The runpod bootstrap
+> installs `uv` to `~/.local/bin` and appends to `~/.bashrc`, but a
+> non-interactive shell (ssh-without-tty, `nohup &`, cron) won't source
+> `~/.bashrc`, so `uv` isn't found. `_cw_ship` then falls back to system
+> `python3` and silently skips (you'll see `cw_ship: boto3 not installed`
+> warnings in the phase log). `pipeline.sh` defensively prepends
+> `~/.local/bin` to PATH at startup to avoid this, and `runpod/bootstrap.sh`
+> persists the PATH addition to both `~/.bashrc` and `~/.profile`. If you
+> hand-roll a launch flow, do the same.
+
 For *live* tailing instead of per-step batches, install the CloudWatch
 unified agent in `runpod/bootstrap.sh` pointed at `logs/<run_id>/`.
 
