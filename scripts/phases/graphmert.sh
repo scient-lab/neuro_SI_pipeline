@@ -150,8 +150,11 @@ step_preprocess() {
 
 step_train_mnm() {
     log_info "graphmert :: train_mnm (step 5 — run_mlm.py)"
+    # run_mlm.py uses argparse: --yaml_file <path>. Positional invocation
+    # produces "unrecognized arguments". Mirrors run_dataset_preprocessing.py
+    # in step 4 which uses the same flag style.
     ( cd "$REPO_ROOT/2_graphmert" && \
-      python run_mlm.py "$ARGS_MLM_YAML" ) || { log_error "train_mnm failed"; return 1; }
+      python run_mlm.py --yaml_file "$ARGS_MLM_YAML" ) || { log_error "train_mnm failed"; return 1; }
 }
 
 step_predict_tails() {
