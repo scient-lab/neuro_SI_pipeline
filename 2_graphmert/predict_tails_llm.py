@@ -177,7 +177,12 @@ def explode_queries(ds, tokenizer: AutoTokenizer) -> List[Dict[str, Any]]:
     out = []
     for i in range(len(ds)):
         ex = ds[i]
-        cid = ex["id"]
+        # Same fallback pattern as dataset_preprocessing_utils.py:155 — the
+        # upstream producer (clean_llm_relations.py) doesn't write an 'id'
+        # column, so we use the row index as a deterministic substitute.
+        # cid propagates as 'id' in query/triple output rows below for join
+        # tracking; row index is unique-per-source-row, which is what matters.
+        cid = ex.get("id", i)
         cleaned = _safe_json_loads(ex.get("cleaned_relations_json", "{}"))
         if not isinstance(cleaned, dict) or not cleaned:
             continue
