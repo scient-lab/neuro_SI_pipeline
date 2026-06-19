@@ -185,38 +185,73 @@ if finished_at:
 print()
 
 # --- per-phase table ---
+# Columns: PHASE | STATUS | STARTED | FINISHED | DURATION | ETA | STEPS
+# Times shown as HH:MM:SS UTC (compact, sortable). Pending phases show
+# blanks across the board. Running phases show their started_at + live
+# duration; ETA is the run-level estimate, only on the currently-active
+# phase. Completed phases show both started + finished + total duration.
 phases = m.get('phases', []) or []
-print(f'  {\"PHASE\":<14s} {\"STATUS\":<13s} {\"DURATION\":<11s} {\"STEPS\":>6s}')
-print(f'  {\"-\"*14} {\"-\"*13} {\"-\"*11} {\"-\"*6}')
 def _step_duration(s):
     a, b = _parse(s.get('started_at')), _parse(s.get('finished_at'))
     if a is None: return None
     end = b if b else datetime.now(timezone.utc)
     return (end - a).total_seconds()
+def _hhmmss(iso):
+    t = _parse(iso)
+    return t.strftime('%H:%M:%S') if t else ''
 
 show_details = '$SUMMARY_DETAILS' == '1'
+# Run-level ETA (already computed up in the header). Reuse the absolute
+# completion time to show on the currently-running phase row.
+run_eta = _parse(m.get('estimated_completion_at'))
+current_phase_name = m.get('current_phase')
+
+# Column widths. PHASE column is 24 chars wide so nested step names
+# (rendered as "    ├─ <name>" = 4 + 3 + name_len) fit in the same column
+# as phase names. Step names longer than 17 chars get truncated with an
+# ellipsis so STATUS column stays aligned across phase and step rows.
+PHASE_W = 24
+STEP_NAME_MAX = PHASE_W - 4 - 3   # 4 indent + 3 branch ("├─ ")
+
+def _truncate(s, max_len):
+    return s if len(s) <= max_len else (s[:max_len - 1] + '…')
+
+print(f'  {\"PHASE\":<{PHASE_W}s} {\"STATUS\":<13s} {\"STARTED\":<10s} {\"FINISHED\":<10s} {\"DURATION\":<11s} {\"ETA\":<14s} {\"STEPS\":>6s}')
+print(f'  {\"-\"*PHASE_W} {\"-\"*13} {\"-\"*10} {\"-\"*10} {\"-\"*11} {\"-\"*14} {\"-\"*6}')
 
 for p in phases:
     name = p.get('name','?')
     st   = p.get('status', 'pending')
     mark = STATUS_MARK.get(st, '?')
+    started  = _hhmmss(p.get('started_at')) if st != 'pending' else ''
+    finished = _hhmmss(p.get('finished_at')) if st in ('completed', 'failed', 'skipped') else ''
     dur  = _fmt_duration(_phase_duration(p)) if st != 'pending' else ''
+    eta  = ''
+    if st == 'running' and run_eta:
+        rem = (run_eta - datetime.now(timezone.utc)).total_seconds()
+        eta = f'~{_fmt_duration(max(0, rem))} left'
     steps = p.get('steps', []) or []
     ok    = sum(1 for s in steps if s.get('status') == 'completed')
     total = len(steps)
     steps_str = f'{ok}/{total}' if total else ''
-    print(f'  {name:<14s} {mark} {st:<11s} {dur:<11s} {steps_str:>6s}')
+    print(f'  {name:<{PHASE_W}s} {mark} {st:<11s} {started:<10s} {finished:<10s} {dur:<11s} {eta:<14s} {steps_str:>6s}')
     # --details: nest each step under the phase row (only for phases that
     # have started — pending phases would show all-pending steps and clutter
-    # the view without adding info).
+    # the view without adding info). Step rows mirror the phase columns
+    # except ETA (no per-step progress info to compute one from).
     if show_details and st != 'pending':
         for i, s in enumerate(steps):
-            sname = s.get('name','?')
+            sname = _truncate(s.get('name','?'), STEP_NAME_MAX)
             sst   = s.get('status', 'pending')
             smark = STATUS_MARK.get(sst, '?')
+            sstart  = _hhmmss(s.get('started_at')) if sst != 'pending' else ''
+            sfinish = _hhmmss(s.get('finished_at')) if sst in ('completed', 'failed', 'skipped') else ''
             sdur  = _fmt_duration(_step_duration(s)) if sst != 'pending' else ''
             branch = '└─' if i == len(steps) - 1 else '├─'
-            print(f'    {branch} {sname:<14s} {smark} {sst:<11s} {sdur:<11s}')
+            # Build the nested "├─ name" prefix and pad to PHASE_W width so
+            # the STATUS column lines up with phase rows above.
+            nested = f'{branch} {sname}'
+            print(f'    {nested:<{PHASE_W - 4}s} {smark} {sst:<11s} {sstart:<10s} {sfinish:<10s} {sdur:<11s}')
 
 # --- failure summary ---
 f = m.get('failure')
