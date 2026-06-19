@@ -138,7 +138,7 @@ def extract_graph(text_units: pd.DataFrame, batch_size: int = 100):
     # Sampling sourced from configs/default.yaml::extract.* (fallbacks preserved).
     temperature = get_phase_param('extract', 'temperature', 0.6)
     top_p       = get_phase_param('extract', 'top_p', 0.95)
-    max_tokens  = get_phase_param('extract', 'max_tokens', 32768)
+    max_tokens  = get_phase_param('extract', 'max_tokens', 8192)
     # Qwen3 thinking control. true → append "/no_think" to USER_PROMPT so
     # the model skips <think>...</think> (parser strips it anyway; prompt
     # forbids the inference it does). See configs/default.yaml::
@@ -147,7 +147,7 @@ def extract_graph(text_units: pd.DataFrame, batch_size: int = 100):
     think_directive = " /no_think" if no_think else ""
     # vLLM init knobs — every one configurable per profile so smoke / pilot /
     # paper can match their hardware. Pattern mirrors 2_graphmert/predict_tails_llm.py.
-    max_model_len          = get_phase_param('extract', 'max_model_len', 4096)
+    max_model_len          = get_phase_param('extract', 'max_model_len', 20000)
     tensor_parallel_size   = get_phase_param('extract', 'tensor_parallel_size', 1)
     gpu_memory_utilization = get_phase_param('extract', 'gpu_memory_utilization', 0.90)
     top_k                  = get_phase_param('extract', 'top_k', 20)

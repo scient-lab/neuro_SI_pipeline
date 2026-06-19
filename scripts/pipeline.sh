@@ -213,6 +213,13 @@ mkdir -p "$LOG_DIR"
 MANIFEST="$OUTPUT_BASE/run_manifest.json"
 manifest_selected=$(IFS=,; echo "${selected_phases[*]}")
 manifest_all=$(IFS=,; echo "${ALL_PHASES[*]}")
+# Record this pipeline.sh's PID + process-group ID so scripts/kill_pipeline.sh
+# can kill the whole tree (orchestrator + bash phase scripts + python vLLM
+# workers). pkill -f pipeline.sh only catches THIS process and leaks GPU
+# memory via orphaned children.
+_pipeline_pid=$$
+_pipeline_pgid=$(ps -o pgid= -p $$ | tr -d ' ')
+
 python3 "$SCRIPT_DIR/lib/manifest.py" init \
     --path "$MANIFEST" \
     --phases-dir "$SCRIPT_DIR/phases" \
@@ -225,6 +232,8 @@ python3 "$SCRIPT_DIR/lib/manifest.py" init \
     --git-sha "$_git_sha" \
     --git-branch "$_git_branch" \
     --step-filter "$STEPS" \
+    --pid "$_pipeline_pid" \
+    --pgid "$_pipeline_pgid" \
     || log_warn "manifest init failed — run will proceed uninstrumented"
 
 # Mark the run failed on any unexpected exit (set -e abort, signal, etc.)

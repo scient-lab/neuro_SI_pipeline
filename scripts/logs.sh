@@ -146,9 +146,13 @@ STATUS_MARK = {
 
 # --- header ---
 started_at = m.get('started_at', '')
+resumed_at = m.get('resumed_at', '')
 finished_at = m.get('finished_at', '')
-ts_start = _parse(started_at); ts_end = _parse(finished_at) if finished_at else datetime.now(timezone.utc)
-total_dur = (ts_end - ts_start).total_seconds() if ts_start else None
+# Elapsed clock anchors on resumed_at when present (multi-invocation runs);
+# falls back to started_at for single-invocation runs.
+ts_anchor = _parse(resumed_at) or _parse(started_at)
+ts_end = _parse(finished_at) if finished_at else datetime.now(timezone.utc)
+total_dur = (ts_end - ts_anchor).total_seconds() if ts_anchor else None
 
 print(f'Run     : {this_run}')
 print(f'Status  : {m.get(\"status\",\"?\"):<11s}  ({_fmt_duration(total_dur)})')
@@ -166,6 +170,11 @@ if m.get('status') == 'running':
 print(f'Profile : {m.get(\"profile\",\"\")}    Domain: {m.get(\"domain\",\"\")}    Platform: {m.get(\"platform\",\"\")}')
 print(f'Git     : {m.get(\"git_sha\",\"\")} ({m.get(\"git_branch\",\"\")})')
 print(f'Started : {started_at}')
+if resumed_at and resumed_at != started_at:
+    # Multi-invocation run: surface the most recent restart timestamp so the
+    # operator can see the elapsed clock is anchored on it, not on the
+    # original started_at from days/weeks ago.
+    print(f'Resumed : {resumed_at}')
 if finished_at:
     print(f'Finished: {finished_at}')
 print()
@@ -188,11 +197,29 @@ for p in phases:
 # --- failure summary ---
 f = m.get('failure')
 if f:
+    # If the failed phase is now running (or completed) in this invocation,
+    # the failure block is from a PREVIOUS attempt of the same RUN_ID.
+    # Mark it so the operator doesn't think the CURRENT attempt failed.
+    failed_phase_name = f.get('phase')
+    failed_phase_record = next(
+        (pp for pp in phases if pp.get('name') == failed_phase_name), {})
+    current_status_of_failed_phase = failed_phase_record.get('status', '')
+    is_stale = current_status_of_failed_phase in ('running', 'completed', 'pending')
     print()
-    print('FAILURE:')
+    if is_stale:
+        print(f'PREVIOUS-RUN FAILURE (phase now {current_status_of_failed_phase}):')
+    else:
+        print('FAILURE:')
     print(f'  phase     : {f.get(\"phase\")}')
     print(f'  step      : {f.get(\"step\",\"(none)\")}')
     print(f'  exit_code : {f.get(\"exit_code\")}')
+    f_at = f.get('at')
+    if f_at:
+        # How long ago — gives operator immediate orientation ('yesterday'
+        # vs 'just now') without parsing the ISO timestamp.
+        ts_f = _parse(f_at)
+        ago = _fmt_duration((datetime.now(timezone.utc) - ts_f).total_seconds()) if ts_f else ''
+        print(f'  at        : {f_at}  ({ago} ago)' if ago else f'  at        : {f_at}')
     err = f.get('error') or {}
     print(f'  message   : {err.get(\"message\",\"\")}')
     tail = err.get('log_tail', [])

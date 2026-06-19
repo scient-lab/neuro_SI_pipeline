@@ -86,7 +86,12 @@ def _update_progress_eta(run: dict) -> None:
         run["estimated_completion_at"] = run.get("finished_at")
         return
 
-    start = run.get("started_at")
+    # Prefer resumed_at over started_at for the elapsed/ETA calculation.
+    # On a restart, started_at retains the audit-trail original (for history),
+    # but progress is fresh — anchoring ETA to started_at produces absurd
+    # numbers like "ETA 372h left" when in fact only 12 min have actually run.
+    # Falls back to started_at when resumed_at is absent (single-invocation runs).
+    start = run.get("resumed_at") or run.get("started_at")
     try:
         ts = datetime.fromisoformat(start.replace("Z", "+00:00")) if start else None
     except (ValueError, AttributeError):
@@ -300,6 +305,25 @@ def cmd_init(a) -> None:
         run["finished_at"] = None
         run["current_phase"] = None
         run["step_filter"] = a.step_filter
+        # Mark when this restart began. started_at stays as the original
+        # audit-trail timestamp; resumed_at drives elapsed + ETA calc.
+        # Set on EVERY merge invocation, even if the same phase is re-selected,
+        # so each new pipeline.sh wave resets its own clock.
+        run["resumed_at"] = now_iso()
+        # Refresh PID/PGID — the previous invocation is dead; this one owns
+        # the run from here. scripts/kill_pipeline.sh uses these to kill the
+        # whole tree (orchestrator + bash phase scripts + python vLLM workers).
+        if a.pid:
+            run["pid"] = int(a.pid)
+        if a.pgid:
+            run["pgid"] = int(a.pgid)
+        # If a previous top-level failure was set by cmd_finalize (e.g.
+        # yesterday's failed graphmert), clear it when the SAME phase is
+        # being re-run now. Stale failure blocks confuse the operator into
+        # thinking the current attempt failed.
+        prior_failure = run.get("failure")
+        if prior_failure and prior_failure.get("phase") in selected:
+            del run["failure"]
         existing["schema_version"] = SCHEMA_VERSION
         existing["meta"] = meta
         _update_progress_eta(run)
@@ -325,6 +349,9 @@ def cmd_init(a) -> None:
             "started_at": now_iso(),
             "finished_at": None,
             "current_phase": None,
+            # pipeline.sh's PID + process-group ID, for kill_pipeline.sh.
+            "pid": int(a.pid) if a.pid else None,
+            "pgid": int(a.pgid) if a.pgid else None,
             "progress": 0.0,
             "estimated_completion_at": None,
             "selected_phases": [p for p in phase_order if p in selected],
@@ -345,6 +372,13 @@ def cmd_start_phase(a) -> None:
             p["started_at"] = now_iso()
             if a.log_file:
                 p["log_file"] = a.log_file
+        # Clear any stale top-level failure that referred to THIS phase.
+        # cmd_init's merge path covers the explicit-restart case, but this
+        # also covers an interactive `pipeline.sh --phase X` invocation that
+        # bypasses init merging (e.g. retrying a single failed phase).
+        prior_failure = d["run"].get("failure")
+        if prior_failure and prior_failure.get("phase") == a.phase:
+            del d["run"]["failure"]
 
     _mutate(a.path, fn)
 
@@ -427,12 +461,20 @@ def cmd_finalize(a) -> None:
                     failure = {
                         "phase": p["name"],
                         "exit_code": p.get("exit_code"),
+                        # When this failure happened (phase finish time) — gives
+                        # operators a date in case the failure is now stale from
+                        # a previous invocation. Falls back to now if missing.
+                        "at": p.get("finished_at") or now_iso(),
                         "error": p.get("error", {}),
                     }
                     for s in p.get("steps", []):
                         if s.get("status") == "failed":
                             failure["step"] = s["name"]
                             failure["step_error"] = s.get("error", {})
+                            # Step-level finish time is more precise than phase-
+                            # level when both exist.
+                            if s.get("finished_at"):
+                                failure["at"] = s["finished_at"]
                             break
                     d["run"]["failure"] = failure
                     break
@@ -475,6 +517,10 @@ def main() -> int:
     p.add_argument("--git-sha", default="")
     p.add_argument("--git-branch", default="")
     p.add_argument("--step-filter", default="all")
+    # pipeline.sh's PID + process-group ID, for scripts/kill_pipeline.sh.
+    # Defaults to "" so older pipeline.sh invocations don't break.
+    p.add_argument("--pid", default="")
+    p.add_argument("--pgid", default="")
     p.set_defaults(func=cmd_init)
 
     p = sub.add_parser("start-phase")

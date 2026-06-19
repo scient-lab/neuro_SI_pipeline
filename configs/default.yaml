@@ -45,13 +45,10 @@ extract:
   top_p: 0.95
   top_k: 20
   min_p: 0
-  # Qwen3 is a reasoning model — emits <think>...</think> before structured
-  # output. On real ~5k-char chunks the thinking trace eats 6-8k tokens, then
-  # entities (step 1 of the prompt) get emitted, then relationships (step 2).
-  # 8192 was insufficient → silent truncation of relationships → 0 triples
-  # downstream. 32768 gives enough room even with thinking on. See
-  # `no_think` below to suppress the trace entirely and reclaim the budget.
-  max_tokens: 32768
+  # Matches upstream hardcoded value (1_seed_kg/graphrag_index.py at
+  # commit 33823cb, line 134). DO NOT change without Jake's review —
+  # any divergence from upstream needs to be defensible.
+  max_tokens: 8192
   # Suppress Qwen3's <think>...</think> block in the response. true =
   # append "/no_think" control token to the user prompt (Qwen3 honors it).
   # Naming: <step_or_substep>_no_think — one knob per LLM-using script.
@@ -61,11 +58,12 @@ extract:
   # and produced 0 relationships). Flip per-profile if you have a dense
   # cleaned corpus where thinking is genuinely wasted.
   extract_triples_no_think: false
-  # vLLM init knobs — profile-tunable for hardware. KV-cache budget per
-  # sequence; too high causes thrashing on smaller cards (smoke shrinks it,
-  # paper can grow it). Chunk size is 1200 tokens; responses rarely exceed
-  # 2-3K, so 4096 is the safe default.
-  max_model_len: 4096
+  # Matches upstream hardcoded value (1_seed_kg/graphrag_index.py at
+  # commit 33823cb, line 146). Earlier YAML default of 4096 was a
+  # regression I introduced in 9b773ec — caused silent truncation of
+  # relationships. Restored to upstream. DO NOT change without Jake's
+  # review.
+  max_model_len: 20000
   # Single-GPU by default. Paper multi-GPU pilots set this in their profile.
   tensor_parallel_size: 1
   # Fraction of GPU memory vLLM is allowed to occupy. 0.90 default; bump up
