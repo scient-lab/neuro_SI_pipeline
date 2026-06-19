@@ -171,7 +171,7 @@ if m.get('status') == 'running':
     else:
         print('ETA     : estimating…')
 print(f'Profile : {m.get(\"profile\",\"\")}    Domain: {m.get(\"domain\",\"\")}    Platform: {m.get(\"platform\",\"\")}')
-cp = m.get('corpus_path') or '(default: corpus/<domain>/source_txt)'
+cp = m.get('corpus_path') or '(default: corpus/[domain]/source_txt)'
 print(f'Corpus  : {cp}')
 print(f'Git     : {m.get(\"git_sha\",\"\")} ({m.get(\"git_branch\",\"\")})')
 print(f'Started : {started_at}')
@@ -207,11 +207,12 @@ run_eta = _parse(m.get('estimated_completion_at'))
 current_phase_name = m.get('current_phase')
 
 # Column widths. PHASE column is 24 chars wide so nested step names
-# (rendered as "    ├─ <name>" = 4 + 3 + name_len) fit in the same column
-# as phase names. Step names longer than 17 chars get truncated with an
-# ellipsis so STATUS column stays aligned across phase and step rows.
+# rendered like '    branch step_name' (4-space indent + 3-char branch
+# glyph + step name) fit in the same column as top-level phase names.
+# Step names longer than 17 chars get truncated with an ellipsis so the
+# STATUS column stays aligned across phase and step rows.
 PHASE_W = 24
-STEP_NAME_MAX = PHASE_W - 4 - 3   # 4 indent + 3 branch ("├─ ")
+STEP_NAME_MAX = PHASE_W - 4 - 3   # 4 indent + 3 branch glyph + 1 space
 
 def _truncate(s, max_len):
     return s if len(s) <= max_len else (s[:max_len - 1] + '…')
@@ -253,7 +254,7 @@ for p in phases:
             sfinish = _hhmmss(s.get('finished_at')) if sst in ('completed', 'failed', 'skipped') else ''
             sdur  = _fmt_duration(_step_duration(s)) if sst != 'pending' else ''
             branch = '└─' if i == len(steps) - 1 else '├─'
-            # Build the nested "├─ name" prefix and pad to PHASE_W width so
+            # Build the nested branch+name prefix and pad to PHASE_W width so
             # the STATUS column lines up with phase rows above.
             nested = f'{branch} {sname}'
             print(f'    {nested.ljust(PHASE_W - 4)} {smark} {sst.ljust(11)} {sstart.ljust(10)} {sfinish.ljust(10)} {sdur.ljust(11)}')
