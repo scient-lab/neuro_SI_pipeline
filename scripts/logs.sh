@@ -216,9 +216,11 @@ STEP_NAME_MAX = PHASE_W - 4 - 3   # 4 indent + 3 branch ("├─ ")
 def _truncate(s, max_len):
     return s if len(s) <= max_len else (s[:max_len - 1] + '…')
 
-# Use .ljust()/.rjust() instead of f-string {:<{PHASE_W}s} because the
-# enclosing bash heredoc parses '<{' as process substitution and crashes
-# with 'name: No such file or directory'. Method calls dodge that.
+# Use .ljust()/.rjust() instead of variable-width f-string format specs.
+# Reason: the enclosing bash heredoc parses certain shell metacharacters
+# even inside Python comments — variable-width format specs use a pattern
+# that bash interprets as process substitution, crashing with
+# 'name: No such file or directory'. Method calls dodge that.
 print(f'  {\"PHASE\".ljust(PHASE_W)} {\"STATUS\".ljust(13)} {\"STARTED\".ljust(10)} {\"FINISHED\".ljust(10)} {\"DURATION\".ljust(11)} {\"ETA\".ljust(14)} {\"STEPS\".rjust(6)}')
 print(f'  {(\"-\"*PHASE_W)} {(\"-\"*13)} {(\"-\"*10)} {(\"-\"*10)} {(\"-\"*11)} {(\"-\"*14)} {(\"-\"*6)}')
 
