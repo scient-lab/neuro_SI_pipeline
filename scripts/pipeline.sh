@@ -33,10 +33,25 @@ source "$SCRIPT_DIR/lib/common.sh"
 # to source even if the user already sourced it manually.
 ENV_FILE="${ENV_FILE:-$REPO_ROOT/.env}"
 if [[ -f "$ENV_FILE" ]]; then
+    # Snapshot operator-set overrides BEFORE sourcing — these were set by
+    # the caller's shell (e.g. `export CORPUS_PATH=corpus/<domain>/smoke`)
+    # and must NOT be silently clobbered by the same key in .env.
+    # Plain `set -a; source .env; set +a` would overwrite them. Save +
+    # restore the keys we know operators commonly override.
+    declare -A _operator_overrides
+    for _key in CORPUS_PATH RUN_ID S3_URI GITHUB_BRANCH STAGES; do
+        if [[ -n "${!_key+x}" ]]; then
+            _operator_overrides[$_key]="${!_key}"
+        fi
+    done
     set -a
     # shellcheck disable=SC1090
     source "$ENV_FILE"
     set +a
+    for _key in "${!_operator_overrides[@]}"; do
+        export "$_key=${_operator_overrides[$_key]}"
+    done
+    unset _operator_overrides _key
 fi
 
 # --- Defaults ---------------------------------------------------------------
