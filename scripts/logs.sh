@@ -216,8 +216,11 @@ STEP_NAME_MAX = PHASE_W - 4 - 3   # 4 indent + 3 branch ("├─ ")
 def _truncate(s, max_len):
     return s if len(s) <= max_len else (s[:max_len - 1] + '…')
 
-print(f'  {\"PHASE\":<{PHASE_W}s} {\"STATUS\":<13s} {\"STARTED\":<10s} {\"FINISHED\":<10s} {\"DURATION\":<11s} {\"ETA\":<14s} {\"STEPS\":>6s}')
-print(f'  {\"-\"*PHASE_W} {\"-\"*13} {\"-\"*10} {\"-\"*10} {\"-\"*11} {\"-\"*14} {\"-\"*6}')
+# Use .ljust()/.rjust() instead of f-string {:<{PHASE_W}s} because the
+# enclosing bash heredoc parses '<{' as process substitution and crashes
+# with 'name: No such file or directory'. Method calls dodge that.
+print(f'  {\"PHASE\".ljust(PHASE_W)} {\"STATUS\".ljust(13)} {\"STARTED\".ljust(10)} {\"FINISHED\".ljust(10)} {\"DURATION\".ljust(11)} {\"ETA\".ljust(14)} {\"STEPS\".rjust(6)}')
+print(f'  {(\"-\"*PHASE_W)} {(\"-\"*13)} {(\"-\"*10)} {(\"-\"*10)} {(\"-\"*11)} {(\"-\"*14)} {(\"-\"*6)}')
 
 for p in phases:
     name = p.get('name','?')
@@ -234,7 +237,7 @@ for p in phases:
     ok    = sum(1 for s in steps if s.get('status') == 'completed')
     total = len(steps)
     steps_str = f'{ok}/{total}' if total else ''
-    print(f'  {name:<{PHASE_W}s} {mark} {st:<11s} {started:<10s} {finished:<10s} {dur:<11s} {eta:<14s} {steps_str:>6s}')
+    print(f'  {name.ljust(PHASE_W)} {mark} {st.ljust(11)} {started.ljust(10)} {finished.ljust(10)} {dur.ljust(11)} {eta.ljust(14)} {steps_str.rjust(6)}')
     # --details: nest each step under the phase row (only for phases that
     # have started — pending phases would show all-pending steps and clutter
     # the view without adding info). Step rows mirror the phase columns
@@ -251,7 +254,7 @@ for p in phases:
             # Build the nested "├─ name" prefix and pad to PHASE_W width so
             # the STATUS column lines up with phase rows above.
             nested = f'{branch} {sname}'
-            print(f'    {nested:<{PHASE_W - 4}s} {smark} {sst:<11s} {sstart:<10s} {sfinish:<10s} {sdur:<11s}')
+            print(f'    {nested.ljust(PHASE_W - 4)} {smark} {sst.ljust(11)} {sstart.ljust(10)} {sfinish.ljust(10)} {sdur.ljust(11)}')
 
 # --- failure summary ---
 f = m.get('failure')
