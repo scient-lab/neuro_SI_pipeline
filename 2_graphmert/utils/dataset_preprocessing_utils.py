@@ -147,7 +147,12 @@ def ground_triples_to_snippets(tok, rel_map, src, kg_df) -> Dataset:
             leaf_special_mask = [1 if t == pad_id else 0 for t in leaves]
 
             rows.append({
-                "id": str(ex["id"]),
+                # Fallback to the source dataset row index when the upstream
+                # producer (clean_llm_relations.py) didn't write an 'id'
+                # column. The chain has been inconsistent since the initial
+                # release: producer omits 'id', consumer requires it. Index
+                # is unique-per-row and deterministic, so it's a safe id.
+                "id": str(ex.get("id", idx)),
                 "input_nodes": roots + leaves,
                 "attention_mask": [0 if t == pad_id else 1 for t in (roots + leaves)],
                 "leaf_relationships": [rel_num if i == pos else 0 for i in range(ROOT_NODES)],

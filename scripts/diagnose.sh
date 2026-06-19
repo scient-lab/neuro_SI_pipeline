@@ -731,7 +731,10 @@ if [[ ${#FINDINGS[@]} -gt 0 ]]; then
 fi
 
 # --- Recommended action when extract is empty (the dominant failure mode) ---
-if [[ -f "$KG_FINAL" ]]; then
+# KG_FINAL is only set when §2 (extract output) ran. With --phase graphmert
+# or other narrow scopes, §2 is skipped, leaving KG_FINAL unbound. Guard so
+# this block silently no-ops when §2 didn't define KG_FINAL.
+if [[ -n "${KG_FINAL:-}" && -f "$KG_FINAL" ]]; then
     DATA_ROWS=$(($(wc -l < "$KG_FINAL") - 1))
     if [[ "$DATA_ROWS" -le 0 ]]; then
         echo
