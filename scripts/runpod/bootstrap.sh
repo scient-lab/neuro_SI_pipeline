@@ -113,6 +113,30 @@ if ! grep -q 'HOME/.local/bin' "$HOME/.profile" 2>/dev/null; then
 fi
 echo "  uv: $(uv --version)"
 
+# --- 2b. install `bootstrap` alias on the pod -------------------------------
+# Future SSH sessions can re-run this whole script with just `bootstrap` —
+# no more pasting the curl|bash one-liner from memory. Reads the same env
+# vars (GITHUB_TOKEN / GITHUB_REPO / GITHUB_BRANCH) that THIS run was
+# bootstrapped with — they're already in $SI_HOME/.env after step 5 below.
+if ! grep -q 'alias bootstrap=' "$HOME/.bashrc" 2>/dev/null; then
+    cat >> "$HOME/.bashrc" <<'BASHRC_ALIAS'
+
+# Re-run pod bootstrap (idempotent — pulls latest scripts/runpod/bootstrap.sh
+# from the configured branch and runs it). Use after `git pull` brings new
+# bootstrap logic, or whenever venvs / model cache need rebuilding.
+bootstrap() {
+    local env_file="${SI_HOME:-/workspace/neuro_SI_pipeline}/.env"
+    [[ -f "$env_file" ]] && { set -a; . "$env_file"; set +a; }
+    : "${GITHUB_TOKEN:?GITHUB_TOKEN not set; load $env_file first}"
+    : "${GITHUB_REPO:?GITHUB_REPO not set}"
+    : "${GITHUB_BRANCH:?GITHUB_BRANCH not set}"
+    bash <(curl -sH "Authorization: token $GITHUB_TOKEN" \
+                -H "Accept: application/vnd.github.v3.raw" \
+                "https://api.github.com/repos/$GITHUB_REPO/contents/scripts/runpod/bootstrap.sh?ref=$GITHUB_BRANCH")
+}
+BASHRC_ALIAS
+fi
+
 # --- 3. clone repos (idempotent) -----------------------------------------
 clone_or_pull() {
     local home="$1" repo="$2" branch="$3"

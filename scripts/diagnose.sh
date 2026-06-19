@@ -335,20 +335,57 @@ GRAPHMERT_DIR="$OUTPUT_BASE/graphmert"
 if [[ ! -d "$GRAPHMERT_DIR" ]]; then
     note "no graphmert outputs yet (phase has not run on this RUN_ID)"
 else
-    # Check each known intermediate save_to_disk target: schema vs row count.
+    # Check each known intermediate save_to_disk target:
+    #   - schema vs row count (catches "0 rows but schema declared")
+    #   - REQUIRED columns for downstream consumers (catches KeyError on
+    #     missing fields — e.g. ground_triples_to_snippets needs 'id' in
+    #     relations_cleaned_train; absence crashed the 2026-06-19 pilot)
+    #   - arrow file sanity (corrupt / partial writes)
     "$PY" - "$GRAPHMERT_DIR" "$REPO_ROOT" <<'PY' 2>&1 || true
 import json, os, sys
 gm_dir, repo_root = sys.argv[1], sys.argv[2]
+
+# Map: dataset path → columns the downstream consumer expects. When a
+# required column is missing from features, the consumer will KeyError on
+# every row. The "consumer" hint points at the file:function that fails.
 candidates = [
-    "head_positions",
-    "llm_relations/relations_all",
-    "llm_relations/relations_cleaned_train",
-    "llm_relations/relations_cleaned_eval",
-    "dataset/preprocessed_train",
-    "dataset/preprocessed_eval",
+    {
+        "path": "head_positions",
+        "required": ["input_ids", "head_positions"],
+        "consumer": "dataset_preprocessing_utils.ground_triples_to_snippets",
+    },
+    {
+        "path": "llm_relations/relations_all",
+        "required": [],  # interim — only relations_cleaned_* is read downstream
+        "consumer": "clean_llm_relations.py (interim)",
+    },
+    {
+        "path": "llm_relations/relations_cleaned_train",
+        "required": ["id", "input_ids", "head_positions"],
+        "consumer": "dataset_preprocessing_utils.ground_triples_to_snippets",
+    },
+    {
+        "path": "llm_relations/relations_cleaned_eval",
+        "required": ["id", "input_ids", "head_positions"],
+        "consumer": "dataset_preprocessing_utils.ground_triples_to_snippets",
+    },
+    {
+        "path": "dataset/preprocessed_train",
+        "required": ["id", "input_nodes", "attention_mask", "leaf_relationships",
+                     "head_lengths", "start_indices", "special_tokens_mask"],
+        "consumer": "run_mlm.py (GraphMERT MNM training)",
+    },
+    {
+        "path": "dataset/preprocessed_eval",
+        "required": ["id", "input_nodes", "attention_mask", "leaf_relationships",
+                     "head_lengths", "start_indices", "special_tokens_mask"],
+        "consumer": "run_mlm.py (GraphMERT MNM training)",
+    },
 ]
+
 any_bad = False
-for sub in candidates:
+for cand in candidates:
+    sub, required, consumer = cand["path"], cand["required"], cand["consumer"]
     d = os.path.join(gm_dir, sub)
     if not os.path.isdir(d):
         continue
@@ -366,12 +403,16 @@ for sub in candidates:
         feats = list((meta.get("features") or {}).keys())
         splits = meta.get("splits") or {}
         rows = sum(s.get("num_examples", 0) for s in splits.values()) if isinstance(splits, dict) else 0
-        sizes = []
-        for a in arrows:
-            sz = os.path.getsize(os.path.join(d, a))
-            sizes.append((a, sz))
+        sizes = [(a, os.path.getsize(os.path.join(d, a))) for a in arrows]
         size_str = ", ".join(f"{a}={sz} B" for a, sz in sizes)
         print(f"  ✓ {rel}: {rows} rows, {len(feats)} features ({size_str})")
+        # Check required columns for downstream consumer
+        missing = [c for c in required if c not in feats]
+        if missing:
+            print(f"    ✗ missing columns: {missing}  (consumer: {consumer})")
+            print(f"       full feature list: {feats}")
+            print(f"       → downstream will KeyError on these field accesses")
+            any_bad = True
         if rows == 0 and feats:
             print(f"    ✗ schema declared ({len(feats)} features) but 0 rows — load_from_disk will Keys-mismatch")
             any_bad = True
