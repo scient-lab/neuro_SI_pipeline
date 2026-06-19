@@ -11,6 +11,7 @@
 # Flag syntax mirrors pipeline.sh (--phase/--step). Usage examples:
 #   ./scripts/logs.sh                                    # latest run, all phases
 #   ./scripts/logs.sh --summary                          # health-check: per-phase status table
+#   ./scripts/logs.sh --summary --details                # also expand each phase's steps inline
 #   ./scripts/logs.sh --phase graphmert                  # one phase
 #   ./scripts/logs.sh --phase graphmert --step tokenize  # one step
 #   ./scripts/logs.sh --run 20260617 --error             # triage today's failure
@@ -32,6 +33,7 @@ LIST_ONLY=0
 ERROR_ONLY=0
 PATHS_ONLY=0
 SUMMARY_ONLY=0
+SUMMARY_DETAILS=0
 
 usage() {
     sed -n '2,/^$/p' "${BASH_SOURCE[0]}" | sed 's/^# \?//'
@@ -47,6 +49,7 @@ while [[ $# -gt 0 ]]; do
         --error|-e) ERROR_ONLY=1; shift ;;
         --paths|-p) PATHS_ONLY=1; shift ;;
         --summary|-s) SUMMARY_ONLY=1; shift ;;
+        --details|-d) SUMMARY_DETAILS=1; SUMMARY_ONLY=1; shift ;;
         --help|-h)  usage; exit 0 ;;
         *) echo "unknown arg: $1" >&2; usage >&2; exit 1 ;;
     esac
@@ -168,6 +171,8 @@ if m.get('status') == 'running':
     else:
         print('ETA     : estimating…')
 print(f'Profile : {m.get(\"profile\",\"\")}    Domain: {m.get(\"domain\",\"\")}    Platform: {m.get(\"platform\",\"\")}')
+cp = m.get('corpus_path') or '(default: corpus/<domain>/source_txt)'
+print(f'Corpus  : {cp}')
 print(f'Git     : {m.get(\"git_sha\",\"\")} ({m.get(\"git_branch\",\"\")})')
 print(f'Started : {started_at}')
 if resumed_at and resumed_at != started_at:
@@ -183,6 +188,14 @@ print()
 phases = m.get('phases', []) or []
 print(f'  {\"PHASE\":<14s} {\"STATUS\":<13s} {\"DURATION\":<11s} {\"STEPS\":>6s}')
 print(f'  {\"-\"*14} {\"-\"*13} {\"-\"*11} {\"-\"*6}')
+def _step_duration(s):
+    a, b = _parse(s.get('started_at')), _parse(s.get('finished_at'))
+    if a is None: return None
+    end = b if b else datetime.now(timezone.utc)
+    return (end - a).total_seconds()
+
+show_details = '$SUMMARY_DETAILS' == '1'
+
 for p in phases:
     name = p.get('name','?')
     st   = p.get('status', 'pending')
@@ -193,6 +206,17 @@ for p in phases:
     total = len(steps)
     steps_str = f'{ok}/{total}' if total else ''
     print(f'  {name:<14s} {mark} {st:<11s} {dur:<11s} {steps_str:>6s}')
+    # --details: nest each step under the phase row (only for phases that
+    # have started — pending phases would show all-pending steps and clutter
+    # the view without adding info).
+    if show_details and st != 'pending':
+        for i, s in enumerate(steps):
+            sname = s.get('name','?')
+            sst   = s.get('status', 'pending')
+            smark = STATUS_MARK.get(sst, '?')
+            sdur  = _fmt_duration(_step_duration(s)) if sst != 'pending' else ''
+            branch = '└─' if i == len(steps) - 1 else '├─'
+            print(f'    {branch} {sname:<14s} {smark} {sst:<11s} {sdur:<11s}')
 
 # --- failure summary ---
 f = m.get('failure')

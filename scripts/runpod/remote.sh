@@ -163,6 +163,26 @@ case "$SUBCMD" in
         # If $SI_HOME/.env doesn't exist (= the pod was never bootstrapped
         # in the first place), we ERROR rather than silently re-forwarding.
         # First-time setup must go through `./scripts/runpod/launch.sh`.
+        #
+        # GENERIC env-var pass-through: any SUBARG of the form `KEY=VALUE`
+        # (uppercase + underscores in KEY) becomes an inline env var on the
+        # remote bootstrap.sh invocation. Knowledge of WHICH env vars
+        # bootstrap.sh honors (STAGES, etc.) stays in bootstrap.sh — this
+        # forwarder doesn't care, it just passes things through.
+        #
+        # Example: remote.sh bootstrap STAGES=graphrag         # extract-only deps
+        #          remote.sh bootstrap STAGES=graphrag,graphmert
+        #          remote.sh bootstrap GITHUB_BRANCH=experimental    # alt branch
+        # Build `export KEY=VALUE; ...` lines. `export` (vs bare assignment)
+        # ensures the var is visible to bootstrap.sh, which runs in a child
+        # process via `bash <(curl ...)`.
+        ENV_PREFIX=""
+        for a in "${SUBARGS[@]}"; do
+            case "$a" in
+                [A-Z_]*=*) ENV_PREFIX+="export $(printf '%q' "$a"); " ;;
+                *) ;;
+            esac
+        done
         remote_run "
 env_file=$SI_HOME_REMOTE/.env
 if [[ ! -f \"\$env_file\" ]]; then
@@ -170,6 +190,7 @@ if [[ ! -f \"\$env_file\" ]]; then
     echo '       Run ./scripts/runpod/launch.sh from workstation for first-time setup.' >&2
     exit 1
 fi
+${ENV_PREFIX}
 set -a; . \"\$env_file\"; set +a
 : \"\${GITHUB_TOKEN:?GITHUB_TOKEN missing from \$env_file}\"
 : \"\${GITHUB_REPO:?GITHUB_REPO missing from \$env_file}\"

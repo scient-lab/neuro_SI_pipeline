@@ -234,6 +234,7 @@ python3 "$SCRIPT_DIR/lib/manifest.py" init \
     --step-filter "$STEPS" \
     --pid "$_pipeline_pid" \
     --pgid "$_pipeline_pgid" \
+    --corpus-path "${CORPUS_PATH:-}" \
     || log_warn "manifest init failed — run will proceed uninstrumented"
 
 # Mark the run failed on any unexpected exit (set -e abort, signal, etc.)

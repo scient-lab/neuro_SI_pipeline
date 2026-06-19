@@ -317,6 +317,8 @@ def cmd_init(a) -> None:
             run["pid"] = int(a.pid)
         if a.pgid:
             run["pgid"] = int(a.pgid)
+        if a.corpus_path:
+            run["corpus_path"] = a.corpus_path
         # If a previous top-level failure was set by cmd_finalize (e.g.
         # yesterday's failed graphmert), clear it when the SAME phase is
         # being re-run now. Stale failure blocks confuse the operator into
@@ -352,6 +354,7 @@ def cmd_init(a) -> None:
             # pipeline.sh's PID + process-group ID, for kill_pipeline.sh.
             "pid": int(a.pid) if a.pid else None,
             "pgid": int(a.pgid) if a.pgid else None,
+            "corpus_path": a.corpus_path or None,
             "progress": 0.0,
             "estimated_completion_at": None,
             "selected_phases": [p for p in phase_order if p in selected],
@@ -521,6 +524,11 @@ def main() -> int:
     # Defaults to "" so older pipeline.sh invocations don't break.
     p.add_argument("--pid", default="")
     p.add_argument("--pgid", default="")
+    # Source corpus path (env CORPUS_PATH at invocation time). Surfaces in
+    # logs.sh --summary so operator can quickly confirm which corpus is
+    # being processed — especially useful when overriding pilot config with
+    # a smoke fixture for debugging (CORPUS_PATH=corpus/<domain>/smoke).
+    p.add_argument("--corpus-path", default="")
     p.set_defaults(func=cmd_init)
 
     p = sub.add_parser("start-phase")
