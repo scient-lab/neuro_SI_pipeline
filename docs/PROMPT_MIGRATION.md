@@ -1,9 +1,12 @@
 # Prompt Migration Inventory & Plan
 
-**Status (2026-06-20):** 0 of 11 production prompts currently consume YAML.
-4 YAML files exist under `prompts/` but are orphaned — `pipeline_config.get_prompt()`
-is defined but never called by any consumer code. Every LLM call in the pipeline
-runs against a hardcoded Python string.
+**Status (2026-06-20):** 1 of 15 production prompts now consumes YAML
+(entity_discovery — implemented this session). 4 YAML files exist under
+`prompts/` but remain orphaned. Every other LLM call in the pipeline runs
+against a hardcoded Python string. Initial audit (same date) reported 11
+prompts; second-pass found 4 more (#15 `prompts_scores.py`, and the
+`ASSISTIVE_EXAMPLES` constant inside `predict_tails_llm.py`, plus the
+6 inline f-strings in `generate_questions.py` were initially undercounted).
 
 This document inventories every prompt source, maps the current state to a
 target YAML location, and tracks migration progress.
@@ -17,8 +20,8 @@ target YAML location, and tracks migration progress.
 
 | Metric | Initial state | After this migration step | Target |
 |---|---|---|---|
-| Prompts consumed from YAML at runtime | 0 | **1** (entity_discovery ✓) | 11 |
-| Hardcoded Python prompts in active use | 11 | **10** | 0 |
+| Prompts consumed from YAML at runtime | 0 | **1** (entity_discovery ✓) | 15 (was originally listed as 11; 4 more found in second-pass audit) |
+| Hardcoded Python prompts in active use | 11 (initial count) | **14** (corrected count after audit miss) | 0 |
 | Orphaned YAML files (defined, never read) | 4 | 4 | 0 |
 | `render_prompt()` helper in `pipeline_config.py` | does not exist | **implemented** | implemented |
 | Smoke graphmert.preprocess gets >0 grounded triples | NO (0 due to diabetes prompts) | pending pod re-run | YES |
@@ -46,7 +49,7 @@ Status legend:
 | 3 | ❌ | `graphmert / entity_discovery` | `2_graphmert/utils/entity_discovery/entity_discovery.py:36` (`USER_TEMPLATE`) | (folds into `prompts/entity_discovery.yaml::user`) | format only | 1 | ☐ inline into the entity_discovery YAML user block |
 | 4 | ❌ | `graphmert / add_llm_relations` | `2_graphmert/utils/relation_matching/relation_match_prompts.py:167-225` (`SYSTEM_CONTEXT_TEMPLATE` + `EXAMPLES_*` + `MEANING_EXPL_*`) | `prompts/add_llm_relations.yaml` (new) | neuroscience (already adapted) | 242 | ☐ create template ☐ wire `add_llm_relations.py:36` ☐ move neuroscience examples to `domains/neuroscience.yaml::relation_match_examples` |
 | 5 | ❌ | `graphmert / combine_tails` | `2_graphmert/utils/combine_tails/combine_tokens_prompts.py:1-67` (`MEANING_EXPL_NEURO` + `SYSTEM_CONTEXT_TEMPLATE`) | `prompts/combine_tails.yaml` (new) | neuroscience (already adapted) | ~150 | ☐ create template ☐ wire `combine_tokens.py` (consumer) ☐ move content to `domains/neuroscience.yaml::combine_examples` |
-| 6 | ❌ | `graphmert / predict_tails` | `2_graphmert/predict_tails_llm.py:72` (`SYSTEM_PROMPT`) | `prompts/predict_tails.yaml` (new) | neuroscience (inline) | ~30 | ☐ create template ☐ wire predict_tails_llm.py |
+| 6 | ❌ | `graphmert / predict_tails` | `2_graphmert/predict_tails_llm.py:72` (`SYSTEM_PROMPT`) **AND `:93` (`ASSISTIVE_EXAMPLES`)** | `prompts/predict_tails.yaml` (new) | neuroscience (inline) | ~30 + ~8 | ☐ create template ☐ wire predict_tails_llm.py ☐ move ASSISTIVE_EXAMPLES into `domains/neuroscience.yaml::predict_tails_examples` |
 | 7 | 🟡❌ | `validate` (2-LLM consensus) | (no consumer found — `prompts/validate.yaml` exists but unused) | `prompts/validate.yaml` (exists, orphaned) | neuroscience | n/a | ☐ identify the actual validate consumer ☐ wire it to `get_prompt("validate")` |
 | 8 | 🟡❌ | `curriculum_check` | (no consumer — orphaned YAML) | `prompts/curriculum_check.yaml` (exists, orphaned) | neuroscience | n/a | ☐ identify consumer ☐ wire to YAML |
 | 9 | 🟡❌ | `curriculum_qa` | (no consumer — orphaned YAML) | `prompts/curriculum_qa.yaml` (exists, orphaned) | neuroscience | n/a | ☐ identify consumer ☐ wire to YAML |
@@ -55,9 +58,14 @@ Status legend:
 | 12 | ❌ | `curriculum / test_models / eval` | `3_si_curriculum/test_models/eval_models.py:34, 41` (`SYSTEM_PROMPT`, `GEMINI_SYSTEM_PROMPT`) | `prompts/eval_models.yaml` (new) | generic MCQ instructions | ~20 | ☐ create template ☐ wire eval_models.py |
 | 13 | ❌ | `rl / training` | `3_si_curriculum/RL/rl_training.py:79` (`SYSTEM_PROMPT`) | `prompts/rl_training.yaml` (new) | generic MCQ instructions | ~10 | ☐ create template ☐ wire consumer |
 | 14 | ❌ | `rl / test` | `3_si_curriculum/RL/test_rl.py:43` (`SYSTEM_PROMPT`) | `prompts/rl_test.yaml` (new — or share `rl_training.yaml`) | generic MCQ instructions | ~10 | ☐ create template ☐ wire consumer |
+| 15 | ❌🚨 | `graphmert / validate_predictions.fact_score` | `2_graphmert/utils/llm_scores/prompts_scores.py:1` (`system_prompt_validity_score`) **— missed in initial audit** | `prompts/fact_score.yaml` (new) | neuroscience (inline; hardcoded enumeration of "brain regions, cell types, molecular entities, neural circuits, physiological processes, synaptic mechanisms") | ~30 | ☐ create template ☐ wire `fact_score.py:27` (currently imports `system_prompt_validity_score as FACT_CHECK_SYSTEM_PROMPT`) ☐ move domain enumeration to `domains/neuroscience.yaml::fact_score_scope` |
 
-**Totals**: 14 prompt sources × 11 distinct phases. Includes 2 cosmetic items
-(USER_TEMPLATE format string, RL test/train share same content).
+**Totals**: **15** prompt sources across 13 distinct sub-phases (counting
+graphmert preprocess sub-steps separately). The original audit reported 11
+sources; this is corrected after a second-pass grep that found
+`prompts_scores.py` (fact-score validity prompt) and the
+`ASSISTIVE_EXAMPLES` constant in `predict_tails_llm.py`. See status
+changelog at the bottom of this document.
 
 ---
 
@@ -957,6 +965,130 @@ Eliminates duplication.
 
 ---
 
+### 3.11 #15 — `fact_score` (validate_predictions sub-step)
+
+**Status:** ❌ — neuroscience content (hardcoded enumeration of subdomains).
+Missed in the initial audit; found during second-pass graphmert phase
+inventory. Already neuroscience-correct so it does NOT block tonight's
+smoke run, but it's part of the migration debt.
+
+<table>
+<tr>
+<th width="50%">Current — <code>utils/llm_scores/prompts_scores.py:1</code></th>
+<th width="50%">Target — <code>prompts/fact_score.yaml</code> (new)</th>
+</tr>
+<tr>
+<td>
+
+```python
+system_prompt_validity_score = """You will
+evaluate the quality of triples for a
+neuroscience knowledge graph involving
+brain regions, cell types, molecular
+entities, neural circuits, physiological
+processes, and synaptic mechanisms.
+
+For each triple, you are given:
+- A head entity, a relation, and a tail
+  entity
+
+Your task: Accept the triple or reject it
+based on:
+- Logical alignment ...
+- Knowledge value ...
+- only assign no if you are completely
+  certain ...
+
+IMPORTANT OUTPUT FORMAT:
+1. First, think through your reasoning
+   inside <think> tags
+2. Then, output EXACTLY one of these on a
+   new line:
+   - [yes] if the triple is valid
+   - [no] if the triple is invalid
+
+Example:
+<think>
+Sodium channels open during depolarization,
+allowing sodium influx ...
+</think>
+[yes]
+"""
+```
+
+Consumed at `fact_score.py:27`:
+
+```python
+from prompts_scores \
+    import system_prompt_validity_score \
+    as FACT_CHECK_SYSTEM_PROMPT
+```
+
+</td>
+<td>
+
+```yaml
+name: fact_score
+phase: graphmert.validate_predictions.fact_score
+system: |
+  You will evaluate the quality of triples
+  for a {{domain}} knowledge graph
+  involving {{fact_score_scope}}.
+
+  For each triple, you are given:
+  - A head entity, a relation, and a tail
+    entity
+
+  Accept the triple or reject it based on:
+  - Logical alignment: the tail must
+    logically align with the head and
+    relation
+  - Knowledge value: the triple must add
+    biologically meaningful information
+    relevant to {{domain}}
+  - Only assign no if you are completely
+    certain the triple is clearly
+    incorrect.
+
+  Output format:
+  1. Reasoning inside <think>...</think>
+  2. Then exactly one of: [yes] or [no]
+
+user: |
+  Triple to evaluate:
+  head: {{head}}
+  relation: {{relation}}
+  tail: {{tail}}
+
+generation:
+  temperature: 0.0
+  max_tokens: 256
+```
+
+**New domain slot** in
+`domains/neuroscience.yaml`:
+
+```yaml
+fact_score_scope: |
+  brain regions, cell types, molecular
+  entities, neural circuits, physiological
+  processes, and synaptic mechanisms
+```
+
+</td>
+</tr>
+</table>
+
+**TODO:**
+- [ ] Create `prompts/fact_score.yaml`.
+- [ ] Add `fact_score_scope` to `domains/neuroscience.yaml`.
+- [ ] Wire `fact_score.py:27` to use `render_prompt("fact_score", ...)`.
+- [ ] Add `get_fact_score_scope()` helper to `pipeline_config.py` (or use
+      generic `get_phase_param()` since it's just a string field).
+- [ ] Delete `prompts_scores.py` (orphaned after migration).
+
+---
+
 ## 4. Render pipeline (needs implementation)
 
 `pipeline_config.get_prompt(name)` currently returns the **raw dict**. It does
@@ -1085,6 +1217,7 @@ Priority ordered by (impact × ease). Higher priority = do first.
 | 9 | #12 eval_models | Low | pending | Generic |
 | 10 | #11 curriculum_verify | Low | pending | Single prompt |
 | 11 | #10 curriculum_generate | Low | pending | Most complex (6 sub-prompts); leave for last when pattern is validated |
+| 12 | #15 fact_score | Medium | pending | Was missed in first audit; not blocking smoke (already neuroscience-correct content) but is hardcoded |
 
 ---
 
@@ -1141,10 +1274,21 @@ fi
 ## 7. Status changelog
 
 - **2026-06-20** — Initial inventory written.
-  - 14 prompt sources identified across 11 phases.
+  - 11 prompt sources initially identified (later revised to 15 after
+    second-pass — see next entry).
   - 4 orphaned YAML files documented.
   - 0 prompts currently consume YAML.
   - #2 entity_discovery flagged as smoke-blocker.
+- **2026-06-20** — Second-pass audit found 2 more hardcoded prompts.
+  - **#15** `2_graphmert/utils/llm_scores/prompts_scores.py` (fact-score
+    validity prompt, ~30 lines neuroscience-hardcoded). Loaded by
+    `fact_score.py:27` for validate_predictions sub-step.
+  - **`ASSISTIVE_EXAMPLES`** at `predict_tails_llm.py:93` (8-line list of
+    hardcoded neuroscience example triples — hippocampus, dopamine,
+    glutamate). Belongs in `domains/neuroscience.yaml::predict_tails_examples`
+    along with #6.
+  - Total prompt count revised: 11 → 15. Smoke unblock unaffected
+    (the missed prompts are already neuroscience-correct, just hardcoded).
 - **2026-06-20** — Step 1+2 implemented (smoke-blocker path).
   - `render_prompt()` + `_substitute()` + `_format_categories()` +
     `_format_relations()` + `_format_few_shot()` added to
