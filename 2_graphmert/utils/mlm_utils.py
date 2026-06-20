@@ -67,12 +67,9 @@ except ValueError:
 
 logger = logging.getLogger("graphmert_mlm")
 
-# =========================================================
-# ARCHITECTURE INVARIANTS (must match preprocessing)
-# =========================================================
-ROOT_NODES = 512
-NUM_LEAVES = 3
-MAX_NODES = ROOT_NODES * (1 + 3)  # 2048
+# Architecture invariants — single source shared with
+# dataset_preprocessing_utils and predict_tails. See architecture.py.
+from .architecture import ROOT_NODES, NUM_LEAVES, MAX_NODES  # noqa: F401
 
 
 def ensure_stable_tokenizer(tokenizer: AutoTokenizer) -> AutoTokenizer:

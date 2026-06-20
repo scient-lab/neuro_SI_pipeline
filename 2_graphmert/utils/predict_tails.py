@@ -24,12 +24,9 @@ from torch.nn import functional as F
 from datasets import Dataset, load_from_disk
 from transformers import GraphMertForMaskedLM, AutoTokenizer, AutoConfig
 
-# =========================================================
-# HARD-WIRED INVARIANTS (UPDATED TO 512)
-# =========================================================
-ROOT_NODES = 512
-NUM_LEAVES = 3
-MAX_NODES = ROOT_NODES * (1 + NUM_LEAVES)  # 2048
+# Architecture invariants — single source shared with mlm_utils and
+# dataset_preprocessing_utils. See architecture.py.
+from .architecture import ROOT_NODES, NUM_LEAVES, MAX_NODES  # noqa: F401
 
 TOPK = 20
 BATCH_SIZE = 8
