@@ -131,11 +131,23 @@ def ground_triples_to_snippets(tok, rel_map, src, kg_df) -> Dataset:
         tail_ids = tok.encode(tail, add_special_tokens=False)
         head_ids = tok.encode(head, add_special_tokens=False)
 
+        # Pre-compute the normalized lookup targets so we don't recompute
+        # once per (idx, key) inner pair. Mirrors the normalization applied
+        # when building content_index above — the head lookup matched via
+        # content_index, but tail-co-occurrence and head-position checks
+        # below ALSO need to compare against snippet_entities.keys() which
+        # come straight from the raw head_positions dict (still has trailing
+        # punctuation). Without this, every triple passes step 1 (head
+        # match) but fails step 2 (position lookup) and we end up with 0
+        # grounded rows even when Fix A's outer normalization succeeded.
+        norm_head = _norm_head(head)
+        norm_tail = _norm_head(tail)
+
         for idx in matched_indices:
             ex = src[idx]
             snippet_entities = _safe_json_loads(ex.get("head_positions", {}))
 
-            tail_present = any(k.lower() == tail.lower() for k in snippet_entities.keys())
+            tail_present = any(_norm_head(k) == norm_tail for k in snippet_entities.keys())
             if not tail_present:
                 stats["no_cooccurrence"] += 1
                 continue
@@ -146,7 +158,7 @@ def ground_triples_to_snippets(tok, rel_map, src, kg_df) -> Dataset:
 
             pos = None
             for k, v in snippet_entities.items():
-                if k.lower() == head.lower():
+                if _norm_head(k) == norm_head:
                     pos = int(v)
                     break
 
