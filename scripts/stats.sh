@@ -77,39 +77,101 @@ resolve_run_id() {
 
 resolve_run_id
 
-# Color helpers — emit ANSI only when stdout is a tty and USE_COLOR != no.
-_color_supported() { [[ "$USE_COLOR" == "no" ]] && return 1; [[ -t 1 ]]; }
-c_red()    { _color_supported && printf '\033[31m' || true; }
-c_yel()    { _color_supported && printf '\033[33m' || true; }
-c_grn()    { _color_supported && printf '\033[32m' || true; }
+# Detect once: is stdout a tty AND colors enabled? Used by color codes AND
+# by the erase-to-end-of-line code (\033[K) which would print literal "[K"
+# on non-tty consumers (`stats.sh | head`).
+IS_TTY=0
+EOL=""
+if [[ -t 1 ]]; then
+    IS_TTY=1
+    EOL=$'\033[K'
+fi
+USE_ANSI=0
+if [[ "$IS_TTY" -eq 1 && "$USE_COLOR" != "no" ]]; then
+    USE_ANSI=1
+fi
+
+_color_supported() { [[ "$USE_ANSI" -eq 1 ]]; }
+c_bar()    { _color_supported && printf '\033[94m' || true; }   # bright blue
 c_dim()    { _color_supported && printf '\033[2m'  || true; }
 c_reset()  { _color_supported && printf '\033[0m'  || true; }
 
 # bar PCT WIDTH — render a horizontal bar of `width` chars, `pct`% filled.
-# Uses full-block / light-shade. Colors by threshold (green/yellow/red).
+# Single neutral color (bright blue) for the filled portion. We dropped the
+# old green/yellow/red thresholds: during training, 88% GPU and 91% VRAM
+# are EXPECTED (you're using the resource you paid for), not warnings.
+# Mirrors RunPod's telemetry-panel aesthetic.
 bar() {
     local pct=${1:-0} width=${2:-30}
     [[ "$pct" -lt 0 ]] && pct=0
     [[ "$pct" -gt 100 ]] && pct=100
     local filled=$(( pct * width / 100 ))
     local empty=$(( width - filled ))
-    # Color by threshold
-    if   (( pct >= 86 )); then c_red
-    elif (( pct >= 61 )); then c_yel
-    else                       c_grn
-    fi
+    c_bar
     [[ "$filled" -gt 0 ]] && printf '%0.s█' $(seq 1 $filled)
     c_dim
     [[ "$empty"  -gt 0 ]] && printf '%0.s░' $(seq 1 $empty)
     c_reset
 }
 
-# render_metric LABEL PCT DETAIL — one line of system stats
+# Layout constants. Bar width + separator width + history-buffer length.
+# Phase table in stats_render.py is 96 display columns wide:
+#   2 indent + 24 PHASE + 1 + 13 STATUS + 1 + 10 STARTED + 1 + 10 FINISHED
+#   + 1 + 11 DURATION + 1 + 14 ETA + 1 + 6 STEPS = 96
+# Match that here so the system section visually extends to the same right
+# edge as STEPS instead of trailing short like before.
+TABLE_W=96
+BAR_W=50         # was 20 — wider gauge gives finer visual resolution
+HIST_W=20        # last 20 samples per metric in --live mode
+declare -a HIST_cpu HIST_ram HIST_gpu HIST_vram
+
+# push_hist <buffer-name> <value>
+push_hist() {
+    local name="HIST_$1" val=$2
+    declare -n arr="$name"
+    arr+=("$val")
+    while [[ ${#arr[@]} -gt $HIST_W ]]; do
+        arr=("${arr[@]:1}")
+    done
+}
+
+# spark <buffer-name> — render a sparkline (last $HIST_W samples, right-aligned).
+# Unfilled positions on the left padded with spaces so the chart width is
+# stable across frames (avoids visual jump as the buffer fills).
+spark() {
+    local name="HIST_$1"
+    declare -n arr="$name"
+    local levels=( '▁' '▂' '▃' '▄' '▅' '▆' '▇' '█' )
+    local n=${#arr[@]}
+    local pad=$(( HIST_W - n ))
+    c_dim
+    [[ $pad -gt 0 ]] && printf ' %.0s' $(seq 1 $pad)
+    c_bar
+    local s lvl
+    for s in "${arr[@]}"; do
+        lvl=$(( s * 7 / 100 ))
+        [[ $lvl -lt 0 ]] && lvl=0
+        [[ $lvl -gt 7 ]] && lvl=7
+        printf '%s' "${levels[$lvl]}"
+    done
+    c_reset
+}
+
+# render_metric LABEL PCT HIST_KEY DETAIL — one line of system stats with
+# bar + sparkline. HIST_KEY can be empty to skip the sparkline (e.g. on
+# the one-shot, non-live invocation where we have no history).
 render_metric() {
-    local label=$1 pct=$2 detail=${3:-}
+    local label=$1 pct=$2 hist_key=${3:-} detail=${4:-}
     printf "  %-8s ▕" "$label"
-    bar "$pct" 30
-    printf "▏ %3d%%   %s\n" "$pct" "$detail"
+    bar "$pct" "$BAR_W"
+    printf "▏ %3d%%  " "$pct"
+    if [[ -n "$hist_key" ]]; then
+        spark "$hist_key"
+        printf "  "
+    fi
+    # ${EOL} = erase-to-EOL (or empty on non-tty). Cleans up tail-garbage
+    # from a longer previous frame in --live mode.
+    printf "%s%s\n" "$detail" "$EOL"
 }
 
 # Cheap CPU% via /proc/stat (no busybox-vs-procps top quirks).
@@ -149,18 +211,39 @@ sample_gpu() {
 }
 
 render_system() {
-    echo "── system ─────────────────────────────────────────────────"
+    # Pass per-metric history-buffer keys only when in --live mode. The
+    # one-shot invocation has empty buffers (single sample at most), which
+    # would render as a single bar at the right edge — visually noisy and
+    # not informative. render_metric treats an empty key as "skip sparkline".
+    # Must initialize unconditionally for `set -u` compatibility.
+    local hkey_cpu="" hkey_ram="" hkey_gpu="" hkey_vram=""
+    if [[ "$LIVE" -eq 1 ]]; then
+        hkey_cpu=cpu; hkey_ram=ram; hkey_gpu=gpu; hkey_vram=vram
+    fi
+
+    # Separator extends to TABLE_W so it visually reaches the same right
+    # edge as the phase table's STEPS column above. "── system " is 10
+    # display columns; pad to TABLE_W with box-drawing horizontal lines.
+    local _sep_label="── system "
+    local _sep_dashes=$(( TABLE_W - 10 ))
+    printf "%s" "$_sep_label"
+    [[ "$_sep_dashes" -gt 0 ]] && printf '─%.0s' $(seq 1 "$_sep_dashes")
+    printf "%s\n" "$EOL"
+
     local cpu_pct mem_line mem_pct mem_used mem_total
     cpu_pct=$(sample_cpu_pct)
-    render_metric "CPU" "$cpu_pct"
+    push_hist cpu "$cpu_pct"
+    render_metric "CPU" "$cpu_pct" "$hkey_cpu"
 
     mem_line="$(sample_mem)"
     read -r mem_pct mem_used mem_total <<< "$mem_line"
-    render_metric "RAM" "$mem_pct" "${mem_used} / ${mem_total} GB"
+    push_hist ram "$mem_pct"
+    render_metric "RAM" "$mem_pct" "$hkey_ram" "${mem_used} / ${mem_total} GB"
 
+    # GPU sparkline buffers only track the FIRST GPU for now (multi-GPU
+    # support adds buffer indexing; defer until needed).
     local gpu_idx=0
     while IFS=, read -r name util used total temp; do
-        # Trim possible leading space
         name="${name# }"; util="${util# }"; used="${used# }"; total="${total# }"; temp="${temp# }"
         [[ -z "$name" ]] && continue
         local vram_pct=0
@@ -168,13 +251,19 @@ render_system() {
         local vram_gb_used vram_gb_total
         vram_gb_used=$(awk -v v="$used"  'BEGIN{printf "%.1f", v/1024}')
         vram_gb_total=$(awk -v v="$total" 'BEGIN{printf "%.1f", v/1024}')
-        render_metric "GPU $gpu_idx" "$util" "$name"
-        render_metric "VRAM"         "$vram_pct" "${vram_gb_used} / ${vram_gb_total} GB    ${temp}°C"
+        if [[ "$gpu_idx" -eq 0 ]]; then
+            push_hist gpu  "$util"
+            push_hist vram "$vram_pct"
+        fi
+        render_metric "GPU $gpu_idx" "$util"     "${gpu_idx:+}${hkey_gpu}"  "$name"
+        render_metric "VRAM"         "$vram_pct" "${gpu_idx:+}${hkey_vram}" "${vram_gb_used} / ${vram_gb_total} GB    ${temp}°C"
+        # If multi-GPU later, suppress sparkline on idx > 0 by passing "" as
+        # hist_key. For now single-GPU case is the only path exercised.
         gpu_idx=$(( gpu_idx + 1 ))
     done < <(sample_gpu)
 
     if [[ "$gpu_idx" -eq 0 ]]; then
-        printf "  %s(no NVIDIA GPU detected via nvidia-smi)%s\n" "$(c_dim)" "$(c_reset)"
+        printf "  %s(no NVIDIA GPU detected via nvidia-smi)%s\033[K\n" "$(c_dim)" "$(c_reset)"
     fi
 }
 
@@ -194,26 +283,50 @@ render_one_frame() {
 }
 
 if [[ "$LIVE" -eq 1 ]]; then
-    # Modern command-style quit: 'q' or 'Q' from the keyboard, or Ctrl-C.
-    # The non-blocking `read -t $INTERVAL -s -n 1` doubles as the inter-frame
-    # delay so we don't sleep AND read separately (which would make the keystroke
-    # response laggy on slow intervals).
-    # If stdin isn't a TTY (piped / cron), skip keypress handling and just sleep.
-    trap 'stty echo 2>/dev/null; echo; echo "(stopped)"; exit 0' INT TERM
-    if [[ -t 0 ]]; then
-        # Disable terminal echo so the q-press doesn't leak into the next frame.
+    # Anti-flicker via in-place cursor positioning (btop-style). On entry:
+    # one-time setup hides the cursor and clears the screen. Each subsequent
+    # frame moves the cursor home (\033[H) WITHOUT clearing — the new content
+    # overwrites the old in place. Each rendered line ends in \033[K (erase
+    # to end-of-line) so a shorter line doesn't leave tail-garbage. After
+    # the last line, \033[J erases anything below from a previous taller
+    # frame. The `clear` call (full screen wipe each frame) is what caused
+    # the 5s flicker the operator noticed; removing it.
+    #
+    # Modern command-style quit: 'q' / 'Q' or Ctrl-C. Non-blocking
+    # `read -t $INTERVAL -s -n 1` doubles as the inter-frame delay so the
+    # keystroke is responsive immediately (no waiting up to INTERVAL).
+    # If stdin isn't a TTY (piped / cron), skip keypress + cursor tricks
+    # and just sleep — terminal-control codes can confuse non-interactive
+    # consumers.
+    _restore_terminal() {
+        stty echo 2>/dev/null || true
+        # Show cursor, then clear screen and home cursor so the next prompt
+        # lands cleanly without leftover stats content.
+        printf '\033[?25h\033[2J\033[H'
+    }
+
+    trap '_restore_terminal; echo "(stopped)"; exit 0' INT TERM
+
+    if [[ -t 0 ]] && [[ -t 1 ]]; then
         stty -echo 2>/dev/null || true
+        # One-time setup: hide cursor, clear screen, home.
+        printf '\033[?25l\033[2J\033[H'
         while true; do
-            clear
-            printf "  refresh: %ds   press q to quit\n\n" "$INTERVAL"
-            render_one_frame || { stty echo 2>/dev/null; exit 1; }
+            # Move cursor home WITHOUT clearing — new content overwrites old.
+            printf '\033[H'
+            printf "  refresh: %ds   press q to quit\033[K\n\033[K\n" "$INTERVAL"
+            render_one_frame || { _restore_terminal; exit 1; }
+            # Erase anything below current cursor (cleans up if previous
+            # frame was taller, e.g. extra step rows appeared/disappeared).
+            printf '\033[J'
             key=""
             read -t "$INTERVAL" -s -n 1 key 2>/dev/null || true
             case "$key" in
-                q|Q) stty echo 2>/dev/null; echo; echo "(stopped)"; exit 0 ;;
+                q|Q) _restore_terminal; echo "(stopped)"; exit 0 ;;
             esac
         done
     else
+        # No TTY — fall back to plain sleep-redraw without cursor tricks.
         while true; do
             clear
             printf "  refresh: %ds   (no tty — Ctrl-C to quit)\n\n" "$INTERVAL"
