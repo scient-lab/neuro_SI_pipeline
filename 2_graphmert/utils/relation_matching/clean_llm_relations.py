@@ -69,12 +69,33 @@ def _safe_json_loads(x: Any) -> Any:
     return None
 
 
+def _norm_head(s: str) -> str:
+    """Normalize an LLM-emitted entity head for downstream matching.
+
+    The LLM in entity_discovery / add_llm_relations emits noun phrases
+    verbatim from the source text — including trailing punctuation
+    ("acetylcholine deficiency,", "membrane potential,"). Those don't
+    match the clean canonical heads in graphrag's kg_final.csv (e.g.
+    "acetylcholine"), so ground_triples_to_snippets silently drops every
+    triple and writes an empty Arrow file. Strip the cruft here and
+    again at the matching site in dataset_preprocessing_utils so both
+    sides agree.
+
+    Biomed never hit this because UMLS pre-normalized everything; for
+    neuroscience (and any non-UMLS domain) explicit normalization is
+    required.
+    """
+    if not s:
+        return ""
+    return s.strip().strip(",.;:!?-").strip().lower()
+
+
 def clean_relations_batch(examples: Dict[str, Any]) -> Dict[str, Any]:
     """
     Cleans relations_json column:
     - Parse JSON output from model
     - Keep only allowed relations
-    - Lowercase heads
+    - Lowercase + strip-trailing-punct heads (see _norm_head)
     - Write compact JSON to cleaned_relations_json
     """
     cleaned_list = []
@@ -85,7 +106,7 @@ def clean_relations_batch(examples: Dict[str, Any]) -> Dict[str, Any]:
             continue
         cleaned: Dict[str, List[str]] = {}
         for head, rels in parsed.items():
-            head_lower = str(head).strip().lower()
+            head_lower = _norm_head(str(head))
             if not head_lower:
                 continue
             if isinstance(rels, str):

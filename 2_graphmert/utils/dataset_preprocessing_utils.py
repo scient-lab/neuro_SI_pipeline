@@ -79,6 +79,23 @@ def build_relation_map(allowed_relations):
     return {r: i + 1 for i, r in enumerate(allowed_relations)}
 
 
+def _norm_head(s: str) -> str:
+    """Normalize an entity head for matching between the two LLM passes.
+
+    entity_discovery emits noun phrases verbatim from source text
+    ("acetylcholine deficiency,", "membrane potential,"); graphrag's
+    kg_final.csv has clean canonical strings ("acetylcholine"). Without
+    normalization no chunk head matches any kg_df head -> 0 grounded
+    triples -> empty Arrow file -> "Keys mismatch" at load.
+
+    Must mirror utils/relation_matching/clean_llm_relations.py::_norm_head
+    so both index and lookup agree.
+    """
+    if not s:
+        return ""
+    return s.strip().strip(",.;:!?-").strip().lower()
+
+
 def ground_triples_to_snippets(tok, rel_map, src, kg_df) -> Dataset:
     """
     For each (head, relation, tail) triple in kg_df, find snippets in src
@@ -93,7 +110,7 @@ def ground_triples_to_snippets(tok, rel_map, src, kg_df) -> Dataset:
     for i, ex in enumerate(src):
         hp = _safe_json_loads(ex.get("head_positions", {}))
         for head_str in hp.keys():
-            content_index[head_str.lower()].append(i)
+            content_index[_norm_head(head_str)].append(i)
 
     stats = {"total_triples": len(kg_df), "success": 0, "no_cooccurrence": 0, "no_head_match": 0}
 
@@ -102,7 +119,7 @@ def ground_triples_to_snippets(tok, rel_map, src, kg_df) -> Dataset:
         rel  = str(row["relation"]).strip()
         tail = str(row["tail"]).strip()
 
-        matched_indices = content_index.get(head.lower(), [])
+        matched_indices = content_index.get(_norm_head(head), [])
         if not matched_indices:
             stats["no_head_match"] += 1
             continue
