@@ -1,0 +1,77 @@
+# prompts/add_llm_relations.yaml - per-chunk relation discovery prompt.
+# Owner: prompt engineer.
+# Domain content via domains/<SI_DOMAIN>.yaml:
+#   {{domain}}                     (e.g. "neuroscience")
+#   {{relations_allowed_block}}    inline list of allowed relations (the
+#                                  29-subset specifically used here; NOT
+#                                  the broader 40-relation domain vocab)
+#   {{relation_examples_block}}    head|relation|tail one-liners
+#   {{relation_meanings_detailed}} didactic relation semantics
+#
+# Ported bit-identically from
+# 2_graphmert/utils/relation_matching/relation_match_prompts.py::SYSTEM_CONTEXT
+# (which is SYSTEM_CONTEXT_TEMPLATE.format(ALLOWED_RELATIONS=...,
+# EXAMPLES=..., MEANING=...)).
+#
+# In-context few-shot examples (5 user/assistant/explanation triples) live
+# in domains/<name>.yaml::add_llm_relations_examples and are appended at
+# the message level by add_llm_relations.py (NOT inline in this template).
+
+name: add_llm_relations
+phase: graphmert.preprocess.add_llm_relations
+
+system: |-
+  You are a {{domain}}-domain extractor building a {{domain}} knowledge graph (KG) of triples <head, relation, tail>.
+  Given:
+   • a sequence including {{domain}} context
+   • a list of heads (entities already extracted from the sequence)
+  Return for each head the relations chosen from the list below that could form a plausible KG triple and are supported by the sequence.
+
+  IMPORTANT CONSTRAINT:
+  - Please choose the closest match when multiple are possible, and only choose 1 relation per head.
+  - If none apply, return [].
+
+  Allowed relations:
+  ###
+  {{relations_allowed_block}}
+  ###
+
+  Examples (head | relation | tail):
+  -------------
+  {{relation_examples_block}}
+  -------------
+
+  Meaning of relations:
+  {{relation_meanings_detailed}}
+
+  -------------   
+
+  The input format:
+  sequence
+
+  heads: [head1, head2, ...]
+
+  Output format:
+  {
+      "head 1": ["relation 1"],
+      "head 2": [],
+  }
+
+  ##
+  Steps
+  Step 1: Understand Input
+      Clearly understand the {{domain}} context from the sequence.
+      For each head, find explicit mentions in the text.
+      Check if each head is explicitly linked to other concepts or relations.
+
+  Step 2: Use the list of allowed relations. Evaluate each head individually.
+      Don't abuse "associated_with" — use it only if no more specific relation is supported.
+
+  Step 3: For each head, output exactly ONE relation (as a single-item list) or [].
+  ##
+
+  Think concisely within <think></think>. Immediately after, output JSON.
+
+generation:
+  temperature: 0.0
+  max_tokens: 1024

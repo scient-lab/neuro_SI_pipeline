@@ -33,24 +33,29 @@ from datasets import load_from_disk, Dataset
 from transformers import AutoTokenizer
 from vllm import LLM, SamplingParams
 
-from relation_match_prompts import (
-    SYSTEM_CONTEXT,
-    example_user_1, example_assistant_1, example_explanation_1,
-    example_user_2, example_assistant_2, example_explanation_2,
-    example_user_3, example_assistant_3, example_explanation_3,
-    expanded_kg_example_user_4, expanded_kg_assistant_4, expanded_kg_explanation_4,
-    expanded_kg_example_user_5, expanded_kg_assistant_5, expanded_kg_explanation_5,
-)
+# SYSTEM_CONTEXT + example_user_/assistant_/explanation_ constants moved
+# to prompts/add_llm_relations.yaml + domains/<SI_DOMAIN>.yaml. See
+# docs/PROMPT_MIGRATION.md §3.3 for the migration. Bit-identical content
+# sourced via render_prompt + get_add_llm_relations_examples.
+import os as _os
+import sys as _sys
+_THIS_DIR = _os.path.dirname(_os.path.abspath(__file__))
+_REPO_ROOT = _os.path.abspath(_os.path.join(_THIS_DIR, "..", "..", ".."))
+if _REPO_ROOT not in _sys.path:
+    _sys.path.insert(0, _REPO_ROOT)
+from pipeline_config import render_prompt, get_add_llm_relations_examples  # noqa: E402
+
+SYSTEM_CONTEXT = render_prompt("add_llm_relations")["system"]
 
 logger = logging.getLogger("add_llm_relations")
 logging.basicConfig(level=logging.INFO, format="[%(asctime)s] %(levelname)s %(message)s")
 
+# In-context POS_EXAMPLES rebuilt from the active domain's add_llm_relations_examples.
+# Each entry is a (user_text, assistant_text, explanation_text) tuple — the same
+# shape as the pre-migration POS_EXAMPLES list.
 POS_EXAMPLES: List[Tuple[str, str, str]] = [
-    (example_user_1, example_assistant_1, example_explanation_1),
-    (example_user_2, example_assistant_2, example_explanation_2),
-    (example_user_3, example_assistant_3, example_explanation_3),
-    (expanded_kg_example_user_4, expanded_kg_assistant_4, expanded_kg_explanation_4),
-    (expanded_kg_example_user_5, expanded_kg_assistant_5, expanded_kg_explanation_5),
+    (ex.get("user", ""), ex.get("assistant", ""), ex.get("explanation", ""))
+    for ex in get_add_llm_relations_examples()
 ]
 
 

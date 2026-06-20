@@ -24,7 +24,17 @@ from typing import List, Dict, Any
 import pandas as pd
 from vllm import LLM, SamplingParams
 
-from prompts_scores import system_prompt_validity_score as FACT_CHECK_SYSTEM_PROMPT
+# FACT_CHECK_SYSTEM_PROMPT moved to prompts/fact_score.yaml +
+# domains/<SI_DOMAIN>.yaml::fact_score_scope. See docs/PROMPT_MIGRATION.md
+# §3.11 for the migration. Bit-identical content sourced via render_prompt.
+import os as _os
+import sys as _sys
+_THIS_DIR = _os.path.dirname(_os.path.abspath(__file__))
+_REPO_ROOT = _os.path.abspath(_os.path.join(_THIS_DIR, "..", "..", ".."))
+if _REPO_ROOT not in _sys.path:
+    _sys.path.insert(0, _REPO_ROOT)
+from pipeline_config import render_prompt  # noqa: E402
+FACT_CHECK_SYSTEM_PROMPT = render_prompt("fact_score")["system"]
 
 
 def build_fact_check_user_prompt(head: str, relation: str, tail: str,

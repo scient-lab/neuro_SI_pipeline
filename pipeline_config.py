@@ -154,6 +154,86 @@ def get_focus_instructions() -> str:
     return load_config().get("focus_instructions", "") or ""
 
 
+# --- Per-phase domain content (consumed by prompts/<phase>.yaml templates) ---
+# Each of these returns a string that's substituted into the corresponding
+# {{slot}} in the prompt template. They are read from domains/<SI_DOMAIN>.yaml
+# so cross-domain swaps (physics, biomed, finance) are YAML-only.
+
+def get_relation_meanings() -> str:
+    """Render-ready relation semantics block for prompts (one bullet per
+    relation). Source: domains/<name>.yaml::relation_meanings (free text).
+    Used by add_llm_relations and combine_tails prompts.
+    """
+    return str(load_config().get("relation_meanings", "") or "")
+
+
+def get_relation_examples() -> str:
+    """Render-ready set of (head | relation | tail) example lines.
+    Source: domains/<name>.yaml::relation_examples (free text).
+    Used by add_llm_relations prompts.
+    """
+    return str(load_config().get("relation_examples", "") or "")
+
+
+def get_predict_tails_examples() -> list[dict[str, Any]]:
+    """Few-shot examples for the predict_tails prompt. Each item is a
+    dict with text/head/relation/json keys.
+    Source: domains/<name>.yaml::predict_tails_examples.
+    """
+    items = load_config().get("predict_tails_examples", []) or []
+    return [it for it in items if isinstance(it, dict)]
+
+
+def get_combine_tails_examples() -> list[dict[str, str]]:
+    """Few-shot examples for the combine_tails prompt. Each item is a
+    dict with user/assistant keys (raw assistant message text).
+    Source: domains/<name>.yaml::combine_tails_examples.
+    """
+    items = load_config().get("combine_tails_examples", []) or []
+    return [it for it in items if isinstance(it, dict)]
+
+
+def get_fact_score_scope() -> str:
+    """Domain scope text inserted into the fact-score validity prompt.
+    e.g. 'brain regions, cell types, ...'.
+    Source: domains/<name>.yaml::fact_score_scope.
+    """
+    return str(load_config().get("fact_score_scope", "") or "")
+
+
+def get_relation_examples_block() -> str:
+    """Raw head|relation|tail example block for add_llm_relations prompt.
+    Source: domains/<name>.yaml::relation_examples_block.
+    """
+    return str(load_config().get("relation_examples_block", "") or "")
+
+
+def get_relations_allowed_block() -> str:
+    """Raw allowed-relations list (quoted, comma-separated, indented) for
+    add_llm_relations prompt. Source: domains/<name>.yaml::relations_allowed_block.
+    Distinct from get_relations() (which returns the broader 40-relation
+    domain vocab) — this is the 29-subset specifically used in the
+    add_llm_relations system prompt.
+    """
+    return str(load_config().get("relations_allowed_block", "") or "")
+
+
+def get_relation_meanings_detailed() -> str:
+    """Detailed (didactic-phrasing) relation semantics block for the
+    add_llm_relations prompt. DIFFERENT from get_relation_meanings()
+    (combine_tails-style). Source: domains/<name>.yaml::relation_meanings_detailed.
+    """
+    return str(load_config().get("relation_meanings_detailed", "") or "")
+
+
+def get_add_llm_relations_examples() -> list[dict[str, str]]:
+    """Few-shot in-context dialogs (user / assistant / explanation triples)
+    for add_llm_relations. Source: domains/<name>.yaml::add_llm_relations_examples.
+    """
+    items = load_config().get("add_llm_relations_examples", []) or []
+    return [it for it in items if isinstance(it, dict)]
+
+
 # --- Operational helpers --------------------------------------------------
 
 def get_model_id(key: str, default: Optional[str] = None) -> Optional[str]:
@@ -229,12 +309,27 @@ def render_prompt(name: str, **slots: Any) -> dict[str, Any]:
             f"See docs/PROMPT_MIGRATION.md for the inventory of supported names."
         )
 
+    _domain_lower = get_domain_name()
     defaults = {
-        "domain": get_domain_name(),
+        "domain": _domain_lower,
+        # Title-cased variant for proper-noun positions ("Neuroscience KG"
+        # vs "neuroscience text"). Used where capitalization matters
+        # — e.g. combine_tails.yaml "{{Domain}} Knowledge Graph curator".
+        "Domain": _domain_lower.title(),
         "focus_instructions": get_focus_instructions(),
         "categories": _format_categories(),
         "relations": _format_relations(),
         "few_shot": _format_few_shot(),
+        # New phase-specific slots — used by graphmert sub-step prompts
+        # (add_llm_relations, combine_tails, predict_tails, fact_score).
+        "relation_meanings": get_relation_meanings(),
+        "relation_examples": get_relation_examples(),
+        "predict_tails_examples": _format_predict_tails_examples(),
+        "fact_score_scope": get_fact_score_scope(),
+        # Slots specific to add_llm_relations (#4 in PROMPT_MIGRATION):
+        "relation_examples_block": get_relation_examples_block(),
+        "relations_allowed_block": get_relations_allowed_block(),
+        "relation_meanings_detailed": get_relation_meanings_detailed(),
     }
     merged: dict[str, Any] = {**defaults, **slots}
 
@@ -285,6 +380,29 @@ def _format_relations() -> str:
         d = desc.get(rel, "")
         lines.append(f"  - {rel}" + (f": {d}" if d else ""))
     return "\n".join(lines)
+
+
+def _format_predict_tails_examples() -> str:
+    """Render predict_tails_examples (list of dicts with text/head/relation/json)
+    into the multi-line text block predict_tails_llm.py's builder produced
+    inline before the YAML migration. Bit-identical to the pre-migration
+    output so the LLM sees the same prompt across the migration boundary.
+    """
+    import json as _json
+    items = get_predict_tails_examples()
+    if not items:
+        return ""
+    blocks = []
+    for ex in items:
+        text = ex.get("text", "")
+        head = ex.get("head", "")
+        relation = ex.get("relation", "")
+        j = ex.get("json", {})
+        blocks.append(
+            f"TEXT: {text}\nHEAD: {head}\nRELATION: {relation}\n"
+            f"JSON: {_json.dumps(j) if not isinstance(j, str) else j}"
+        )
+    return "\n\n".join(blocks)
 
 
 def _format_few_shot() -> str:

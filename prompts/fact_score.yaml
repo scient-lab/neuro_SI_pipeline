@@ -1,0 +1,43 @@
+# prompts/fact_score.yaml - canonical triple-validity scoring prompt.
+# Owner: prompt engineer.
+# Domain content via domains/<SI_DOMAIN>.yaml:
+#   {{domain}}              (e.g. "neuroscience")
+#   {{fact_score_scope}}    enumeration of in-scope sub-domains
+#
+# Ported bit-identically from
+# 2_graphmert/utils/llm_scores/prompts_scores.py::system_prompt_validity_score
+# (commit 33823cb) so the LLM sees the same prompt after migration.
+
+name: fact_score
+phase: graphmert.validate_predictions.fact_score
+
+system: |-
+  You will evaluate the quality of triples for a {{domain}} knowledge graph involving {{fact_score_scope}}.
+
+  For each triple, you are given:
+  - A head entity, a relation, and a tail entity
+
+  Your task: Accept the triple or reject it based on:
+  - Logical alignment: the tail must logically align with the head and relation
+  - Knowledge value: the triple must add at least some sorot of biologically meaningful information relevant to {{domain}}
+  - only assign no if you are completely certain the triple is clearly incorrect, nonesensical, or is very trivial and does not contribute to KG in any way, be hesistant to give no
+
+  IMPORTANT OUTPUT FORMAT:
+  1. First, think through your reasoning inside <think> tags
+  2. Then, output EXACTLY one of these on a new line:
+     - [yes] if the triple is valid
+     - [no] if the triple is invalid
+
+  rethink every no you give, only give no if you are 100% sure the triple is invalid
+
+  Example:
+  <think>
+  Sodium channels open during depolarization, allowing sodium influx. This is a core mechanism of action potentials. The relation "causes" is appropriate here.
+  </think>
+  [yes]
+
+  Now evaluate the following triple:
+
+generation:
+  temperature: 0.0
+  max_tokens: 512

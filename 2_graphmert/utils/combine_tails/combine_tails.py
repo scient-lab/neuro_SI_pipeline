@@ -40,7 +40,18 @@ import pandas as pd
 from vllm import LLM, SamplingParams
 from transformers import AutoTokenizer
 
-from combine_tokens_prompts import SYSTEM_CONTEXT as SYSTEM_PROMPT
+# SYSTEM_PROMPT moved to prompts/combine_tails.yaml + the shared
+# relation_meanings block in domains/<SI_DOMAIN>.yaml. See
+# docs/PROMPT_MIGRATION.md §3.4 for the migration. Bit-identical content
+# sourced via render_prompt at module-load time.
+import os as _os
+import sys as _sys
+_THIS_DIR = _os.path.dirname(_os.path.abspath(__file__))
+_REPO_ROOT = _os.path.abspath(_os.path.join(_THIS_DIR, "..", "..", ".."))
+if _REPO_ROOT not in _sys.path:
+    _sys.path.insert(0, _REPO_ROOT)
+from pipeline_config import render_prompt  # noqa: E402
+SYSTEM_PROMPT = render_prompt("combine_tails")["system"]
 
 
 def build_user_prompt(head: str, relation: str, tail: str) -> str:

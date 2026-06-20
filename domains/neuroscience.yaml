@@ -173,3 +173,377 @@ focus_instructions: |
 # overrides:
 #   validate:
 #     consensus_threshold: 0.7
+
+
+# =============================================================================
+# Per-phase prompt content slots (see docs/PROMPT_MIGRATION.md)
+# Each block below is consumed by a prompts/<phase>.yaml template via
+# {{slot_name}} substitution. Adding a new domain (physics, biomed, ...)
+# means writing the equivalent blocks in domains/<that-domain>.yaml.
+# =============================================================================
+
+
+# --- relation_meanings -------------------------------------------------------
+# Free-text bullet list of what each relation means in this domain.
+# Ported verbatim from 2_graphmert/utils/combine_tails/combine_tokens_prompts.py
+# (MEANING_EXPL_NEURO) so the LLM sees a bit-identical block after the
+# YAML migration. Consumed by add_llm_relations.yaml AND combine_tails.yaml.
+relation_meanings: |
+  Relation meanings (neuroscience KG). Use the direction exactly as written.
+
+  Core structure / hierarchy
+  * part_of - component → whole: “s4 segment” part_of “voltage-gated sodium channel”
+  * contains - whole → component: “hippocampus” contains “dentate gyrus”
+  * located_in - entity → location: “pyramidal neuron” located_in “cortical layer v”
+  * connected_to - undirected anatomical or functional connection: “primary motor cortex” connected_to “premotor cortex”
+
+  Circuit flow / anatomy of projections
+  * projects_to - source sends axons to target: “retina” projects_to “lateral geniculate nucleus”
+  * receives_input_from - target receives driving input from source: “lateral geniculate nucleus” receives_input_from “retinal ganglion cells”
+  * innervates - neuron or population supplies synapses to structure: “motor neuron” innervates “skeletal muscle”
+  * originates_from - pathway or tract begins in: “corticospinal tract” originates_from “primary motor cortex”
+
+  Molecular / cellular interactions
+  * releases - cell or terminal releases molecule: “dopaminergic neuron” releases “dopamine”
+  * binds_to - ligand binds receptor or molecular target: “glutamate” binds_to “NMDA receptor”
+  * activates - source increases activity or open probability of target: “glutamate” activates “AMPA receptor”
+  * inhibits - source decreases activity or firing of target: “GABA” inhibits “pyramidal neuron”
+  * modulates - source alters gain, kinetics, or responsiveness: “acetylcholine” modulates “cortical oscillations”
+  * regulates - broader control of expression, function, or excitability: “SCN1A mutation” regulates “Nav1.1 channel function”
+  * transports - transporter or channel moves substance: “voltage-gated sodium channel” transports “sodium ions”
+  * forms_complex_with - physical molecular complex formation: “SNARE proteins” forms_complex_with “synaptotagmin”
+
+  Dynamics / representation
+  * responds_to - entity responds to stimulus or condition: “auditory cortex” responds_to “sound”
+  * encodes_representation_of - neural activity represents a variable: “hippocampal place cells” encodes_representation_of “spatial location”
+  * represents - entity stands for or reflects information: “firing rate” represents “stimulus intensity”
+
+  Pathways / dependency
+  * participates_in - entity takes part in a process or pathway: “voltage-gated sodium channels” participates_in “action potential”
+  * mediates_signal_for - entity mediates a physiological signal component: “voltage-gated sodium channels” mediates_signal_for “rising phase of action potential”
+  * required_for - necessary condition for a process: “voltage-gated sodium channels” required_for “action potential initiation”
+  * causes - direct causal relationship: “SCN1A loss-of-function mutation” causes “Dravet syndrome”
+  * results_in - downstream outcome or effect: “inward sodium current” results_in “membrane depolarization”
+
+  Clinical linkage
+  * associated_with - correlated without direct causality: “hippocampal atrophy” associated_with “Alzheimer’s disease”
+  * symptom_of - symptom belongs to disorder: “seizures” symptom_of “Dravet syndrome”
+  * impaired_in - function reduced in condition: “working memory” impaired_in “schizophrenia”
+  * expressed_in - gene or protein expressed in tissue or cell type: “Nav1.1” expressed_in “GABAergic interneurons”
+  * controls - entity exerts control over process or variable: “basal ganglia output” controls “movement initiation”
+
+
+# --- predict_tails_examples --------------------------------------------------
+# Few-shot examples for the predict_tails prompt. Each entry is a complete
+# (text, head, relation, json) tuple matching what the LLM sees per call.
+# Ported verbatim from 2_graphmert/predict_tails_llm.py::ASSISTIVE_EXAMPLES
+# so post-migration LLM output is bit-identical.
+predict_tails_examples:
+  - text: "The hippocampus is part of the limbic system."
+    head: "hippocampus"
+    relation: "part_of"
+    json:
+      head: "hippocampus"
+      relation: "part_of"
+      tails: ["limbic system"]
+      reason_if_none: ""
+  - text: "Dopamine binds to D1 and D2 receptors."
+    head: "dopamine"
+    relation: "binds_to"
+    json:
+      head: "dopamine"
+      relation: "binds_to"
+      tails: ["D1 receptors", "D2 receptors"]
+      reason_if_none: ""
+  - text: "Glutamate activates NMDA and AMPA receptors."
+    head: "glutamate"
+    relation: "activates"
+    json:
+      head: "glutamate"
+      relation: "activates"
+      tails: ["NMDA receptors", "AMPA receptors"]
+      reason_if_none: ""
+
+
+# --- fact_score_scope --------------------------------------------------------
+# Short domain-scope phrase inserted into the fact-score validity prompt.
+# Ported verbatim from
+# 2_graphmert/utils/llm_scores/prompts_scores.py::system_prompt_validity_score
+# (the "...involving brain regions, cell types, ..." enumeration).
+fact_score_scope: "brain regions, cell types, molecular entities, neural circuits, physiological processes, and synaptic mechanisms"
+
+
+
+# --- relation_examples_block -------------------------------------------------
+# Inline list of head|relation|tail example triples consumed by
+# prompts/add_llm_relations.yaml (as {{relation_examples_block}}).
+# Ported verbatim from
+# 2_graphmert/utils/relation_matching/relation_match_prompts.py::EXAMPLES_gemini_score45.
+relation_examples_block: |2+
+
+  hippocampus | part_of | limbic system
+  microglia | participates_in | neuroinflammation
+  serotonin | modulates | mood regulation
+  cerebral cortex | contains | pyramidal neurons
+  substantia nigra pars compacta | located_in | midbrain
+  primary motor cortex | projects_to | spinal cord
+  dopamine signaling | mediates_signal_for | reward prediction
+  alpha-synuclein aggregation | causes | dopaminergic neuron loss
+  NMDA receptors | required_for | long-term potentiation
+  basal ganglia output | controls | voluntary movement
+  prefrontal cortex function | impaired_in | schizophrenia
+  NMDA receptor | binds_to | glutamate
+  resting tremor | symptom_of | Parkinson disease
+  tau pathology | associated_with | Alzheimer disease
+  anterior cingulate cortex | connected_to | prefrontal cortex
+  lateral geniculate nucleus | receives_input_from | retina
+  demyelination | results_in | reduced conduction velocity
+  NMDA receptor activation | activates | calcium influx
+  GABA_A receptor activation | inhibits | neuronal firing
+  vagus nerve | innervates | gut
+  hippocampus | encodes_representation_of | episodic memory
+  hippocampal pyramidal neurons | responds_to | glutamate
+  dopamine D1 receptor | expressed_in | medium spiny neurons
+  motor cortex activity | represents | movement direction
+  BDNF | regulates | synaptic plasticity
+  SERT (serotonin transporter) | transports | serotonin
+  SNARE complex | forms_complex_with | synaptotagmin
+  dopaminergic neurons | releases | dopamine
+  nigrostriatal pathway | originates_from | substantia nigra pars compacta
+
+# --- relations_allowed_block -------------------------------------------------
+# Inline list of allowed-relation strings (with quotes + trailing commas).
+# Ported verbatim from
+# relation_match_prompts.py::ALLOWED_RELATIONS_qwen32_score45 (29 relations,
+# the subset used in add_llm_relations — distinct from the broader 40 in
+# `relations:` above).
+relations_allowed_block: |2
+
+      "part_of",
+      "participates_in",
+      "modulates",
+      "contains",
+      "located_in",
+      "projects_to",
+      "mediates_signal_for",
+      "causes",
+      "required_for",
+      "controls",
+      "impaired_in",
+      "binds_to",
+      "symptom_of",
+      "associated_with",
+      "connected_to",
+      "receives_input_from",
+      "results_in",
+      "activates",
+      "inhibits",
+      "innervates",
+      "encodes_representation_of",
+      "responds_to",
+      "expressed_in",
+      "represents",
+      "regulates",
+      "transports",
+      "originates_from",
+      "forms_complex_with",
+      "releases",
+
+
+# --- relation_meanings_detailed ----------------------------------------------
+# Longer, didactic relation-semantics block (different phrasing from
+# `relation_meanings` above which is the combine_tails-style block).
+# Ported verbatim from
+# relation_match_prompts.py::MEANING_EXPL_qwen32_score55_exp_kg.
+relation_meanings_detailed: |
+  These relations are neuroscience KG relations.
+
+  General structural / spatial relations:
+  * part_of - X is a component or subregion of Y.
+    Example: hippocampus part_of limbic system.
+  * contains - Y contains X as a constituent structure or cell type.
+    Example: cerebral cortex contains pyramidal neurons.
+  * located_in - X is anatomically located in Y.
+    Example: substantia nigra pars compacta located_in midbrain.
+  * connected_to - anatomical or functional connectivity between regions.
+    Example: anterior cingulate cortex connected_to prefrontal cortex.
+  * originates_from - pathway or structure begins at Y.
+    Example: nigrostriatal pathway originates_from substantia nigra.
+
+  Circuit directionality:
+  * projects_to - axonal projections from X to Y.
+    Example: primary motor cortex projects_to spinal cord.
+  * receives_input_from - X receives primary input from Y.
+    Example: lateral geniculate nucleus receives_input_from retina.
+  * innervates - nerve or neuron X innervates target Y.
+    Example: vagus nerve innervates gut.
+
+  Molecular and cellular relations:
+  * expressed_in - gene, receptor, or protein expressed in cell type or region.
+    Example: dopamine D1 receptor expressed_in medium spiny neurons.
+  * releases - neuron or cell releases molecule.
+    Example: dopaminergic neurons releases dopamine.
+  * binds_to - molecule binds to receptor or target.
+    Example: NMDA receptor binds_to glutamate.
+  * forms_complex_with - proteins physically associate in a complex.
+    Example: SNARE complex forms_complex_with synaptotagmin.
+  * transports - transporter moves molecule across membrane.
+    Example: SERT transports serotonin.
+
+  Functional and regulatory relations:
+  * activates - X increases activity of Y.
+    Example: NMDA receptor activation activates calcium influx.
+  * inhibits - X decreases activity of Y.
+    Example: GABA_A receptor activation inhibits neuronal firing.
+  * modulates - X modulates Y in a context-dependent manner.
+    Example: serotonin modulates mood regulation.
+  * regulates - X regulates Y over longer timescales.
+    Example: BDNF regulates synaptic plasticity.
+  * responds_to - neuron or system responds to stimulus or ligand.
+    Example: hippocampal pyramidal neurons responds_to glutamate.
+  * represents - neural activity represents a variable.
+    Example: motor cortex activity represents movement direction.
+  * encodes_representation_of - region encodes representation of information.
+    Example: hippocampus encodes_representation_of episodic memory.
+  * participates_in - entity participates in a biological process.
+    Example: microglia participates_in neuroinflammation.
+  * required_for - X is necessary for Y.
+    Example: NMDA receptors required_for long-term potentiation.
+  * mediates_signal_for - X mediates signaling for Y.
+    Example: dopamine signaling mediates_signal_for reward prediction.
+  * controls - X controls Y (behavior, process, output).
+    Example: basal ganglia output controls voluntary movement.
+  * regulates - X regulates Y (longer timescales).
+    Example: BDNF regulates synaptic plasticity.
+  * transports - transporter moves molecule across membrane.
+    Example: SERT transports serotonin.
+  * forms_complex_with - proteins physically associate in a complex.
+    Example: SNARE complex forms_complex_with synaptotagmin.
+
+  Clinical and pathological relations:
+  * associated_with - non-directional association without causal commitment.
+    Example: tau pathology associated_with Alzheimer disease.
+  * causes - X causes Y.
+    Example: alpha-synuclein aggregation causes dopaminergic neuron loss.
+  * results_in - X results in downstream consequence Y.
+    Example: demyelination results_in reduced conduction velocity.
+  * impaired_in - function or process impaired in disorder.
+    Example: prefrontal cortex function impaired_in schizophrenia.
+  * symptom_of - clinical manifestation of disease.
+    Example: resting tremor symptom_of Parkinson disease.
+
+
+# --- add_llm_relations_examples ----------------------------------------------
+# Few-shot in-context dialogs (user / assistant / explanation triples) used
+# by add_llm_relations.py to seed the LLM with concrete patterns.
+# Ported verbatim from
+# relation_match_prompts.py::example_user_1..5 (reused as expanded_kg_4..5).
+add_llm_relations_examples:
+  - user: |-
+      Input:
+      Sequence:
+      Activation of NMDA receptors on CA1 pyramidal neurons triggered calcium influx and was required for long-term potentiation (LTP) in the hippocampus. The hippocampus encodes episodic memory and is part of the limbic system.
+
+      heads: ["NMDA receptors", "calcium influx", "long-term potentiation (LTP)", "hippocampus", "episodic memory", "limbic system"]
+
+      Output:
+    assistant: |-
+      {
+          "NMDA receptors": ["required_for"],
+          "calcium influx": [],
+          "long-term potentiation (LTP)": [],
+          "hippocampus": ["part_of"],
+          "episodic memory": [],
+          "limbic system": []
+      }
+    explanation: |-
+      NMDA receptors are explicitly required for LTP -> required_for.
+      The text states hippocampus is part of limbic system -> part_of.
+      Other heads are not framed in a directional relation as heads here, so [] is acceptable under the constraints.
+
+  - user: |-
+      Input:
+      Sequence:
+      Dopaminergic neurons in the ventral tegmental area (VTA) project to the nucleus accumbens and release dopamine during reward prediction.
+
+      heads: ["dopaminergic neurons", "ventral tegmental area", "nucleus accumbens", "dopamine", "reward prediction"]
+
+      Output:
+    assistant: |-
+      {
+          "dopaminergic neurons": ["releases"],
+          "ventral tegmental area": ["projects_to"],
+          "nucleus accumbens": [],
+          "dopamine": ["mediates_signal_for"],
+          "reward prediction": []
+      }
+    explanation: |-
+      The sequence explicitly states dopaminergic neurons release dopamine -> releases.
+      It explicitly states VTA projects to nucleus accumbens -> projects_to.
+      Dopamine is described as mediating reward prediction signaling -> mediates_signal_for.
+      Other heads not directly expressed as relational sources under the constraint -> [].
+
+  - user: |-
+      Input:
+      Sequence:
+      In Parkinson disease, degeneration of the substantia nigra is associated with dopaminergic neuron loss and produces resting tremor. Levodopa is used in Parkinson disease.
+
+      heads: ["Parkinson disease", "substantia nigra", "dopaminergic neuron loss", "resting tremor", "levodopa"]
+
+      Output:
+    assistant: |-
+      {
+          "Parkinson disease": [],
+          "substantia nigra": ["impaired_in"],
+          "dopaminergic neuron loss": [],
+          "resting tremor": ["symptom_of"],
+          "levodopa": []
+      }
+    explanation: |-
+      Resting tremor is explicitly described as a symptom of Parkinson disease -> symptom_of.
+      Degeneration/impairment of substantia nigra is described in Parkinson disease; among allowed relations, impaired_in is the closest match -> impaired_in.
+      Levodopa is mentioned but there is no allowed treated_by relation, so [] is used rather than inventing a relation.
+
+  - user: |-
+      Input:
+      Sequence:
+      Layer 2/3 pyramidal neurons are located in the prefrontal cortex. The prefrontal cortex is connected to the anterior cingulate cortex. Norepinephrine modulates attention.
+
+      heads: ["prefrontal cortex", "pyramidal neurons", "anterior cingulate cortex", "norepinephrine", "attention"]
+
+      Output:
+    assistant: |-
+      {
+          "prefrontal cortex": ["connected_to"],
+          "pyramidal neurons": ["located_in"],
+          "anterior cingulate cortex": [],
+          "norepinephrine": ["modulates"],
+          "attention": []
+      }
+    explanation: |-
+      The sequence explicitly states PFC is connected to ACC -> connected_to.
+      It states pyramidal neurons are located in PFC -> located_in.
+      Norepinephrine modulates attention -> modulates.
+      Other heads are not used as relation sources under the single-relation constraint -> [].
+
+  - user: |-
+      Input:
+      Sequence:
+      In the cerebral cortex, pyramidal neurons contain NMDA receptors. NMDA receptor activation activates calcium influx and is required for long-term potentiation.
+
+      heads: ["cerebral cortex", "pyramidal neurons", "NMDA receptors", "calcium influx", "long-term potentiation"]
+
+      Output:
+    assistant: |-
+      {
+          "cerebral cortex": ["contains"],
+          "pyramidal neurons": ["contains"],
+          "NMDA receptors": ["required_for"],
+          "calcium influx": [],
+          "long-term potentiation": []
+      }
+    explanation: |-
+      Cerebral cortex contains pyramidal neurons -> contains.
+      Pyramidal neurons contain NMDA receptors -> contains.
+      NMDA receptors are explicitly required for long-term potentiation -> required_for.
+      Other heads are not expressed as relation sources under the one-relation constraint -> [] is acceptable.

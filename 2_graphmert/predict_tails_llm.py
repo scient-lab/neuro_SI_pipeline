@@ -69,35 +69,18 @@ ENFORCE_EAGER = False
 TRUST_REMOTE_CODE = True
 
 
-SYSTEM_PROMPT = """
-You extract knowledge-graph triples from neuroscience text.
-
-PRIMARY GOAL: MAXIMIZE RECALL.
-Extract AS MANY valid tail entities as possible for the given HEAD and RELATION.
-
-Guidelines:
-- Use ONLY the provided RELATION.
-- If a tail is plausibly supported by the TEXT (even indirectly), INCLUDE IT.
-- Prefer short, canonical entity names.
-- Do NOT invent facts not grounded in the TEXT.
-
-Return ONLY a single JSON object with this schema:
-{
-  "head": string,
-  "relation": string,
-  "tails": [string, ...],
-  "reason_if_none": string
-}
-""".strip()
-
-ASSISTIVE_EXAMPLES: List[Dict[str, Any]] = [
-    {"text": "The hippocampus is part of the limbic system.", "head": "hippocampus", "relation": "part_of",
-     "json": {"head": "hippocampus", "relation": "part_of", "tails": ["limbic system"], "reason_if_none": ""}},
-    {"text": "Dopamine binds to D1 and D2 receptors.", "head": "dopamine", "relation": "binds_to",
-     "json": {"head": "dopamine", "relation": "binds_to", "tails": ["D1 receptors", "D2 receptors"], "reason_if_none": ""}},
-    {"text": "Glutamate activates NMDA and AMPA receptors.", "head": "glutamate", "relation": "activates",
-     "json": {"head": "glutamate", "relation": "activates", "tails": ["NMDA receptors", "AMPA receptors"], "reason_if_none": ""}},
-]
+# SYSTEM_PROMPT and ASSISTIVE_EXAMPLES moved to prompts/predict_tails.yaml +
+# domains/<SI_DOMAIN>.yaml::predict_tails_examples. See docs/PROMPT_MIGRATION.md
+# §3.5 for the migration. Bit-identical content, just sourced from YAML at
+# call time via pipeline_config.render_prompt(). Adds repo root to sys.path
+# so pipeline_config resolves regardless of cwd.
+import os as _os
+import sys as _sys
+_THIS_DIR = _os.path.dirname(_os.path.abspath(__file__))
+_REPO_ROOT = _os.path.abspath(_os.path.join(_THIS_DIR, ".."))
+if _REPO_ROOT not in _sys.path:
+    _sys.path.insert(0, _REPO_ROOT)
+from pipeline_config import render_prompt  # noqa: E402
 
 
 def parse_args():
@@ -115,11 +98,11 @@ def parse_args():
 
 
 def build_system_prompt_with_examples() -> str:
-    lines = [SYSTEM_PROMPT, "", "EXAMPLES:"]
-    for ex in ASSISTIVE_EXAMPLES:
-        lines += ["", "TEXT: " + ex["text"], "HEAD: " + ex["head"],
-                  "RELATION: " + ex["relation"], "JSON: " + json.dumps(ex["json"])]
-    return "\n".join(lines).strip()
+    # Was: concatenate hardcoded SYSTEM_PROMPT + ASSISTIVE_EXAMPLES manually.
+    # Now: render the prompts/predict_tails.yaml template with the active
+    # domain's examples slotted in by render_prompt(). Output is
+    # bit-identical to the pre-migration string (verified by inspection).
+    return render_prompt("predict_tails")["system"].strip()
 
 
 def _safe_json_loads(s: Any) -> Any:

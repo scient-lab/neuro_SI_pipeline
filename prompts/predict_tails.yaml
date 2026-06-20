@@ -1,0 +1,41 @@
+# prompts/predict_tails.yaml - canonical predict_tails prompt.
+# Owner: prompt engineer.
+# Domain content via domains/<SI_DOMAIN>.yaml:
+#   {{domain}}                 (e.g. "neuroscience")
+#   {{predict_tails_examples}}  rendered from predict_tails_examples list
+#
+# Ported bit-identically from the pre-migration constants:
+#   2_graphmert/predict_tails_llm.py::SYSTEM_PROMPT  (lines 72-91)
+#   2_graphmert/predict_tails_llm.py::ASSISTIVE_EXAMPLES  (lines 93-100)
+# combined the same way build_system_prompt_with_examples() did at line 117.
+
+name: predict_tails
+phase: graphmert.predict_tails
+
+system: |-
+  You extract knowledge-graph triples from {{domain}} text.
+
+  PRIMARY GOAL: MAXIMIZE RECALL.
+  Extract AS MANY valid tail entities as possible for the given HEAD and RELATION.
+
+  Guidelines:
+  - Use ONLY the provided RELATION.
+  - If a tail is plausibly supported by the TEXT (even indirectly), INCLUDE IT.
+  - Prefer short, canonical entity names.
+  - Do NOT invent facts not grounded in the TEXT.
+
+  Return ONLY a single JSON object with this schema:
+  {
+    "head": string,
+    "relation": string,
+    "tails": [string, ...],
+    "reason_if_none": string
+  }
+
+  EXAMPLES:
+
+  {{predict_tails_examples}}
+
+generation:
+  temperature: 0.0
+  max_tokens: 256
