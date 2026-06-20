@@ -1,35 +1,21 @@
 import torch
 import numpy as np
 from dataclasses import dataclass
-from typing import List, Union, Dict, Optional
-from transformers import BertConfig, DataCollatorForLanguageModeling
+from typing import List
+from transformers import DataCollatorForLanguageModeling
 
-class GraphMertConfig(BertConfig):
-    model_type = "graphmert"
-    def __init__(
-        self, 
-        root_nodes=512, 
-        max_nodes=4608, 
-        num_relationships=43, 
-        graph_types=None, 
-        pretrained_emb_dim=0,
-        mlm_sbo=False,
-        exp_mask_base=0.0,
-        relation_emb_dropout=0.0,
-        **kwargs
-    ):
-        super().__init__(**kwargs)
-        self.root_nodes = root_nodes
-        self.max_nodes = max_nodes
-        self.num_relationships = num_relationships
-        self.graph_types = graph_types if graph_types is not None else []
-        self.pretrained_emb_dim = pretrained_emb_dim
-        self.mlm_sbo = mlm_sbo
-        self.exp_mask_base = exp_mask_base
-        self.relation_emb_dropout = relation_emb_dropout
+from .configuration_graphmert import GraphMertConfig
+from .modeling_graphmert import (
+    GraphMertPreTrainedModel,
+    GraphMertModel,
+    GraphMertForMaskedLM,
+)
+from .collating_graphmert import GraphMertDataCollator
+
 
 @dataclass
 class GraphMertDataCollatorForLanguageModeling(DataCollatorForLanguageModeling):
+    """Lightweight HF-style collator used during preprocessing (does not require Cython)."""
     config: GraphMertConfig = None
     graph_types: List[str] = None
     process_arch_tensors: bool = True
@@ -46,14 +32,14 @@ class GraphMertDataCollatorForLanguageModeling(DataCollatorForLanguageModeling):
         leaf_node_ids = items.get('leaf_node_ids')
         bsz = len(input_ids)
         flat_inputs = []
-        
+
         for i in range(bsz):
             roots = list(input_ids[i])
             if len(roots) < self.config.root_nodes:
                 roots += [self.tokenizer.pad_token_id] * (self.config.root_nodes - len(roots))
             else:
                 roots = roots[:self.config.root_nodes]
-                
+
             if leaf_node_ids is not None and len(leaf_node_ids[i]) > 0:
                 leaves = leaf_node_ids[i]
                 if isinstance(leaves[0], (list, np.ndarray)):
@@ -62,13 +48,13 @@ class GraphMertDataCollatorForLanguageModeling(DataCollatorForLanguageModeling):
                     flat_leaves = list(leaves)
             else:
                 flat_leaves = []
-            
+
             total_leaf_slots = self.config.max_nodes - self.config.root_nodes
             if len(flat_leaves) < total_leaf_slots:
                 flat_leaves += [self.tokenizer.pad_token_id] * (total_leaf_slots - len(flat_leaves))
             else:
                 flat_leaves = flat_leaves[:total_leaf_slots]
-            
+
             flat_inputs.append(roots + flat_leaves)
 
         items['input_nodes'] = flat_inputs
@@ -78,3 +64,13 @@ class GraphMertDataCollatorForLanguageModeling(DataCollatorForLanguageModeling):
         bsz = len(items['input_nodes'])
         items['start_indices'] = [[0] * self.config.root_nodes for _ in range(bsz)]
         return items
+
+
+__all__ = [
+    "GraphMertConfig",
+    "GraphMertPreTrainedModel",
+    "GraphMertModel",
+    "GraphMertForMaskedLM",
+    "GraphMertDataCollator",
+    "GraphMertDataCollatorForLanguageModeling",
+]

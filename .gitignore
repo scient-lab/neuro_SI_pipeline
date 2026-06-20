@@ -20,3 +20,8 @@ outputs/
 # (source_txt/, source_pdfs/, source_wikipedia/, source_pmc/, …). Smoke
 # fixtures live in corpus/<domain>/smoke/ and stay committed.
 corpus/*/source_*/
+
+# SLURM stdout/stderr — keep the dir (via .gitkeep) but ignore generated logs.
+slurm_logs/*.out
+slurm_logs/*.err
+!slurm_logs/.gitkeep

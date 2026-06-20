@@ -41,22 +41,26 @@ from .training_arguments import (
     unique_cache_filename,
 )
 
-# Register GraphMertConfig with transformers' Auto registry so
-# CONFIG_MAPPING["graphmert"] resolves below. dataset_preprocessing_utils.py
-# does this same registration for the preprocess step, but mlm_utils is
-# imported by run_mlm.py independently of preprocess — without re-registering
-# here, CONFIG_MAPPING raises KeyError('graphmert') at training time. Mirrors
-# the try/import/register pattern from dataset_preprocessing_utils.py:46-57.
+# Register GraphMertConfig + GraphMertForMaskedLM with transformers' Auto
+# registry. Two registrations are needed:
+#   - AutoConfig("graphmert", GraphMertConfig)             so CONFIG_MAPPING["graphmert"] resolves
+#   - AutoModelForMaskedLM(GraphMertConfig, ForMaskedLM)   so from_config() finds the model class
+# dataset_preprocessing_utils.py registers AutoConfig for the preprocess
+# step, but mlm_utils is imported by run_mlm.py independently of preprocess
+# — without re-registering here, CONFIG_MAPPING raises KeyError('graphmert')
+# at training time and the AutoModelForMaskedLM path errors with
+# "Unrecognized configuration class".
 _utils_dir = os.path.dirname(os.path.abspath(__file__))
 _project_root = os.path.dirname(_utils_dir)
 if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
 try:
-    from graphmert_model import GraphMertConfig  # noqa: E402
+    from graphmert_model import GraphMertConfig, GraphMertForMaskedLM  # noqa: E402
 except ImportError:
-    from models import GraphMertConfig  # noqa: E402
+    from models import GraphMertConfig, GraphMertForMaskedLM  # noqa: E402
 try:
     AutoConfig.register("graphmert", GraphMertConfig)
+    AutoModelForMaskedLM.register(GraphMertConfig, GraphMertForMaskedLM)
 except ValueError:
     # Already registered by another module in this process — fine.
     pass
