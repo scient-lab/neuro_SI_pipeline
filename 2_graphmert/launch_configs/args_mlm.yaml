@@ -14,9 +14,17 @@
 
 # ===================== MODEL & CONFIG =====================
 # GraphMERT architecture (paper configuration):
-#   root_nodes = max_seq_length = 512
-#   num_leaves = 3  =>  max_nodes = 512 * (1 + 3) = 2048
-config_overrides: "max_nodes=2048,root_nodes=512,num_hidden_layers=6,num_attention_heads=12,hidden_size=768,intermediate_size=3072,pretrained_emb_dim=0,mlm_sbo=true"
+#   root_nodes = max_seq_length = 512   <- now in configs/profiles/*.yaml :: graphmert.config.root_nodes
+#   num_leaves = 3                       <- now in configs/profiles/*.yaml :: graphmert.config.num_leaves
+#   max_nodes  = 512 * (1 + 3) = 2048    <- derived in 2_graphmert/utils/architecture.py
+#
+# root_nodes and max_nodes are NO LONGER set via config_overrides — they
+# are applied to GraphMertConfig by mlm_utils.main() from
+# utils/architecture.py (which reads the active profile YAML). Keeping
+# them here would silently double-set and confuse Part 3 of the config
+# refactor. The remaining knobs (layers/heads/hidden/ffn/embeds/mlm_sbo)
+# are still hardcoded — Part 3 will surface those per-profile as well.
+config_overrides: "num_hidden_layers=6,num_attention_heads=12,hidden_size=768,intermediate_size=3072,pretrained_emb_dim=0,mlm_sbo=true"
 warmup_ratio: 0.06
 
 model_type: graphmert

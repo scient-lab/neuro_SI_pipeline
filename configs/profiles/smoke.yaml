@@ -36,9 +36,18 @@ extract:
 graphmert:
   train_epochs: 2
   effective_batch_size: 8
-  # NOTE: graphmert TRAINING is driven by 2_graphmert/launch_configs/args_mlm.yaml,
-  # a HuggingFace argparse YAML that we have not yet integrated with our config
-  # merge. Until that wire is done, edit args_mlm.yaml directly for smoke runs.
+  # NOTE: most graphmert TRAINING knobs still live in
+  # 2_graphmert/launch_configs/args_mlm.yaml (a HuggingFace argparse YAML).
+  # The block below is the partial integration: 2_graphmert/utils/architecture.py
+  # reads graphmert.config.root_nodes/num_leaves from here at import time
+  # so mlm_utils / dataset_preprocessing_utils / predict_tails stay in sync.
+  config:
+    # Graph-structure invariants — match upstream commit 2d7b782 (Jake's
+    # defaults). Smoke can shrink these later if needed to fit RTX 3060;
+    # for now bit-identical to upstream.
+    root_nodes: 512
+    num_leaves: 3
+    # max_nodes is DERIVED in architecture.py as root_nodes * (1 + num_leaves) — do not set
 
 curriculum:
   num_questions: 100

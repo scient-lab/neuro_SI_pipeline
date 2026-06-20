@@ -3,6 +3,17 @@
 # Only lists keys that override configs/default.yaml — everything else
 # inherits from the defaults.
 
+graphmert:
+  # 2_graphmert/utils/architecture.py reads graphmert.config.root_nodes
+  # and graphmert.config.num_leaves at import time so mlm_utils /
+  # dataset_preprocessing_utils / predict_tails stay in sync.
+  config:
+    # Graph-structure invariants — match upstream commit 2d7b782 (Jake's
+    # defaults). Paper-faithful = full scale (root=512, num_leaves=3, max=2048).
+    root_nodes: 512
+    num_leaves: 3
+    # max_nodes is DERIVED in architecture.py as root_nodes * (1 + num_leaves) — do not set
+
 curriculum:
   num_questions: 30000
 
