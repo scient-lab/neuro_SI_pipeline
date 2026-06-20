@@ -15,12 +15,13 @@ target YAML location, and tracks migration progress.
 
 ## 1. Headline
 
-| Metric | Current | Target |
-|---|---|---|
-| Prompts consumed from YAML at runtime | **0** | 11 |
-| Hardcoded Python prompts in active use | **11** | 0 |
-| Orphaned YAML files (defined, never read) | 4 | 0 |
-| Phases reading from `domains/<name>.yaml` for content | 0 (none use `get_prompt`) | 11 |
+| Metric | Initial state | After this migration step | Target |
+|---|---|---|---|
+| Prompts consumed from YAML at runtime | 0 | **1** (entity_discovery ✓) | 11 |
+| Hardcoded Python prompts in active use | 11 | **10** | 0 |
+| Orphaned YAML files (defined, never read) | 4 | 4 | 0 |
+| `render_prompt()` helper in `pipeline_config.py` | does not exist | **implemented** | implemented |
+| Smoke graphmert.preprocess gets >0 grounded triples | NO (0 due to diabetes prompts) | pending pod re-run | YES |
 
 The `prompts/extract.yaml`, `prompts/validate.yaml`, `prompts/curriculum_check.yaml`,
 and `prompts/curriculum_qa.yaml` files exist as scaffolding from an aborted
@@ -276,17 +277,18 @@ guidance.
 - 242 lines of inline content → ~30 lines of template + content in domain YAML
 
 **TODO:**
-- [ ] Create `prompts/entity_discovery.yaml`.
-- [ ] Patch `entity_discovery.py:34` to import + call `get_prompt(...)` and
-      render with a tiny `_render(prompt_dict, **slots)` helper (Python
-      `str.replace("{{slot}}", str(value))`).
-- [ ] Remove `from entity_discovery_prompts import ...` line.
-- [ ] Remove the `USER_TEMPLATE = "Input:\n{text}\n\nOutput:"` constant at
+- [x] Create `prompts/entity_discovery.yaml`.
+- [x] Patch `entity_discovery.py:34` to import + call `render_prompt(...)`.
+- [x] Remove `from entity_discovery_prompts import ...` line.
+- [x] Remove the `USER_TEMPLATE = "Input:\n{text}\n\nOutput:"` constant at
       `entity_discovery.py:36`.
+- [x] End-to-end render verified on workstation (graphmert venv with pyyaml):
+      no leftover `{{slot}}`, domain="neuroscience", no diabetes content,
+      categories block populated, input text passes through.
 - [ ] Leave `entity_discovery_prompts.py` for one commit (orphaned); delete
       in a follow-up commit so `git bisect` stays clean.
-- [ ] Re-run smoke graphmert.preprocess and verify >0 grounded triples in
-      `Grounding results: ...` log line.
+- [ ] Re-run smoke graphmert.preprocess on the pod and verify >0 grounded
+      triples in `Grounding results: ...` log line.
 
 ---
 
@@ -1053,11 +1055,16 @@ def _substitute(text: str, slots: dict) -> str:
 </table>
 
 **TODO:**
-- [ ] Add `render_prompt()` to `pipeline_config.py`.
-- [ ] Add `get_relation_meanings()`, `get_relation_examples()` helpers as
-      needed by individual phase migrations.
-- [ ] Document expected slot inventory per prompt in each YAML's
-      top-of-file comment.
+- [x] Add `render_prompt()` to `pipeline_config.py`.
+- [x] Add `_substitute()`, `_format_categories()`, `_format_relations()`,
+      `_format_few_shot()` helpers (sufficient for #2 entity_discovery; more
+      slot helpers like `get_relation_meanings()` to be added as #4 / #5
+      migrations require them).
+- [x] Document expected slot inventory per prompt in each YAML's
+      top-of-file comment (done for entity_discovery.yaml; pattern to apply
+      to subsequent YAMLs).
+- Note: `render_prompt()` raises `FileNotFoundError` if the named YAML
+  doesn't exist — refuses to silently fall back to hardcoded prompts.
 
 ---
 
@@ -1065,19 +1072,19 @@ def _substitute(text: str, slots: dict) -> str:
 
 Priority ordered by (impact × ease). Higher priority = do first.
 
-| Order | Item | Priority | Reason |
-|---|---|---|---|
-| 1 | #2 entity_discovery | **CRITICAL** | Blocking smoke run RIGHT NOW |
-| 2 | Render helper in pipeline_config | **CRITICAL** | Foundation for all subsequent migrations |
-| 3 | #1 extract (wire orphaned YAML) | High | Validates the render pipeline against the most complex prompt |
-| 4 | #7-#9 orphaned validate/curriculum YAMLs | Medium | Already-written YAMLs; just need to find consumers |
-| 5 | #4 add_llm_relations | Medium | Big content move; reduces graphmert phase's hardcoded surface area significantly |
-| 6 | #6 predict_tails | Medium | Small file; quick win |
-| 7 | #5 combine_tails | Medium | Reuses #4's `relation_meanings` slot |
-| 8 | #13-#14 RL prompts (consolidate) | Low | Generic; eliminates duplicate |
-| 9 | #12 eval_models | Low | Generic |
-| 10 | #11 curriculum_verify | Low | Single prompt |
-| 11 | #10 curriculum_generate | Low | Most complex (6 sub-prompts); leave for last when pattern is validated |
+| Order | Item | Priority | Status | Reason |
+|---|---|---|---|---|
+| 1 | #2 entity_discovery | **CRITICAL** | ✅ implemented (pending pod verify) | Blocking smoke run |
+| 2 | Render helper in pipeline_config | **CRITICAL** | ✅ implemented (verified locally) | Foundation for all subsequent migrations |
+| 3 | #1 extract (wire orphaned YAML) | High | pending | Validates the render pipeline against the most complex prompt |
+| 4 | #7-#9 orphaned validate/curriculum YAMLs | Medium | pending | Already-written YAMLs; just need to find consumers |
+| 5 | #4 add_llm_relations | Medium | pending | Big content move; reduces graphmert phase's hardcoded surface area significantly |
+| 6 | #6 predict_tails | Medium | pending | Small file; quick win |
+| 7 | #5 combine_tails | Medium | pending | Reuses #4's `relation_meanings` slot |
+| 8 | #13-#14 RL prompts (consolidate) | Low | pending | Generic; eliminates duplicate |
+| 9 | #12 eval_models | Low | pending | Generic |
+| 10 | #11 curriculum_verify | Low | pending | Single prompt |
+| 11 | #10 curriculum_generate | Low | pending | Most complex (6 sub-prompts); leave for last when pattern is validated |
 
 ---
 
@@ -1138,3 +1145,17 @@ fi
   - 4 orphaned YAML files documented.
   - 0 prompts currently consume YAML.
   - #2 entity_discovery flagged as smoke-blocker.
+- **2026-06-20** — Step 1+2 implemented (smoke-blocker path).
+  - `render_prompt()` + `_substitute()` + `_format_categories()` +
+    `_format_relations()` + `_format_few_shot()` added to
+    `pipeline_config.py`.
+  - `prompts/entity_discovery.yaml` created (neutral template, neuroscience
+    content sourced from `domains/neuroscience.yaml`).
+  - `entity_discovery.py` patched: removed `from entity_discovery_prompts
+    import ...` and `USER_TEMPLATE = ...` hardcodes; consumer now calls
+    `render_prompt("entity_discovery", text=chunk_text)`.
+  - End-to-end render verified on workstation graphmert venv:
+    `domain=neuroscience`, no diabetes leakage, all `{{slots}}` filled,
+    entity_categories block populated, input text passes through.
+  - Pending: pod re-run to confirm `Grounding results: ...` log shows
+    success > 0.

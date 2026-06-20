@@ -179,12 +179,135 @@ def get_prompt(name: str) -> dict[str, Any]:
     Lookup order (first hit wins):
       1. prompts/overrides/<SI_DOMAIN>/<name>.yaml   (per-domain override)
       2. prompts/<name>.yaml                          (canonical)
+
+    Returns the raw template dict. For slot-substituted system + user
+    messages ready to send to an LLM, use render_prompt() instead.
     """
     domain = get_domain_name()
     override = _REPO_ROOT / "prompts" / "overrides" / domain / f"{name}.yaml"
     if override.is_file():
         return _read(override)
     return _read(_REPO_ROOT / "prompts" / f"{name}.yaml")
+
+
+def render_prompt(name: str, **slots: Any) -> dict[str, Any]:
+    """Load prompts/<name>.yaml and return system + user messages with
+    {{slot}} placeholders substituted.
+
+    Slots auto-filled from the active domain config (caller-passed kwargs
+    override these):
+      - {{domain}}              from get_domain_name()
+      - {{focus_instructions}}  from get_focus_instructions()
+      - {{categories}}          formatted from get_entity_categories()
+                                + get_entity_category_descriptions()
+      - {{relations}}           formatted from get_relations()
+                                + get_relation_descriptions()
+      - {{few_shot}}            formatted from get_few_shot_examples()
+
+    Caller-only slots typically include {{text}}, {{head}}, {{relation}},
+    etc. — anything not in the auto-fill list.
+
+    Returns a dict:
+      {
+        "system":     "<system message with slots filled>",
+        "user":       "<user message with slots filled>",
+        "generation": {temperature, max_tokens, ...},
+        "name":       "<prompt name>",
+        "phase":      "<phase identifier>",
+      }
+
+    Raises FileNotFoundError if prompts/<name>.yaml does not exist — we
+    refuse to silently fall back to a hardcoded prompt body because that
+    is the exact failure mode (diabetes prompts run on neuroscience text)
+    that motivated the YAML migration.
+    """
+    template = get_prompt(name)
+    if not template:
+        raise FileNotFoundError(
+            f"prompts/{name}.yaml not found or empty. "
+            f"Cannot render prompt '{name}'. "
+            f"See docs/PROMPT_MIGRATION.md for the inventory of supported names."
+        )
+
+    defaults = {
+        "domain": get_domain_name(),
+        "focus_instructions": get_focus_instructions(),
+        "categories": _format_categories(),
+        "relations": _format_relations(),
+        "few_shot": _format_few_shot(),
+    }
+    merged: dict[str, Any] = {**defaults, **slots}
+
+    return {
+        "system": _substitute(str(template.get("system", "") or ""), merged),
+        "user": _substitute(str(template.get("user", "") or ""), merged),
+        "generation": template.get("generation", {}) or {},
+        "name": template.get("name", name),
+        "phase": template.get("phase", ""),
+    }
+
+
+# --- Slot-formatting helpers ----------------------------------------------
+# These render structured domain config into the text form prompts expect.
+
+def _substitute(text: str, slots: dict[str, Any]) -> str:
+    """Replace every {{slot_name}} occurrence with str(slots[slot_name]).
+    Unknown slots are left as-is so missing values are visible in the
+    rendered prompt (and surface as obvious LLM-side errors) rather than
+    silently filled with empty string.
+    """
+    for k, v in slots.items():
+        text = text.replace("{{" + k + "}}", str(v) if v is not None else "")
+    return text
+
+
+def _format_categories() -> str:
+    """Render entity_categories as 'id: description' bullets."""
+    ids = get_entity_categories()
+    desc = get_entity_category_descriptions()
+    if not ids:
+        return ""
+    lines = []
+    for cat in ids:
+        d = desc.get(cat, "")
+        lines.append(f"  - {cat}" + (f": {d}" if d else ""))
+    return "\n".join(lines)
+
+
+def _format_relations() -> str:
+    """Render relations as 'id: description' bullets."""
+    ids = get_relations()
+    desc = get_relation_descriptions()
+    if not ids:
+        return ""
+    lines = []
+    for rel in ids:
+        d = desc.get(rel, "")
+        lines.append(f"  - {rel}" + (f": {d}" if d else ""))
+    return "\n".join(lines)
+
+
+def _format_few_shot() -> str:
+    """Render few_shot_examples as 'head | relation | tail' lines.
+
+    Supports the existing few_shot_examples shape in domains/<name>.yaml
+    (list of dicts with head / relation / tail keys); falls back to
+    str(example) for entries that aren't dict-shaped.
+    """
+    examples = get_few_shot_examples()
+    if not examples:
+        return ""
+    lines = []
+    for ex in examples:
+        if isinstance(ex, dict):
+            h = ex.get("head") or ex.get("subject") or ""
+            r = ex.get("relation") or ex.get("predicate") or ""
+            t = ex.get("tail") or ex.get("object") or ""
+            if h or r or t:
+                lines.append(f"  {h} | {r} | {t}")
+        else:
+            lines.append(f"  {ex}")
+    return "\n".join(lines)
 
 
 # --- Diagnostic ----------------------------------------------------------

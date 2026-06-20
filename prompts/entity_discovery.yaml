@@ -1,0 +1,53 @@
+# prompts/entity_discovery.yaml - canonical entity-discovery prompt.
+# Owner: prompt engineer.
+# Domain expert provides the values that fill these slots via domains/<name>.yaml.
+#
+# This file replaces the diabetes-hardcoded content in
+# 2_graphmert/utils/entity_discovery/entity_discovery_prompts.py which
+# blocked the neuroscience smoke run (see docs/PROMPT_MIGRATION.md §3.2).
+#
+# Slots filled by pipeline_config.render_prompt():
+#   {{domain}}              from get_domain_name()           (e.g. "neuroscience")
+#   {{focus_instructions}}  from get_focus_instructions()    (per-domain context)
+#   {{categories}}          from get_entity_categories()     (id + description list)
+# Caller-provided slot:
+#   {{text}}                the chunk of source text to extract from
+
+name: entity_discovery
+phase: graphmert.preprocess.entity_discovery
+
+system: |
+  You are a {{domain}} domain expert extracting entity heads from text.
+  Each head is a noun referring to a specific concept of interest to a
+  {{domain}} knowledge graph.
+
+  Output format: a Python list of strings, e.g. ['head_1', 'head_2', ...].
+  Wrap intermediate reasoning in <think>...</think>; the final list must
+  come AFTER the </think> tag.
+
+  Rules for each head:
+  - LOWERCASE and CANONICAL — strip articles, trailing punctuation, and
+    plural markers if a singular form is more canonical (e.g. "neurons"
+    -> "neuron", "acetylcholine deficiency," -> "acetylcholine
+    deficiency").
+  - Must fit one of the allowed entity categories below.
+  - Discard generic / vague terms ("disease", "effect", "process") unless
+    qualified into a specific concept ("er stress" not "stress").
+  - Discard concepts that do not contribute meaningful {{domain}}
+    knowledge.
+
+user: |
+  {{focus_instructions}}
+
+  Allowed entity categories (emit only entities of these types; ignore
+  everything else):
+  {{categories}}
+
+  Input:
+  {{text}}
+
+  Output:
+
+generation:
+  temperature: 0.0
+  max_tokens: 512

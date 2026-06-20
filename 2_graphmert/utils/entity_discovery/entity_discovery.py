@@ -31,9 +31,21 @@ from vllm import LLM, SamplingParams
 from datasets import load_from_disk, Dataset
 from transformers import AutoTokenizer
 
-from entity_discovery_prompts import SYSTEM_CONTEXT as SYSTEM_PROMPT
-
-USER_TEMPLATE = "Input:\n{text}\n\nOutput:"
+# Prompt content has moved to prompts/entity_discovery.yaml — populated at
+# call time from pipeline_config.render_prompt() so the domain content
+# comes from domains/<SI_DOMAIN>.yaml instead of being hardcoded in a
+# *_prompts.py file. See docs/PROMPT_MIGRATION.md §3.2 for the migration
+# (this file used to import the diabetes-flavored SYSTEM_CONTEXT, which
+# silently broke the neuroscience pipeline). Adding REPO_ROOT to sys.path
+# so pipeline_config resolves whether this script runs from
+# scripts/phases/graphmert.sh (cwd=2_graphmert/) or from a different cwd.
+import os as _os
+import sys as _sys
+_THIS_DIR = _os.path.dirname(_os.path.abspath(__file__))
+_REPO_ROOT = _os.path.abspath(_os.path.join(_THIS_DIR, "..", "..", ".."))
+if _REPO_ROOT not in _sys.path:
+    _sys.path.insert(0, _REPO_ROOT)
+from pipeline_config import render_prompt  # noqa: E402
 
 
 logger = logging.getLogger(__name__)
@@ -147,9 +159,15 @@ def main():
         prompts = []
         for ex in batch:
             text = tokenizer.decode(ex["input_ids"], skip_special_tokens=True)
+            # render_prompt loads prompts/entity_discovery.yaml and substitutes
+            # {{domain}}, {{focus_instructions}}, {{categories}}, {{text}} from
+            # the active SI_DOMAIN config. think_suffix is appended after the
+            # user message to control Qwen3 chain-of-thought (was already the
+            # pre-migration behavior; preserved here).
+            rendered = render_prompt("entity_discovery", text=text)
             messages = [
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": USER_TEMPLATE.format(text=text) + think_suffix},
+                {"role": "system", "content": rendered["system"]},
+                {"role": "user", "content": rendered["user"] + think_suffix},
             ]
             prompts.append(messages)
 
