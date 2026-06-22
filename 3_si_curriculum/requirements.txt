@@ -4,7 +4,14 @@
 #   source ${REPO_DIR}/.venvs/si_curriculum/bin/activate
 #   uv pip install -r 3_si_curriculum/requirements.txt
 --extra-index-url https://download.pytorch.org/whl/cu121
-torch==2.4.0+cu121
+# torch==2.5.1+cu121 (not 2.4.0) — vllm==0.7.3 below hard-requires torch 2.5.1
+# and uv cannot resolve the older pin against it. Matches the graphmert
+# venv's torch version so they share the cu121 wheels in HF/uv cache.
+# History: was 2.4.0+cu121 before vllm pin was added explicitly today;
+# the transitive vllm install (some older version) was compatible with
+# 2.4.0, but vllm 0.7.3 is what we need per [Stage 3 RL 12GB gotchas]
+# (LoRA-on-RL + TRL API alignment) so the bump is forced.
+torch==2.5.1+cu121
 transformers
 trl
 peft
