@@ -117,9 +117,19 @@ def _ensure_cols(df: pd.DataFrame, label: str) -> pd.DataFrame:
     else:
         raise KeyError(f"[{label}] expected 'relation' or 'description'; got {df.columns.tolist()}")
 
-    for c in ["source", "target"]:
-        if c not in df.columns:
-            raise KeyError(f"[{label}] missing '{c}'; got {df.columns.tolist()}")
+    # Accept either 'source'/'target' (graphrag KG convention used in
+    # kg_final.parquet) OR 'head'/'tail' (KG triple convention used
+    # downstream by predict_tails_llm → combine_tails → fact_score).
+    # Normalize to source/target so the rest of this module is unchanged.
+    if "source" in df.columns and "target" in df.columns:
+        pass
+    elif "head" in df.columns and "tail" in df.columns:
+        df = df.rename(columns={"head": "source", "tail": "target"})
+    else:
+        raise KeyError(
+            f"[{label}] missing 'source'/'target' (graphrag) or 'head'/'tail' "
+            f"(graphmert) column pair; got {df.columns.tolist()}"
+        )
 
     if "weight" not in df.columns:
         df["weight"] = 1.0
