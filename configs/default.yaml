@@ -39,8 +39,8 @@ models:
   # Phase 4: curriculum (4 internal models in generate_questions.py + final
   # two-LLM consensus check per Jha 2026-06-04 mandate)
   curriculum_generation: gemini-2.5-flash   # MODEL_GENERATION
-  curriculum_quality: gemini-2.0-flash      # MODEL_QUALITY
-  curriculum_trace: gemini-2.0-flash        # MODEL_TRACE
+  curriculum_quality: gemini-2.5-flash      # MODEL_QUALITY
+  curriculum_trace: gemini-2.5-flash        # MODEL_TRACE
   curriculum_correctness: gemini-2.5-flash  # MODEL_CORRECTNESS
   # curriculum_check_a was openai/gpt-oss-20b — same MXFP4-vs-vLLM-0.7.3
   # incompatibility as validate_a above. Swapped for the same reason;

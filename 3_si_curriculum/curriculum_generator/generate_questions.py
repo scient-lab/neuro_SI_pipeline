@@ -28,8 +28,8 @@ from pipeline_config import get_model_id, get_relations  # noqa: E402
 # Sourced from configs/default.yaml::models (overridable via domain/profile).
 # Defaults match the Stephen & Jha 2026 paper's curriculum-generation stack.
 MODEL_GENERATION  = get_model_id('curriculum_generation',  'gemini-2.5-flash')   # 1. Initial Question Generation
-MODEL_QUALITY     = get_model_id('curriculum_quality',     'gemini-2.0-flash')   # 2. Quality/Formatting Check
-MODEL_TRACE       = get_model_id('curriculum_trace',       'gemini-2.0-flash')   # 3. Thinking Trace/Explanation
+MODEL_QUALITY     = get_model_id('curriculum_quality',     'gemini-2.5-flash')   # 2. Quality/Formatting Check
+MODEL_TRACE       = get_model_id('curriculum_trace',       'gemini-2.5-flash')   # 3. Thinking Trace/Explanation
 MODEL_CORRECTNESS = get_model_id('curriculum_correctness', 'gemini-2.5-flash')   # 4. Final Verification/Correctness
 # =======================================================
 
