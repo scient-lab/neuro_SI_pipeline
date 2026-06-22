@@ -182,42 +182,65 @@ class EpochCheckpointCallback(transformers.TrainerCallback):
 
 def _resolve_response_template_ids(tokenizer):
     """
-    Find the token ID(s) for the DeepSeek assistant turn delimiter.
+    Find the assistant-turn delimiter token IDs for the loaded tokenizer.
 
-    DeepSeek-R1-0528-Qwen3-8B uses <｜Assistant｜> (fullwidth Unicode pipes)
-    as a single special token. We look it up by name in the vocabulary to
-    avoid encoding issues.
+    Supports two model families:
+      1. **Qwen ChatML** (Qwen2/Qwen3 + most modern instruct tokenizers):
+         assistant turn opens with `<|im_start|>assistant\n` — a multi-
+         token sequence. This is the default for `base_sft: Qwen/Qwen3-14B`.
+      2. **DeepSeek-R1-Qwen**: assistant turn opens with the single special
+         token `<\uff5cAssistant\uff5c>` (U+FF5C fullwidth pipes —
+         NOT U+007C regular pipes).
 
-    Returns a list of token IDs.
+    Dispatch by token presence — try DeepSeek's single id first (cheap
+    vocab lookup); on miss, fall back to encoding the Qwen ChatML string.
+
+    Prior implementation hardcoded ONLY the DeepSeek token and raised
+    `ValueError` on any Qwen tokenizer (audit bug #6) — crashed every
+    training run since `base_sft` defaults to Qwen3-14B. `data_prep.py`
+    now uses `tokenizer.apply_chat_template` so the masking boundary
+    this function returns is exactly what the formatted text contains
+    (audit bug #7 — silent chat-template mismatch).
+
+    Returns: list of token IDs forming the response-template prefix.
     """
-    # The exact special token name used by DeepSeek's tokenizer
-    # Fullwidth pipe: U+FF5C (｜) — NOT regular pipe U+007C (|)
-    ASSISTANT_TOKEN = "<\uff5cAssistant\uff5c>"  # <｜Assistant｜>
+    DEEPSEEK_TOKEN = "<\uff5cAssistant\uff5c>"  # fullwidth U+FF5C pipes
+    QWEN_CHATML = "<|im_start|>assistant\n"
 
-    # Method 1: Direct vocabulary lookup (most reliable for special tokens)
-    token_id = tokenizer.convert_tokens_to_ids(ASSISTANT_TOKEN)
-    if token_id != tokenizer.unk_token_id and token_id is not None:
-        logger.info(f"Found assistant token via vocab lookup: "
-                    f"'{ASSISTANT_TOKEN}' -> id {token_id}")
-        return [token_id]
+    # 1) DeepSeek single-token vocab lookup (cheap, exact).
+    tok_id = tokenizer.convert_tokens_to_ids(DEEPSEEK_TOKEN)
+    if tok_id is not None and tok_id != tokenizer.unk_token_id:
+        logger.info(
+            "Resolved assistant-turn delimiter as DeepSeek-style special "
+            f"token {DEEPSEEK_TOKEN!r} -> id {tok_id}"
+        )
+        return [tok_id]
 
-    # Method 2: Search added_tokens for partial match
-    for tok_str, tok_id in tokenizer.get_added_vocab().items():
+    # 2) added_vocab search — catches DeepSeek family variants and any
+    #    future retokenizations whose token name contains 'Assistant'.
+    for tok_str, ids in tokenizer.get_added_vocab().items():
         if "Assistant" in tok_str:
-            logger.info(f"Found assistant token via added_vocab search: "
-                        f"'{tok_str}' -> id {tok_id}")
-            return [tok_id]
+            logger.info(
+                "Resolved assistant-turn delimiter via added_vocab match: "
+                f"{tok_str!r} -> id {ids}"
+            )
+            return [ids]
 
-    # Method 3: Fallback — encode the token string
-    encoded = tokenizer.encode(ASSISTANT_TOKEN, add_special_tokens=False)
+    # 3) Qwen ChatML fallback (multi-token sequence). Expected path for
+    #    Qwen2/Qwen3 base_sft.
+    encoded = tokenizer.encode(QWEN_CHATML, add_special_tokens=False)
     if encoded:
-        logger.warning(f"Using encode fallback for assistant token: "
-                       f"'{ASSISTANT_TOKEN}' -> ids {encoded}")
+        logger.info(
+            "Resolved assistant-turn delimiter as Qwen ChatML "
+            f"{QWEN_CHATML!r} -> ids {encoded}"
+        )
         return encoded
 
     raise ValueError(
-        f"Could not find the assistant turn delimiter token in the tokenizer. "
-        f"Tried: '{ASSISTANT_TOKEN}'. This tokenizer may not be DeepSeek-R1-0528."
+        "Could not resolve assistant-turn delimiter token IDs. Tried "
+        f"DeepSeek {DEEPSEEK_TOKEN!r} (vocab + added_vocab) and Qwen "
+        f"ChatML {QWEN_CHATML!r} (encode). Inspect tokenizer.chat_template "
+        "manually to identify the right delimiter for this model family."
     )
 
 
