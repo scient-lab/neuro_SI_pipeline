@@ -197,14 +197,12 @@ def main():
               gpu_memory_utilization=combine_gpu_mem)
 
     # Qwen3 thinking control. configs/default.yaml::graphmert.combine_tails_no_think
+    # IMPORTANT: do NOT add `from pipeline_config import get_phase_param`
+    # inside this function — it would make `get_phase_param` a local for the
+    # entire main() body and shadow the module-level import at the top,
+    # raising UnboundLocalError at every prior use site (e.g. line ~189).
+    # The top-level import on line 37 already provides this name.
     try:
-        import os as _os, sys as _sys
-        _repo_root = _os.environ.get("REPO_ROOT") or _os.path.abspath(
-            _os.path.join(_os.path.dirname(__file__), "..", "..", "..")
-        )
-        if _repo_root not in _sys.path:
-            _sys.path.insert(0, _repo_root)
-        from pipeline_config import get_phase_param
         no_think = bool(get_phase_param('graphmert', 'combine_tails_no_think', False))
     except Exception as e:
         logger.warning("could not read graphmert.combine_tails_no_think (%s) — defaulting False", e)
