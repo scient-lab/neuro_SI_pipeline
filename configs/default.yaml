@@ -21,6 +21,16 @@ models:
   validate_a: openai/gpt-oss-20b
   validate_b: mistralai/Mistral-Nemo-12B
 
+  # Phase 3: graphmert.predict_tails (2_graphmert/predict_tails_llm.py).
+  # Loaded via vLLM as a generative LM; the docstring example uses
+  # qwen3-32b but we default to 14B to match `extract` (same model loaded
+  # once per pod = no extra download). NOTE: this is NOT the trained
+  # GraphMERT checkpoint — the LLM-based path generates candidate tails
+  # via prompting, not via the trained encoder/MLM head. Replacing this
+  # with the GraphMERT-based variant (2_graphmert/utils/predict_tails.py)
+  # would require a different wiring in scripts/phases/graphmert.sh.
+  predict_tails: Qwen/Qwen3-14B
+
   # Phase 4: curriculum (4 internal models in generate_questions.py + final
   # two-LLM consensus check per Jha 2026-06-04 mandate)
   curriculum_generation: gemini-2.5-flash   # MODEL_GENERATION

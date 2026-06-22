@@ -45,6 +45,10 @@ mkdir -p "$GRAPHMERT_DIR"
 EXTRACT_MODEL_ID=$(get_model_id extract "")
 VALIDATE_A=$(get_model_id validate_a "")
 VALIDATE_B=$(get_model_id validate_b "")
+# Tail-prediction LLM (NOT the trained GraphMERT checkpoint — see comment
+# in configs/default.yaml::models.predict_tails). Loaded by vLLM in
+# 2_graphmert/predict_tails_llm.py.
+PREDICT_TAILS_MODEL_ID=$(get_model_id predict_tails "")
 
 # Princeton convention: stable tokenizer dir is reused across steps.
 STABLE_TOKENIZER="$GRAPHMERT_DIR/stable_tokenizer"
@@ -159,12 +163,21 @@ step_train_mnm() {
 
 step_predict_tails() {
     log_info "graphmert :: predict_tails (step 6 — predict_tails_llm.py)"
-    local CHKPT="${MLM_CHECKPOINT:-$GRAPHMERT_DIR/checkpoints/best}"
+    # predict_tails_llm.py loads the model via vLLM as a generative LM,
+    # so the path must point to a Qwen-style causal LM (NOT the trained
+    # GraphMERT checkpoint, which is a BERT-style MLM that vLLM cannot
+    # load). Sourced from configs/default.yaml::models.predict_tails;
+    # MLM_CHECKPOINT env var can still override for ad-hoc runs.
+    if [[ -z "$PREDICT_TAILS_MODEL_ID" ]]; then
+        log_error "predict_tails needs models.predict_tails in configs/default.yaml"
+        return 1
+    fi
+    local PRED_MODEL="${MLM_CHECKPOINT:-$PREDICT_TAILS_MODEL_ID}"
     # --dataset is the eval split written by clean_llm_relations.py
     # (now flat under llm_relations/, no wrapper dir).
     ( cd "$REPO_ROOT/2_graphmert" && \
       python predict_tails_llm.py \
-          --model_id   "$CHKPT" \
+          --model_id   "$PRED_MODEL" \
           --tokenizer  "$STABLE_TOKENIZER" \
           --dataset    "$GRAPHMERT_DIR/llm_relations/relations_cleaned_eval" \
           --output_dir "$GRAPHMERT_DIR/predictions" \
