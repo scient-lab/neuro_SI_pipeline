@@ -90,13 +90,26 @@ def parse_args():
 
 
 def load_all_shard_csvs(pred_dir: str) -> pd.DataFrame:
-    """Load and concatenate all shard CSVs from predict_tails_llm.py."""
+    """Load and concatenate the per-tail "exploded" shard CSVs from
+    predict_tails_llm.py. Each shard writes two files:
+      predictions_shard{N}_of{M}.csv  — per-tail rows (id/head/relation/tail)
+      queries_shard{N}_of{M}.csv      — per-query rows (head/relation/tails_json)
+    We want the per-tail rows only; filter on the "predictions_shard" prefix
+    to exclude queries. (The variable name `out_exploded` in
+    predict_tails_llm.py:223 refers to the same per-tail-row concept — the
+    filename diverged from that naming at some point in upstream history,
+    so the prior `"exploded" in f` filter matched nothing.)
+    """
     csv_files = sorted([
         os.path.join(pred_dir, f) for f in os.listdir(pred_dir)
-        if f.endswith(".csv") and "exploded" in f
+        if f.endswith(".csv") and "predictions_shard" in f
     ])
     if not csv_files:
-        raise FileNotFoundError(f"No exploded shard CSVs found in {pred_dir}")
+        raise FileNotFoundError(
+            f"No predictions_shard*.csv files found in {pred_dir}. "
+            f"Expected predict_tails_llm.py to have written "
+            f"predictions_shard{{N}}_of{{M}}.csv there."
+        )
     logger.info("Loading %d shard CSVs from %s", len(csv_files), pred_dir)
     dfs = [pd.read_csv(f) for f in csv_files]
     df = pd.concat(dfs, ignore_index=True)
