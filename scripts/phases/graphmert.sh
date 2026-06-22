@@ -199,9 +199,16 @@ step_validate_predictions() {
         return 1
     fi
     log_info "  fact_score (two-LLM agreement)"
+    # combine_tails writes final_kg_scientific_only.csv (head/relation/tail
+    # columns, post-LLM scientific filter). The earlier reference to
+    # "expanded_triples.csv" here was a filename that no producer in the
+    # repo ever writes — third naming mismatch with combine_tails from
+    # 33823cb, alongside the predictions_shard / exploded filter bug and
+    # the in-function import shadow. fact_score.py:10 docstring example
+    # confirms final_kg_scientific_only.csv is the expected input.
     ( cd "$REPO_ROOT/2_graphmert" && \
       python utils/llm_scores/fact_score.py \
-          --input_csv   "$GRAPHMERT_DIR/combined/expanded_triples.csv" \
+          --input_csv   "$GRAPHMERT_DIR/combined/final_kg_scientific_only.csv" \
           --output_csv  "$GRAPHMERT_DIR/final_kg/validated_triples.csv" \
           --model_ids   "$VALIDATE_A" "$VALIDATE_B" \
           --batch_size  64 \
