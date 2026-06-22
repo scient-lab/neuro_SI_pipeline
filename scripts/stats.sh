@@ -157,14 +157,14 @@ spark() {
     c_reset
 }
 
-# render_metric LABEL PCT HIST_KEY DETAIL — one line of system stats with
-# bar + sparkline. HIST_KEY can be empty to skip the sparkline (e.g. on
-# the one-shot, non-live invocation where we have no history).
+# render_metric LABEL PCT HIST_KEY DETAIL — one line of system stats.
+# Layout dropped the wide horizontal bar (50 chars was wider than the
+# phase table's TABLE_W=96 and made the system row not align with the
+# STEPS column). Numerical pct + detail carry the same info compactly.
+# Sparkline kept (when in --live mode) for trend at a glance.
 render_metric() {
     local label=$1 pct=$2 hist_key=${3:-} detail=${4:-}
-    printf "  %-8s ▕" "$label"
-    bar "$pct" "$BAR_W"
-    printf "▏ %3d%%  " "$pct"
+    printf "  %-8s %3d%%  " "$label" "$pct"
     if [[ -n "$hist_key" ]]; then
         spark "$hist_key"
         printf "  "
