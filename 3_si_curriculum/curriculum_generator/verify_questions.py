@@ -24,38 +24,24 @@ import re
 import math
 import logging
 import argparse
+from pathlib import Path
 from typing import List, Dict
 
 from vllm import LLM, SamplingParams
+
+# Pipeline config loader (repo root, 2 levels up from this file).
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from pipeline_config import render_prompt  # noqa: E402
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
 
-SYSTEM_PROMPT_QA_VALIDATION = """You are an editor for a graduate-level neuroscience exam dataset.
-You will be provided with:
-1. A **Context Path**: A chain of biological facts from a Knowledge Graph (e.g., A -> causes -> B).
-2. A **Question**: A multiple-choice question derived from this path.
-3. An **Answer** and **Explanation**.
-
-Your Task: Validate if this is a high-quality, solvable question.
-
-Criteria for [yes]:
-- **Grounded:** The Question/Answer must be logically supported by the Context Path.
-- **Solvable:** The correct answer must be unambiguous based on the science.
-- **Meaningful:** The question should test understanding, not trivial connections.
-- **Non-Circular:** The question should not simply repeat the path verbatim.
-
-Criteria for [no]:
-- The Question contradicts the Context Path.
-- The Explanation is hallucinated or does not follow the biology.
-- The Question is nonsensical, grammatically broken, or empty.
-
-Output Format:
-1. Think step-by-step in <think> tags.
-2. Output EXACTLY one of: [yes]  or  [no]
-""".strip()
+# Sourced from prompts/curriculum_verify.yaml — byte-identical (post-.strip())
+# to the prior in-file constant. {{domain}} is substituted from SI_DOMAIN.
+# See docs/PROMPT_MIGRATION.md item #11.
+SYSTEM_PROMPT_QA_VALIDATION = render_prompt("curriculum_verify")["system"].strip()
 
 
 def parse_args():

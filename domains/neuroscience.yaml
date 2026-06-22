@@ -167,6 +167,14 @@ focus_instructions: |
   - For each relation, output exactly ONE relation per triple (no compound
     relations).
 
+# --- Expert role ---------------------------------------------------------
+# Persona phrase injected into the SFT/RL/eval MCQ system prompts via the
+# {{domain_expert_role}} slot. Matches the upstream eval_models.py constants
+# bit-identically (so renders to "You are an expert neuroscientist." on the
+# neuroscience pipeline). For physics/biomed/finance domains, change to the
+# discipline-appropriate noun ("expert physicist", "expert clinician", ...).
+domain_expert_role: "expert neuroscientist"
+
 # --- Overrides -----------------------------------------------------------
 # Per-domain operational overrides on top of configs/default.yaml.
 # Leave empty unless the domain genuinely needs different settings.
@@ -547,3 +555,114 @@ add_llm_relations_examples:
       Pyramidal neurons contain NMDA receptors -> contains.
       NMDA receptors are explicitly required for long-term potentiation -> required_for.
       Other heads are not expressed as relation sources under the one-relation constraint -> [] is acceptable.
+
+# =============================================================================
+# Extract phase (#1) content slots  (added 2026-06-22)
+# Consumed by prompts/extract.yaml via {{slot}} substitution. These slots are
+# the per-domain content that, combined with the neutral extract-prompt
+# scaffold, reproduces the original 1_seed_kg/prompts_kg.py constants byte-
+# identically. For physics/biomed/finance domains, rewrite each value to fit
+# the discipline; the prompt scaffold itself stays language-agnostic.
+# =============================================================================
+
+# Single-line scope phrase that fills the -Role-/-Goal- header.
+extract_kg_topic: 'the nervous system, brain function, and neural mechanisms'
+
+# 7-type list (period-terminated) for -Entity Types- section.
+extract_entity_types_list: 'Anatomical Structure, Molecular Entity, Cellular Component, Process, Clinical Entity, Conceptual Entity, Physical Entity.'
+
+# 6-type list for the user-side `Entity_types:` line. Upstream prompts
+# omit 'Physical Entity' here intentionally; preserved bit-identically.
+extract_user_entity_types: 'Anatomical Structure, Molecular Entity, Cellular Component, Process, Clinical Entity, Conceptual Entity'
+
+# 7-line numbered subcategory block (PROMPT_TEMPLATE lines 68-74 verbatim).
+extract_entity_subcategories: |-
+  1. Anatomical Structure: Brain Region; Neural Pathway; Tract; Nucleus; Ganglion; Cortical Area; Subcortical Structure; Spinal Region; Peripheral Nerve; Sensory Organ; Motor Structure
+  2. Molecular Entity: Neurotransmitter; Neuromodulator; Receptor; Ion Channel; Protein; Enzyme; Gene; Hormone; Signaling Molecule; Pharmaceutical Agent
+  3. Cellular Component: Neuron; Glial Cell; Astrocyte; Oligodendrocyte; Microglia; Synapse; Axon; Dendrite; Cell Body; Myelin; Membrane; Organelle; Postsynaptic Density; Synaptic Vesicle
+  4. Process: Synaptic Transmission; Action Potential; Neural Signaling; Neurotransmitter Release; Signal Transduction; Neural Development; Neuroplasticity; Sensory Processing; Motor Control; Depolarization; Repolarization; Exocytosis
+  5. Clinical Entity: Neurological Disorder; Neurodegenerative Disease; Psychiatric Disorder; Developmental Disorder; Brain Injury; Seizure; Symptom; Syndrome
+  6. Conceptual Entity: Cognitive Function; Behavior; Learning; Memory; Perception; Motor Planning; Reflex; Neural Circuit; Central Pattern Generator; Topographic Map; Somatotopic Organization; Computational Principle; Gain Modulation
+  7. Physical Entity: Ion; Electrical Quantity; Current; Voltage; Membrane Potential; Concentration; Gradient; Frequency; Rate
+
+# Voltage-gated sodium channels paragraph (USER_EXAMPLE line 4).
+extract_example_text: 'Voltage-gated sodium channels are responsible for the rising phase of the action potential. The channel protein contains four homologous domains, each with six transmembrane segments. The S4 segment acts as the voltage sensor, moving outward in response to membrane depolarization. This conformational change opens the channel pore, allowing sodium ions to flow into the cell. The resulting inward sodium current causes rapid depolarization of the membrane. Within milliseconds, the channel enters an inactivated state when the inactivation gate occludes the pore. Mutations in the SCN1A gene, which encodes the Nav1.1 sodium channel, cause Dravet syndrome, a severe form of epilepsy characterized by frequent seizures beginning in infancy.'
+
+# Few-shot assistant response: 21 entity tuples + 16 relationship tuples +
+# {completion_delimiter}, stored verbatim. Delimiter tokens are kept literal
+# and substituted by graphrag_index.py at .format() time. No trailing newline.
+extract_example_tuples: |-
+  ("entity"{tuple_delimiter}voltage-gated sodium channels{tuple_delimiter}Molecular Entity{tuple_delimiter}ion channels responsible for the rising phase of the action potential, contain four homologous domains with six transmembrane segments each.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}action potential{tuple_delimiter}Process{tuple_delimiter}electrical signal with a rising phase attributed to voltage-gated sodium channels.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}channel protein{tuple_delimiter}Molecular Entity{tuple_delimiter}protein component of the voltage-gated sodium channel described as containing four homologous domains.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}four homologous domains{tuple_delimiter}Cellular Component{tuple_delimiter}domains contained within the channel protein, each described as having six transmembrane segments.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}six transmembrane segments{tuple_delimiter}Cellular Component{tuple_delimiter}transmembrane segments described as present in each homologous domain of the channel protein.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}s4 segment{tuple_delimiter}Cellular Component{tuple_delimiter}segment that acts as the voltage sensor and moves outward in response to membrane depolarization.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}membrane depolarization{tuple_delimiter}Process{tuple_delimiter}process that the s4 segment responds to by moving outward.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}conformational change{tuple_delimiter}Process{tuple_delimiter}change described as opening the channel pore.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}channel pore{tuple_delimiter}Cellular Component{tuple_delimiter}pore that opens due to the described conformational change, allowing sodium ions to flow into the cell.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}sodium ions{tuple_delimiter}Molecular Entity{tuple_delimiter}ions that flow into the cell through the open channel pore.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}cell{tuple_delimiter}Cellular Component{tuple_delimiter}cell into which sodium ions are described as flowing.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}inward sodium current{tuple_delimiter}Process{tuple_delimiter}current resulting from sodium ions flowing into the cell, described as causing rapid depolarization of the membrane.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}membrane{tuple_delimiter}Cellular Component{tuple_delimiter}structure described as undergoing rapid depolarization due to inward sodium current.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}inactivated state{tuple_delimiter}Process{tuple_delimiter}state the channel enters within milliseconds when the inactivation gate occludes the pore.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}inactivation gate{tuple_delimiter}Cellular Component{tuple_delimiter}gate that occludes the channel pore, associated with the channel entering an inactivated state.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}scn1a gene{tuple_delimiter}Molecular Entity{tuple_delimiter}gene described as encoding the nav1.1 sodium channel.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}nav1.1 sodium channel{tuple_delimiter}Molecular Entity{tuple_delimiter}sodium channel encoded by the scn1a gene; mutations in scn1a are described as causing dravet syndrome.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}dravet syndrome{tuple_delimiter}Clinical Entity{tuple_delimiter}severe form of epilepsy described as caused by mutations in scn1a and characterized by frequent seizures beginning in infancy.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}epilepsy{tuple_delimiter}Clinical Entity{tuple_delimiter}clinical condition described as the category for dravet syndrome.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}seizures{tuple_delimiter}Clinical Entity{tuple_delimiter}frequent events described as characterizing dravet syndrome and beginning in infancy.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}infancy{tuple_delimiter}Conceptual Entity{tuple_delimiter}life stage during which seizures are described as beginning.)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}voltage-gated sodium channels{tuple_delimiter}action potential{tuple_delimiter}mediates_signal_for{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}channel protein{tuple_delimiter}voltage-gated sodium channels{tuple_delimiter}part_of{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}channel protein{tuple_delimiter}four homologous domains{tuple_delimiter}contains{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}four homologous domains{tuple_delimiter}six transmembrane segments{tuple_delimiter}contains{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}s4 segment{tuple_delimiter}four homologous domains{tuple_delimiter}part_of{tuple_delimiter}5)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}s4 segment{tuple_delimiter}membrane depolarization{tuple_delimiter}responds_to{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}conformational change{tuple_delimiter}channel pore{tuple_delimiter}results_in{tuple_delimiter}5)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}channel pore{tuple_delimiter}cell{tuple_delimiter}located_in{tuple_delimiter}3)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}voltage-gated sodium channels{tuple_delimiter}sodium ions{tuple_delimiter}transports{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}inward sodium current{tuple_delimiter}membrane depolarization{tuple_delimiter}causes{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}inactivation gate{tuple_delimiter}channel pore{tuple_delimiter}modulates{tuple_delimiter}5)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}inactivation gate{tuple_delimiter}inactivated state{tuple_delimiter}required_for{tuple_delimiter}5)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}scn1a gene{tuple_delimiter}nav1.1 sodium channel{tuple_delimiter}encodes_representation_of{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}scn1a gene{tuple_delimiter}dravet syndrome{tuple_delimiter}causes{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}dravet syndrome{tuple_delimiter}epilepsy{tuple_delimiter}part_of{tuple_delimiter}5)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}dravet syndrome{tuple_delimiter}seizures{tuple_delimiter}symptom_of{tuple_delimiter}7)
+  {completion_delimiter}

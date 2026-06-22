@@ -1,39 +1,130 @@
-# prompts/extract.yaml - canonical extraction prompt (Phase 1).
-# Owner: prompt engineer.
-# Domain expert provides the values that fill these slots via domains/<name>.yaml.
+# prompts/extract.yaml — Phase 1 (graphrag seed-KG extraction) prompt.
+#
+# Consumer: 1_seed_kg/graphrag_index.py + 1_seed_kg/diagnose_llm_extraction.py,
+# both via 1_seed_kg/prompts_kg.py (which re-exports the rendered values as
+# the legacy constants PROMPT_TEMPLATE / USER_EXAMPLE / ASSISTANT_EXAMPLE /
+# USER_PROMPT for backwards-compat with the existing chat-message assembly).
+#
+# The consumer builds a 4-message chat sequence:
+#   role=system    <- system            (carries the -Role-/-Goal-/-Steps- spec)
+#   role=user      <- user_example      (few-shot user turn)
+#   role=assistant <- assistant_example (few-shot assistant turn — tuples)
+#   role=user      <- user              (the actual templated user turn)
+#
+# Two layers of slot substitution coexist intentionally:
+#   {{double_brace}}  — filled at YAML render time by
+#                       pipeline_config.render_prompt() from
+#                       domains/<SI_DOMAIN>.yaml::extract_* slots.
+#   {single_brace}    — kept literal in the rendered string; consumer then
+#                       calls .format(...) at LLM-call time to fill the
+#                       runtime values: input_text, think_directive,
+#                       tuple_delimiter, record_delimiter,
+#                       completion_delimiter, relation_list.
+#
+# Bit-identical to the prior in-file constants in
+# 1_seed_kg/prompts_kg.py (PROMPT_TEMPLATE / USER_EXAMPLE / ASSISTANT_EXAMPLE
+# / USER_PROMPT) when SI_DOMAIN=neuroscience. Round-trip-verified via
+# SHA-256 comparison.
 
 name: extract
 phase: extract
 
+# -------------------------------------------------------------------------
+# system: PROMPT_TEMPLATE upstream. 7 entity types, subcategory guidance,
+# relation list, 4-step extraction protocol. Ends with one trailing newline
+# (matches upstream `"""<text>\n"""` chomp; YAML `|` preserves it).
+# -------------------------------------------------------------------------
 system: |
-  You are a {{domain}} domain expert extracting structured knowledge from text.
-  Use chain-of-thought reasoning internally. Output ONLY valid JSON in the
-  required schema. Do not include explanations outside the JSON.
+  -Role-
+  You are an AI assistant specialized in extracting structured information from {{domain}} textbook content to build a knowledge graph about {{extract_kg_topic}}.
 
+  -Goal-
+  Given {{domain}} textbook content, a predefined list of entity types, and a predefined list of relations, identify EVERY SINGLE entity of those types and the scientifically meaningful relationships explicitly described among the identified entities within the text.
+  Extract only information that is directly stated in the text—do not infer, generalize, or use external scientific knowledge.
+  Try to extract as many entities and relationships as possible while maintaining quality.
+
+  -Entity Types-
+  You should extract entities from the following 7 entity types:
+  {{extract_entity_types_list}}
+
+  Use the subcategories listed below SOLELY as guidance to help you determine the correct main entity type. Only use the 7 main entity types in your output.
+
+  {{extract_entity_subcategories}}
+
+  -Relation Types-
+  Only use ONE relation per relationship tuple, and it MUST be one of these:
+  {relation_list}
+
+  -Steps-
+  1. Identify all entities corresponding to one of the 7 main entity types and relevant to {{domain}}.
+  For each entity, output:
+  - entity_name: lowercase, specific and canonical
+  - entity_type: one of the 7 entity types (exactly)
+  - entity_description: concise, from the text only
+  Format:
+  ("entity"{tuple_delimiter}<entity_name>{tuple_delimiter}<entity_type>{tuple_delimiter}<entity_description>)
+
+  2. Identify all explicitly stated relationships between identified entities.
+  For each relationship, output:
+  - source_entity: lowercase name from step 1
+  - target_entity: lowercase name from step 1
+  - relationship: one relation from the list above (exact string)
+  - relationship_strength: numeric confidence (7 = central, 5 = supporting, 3 = brief mention)
+  Format:
+  ("relationship"{tuple_delimiter}<source_entity>{tuple_delimiter}<target_entity>{tuple_delimiter}<relationship>{tuple_delimiter}<relationship_strength>)
+
+  3. Return output as a single flat list, delimited by {record_delimiter}.
+  Output ONLY tuples. No prose.
+
+  4. End with {completion_delimiter}
+
+# -------------------------------------------------------------------------
+# user_example: USER_EXAMPLE upstream — the few-shot user turn. Single
+# trailing newline (matches upstream `"""...\n"""`).
+# -------------------------------------------------------------------------
+user_example: |
+  ######################
+  Entity_types: {{extract_user_entity_types}}
+  Text:
+  {{extract_example_text}}
+  ######################
+  Output:
+
+# -------------------------------------------------------------------------
+# assistant_example: ASSISTANT_EXAMPLE upstream — the few-shot assistant
+# turn, 21 entity + 16 relationship tuples + final {completion_delimiter}.
+# NO trailing newline (matches upstream `"""...{completion_delimiter}"""`).
+# All {tuple_delimiter} / {record_delimiter} / {completion_delimiter}
+# tokens are kept literal in this slot value (they come from the
+# {{extract_example_tuples}} domain content); the consumer fills them at
+# .format() time, identical to the upstream call site behavior.
+# -------------------------------------------------------------------------
+assistant_example: |-
+  {{extract_example_tuples}}
+
+# -------------------------------------------------------------------------
+# user: USER_PROMPT upstream — the actual templated user turn. The
+# {input_text} and {think_directive} single-brace placeholders are kept
+# literal here; graphrag_index.py / diagnose_llm_extraction.py fill them
+# via `.format(input_text=row["text"], think_directive=" /no_think")`.
+# -------------------------------------------------------------------------
 user: |
-  {{focus_instructions}}
+  ######################
+  Entity_types: {{extract_user_entity_types}}
+  Text:
+  {input_text}
+  ######################
+  Output:{think_directive}
 
-  Allowed entity categories (use exactly these - no others):
-  {{categories}}
-
-  Allowed relations (use exactly these - no others):
-  {{relations}}
-
-  Examples:
-  {{few_shot}}
-
-  Text to extract from:
-  {{text}}
-
-  Return triples as a JSON array. Each element has fields:
-    - subject:        string (the entity name)
-    - subject_type:   one of the allowed entity categories
-    - predicate:      one of the allowed relations
-    - object:         string (the entity name)
-    - object_type:    one of the allowed entity categories
-    - confidence:     float in [0, 1]
-
+# -------------------------------------------------------------------------
+# generation: vLLM SamplingParams hints. graphrag_index.py sources these
+# from configs/default.yaml::extract.* via get_phase_param(), so this
+# block is informational only at present (kept here for future
+# render-time wiring).
+# -------------------------------------------------------------------------
 generation:
-  temperature: 0.0
-  max_tokens: 2048
-  response_format: json
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  min_p: 0
+  max_tokens: 8192

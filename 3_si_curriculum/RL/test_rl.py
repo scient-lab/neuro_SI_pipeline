@@ -25,10 +25,12 @@ Usage:
 
 import os
 import re
+import sys
 import json
 import logging
 import datetime
 from collections import Counter
+from pathlib import Path
 from typing import List
 
 import torch
@@ -36,15 +38,21 @@ import torch.distributed as dist
 import transformers
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from trl import GRPOConfig, GRPOTrainer
+
+# Pipeline config loader (repo root, 2 levels up from this file).
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from pipeline_config import render_prompt  # noqa: E402
+
 from data_prep import preprocess_grpo_dataset
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-SYSTEM_PROMPT = """A conversation between user and assistant. The user asks a single-choice Multiple Choice Question, and the assistant solves it using step-by-step reasoning. Please answer the multiple choice question by selecting only one from option A, option B, option C, option D. 
-
-The assistant first thinks through the problem systematically, then provides the explanation and final answer. Use <think>...</think> tags for internal reasoning, then provide the explanation process and answer enclosed within <explanation> </explanation> and <answer> </answer> tags, respectively."""
-
-TASK_SPECIFIC_INSTRUCTIONS = "Please provide complete and accurate answers with clear reasoning. The answer must only be a single letter from A, B, C, D."
+# Sourced from prompts/rl_mcq.yaml (shared with rl_training.py). Byte-identical
+# to the prior in-file SYSTEM_PROMPT / TASK_SPECIFIC_INSTRUCTIONS constants —
+# see docs/PROMPT_MIGRATION.md item #14.
+_rl_mcq = render_prompt("rl_mcq")
+SYSTEM_PROMPT = _rl_mcq["system"]
+TASK_SPECIFIC_INSTRUCTIONS = _rl_mcq["task_instructions"]
 
 
 # =====================================================================

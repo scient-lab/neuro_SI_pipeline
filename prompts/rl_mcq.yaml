@@ -1,0 +1,22 @@
+# Shared MCQ system + task-instruction prompts for the SFT/RL stages.
+# Used by both:
+#   3_si_curriculum/RL/rl_training.py        (training-time formatting)
+#   3_si_curriculum/RL/test_rl.py            (inference-time formatting)
+# The two files had byte-identical strings; consolidated here to avoid drift.
+#
+# Bit-identical to the original SYSTEM_PROMPT / TASK_SPECIFIC_INSTRUCTIONS
+# constants in the consumer files. Preservation is verified via a round-trip
+# test in docs/PROMPT_MIGRATION.md notes. Both strings have NO trailing
+# newline (original Python `"""..."""` ended right after `respectively.` /
+# `D.`); the literal-block `|-` chomping removes the YAML-inserted newline
+# to match.
+#
+# NOTE: the first line of `system` ends with a trailing ASCII space — this
+# is preserved from the upstream Python source. Do not strip it.
+
+name: rl_mcq
+phase: rl
+
+system: "A conversation between user and assistant. The user asks a single-choice Multiple Choice Question, and the assistant solves it using step-by-step reasoning. Please answer the multiple choice question by selecting only one from option A, option B, option C, option D. \n\nThe assistant first thinks through the problem systematically, then provides the explanation and final answer. Use <think>...</think> tags for internal reasoning, then provide the explanation process and answer enclosed within <explanation> </explanation> and <answer> </answer> tags, respectively."
+
+task_instructions: "Please provide complete and accurate answers with clear reasoning. The answer must only be a single letter from A, B, C, D."

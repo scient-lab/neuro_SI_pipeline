@@ -32,7 +32,7 @@ import logging
 
 # Pipeline config loader (repo root, 2 levels up from this file).
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from pipeline_config import get_model_id, get_phase_param  # noqa: E402
+from pipeline_config import get_model_id, get_phase_param, render_prompt  # noqa: E402
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", message=".*Caching is incompatible with gradient checkpointing.*")
@@ -76,11 +76,12 @@ def log_gpu_memory(tag: str = ""):
 # =====================================================================
 #                       System Prompt
 # =====================================================================
-SYSTEM_PROMPT = """A conversation between user and assistant. The user asks a single-choice Multiple Choice Question, and the assistant solves it using step-by-step reasoning. Please answer the multiple choice question by selecting only one from option A, option B, option C, option D. 
-
-The assistant first thinks through the problem systematically, then provides the explanation and final answer. Use <think>...</think> tags for internal reasoning, then provide the explanation process and answer enclosed within <explanation> </explanation> and <answer> </answer> tags, respectively."""
-
-TASK_SPECIFIC_INSTRUCTIONS = "Please provide complete and accurate answers with clear reasoning. The answer must only be a single letter from A, B, C, D."
+# Sourced from prompts/rl_mcq.yaml (shared with test_rl.py). Byte-identical
+# to the prior in-file SYSTEM_PROMPT / TASK_SPECIFIC_INSTRUCTIONS constants
+# — see docs/PROMPT_MIGRATION.md item #13.
+_rl_mcq = render_prompt("rl_mcq")
+SYSTEM_PROMPT = _rl_mcq["system"]
+TASK_SPECIFIC_INSTRUCTIONS = _rl_mcq["task_instructions"]
 
 
 @dataclass

@@ -8,9 +8,14 @@ import argparse
 import gc
 import math
 import random
+from pathlib import Path
 import torch
 from typing import List, Dict, Any
 from transformers import AutoModelForCausalLM, AutoTokenizer
+
+# Pipeline config loader (repo root, 2 levels up from this file).
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from pipeline_config import render_prompt  # noqa: E402
 
 # ==========================================
 # CONFIGURATION - EDIT PATHS HERE
@@ -31,27 +36,16 @@ for i, path in enumerate([MODEL_PATH_1, MODEL_PATH_2, MODEL_PATH_3, MODEL_PATH_4
         name = os.path.basename(path.strip("/")) if "/" in path else f"Model_{i}"
         HF_MODELS[name] = path
 
-SYSTEM_PROMPT = (
-    "You are an expert neuroscientist. Read the question and options carefully. "
-    "Reason step-by-step through the question. "
-    "After your reasoning, you MUST end your response with exactly: <Answer>X</Answer> "
-    "where X is A, B, C, or D. Do not write anything after the Answer tag."
-)
-
-GEMINI_SYSTEM_PROMPT = (
-    "You are an expert neuroscientist. Read the question and options carefully. "
-    "You have already done your reasoning internally. Your visible response token budget is very limited. "
-    "Do NOT repeat your reasoning. State only your final answer with a single sentence of justification. "
-    "You MUST end your response with exactly: <Answer>X</Answer> "
-    "where X is A, B, C, or D. Do not write anything after the Answer tag."
-)
-
-RECOVERY_PROMPT = (
-    "Based on the reasoning below, what is the final answer? "
-    "Reply with ONLY: <Answer>X</Answer> where X is A, B, C, or D.\n\n"
-    "QUESTION:\n{question}\n\n"
-    "REASONING:\n{reasoning}"
-)
+# Sourced from prompts/eval_models.yaml. SYSTEM_PROMPT / GEMINI_SYSTEM_PROMPT
+# inject {{domain_expert_role}} from domains/<SI_DOMAIN>.yaml (defaults to
+# "expert neuroscientist", byte-identical to prior hardcoded constants).
+# RECOVERY_PROMPT keeps `{question}` / `{reasoning}` placeholders intact so
+# existing `.format(question=..., reasoning=...)` call sites work unchanged.
+# See docs/PROMPT_MIGRATION.md item #12.
+_eval_prompts = render_prompt("eval_models")
+SYSTEM_PROMPT = _eval_prompts["system"]
+GEMINI_SYSTEM_PROMPT = _eval_prompts["gemini_system"]
+RECOVERY_PROMPT = _eval_prompts["recovery"]
 
 DEFAULT_INPUT_DIR = os.environ.get("EVAL_INPUT_DIR", "")
 DEFAULT_OUTPUT_DIR = os.environ.get("EVAL_OUTPUT_DIR", "eval_results")

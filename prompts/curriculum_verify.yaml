@@ -1,0 +1,43 @@
+# Two-LLM Q&A validation system prompt used by
+# 3_si_curriculum/curriculum_generator/verify_questions.py.
+#
+# This is the *grader* in the LLM-grader-of-LLM-question architecture: an
+# editor model decides whether each Q&A item produced by generate_questions.py
+# is grounded, solvable, meaningful, and non-circular against the source
+# context path from the seed KG.
+#
+# The original upstream constant was hardcoded with "neuroscience exam"; now
+# templated via {{domain}} so the same prompt scaffold works for other
+# domains. With SI_DOMAIN=neuroscience this renders bit-identically to the
+# upstream SYSTEM_PROMPT_QA_VALIDATION constant (post-.strip()).
+#
+# The consumer applies .strip() to the loaded string before use; the |-
+# chomping below already produces a stripped (no leading/trailing newline)
+# value, but we keep the explicit .strip() in the consumer as defense.
+
+name: curriculum_verify
+phase: curriculum
+
+system: |-
+  You are an editor for a graduate-level {{domain}} exam dataset.
+  You will be provided with:
+  1. A **Context Path**: A chain of biological facts from a Knowledge Graph (e.g., A -> causes -> B).
+  2. A **Question**: A multiple-choice question derived from this path.
+  3. An **Answer** and **Explanation**.
+
+  Your Task: Validate if this is a high-quality, solvable question.
+
+  Criteria for [yes]:
+  - **Grounded:** The Question/Answer must be logically supported by the Context Path.
+  - **Solvable:** The correct answer must be unambiguous based on the science.
+  - **Meaningful:** The question should test understanding, not trivial connections.
+  - **Non-Circular:** The question should not simply repeat the path verbatim.
+
+  Criteria for [no]:
+  - The Question contradicts the Context Path.
+  - The Explanation is hallucinated or does not follow the biology.
+  - The Question is nonsensical, grammatically broken, or empty.
+
+  Output Format:
+  1. Think step-by-step in <think> tags.
+  2. Output EXACTLY one of: [yes]  or  [no]

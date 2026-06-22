@@ -234,6 +234,20 @@ def get_add_llm_relations_examples() -> list[dict[str, str]]:
     return [it for it in items if isinstance(it, dict)]
 
 
+def get_domain_expert_role() -> str:
+    """The persona phrase used in eval / SFT / RL system prompts
+    ("You are an {{domain_expert_role}}."). Source:
+    domains/<name>.yaml::domain_expert_role. Falls back to
+    "expert {{domain}}" if absent so neutral pipelines still produce a
+    sensible string.
+    """
+    cfg = load_config()
+    explicit = cfg.get("domain_expert_role")
+    if isinstance(explicit, str) and explicit.strip():
+        return explicit
+    return f"expert {get_domain_name()}"
+
+
 # --- Operational helpers --------------------------------------------------
 
 def get_model_id(key: str, default: Optional[str] = None) -> Optional[str]:
@@ -330,16 +344,39 @@ def render_prompt(name: str, **slots: Any) -> dict[str, Any]:
         "relation_examples_block": get_relation_examples_block(),
         "relations_allowed_block": get_relations_allowed_block(),
         "relation_meanings_detailed": get_relation_meanings_detailed(),
+        # Persona phrase used in SFT/RL/eval MCQ prompts (#11/#12/#13/#14).
+        "domain_expert_role": get_domain_expert_role(),
+        # Extract-phase (#1) content slots — see prompts/extract.yaml and
+        # the matching extract_* keys in domains/<SI_DOMAIN>.yaml.
+        "extract_kg_topic":             str(load_config().get("extract_kg_topic", "") or ""),
+        "extract_entity_types_list":    str(load_config().get("extract_entity_types_list", "") or ""),
+        "extract_user_entity_types":    str(load_config().get("extract_user_entity_types", "") or ""),
+        "extract_entity_subcategories": str(load_config().get("extract_entity_subcategories", "") or ""),
+        "extract_example_text":         str(load_config().get("extract_example_text", "") or ""),
+        "extract_example_tuples":       str(load_config().get("extract_example_tuples", "") or ""),
     }
     merged: dict[str, Any] = {**defaults, **slots}
 
-    return {
-        "system": _substitute(str(template.get("system", "") or ""), merged),
-        "user": _substitute(str(template.get("user", "") or ""), merged),
-        "generation": template.get("generation", {}) or {},
-        "name": template.get("name", name),
-        "phase": template.get("phase", ""),
-    }
+    # Substitute every string-valued top-level key in the template (not
+    # just system/user) so prompt files can carry several named sub-prompts
+    # — e.g. rl_mcq.yaml has {system, task_instructions}; eval_models.yaml
+    # has {system, gemini_system, recovery}. Non-string keys (generation
+    # block, lists, etc.) are passed through unchanged.
+    rendered: dict[str, Any] = {}
+    skip = {"name", "phase", "generation"}
+    for key, val in template.items():
+        if key in skip:
+            continue
+        if isinstance(val, str):
+            rendered[key] = _substitute(val, merged)
+        else:
+            rendered[key] = val
+    rendered.setdefault("system", "")
+    rendered.setdefault("user", "")
+    rendered["generation"] = template.get("generation", {}) or {}
+    rendered["name"] = template.get("name", name)
+    rendered["phase"] = template.get("phase", "")
+    return rendered
 
 
 # --- Slot-formatting helpers ----------------------------------------------

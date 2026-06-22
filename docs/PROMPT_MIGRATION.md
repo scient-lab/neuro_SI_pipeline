@@ -1,12 +1,22 @@
 # Prompt Migration Inventory & Plan
 
-**Status (2026-06-20):** 1 of 15 production prompts now consumes YAML
-(entity_discovery — implemented this session). 4 YAML files exist under
-`prompts/` but remain orphaned. Every other LLM call in the pipeline runs
-against a hardcoded Python string. Initial audit (same date) reported 11
-prompts; second-pass found 4 more (#15 `prompts_scores.py`, and the
-`ASSISTIVE_EXAMPLES` constant inside `predict_tails_llm.py`, plus the
-6 inline f-strings in `generate_questions.py` were initially undercounted).
+**Status (2026-06-22):** **11 of 15 production prompts now consume YAML.**
+The entire graphmert phase (#2/#4/#5/#6/#15), the curriculum-verify / eval
+/ RL prompts (#11/#12/#13/#14), and the seed-KG extract prompt (#1 — 4
+sibling chat-message keys: `system`/`user_example`/`assistant_example`/`user`)
+are YAML-driven. Items #7/#8/#9 (orphaned validate/curriculum_check/
+curriculum_qa — need consumer audit) and #10 (curriculum_generate — 6
+inline f-strings) remain hardcoded. The `render_prompt()` helper now
+substitutes every string-valued top-level template key (not just
+`system`/`user`), so a single YAML file can carry multiple named
+sub-prompts — e.g. `rl_mcq.yaml::{system,task_instructions}` and
+`eval_models.yaml::{system,gemini_system,recovery}`. A new
+`{{domain_expert_role}}` slot reads from `domains/<SI_DOMAIN>.yaml`
+(`"expert neuroscientist"` for the neuroscience domain). Old `*_prompts.py`
+source files are kept on disk (orphaned, but unimported) per the
+explicit "don't delete any file" preservation policy. Every new prompt
+was round-trip-verified byte-identical to the prior in-file constants
+via SHA-256 comparison before consumer wiring.
 
 This document inventories every prompt source, maps the current state to a
 target YAML location, and tracks migration progress.
@@ -20,8 +30,8 @@ target YAML location, and tracks migration progress.
 
 | Metric | Initial state | After this migration step | Target |
 |---|---|---|---|
-| Prompts consumed from YAML at runtime | 0 | **1** (entity_discovery ✓) | 15 (was originally listed as 11; 4 more found in second-pass audit) |
-| Hardcoded Python prompts in active use | 11 (initial count) | **14** (corrected count after audit miss) | 0 |
+| Prompts consumed from YAML at runtime | 0 | **11** (extract #1 + graphmert #2/#4/#5/#6/#15 + curriculum-verify #11 + eval #12 + RL #13/#14 ✓) | 15 |
+| Hardcoded Python prompts in active use | 11 (initial count) → 15 (post-audit) | **4** (orphaned #7/#8/#9 + curriculum_generate #10) | 0 |
 | Orphaned YAML files (defined, never read) | 4 | 4 | 0 |
 | `render_prompt()` helper in `pipeline_config.py` | does not exist | **implemented** | implemented |
 | Smoke graphmert.preprocess gets >0 grounded triples | NO (0 due to diabetes prompts) | pending pod re-run | YES |
@@ -36,7 +46,7 @@ earlier migration. The real prompts that run at LLM-call time live in the
 ## 2. Inventory — all prompts found
 
 Status legend:
-- **✅** YAML-driven via `get_prompt()` (none yet)
+- **✅** YAML-driven via `render_prompt()` (11 items as of 2026-06-22 late eve)
 - **🟡** YAML file exists but is orphaned (nobody reads it)
 - **❌** Hardcoded in Python, no YAML target yet
 - **🚨** Hardcoded AND domain content is wrong (e.g. diabetes content in a
@@ -44,21 +54,21 @@ Status legend:
 
 | # | Status | Phase / Step | Current source | Target YAML | Domain | LOC | TODO |
 |---|---|---|---|---|---|---|---|
-| 1 | 🟡❌ | `extract` (graphrag) | `1_seed_kg/prompts_kg.py:54-127` (`PROMPT_TEMPLATE` + `ASSISTANT_EXAMPLE`) | `prompts/extract.yaml` (exists, orphaned) | neuroscience (inline) | ~70 | ☐ wire `prompts_kg.py` to `get_prompt("extract")` ☐ move neuroscience-specific content to `domains/neuroscience.yaml::extract_examples` |
-| 2 | 🚨 | `graphmert / entity_discovery` | `2_graphmert/utils/entity_discovery/entity_discovery_prompts.py:1` (`SYSTEM_CONTEXT`) | `prompts/entity_discovery.yaml` (new) | **diabetes — WRONG for our pipeline** | 242 | ☐ create template ☐ wire `entity_discovery.py:34` to `get_prompt("entity_discovery")` ☐ verify content sourced from `domains/neuroscience.yaml` |
-| 3 | ❌ | `graphmert / entity_discovery` | `2_graphmert/utils/entity_discovery/entity_discovery.py:36` (`USER_TEMPLATE`) | (folds into `prompts/entity_discovery.yaml::user`) | format only | 1 | ☐ inline into the entity_discovery YAML user block |
-| 4 | ❌ | `graphmert / add_llm_relations` | `2_graphmert/utils/relation_matching/relation_match_prompts.py:167-225` (`SYSTEM_CONTEXT_TEMPLATE` + `EXAMPLES_*` + `MEANING_EXPL_*`) | `prompts/add_llm_relations.yaml` (new) | neuroscience (already adapted) | 242 | ☐ create template ☐ wire `add_llm_relations.py:36` ☐ move neuroscience examples to `domains/neuroscience.yaml::relation_match_examples` |
-| 5 | ❌ | `graphmert / combine_tails` | `2_graphmert/utils/combine_tails/combine_tokens_prompts.py:1-67` (`MEANING_EXPL_NEURO` + `SYSTEM_CONTEXT_TEMPLATE`) | `prompts/combine_tails.yaml` (new) | neuroscience (already adapted) | ~150 | ☐ create template ☐ wire `combine_tokens.py` (consumer) ☐ move content to `domains/neuroscience.yaml::combine_examples` |
-| 6 | ❌ | `graphmert / predict_tails` | `2_graphmert/predict_tails_llm.py:72` (`SYSTEM_PROMPT`) **AND `:93` (`ASSISTIVE_EXAMPLES`)** | `prompts/predict_tails.yaml` (new) | neuroscience (inline) | ~30 + ~8 | ☐ create template ☐ wire predict_tails_llm.py ☐ move ASSISTIVE_EXAMPLES into `domains/neuroscience.yaml::predict_tails_examples` |
+| 1 | ✅ | `extract` (graphrag) | `1_seed_kg/prompts_kg.py:54-127` (`PROMPT_TEMPLATE` + `ASSISTANT_EXAMPLE`) | `prompts/extract.yaml` (exists, orphaned) | neuroscience (inline) | ~70 | ☐ wire `prompts_kg.py` to `get_prompt("extract")` ☐ move neuroscience-specific content to `domains/neuroscience.yaml::extract_examples` |
+| 2 | ✅ | `graphmert / entity_discovery` | `2_graphmert/utils/entity_discovery/entity_discovery_prompts.py:1` (`SYSTEM_CONTEXT`) | `prompts/entity_discovery.yaml` (new) | **diabetes — WRONG for our pipeline** | 242 | ☐ create template ☐ wire `entity_discovery.py:34` to `get_prompt("entity_discovery")` ☐ verify content sourced from `domains/neuroscience.yaml` |
+| 3 | ✅ | `graphmert / entity_discovery` | `2_graphmert/utils/entity_discovery/entity_discovery.py:36` (`USER_TEMPLATE`) | (folds into `prompts/entity_discovery.yaml::user`) | format only | 1 | ☐ inline into the entity_discovery YAML user block |
+| 4 | ✅ | `graphmert / add_llm_relations` | `2_graphmert/utils/relation_matching/relation_match_prompts.py:167-225` (`SYSTEM_CONTEXT_TEMPLATE` + `EXAMPLES_*` + `MEANING_EXPL_*`) | `prompts/add_llm_relations.yaml` (new) | neuroscience (already adapted) | 242 | ☐ create template ☐ wire `add_llm_relations.py:36` ☐ move neuroscience examples to `domains/neuroscience.yaml::relation_match_examples` |
+| 5 | ✅ | `graphmert / combine_tails` | `2_graphmert/utils/combine_tails/combine_tokens_prompts.py:1-67` (`MEANING_EXPL_NEURO` + `SYSTEM_CONTEXT_TEMPLATE`) | `prompts/combine_tails.yaml` (new) | neuroscience (already adapted) | ~150 | ☐ create template ☐ wire `combine_tokens.py` (consumer) ☐ move content to `domains/neuroscience.yaml::combine_examples` |
+| 6 | ✅ | `graphmert / predict_tails` | `2_graphmert/predict_tails_llm.py:72` (`SYSTEM_PROMPT`) **AND `:93` (`ASSISTIVE_EXAMPLES`)** | `prompts/predict_tails.yaml` (new) | neuroscience (inline) | ~30 + ~8 | ☐ create template ☐ wire predict_tails_llm.py ☐ move ASSISTIVE_EXAMPLES into `domains/neuroscience.yaml::predict_tails_examples` |
 | 7 | 🟡❌ | `validate` (2-LLM consensus) | (no consumer found — `prompts/validate.yaml` exists but unused) | `prompts/validate.yaml` (exists, orphaned) | neuroscience | n/a | ☐ identify the actual validate consumer ☐ wire it to `get_prompt("validate")` |
 | 8 | 🟡❌ | `curriculum_check` | (no consumer — orphaned YAML) | `prompts/curriculum_check.yaml` (exists, orphaned) | neuroscience | n/a | ☐ identify consumer ☐ wire to YAML |
 | 9 | 🟡❌ | `curriculum_qa` | (no consumer — orphaned YAML) | `prompts/curriculum_qa.yaml` (exists, orphaned) | neuroscience | n/a | ☐ identify consumer ☐ wire to YAML |
 | 10 | ❌ | `curriculum / generate_questions` | `3_si_curriculum/curriculum_generator/generate_questions.py:284, 339, 443, 473, 502, 551` (inline `f"""..."""` × 6) | `prompts/curriculum_generate.yaml` (new, multi-sub-prompt) | neuroscience (inline) | ~150 total | ☐ extract each inline f-string ☐ create YAML with sub-keys per generation step ☐ wire `generate_questions.py` to `get_prompt("curriculum_generate")` |
-| 11 | ❌ | `curriculum / verify_questions` | `3_si_curriculum/curriculum_generator/verify_questions.py:36` (`SYSTEM_PROMPT_QA_VALIDATION`) | `prompts/curriculum_verify.yaml` (new) | neuroscience (inline) | ~30 | ☐ create template ☐ wire consumer |
-| 12 | ❌ | `curriculum / test_models / eval` | `3_si_curriculum/test_models/eval_models.py:34, 41` (`SYSTEM_PROMPT`, `GEMINI_SYSTEM_PROMPT`) | `prompts/eval_models.yaml` (new) | generic MCQ instructions | ~20 | ☐ create template ☐ wire eval_models.py |
-| 13 | ❌ | `rl / training` | `3_si_curriculum/RL/rl_training.py:79` (`SYSTEM_PROMPT`) | `prompts/rl_training.yaml` (new) | generic MCQ instructions | ~10 | ☐ create template ☐ wire consumer |
-| 14 | ❌ | `rl / test` | `3_si_curriculum/RL/test_rl.py:43` (`SYSTEM_PROMPT`) | `prompts/rl_test.yaml` (new — or share `rl_training.yaml`) | generic MCQ instructions | ~10 | ☐ create template ☐ wire consumer |
-| 15 | ❌🚨 | `graphmert / validate_predictions.fact_score` | `2_graphmert/utils/llm_scores/prompts_scores.py:1` (`system_prompt_validity_score`) **— missed in initial audit** | `prompts/fact_score.yaml` (new) | neuroscience (inline; hardcoded enumeration of "brain regions, cell types, molecular entities, neural circuits, physiological processes, synaptic mechanisms") | ~30 | ☐ create template ☐ wire `fact_score.py:27` (currently imports `system_prompt_validity_score as FACT_CHECK_SYSTEM_PROMPT`) ☐ move domain enumeration to `domains/neuroscience.yaml::fact_score_scope` |
+| 11 | ✅ | `curriculum / verify_questions` | `3_si_curriculum/curriculum_generator/verify_questions.py:36` (`SYSTEM_PROMPT_QA_VALIDATION`) | `prompts/curriculum_verify.yaml` (new) | neuroscience (inline) | ~30 | ☐ create template ☐ wire consumer |
+| 12 | ✅ | `curriculum / test_models / eval` | `3_si_curriculum/test_models/eval_models.py:34, 41` (`SYSTEM_PROMPT`, `GEMINI_SYSTEM_PROMPT`) | `prompts/eval_models.yaml` (new) | generic MCQ instructions | ~20 | ☐ create template ☐ wire eval_models.py |
+| 13 | ✅ | `rl / training` | `3_si_curriculum/RL/rl_training.py:79` (`SYSTEM_PROMPT`) | `prompts/rl_training.yaml` (new) | generic MCQ instructions | ~10 | ☐ create template ☐ wire consumer |
+| 14 | ✅ | `rl / test` | `3_si_curriculum/RL/test_rl.py:43` (`SYSTEM_PROMPT`) | `prompts/rl_test.yaml` (new — or share `rl_training.yaml`) | generic MCQ instructions | ~10 | ☐ create template ☐ wire consumer |
+| 15 | ✅ | `graphmert / validate_predictions.fact_score` | `2_graphmert/utils/llm_scores/prompts_scores.py:1` (`system_prompt_validity_score`) **— missed in initial audit** | `prompts/fact_score.yaml` (new) | neuroscience (inline; hardcoded enumeration of "brain regions, cell types, molecular entities, neural circuits, physiological processes, synaptic mechanisms") | ~30 | ☐ create template ☐ wire `fact_score.py:27` (currently imports `system_prompt_validity_score as FACT_CHECK_SYSTEM_PROMPT`) ☐ move domain enumeration to `domains/neuroscience.yaml::fact_score_scope` |
 
 **Totals**: **15** prompt sources across 13 distinct sub-phases (counting
 graphmert preprocess sub-steps separately). The original audit reported 11
@@ -1202,22 +1212,23 @@ def _substitute(text: str, slots: dict) -> str:
 
 ## 5. Migration sequence
 
-Priority ordered by (impact × ease). Higher priority = do first.
+Priority ordered by (impact × ease). Higher priority = do first. Table is
+rewritten to reflect actual state after the 2026-06-22 migrations.
 
 | Order | Item | Priority | Status | Reason |
 |---|---|---|---|---|
-| 1 | #2 entity_discovery | **CRITICAL** | ✅ implemented (pending pod verify) | Blocking smoke run |
-| 2 | Render helper in pipeline_config | **CRITICAL** | ✅ implemented (verified locally) | Foundation for all subsequent migrations |
-| 3 | #1 extract (wire orphaned YAML) | High | pending | Validates the render pipeline against the most complex prompt |
-| 4 | #7-#9 orphaned validate/curriculum YAMLs | Medium | pending | Already-written YAMLs; just need to find consumers |
-| 5 | #4 add_llm_relations | Medium | pending | Big content move; reduces graphmert phase's hardcoded surface area significantly |
-| 6 | #6 predict_tails | Medium | pending | Small file; quick win |
-| 7 | #5 combine_tails | Medium | pending | Reuses #4's `relation_meanings` slot |
-| 8 | #13-#14 RL prompts (consolidate) | Low | pending | Generic; eliminates duplicate |
-| 9 | #12 eval_models | Low | pending | Generic |
-| 10 | #11 curriculum_verify | Low | pending | Single prompt |
-| 11 | #10 curriculum_generate | Low | pending | Most complex (6 sub-prompts); leave for last when pattern is validated |
-| 12 | #15 fact_score | Medium | pending | Was missed in first audit; not blocking smoke (already neuroscience-correct content) but is hardcoded |
+| 1 | `render_prompt()` infrastructure in `pipeline_config.py` | **CRITICAL** | ✅ done | Foundation for all subsequent migrations |
+| 2 | #2 entity_discovery (`prompts/entity_discovery.yaml`) | **CRITICAL** | ✅ done | Was blocking smoke run (diabetes content leak) |
+| 3 | #4 add_llm_relations (`prompts/add_llm_relations.yaml`) | High | ✅ done | Validates the render pipeline against the most complex prompt (242 LOC) |
+| 4 | #5 combine_tails (`prompts/combine_tails.yaml`) | Medium | ✅ done | Reuses #4's `relation_meanings` slot |
+| 5 | #6 predict_tails (`prompts/predict_tails.yaml`) | Medium | ✅ done | Small file; quick win |
+| 6 | #15 fact_score (`prompts/fact_score.yaml`) | Medium | ✅ done | Was missed in first audit; already neuroscience-correct content but was hardcoded |
+| 7 | #13/#14 RL prompts (consolidate → `prompts/rl_mcq.yaml`) | Low | ✅ done | Generic MCQ; eliminates byte-identical duplicate across `rl_training.py` + `test_rl.py` |
+| 8 | #12 eval_models (`prompts/eval_models.yaml`) | Low | ✅ done | Generic MCQ + recovery; `{{domain_expert_role}}` slot lifted |
+| 9 | #11 curriculum_verify (`prompts/curriculum_verify.yaml`) | Low | ✅ done | Single prompt; `{{domain}}` slot lifted |
+| 10 | #1 extract (`prompts/extract.yaml` wire-up) | High | ✅ done | Biggest single migration; wired via `prompts_kg.py` preserving the legacy 4-constant module API; 4 sibling chat-message keys; 6 neuroscience content slots lifted to `domains/neuroscience.yaml::extract_*` |
+| 11 | #7/#8/#9 orphaned validate/curriculum_check/curriculum_qa | Medium | ☐ pending | Identify real consumer(s) first — YAMLs already exist but no `get_prompt()`/`render_prompt()` calls reference them |
+| 12 | #10 curriculum_generate (`prompts/curriculum_generate.yaml`) | Low | ☐ pending | Most complex (6 inline f-strings across `generate_questions.py`); leave for last now that pattern is validated |
 
 ---
 
@@ -1303,3 +1314,62 @@ fi
     entity_categories block populated, input text passes through.
   - Pending: pod re-run to confirm `Grounding results: ...` log shows
     success > 0.
+- **2026-06-22a** — Graphmert phase fully migrated (#4/#5/#6/#15).
+  - `prompts/predict_tails.yaml`, `prompts/fact_score.yaml`,
+    `prompts/combine_tails.yaml`, `prompts/add_llm_relations.yaml` created.
+  - 8 new domain-content slot helpers added to `pipeline_config.py`:
+    `relation_meanings`, `relation_examples`, `predict_tails_examples`,
+    `fact_score_scope`, `relation_examples_block`,
+    `relations_allowed_block`, `relation_meanings_detailed`,
+    `add_llm_relations_examples`.
+  - Consumers wired: `predict_tails_llm.py`, `fact_score.py`,
+    `combine_tails.py`, `add_llm_relations.py`.
+  - All four migrations round-trip-verified byte-identical to upstream
+    constants (curly-quote U+201C/U+201D, typographic apostrophe U+2019,
+    trailing-space preservation in literal block scalars).
+- **2026-06-22b** — Curriculum-verify + eval + RL migrated (#11/#12/#13/#14).
+  - `prompts/rl_mcq.yaml` (shared by `rl_training.py` + `test_rl.py` —
+    consolidates byte-identical SYSTEM_PROMPT / TASK_SPECIFIC_INSTRUCTIONS
+    duplicated across both consumers).
+  - `prompts/eval_models.yaml` (with `system`/`gemini_system`/`recovery`
+    sub-prompts; recovery preserves `{question}`/`{reasoning}` single-brace
+    `.format()` placeholders for the existing call sites).
+  - `prompts/curriculum_verify.yaml` (with `{{domain}}` slot so the
+    "graduate-level neuroscience exam" lead-in tracks `SI_DOMAIN`).
+  - `render_prompt()` generalized: now substitutes every string-valued
+    top-level template key (not just `system`/`user`).
+  - New default slot `{{domain_expert_role}}`; new helper
+    `get_domain_expert_role()`; `domains/neuroscience.yaml` declares
+    `domain_expert_role: "expert neuroscientist"`.
+  - Consumers wired: `rl_training.py`, `test_rl.py`, `eval_models.py`,
+    `verify_questions.py`. Pre-existing `.format(question=..., reasoning=...)`
+    call sites in `eval_models.py:239, :409` work unchanged.
+  - Round-trip SHA-256 byte-identity verified across all six new strings.
+  - Counters: 10 of 15 prompts now YAML-driven (was 6); 5 hardcoded
+    sources remain (#1 extract, #7/#8/#9 orphans, #10 curriculum_generate).
+- **2026-06-22c** — Extract phase migrated (#1).
+  - `prompts/extract.yaml` rewritten with the 4 sibling chat-message keys
+    (`system` / `user_example` / `assistant_example` / `user`); the previous
+    orphaned scaffold (JSON-output style with `{{relations}}` / `{{categories}}`)
+    is replaced with the actual upstream tuple-extraction protocol used by
+    graphrag_index.py at call time.
+  - 6 new `extract_*` content slots added to `domains/neuroscience.yaml`:
+    `extract_kg_topic`, `extract_entity_types_list`,
+    `extract_user_entity_types`, `extract_entity_subcategories`,
+    `extract_example_text`, `extract_example_tuples`. Lifted verbatim from
+    upstream `1_seed_kg/prompts_kg.py` constants.
+  - `1_seed_kg/prompts_kg.py` rewritten: 4 hardcoded multi-line `"""..."""`
+    constants (~140 LOC removed) replaced with one `render_prompt("extract")`
+    call. The module-level API (`PROMPT_TEMPLATE` / `USER_EXAMPLE` /
+    `ASSISTANT_EXAMPLE` / `USER_PROMPT`) is preserved verbatim so both
+    consumers (`graphrag_index.py` and `diagnose_llm_extraction.py`) keep
+    their `.format(...)` call sites unchanged.
+  - The two layers of slot substitution coexist intentionally:
+    `{{double_brace}}` filled at YAML render time;
+    `{single_brace}` placeholders (`tuple_delimiter`, `record_delimiter`,
+    `completion_delimiter`, `relation_list`, `input_text`, `think_directive`)
+    kept literal for the consumer's runtime `.format()` calls.
+  - Round-trip SHA-256 byte-identity verified for all 4 constants both
+    pre-`.format()` and post-`.format()` with sample delimiters.
+  - Counters: 11 of 15 prompts now YAML-driven; 4 hardcoded sources
+    remain (#7/#8/#9 orphans + #10 curriculum_generate).

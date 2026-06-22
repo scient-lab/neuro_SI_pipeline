@@ -1,0 +1,32 @@
+# Eval-time MCQ system prompts used by 3_si_curriculum/test_models/eval_models.py.
+# Three sub-prompts:
+#   - system            : default reasoning-MCQ system prompt (HF backends)
+#   - gemini_system     : variant for Gemini (no internal reasoning echo)
+#   - recovery          : recovery template when answer parsing fails;
+#                          consumer substitutes {{question}} / {{reasoning}}
+#                          via render_prompt(..., question=..., reasoning=...)
+#
+# The current upstream content hardcodes "expert neuroscientist" / "neuroscience"
+# inline. To make the prompt re-usable across domains it now reads the role
+# string from {{domain_expert_role}}, which `pipeline_config.render_prompt()`
+# fills from `domains/<SI_DOMAIN>.yaml::domain_expert_role` (defaulting to the
+# verbatim original phrase "expert neuroscientist" so behavior is preserved on
+# the neuroscience pipeline).
+#
+# Bit-identical to the upstream SYSTEM_PROMPT / GEMINI_SYSTEM_PROMPT /
+# RECOVERY_PROMPT constants when SI_DOMAIN=neuroscience, because the
+# neuroscience domain.yaml sets domain_expert_role to "expert neuroscientist".
+
+name: eval_models
+phase: eval
+
+system: "You are an {{domain_expert_role}}. Read the question and options carefully. Reason step-by-step through the question. After your reasoning, you MUST end your response with exactly: <Answer>X</Answer> where X is A, B, C, or D. Do not write anything after the Answer tag."
+
+gemini_system: "You are an {{domain_expert_role}}. Read the question and options carefully. You have already done your reasoning internally. Your visible response token budget is very limited. Do NOT repeat your reasoning. State only your final answer with a single sentence of justification. You MUST end your response with exactly: <Answer>X</Answer> where X is A, B, C, or D. Do not write anything after the Answer tag."
+
+## recovery: stored with Python single-brace `{question}` / `{reasoning}`
+## placeholders (NOT the Jinja-style `{{...}}` used elsewhere) because the
+## consumer in eval_models.py applies `.format(question=..., reasoning=...)`
+## directly at inference time. Slot names match the upstream call sites
+## verbatim — see eval_models.py:239 and :409.
+recovery: "Based on the reasoning below, what is the final answer? Reply with ONLY: <Answer>X</Answer> where X is A, B, C, or D.\n\nQUESTION:\n{question}\n\nREASONING:\n{reasoning}"
