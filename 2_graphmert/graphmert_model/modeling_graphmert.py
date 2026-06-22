@@ -1200,9 +1200,16 @@ class GraphMertForMaskedLM(GraphMertPreTrainedModel):
             masked_lm_loss = lm_loss_fct(prediction_scores.view(-1, self.config.vocab_size), labels.view(-1))
     
         sbo_prediction_scores, masked_sbo_loss = None, None
-        if self.use_sbo:
+        # Guard `pairs is not None` parallel to the pair_labels guard below.
+        # A collator with use_sbo=False (e.g. our fork's TailSlot collator)
+        # never emits `pairs` in the batch, so it arrives here as None even
+        # though self.use_sbo (model-config side) may be True. Without this
+        # guard, lm_pair_head crashes at `pairs.size()`. Keeps the SBO head
+        # allocated (cheap) while skipping its forward when there's nothing
+        # to score.
+        if self.use_sbo and pairs is not None:
             sbo_prediction_scores = self.lm_pair_head(outputs, pairs)
-        
+
         if self.use_sbo and pair_labels is not None:
             sbo_loss_fct = CrossEntropyLoss()
             masked_sbo_loss = sbo_loss_fct(sbo_prediction_scores.view(-1, self.config.vocab_size), pair_labels.view(-1))

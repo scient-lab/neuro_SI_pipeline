@@ -22,9 +22,18 @@
 # are applied to GraphMertConfig by mlm_utils.main() from
 # utils/architecture.py (which reads the active profile YAML). Keeping
 # them here would silently double-set and confuse Part 3 of the config
-# refactor. The remaining knobs (layers/heads/hidden/ffn/embeds/mlm_sbo)
-# are still hardcoded — Part 3 will surface those per-profile as well.
-config_overrides: "num_hidden_layers=6,num_attention_heads=12,hidden_size=768,intermediate_size=3072,pretrained_emb_dim=0,mlm_sbo=true"
+# refactor. The remaining knobs (layers/heads/hidden/ffn/embeds) are
+# still hardcoded — Part 3 will surface those per-profile as well.
+#
+# mlm_sbo INTENTIONALLY DIFFERS from graphmert_umls (which sets True):
+# our fork's mlm_utils.py:239 wires a custom GraphMertTailSlotDataCollator
+# (mlm_utils.py:102) that implements a tail-slot training objective and
+# does NOT emit `pairs` / `pair_labels` in the batch. If mlm_sbo were
+# True, modeling_graphmert.py:1203-1204 would call lm_pair_head(outputs,
+# pairs) with pairs=None and crash. Setting mlm_sbo=False here aligns the
+# model config with what the collator actually produces. See commit log
+# (2026-06-22) for the diagnosis.
+config_overrides: "num_hidden_layers=6,num_attention_heads=12,hidden_size=768,intermediate_size=3072,pretrained_emb_dim=0,mlm_sbo=false"
 warmup_ratio: 0.06
 
 model_type: graphmert
@@ -66,7 +75,9 @@ graph_types:
   - leaf_connected_undirected
 
 relation_emb_dropout: 0.3
-mlm_sbo: true
+# See config_overrides comment block above for why mlm_sbo=false in this
+# fork (custom GraphMertTailSlotDataCollator does not emit SBO pairs).
+mlm_sbo: false
 mlm_probability: 0.15
 mlm_on_leaves_probability: 0.15
 span_upper_length: 2
