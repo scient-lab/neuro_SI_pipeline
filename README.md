@@ -358,12 +358,12 @@ reduce model size before continuing.
 ```bash
 # Array job (4 shards, one per GPU node):
 export REPO_DIR OUTPUT_BASE
-export MODEL_ID=$OUTPUT_BASE/graphmert/checkpoints/best
+export MODEL_ID=/path/to/qwen3-32b   # path to a vLLM-compatible LLM, NOT the GraphMERT checkpoint
 sbatch --array=0-3 2_graphmert/slurm/predict_tails.slurm
 
 # Or single shard:
 python 2_graphmert/predict_tails_llm.py \
-    --model_id    $OUTPUT_BASE/graphmert/checkpoints/best \
+    --model_id    /path/to/qwen3-32b \
     --tokenizer   $OUTPUT_BASE/graphmert/stable_tokenizer \
     --dataset     $OUTPUT_BASE/graphmert/llm_relations/relations_clean_eval \
     --output_dir  $OUTPUT_BASE/graphmert/predictions \
