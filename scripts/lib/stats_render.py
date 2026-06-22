@@ -27,7 +27,12 @@ STATUS_MARK = {
 }
 
 PHASE_W = 24
-STEP_NAME_MAX = PHASE_W - 4 - 3   # 4 indent + 3 branch glyph + 1 space
+# Step name field width chosen so step prefix matches parent prefix exactly:
+#   parent prefix = 2 (indent) + PHASE_W (24) = 26 chars before status
+#   step   prefix = 4 (indent) + STEP_NAME_MAX (22) = 26 chars before status
+# This keeps the STATUS / STARTED / FINISHED / DURATION / ETA columns
+# vertically aligned between phase rows and their nested step rows.
+STEP_NAME_MAX = PHASE_W - 2
 
 
 def _parse(t):
@@ -153,13 +158,13 @@ def render_phase_table(m, show_details):
                 sstart = _hhmmss(s.get("started_at")) if sst != "pending" else ""
                 sfinish = _hhmmss(s.get("finished_at")) if sst in ("completed", "failed", "skipped") else ""
                 sdur = _fmt_duration(_step_duration(s)) if sst != "pending" else ""
-                # Step rows: 4-space indent for nesting (no ├─/└─ tree
-                # glyphs — indent alone is enough visual cue and avoids
-                # the ASCII-art shifting the rest of the row left).
-                # All columns rendered (with empty ETA and STEPS) so step
-                # rows align with phase rows above. \033[K is added by
-                # stats.sh's live loop globally.
-                print(f'    {sname.ljust(PHASE_W - 4)} {smark} {sst.ljust(11)} '
+                # Step rows: 4-space indent for visual nesting; name field
+                # is PHASE_W-2 = STEP_NAME_MAX so the row prefix totals
+                # 26 chars before the status mark — same as parent's
+                # 2+24 — so STATUS / STARTED / FINISHED / DURATION / ETA
+                # / STEPS columns all line up between phase and step rows.
+                # No ├─/└─ tree glyphs (indent alone is enough cue).
+                print(f'    {sname.ljust(STEP_NAME_MAX)} {smark} {sst.ljust(11)} '
                       f'{sstart.ljust(10)} {sfinish.ljust(10)} {sdur.ljust(11)} '
                       f'{"".ljust(14)} {"".rjust(6)}')
 
