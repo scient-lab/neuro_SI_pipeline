@@ -371,9 +371,24 @@ python 2_graphmert/predict_tails_llm.py \
     --shard_id    0
 ```
 
-**Quality check:** Inspect the top-20 predicted tokens per head. If all
-predictions are generic words (`the`, `of`, `a`), the MLM did not learn
-meaningful entity representations — retrain before continuing.
+**Quality check (LLM predictor):** If all tails are generic or hallucinated, check that `--dataset` points to the cleaned relations output from step 2.5.
+
+### 2.6b Step 6b — Predict tails with GraphMERT MLM (optional)
+
+Run the trained GraphMERT checkpoint directly (masked leaf-slot prediction):
+
+```bash
+python 2_graphmert/utils/predict_tails.py \
+    --model_dir    $OUTPUT_BASE/graphmert/checkpoints/best \
+    --tokenizer    $OUTPUT_BASE/graphmert/stable_tokenizer \
+    --relation_map $OUTPUT_BASE/graphmert/relation_map.json \
+    --dataset      $OUTPUT_BASE/graphmert/llm_relations/relations_clean_eval \
+    --output_dir   $OUTPUT_BASE/graphmert/predictions_graphmert \
+    --topk         20 \
+    --batch_size   8
+```
+
+**Quality check (GraphMERT predictor):** Inspect `inspection_preview.txt` in the output dir. If all top-5 predictions are generic tokens (`the`, `of`, `a`), the MLM did not learn meaningful entity representations — retrain before continuing.
 
 ### 2.7 Step 7 — Combine tails and two-LLM validation
 

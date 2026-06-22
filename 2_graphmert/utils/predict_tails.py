@@ -1,6 +1,23 @@
 #!/usr/bin/env python3
 # coding=utf-8
+"""
+predict_tails.py — GraphMERT Pipeline Step 2.6b
 
+Generates top-k tail predictions for each (head, relation) pair using the
+trained GraphMERT MLM checkpoint (masked leaf-slot prediction).
+
+Usage:
+  python 2_graphmert/utils/predict_tails.py \\
+    --model_dir   $OUTPUT_BASE/graphmert/checkpoints/best \\
+    --tokenizer   $OUTPUT_BASE/graphmert/stable_tokenizer \\
+    --relation_map $OUTPUT_BASE/graphmert/relation_map.json \\
+    --dataset     $OUTPUT_BASE/graphmert/llm_relations/relations_clean_eval \\
+    --output_dir  $OUTPUT_BASE/graphmert/predictions_graphmert \\
+    --topk        20 \\
+    --batch_size  8
+"""
+
+import argparse
 import os
 import shutil
 import json
@@ -10,37 +27,39 @@ import glob
 from typing import Any, Dict, List, Optional, Tuple
 from collections import defaultdict
 
-# =========================================================
-# HARD-WIRED CACHE BYPASS
-# =========================================================
 os.environ["DATASETS_DISABLE_CACHING"] = "1"
-os.environ["TRANSFORMERS_CACHE"] = "/tmp/huggingface_cache"
-# Optimize memory allocation to prevent fragmentation
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 import torch
 from torch.nn import functional as F
 from datasets import Dataset, load_from_disk
-from transformers import GraphMertForMaskedLM, AutoTokenizer, AutoConfig
+from transformers import AutoTokenizer, AutoConfig
 
-# =========================================================
-# HARD-WIRED INVARIANTS (UPDATED TO 512)
-# =========================================================
+import sys as _sys
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from graphmert_model import GraphMertConfig, GraphMertForMaskedLM
+try:
+    AutoConfig.register("graphmert", GraphMertConfig)
+except ValueError:
+    pass  # already registered
+
 ROOT_NODES = 512
 NUM_LEAVES = 3
 MAX_NODES = ROOT_NODES * (1 + NUM_LEAVES)  # 2048
 
-# Paths — set via environment variables or edit here
-MODEL_DIR_ROOT      = os.environ.get("GRAPHMERT_MODEL_DIR", "")
-STABLE_TOKENIZER_DIR = os.environ.get("STABLE_TOKENIZER_DIR", "")
-RELATION_MAP_PATH   = os.environ.get("RELATION_MAP_PATH", "")
-CLEANED_LLM_DATASET = os.environ.get("CLEANED_LLM_DATASET", "")
-OUTPUT_ROOT         = os.environ.get("GRAPHMERT_OUTPUT_ROOT", "")
+logger = logging.getLogger("predict_tails")
 
-TOPK = 20
-BATCH_SIZE = 8
 
-logger = logging.getLogger("predict_tails_hardwired")
+def parse_args():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--model_dir",    required=True, help="Path to GraphMERT checkpoint dir")
+    ap.add_argument("--tokenizer",    required=True, help="Path to stable tokenizer")
+    ap.add_argument("--relation_map", required=True, help="Path to relation_map.json")
+    ap.add_argument("--dataset",      required=True, help="Path to cleaned LLM relations dataset")
+    ap.add_argument("--output_dir",   required=True, help="Output directory for predictions")
+    ap.add_argument("--topk",         type=int, default=20)
+    ap.add_argument("--batch_size",   type=int, default=8)
+    return ap.parse_args()
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
 def get_best_checkpoint(base_dir):
@@ -137,79 +156,69 @@ def predict_topk_first_leaf_slot(examples, model, tokenizer, topk):
     }
 
 def main():
-    preds_root = os.path.join(OUTPUT_ROOT, "predictions_hardwired_full")
-    if os.path.exists(preds_root): shutil.rmtree(preds_root)
-    os.makedirs(preds_root, exist_ok=True)
+    args = parse_args()
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
-    tokenizer = AutoTokenizer.from_pretrained(STABLE_TOKENIZER_DIR, use_fast=False)
-    with open(RELATION_MAP_PATH, "r") as f:
+    os.makedirs(args.output_dir, exist_ok=True)
+
+    tokenizer = AutoTokenizer.from_pretrained(args.tokenizer, use_fast=False)
+    with open(args.relation_map, "r") as f:
         relation_map = json.load(f)
 
-    actual_model_path = get_best_checkpoint(MODEL_DIR_ROOT)
+    actual_model_path = get_best_checkpoint(args.model_dir)
     config = AutoConfig.from_pretrained(actual_model_path)
-    
-    # Ensure Model Config matches Hard-Wired Invariants
     config.root_nodes = ROOT_NODES
     config.max_nodes = MAX_NODES
-    
+
     model = GraphMertForMaskedLM.from_pretrained(actual_model_path, config=config).cuda()
     model.eval()
 
-    raw_ds = load_from_disk(CLEANED_LLM_DATASET)
+    raw_ds = load_from_disk(args.dataset)
     pad_id = tokenizer.pad_token_id
     out_rows = []
-    
-    # --- DATA PREPARATION ---
-    # We iterate through the raw text dataset and create "Probe" samples.
-    # Each sample asks: "Given this text and Head X with Relation Y, what is the Tail?"
+
     for ex in raw_ds:
         cid = ex["id"]
         heads_rel = json.loads(ex["cleaned_relations_json"])
         head_positions = json.loads(ex["head_positions"])
-        
-        # Prepare Roots (Truncate/Pad to 512)
+
         root_tokens = list(ex["input_ids"])[:ROOT_NODES]
-        if len(root_tokens) < ROOT_NODES: 
+        if len(root_tokens) < ROOT_NODES:
             root_tokens += [pad_id] * (ROOT_NODES - len(root_tokens))
-        
-        # Prepare Full Input Nodes (Roots + Empty Leaves)
+
         input_nodes = root_tokens + [pad_id] * (MAX_NODES - ROOT_NODES)
         attn = [1 if t != pad_id else 0 for t in input_nodes]
 
-        # Create a probe for every valid Head+Relation pair in this text
         for h, rels in heads_rel.items():
             pos = next((v for k, v in head_positions.items() if k.lower() == h.lower()), None)
             rel_name = rels[0] if isinstance(rels, list) else rels
             rel_num = relation_map.get(rel_name)
-            
-            # Only proceed if we found the head in the text and the relation is valid
+
             if pos is not None and rel_num and pos < ROOT_NODES:
                 out_rows.append({
-                    "id": cid, 
-                    "input_nodes": input_nodes, 
+                    "id": cid,
+                    "input_nodes": input_nodes,
                     "attention_mask": attn,
-                    "head": h, 
-                    "position": pos, 
-                    "relation": rel_name, 
+                    "head": h,
+                    "position": pos,
+                    "relation": rel_name,
                     "relation_num": rel_num,
                     "head_len": len(tokenizer.encode(h, add_special_tokens=False))
                 })
 
     logger.info(f"Generated {len(out_rows)} probe samples.")
     dataset = Dataset.from_list(out_rows)
-    
-    # --- PREDICTION ---
+
     out = dataset.map(
-        predict_topk_first_leaf_slot, 
-        batched=True, 
-        batch_size=BATCH_SIZE,
-        fn_kwargs=dict(model=model, tokenizer=tokenizer, topk=TOPK),
+        predict_topk_first_leaf_slot,
+        batched=True,
+        batch_size=args.batch_size,
+        fn_kwargs=dict(model=model, tokenizer=tokenizer, topk=args.topk),
         load_from_cache_file=False
     )
 
-    # --- SAVE OUTPUT ---
-    out.to_pandas().to_parquet(os.path.join(preds_root, "predictions.parquet"), index=False)
-    write_preview_txt(out, os.path.join(preds_root, "inspection_preview.txt"), {})
+    out.to_pandas().to_parquet(os.path.join(args.output_dir, "predictions.parquet"), index=False)
+    write_preview_txt(out, os.path.join(args.output_dir, "inspection_preview.txt"), {})
     logger.info("Predictions complete.")
 
 if __name__ == "__main__":
