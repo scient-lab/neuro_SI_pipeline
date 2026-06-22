@@ -110,7 +110,33 @@ def main():
     seed_df = pd.read_csv(args.seed_kg_path)
     logger.info("Seed KG: %d triples", len(seed_df))
 
-    result_df = compute_hop_distances(full_df, seed_df)
+    # Smoke / no-graphmert-expansion fallback.
+    # At smoke scale (or any run where graphmert.validate_predictions
+    # produces 0 validated triples), `full_df` is empty and the original
+    # logic emits a manifest with 0 rows → generate_curriculum.py loads 0
+    # paths → curriculum.generate_qa crashes with "No paths found".
+    #
+    # Treat that case as: use the seed KG itself as the path source, with
+    # `hop_distance=1` so each seed triple counts as a 1-hop path under
+    # `load_paths_from_manifest`'s `min_hops..max_hops` filter (default
+    # [1, 5]). This lets curriculum generate questions directly off the
+    # seed KG when graphmert has nothing useful to add.
+    #
+    # NOTE: the hop_distance=1 assignment is a labeling convenience, not
+    # an actual hop-graph distance — seed entities are at distance 0 from
+    # themselves. At pilot/paper scale, full_df will have real expanded
+    # triples and the original `compute_hop_distances` path runs.
+    if len(full_df) == 0:
+        logger.warning(
+            "full_df (kg_path) has 0 rows — graphmert produced no validated "
+            "expansion triples. Falling back to the seed KG as the path "
+            "source with hop_distance=1, so curriculum can still generate "
+            "questions from seed triples."
+        )
+        result_df = seed_df.copy()
+        result_df["hop_distance"] = 1
+    else:
+        result_df = compute_hop_distances(full_df, seed_df)
 
     output_path = Path(args.output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
