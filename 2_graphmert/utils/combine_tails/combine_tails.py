@@ -144,11 +144,21 @@ def filter_scientific_triples(df: pd.DataFrame, llm: LLM, tokenizer, microbatch:
             ]
             prompts.append(messages)
 
-        sampling = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=10)
+        # max_tokens=512 is enough for Qwen3 thinking block + 1-token YES/NO
+        # answer. The previous 10-token budget cut off Qwen3 mid-<think> and
+        # the parser then saw raw thinking instead of the answer (100%
+        # rejection on smoke). Cheap to leave at 512 even when no_think is on.
+        sampling = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=512)
         outputs = llm.chat(prompts, sampling_params=sampling)
 
         for row_idx, out in enumerate(outputs):
-            text = (out.outputs[0].text if out.outputs else "").strip().lower()
+            raw = (out.outputs[0].text if out.outputs else "")
+            # Strip Qwen3 <think>...</think> reasoning block so the YES/NO
+            # answer is at the start of `text`. Without this the parser
+            # below sees text.startswith("<think>") and is_valid is always
+            # False regardless of triple content. Works whether thinking is
+            # on or off — re.sub is a no-op when no <think> block exists.
+            text = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip().lower()
             is_valid = text.startswith("yes") or text.startswith("true")
             row = batch.iloc[row_idx].to_dict()
             row["llm_valid"] = is_valid
