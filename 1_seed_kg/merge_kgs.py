@@ -100,9 +100,12 @@ def _union_ids(series: pd.Series) -> str:
 # IO + schema normalization
 # -----------------------------
 def _load_parquet(path: Path) -> pd.DataFrame:
+    # Sniff format from extension: fact_score writes validated_triples as
+    # CSV, graphrag writes kg_final as parquet — both paths flow through
+    # this loader. Name kept for git-history clarity.
     if not path.exists():
-        raise FileNotFoundError(f"Missing parquet: {path}")
-    return pd.read_parquet(path)
+        raise FileNotFoundError(f"Missing KG table: {path}")
+    return pd.read_csv(path) if path.suffix == ".csv" else pd.read_parquet(path)
 
 def _ensure_cols(df: pd.DataFrame, label: str) -> pd.DataFrame:
     df = df.copy()
