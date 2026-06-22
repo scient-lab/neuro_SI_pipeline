@@ -242,14 +242,13 @@ def main():
     sys_prompt = build_system_prompt_with_examples()
 
     # Qwen3 thinking control. configs/default.yaml::graphmert.predict_tails_no_think
+    # IMPORTANT: do NOT add `from pipeline_config import get_phase_param`
+    # inside this function — it would make `get_phase_param` a local for the
+    # entire main() body and shadow the module-level import on line 48,
+    # raising UnboundLocalError at every prior use site in main(). The
+    # module-level import already provides this name. Same scoping bug
+    # already cleared from combine_tails.py:200; mirrored here defensively.
     try:
-        import os as _os, sys as _sys
-        _repo_root = _os.environ.get("REPO_ROOT") or _os.path.abspath(
-            _os.path.join(_os.path.dirname(__file__), "..")
-        )
-        if _repo_root not in _sys.path:
-            _sys.path.insert(0, _repo_root)
-        from pipeline_config import get_phase_param
         no_think = bool(get_phase_param('graphmert', 'predict_tails_no_think', False))
     except Exception as e:
         logger.warning("could not read graphmert.predict_tails_no_think (%s) — defaulting False", e)

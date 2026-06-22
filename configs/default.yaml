@@ -17,8 +17,13 @@ models:
   # Phase 1: extract (single-LLM extraction)
   extract: Qwen/Qwen3-14B
 
-  # Phase 2: validate (two-LLM consensus filter on candidate triples)
-  validate_a: openai/gpt-oss-20b
+  # Phase 2: validate (two-LLM consensus filter on candidate triples).
+  # validate_a was openai/gpt-oss-20b (MXFP4 quantization) — incompatible
+  # with the vllm==0.7.3 pin used across this fork. Swapped to Qwen3-14B
+  # which is already cached on the pod from extract + predict_tails. When
+  # vLLM is upgraded to 0.10+ (mxfp4 supported), revert this back to
+  # openai/gpt-oss-20b. Diversity vs validate_b (Mistral) is preserved.
+  validate_a: Qwen/Qwen3-14B
   validate_b: mistralai/Mistral-Nemo-12B
 
   # Phase 3: graphmert.predict_tails (2_graphmert/predict_tails_llm.py).
@@ -37,7 +42,10 @@ models:
   curriculum_quality: gemini-2.0-flash      # MODEL_QUALITY
   curriculum_trace: gemini-2.0-flash        # MODEL_TRACE
   curriculum_correctness: gemini-2.5-flash  # MODEL_CORRECTNESS
-  curriculum_check_a: openai/gpt-oss-20b    # final two-LLM check
+  # curriculum_check_a was openai/gpt-oss-20b — same MXFP4-vs-vLLM-0.7.3
+  # incompatibility as validate_a above. Swapped for the same reason;
+  # revert together when vLLM gets upgraded.
+  curriculum_check_a: Qwen/Qwen3-14B        # final two-LLM check (was openai/gpt-oss-20b)
   curriculum_check_b: mistralai/Mistral-Nemo-12B
 
   # Phase 5: SFT (LoRA base model)
