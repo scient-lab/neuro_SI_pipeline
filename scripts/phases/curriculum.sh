@@ -42,8 +42,17 @@ mkdir -p "$CURRICULUM_DIR"
 CHECK_A=$(get_model_id curriculum_check_a "")
 CHECK_B=$(get_model_id curriculum_check_b "")
 
-# generate_curriculum.py needs Gemini API access.
-require_env GEMINI_API_KEY 2>/dev/null || export GOOGLE_API_KEY="${GEMINI_API_KEY:-${GOOGLE_API_KEY:-}}"
+# generate_curriculum.py needs Gemini API access. The Gemini SDK reads
+# GOOGLE_API_KEY from env, but operators typically set GEMINI_API_KEY in
+# .env (matches the env_file convention). Prefer caller-set GOOGLE_API_KEY
+# if already exported (ad-hoc invocations); else mirror from GEMINI_API_KEY.
+#
+# Prior version `require_env GEMINI_API_KEY || export GOOGLE_API_KEY=...`
+# was broken: require_env exits 1 on missing var (it doesn't return non-zero
+# to the caller), so the `||` branch is unreachable in BOTH directions —
+# success short-circuits the export, failure exits the script. Result:
+# GOOGLE_API_KEY never got set even when GEMINI_API_KEY was present in .env.
+export GOOGLE_API_KEY="${GOOGLE_API_KEY:-${GEMINI_API_KEY:-}}"
 
 NUM_QUESTIONS=$(get_phase_param curriculum num_questions 5000)
 
