@@ -11,7 +11,12 @@ peft
 deepspeed
 accelerate
 datasets
-google-generativeai
+# Gemini SDK — must be 'google-genai' (new SDK with `from google import genai`),
+# NOT 'google-generativeai' (old SDK, deprecated). See memory entry
+# [GraphMERT RunPod gotchas] for the rationale and audit history. Used by:
+#   3_si_curriculum/curriculum_generator/generate_questions.py:17
+#   3_si_curriculum/test_models/eval_models.py:136
+google-genai
 openai
 pandas
 matplotlib
