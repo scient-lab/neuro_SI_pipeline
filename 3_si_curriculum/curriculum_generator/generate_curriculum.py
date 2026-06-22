@@ -131,11 +131,13 @@ def main():
     attempts = 0
     max_attempts = args.target_count * 5
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    out_file = os.path.join(
-        args.output_dir,
-        f"curriculum_dataset_hop_{args.min_hops}_to_{args.max_hops}_{timestamp}.json"
-    )
+    # Stable filename so curriculum.sh / verify_questions.py can consume
+    # without globbing. Hop range and timestamp moved into the JSON
+    # metadata (added below at save time). Original filename was
+    # `curriculum_dataset_hop_{min}_to_{max}_{timestamp}.json` which broke
+    # the downstream hardcoded `curriculum.json` consumer in
+    # scripts/phases/curriculum.sh:95 (audit bug #3).
+    out_file = os.path.join(args.output_dir, "curriculum.json")
 
     path_queue = deque(paths)
 

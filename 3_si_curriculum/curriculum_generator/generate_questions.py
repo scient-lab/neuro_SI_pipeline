@@ -599,20 +599,101 @@ class QAGenerator:
         if api_key is None:
             raise ValueError("GOOGLE_API_KEY is required")
         os.environ['GOOGLE_API_KEY'] = api_key
-        if kg_dir is None:
-            kg_dir = os.environ.get("KG_DIR", "")
-        if not kg_dir:
-            raise ValueError(
-                "kg_dir (path to final_kg directory) is required. "
-                "Pass it as --kg_dir or set KG_DIR env var."
-            )
-        self.generator = PathGenerator(
-            vocab_path=os.path.join(kg_dir, 'vocab.txt'),
-            graph_path=os.path.join(kg_dir, 'neuro_graph.pickle'),
-            icd10_categories_path=None,
-            vocab_freq_path=os.path.join(kg_dir, 'vocab_freq.json')
-        )
+        # kg_dir is only required for auto-path mode (generate_questions()
+        # uses PathGenerator to pick paths from vocab.txt + neuro_graph.pickle
+        # + vocab_freq.json). The manifest-driven path mode used by
+        # generate_curriculum.py supplies paths directly and never touches
+        # PathGenerator — so we lazy-init it to avoid forcing callers that
+        # don't need those files to provide them.
+        self._kg_dir = kg_dir if kg_dir is not None else os.environ.get("KG_DIR", "")
+        self._path_generator = None  # lazy, see self.generator @property
         self.llm = GeminiLLMBackend()
+
+    @property
+    def generator(self) -> "PathGenerator":
+        # Lazy. Only constructed when auto-path mode (generate_questions)
+        # is actually called. If kg_dir isn't set and the upstream csv→KG
+        # producer hasn't run, the error surfaces here instead of at
+        # construction — so generate_from_path callers proceed unaffected.
+        if self._path_generator is None:
+            if not self._kg_dir:
+                raise ValueError(
+                    "kg_dir (path to final_kg directory containing "
+                    "vocab.txt + neuro_graph.pickle + vocab_freq.json) "
+                    "is required for auto-path mode. Pass --kg_dir or "
+                    "set KG_DIR env var, OR call generate_from_path("
+                    "path_data) with paths from a hop-manifest CSV."
+                )
+            self._path_generator = PathGenerator(
+                vocab_path=os.path.join(self._kg_dir, 'vocab.txt'),
+                graph_path=os.path.join(self._kg_dir, 'neuro_graph.pickle'),
+                icd10_categories_path=None,
+                vocab_freq_path=os.path.join(self._kg_dir, 'vocab_freq.json')
+            )
+        return self._path_generator
+
+    def generate_from_path(self, path_data: Dict) -> Optional[Dict]:
+        """Generate a single Q&A item from a pre-loaded hop path (e.g. from
+        calculate_hops.py's manifest). Bypasses PathGenerator entirely —
+        runs the 6-step LLM pipeline on the supplied path.
+
+        path_data shape (from generate_curriculum.load_paths_from_manifest):
+            {"hop_count": int, "path": [{"start", "relation", "end"}, ...]}
+        Returns the full QA dict (question/answer/explanation/paths/source/
+        target/hop_count/question_and_explanation), or None on any pipeline
+        step's failure.
+        """
+        path_steps = path_data.get("path") or []
+        if not path_steps:
+            return None
+        source_concept = str(path_steps[0]["start"])
+        target_concept = str(path_steps[-1]["end"])
+        paths = path_steps  # already in {start, relation, end} schema
+
+        # Step 1: generate question (LLM)
+        question_full = self.llm.generate_question(
+            source_concept=source_concept,
+            target_concept=target_concept,
+            paths=paths,
+        )
+        if not question_full:
+            return None
+        question, answer = self.llm.separate_question_and_answer(question_full)
+        if not question or not answer:
+            return None
+
+        # Step 2: quality filter
+        if not self.llm.quality_filtering(question):
+            return None
+
+        # Step 3: thinking trace
+        explanation = self.llm.generate_thinking_trace(question, paths, answer)
+        if not explanation:
+            return None
+
+        # Step 4: length check
+        if not self.llm.trace_length_check(explanation):
+            return None
+
+        # Step 5: combine
+        combined = self.llm.combine_question_and_thinking_trace_with_answer(
+            question, explanation, answer,
+        )
+
+        # Step 6: correctness filter
+        if not self.llm.correctness_filtering(combined, paths):
+            return None
+
+        return {
+            "source_concept": source_concept,
+            "target_concept": target_concept,
+            "paths": paths,
+            "question": question,
+            "answer": answer,
+            "explanation": explanation,
+            "question_and_explanation": combined,
+            "hop_count": path_data.get("hop_count"),
+        }
 
     def generate_questions(self, k_hops: int = 1, category: str = None) -> Optional[Dict]:
         max_total_attempts = 10
