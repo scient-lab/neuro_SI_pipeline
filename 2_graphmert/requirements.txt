@@ -21,9 +21,18 @@ datasets>=2.20,<4
 # "Using the Trainer with PyTorch requires accelerate>=0.26.0" at
 # TrainingArguments construction. 0.34 covers everything 4.55-4.57 needs.
 accelerate>=0.34,<2
-spacy
+# spacy 4.x has breaking API changes vs 3.x (Doc.cats, Vocab, etc.); pin
+# inside the 3.x line to match upstream graphmert_umls (which pins 3.8.11)
+# while leaving room for patch updates.
+spacy>=3.8,<4
 pandas
 # pipeline_config.py (imported by predict_tails_llm.py, clean_llm_relations.py,
 # dataset_preprocessing_utils.py) reads the YAML config layers via PyYAML.
 # Required at import time, not optional.
 pyyaml
+# 2_graphmert/graphmert_model/algos_graphmert.pyx is a Cython source compiled
+# at runtime by pyximport (invoked from collating_graphmert.py). Without it,
+# train_mnm fails with "ImportError: GraphMert preprocessing needs Cython
+# (pyximport)" deep inside GraphMertDataCollator.__init__. Pinned to match
+# upstream graphmert_umls/requirements.txt::Cython==3.2.4 exactly.
+Cython==3.2.4

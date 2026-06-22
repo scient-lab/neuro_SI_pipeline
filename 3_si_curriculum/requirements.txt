@@ -19,3 +19,14 @@ matplotlib
 # generate_curriculum.py, generate_questions.py) reads the YAML config layers
 # via PyYAML. Required at import time, not optional.
 pyyaml
+# 3_si_curriculum/curriculum_generator/calculate_hops.py and
+# generate_questions.py do graph-walk over the seed KG via networkx
+# (multi-hop path enumeration). Currently arrives transitively via other
+# deps but pinning makes fresh bootstrap deterministic. Matches upstream
+# bottom-up-superintelligence/env_setup.sh::networkx==3.4.2.
+networkx==3.4.2
+# vllm is used by curriculum_generator/generate_questions.py and
+# RL/rl_training.py for batched LLM inference (LLM, SamplingParams).
+# Was relying on transitive install; pin matches upstream
+# bottom-up-superintelligence/env_setup.sh::vllm==0.7.3.
+vllm==0.7.3
