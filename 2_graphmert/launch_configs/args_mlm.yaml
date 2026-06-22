@@ -119,18 +119,27 @@ eval_steps: 25
 logging_steps: 5
 save_steps: 100
 
-# load_best_model_at_end requires eval to produce `metric_for_best_model`
-# on every eval step. At smoke scale (eval N ≈ 2) the TailSlot collator's
-# random head-position picker (mlm_utils.py:111 _pick_head_pos) can
-# legitimately return None for every eval row — no masked positions →
-# labels all -100 → CrossEntropyLoss output isn't recorded as `eval_loss`
-# in HF Trainer's metrics dict → _determine_best_metric crashes with
-# KeyError. Disable best-model selection here; flip back to true on
-# pilot/paper profiles where eval splits have enough rows for the picker
-# to reliably select a position. metric_for_best_model / greater_is_better
-# kept declaratively so re-enabling is a 1-line flip.
+# Best-model tracking disabled at smoke scale (eval N ≈ 2).
+#
+# CRITICAL: HF Trainer's `_determine_best_metric` is called on EVERY eval
+# step whenever `metric_for_best_model is not None` — regardless of
+# `load_best_model_at_end`. The gate is the metric name itself, not the
+# load flag. So setting load_best_model_at_end=false is NOT sufficient;
+# we MUST also set metric_for_best_model=null to skip the check.
+#
+# Why this matters at smoke: the TailSlot collator's random head-position
+# picker (mlm_utils.py:111 _pick_head_pos) can legitimately return None
+# for every eval row when eval is tiny — no masked positions → labels all
+# -100 → CrossEntropyLoss isn't recorded as `eval_loss` in metrics dict
+# → _determine_best_metric crashes with KeyError('eval_loss').
+#
+# To re-enable best-model selection on pilot/paper (where eval splits are
+# large enough for _pick_head_pos to reliably succeed):
+#   load_best_model_at_end: true
+#   metric_for_best_model: eval_loss      # was 'null'
+#   greater_is_better:    false
 load_best_model_at_end: false
-metric_for_best_model: eval_loss
+metric_for_best_model: null
 greater_is_better: false
 
 lr_scheduler_type: cosine_with_min_lr
