@@ -46,7 +46,15 @@ DEEPSPEED_CFG="${DEEPSPEED_CFG:-$REPO_ROOT/3_si_curriculum/RL/deepspeed_config.j
 
 # --- Steps ---------------------------------------------------------------
 step_setup_reward() {
-    log_info "rl :: setup_reward (data_prep.py — env-var driven)"
+    # audit bug #10 fix: data_prep.py's "rl" mode no longer chains into
+    # preprocess_grpo_dataset by default — it just slices the verified
+    # curriculum JSON and saves as a DatasetDict, leaving the
+    # `question_and_explanation` column intact. rl_training.py:602 calls
+    # preprocess_grpo_dataset once on its input, so the chain runs cleanly.
+    # (Previously both data_prep AND rl_training preprocessed, and the
+    # second call hit KeyError 'question_and_explanation' because the
+    # column was discarded by the first pass.)
+    log_info "rl :: setup_reward (data_prep.py — slice only; rl_training preprocesses)"
     INPUT_PATH="$VERIFIED_CURRICULUM" OUTPUT_PATH="$RL_DATASET_DIR" \
         python "$REPO_ROOT/3_si_curriculum/RL/data_prep.py" \
         || { log_error "rl.setup_reward failed"; return 1; }
@@ -58,13 +66,17 @@ step_train_grpo() {
         log_error "rl.train_grpo: no merged SFT model found. Run sft phase first or set SFT_MERGED_MODEL."
         return 1
     fi
+    # audit bug #8 fix: rl_training.py:589 reads config.sft_checkpoint_path,
+    # NOT config.model_name. Previously passed --model_name which
+    # rl_training silently ignored, then tried from_pretrained("") and
+    # crashed. Pass via --sft_checkpoint_path (which the field name expects).
     ( cd "$REPO_ROOT/3_si_curriculum/RL" && \
       python rl_training.py \
-          --model_name   "$SFT_MERGED_MODEL" \
-          --dataset_path "$RL_DATASET_DIR" \
-          --output_dir   "$RL_CHECKPOINTS_DIR" \
-          --deepspeed    "$DEEPSPEED_CFG" \
-          --wandb_project "${WANDB_PROJECT:-${SI_DOMAIN:-neuroscience}_rl_kg}" ) \
+          --sft_checkpoint_path "$SFT_MERGED_MODEL" \
+          --dataset_path        "$RL_DATASET_DIR" \
+          --output_dir          "$RL_CHECKPOINTS_DIR" \
+          --deepspeed           "$DEEPSPEED_CFG" \
+          --wandb_project       "${WANDB_PROJECT:-${SI_DOMAIN:-neuroscience}_rl_kg}" ) \
         || { log_error "rl.train_grpo failed"; return 1; }
 }
 

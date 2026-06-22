@@ -280,31 +280,37 @@ def main():
         logging.info(f"SFT dataset saved - Train: {len(processed['train'])}, Test: {len(processed['test'])}")
         
     elif MODE == "rl":
-        # Load from JSON file
+        # Load raw JSON, slice if requested, save as HF DatasetDict.
+        # We INTENTIONALLY do NOT call preprocess_grpo_dataset here —
+        # rl_training.py:602 calls it itself, and running it twice on the
+        # same path raises KeyError 'question_and_explanation' because the
+        # first pass transforms that column into {prompt, answer, paths}
+        # and discards the source (audit bug #10).
+        #
+        # Set RL_DATA_PREP_RUN_PREPROCESS=1 to opt back into the
+        # legacy double-preprocess behavior (e.g. for standalone runs of
+        # rl_training.py against a dataset that hasn't been through this
+        # script's slice step).
         full_ds = load_dataset("json", data_files=INPUT_PATH, split="train")
-        
+
         if LAST_N is not None:
             total = len(full_ds)
             start_idx = max(0, total - LAST_N)
             full_ds = full_ds.select(range(start_idx, total))
             logging.info(f"Selected last {LAST_N} items (indices {start_idx}..{total-1}, got {len(full_ds)} items)")
-        
-        # Save as HF dataset so preprocess_grpo_dataset can load it
-        tmp_path = OUTPUT_PATH + "_tmp_sliced"
-        DatasetDict({"train": full_ds}).save_to_disk(tmp_path)
-        
-        processed = preprocess_grpo_dataset(
-            tmp_path,
-            split="train",
-            enable_thinking=ENABLE_THINKING
-        )
-        
-        # Clean up temp
-        import shutil
-        shutil.rmtree(tmp_path, ignore_errors=True)
-        
-        processed.save_to_disk(OUTPUT_PATH)
-        logging.info(f"RL dataset saved - {len(processed)} examples")
+
+        DatasetDict({"train": full_ds}).save_to_disk(OUTPUT_PATH)
+        logging.info(f"RL dataset (raw, pre-preprocess) saved - {len(full_ds)} examples")
+
+        if os.environ.get("RL_DATA_PREP_RUN_PREPROCESS", "").lower() in ("1", "true", "yes"):
+            logging.info("RL_DATA_PREP_RUN_PREPROCESS set — running preprocess_grpo_dataset")
+            processed = preprocess_grpo_dataset(
+                OUTPUT_PATH,
+                split="train",
+                enable_thinking=ENABLE_THINKING,
+            )
+            processed.save_to_disk(OUTPUT_PATH)
+            logging.info(f"RL dataset preprocessed - {len(processed)} examples")
     
     logging.info(f"Processed dataset saved to {OUTPUT_PATH}")
 

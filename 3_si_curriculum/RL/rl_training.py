@@ -581,6 +581,21 @@ def train():
         config.eval_size = NUM_EVAL_EXAMPLES
     if not config.output_dir:
         raise ValueError("output_dir is required. Pass --output_dir to the script.")
+    # audit bug #9 fix: catch the placeholder default explicitly so ad-hoc
+    # invocations (without pipeline.sh) fail fast at config-parse time
+    # instead of crashing later at HF `load_from_disk("/path/to/your/rl_dataset")`.
+    # pipeline.sh's rl.sh already passes --dataset_path; this guards
+    # direct `python rl_training.py ...` invocations.
+    if not config.dataset_path or config.dataset_path == "/path/to/your/rl_dataset":
+        raise ValueError(
+            f"dataset_path is required (got {config.dataset_path!r}). "
+            "Pass --dataset_path to the script (or run via scripts/phases/rl.sh)."
+        )
+    if not config.sft_checkpoint_path:
+        raise ValueError(
+            "sft_checkpoint_path is required. Pass --sft_checkpoint_path "
+            "(or set SFT_MERGED_MODEL when running via scripts/phases/rl.sh)."
+        )
 
     if config.deepspeed and not os.path.isabs(config.deepspeed):
         config.deepspeed = os.path.abspath(config.deepspeed)
