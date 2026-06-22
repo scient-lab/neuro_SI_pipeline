@@ -24,7 +24,7 @@ models:
   # vLLM is upgraded to 0.10+ (mxfp4 supported), revert this back to
   # openai/gpt-oss-20b. Diversity vs validate_b (Mistral) is preserved.
   validate_a: Qwen/Qwen3-14B
-  validate_b: mistralai/Mistral-Nemo-12B
+  validate_b: mistralai/Mistral-Nemo-Instruct-2407
 
   # Phase 3: graphmert.predict_tails (2_graphmert/predict_tails_llm.py).
   # Loaded via vLLM as a generative LM; the docstring example uses
@@ -46,7 +46,7 @@ models:
   # incompatibility as validate_a above. Swapped for the same reason;
   # revert together when vLLM gets upgraded.
   curriculum_check_a: Qwen/Qwen3-14B        # final two-LLM check (was openai/gpt-oss-20b)
-  curriculum_check_b: mistralai/Mistral-Nemo-12B
+  curriculum_check_b: mistralai/Mistral-Nemo-Instruct-2407
 
   # Phase 5: SFT (LoRA base model)
   base_sft: Qwen/Qwen3-14B
