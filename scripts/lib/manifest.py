@@ -446,6 +446,15 @@ def cmd_skip_step(a) -> None:
     def fn(d):
         s = _step(d, a.phase, a.step)
         if s:
+            # Preserve historical `completed` and `failed` states across
+            # narrow re-runs. When pipeline.sh re-runs a subset of steps
+            # via --step <list>, the other steps in the same phase used
+            # to be unconditionally clobbered to "skipped" — losing the
+            # record that they had succeeded earlier in the same RUN_ID.
+            # Only mark "skipped" if the step is still in its default
+            # (pending) state.
+            if s.get("status") in ("completed", "failed"):
+                return
             s["status"] = "skipped"
 
     _mutate(a.path, fn)
