@@ -146,17 +146,22 @@ def render_phase_table(m, show_details):
               f'{eta.ljust(14)} {steps_str.rjust(6)}')
 
         if show_details and st != "pending":
-            for i, s in enumerate(steps):
+            for s in steps:
                 sname = _truncate(s.get("name", "?"), STEP_NAME_MAX)
                 sst = s.get("status", "pending")
                 smark = STATUS_MARK.get(sst, "?")
                 sstart = _hhmmss(s.get("started_at")) if sst != "pending" else ""
                 sfinish = _hhmmss(s.get("finished_at")) if sst in ("completed", "failed", "skipped") else ""
                 sdur = _fmt_duration(_step_duration(s)) if sst != "pending" else ""
-                branch = "└─" if i == len(steps) - 1 else "├─"
-                nested = f"{branch} {sname}"
-                print(f'    {nested.ljust(PHASE_W - 4)} {smark} {sst.ljust(11)} '
-                      f'{sstart.ljust(10)} {sfinish.ljust(10)} {sdur.ljust(11)}')
+                # Step rows: 4-space indent for nesting (no ├─/└─ tree
+                # glyphs — indent alone is enough visual cue and avoids
+                # the ASCII-art shifting the rest of the row left).
+                # All columns rendered (with empty ETA and STEPS) so step
+                # rows align with phase rows above. \033[K is added by
+                # stats.sh's live loop globally.
+                print(f'    {sname.ljust(PHASE_W - 4)} {smark} {sst.ljust(11)} '
+                      f'{sstart.ljust(10)} {sfinish.ljust(10)} {sdur.ljust(11)} '
+                      f'{"".ljust(14)} {"".rjust(6)}')
 
 
 def render_failure_block(m):

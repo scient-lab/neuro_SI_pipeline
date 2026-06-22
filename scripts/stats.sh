@@ -7,12 +7,12 @@
 # disturbing the log-viewer.
 #
 # Usage:
-#   ./scripts/stats.sh                          # one-shot summary
-#   ./scripts/stats.sh -d                       # with nested steps
+#   ./scripts/stats.sh                          # one-shot summary (phases only)
+#   ./scripts/stats.sh --steps                  # nested step rows under each phase
 #   ./scripts/stats.sh --live                   # refresh every 5s
 #   ./scripts/stats.sh --live --interval 2      # custom refresh
-#   ./scripts/stats.sh --live --system          # add CPU/RAM/GPU bars
-#   ./scripts/stats.sh -d --live --system       # all-in-one operator view
+#   ./scripts/stats.sh --live --system          # add CPU/RAM/GPU/VRAM gauges
+#   ./scripts/stats.sh --steps --live --system  # all-in-one operator view
 #   ./scripts/stats.sh --run <prefix>           # historical run
 #   ./scripts/stats.sh --no-color               # disable ANSI colors
 #
@@ -25,7 +25,7 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 OUTPUT_BASE="${OUTPUT_BASE:-$REPO_ROOT/outputs}"
 
 RUN_ID=""
-SHOW_DETAILS=0
+SHOW_STEPS=0
 LIVE=0
 INTERVAL=5
 SHOW_SYSTEM=0
@@ -33,7 +33,9 @@ USE_COLOR=auto
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        -d|--details)   SHOW_DETAILS=1; shift ;;
+        --steps)        SHOW_STEPS=1; shift ;;
+        -d|--details)   echo "stats.sh: '-d' / '--details' renamed to '--steps' (the old short flag was ambiguous with 'delete')." >&2
+                        SHOW_STEPS=1; shift ;;
         --live)         LIVE=1; shift ;;
         --interval)     INTERVAL="$2"; shift 2 ;;
         --system)       SHOW_SYSTEM=1; shift ;;
@@ -122,8 +124,16 @@ bar() {
 # edge as STEPS instead of trailing short like before.
 TABLE_W=96
 BAR_W=50         # was 20 — wider gauge gives finer visual resolution
-HIST_W=20        # last 20 samples per metric in --live mode
-declare -a HIST_cpu HIST_ram HIST_gpu HIST_vram
+HIST_W=60        # last 60 samples per metric in --live mode (= 5 min at 5s refresh)
+SPARK_CHARS=$(( HIST_W / 2 ))   # braille packs 2 samples per char → 30 chars wide
+declare -a HIST_cpu HIST_ram HIST_gpu HIST_vram HIST_disk
+
+# Disk usage changes slowly and `df` is comparatively expensive — sample at
+# 1/DISK_INTERVAL_MULT the rate of other metrics. With --interval=5s and
+# MULT=10, disk refreshes every 50s. Cached between samples.
+DISK_INTERVAL_MULT=10
+declare -i DISK_TICK=0
+DISK_CACHED=""
 
 # push_hist <buffer-name> <value>
 push_hist() {
@@ -135,25 +145,47 @@ push_hist() {
     done
 }
 
-# spark <buffer-name> — render a sparkline (last $HIST_W samples, right-aligned).
-# Unfilled positions on the left padded with spaces so the chart width is
-# stable across frames (avoids visual jump as the buffer fills).
+# spark <buffer-name> — render a sparkline (last $HIST_W samples).
+# Uses braille characters (2 dot columns x 4 dot rows per char) so each
+# char encodes 2 time samples × 5 levels (0-4 dots, bottom-up filled).
+# Result is denser than single-row block sparkline (▁▂▃▄▅▆▇█) while
+# matching btop's visual style. Wider HIST_W=60 = 30 braille chars wide.
+#
+# Braille dot bits per cell (Unicode U+2800 + bitmask):
+#   left col:  dot 7=0x40 (bottom), 3=0x04, 2=0x02, 1=0x01 (top)
+#   right col: dot 8=0x80 (bottom), 6=0x20, 5=0x10, 4=0x08 (top)
 spark() {
     local name="HIST_$1"
     declare -n arr="$name"
-    local levels=( '▁' '▂' '▃' '▄' '▅' '▆' '▇' '█' )
+    # Pad/truncate to exactly HIST_W samples (oldest on left, newest right).
+    # Empty positions on the left get rendered as ⠀ (blank braille).
     local n=${#arr[@]}
     local pad=$(( HIST_W - n ))
-    c_dim
-    [[ $pad -gt 0 ]] && printf ' %.0s' $(seq 1 $pad)
+    local -a samples=()
+    if (( pad > 0 )); then
+        local i
+        for ((i=0; i<pad; i++)); do samples+=(0); done
+    fi
+    samples+=("${arr[@]}")
+    [[ ${#samples[@]} -gt $HIST_W ]] && samples=("${samples[@]: -HIST_W}")
+    # Delegate Unicode codepoint math to python (bash's printf '\u' is
+    # unreliable across versions and `printf '\xNN'` would need UTF-8 byte
+    # encoding per codepoint). One python call per metric per frame ≈ 50ms.
     c_bar
-    local s lvl
-    for s in "${arr[@]}"; do
-        lvl=$(( s * 7 / 100 ))
-        [[ $lvl -lt 0 ]] && lvl=0
-        [[ $lvl -gt 7 ]] && lvl=7
-        printf '%s' "${levels[$lvl]}"
-    done
+    python3 -c "
+import sys
+samples = [int(x) for x in sys.argv[1:]]
+# Map % (0-100) to dot count (0-4). Boundaries: 0/13/38/63/88/100.
+def d(p): return min(4, max(0, (p + 12) // 25))
+LEFT  = [0, 0x40, 0x44, 0x46, 0x47]
+RIGHT = [0, 0x80, 0xA0, 0xB0, 0xB8]
+out = []
+for i in range(0, len(samples), 2):
+    l = d(samples[i])
+    r = d(samples[i+1]) if i+1 < len(samples) else 0
+    out.append(chr(0x2800 + (LEFT[l] | RIGHT[r])))
+sys.stdout.write(''.join(out))
+" "${samples[@]}"
     c_reset
 }
 
@@ -201,6 +233,29 @@ sample_mem() {
         || echo "0 0.0 0.0"
 }
 
+# Disk usage on /  (or $DISK_MOUNT if set). Outputs:
+#   <pct> <used_gb> <total_gb> <mountpoint>
+# `df -B 1G` reports in 1 GB blocks across both GNU and busybox df.
+sample_disk() {
+    local mnt="${DISK_MOUNT:-/}"
+    df -B 1073741824 "$mnt" 2>/dev/null | awk -v m="$mnt" '
+        NR==2 {
+            gsub("%","",$5)
+            printf "%d %d %d %s\n", $5, $3, $2, m
+        }'
+}
+
+# maybe_sample_disk — invoke sample_disk only every DISK_INTERVAL_MULT
+# frames; otherwise return the cached line. Counter persists across
+# render_system calls (declared at top with `declare -i DISK_TICK=0`).
+maybe_sample_disk() {
+    if (( DISK_TICK == 0 )); then
+        DISK_CACHED="$(sample_disk)"
+    fi
+    DISK_TICK=$(( (DISK_TICK + 1) % DISK_INTERVAL_MULT ))
+    echo "$DISK_CACHED"
+}
+
 # GPU info (per-device): name util vram_used vram_total temp
 # Outputs one line per GPU; empty if nvidia-smi missing or no device.
 sample_gpu() {
@@ -216,9 +271,9 @@ render_system() {
     # would render as a single bar at the right edge — visually noisy and
     # not informative. render_metric treats an empty key as "skip sparkline".
     # Must initialize unconditionally for `set -u` compatibility.
-    local hkey_cpu="" hkey_ram="" hkey_gpu="" hkey_vram=""
+    local hkey_cpu="" hkey_ram="" hkey_gpu="" hkey_vram="" hkey_disk=""
     if [[ "$LIVE" -eq 1 ]]; then
-        hkey_cpu=cpu; hkey_ram=ram; hkey_gpu=gpu; hkey_vram=vram
+        hkey_cpu=cpu; hkey_ram=ram; hkey_gpu=gpu; hkey_vram=vram; hkey_disk=disk
     fi
 
     # Separator extends to TABLE_W so it visually reaches the same right
@@ -265,6 +320,15 @@ render_system() {
     if [[ "$gpu_idx" -eq 0 ]]; then
         printf "  %s(no NVIDIA GPU detected via nvidia-smi)%s\033[K\n" "$(c_dim)" "$(c_reset)"
     fi
+
+    # Disk (sub-sampled — see maybe_sample_disk + DISK_INTERVAL_MULT)
+    local disk_line; disk_line="$(maybe_sample_disk)"
+    if [[ -n "$disk_line" ]]; then
+        local disk_pct disk_used disk_total disk_mnt
+        read -r disk_pct disk_used disk_total disk_mnt <<< "$disk_line"
+        push_hist disk "$disk_pct"
+        render_metric "DISK" "$disk_pct" "$hkey_disk" "${disk_used} / ${disk_total} GB    ${disk_mnt}"
+    fi
 }
 
 # Single render pass — used by both one-shot and --live modes.
@@ -274,7 +338,7 @@ render_one_frame() {
         return 1
     fi
     local extra_args=( --manifest "$MANIFEST" --run-id "$RUN_ID" )
-    [[ "$SHOW_DETAILS" -eq 1 ]] && extra_args+=( --details )
+    [[ "$SHOW_STEPS" -eq 1 ]] && extra_args+=( --details )
     python3 "$SCRIPT_DIR/lib/stats_render.py" "${extra_args[@]}"
     if [[ "$SHOW_SYSTEM" -eq 1 ]]; then
         echo

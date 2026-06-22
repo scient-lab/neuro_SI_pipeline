@@ -104,7 +104,7 @@ nohup ./scripts/pipeline.sh --profile pilot --platform runpod --phase graphmert 
 # Press q or Ctrl-C to quit
 
 # One-shot summary
-./scripts/stats.sh -d
+./scripts/stats.sh --steps
 
 # Tail logs for a specific phase
 ./scripts/logs.sh --phase graphmert
@@ -114,7 +114,7 @@ nohup ./scripts/pipeline.sh --profile pilot --platform runpod --phase graphmert 
 ./scripts/logs.sh --error
 
 # From workstation, hit the pod summary
-./scripts/runpod/remote.sh exec './scripts/stats.sh -d'
+./scripts/runpod/remote.sh exec './scripts/stats.sh --steps'
 ```
 
 ---
@@ -306,5 +306,5 @@ grep -rnE '\bdiabetes\b' --include='*.py' --include='*.yaml' \
 # (in pod) ./scripts/stats.sh --live --system
 
 # OR remote summary one-shot
-./scripts/runpod/remote.sh exec './scripts/stats.sh -d'
+./scripts/runpod/remote.sh exec './scripts/stats.sh --steps'
 ```
