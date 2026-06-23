@@ -272,9 +272,15 @@ def main(yaml_file: str, seed_kg_path: str = None, train_src: str = None,
         json.dump(rel_map, f, indent=2)
     logger.info("Relation map saved to: %s", rel_map_path)
 
-    # Load seed KG
+    # Load seed KG (supports both CSV and parquet, and graphrag-native
+    # source/target/description column names). Ported from upstream main
+    # 4d876bc — lets this consume final_relationships.parquet directly.
     logger.info("Loading seed KG from: %s", seed_kg_path)
-    kg_df = pd.read_csv(seed_kg_path)
+    kg_df = pd.read_parquet(seed_kg_path) if seed_kg_path.endswith(".parquet") else pd.read_csv(seed_kg_path)
+    if "source" in kg_df.columns and "head" not in kg_df.columns:
+        kg_df = kg_df.rename(columns={"source": "head", "target": "tail"})
+    if "description" in kg_df.columns and "relation" not in kg_df.columns:
+        kg_df = kg_df.rename(columns={"description": "relation"})
     logger.info("Seed KG: %d triples", len(kg_df))
 
     # Ground triples to snippets

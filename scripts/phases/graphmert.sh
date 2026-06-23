@@ -8,7 +8,8 @@
 #                        step 3  (add_llm_relations + clean_llm_relations)
 #                        step 4  (run_dataset_preprocessing — co-occurrence grounding)
 #   train_mnm            step 5  (run_mlm.py)
-#   predict_tails        step 6  (predict_tails_llm.py)
+#   predict_tails        step 6  (predict_tails_llm.py — LLM-based tail extraction)
+#   predict_tails_gm     step 6b (utils/predict_tails.py — GraphMERT MLM-based tail prediction)
 #   validate_predictions step 7  (combine_tails + fact_score, two-LLM consensus)
 #   expand_kg            merge predictions into final KG (manual until merge_kgs.py is wired)
 set -euo pipefail
@@ -24,13 +25,14 @@ STEP_FILTER="${1:-all}"
 export PIPELINE_STEP_FILTER="$STEP_FILTER"
 
 PHASE_NAME=graphmert
-STEPS=(tokenize preprocess train_mnm predict_tails validate_predictions expand_kg)
+STEPS=(tokenize preprocess train_mnm predict_tails predict_tails_gm validate_predictions expand_kg)
 PHASE_DESC="Expand seed KG via masked-node-modeling training + LLM tail prediction"
 STEP_DESCS=(
     "Build stable tokenizer + tokenized chunks (run_tokenization.py)"
     "Entity discovery + LLM relations + dataset grounding (substeps 2-4)"
     "Train GraphMERT MNM on grounded triples (run_mlm.py)"
     "vLLM predicts novel tails for held-out heads (predict_tails_llm.py)"
+    "GraphMERT MLM predicts tails from trained checkpoint (utils/predict_tails.py)"
     "Combine prediction shards + 2-LLM fact scoring"
     "Merge seed KG + validated expansions into final KG (merge_kgs.py)"
 )
@@ -183,6 +185,47 @@ step_predict_tails() {
           --output_dir "$GRAPHMERT_DIR/predictions" \
           --num_shards "${PRED_NUM_SHARDS:-1}" \
           --shard_id   "${PRED_SHARD_ID:-0}" ) || { log_error "predict_tails failed"; return 1; }
+}
+
+step_predict_tails_gm() {
+    log_info "graphmert :: predict_tails_gm (step 6b — utils/predict_tails.py)"
+    # Step 6b complements step 6: where predict_tails_llm.py uses vLLM
+    # to ask a generic causal LM to extract tails, this step runs the
+    # trained GraphMERT checkpoint as a masked-node-modeling probe and
+    # reads the top-k predictions off the first leaf slot. Both outputs
+    # feed combine_tails in step 7.
+    #
+    # Skips silently if no trained checkpoint exists (e.g. quick smoke
+    # runs that bypass train_mnm). Operator can force-run via
+    # GRAPHMERT_PREDICT_TAILS_GM_REQUIRED=1.
+    local CKPT_ROOT="$GRAPHMERT_DIR/checkpoints"
+    if [[ ! -d "$CKPT_ROOT" ]]; then
+        if [[ "${GRAPHMERT_PREDICT_TAILS_GM_REQUIRED:-0}" == "1" ]]; then
+            log_error "predict_tails_gm: no trained checkpoint at $CKPT_ROOT (GRAPHMERT_PREDICT_TAILS_GM_REQUIRED=1)"
+            return 1
+        fi
+        log_info "  no trained checkpoint at $CKPT_ROOT — skipping (set GRAPHMERT_PREDICT_TAILS_GM_REQUIRED=1 to require)"
+        return 0
+    fi
+    # predict_tails.py expects a checkpoint dir with config.json, OR a
+    # parent dir containing checkpoint-* — its get_best_checkpoint picks
+    # the latest. Pass the parent so run_mlm naming variants (best/, last/,
+    # checkpoint-NNN/) all resolve.
+    local RELATION_MAP="$GRAPHMERT_DIR/dataset/relation_map.json"
+    if [[ ! -f "$RELATION_MAP" ]]; then
+        log_error "predict_tails_gm: relation_map missing at $RELATION_MAP (run preprocess first)"
+        return 1
+    fi
+    ( cd "$REPO_ROOT/2_graphmert" && \
+      python -m utils.predict_tails \
+          --model_dir    "$CKPT_ROOT" \
+          --tokenizer    "$STABLE_TOKENIZER" \
+          --relation_map "$RELATION_MAP" \
+          --dataset      "$GRAPHMERT_DIR/llm_relations/relations_cleaned_eval" \
+          --output_dir   "$GRAPHMERT_DIR/predictions_graphmert" \
+          --topk         "${GM_PRED_TOPK:-20}" \
+          --batch_size   "${GM_PRED_BATCH_SIZE:-8}" ) \
+        || { log_error "predict_tails_gm failed"; return 1; }
 }
 
 step_validate_predictions() {

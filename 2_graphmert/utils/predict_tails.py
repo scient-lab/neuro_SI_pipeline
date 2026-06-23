@@ -1,9 +1,27 @@
 #!/usr/bin/env python3
 # coding=utf-8
+"""
+predict_tails.py — GraphMERT Pipeline Step 2.6b
+
+Generates top-k tail predictions for each (head, relation) pair using the
+trained GraphMERT MLM checkpoint (masked leaf-slot prediction). This is
+the GraphMERT-based predictor; predict_tails_llm.py (step 2.6) is the
+vLLM/LLM-based predictor — both feed combine_tails in step 2.7.
+
+Usage:
+  python 2_graphmert/utils/predict_tails.py \\
+    --model_dir    $OUTPUT_BASE/graphmert/checkpoints/best \\
+    --tokenizer    $OUTPUT_BASE/graphmert/stable_tokenizer \\
+    --relation_map $OUTPUT_BASE/graphmert/dataset/relation_map.json \\
+    --dataset      $OUTPUT_BASE/graphmert/llm_relations/relations_cleaned_eval \\
+    --output_dir   $OUTPUT_BASE/graphmert/predictions_graphmert \\
+    --topk         20 \\
+    --batch_size   8
+"""
 
 import argparse
 import os
-import shutil
+import sys as _sys
 import json
 import logging
 import random
@@ -11,25 +29,27 @@ import glob
 from typing import Any, Dict, List, Optional, Tuple
 from collections import defaultdict
 
-# =========================================================
-# HARD-WIRED CACHE BYPASS
-# =========================================================
 os.environ["DATASETS_DISABLE_CACHING"] = "1"
-os.environ["TRANSFORMERS_CACHE"] = "/tmp/huggingface_cache"
 # Optimize memory allocation to prevent fragmentation
 os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 import torch
 from torch.nn import functional as F
 from datasets import Dataset, load_from_disk
-from transformers import GraphMertForMaskedLM, AutoTokenizer, AutoConfig
+from transformers import AutoTokenizer, AutoConfig
+
+# Make graphmert_model importable when this script is invoked standalone
+# (not via run_mlm or preprocess which already register the model_type).
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from graphmert_model import GraphMertConfig, GraphMertForMaskedLM  # noqa: E402
+try:
+    AutoConfig.register("graphmert", GraphMertConfig)
+except ValueError:
+    pass  # already registered by another module in this process
 
 # Architecture invariants — single source shared with mlm_utils and
 # dataset_preprocessing_utils. See architecture.py.
 from .architecture import ROOT_NODES, NUM_LEAVES, MAX_NODES  # noqa: F401
-
-TOPK = 20
-BATCH_SIZE = 8
 
 
 def parse_args() -> argparse.Namespace:
@@ -37,29 +57,31 @@ def parse_args() -> argparse.Namespace:
     prefer env-based injection. CLI wins. Fails immediately with a clear
     message if any required path is missing — no silent empty-string fallback.
     """
-    ap = argparse.ArgumentParser(description="GraphMERT tail prediction (hardwired probe + topk)")
-    ap.add_argument("--model_dir",       default=os.environ.get("GRAPHMERT_MODEL_DIR"),
+    ap = argparse.ArgumentParser(description="GraphMERT tail prediction (MLM probe + topk)")
+    ap.add_argument("--model_dir",    default=os.environ.get("GRAPHMERT_MODEL_DIR"),
                     help="Trained MNM model root (config.json or checkpoint-*). "
                          "env: GRAPHMERT_MODEL_DIR")
-    ap.add_argument("--tokenizer",       default=os.environ.get("STABLE_TOKENIZER_DIR"),
+    ap.add_argument("--tokenizer",    default=os.environ.get("STABLE_TOKENIZER_DIR"),
                     help="Stable tokenizer dir. env: STABLE_TOKENIZER_DIR")
-    ap.add_argument("--relation_map",    default=os.environ.get("RELATION_MAP_PATH"),
+    ap.add_argument("--relation_map", default=os.environ.get("RELATION_MAP_PATH"),
                     help="relation_map.json from run_dataset_preprocessing.py. "
                          "env: RELATION_MAP_PATH")
-    ap.add_argument("--dataset",         default=os.environ.get("CLEANED_LLM_DATASET"),
+    ap.add_argument("--dataset",      default=os.environ.get("CLEANED_LLM_DATASET"),
                     help="Cleaned LLM relations dataset (HF Dataset dir). "
                          "env: CLEANED_LLM_DATASET")
-    ap.add_argument("--output_root",     default=os.environ.get("GRAPHMERT_OUTPUT_ROOT"),
-                    help="Root dir for predictions output. "
+    ap.add_argument("--output_dir",   default=os.environ.get("GRAPHMERT_OUTPUT_ROOT"),
+                    help="Output dir for predictions.parquet + inspection_preview.txt. "
                          "env: GRAPHMERT_OUTPUT_ROOT")
+    ap.add_argument("--topk",         type=int, default=20)
+    ap.add_argument("--batch_size",   type=int, default=8)
     args = ap.parse_args()
-    missing = [k for k in ("model_dir","tokenizer","relation_map","dataset","output_root")
+    missing = [k for k in ("model_dir","tokenizer","relation_map","dataset","output_dir")
                if not getattr(args, k)]
     if missing:
         ap.error("missing required path(s): " + ", ".join(f"--{m}" for m in missing))
     return args
 
-logger = logging.getLogger("predict_tails_hardwired")
+logger = logging.getLogger("predict_tails")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
 def get_best_checkpoint(base_dir):
@@ -158,10 +180,9 @@ def predict_topk_first_leaf_slot(examples, model, tokenizer, topk):
 def main():
     args = parse_args()
 
-    # Write directly into args.output_root (caller decides the layout).
-    preds_root = args.output_root
-    if os.path.exists(preds_root): shutil.rmtree(preds_root)
-    os.makedirs(preds_root, exist_ok=True)
+    # Write directly into args.output_dir (caller decides the layout).
+    # Do NOT rmtree here — caller may have other artifacts in the dir.
+    os.makedirs(args.output_dir, exist_ok=True)
 
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer, use_fast=False)
     with open(args.relation_map, "r") as f:
@@ -222,16 +243,16 @@ def main():
     
     # --- PREDICTION ---
     out = dataset.map(
-        predict_topk_first_leaf_slot, 
-        batched=True, 
-        batch_size=BATCH_SIZE,
-        fn_kwargs=dict(model=model, tokenizer=tokenizer, topk=TOPK),
+        predict_topk_first_leaf_slot,
+        batched=True,
+        batch_size=args.batch_size,
+        fn_kwargs=dict(model=model, tokenizer=tokenizer, topk=args.topk),
         load_from_cache_file=False
     )
 
     # --- SAVE OUTPUT ---
-    out.to_pandas().to_parquet(os.path.join(preds_root, "predictions.parquet"), index=False)
-    write_preview_txt(out, os.path.join(preds_root, "inspection_preview.txt"), {})
+    out.to_pandas().to_parquet(os.path.join(args.output_dir, "predictions.parquet"), index=False)
+    write_preview_txt(out, os.path.join(args.output_dir, "inspection_preview.txt"), {})
     logger.info("Predictions complete.")
 
 if __name__ == "__main__":

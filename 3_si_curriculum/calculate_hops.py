@@ -33,12 +33,28 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 def parse_args():
     ap = argparse.ArgumentParser(description="Compute hop distances from seed KG")
     ap.add_argument("--kg_path", required=True,
-                    help="Full expanded KG CSV (head, relation, tail)")
+                    help="Full expanded KG (CSV or parquet; cols head/relation/tail)")
     ap.add_argument("--seed_kg_path", required=True,
-                    help="Seed KG CSV (head, relation, tail)")
+                    help="Seed KG (CSV or parquet; cols head/relation/tail OR "
+                         "graphrag-native source/target/description)")
     ap.add_argument("--output_path", required=True,
                     help="Output CSV path with hop_distance column added")
     return ap.parse_args()
+
+
+def _load_kg(path: str) -> pd.DataFrame:
+    """Load a KG file as a DataFrame with normalized head/relation/tail columns.
+
+    Auto-detects parquet vs CSV and renames graphrag's native
+    source/target/description columns to head/tail/relation so downstream
+    code can work off a single schema. Ported from upstream main 4d876bc.
+    """
+    df = pd.read_parquet(path) if path.endswith(".parquet") else pd.read_csv(path)
+    if "source" in df.columns and "head" not in df.columns:
+        df = df.rename(columns={"source": "head", "target": "tail"})
+    if "description" in df.columns and "relation" not in df.columns:
+        df = df.rename(columns={"description": "relation"})
+    return df
 
 
 def build_graph(df: pd.DataFrame) -> nx.Graph:
@@ -103,11 +119,11 @@ def main():
     args = parse_args()
 
     logger.info("Loading full KG: %s", args.kg_path)
-    full_df = pd.read_csv(args.kg_path)
+    full_df = _load_kg(args.kg_path)
     logger.info("Full KG: %d triples", len(full_df))
 
     logger.info("Loading seed KG: %s", args.seed_kg_path)
-    seed_df = pd.read_csv(args.seed_kg_path)
+    seed_df = _load_kg(args.seed_kg_path)
     logger.info("Seed KG: %d triples", len(seed_df))
 
     # Smoke / no-graphmert-expansion fallback.

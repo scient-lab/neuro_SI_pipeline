@@ -152,27 +152,74 @@ names, file formats, model IDs, and config flags all need alignment.
 - **Symptom**: After train_mnm produced
   `outputs/graphmert/checkpoints/best/`, `predict_tails_llm.py` tried
   `vllm.LLM(model="<graphmert checkpoint path>")` and would crash with
-  `ValueError: Model architectures ['GraphMertForMaskedLM'] are not
-  supported for now.` (BERT-style MLM cannot be loaded as a causal LM.)
-- **Root cause**: `scripts/phases/graphmert.sh:162` defaulted
-  `--model_id "${MLM_CHECKPOINT:-$GRAPHMERT_DIR/checkpoints/best}"`.
-  `MLM_CHECKPOINT` was never exported by anything in the repo, so the
-  default kicked in — passing a GraphMERT MLM path to a script that
-  expects a generative LLM. `configs/default.yaml::models` had no
-  `predict_tails:` entry at all.
+  `ValueError: The checkpoint you are trying to load has model type
+  'graphmert' but Transformers does not recognize this architecture.`
+  (BERT-style MLM via custom `model_type='graphmert'` is not registered
+  in vLLM's process; vLLM uses HF `AutoConfig.from_pretrained()` for the
+  config-load step, and that step fails before vLLM's own architecture
+  registry is even consulted.)
+- **Root cause attribution (UPSTREAM, not fork)**: this bug exists on
+  Princeton's `main` branch in the same form. Their `main` has all three
+  components in mutual inconsistency:
+    1. `2_graphmert/predict_tails_llm.py` — uses `vllm.LLM(...)`, docstring
+       example shows `--model_id /path/to/qwen3-32b` (intent: LLM predictor)
+    2. `2_graphmert/utils/predict_tails.py` — uses
+       `GraphMertForMaskedLM.from_pretrained(...)` (intent: GraphMERT predictor)
+    3. `README.md` step 2.6 line 365 — `python 2_graphmert/predict_tails_llm.py
+       --model_id $OUTPUT_BASE/graphmert/checkpoints/best` (mixes the two:
+       calls the LLM-designed script but passes the GraphMERT path)
+  If anyone runs README:365 literally on Princeton's main, it hits the
+  same `ValueError`. The fork's `scripts/phases/graphmert.sh:166`
+  faithfully calls the same script the upstream README documents — so
+  the fork-side contribution is only to perpetuate the broken
+  invocation, not to introduce it.
+- **Empirical proof (reproducible in 30 seconds)**:
+  ```python
+  # Save config.json declaring model_type=graphmert + architectures=[GraphMertForMaskedLM]
+  # to a temp dir, then:
+  from vllm import LLM
+  llm = LLM(model=tmp, enforce_eager=True, gpu_memory_utilization=0.05, max_model_len=128)
+  # Raises:
+  # ValueError: The checkpoint you are trying to load has model type `graphmert`
+  # but Transformers does not recognize this architecture.
+  ```
+  The `model_type='graphmert'` IS registered in HF via
+  `AutoConfig.register("graphmert", GraphMertConfig)` at
+  [mlm_utils.py:46-63](2_graphmert/utils/mlm_utils.py#L46-L63), but
+  that registration only fires when `mlm_utils.py` is imported. vLLM
+  doesn't import it, so the registration never reaches vLLM's process.
 - **Fix**: Added [configs/default.yaml:32](configs/default.yaml#L32)
-  `predict_tails: Qwen/Qwen3-14B` (matches `extract` so HF cache is reused).
-  [graphmert.sh:48](scripts/phases/graphmert.sh#L48) now sources via
-  `PREDICT_TAILS_MODEL_ID=$(get_model_id predict_tails "")` (same pattern
-  as `EXTRACT_MODEL_ID` / `VALIDATE_A` / `VALIDATE_B`). `MLM_CHECKPOINT`
-  env-var override kept for ad-hoc runs.
-- **Architectural note**: The trained GraphMERT checkpoint from
-  `train_mnm` is **never consumed downstream** in this fork's design —
-  the active prediction path is LLM-based (vLLM + Qwen3). Upstream
-  `graphmert_umls` has `predict_tails.py` (GraphMERT-based) at repo root;
-  this fork's `2_graphmert/utils/predict_tails.py` (GraphMERT-based)
-  exists but is never invoked. `train_mnm` produces a checkpoint that is
-  effectively dead disk weight on this fork. Documented but not changed.
+  `predict_tails: Qwen/Qwen3-14B` (matches `extract` so HF cache is
+  reused). [graphmert.sh:48](scripts/phases/graphmert.sh#L48) now
+  sources via `PREDICT_TAILS_MODEL_ID=$(get_model_id predict_tails "")`
+  (same pattern as `EXTRACT_MODEL_ID` / `VALIDATE_A` / `VALIDATE_B`).
+  `MLM_CHECKPOINT` env-var override kept for ad-hoc runs. The fix makes
+  the LLM path the active one, NOT the GraphMERT path.
+- **Architectural note (superseded 2026-06-23)**: An earlier draft
+  here read "the trained GraphMERT checkpoint is never consumed
+  downstream — dead disk weight." That framing was wrong. Per Jake
+  Stephen's clarification (email 2026-06-22 evening) and his subsequent
+  README+code fixes on `main` (commits [1834992](https://github.com/scient-lab/neuro_SI_pipeline/commit/1834992)
+  + [41d7c8b](https://github.com/scient-lab/neuro_SI_pipeline/commit/41d7c8b)),
+  the design is **two separate predictors that both feed combine_tails**:
+    - Step 2.6 `predict_tails_llm.py` — LLM-based (vLLM + Qwen3-32B),
+      writes to `predictions/`
+    - Step 2.6b `utils/predict_tails.py` — GraphMERT MLM-based, uses the
+      trained checkpoint, writes to `predictions_graphmert/`
+  The pipeline wasn't missing the LLM path; it was missing step 2.6b
+  entirely. Wired in as `step_predict_tails_gm` in
+  [scripts/phases/graphmert.sh](scripts/phases/graphmert.sh) on
+  2026-06-23. Step skips silently when no trained checkpoint exists
+  (smoke runs) and gates on `GRAPHMERT_PREDICT_TAILS_GM_REQUIRED=1`
+  for hard-require.
+- **Re-classified**: this entry was tagged Case D ("fork-introduced
+  modification") in an earlier draft of `BUG_FAILURE_CASES_2026-06-22.md`.
+  After the empirical vLLM repro above, the correct classification is
+  **Case B** ("code bug that crashes anywhere") — the README+script
+  inconsistency exists on Princeton's main, and the fork only
+  perpetuates the broken invocation in its shell wrapper. The 2026-06-23
+  step-2.6b wiring closes the gap; the missing-step fragment is no
+  longer a bug, only an extension.
 
 ### C4 — `openai/gpt-oss-20b` MXFP4 quantization incompatible with vLLM 0.7.3
 
@@ -627,3 +674,51 @@ build_ext --inplace` works
   pre-emptively.
 - Memory entries indexed in `[[brackets]]` above link back to per-fix
   detail in `~/.claude/projects/.../memory/`.
+
+## 12. 2026-06-23 — Upstream `main` reconciliation
+
+Jake pushed 3 commits to Princeton `main` between 13:55 and 14:11 ET on
+2026-06-22. Branch state at review time: `orchestration` was 94 ahead
+of `main`, 3 behind. Plain `git merge origin/main` would conflict in 3
+files. Decision: skip the merge, hand-port the parts we want.
+
+| SHA | What landed | Our handling |
+|---|---|---|
+| [1834992](https://github.com/scient-lab/neuro_SI_pipeline/commit/1834992) | README step 2.6 `--model_id` points at vLLM LLM | **Skip** — we don't sync upstream README; matches Jake's email |
+| [41d7c8b](https://github.com/scient-lab/neuro_SI_pipeline/commit/41d7c8b) | `predict_tails.py` argparse CLI + in-file `AutoConfig.register("graphmert", ...)` + drop `TRANSFORMERS_CACHE=/tmp` + README step 2.6b | **Hand-port** to `2_graphmert/utils/predict_tails.py` preserving our normalization fixes (ef39998, 6d6f40d) and `architecture.py` constants (71bd627). Keep our env-var fallbacks. Rename `--output_root` → `--output_dir`. Add `--topk`/`--batch_size` flags. |
+| [4d876bc](https://github.com/scient-lab/neuro_SI_pipeline/commit/4d876bc) | 10-bug audit fix bundle (README + `_load_kg` auto-detect in `calculate_hops.py` + `dataset_preprocessing_utils.py` + SLURM scripts) | **Cherry-port `_load_kg` only.** Inlined the parquet/csv auto-detect + source/target/description rename into both consumer sites. Skip Jake's README/SLURM/docstring changes (not load-bearing for us). |
+
+### Conflicts dodged (vs. plain `git merge`)
+
+| File | Their change | Our change | Why merge would muddle history |
+|---|---|---|---|
+| [2_graphmert/utils/predict_tails.py](../2_graphmert/utils/predict_tails.py) | argparse + AutoConfig.register inline | head normalization (6d6f40d), architecture.py extraction (71bd627) | Both edited top of file; resolver couldn't pick "Jake's CLI shape on top of our normalization" automatically |
+| [2_graphmert/utils/dataset_preprocessing_utils.py](../2_graphmert/utils/dataset_preprocessing_utils.py) | `_load_kg` block | unique-IDs (c68e9b0), path stability (d0dd1d4), relation fallback (e5e3cad) | Both edited seed-KG load block from different angles |
+| [2_graphmert/run_dataset_preprocessing.py](../2_graphmert/run_dataset_preprocessing.py) | docstring path update | path stability (d0dd1d4) | Cosmetic-only conflict; skipped |
+
+### Net merge debt accepted
+
+- 1834992 README docs fix (we don't sync upstream README)
+- 4d876bc's SLURM script fixes (we run via `scripts/phases/*.sh`, not SLURM)
+- 4d876bc's `run_dataset_preprocessing.py` docstring path update (cosmetic)
+
+None of these affect runtime. Debt ≈ zero.
+
+### Upstream bug to report back
+
+[rl_training.slurm](../3_si_curriculum/slurm/rl_training.slurm) at
+commit 4d876bc passes only `--model_name "${MODEL_NAME}"`, but
+[rl_training.py:594](../3_si_curriculum/RL/rl_training.py#L594)
+hard-raises `sft_checkpoint_path is required` when that flag is missing.
+The SLURM job will crash at config parse. Worth flagging to Jake — fix
+is one extra line: `--sft_checkpoint_path "${SFT_MERGED_PATH}" \`. Our
+[scripts/phases/rl.sh](../scripts/phases/rl.sh) passes the correct
+flag and is unaffected.
+
+### 2026-06-23 edits applied
+
+1. [2_graphmert/utils/predict_tails.py](../2_graphmert/utils/predict_tails.py) — Jake's CLI shape, preserve fork normalization
+2. [3_si_curriculum/calculate_hops.py](../3_si_curriculum/calculate_hops.py) — add `_load_kg()` helper, route both loads through it, preserve empty-fallback
+3. [2_graphmert/utils/dataset_preprocessing_utils.py](../2_graphmert/utils/dataset_preprocessing_utils.py) — inline parquet/csv autodetect + column rename at the seed-KG load site
+4. [scripts/phases/graphmert.sh](../scripts/phases/graphmert.sh) — new `step_predict_tails_gm` between `predict_tails` and `validate_predictions`; skips silently when no trained checkpoint exists; toggle via `GRAPHMERT_PREDICT_TAILS_GM_REQUIRED=1`
+5. C3 architectural note above superseded with Jake's clarification
