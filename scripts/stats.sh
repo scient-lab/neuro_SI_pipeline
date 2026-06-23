@@ -219,6 +219,18 @@ sys.stdout.write(''.join(out))
 # This reorder (pct from left to right) eliminates the per-row column drift
 # caused by 1-vs-3-char pct values pushing the sparkline around. DETAIL
 # becomes the visual anchor; PCT becomes a glanceable summary at row end.
+#
+# UTF-8 NOTE: bash `printf %-Ns` pads by BYTE count, not display columns.
+# A detail like "RTX A6000 · 74°C" has 16 visible chars but 18 bytes (·
+# and ° are 2 bytes each in UTF-8), causing pct to render 2 cols too far
+# left. _pad_display() uses awk's codepoint-aware length() under
+# LC_ALL=C.UTF-8 to compute padding correctly.
+_pad_display() {
+    local str="$1" w="$2"
+    LC_ALL=C.UTF-8 awk -v s="$str" -v w="$w" \
+        'BEGIN { n = length(s); pad = (w > n) ? w - n : 0; printf "%s%*s", s, pad, "" }'
+}
+
 render_metric() {
     local label=$1 pct=$2 hist_key=${3:-} detail=${4:-}
     # Track current column position so we can size the detail field to
@@ -235,7 +247,7 @@ render_metric() {
     [[ "$detail_w" -lt 1 ]] && detail_w=1
     # ${EOL} = erase-to-EOL (or empty on non-tty). Cleans up tail-garbage
     # from a longer previous frame in --live mode.
-    printf "%-${detail_w}s %3d%%%s\n" "$detail" "$pct" "$EOL"
+    printf "%s %3d%%%s\n" "$(_pad_display "$detail" "$detail_w")" "$pct" "$EOL"
 }
 
 # Cheap CPU% via /proc/stat (no busybox-vs-procps top quirks).
@@ -406,14 +418,32 @@ if [[ "$LIVE" -eq 1 ]]; then
     # If stdin isn't a TTY (piped / cron), skip keypress + cursor tricks
     # and just sleep — terminal-control codes can confuse non-interactive
     # consumers.
+    # Save the COMPLETE terminal state before we mess with it. `stty -echo`
+    # + `read -s -n 1` puts the terminal in cbreak (non-canonical) mode;
+    # restoring only `stty echo` on exit leaves the terminal stuck in
+    # cbreak — user sees an apparent SSH hang because line editing /
+    # Enter / Ctrl-keys all silently break.
+    _SAVED_STTY=""
+    [[ -t 0 ]] && _SAVED_STTY=$(stty -g 2>/dev/null || true)
+
     _restore_terminal() {
-        stty echo 2>/dev/null || true
+        # Restore the saved terminal state if we have it; fall back to
+        # 'sane' (POSIX-defined safe baseline) which fixes echo, canonical
+        # mode, line wrap, signal handling, etc.
+        if [[ -n "$_SAVED_STTY" ]]; then
+            stty "$_SAVED_STTY" 2>/dev/null || stty sane 2>/dev/null || true
+        else
+            stty sane 2>/dev/null || true
+        fi
         # Show cursor, then clear screen and home cursor so the next prompt
         # lands cleanly without leftover stats content.
         printf '\033[?25h\033[2J\033[H'
     }
 
     trap '_restore_terminal; echo "(stopped)"; exit 0' INT TERM
+    # Restore on ANY exit path (uncaught errors, set -e abort, etc.), not
+    # just signal — covers the case where render_one_frame fails mid-loop.
+    trap '_restore_terminal' EXIT
 
     if [[ -t 0 ]] && [[ -t 1 ]]; then
         stty -echo 2>/dev/null || true
