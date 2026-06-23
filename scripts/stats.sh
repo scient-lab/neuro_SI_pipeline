@@ -303,10 +303,12 @@ render_system() {
     [[ "$_sep_dashes" -gt 0 ]] && printf '─%.0s' $(seq 1 "$_sep_dashes")
     printf "%s\n" "$EOL"
 
-    local cpu_pct mem_line mem_pct mem_used mem_total
+    local cpu_pct mem_line mem_pct mem_used mem_total cpu_cores
     cpu_pct=$(sample_cpu_pct)
     push_hist cpu "$cpu_pct"
-    render_metric "CPU" "$cpu_pct" "$hkey_cpu"
+    # CPU detail: core count (cheap one-shot read; doesn't change between samples).
+    cpu_cores=$(nproc 2>/dev/null || echo "?")
+    render_metric "CPU" "$cpu_pct" "$hkey_cpu" "${cpu_cores} cores"
 
     mem_line="$(sample_mem)"
     read -r mem_pct mem_used mem_total <<< "$mem_line"
@@ -328,8 +330,12 @@ render_system() {
             push_hist gpu  "$util"
             push_hist vram "$vram_pct"
         fi
-        render_metric "GPU $gpu_idx" "$util"     "${gpu_idx:+}${hkey_gpu}"  "$name"
-        render_metric "VRAM"         "$vram_pct" "${gpu_idx:+}${hkey_vram}" "${vram_gb_used} / ${vram_gb_total} GB    ${temp}°C"
+        # Strip "NVIDIA " prefix — the row label already says GPU.
+        # Move temp onto the GPU line (it's a GPU property, not VRAM) with
+        # a middle-dot separator so the secondary fact reads as one unit.
+        local short_name="${name#NVIDIA }"
+        render_metric "GPU $gpu_idx" "$util"     "${gpu_idx:+}${hkey_gpu}"  "${short_name} · ${temp}°C"
+        render_metric "VRAM"         "$vram_pct" "${gpu_idx:+}${hkey_vram}" "${vram_gb_used} / ${vram_gb_total} GB"
         # If multi-GPU later, suppress sparkline on idx > 0 by passing "" as
         # hist_key. For now single-GPU case is the only path exercised.
         gpu_idx=$(( gpu_idx + 1 ))
@@ -345,7 +351,13 @@ render_system() {
         local disk_pct disk_used disk_total disk_mnt
         read -r disk_pct disk_used disk_total disk_mnt <<< "$disk_line"
         push_hist disk "$disk_pct"
-        render_metric "DISK" "$disk_pct" "$hkey_disk" "${disk_used} / ${disk_total} GB    ${disk_mnt}"
+        # Suppress the mount label when it's just '/' (default root). The
+        # lone '/' floated at the same column as VRAM's temperature, making
+        # the alignment look broken. Show the mount only when it's been
+        # explicitly overridden via $DISK_MOUNT.
+        local disk_detail="${disk_used} / ${disk_total} GB"
+        [[ "$disk_mnt" != "/" ]] && disk_detail+="    ${disk_mnt}"
+        render_metric "DISK" "$disk_pct" "$hkey_disk" "$disk_detail"
     fi
 }
 
