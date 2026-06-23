@@ -22,7 +22,7 @@ import time
 
 # Pipeline config loader (repo root, 2 levels up from this file).
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from pipeline_config import get_model_id, get_relations  # noqa: E402
+from pipeline_config import get_model_id, get_phase_param, get_relations  # noqa: E402
 
 # ================= MODEL CONFIGURATION =================
 # Sourced from configs/default.yaml::models (overridable via domain/profile).
@@ -42,7 +42,11 @@ TRACE_MIN_WORDS = 100        # Too short = not useful for training
 # =======================================================
 
 # ================= THINKING BUDGET =====================
-THINKING_BUDGET = 4096        # Max thinking tokens for question generation
+# Sourced from configs/default.yaml::curriculum.thinking_budget (default 4096).
+# Smoke profile drops to 512 for ~8x faster per-call latency. Per Jha
+# 2026-06-04 mandate ("reasoning LLMs mandatory at every stage"), do NOT
+# set to 0 in production; trim aggressively only when smoke-validating.
+THINKING_BUDGET = get_phase_param('curriculum', 'thinking_budget', 4096)
 # =======================================================
 
 

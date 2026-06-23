@@ -36,6 +36,10 @@ from pipeline_config import get_phase_param  # noqa: E402
 # with fallbacks if SI_PROFILE is unset. CLI flags still override at parse time.
 _DEFAULT_TARGET_COUNT = get_phase_param('curriculum', 'num_questions', 5000)
 _DEFAULT_HOP_RANGE    = get_phase_param('curriculum', 'hop_range', [2, 3])
+# Checkpoint cadence: persist curriculum.json every N successful questions.
+# Default 100 matches the original hardcoded value (preserves paper/pilot
+# behavior). Smoke profile drops to 5 so a mid-run crash doesn't lose work.
+_CHECKPOINT_EVERY     = get_phase_param('curriculum', 'checkpoint_every', 100)
 _DEFAULT_MIN_HOPS     = _DEFAULT_HOP_RANGE[0] if isinstance(_DEFAULT_HOP_RANGE, (list, tuple)) and len(_DEFAULT_HOP_RANGE) >= 1 else 2
 _DEFAULT_MAX_HOPS     = _DEFAULT_HOP_RANGE[1] if isinstance(_DEFAULT_HOP_RANGE, (list, tuple)) and len(_DEFAULT_HOP_RANGE) >= 2 else 3
 import logging
@@ -158,7 +162,7 @@ def main():
                 qa_item["hop_count"] = path_data["hop_count"]
                 results.append(qa_item)
                 seen_signatures.add(sig)
-                if len(results) % 100 == 0:
+                if len(results) % _CHECKPOINT_EVERY == 0:
                     logger.info("Generated %d / %d items", len(results), args.target_count)
                     # Save checkpoint
                     with open(out_file, "w") as f:

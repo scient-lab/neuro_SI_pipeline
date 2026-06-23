@@ -148,6 +148,17 @@ curriculum:
   num_questions: 30000   # paper-default; profiles can override
   prune_fanout: 8
   qa_check_required: true   # Jha 2026-06-04 mandate
+  # Gemini 2.5-flash thinking budget for the question-generation LLM call
+  # (generate_questions.py::LLM.generate_question). 4096 matches the
+  # original hardcoded value and preserves paper-scale reasoning depth.
+  # Smoke profile drops this to 512 (~8x faster per call). Smoke-validated
+  # 2026-06-23: 100q at 4096 ran 3h on RTX 3060. Tune cautiously — Jha
+  # 2026-06-04 mandate: "mandatory reasoning LLMs at every stage."
+  thinking_budget: 4096
+  # Persist the in-progress curriculum.json every N successful questions
+  # (generate_curriculum.py main loop). 100 matches the original hardcoded
+  # value; smoke profile drops to 5 so a crash at q=99 doesn't lose work.
+  checkpoint_every: 100
 
 # --- Phase: sft (matches 3_si_curriculum/training/trainer.py) ------------
 sft:

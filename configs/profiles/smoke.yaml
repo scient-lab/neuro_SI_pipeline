@@ -50,8 +50,17 @@ graphmert:
     # max_nodes is DERIVED in architecture.py as root_nodes * (1 + num_leaves) — do not set
 
 curriculum:
-  num_questions: 100
+  # Drop from 100 -> 20: smoke validates plumbing, not coverage. At
+  # default thinking_budget=4096, 100q ran 3h on RTX 3060 (2026-06-22).
+  num_questions: 20
   hop_range: [1, 3]
+  # Drop from 4096 -> 512 for ~8x faster per-call latency. NOT zero —
+  # Jha mandate (2026-06-04) requires reasoning at every stage; we're
+  # trimming, not removing.
+  thinking_budget: 512
+  # Drop from 100 -> 5: at 20 questions total, a crash at q=19 with
+  # checkpoint_every=100 would lose all work.
+  checkpoint_every: 5
 
 # sft: keys match 3_si_curriculum/training/trainer.py::TrainingConfig fields
 # that are wired via get_phase_param (lora_r, lora_alpha, lora_dropout,
