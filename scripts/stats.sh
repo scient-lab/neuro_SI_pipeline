@@ -142,8 +142,8 @@ bar() {
 # edge as STEPS instead of trailing short like before.
 TABLE_W=96
 BAR_W=50         # was 20 — wider gauge gives finer visual resolution
-HIST_W=60        # last 60 samples per metric in --live mode (= 5 min at 5s refresh)
-SPARK_CHARS=$(( HIST_W / 2 ))   # braille packs 2 samples per char → 30 chars wide
+HIST_W=80        # last 80 samples per metric in --live mode (~6.5 min at 5s refresh)
+SPARK_CHARS=$(( HIST_W / 2 ))   # braille packs 2 samples per char → 40 chars wide
 declare -a HIST_cpu HIST_ram HIST_gpu HIST_vram HIST_disk
 
 # Disk usage changes slowly and `df` is comparatively expensive — sample at
@@ -208,20 +208,34 @@ sys.stdout.write(''.join(out))
 }
 
 # render_metric LABEL PCT HIST_KEY DETAIL — one line of system stats.
-# Layout dropped the wide horizontal bar (50 chars was wider than the
-# phase table's TABLE_W=96 and made the system row not align with the
-# STEPS column). Numerical pct + detail carry the same info compactly.
-# Sparkline kept (when in --live mode) for trend at a glance.
+#
+# Layout: LABEL  [SPARK]  DETAIL                              PCT
+#   - LABEL is left-padded to 8 cols
+#   - SPARK is only rendered in --live mode (hist_key non-empty); 40 cols
+#   - DETAIL is left-aligned, padded to fill the remaining width
+#   - PCT is right-aligned at TABLE_W (column 96) so single-digit (9%) and
+#     triple-digit (100%) values share the same right edge.
+#
+# This reorder (pct from left to right) eliminates the per-row column drift
+# caused by 1-vs-3-char pct values pushing the sparkline around. DETAIL
+# becomes the visual anchor; PCT becomes a glanceable summary at row end.
 render_metric() {
     local label=$1 pct=$2 hist_key=${3:-} detail=${4:-}
-    printf "  %-8s %3d%%  " "$label" "$pct"
+    # Track current column position so we can size the detail field to
+    # right-align PCT at TABLE_W regardless of whether sparkline is shown.
+    local prefix_w=$(( 2 + 8 + 1 ))   # "  LABEL(8) " = 11 cols
+    printf "  %-8s " "$label"
     if [[ -n "$hist_key" ]]; then
         spark "$hist_key"
         printf "  "
+        prefix_w=$(( prefix_w + SPARK_CHARS + 2 ))
     fi
+    # Detail field width: fill up to (TABLE_W - 5), leaving " PCT%" suffix.
+    local detail_w=$(( TABLE_W - prefix_w - 5 ))
+    [[ "$detail_w" -lt 1 ]] && detail_w=1
     # ${EOL} = erase-to-EOL (or empty on non-tty). Cleans up tail-garbage
     # from a longer previous frame in --live mode.
-    printf "%s%s\n" "$detail" "$EOL"
+    printf "%-${detail_w}s %3d%%%s\n" "$detail" "$pct" "$EOL"
 }
 
 # Cheap CPU% via /proc/stat (no busybox-vs-procps top quirks).
