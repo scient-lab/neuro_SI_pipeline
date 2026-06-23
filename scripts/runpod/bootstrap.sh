@@ -74,6 +74,13 @@ command -v git       >/dev/null 2>&1 || need_apt+=(git)
 command -v curl      >/dev/null 2>&1 || need_apt+=(curl)
 command -v unzip     >/dev/null 2>&1 || need_apt+=(unzip)
 command -v envsubst  >/dev/null 2>&1 || need_apt+=(gettext-base)
+# gcc is required for pyximport to compile
+# 2_graphmert/graphmert_model/algos_graphmert.pyx at runtime (first import
+# of collating_graphmert, inside train_mnm). Symptom without it:
+#   pyximport build failure: command 'gcc' not found
+# Python.h itself ships with uv's managed Python below; this only covers
+# the C compiler.
+command -v gcc       >/dev/null 2>&1 || need_apt+=(build-essential)
 if [[ ${#need_apt[@]} -gt 0 ]]; then
     echo "=== apt install: ${need_apt[*]} ==="
     apt-get update -qq
@@ -160,6 +167,17 @@ clone_or_pull "$GRAPHMERT_UMLS_HOME" "$GRAPHMERT_UMLS_REPO" "$GRAPHMERT_UMLS_BRA
 cd "$SI_HOME"
 
 # --- 4. create venvs ------------------------------------------------------
+# Force uv to always use its own standalone Python distributions, which
+# ship Python.h + the full include/ dir bundled with the interpreter.
+# Otherwise uv's default "auto" preference can reuse the base image's
+# apt-installed python3.10, which on RunPod typically lacks dev headers
+# and causes pyximport to crash at train_mnm with:
+#   fatal error: Python.h: No such file or directory
+# Pinning uv-managed Python also makes the venv reproducible across
+# RunPod base images (3.10 / 3.11 / 3.12 each ship different patch levels).
+export UV_PYTHON_PREFERENCE=only-managed
+export UV_PYTHON_DOWNLOADS=automatic
+
 # Export GRAPHMERT_UMLS_ROOT so setup.sh installs the vendored graphrag
 # editably (see setup.sh's graphrag-stage post-install hook).
 export GRAPHMERT_UMLS_ROOT="$GRAPHMERT_UMLS_HOME"
