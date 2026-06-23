@@ -1,20 +1,29 @@
 #!/usr/bin/env bash
 # scripts/stats.sh — pipeline run-status table with optional live-refresh
-# and system-resource bars (btop-style minimal).
+# and resource-utilization bars (btop-style minimal).
 #
 # Separate from scripts/logs.sh (which keeps its own --summary / --details
 # unchanged for backward compat) so this can grow features without
 # disturbing the log-viewer.
 #
+# Flags:
+#   --steps      / -s    Nested step rows under each phase
+#   --live       / -l    Auto-refresh every --interval seconds (default 5)
+#   --resources  / -r    Add CPU/RAM/GPU/VRAM gauges
+#   --interval N         Live refresh rate (seconds; min 1)
+#   --run <prefix>       Specific historical run (default: latest)
+#   --no-color           Disable ANSI colors
+#
 # Usage:
-#   ./scripts/stats.sh                          # one-shot summary (phases only)
-#   ./scripts/stats.sh --steps                  # nested step rows under each phase
-#   ./scripts/stats.sh --live                   # refresh every 5s
-#   ./scripts/stats.sh --live --interval 2      # custom refresh
-#   ./scripts/stats.sh --live --system          # add CPU/RAM/GPU/VRAM gauges
-#   ./scripts/stats.sh --steps --live --system  # all-in-one operator view
-#   ./scripts/stats.sh --run <prefix>           # historical run
-#   ./scripts/stats.sh --no-color               # disable ANSI colors
+#   ./scripts/stats.sh                              # one-shot summary (phases only)
+#   ./scripts/stats.sh --steps                      # nested step rows under each phase
+#   ./scripts/stats.sh --live                       # refresh every 5s
+#   ./scripts/stats.sh --live --interval 2          # custom refresh
+#   ./scripts/stats.sh --live --resources           # add CPU/RAM/GPU/VRAM gauges
+#   ./scripts/stats.sh --steps --live --resources   # all-in-one operator view
+#   ./scripts/stats.sh -s -l -r                     # same, short-form
+#   ./scripts/stats.sh --run <prefix>               # historical run
+#   ./scripts/stats.sh --no-color                   # disable ANSI colors
 #
 # Exit codes match logs.sh (0 OK, 1 error).
 
@@ -33,12 +42,21 @@ USE_COLOR=auto
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        --steps)        SHOW_STEPS=1; shift ;;
+        # --steps / -s: nested per-step rows under each phase
+        -s|--steps)        SHOW_STEPS=1; shift ;;
+        # Legacy: -d / --details was renamed to --steps when the old short
+        # flag (-d) became ambiguous with operators thinking it meant
+        # "delete." Kept as a warning-only alias so prior automation
+        # doesn't silently break.
         -d|--details)   echo "stats.sh: '-d' / '--details' renamed to '--steps' (the old short flag was ambiguous with 'delete')." >&2
                         SHOW_STEPS=1; shift ;;
-        --live)         LIVE=1; shift ;;
+        # --live / -l: auto-refresh every --interval seconds
+        -l|--live)         LIVE=1; shift ;;
         --interval)     INTERVAL="$2"; shift 2 ;;
-        --system)       SHOW_SYSTEM=1; shift ;;
+        # --resources / -r: CPU/RAM/GPU/VRAM gauges. Was --system (deprecated).
+        -r|--resources) SHOW_SYSTEM=1; shift ;;
+        --system)       echo "stats.sh: '--system' renamed to '--resources' (more specific: CPU/RAM/GPU/VRAM gauges, not e.g. hostname/kernel)." >&2
+                        SHOW_SYSTEM=1; shift ;;
         --no-color)     USE_COLOR=no; shift ;;
         --run)          RUN_ID="$2"; shift 2 ;;
         -h|--help)      sed -n '/^#/p' "$0" | sed 's/^# \?//'; exit 0 ;;
