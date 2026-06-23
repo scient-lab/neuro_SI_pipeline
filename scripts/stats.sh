@@ -223,12 +223,20 @@ sys.stdout.write(''.join(out))
 # UTF-8 NOTE: bash `printf %-Ns` pads by BYTE count, not display columns.
 # A detail like "RTX A6000 · 74°C" has 16 visible chars but 18 bytes (·
 # and ° are 2 bytes each in UTF-8), causing pct to render 2 cols too far
-# left. _pad_display() uses awk's codepoint-aware length() under
-# LC_ALL=C.UTF-8 to compute padding correctly.
+# left.
+#
+# We use python for the count rather than awk because Debian/Ubuntu's
+# default `awk` is mawk, which counts bytes regardless of locale — so
+# `LC_ALL=C.UTF-8 awk length()` only works under gawk and silently
+# regresses on RunPod-style Ubuntu images. python's `len()` always
+# counts Unicode codepoints (= display columns for non-CJK strings),
+# making the result deterministic across distros.
 _pad_display() {
     local str="$1" w="$2"
-    LC_ALL=C.UTF-8 awk -v s="$str" -v w="$w" \
-        'BEGIN { n = length(s); pad = (w > n) ? w - n : 0; printf "%s%*s", s, pad, "" }'
+    python3 -c "import sys
+s = sys.argv[1]
+w = int(sys.argv[2])
+sys.stdout.write(s + ' ' * max(0, w - len(s)))" "$str" "$w"
 }
 
 render_metric() {
