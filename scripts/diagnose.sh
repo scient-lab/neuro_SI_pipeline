@@ -135,14 +135,33 @@ RUN_PARENT="$OUTPUT_BASE"
 if [[ ! -d "$LOGS_BASE" && -d "$RUN_PARENT" ]]; then
     LOGS_BASE="$RUN_PARENT"
 fi
+if [[ ! -d "$LOGS_BASE" ]]; then
+    # Tell the operator WHERE we looked — silently exit is the worst UX.
+    # Send to both stdout AND stderr so it survives both bare invocations
+    # and `... 2>&1 | grep`-style filters.
+    echo "ERROR: $LOGS_BASE does not exist. Run from repo root, or set OUTPUT_BASE." | tee /dev/stderr
+    echo "  cwd:        $PWD" | tee /dev/stderr
+    echo "  REPO_ROOT:  $REPO_ROOT" | tee /dev/stderr
+    echo "  OUTPUT_BASE: $OUTPUT_BASE" | tee /dev/stderr
+    exit 1
+fi
 if [[ -z "$RUN_ID" ]]; then
     RUN_ID=$(find "$LOGS_BASE" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null \
                  | grep -E '^[0-9]{8}-[0-9]{6}' | sort -r | head -1 || true)
-    [[ -z "$RUN_ID" ]] && { echo "No runs found under $LOGS_BASE/"; exit 1; }
+    if [[ -z "$RUN_ID" ]]; then
+        echo "ERROR: no runs matching YYYYMMDD-HHMMSS under $LOGS_BASE/" | tee /dev/stderr
+        exit 1
+    fi
 elif [[ ! -d "$LOGS_BASE/$RUN_ID" ]]; then
     match=$(find "$LOGS_BASE" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null \
                 | grep -E "^${RUN_ID}" | sort -r | head -1)
-    [[ -z "$match" ]] && { echo "No run matching: $RUN_ID" >&2; exit 1; }
+    if [[ -z "$match" ]]; then
+        echo "ERROR: no run matching '$RUN_ID' under $LOGS_BASE/" | tee /dev/stderr
+        echo "  available runs:" | tee /dev/stderr
+        find "$LOGS_BASE" -mindepth 1 -maxdepth 1 -type d -printf '    %f\n' 2>/dev/null \
+            | sort -r | head -5 | tee /dev/stderr
+        exit 1
+    fi
     RUN_ID="$match"
 fi
 # LOG_DIR convention differs between the two layouts (see above). Resolve
