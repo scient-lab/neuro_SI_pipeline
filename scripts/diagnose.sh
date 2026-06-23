@@ -831,6 +831,47 @@ in_flight_estimate=$(( http_200 / 6 ))
 
 note "questions saved:  $saved / $CURRICULUM_TARGET$stale_note"
 note "in-flight est:    ~$in_flight_estimate questions (HTTP 200s / 6 calls per Q)"
+
+# Rate + ETA — based on SAVED questions vs. process elapsed time. Only useful
+# when there's progress to extrapolate from. Skip if process isn't running,
+# or saved count is from a stale checkpoint (prior run's data).
+if [[ -n "$CURRICULUM_PID" && "$saved" -gt 0 && -z "$stale_note" ]]; then
+    # `ps -o etimes=` returns elapsed seconds (no formatting). Some BusyBox
+    # ps lacks etimes; fall back to parsing the etime "HH:MM:SS" format.
+    elapsed_sec=$(ps -o etimes= -p "$CURRICULUM_PID" 2>/dev/null | xargs || true)
+    if [[ -z "$elapsed_sec" || ! "$elapsed_sec" =~ ^[0-9]+$ ]]; then
+        # Fallback: parse the formatted etime (dd-HH:MM:SS or HH:MM:SS or MM:SS)
+        elapsed_sec=$(ps -o etime= -p "$CURRICULUM_PID" 2>/dev/null | xargs | \
+            awk -F'[-:]' '{ n=NF; s=$n; if(n>=2)s+=$(n-1)*60; if(n>=3)s+=$(n-2)*3600;
+                            if(n>=4)s+=$(n-3)*86400; print s }' || echo 0)
+    fi
+    if [[ "$elapsed_sec" -gt 0 ]]; then
+        # Rate (q/min) and seconds-per-question, computed in awk to avoid bash float math.
+        rate_per_min=$(awk -v s="$saved" -v t="$elapsed_sec" 'BEGIN{printf "%.2f", s / (t/60)}')
+        sec_per_q=$(awk -v s="$saved" -v t="$elapsed_sec" 'BEGIN{printf "%.0f", t/s}')
+        note "rate:             ${rate_per_min} q/min  (~${sec_per_q}s per accepted question)"
+        # ETA — only meaningful when we know the target. Format shows the
+        # math explicitly so the operator can sanity-check the projection:
+        #   "time left: ~55m  (25 q × ~132s/q)"
+        # means 25 questions remain at ~132s each → ~55 minutes total.
+        if [[ "$CURRICULUM_TARGET" =~ ^[0-9]+$ ]]; then
+            remaining=$((CURRICULUM_TARGET - saved))
+            if [[ "$remaining" -gt 0 ]]; then
+                eta_sec=$((remaining * sec_per_q))
+                eta_hr=$((eta_sec / 3600))
+                eta_min=$(( (eta_sec % 3600) / 60 ))
+                if [[ "$eta_hr" -gt 0 ]]; then
+                    note "time left:        ~${eta_hr}h ${eta_min}m  (${remaining} questions remaining × ~${sec_per_q}s/q)"
+                else
+                    note "time left:        ~${eta_min}m  (${remaining} questions remaining × ~${sec_per_q}s/q)"
+                fi
+            else
+                note "time left:        target reached"
+            fi
+        fi
+    fi
+fi
+
 note "checkpoint hits:  $gen_lines (one log line per _CHECKPOINT_EVERY successful Qs)"
 note "HTTP 200 OK:      $http_200"
 note "HTTP 503 Unavail: $http_503"

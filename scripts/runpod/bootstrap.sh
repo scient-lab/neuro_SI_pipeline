@@ -81,6 +81,11 @@ command -v envsubst  >/dev/null 2>&1 || need_apt+=(gettext-base)
 # Python.h itself ships with uv's managed Python below; this only covers
 # the C compiler.
 command -v gcc       >/dev/null 2>&1 || need_apt+=(build-essential)
+# nano: lightweight editor for ad-hoc config tweaks on the pod (e.g.,
+# editing configs/profiles/<profile>.yaml to swap a model or knob without
+# redeploying). RunPod base images sometimes ship vim only, which slows
+# down operators unfamiliar with modal editors.
+command -v nano      >/dev/null 2>&1 || need_apt+=(nano)
 if [[ ${#need_apt[@]} -gt 0 ]]; then
     echo "=== apt install: ${need_apt[*]} ==="
     apt-get update -qq
