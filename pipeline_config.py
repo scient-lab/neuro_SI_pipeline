@@ -265,6 +265,40 @@ def get_platform_param(key: str, default: Any = None) -> Any:
     return (load_config().get("platform") or {}).get(key, default)
 
 
+# --- Exception / retry semantics loader -----------------------------------
+
+@lru_cache(maxsize=1)
+def _load_exceptions_yaml() -> dict[str, Any]:
+    """Read configs/exceptions.yaml once per process. Empty dict if missing —
+    callers fall back to in-code defaults (don't fail the run just because
+    the file is absent on an unbootstrapped checkout).
+    """
+    path = _REPO_ROOT / "configs" / "exceptions.yaml"
+    if not path.exists():
+        return {}
+    return _read(path)
+
+
+def get_exception_config(library: str) -> dict[str, Any]:
+    """Library-binding retry semantics from configs/exceptions.yaml.
+
+    Returns a dict with keys:
+        transient_markers:     list[str]  (substring-matched against str(e).lower())
+        initial_delay_seconds: float      (first retry wait; doubles each retry)
+        max_retries:           int        (retry count cap)
+    Missing keys → empty dict (caller must supply its own defaults).
+
+    Example:
+        cfg = get_exception_config('gemini')
+        markers = tuple(str(m).lower() for m in cfg.get('transient_markers', []))
+
+    FUTURE: this whole helper is obsoleted by LiteLLM adoption — see the
+    "FUTURE: LITELLM MIGRATION" block in configs/exceptions.yaml. Until
+    then, maintain the YAML.
+    """
+    return _load_exceptions_yaml().get(library, {}) or {}
+
+
 # --- Prompt loader --------------------------------------------------------
 
 def get_prompt(name: str) -> dict[str, Any]:

@@ -5,24 +5,27 @@
 # extract finishes (suspiciously fast/slow) to catch silent-success failures
 # BEFORE they poison graphmert (or later phases).
 #
-# Today it covers extract → graphmert handoff. Each section is tagged with
-# a (PHASE, STEP) — use --phase / --step to filter scope, --deep for depth.
+# Today it covers extract → graphmert → curriculum handoff. Each section
+# is tagged with a (PHASE, STEP) — use --phase / --step to filter scope,
+# --deep for depth.
 #
-#   §   Title                                Phase       Step
-#   --  -----------------------------------  ---------   --------
-#   1   Corpus presence/size sanity          extract     -
-#   2   Extract output (kg_final.csv)        extract     build_kg
-#   3   GraphRAG artifacts                   extract     index
-#   4   Extract phase log scan               extract     -
-#   5   graphmert intermediate state         graphmert   preprocess
-#   6   GraphRAG internals (--deep)          extract     -
-#   7   graphmert internals (--deep)         graphmert   -
-#   8   Verdict                              (always runs)
+#   §   Title                                Phase        Step
+#   --  -----------------------------------  ----------   -----------
+#   1   Corpus presence/size sanity          extract      -
+#   2   Extract output (kg_final.csv)        extract      build_kg
+#   3   GraphRAG artifacts                   extract      index
+#   4   Extract phase log scan               extract      -
+#   5   graphmert intermediate state         graphmert    preprocess
+#   6   GraphRAG internals (--deep)          extract      -
+#   7   graphmert internals (--deep)         graphmert    -
+#   8   curriculum.generate_qa progress      curriculum   generate_qa
+#   9   Verdict                              (always runs)
 #
 # Filters compose like pipeline.sh:
-#   --phase extract             → §1, §2, §3, §4 (+ §6 with --deep)
+#   --phase extract              → §1, §2, §3, §4 (+ §6 with --deep)
 #   --phase extract --step index → §1, §3        (+ §6 with --deep)
-#   --phase graphmert           → §5             (+ §7 with --deep)
+#   --phase graphmert            → §5             (+ §7 with --deep)
+#   --phase curriculum           → §8
 #   no filter                    → all
 #
 # Exit code: 0 if all checks pass, 1 if any FAIL, 2 if WARN-only.
@@ -33,6 +36,8 @@
 #   ./scripts/diagnose.sh --phase extract                       # scope to extract
 #   ./scripts/diagnose.sh --phase extract --step build_kg       # narrow further
 #   ./scripts/diagnose.sh --phase graphmert --deep              # graphmert internals
+#   ./scripts/diagnose.sh --phase curriculum                    # live generate_qa status
+#   watch -n 10 ./scripts/diagnose.sh --phase curriculum        # live polling
 #   ./scripts/diagnose.sh --run <prefix>                        # specific historical run
 #   ./scripts/diagnose.sh --quiet                               # VERDICT + failures only
 #   ./scripts/diagnose.sh --tee <file>                          # also write to file
@@ -121,10 +126,18 @@ if [[ -n "$TEE_FILE" ]]; then
 fi
 
 # --- run id resolution ------------------------------------------------------
+# Two layouts to support:
+#   (A) per-run OUTPUT_BASE — outputs/<RUN_ID>/logs/adhoc/<phase>/    (ad-hoc / smoke)
+#   (B) shared logs dir    — outputs/logs/<RUN_ID>/<phase>/           (pipeline.sh-driven)
+# Prefer (A) if `outputs/<RUN_ID>/logs/` exists, else fall back to (B).
 LOGS_BASE="$OUTPUT_BASE/logs"
+RUN_PARENT="$OUTPUT_BASE"
+if [[ ! -d "$LOGS_BASE" && -d "$RUN_PARENT" ]]; then
+    LOGS_BASE="$RUN_PARENT"
+fi
 if [[ -z "$RUN_ID" ]]; then
     RUN_ID=$(find "$LOGS_BASE" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null \
-                 | sort -r | head -1 || true)
+                 | grep -E '^[0-9]{8}-[0-9]{6}' | sort -r | head -1 || true)
     [[ -z "$RUN_ID" ]] && { echo "No runs found under $LOGS_BASE/"; exit 1; }
 elif [[ ! -d "$LOGS_BASE/$RUN_ID" ]]; then
     match=$(find "$LOGS_BASE" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null \
@@ -132,7 +145,15 @@ elif [[ ! -d "$LOGS_BASE/$RUN_ID" ]]; then
     [[ -z "$match" ]] && { echo "No run matching: $RUN_ID" >&2; exit 1; }
     RUN_ID="$match"
 fi
-LOG_DIR="$LOGS_BASE/$RUN_ID"
+# LOG_DIR convention differs between the two layouts (see above). Resolve
+# both candidates; §-sections pick whichever exists.
+if [[ -d "$LOGS_BASE/$RUN_ID/logs/adhoc" ]]; then
+    # Layout (A): outputs/<RUN_ID>/logs/adhoc/<phase>/
+    LOG_DIR="$LOGS_BASE/$RUN_ID/logs/adhoc"
+else
+    # Layout (B): outputs/logs/<RUN_ID>/<phase>/
+    LOG_DIR="$LOGS_BASE/$RUN_ID"
+fi
 EXTRACT_LOG_DIR="$LOG_DIR/extract"
 
 # --- counters + state -------------------------------------------------------
@@ -708,7 +729,118 @@ PY
     fi
 fi
 
-# --- 8. Verdict -------------------------------------------------------------
+# --- 8. curriculum.generate_qa progress (phase=curriculum step=generate_qa) -
+# Live status of the curriculum.generate_qa step: process state, in-flight
+# vs saved question count, HTTP success/failure tallies, retry behavior.
+# Useful both during an in-flight run (`watch -n 10 ./scripts/diagnose.sh
+# --phase curriculum`) and post-run (no PID, but log + checkpoint counts
+# stay readable).
+if should_run curriculum generate_qa; then
+section "8. curriculum.generate_qa progress"
+
+CURRICULUM_LOG="$LOG_DIR/curriculum/generate_qa.log"
+# Phase output dir convention varies between layouts (see RUN_ID resolution):
+#   (A) outputs/<RUN_ID>/curriculum/curriculum.json   (ad-hoc / smoke)
+#   (B) outputs/curriculum/curriculum.json            (no run subdir)
+CURRICULUM_CHKPT="$OUTPUT_BASE/$RUN_ID/curriculum/curriculum.json"
+[[ -f "$CURRICULUM_CHKPT" ]] || CURRICULUM_CHKPT="$OUTPUT_BASE/curriculum/curriculum.json"
+
+# Resolve target N_QUESTIONS from active profile (parsed from RUN_ID, format
+# YYYYMMDD-HHMMSS-<profile>-<sha>). Falls back to '?' if profile YAML or
+# curriculum.num_questions key is missing.
+CURRICULUM_PROFILE="${SI_PROFILE:-$(echo "$RUN_ID" | awk -F- '{print $3}')}"
+CURRICULUM_TARGET="?"
+CURRICULUM_PROFILE_YAML="$REPO_ROOT/configs/profiles/${CURRICULUM_PROFILE}.yaml"
+if [[ -f "$CURRICULUM_PROFILE_YAML" ]]; then
+    extracted=$(awk '
+        /^curriculum:/ {in_s=1; next}
+        in_s && /^[A-Za-z]/ {in_s=0}
+        in_s && /^[[:space:]]*num_questions:/ {gsub(/[^0-9]/, ""); print; exit}
+    ' "$CURRICULUM_PROFILE_YAML")
+    [[ -n "$extracted" ]] && CURRICULUM_TARGET="$extracted"
+fi
+
+# Safe count helper — avoids the `grep -c | echo 0` double-output bug.
+# awk index() is exit-code-safe and always prints the count.
+_count_in_log() {
+    local pattern="$1"
+    [[ -f "$CURRICULUM_LOG" ]] || { echo 0; return; }
+    awk -v pat="$pattern" 'index($0, pat) {n++} END {print n+0}' "$CURRICULUM_LOG"
+}
+
+# Process detection
+CURRICULUM_PID=$(pgrep -f "generate_curriculum.py" | head -1 || true)
+if [[ -n "$CURRICULUM_PID" ]]; then
+    elapsed=$(ps -o etime= -p "$CURRICULUM_PID" 2>/dev/null | xargs)
+    note "process:          running (PID $CURRICULUM_PID, elapsed $elapsed)"
+else
+    note "process:          NOT running"
+fi
+note "profile:          $CURRICULUM_PROFILE (target: $CURRICULUM_TARGET questions)"
+
+# Checkpoint state + staleness detection
+saved=0
+stale_note=""
+if [[ -f "$CURRICULUM_CHKPT" ]]; then
+    if command -v jq >/dev/null 2>&1; then
+        saved=$(jq length "$CURRICULUM_CHKPT" 2>/dev/null || echo 0)
+    else
+        saved=$(grep -c '^\s*"hop_count"' "$CURRICULUM_CHKPT" 2>/dev/null || echo 0)
+    fi
+    if [[ -n "$CURRICULUM_PID" ]]; then
+        proc_start_epoch=$(ps -o lstart= -p "$CURRICULUM_PID" 2>/dev/null \
+            | xargs -I {} date -d "{}" +%s 2>/dev/null || echo 0)
+        chkpt_mtime_epoch=$(stat -c %Y "$CURRICULUM_CHKPT" 2>/dev/null || echo 0)
+        if [[ "$chkpt_mtime_epoch" -gt 0 && "$proc_start_epoch" -gt 0 \
+              && "$chkpt_mtime_epoch" -lt "$proc_start_epoch" ]]; then
+            stale_note=" (STALE: from prior run, current hasn't checkpointed yet)"
+        fi
+    fi
+fi
+
+# HTTP / retry tallies
+http_200=$(_count_in_log "HTTP/1.1 200")
+http_503=$(_count_in_log "HTTP/1.1 503")
+http_500=$(_count_in_log "HTTP/1.1 500")
+http_504=$(_count_in_log "HTTP/1.1 504")
+http_429=$(_count_in_log "HTTP/1.1 429")
+retries=$(_count_in_log "Transient error")
+gen_lines=$(_count_in_log "Generated ")
+
+# Each accepted question costs ~6 successful 200s (the 6-step LLM pipeline).
+in_flight_estimate=$(( http_200 / 6 ))
+
+note "questions saved:  $saved / $CURRICULUM_TARGET$stale_note"
+note "in-flight est:    ~$in_flight_estimate questions (HTTP 200s / 6 calls per Q)"
+note "checkpoint hits:  $gen_lines (one log line per _CHECKPOINT_EVERY successful Qs)"
+note "HTTP 200 OK:      $http_200"
+note "HTTP 503 Unavail: $http_503"
+note "HTTP 500/504:     $((http_500 + http_504))"
+note "HTTP 429 Rate:    $http_429"
+note "transient retry: $retries"
+if [[ -f "$CURRICULUM_LOG" ]]; then
+    note "last log line:   $(tail -1 "$CURRICULUM_LOG" 2>/dev/null)"
+fi
+
+# Heuristic warnings — surface to verdict via mark_warn / mark_fail.
+total_http=$((http_200 + http_503 + http_500 + http_504 + http_429))
+if [[ "$total_http" -gt 20 ]]; then
+    fail_pct=$(( (http_503 + http_500 + http_504) * 100 / total_http ))
+    if [[ "$fail_pct" -gt 50 ]]; then
+        mark_warn "Gemini 5xx rate ${fail_pct}% (${http_503} 503s + $((http_500 + http_504)) 5xx of ${total_http} calls) — upstream outage or our retry config too tight"
+    fi
+    # Retry inactivity check: if we have 5xx errors but zero retries logged,
+    # the running process is using the pre-fix code path (only retried 429).
+    if [[ "$http_503" -gt 0 && "$retries" -eq 0 ]]; then
+        mark_warn "${http_503} 503 errors with 0 transient-retry log lines — running process predates the 503-retry fix (restart to apply)"
+    fi
+fi
+if [[ -n "$CURRICULUM_PID" && -n "$stale_note" ]]; then
+    mark_warn "curriculum.json count is from a prior run; current run hasn't reached its first _CHECKPOINT_EVERY boundary yet"
+fi
+fi
+
+# --- 9. Verdict -------------------------------------------------------------
 echo
 echo "=== VERDICT $(printf '%.0s=' {1..50})" | head -c 70; echo
 if [[ "$FAILS" -eq 0 && "$WARNS" -eq 0 ]]; then

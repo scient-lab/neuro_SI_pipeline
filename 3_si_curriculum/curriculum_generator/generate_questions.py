@@ -22,7 +22,7 @@ import time
 
 # Pipeline config loader (repo root, 2 levels up from this file).
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from pipeline_config import get_model_id, get_phase_param, get_relations  # noqa: E402
+from pipeline_config import get_model_id, get_phase_param, get_relations, get_exception_config  # noqa: E402
 
 # ================= MODEL CONFIGURATION =================
 # Sourced from configs/default.yaml::models (overridable via domain/profile).
@@ -47,6 +47,20 @@ TRACE_MIN_WORDS = 100        # Too short = not useful for training
 # 2026-06-04 mandate ("reasoning LLMs mandatory at every stage"), do NOT
 # set to 0 in production; trim aggressively only when smoke-validating.
 THINKING_BUDGET = get_phase_param('curriculum', 'thinking_budget', 4096)
+# =======================================================
+
+# ================= RETRY SEMANTICS =====================
+# Sourced from configs/exceptions.yaml::gemini. Single source of
+# truth for which Gemini SDK error messages count as transient (retry
+# with exponential backoff) vs. permanent (fail fast). Fallback defaults
+# preserve the pre-YAML hardcoded behavior so the file going missing
+# doesn't crash the run, only widens the retry envelope slightly.
+_GEMINI_RETRY_CFG       = get_exception_config('gemini')
+_GEMINI_TRANSIENT       = tuple(str(m).lower()
+                                 for m in _GEMINI_RETRY_CFG.get('transient_markers',
+                                                                ['429', 'resource']))
+_GEMINI_INITIAL_DELAY_S = float(_GEMINI_RETRY_CFG.get('initial_delay_seconds', 4.0))
+_GEMINI_MAX_RETRIES     = int(_GEMINI_RETRY_CFG.get('max_retries', 5))
 # =======================================================
 
 
@@ -239,8 +253,13 @@ class GeminiLLMBackend:
         self.model_trace = MODEL_TRACE
         self.model_correctness = MODEL_CORRECTNESS
 
-    def _generate_with_retry(self, model: str, contents: str, config: Optional[Dict] = None, retries: int = 5):
-        delay = 4.0
+    def _generate_with_retry(self, model: str, contents: str, config: Optional[Dict] = None, retries: Optional[int] = None):
+        # Retry parameters sourced from configs/exceptions.yaml::gemini
+        # via module-level constants. CLI `retries=` override still wins so
+        # callers can short-circuit during smoke tests.
+        if retries is None:
+            retries = _GEMINI_MAX_RETRIES
+        delay = _GEMINI_INITIAL_DELAY_S
         for attempt in range(retries):
             try:
                 response = self.client.models.generate_content(
@@ -253,16 +272,18 @@ class GeminiLLMBackend:
                 return response
             except Exception as e:
                 error_str = str(e).lower()
-                if "429" in error_str or "resource" in error_str:
+                is_transient = any(m in error_str for m in _GEMINI_TRANSIENT)
+                if is_transient:
                     if attempt < retries - 1:
-                        print(f"Rate limit hit. Retrying in {delay} seconds... (Attempt {attempt + 1}/{retries})")
+                        print(f"Transient error ({e.__class__.__name__}). "
+                              f"Retrying in {delay} seconds... (Attempt {attempt + 1}/{retries})")
                         time.sleep(delay)
                         delay *= 2
                     else:
                         print("Max retries reached.")
                         raise e
                 else:
-                    print(f"Generation error (non-rate-limit): {e}")
+                    print(f"Generation error (non-transient): {e}")
                     raise e
         return None
 

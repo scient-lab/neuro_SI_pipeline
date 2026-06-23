@@ -1,0 +1,90 @@
+# configs/exceptions.yaml
+#
+# Library-binding retry semantics. NOT domain or profile config.
+#
+# Substring-match against `str(exception).lower()`. If ANY marker is a
+# substring of the lowercased error message, the call is treated as
+# transient → retry with exponential backoff. Otherwise, raise immediately.
+#
+# Edit ONLY when:
+#   - An SDK upgrade changes its error message format
+#   - A newly-observed transient code needs to be added to the retry list
+#
+# Do NOT add permanent / auth / quota-exhaustion markers (401, 403,
+# billing, invalid_api_key). Those must fail immediately so operators
+# see the real problem instead of burning retry budget on something
+# that will never succeed.
+#
+# Loader: pipeline_config.get_exception_config('gemini')
+# Schema per library:
+#   transient_markers:     list[str]  — substrings tested against str(e).lower()
+#   initial_delay_seconds: float       — first retry wait
+#   max_retries:           int         — retry count cap (delay doubles each step)
+#
+# ─── FUTURE: LITELLM MIGRATION ────────────────────────────────────────────
+# This file's substring-matching approach is a workaround for the lack of a
+# unified exception hierarchy across LLM SDKs. LiteLLM (https://litellm.ai)
+# solves this natively: provider-specific errors map to a stable set of
+# typed exceptions (RateLimitError, ServiceUnavailableError, Timeout,
+# APIConnectionError, ContextWindowExceededError, …) regardless of whether
+# the call hit Gemini, OpenAI, Anthropic, Bedrock, or local vLLM.
+#
+# When this pipeline migrates to LiteLLM:
+#   - This YAML file becomes mostly obsolete — replaced by per-call
+#     `litellm.completion(num_retries=N, request_timeout=T)` + `try/except
+#     litellm.exceptions.<TypedError>` blocks in callers.
+#   - Per-provider keys (`gemini`, `vllm`, `network`) collapse to one
+#     unified retry policy in a Router config.
+#   - SDK-specific params (Gemini `thinking_budget`, vLLM `enable_prefix_caching`)
+#     need explicit pass-through verification — LiteLLM doesn't proxy all
+#     provider-specific kwargs uniformly.
+#
+# Migration is gated on:
+#   1. vLLM moving from in-process (`from vllm import LLM`) to HTTP server
+#      (every LLM-using script needs an HTTP-client refactor)
+#   2. Verifying LiteLLM passes through Gemini's `thinking_budget` correctly
+#   3. Post-pilot stability — don't swap the LLM layer mid-pilot
+#
+# Until then: maintain this file. After: delete it.
+# ──────────────────────────────────────────────────────────────────────────
+
+gemini:
+  # Gemini API error messages (google-genai SDK). Substring match against
+  # str(exception).lower(). Key is the API product, not the SDK version —
+  # both google-generativeai (old) and google-genai (new) hit this list.
+  transient_markers:
+    - "429"            # RESOURCE_EXHAUSTED — rate limit
+    - "503"            # UNAVAILABLE — backend overloaded (70% rate observed 2026-06-23 smoke window)
+    - "500"            # INTERNAL — transient server error
+    - "504"            # DEADLINE_EXCEEDED — upstream timeout
+    - "resource"
+    - "unavailable"
+    - "internal"
+    - "deadline"
+    - "aborted"
+    - "connection"
+    - "timeout"
+  initial_delay_seconds: 4.0
+  max_retries: 5
+
+vllm:
+  # vllm server / client errors when running validate_qa / fact_score /
+  # predict_tails_llm / etc. Empty intentionally — fill in when real
+  # failures are observed. DO NOT speculate; an over-broad list here
+  # would mask real model-config bugs as "transient slowness".
+  transient_markers: []
+  initial_delay_seconds: 4.0
+  max_retries: 3
+
+network:
+  # Generic socket / TLS / DNS failures shared across HTTP-based callers.
+  # Used by helpers that don't fit cleanly under one library key.
+  transient_markers:
+    - "connection reset"
+    - "connection refused"
+    - "dns"
+    - "ssl"
+    - "tls"
+    - "broken pipe"
+  initial_delay_seconds: 2.0
+  max_retries: 5
