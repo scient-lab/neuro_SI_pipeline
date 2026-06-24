@@ -43,7 +43,18 @@ create_env() {
   # unsafe-best-match, uv considers all configured indexes and picks the
   # best version regardless of which index it came from. Safe in our
   # use case (all indexes are first-party / PyPI).
-  uv pip install --index-strategy unsafe-best-match -r "${REPO_DIR}/${reqs}"
+  # --no-build-isolation-package flash-attn: flash-attn's setup.py imports
+  # torch at build time but DOESN'T declare it as a PEP-518 build dep, so
+  # `uv`'s default isolated build env has no torch and fails with:
+  #   ModuleNotFoundError: No module named 'torch'
+  # This flag tells uv to build flash-attn against the env's torch (already
+  # installed earlier in the requirements). No-op for venvs without
+  # flash-attn in their reqs file. Confirmed working pattern across
+  # uv 0.4+ — same mechanism as `pip install --no-build-isolation` for
+  # this package.
+  uv pip install --index-strategy unsafe-best-match \
+      --no-build-isolation-package flash-attn \
+      -r "${REPO_DIR}/${reqs}"
   if [[ -n "${post}" ]]; then
     eval "${post}"
   fi
