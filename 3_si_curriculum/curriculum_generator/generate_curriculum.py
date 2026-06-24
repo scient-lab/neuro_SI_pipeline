@@ -27,6 +27,7 @@ import time
 import random
 import argparse
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Pipeline config loader (repo root, 2 levels up from this file).
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
@@ -40,6 +41,9 @@ _DEFAULT_HOP_RANGE    = get_phase_param('curriculum', 'hop_range', [2, 3])
 # Default 100 matches the original hardcoded value (preserves paper/pilot
 # behavior). Smoke profile drops to 5 so a mid-run crash doesn't lose work.
 _CHECKPOINT_EVERY     = get_phase_param('curriculum', 'checkpoint_every', 100)
+# Parallel Gemini workers for question generation. Paper=1 (sequential, safe).
+# Smoke/pilot=3-5 (parallel, faster). Respects Gemini API rate limits.
+_PARALLEL_WORKERS     = get_phase_param('curriculum', 'parallel_generation_workers', 1)
 _DEFAULT_MIN_HOPS     = _DEFAULT_HOP_RANGE[0] if isinstance(_DEFAULT_HOP_RANGE, (list, tuple)) and len(_DEFAULT_HOP_RANGE) >= 1 else 2
 _DEFAULT_MAX_HOPS     = _DEFAULT_HOP_RANGE[1] if isinstance(_DEFAULT_HOP_RANGE, (list, tuple)) and len(_DEFAULT_HOP_RANGE) >= 2 else 3
 import logging
@@ -143,35 +147,68 @@ def main():
     # scripts/phases/curriculum.sh:95 (audit bug #3).
     out_file = os.path.join(args.output_dir, "curriculum.json")
 
-    path_queue = deque(paths)
+    # Parallel Gemini question generation using ThreadPoolExecutor.
+    # Paper-grade: 1 worker (sequential, safe for API quotas).
+    # Smoke/pilot: 3-5 workers (parallel, faster: 3-4h → ~1h for 100q).
+    # Rate-limit backoff: Gemini 429 errors trigger exponential sleep.
+    logger.info(f"Starting Q&A generation with {_PARALLEL_WORKERS} parallel worker(s)")
 
-    while len(results) < args.target_count and attempts < max_attempts:
-        if not path_queue:
-            path_queue = deque(random.sample(paths, len(paths)))
+    with ThreadPoolExecutor(max_workers=_PARALLEL_WORKERS) as executor:
+        futures = {}  # Map future → path_data
+        pending_paths = deque(random.sample(paths, len(paths)))  # Refilled as we go
 
-        path_data = path_queue.popleft()
-        sig = get_path_signature(path_data["path"])
+        # Prime the executor with initial batch
+        while len(futures) < _PARALLEL_WORKERS and len(results) < args.target_count and attempts < max_attempts:
+            if not pending_paths:
+                pending_paths = deque(random.sample(paths, len(paths)))
 
-        if sig in seen_signatures:
-            attempts += 1
-            continue
+            path_data = pending_paths.popleft()
+            sig = get_path_signature(path_data["path"])
 
-        try:
-            qa_item = generator.generate_from_path(path_data)
-            if qa_item is not None:
-                qa_item["hop_count"] = path_data["hop_count"]
-                results.append(qa_item)
-                seen_signatures.add(sig)
-                if len(results) % _CHECKPOINT_EVERY == 0:
-                    logger.info("Generated %d / %d items", len(results), args.target_count)
-                    # Save checkpoint
-                    with open(out_file, "w") as f:
-                        json.dump(results, f, indent=2)
-        except Exception as e:
-            logger.warning("Generation failed: %s", e)
-            time.sleep(1)
+            if sig not in seen_signatures:
+                future = executor.submit(generator.generate_from_path, path_data)
+                futures[future] = (path_data, sig)
+                attempts += 1
 
-        attempts += 1
+        # Process results as they complete
+        while futures and len(results) < args.target_count and attempts < max_attempts:
+            for future in as_completed(futures):
+                path_data, sig = futures.pop(future)
+
+                try:
+                    qa_item = future.result()
+                    if qa_item is not None:
+                        qa_item["hop_count"] = path_data["hop_count"]
+                        results.append(qa_item)
+                        seen_signatures.add(sig)
+                        logger.info(f"Generated {len(results)} / {args.target_count} items")
+
+                        if len(results) % _CHECKPOINT_EVERY == 0:
+                            with open(out_file, "w") as f:
+                                json.dump(results, f, indent=2)
+                            logger.info(f"Checkpoint saved at {len(results)} items")
+                except Exception as e:
+                    # Rate limit: exponential backoff on 429 (Gemini quota)
+                    if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
+                        logger.warning(f"Rate limited (429): {e}. Backing off...")
+                        sleep_time = 4.0 * (2 ** min(3, attempts // 10))  # Max 32s sleep
+                        time.sleep(sleep_time)
+                    else:
+                        logger.warning(f"Generation failed: {e}")
+
+                # Refill executor with next path if we haven't hit target
+                if len(results) < args.target_count and attempts < max_attempts:
+                    if not pending_paths:
+                        pending_paths = deque(random.sample(paths, len(paths)))
+
+                    if pending_paths:
+                        path_data = pending_paths.popleft()
+                        sig = get_path_signature(path_data["path"])
+
+                        if sig not in seen_signatures:
+                            future = executor.submit(generator.generate_from_path, path_data)
+                            futures[future] = (path_data, sig)
+                            attempts += 1
 
     with open(out_file, "w") as f:
         json.dump(results, f, indent=2)

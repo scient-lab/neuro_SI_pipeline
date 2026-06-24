@@ -159,6 +159,11 @@ curriculum:
   # (generate_curriculum.py main loop). 100 matches the original hardcoded
   # value; smoke profile drops to 5 so a crash at q=99 doesn't lose work.
   checkpoint_every: 100
+  # Parallel Gemini question generation (generate_curriculum.py).
+  # Default: 5 (parallel workers to speed up 100q from 3-4h to ~1h).
+  # More workers = faster, respects Gemini rate limits (429 errors backoff).
+  # Paper/conservative: override to 1 if hitting API quotas. Smoke: override to 3.
+  parallel_generation_workers: 5
   # vLLM init for verify_questions.py (validate_qa step). Values mirror the
   # upstream CLI defaults — paper/HPC-scale. Smaller GPUs cap things via
   # profile YAML (see configs/profiles/pilot.yaml::curriculum overrides).

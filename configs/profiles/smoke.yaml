@@ -68,6 +68,10 @@ curriculum:
   thinking_budget: 1024
   # Checkpoint every 20 questions: at 150 total, ~7 checkpoints for safety.
   checkpoint_every: 20
+  # Parallel Gemini workers for question generation. Default is 5 (fast).
+  # Smoke uses 3 for balance: parallelization without hammering Gemini API.
+  # 3-4h (sequential) → ~1.5-2h (3 workers). Respects rate limits (429 backoff).
+  parallel_generation_workers: 3
 
 # sft: keys match 3_si_curriculum/training/trainer.py::TrainingConfig fields
 # that are wired via get_phase_param (lora_r, lora_alpha, lora_dropout,
