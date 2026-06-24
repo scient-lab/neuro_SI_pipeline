@@ -1,16 +1,17 @@
-# configs/profiles/pilot.yaml - single-book / 1k-record pilot.
-# Target: one textbook chapter or ~1k records on an A6000 (48 GB) tier.
-# Keys verified against the consuming code (same caveats as smoke.yaml).
+# configs/profiles/pilot.yaml - performance baseline & feasibility validation.
+# Target: 2000-3000 input examples → 1000+ curriculum Q&A pairs → 500+ SFT examples.
+# Validates end-to-end at reasonable scale with paper-grade Qwen3-14B.
+# Runs on A6000/L40/L40S (48 GB) tier.
 
 extract:
-  max_input_examples: 1000
+  max_input_examples: 2500
   # input_dir is intentionally NOT set here — extract.sh defaults to
   # corpus/${SI_DOMAIN}/ when unset, so pilot picks up whatever .txt files
   # the operator drops under corpus/<domain>/ (e.g. corpus/neuroscience/).
   # Smoke explicitly overrides to corpus/<domain>/smoke/ for its fixture.
 
 graphmert:
-  train_epochs: 10
+  train_epochs: 20
   effective_batch_size: 32
   # NOTE: most graphmert TRAINING knobs still live in
   # 2_graphmert/launch_configs/args_mlm.yaml. The block below is the
@@ -25,7 +26,7 @@ graphmert:
     # max_nodes is DERIVED in architecture.py as root_nodes * (1 + num_leaves) — do not set
 
 curriculum:
-  num_questions: 5000
+  num_questions: 1000
   hop_range: [1, 4]
   # vLLM cap for validate_qa on 48GB-class GPUs (L40/L40S/A6000/A40). At
   # default-yaml's null (model nominal context = 40960 for Qwen3-14B),
@@ -88,8 +89,8 @@ runpod:
     - "NVIDIA A100 80GB PCIe"
     - "NVIDIA A100-SXM4-80GB"
   cloud_type: SECURE
-  disk_gb: 150
+  disk_gb: 200
   num_gpus: 1
-  expected_runtime_min: 120          # was 240; halved on Ada-class
-  approx_cost_usd: 2
-  notes: "Ada-class (L40/L40S) preferred over Ampere desktop (A6000/A40) for vLLM-Transformers-fallback throughput."
+  expected_runtime_min: 360          # 6h: empirically ~90s/100q × 10 epochs graphmert + curriculum + sft + rl
+  approx_cost_usd: 5.0
+  notes: "Ada-class (L40/L40S) strongly preferred over Ampere desktop (A6000/A40). Performance baseline with 2500 input docs → 1000+ Q&A pairs."

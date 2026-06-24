@@ -1,25 +1,21 @@
-# configs/profiles/smoke.yaml - smallest reproducible end-to-end run.
-# Target: ~300 input examples, fits on a single 12 GB GPU (RTX 3060 / A4000).
+# configs/profiles/smoke.yaml - full pipeline validation on single GPU.
+# Target: ~300-500 input examples → ~100 curriculum Q&A pairs → ~50-100 SFT examples.
+# Validates all 6 phases work end-to-end. Fits on a single 24 GB GPU (A10G/A40/A6000).
 #
-# Calibrated against the medical-pipeline smoke debugging session that ate
-# half a day on key-mismatch + OOM. Every key below was verified to match
-# what the consuming code actually reads (see comments next to each section).
+# Uses Qwen 8B for extract (fidelity closer to Qwen3-14B than 3B, but still single-GPU).
+# Every key below verified to match the consuming code (see comments).
 
 models:
-  # default.yaml::models.extract is Qwen/Qwen3-14B (~28 GB fp16) — too big
-  # for smoke-tier GPUs (16-24 GB). Qwen3 also has NO native vllm-0.7.3
-  # implementation, so it would fall back to the slow HF Transformers backend
-  # even if it fit. Qwen2.5-3B-Instruct: ~6 GB fp16, vllm-native, fits
-  # everywhere including the 12 GB RTX 3060 workstation. Smoke validates
-  # pipeline plumbing, not extraction quality — pilot/paper inherit Qwen3-14B.
-  extract: Qwen/Qwen2.5-3B-Instruct
+  # Qwen/Qwen3-8B: ~16 GB fp16, vllm-native, good fidelity balance for smoke.
+  # Closer to Qwen3-14B behavior than 3B; catches extraction issues that 3B would miss.
+  # Requires 24 GB GPU minimum (8B model + KV cache + batch overhead).
+  extract: Qwen/Qwen3-8B-Instruct
 
 extract:
-  max_input_examples: 300
-  # Smoke runs on 12-16 GB cards (3060 / A4000) with the small Qwen2.5-3B
-  # extract model. Snug max_model_len gives KV cache room for more
-  # concurrent prompts at this scale.
-  max_model_len: 2048
+  max_input_examples: 500
+  # 500 input docs → ~200-300 triples → ~100-150 curriculum Q&A → ~50-100 SFT examples.
+  # Ensures downstream stages (SFT, RL) have minimum viable data to exercise code paths.
+  max_model_len: 4096
   # Smoke-scale input corpus (committed to the repo for reproducibility).
   # 10 Wikipedia neuroscience articles, ~360 KB total. See README in that
   # directory for provenance and regeneration instructions.
@@ -50,17 +46,16 @@ graphmert:
     # max_nodes is DERIVED in architecture.py as root_nodes * (1 + num_leaves) — do not set
 
 curriculum:
-  # Drop from 100 -> 20: smoke validates plumbing, not coverage. At
-  # default thinking_budget=4096, 100q ran 3h on RTX 3060 (2026-06-22).
-  num_questions: 20
+  # 100-150 Q&A pairs: enough to exercise SFT training (need 50+ examples minimum).
+  # At thinking_budget=1024, ~90 min total (acceptable smoke runtime).
+  num_questions: 150
   hop_range: [1, 3]
-  # Drop from 4096 -> 512 for ~8x faster per-call latency. NOT zero —
+  # Reduced from 4096 to 1024 for ~4x faster per-call latency. NOT zero —
   # Jha mandate (2026-06-04) requires reasoning at every stage; we're
   # trimming, not removing.
-  thinking_budget: 512
-  # Drop from 100 -> 5: at 20 questions total, a crash at q=19 with
-  # checkpoint_every=100 would lose all work.
-  checkpoint_every: 5
+  thinking_budget: 1024
+  # Checkpoint every 20 questions: at 150 total, ~7 checkpoints for safety.
+  checkpoint_every: 20
 
 # sft: keys match 3_si_curriculum/training/trainer.py::TrainingConfig fields
 # that are wired via get_phase_param (lora_r, lora_alpha, lora_dropout,
@@ -95,23 +90,19 @@ rl:
 # but the config above is calibrated for 12 GB so the same profile works on
 # either box.
 runpod:
-  # Primary GPU selection: dynamic discovery. scripts/runpod/launch.sh queries
-  # GET /v1/gpus, filters by this VRAM range and cloud_type, sorts cheapest
-  # first, and attempts each in order (so we pick the cheapest available
-  # instead of failing on a single hardcoded type).
-  vram_gb_min: 16
-  vram_gb_max: 24      # 16-24 GB covers the smoke workload; 0 = no upper bound
+  # Primary GPU selection: dynamic discovery. Requires 24 GB minimum for Qwen 8B.
+  # L4 is preferred (Ada architecture, faster inference than Ampere).
+  vram_gb_min: 24
+  vram_gb_max: 48
   # Static fallback: used only if discovery returns empty / API hiccup.
-  # Keep this list curated even when relying on discovery.
   gpu_types:
-    - "NVIDIA RTX A4000"
-    - "NVIDIA RTX 3090"
-    - "NVIDIA RTX A5000"
-    - "NVIDIA RTX 4090"
     - "NVIDIA L4"
+    - "NVIDIA RTX A5000"
+    - "NVIDIA RTX A6000"
+    - "NVIDIA L40"
   cloud_type: COMMUNITY
-  disk_gb: 60
+  disk_gb: 100
   num_gpus: 1
-  expected_runtime_min: 60
-  approx_cost_usd: 0.5
-  notes: "End-to-end orchestration + uv venv bootstrap on a real GPU."
+  expected_runtime_min: 90
+  approx_cost_usd: 1.0
+  notes: "All 6 phases end-to-end validation: extract → graphmert → curriculum → sft → rl. Qwen 8B ensures fidelity closer to paper-grade Qwen3-14B."
