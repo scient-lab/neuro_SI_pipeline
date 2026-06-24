@@ -24,8 +24,20 @@ transformers>=4.55,<4.58
 trl
 peft
 deepspeed
-accelerate
-datasets
+# accelerate pin propagated from 2_graphmert/requirements.txt (the venv where
+# this pin was originally tested). transformers Trainer hard-requires
+# accelerate; unpinned resolution can pick a version with API drift vs
+# our transformers/trl combo. <2 is the future-proof ceiling.
+accelerate>=0.34,<2
+# datasets pin propagated from 2_graphmert/requirements.txt with the
+# original explanatory comment:
+#   datasets 2.14.x (Aug 2023) uses pa.PyExtensionType which was removed in
+#   pyarrow 15+. Without this pin, resolution picks the old 2.14.4 against
+#   a current pyarrow (24.x) → AttributeError at import time. 2.20+ supports
+#   modern pyarrow; <4 is a future-proof ceiling.
+# We hit this exact error in sft.prepare_data on 2026-06-24 — the comment
+# was already in graphmert's file, we just never propagated the pin.
+datasets>=2.20,<4
 # Gemini SDK — must be 'google-genai' (new SDK with `from google import genai`),
 # NOT 'google-generativeai' (old SDK, deprecated). See memory entry
 # [GraphMERT RunPod gotchas] for the rationale and audit history. Used by:
