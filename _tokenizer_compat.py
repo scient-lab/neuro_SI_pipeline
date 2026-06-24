@@ -93,6 +93,12 @@ except ImportError:
 try:
     from transformers.tokenization_mistral_common import MistralCommonBackend
 
+    # First: backport `all_special_tokens_extended` (same bug as Qwen3 path).
+    # vLLM's get_cached_tokenizer accesses this property on the LOADED
+    # tokenizer instance, AFTER from_pretrained returns. So even with the
+    # kwarg filter below, we still need to provide the property.
+    _patch_class(MistralCommonBackend)
+
     _orig_mcb_from_pretrained = MistralCommonBackend.from_pretrained.__func__
 
     # Kwargs vLLM 0.7.3 passes that newer MistralCommonBackend rejects.
