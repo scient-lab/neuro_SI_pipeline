@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
-# sync_outputs.sh — push pipeline outputs to S3 under a per-run prefix.
+# sync_outputs.sh — sync pipeline outputs between local and S3.
 #
-# Two modes:
-#   one-shot (default):   sync once and exit. This is what pipeline.sh calls
-#                         after each phase boundary.
-#   loop (--loop):        sync repeatedly every $INTERVAL seconds until killed.
-#                         Use this from a SECOND ssh session when the running
-#                         pipeline.sh didn't have S3_SYNC_INTERVAL_SEC set at
-#                         startup — same effect as the in-pipeline background
-#                         loop, just driven externally.
+# Direction (--mode):
+#   push (default):  local → S3.  What pipeline.sh calls after each phase.
+#   pull:            S3 → local.  Use when resuming an existing run on a
+#                    fresh pod, or pulling artifacts to a workstation for
+#                    analysis.
+#
+# Cadence:
+#   one-shot (default):   sync once and exit
+#   loop (--loop):        sync repeatedly every $INTERVAL seconds until killed
+#                         (works in both push and pull mode)
 #
 # Env:
 #   S3_URI                 required, program root (e.g. s3://enlibra/dss)
@@ -18,16 +20,22 @@
 #   S3_SYNC_INTERVAL_SEC   default interval for --loop mode (default 300)
 #
 # Flags:
+#   --mode push|pull       direction; default push (back-compat with prior behavior)
 #   --loop / -l            background-loop mode (Ctrl-C to stop)
 #   --interval N / -i N    override the interval (seconds; min 10)
 #   --run-id <id>          override RUN_ID (default: env var, or auto from latest)
 #   --help / -h
 #
-# Examples:
-#   ./scripts/data_prep/sync_outputs.sh                        # one-shot, uses env $RUN_ID
-#   ./scripts/data_prep/sync_outputs.sh --loop                 # loop every $S3_SYNC_INTERVAL_SEC s
-#   ./scripts/data_prep/sync_outputs.sh -l -i 60               # loop every 60 s
+# Examples (push — original behaviour):
+#   ./scripts/data_prep/sync_outputs.sh                          # one-shot push
+#   ./scripts/data_prep/sync_outputs.sh --loop                   # loop push
+#   ./scripts/data_prep/sync_outputs.sh -l -i 60                 # loop push every 60s
 #   ./scripts/data_prep/sync_outputs.sh -l --run-id 20260618-095251-pilot-8317524
+#
+# Examples (pull — NEW):
+#   ./scripts/data_prep/sync_outputs.sh --mode pull              # latest run on S3 → local
+#   ./scripts/data_prep/sync_outputs.sh --mode pull \
+#       --run-id 20260622-045429-pilot-3ea615e                   # specific run from S3
 #
 # S3 layout:
 #   ${S3_URI}/runs/${RUN_ID}/outputs/...
@@ -53,11 +61,13 @@ fi
 LOOP=0
 INTERVAL=""
 RUN_ID_OVERRIDE=""
+MODE="push"   # default preserves prior behavior; --mode pull reverses direction
 
 usage() { sed -n '2,/^$/p' "${BASH_SOURCE[0]}" | sed 's/^# \?//'; }
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
+        --mode)        MODE="$2"; shift 2 ;;
         --loop|-l)     LOOP=1; shift ;;
         --interval|-i) INTERVAL="$2"; shift 2 ;;
         --run-id)      RUN_ID_OVERRIDE="$2"; shift 2 ;;
@@ -66,32 +76,71 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# Validate --mode
+case "$MODE" in
+    push|pull) ;;
+    *) echo "ERROR: --mode must be 'push' or 'pull' (got: $MODE)" >&2; exit 1 ;;
+esac
+
 # --- env + RUN_ID resolution ------------------------------------------------
 : "${S3_URI:?S3_URI must be set (e.g. s3://enlibra/dss); source \$SI_HOME/.env first}"
 command -v aws >/dev/null 2>&1 || { echo "aws CLI not found"; exit 1; }
 
 OUTPUT_BASE="${OUTPUT_BASE:-$REPO_ROOT/outputs}"
-[[ -d "$OUTPUT_BASE" ]] || { echo "OUTPUT_BASE not found: $OUTPUT_BASE"; exit 1; }
-
-# RUN_ID precedence: --run-id > env > auto-detect newest run dir under logs/
-if [[ -n "$RUN_ID_OVERRIDE" ]]; then
-    RUN_ID="$RUN_ID_OVERRIDE"
-elif [[ -z "${RUN_ID:-}" ]]; then
-    RUN_ID=$(find "$OUTPUT_BASE/logs" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null \
-                 | sort -r | head -1 || true)
-    [[ -z "$RUN_ID" ]] && { echo "RUN_ID not set and no run dirs found under $OUTPUT_BASE/logs/"; exit 1; }
-    echo "[sync_outputs] auto-detected latest RUN_ID: $RUN_ID"
+# For push: OUTPUT_BASE must exist (we're uploading from it).
+# For pull: we'll create it on demand below.
+if [[ "$MODE" == "push" && ! -d "$OUTPUT_BASE" ]]; then
+    echo "OUTPUT_BASE not found: $OUTPUT_BASE" >&2
+    exit 1
 fi
 
 PROFILE_FLAG=""
 [[ -n "${AWS_PROFILE:-}" ]] && PROFILE_FLAG="--profile $AWS_PROFILE"
 
+# RUN_ID precedence: --run-id > env > auto-detect.
+# Auto-detect source differs by mode:
+#   push: newest local run dir under $OUTPUT_BASE/logs/
+#   pull: newest run prefix in S3 (allows pulling on a fresh pod with no local runs)
+if [[ -n "$RUN_ID_OVERRIDE" ]]; then
+    RUN_ID="$RUN_ID_OVERRIDE"
+elif [[ -z "${RUN_ID:-}" ]]; then
+    if [[ "$MODE" == "push" ]]; then
+        RUN_ID=$(find "$OUTPUT_BASE/logs" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null \
+                     | sort -r | head -1 || true)
+        [[ -z "$RUN_ID" ]] && {
+            echo "RUN_ID not set and no run dirs found under $OUTPUT_BASE/logs/" >&2
+            exit 1
+        }
+    else  # pull
+        # shellcheck disable=SC2086
+        RUN_ID=$(aws $PROFILE_FLAG s3 ls "${S3_URI%/}/runs/" 2>/dev/null \
+                     | awk '{print $2}' | tr -d '/' \
+                     | grep -E '^[0-9]{8}-[0-9]{6}' | sort -r | head -1 || true)
+        [[ -z "$RUN_ID" ]] && {
+            echo "RUN_ID not set and no runs found in ${S3_URI%/}/runs/" >&2
+            exit 1
+        }
+    fi
+    echo "[sync_outputs] auto-detected latest RUN_ID: $RUN_ID  (mode=$MODE)"
+fi
+
 REMOTE="${S3_URI%/}/runs/${RUN_ID}/outputs"
+LOCAL="$OUTPUT_BASE"
+# In pull mode, materialize the local target dir if missing.
+[[ "$MODE" == "pull" ]] && mkdir -p "$LOCAL"
 
 # --- one shot ---------------------------------------------------------------
+# Source / target depend on --mode. Excludes preserve bandwidth on either
+# direction (caches, pycache, raw input corpus that lives in graphrag/input/).
 do_sync() {
+    local src dst
+    if [[ "$MODE" == "push" ]]; then
+        src="$LOCAL/"; dst="$REMOTE/"
+    else  # pull
+        src="$REMOTE/"; dst="$LOCAL/"
+    fi
     # shellcheck disable=SC2086
-    aws $PROFILE_FLAG s3 sync "$OUTPUT_BASE/" "$REMOTE/" \
+    aws $PROFILE_FLAG s3 sync "$src" "$dst" \
         --exclude '*/cache/*' \
         --exclude 'graphrag/input/*' \
         --exclude '*.pyc' \
@@ -100,7 +149,11 @@ do_sync() {
 }
 
 if [[ "$LOOP" -eq 0 ]]; then
-    echo "[sync_outputs] $OUTPUT_BASE/ -> $REMOTE/"
+    if [[ "$MODE" == "push" ]]; then
+        echo "[sync_outputs] push: $LOCAL/ -> $REMOTE/"
+    else
+        echo "[sync_outputs] pull: $REMOTE/ -> $LOCAL/"
+    fi
     do_sync
     exit 0
 fi
@@ -113,7 +166,11 @@ if ! [[ "$INTERVAL" =~ ^[0-9]+$ ]] || [[ "$INTERVAL" -lt 10 ]]; then
     exit 1
 fi
 
-echo "[sync_outputs] loop mode: $OUTPUT_BASE/ -> $REMOTE/  every ${INTERVAL}s  (Ctrl-C to stop)"
+if [[ "$MODE" == "push" ]]; then
+    echo "[sync_outputs] loop push: $LOCAL/ -> $REMOTE/  every ${INTERVAL}s  (Ctrl-C to stop)"
+else
+    echo "[sync_outputs] loop pull: $REMOTE/ -> $LOCAL/  every ${INTERVAL}s  (Ctrl-C to stop)"
+fi
 
 # Trap so Ctrl-C exits cleanly without "Error: aws sync interrupted" noise.
 _stop=0
