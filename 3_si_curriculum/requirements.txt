@@ -12,6 +12,14 @@
 # 2.4.0, but vllm 0.7.3 is what we need per [Stage 3 RL 12GB gotchas]
 # (LoRA-on-RL + TRL API alignment) so the bump is forced.
 torch==2.5.1+cu121
+# setuptools: uv venvs don't ship setuptools by default. Required AT
+# RUNTIME for torch.utils.cpp_extension (deepspeed imports it during
+# model init for CUDA introspection) AND at BUILD time for any package
+# using legacy setup.py-style builds (e.g. flash-attn). Surfaced as bug
+# #10 on 2026-06-24 when trainer.py hit ModuleNotFoundError mid-init.
+# Pinning the major version since 70+ removed the wheel/bdist_wheel
+# command that older packaging tools (incl. uv) still call.
+setuptools>=70,<82
 # transformers PINNED to match 2_graphmert/requirements.txt's known-good
 # range. Unpinned transformers (the prior state) let uv resolve >=4.58,
 # which refactored Qwen2Tokenizer.all_special_tokens_extended and added
