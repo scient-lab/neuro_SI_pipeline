@@ -24,6 +24,24 @@ transformers>=4.55,<4.58
 trl
 peft
 deepspeed
+# flash-attn powers attn_implementation=flash_attention_2 in trainer.py
+# (configs/default.yaml::sft.attn_implementation). The paper used FA2 on
+# Princeton's Della HPC; we keep that default and pin the package here.
+#
+# Install cost: pre-built wheels exist for specific torch+CUDA combos; uv
+# falls back to source build (~30-60 min, MAX_JOBS=4 helps) if no wheel
+# matches our torch==2.5.1+cu121. After the first venv build, the wheel is
+# cached and subsequent rebuilds reuse it.
+#
+# Worth it: ~30% memory savings at block_size>=8192, ~1.5-2× training
+# speed on long sequences. Drop attn_implementation to "sdpa" in a
+# profile YAML if a particular env can't build flash-attn (e.g., container
+# without nvcc).
+#
+# Pre-build helper: `pip install ninja` shaves significant time off the
+# C++ template compilation. setup.sh already installs ninja transitively
+# via vllm; if a fresh setup is slow, ensure ninja is present.
+flash-attn>=2.5,<3
 # accelerate pin propagated from 2_graphmert/requirements.txt (the venv where
 # this pin was originally tested). transformers Trainer hard-requires
 # accelerate; unpinned resolution can pick a version with API drift vs

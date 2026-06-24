@@ -274,11 +274,17 @@ def train():
     # ------------------------------------------------------------------ #
     if is_main:
         print(f"Loading model: {config.model_name}")
+    # attn_implementation: configs/default.yaml::sft.attn_implementation
+    # (default flash_attention_2 matches the upstream hardcoded value;
+    # profiles can override to "sdpa" when flash_attn isn't installed —
+    # e.g., the si_curriculum venv on RunPod where flash-attn was never
+    # added). See [No hardcoding, raise alarm].
+    _attn_impl = get_phase_param('sft', 'attn_implementation', 'flash_attention_2')
     model = AutoModelForCausalLM.from_pretrained(
         config.model_name,
         torch_dtype=torch.bfloat16,
         use_cache=False,
-        attn_implementation="flash_attention_2",
+        attn_implementation=_attn_impl,
         trust_remote_code=True,
     )
 
