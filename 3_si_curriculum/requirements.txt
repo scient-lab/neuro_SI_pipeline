@@ -29,13 +29,18 @@ setuptools>=70,<82
 # monkey-patches that were the prior workaround; with this pin those
 # can be removed eventually.
 transformers>=4.55,<4.58
-# trl >=0.13 imports FSDPModule from torch.distributed.fsdp, which was
-# added in torch 2.6. We're hard-pinned to torch==2.5.1+cu121 for vllm
-# 0.7.3 compatibility, so trl must stay <0.13. Surfaced as bug #12 on
-# 2026-06-24 (rl.train_grpo ImportError). Memory entry
-# [Stage 3 RL 12GB gotchas] already flagged "TRL API drift" as a known
-# fork-patch class.
-trl>=0.11,<0.13
+# trl version constraints (locally verified 2026-06-24):
+#   - GRPO classes were added in trl 0.14.0 (NOT 0.12.0 as initially
+#     assumed); versions <0.14 have no GRPOConfig/GRPOTrainer at all.
+#   - trl 0.14.0 through 0.17.x import cleanly with torch==2.5.1+cu121
+#     (no FSDPModule symbol error).
+#   - trl 0.18.0+ adds the FSDPModule import path which needs torch>=2.6;
+#     incompatible with our vllm 0.7.3 pin that holds torch at 2.5.1.
+# Locally tested: uv venv + torch==2.5.1+cu121 + trl==0.14.0/0.15.0/
+# 0.16.0/0.17.0 all import GRPOConfig/GRPOTrainer successfully.
+# Memory entry [Stage 3 RL 12GB gotchas] flagged TRL API drift as a
+# known fork-patch class — this pin formalizes the safe window.
+trl>=0.14,<0.18
 peft
 deepspeed
 # flash-attn powers attn_implementation=flash_attention_2 in trainer.py

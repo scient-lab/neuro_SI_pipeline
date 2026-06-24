@@ -43,18 +43,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 from datasets import load_from_disk, Dataset
 import transformers
 from transformers import AutoTokenizer, AutoModelForCausalLM
-# GRPO import path differs between trl versions:
-#   trl >=0.13:  `from trl import GRPOConfig, GRPOTrainer`  (top-level export)
-#   trl 0.12.x:  `from trl.trainer import GRPOConfig, GRPOTrainer`  (subpath only)
-# We pin trl<0.13 (3_si_curriculum/requirements.txt) because trl 0.13+
-# imports FSDPModule from torch.distributed.fsdp, which requires
-# torch>=2.6 — incompatible with our torch==2.5.1+cu121 vllm 0.7.3 pin.
-# The try/except keeps this file forward-compatible if the trl pin is
-# ever bumped past 0.13.
-try:
-    from trl import GRPOConfig, GRPOTrainer  # trl >=0.13
-except ImportError:
-    from trl.trainer import GRPOConfig, GRPOTrainer  # trl 0.12.x
+from trl import GRPOConfig, GRPOTrainer
 
 from data_prep import preprocess_grpo_dataset
 
