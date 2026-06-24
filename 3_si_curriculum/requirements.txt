@@ -29,7 +29,13 @@ setuptools>=70,<82
 # monkey-patches that were the prior workaround; with this pin those
 # can be removed eventually.
 transformers>=4.55,<4.58
-trl
+# trl >=0.13 imports FSDPModule from torch.distributed.fsdp, which was
+# added in torch 2.6. We're hard-pinned to torch==2.5.1+cu121 for vllm
+# 0.7.3 compatibility, so trl must stay <0.13. Surfaced as bug #12 on
+# 2026-06-24 (rl.train_grpo ImportError). Memory entry
+# [Stage 3 RL 12GB gotchas] already flagged "TRL API drift" as a known
+# fork-patch class.
+trl>=0.11,<0.13
 peft
 deepspeed
 # flash-attn powers attn_implementation=flash_attention_2 in trainer.py
