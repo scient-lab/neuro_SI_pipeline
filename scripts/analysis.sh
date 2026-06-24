@@ -10,18 +10,26 @@
 #   extract    -> scripts/lib/analysis_extract.py    (kg_final.csv quality)
 #   graphmert  -> scripts/lib/analysis_graphmert.py  (preprocess + train +
 #                                                     predict + validate)
+#   curriculum -> scripts/lib/analysis_curriculum.py (generate + validate +
+#                                                     assemble — drop rate,
+#                                                     hops, answer balance,
+#                                                     traces, diversity)
 #
 # Usage:
-#   ./scripts/analysis.sh                            # all phases, auto-skip missing
-#   ./scripts/analysis.sh --phase extract            # extract only
-#   ./scripts/analysis.sh --phase graphmert          # graphmert only
+#   ./scripts/analysis.sh                                   # all phases, auto-skip missing
+#   ./scripts/analysis.sh --phase extract                   # extract only
+#   ./scripts/analysis.sh --phase graphmert                 # graphmert only
 #   ./scripts/analysis.sh --phase graphmert --step train_mnm
-#   ./scripts/analysis.sh --csv logs/kg_final_1.csv  # override extract CSV
-#   ./scripts/analysis.sh --json                     # machine output
-#   ./scripts/analysis.sh --top 20                   # top-K relations/heads
-#   ./scripts/analysis.sh --quiet                    # WARN/FAIL only
-#   ./scripts/analysis.sh --run <prefix>             # historical run
-#   ./scripts/analysis.sh --tee report.md            # also write to file
+#   ./scripts/analysis.sh --phase curriculum                # full curriculum analysis
+#   ./scripts/analysis.sh --phase curriculum --step generate_qa
+#   ./scripts/analysis.sh --phase curriculum --step validate_qa
+#   ./scripts/analysis.sh --phase curriculum --step assemble_curriculum
+#   ./scripts/analysis.sh --csv logs/kg_final_1.csv         # override extract CSV
+#   ./scripts/analysis.sh --json                            # machine output
+#   ./scripts/analysis.sh --top 20                          # top-K relations/heads
+#   ./scripts/analysis.sh --quiet                           # WARN/FAIL only
+#   ./scripts/analysis.sh --run <prefix>                    # historical run
+#   ./scripts/analysis.sh --tee report.md                   # also write to file
 #
 # Exit: 0 clean, 1 on FAILs, 2 on WARN-only (composable with CI).
 
@@ -96,6 +104,9 @@ if [[ -z "$PHASE_FILTER" || "$PHASE_FILTER" == "extract" ]]; then
 fi
 if [[ -z "$PHASE_FILTER" || "$PHASE_FILTER" == "graphmert" ]]; then
     run_phase graphmert
+fi
+if [[ -z "$PHASE_FILTER" || "$PHASE_FILTER" == "curriculum" ]]; then
+    run_phase curriculum
 fi
 
 exit "$EXIT_CODE"
