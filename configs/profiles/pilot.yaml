@@ -38,6 +38,14 @@ curriculum:
 # inherit from default.yaml). block_size larger than smoke since A6000 has 48 GB.
 sft:
   block_size: 8192
+  # Force SDPA — flash-attn pin in 3_si_curriculum/requirements.txt is
+  # commented out (chained build-dep failures: torch → setuptools → ...).
+  # SDPA is PyTorch built-in, no extra package, ~10-15% slower than FA2
+  # at our block_size=8192. Acceptable cost for pilot validation;
+  # paper-grade work should install flash-attn via the pre-built wheel
+  # documented in 3_si_curriculum/requirements.txt and remove this
+  # override.
+  attn_implementation: sdpa
 
 # rl: keys match rl_training.py::TrainingConfig (NOT n_completions /
 # max_completion_tokens — those names are ignored).
