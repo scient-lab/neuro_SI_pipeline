@@ -193,10 +193,13 @@ if target_marks:
         ('extract', 'cache'): 'graphrag/output/kg_final.parquet',
     }
 
+    # Manifest schema uses {'name': 'curriculum', 'steps': [{'name': 'generate_qa', ...}]}
+    # NOT {'phase': '...', 'step': '...'} — the bug was the initial draft assumed
+    # the latter, causing all --mark overrides to silently no-op.
     for phase in m.get('run', {}).get('phases', []):
-        pname = phase.get('phase')
+        pname = phase.get('name')
         for step in phase.get('steps', []):
-            sname = step.get('step')
+            sname = step.get('name')
             key = (pname, sname)
             if key not in target_marks:
                 continue
