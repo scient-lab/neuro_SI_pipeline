@@ -81,11 +81,14 @@ rl:
   num_train_epochs: 1
   eval_steps: 25
   save_steps: 50
-  # NOTE: GRPO on 12 GB needs LoRA on the policy model (cuts the second
-  # reference-model copy out of VRAM). rl_training.py does NOT yet expose
-  # use_lora / lora_r through the config — patch manually or apply the
-  # biomed fork-patches (see memory: stage3-rl-12gb-gotchas) before a real
-  # GPU smoke. Bare GRPO will OOM on a 3060 even with the small values above.
+  # Single-GPU smoke: paper-grade default.yaml has use_deepspeed=true +
+  # use_lora=false (multi-GPU + ZeRO-3, full fine-tune). Smoke flips
+  # both — ZeRO-3 needs multi-GPU; without LoRA, GRPOTrainer doubles
+  # memory by keeping a separate ref_model. Memory entry
+  # [Stage 3 RL 12GB gotchas] documents LoRA-on-RL as the fork-patch
+  # required to fit GRPO on a single 12-24 GB GPU.
+  use_deepspeed: false
+  use_lora: true
 
 # RunPod hardware defaults for this scale (read by scripts/runpod/launch.sh).
 # A4000 (16 GB) is one tier above the 3060 (12 GB) so it has more headroom —

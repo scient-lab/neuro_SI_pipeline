@@ -227,3 +227,20 @@ rl:
   # Default True matches the paper-grade multi-GPU SLURM setup; profiles
   # for single-GPU hardware (pilot.yaml, smoke.yaml) override to False.
   use_deepspeed: true
+  # Paper-grade default: full fine-tune (no LoRA on RL). The Princeton
+  # SLURM setup ran full GRPO with ZeRO-3 sharding the model across
+  # multiple GPUs, which works because ZeRO-3 partitions the policy +
+  # reference across the cluster — no single GPU holds a full copy.
+  #
+  # Single-GPU profiles (pilot.yaml, smoke.yaml) override to true to
+  # use the FORK-PATCHED LoRA path: peft_config wraps the policy
+  # adapter and lets the reference share the base model (no second
+  # full-model copy). Memory entry [Stage 3 RL 12GB gotchas]
+  # documents this as the critical patch for fitting GRPO on a single
+  # 12GB/24GB/48GB GPU. Without LoRA OR ZeRO-3, GRPOTrainer
+  # instantiates a separate ref_model and OOMs on Qwen3-14B + single
+  # A6000 (~56GB needed, 47.5GB available).
+  #
+  # LoRA params (when enabled) reuse sft.lora_r / sft.lora_alpha /
+  # sft.lora_dropout — typical RL LoRA ranks match SFT.
+  use_lora: false

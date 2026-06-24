@@ -103,3 +103,9 @@ networkx==3.4.2
 # Was relying on transitive install; pin matches upstream
 # bottom-up-superintelligence/env_setup.sh::vllm==0.7.3.
 vllm==0.7.3
+# wandb: TRL's GRPOTrainer auto-registers WandbCallback when WANDB_PROJECT
+# is set (which rl.sh always sets). Without wandb in the env, the
+# callback init crashes with RuntimeError("WandbCallback requires wandb
+# to be installed"). Surfaced as bug #15 on 2026-06-24 in rl.train_grpo.
+# Pure-Python install, no nvcc/CUDA needed.
+wandb

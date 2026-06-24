@@ -44,6 +44,7 @@ from datasets import load_from_disk, Dataset
 import transformers
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from trl import GRPOConfig, GRPOTrainer
+from peft import LoraConfig
 
 from data_prep import preprocess_grpo_dataset
 
@@ -720,6 +721,32 @@ def train():
         path_alignment_reward_func,
     ]
 
+    # LoRA-on-RL: memory entry [Stage 3 RL 12GB gotchas] documents this as
+    # the critical fork-patch — when peft_config is passed, GRPOTrainer
+    # uses peft to wrap the policy model with adapters and reuses the
+    # SAME base for the reference (with adapter disabled), eliminating
+    # the second 28GB ref_model copy that OOMs single-GPU Qwen3-14B.
+    # YAML-driven via rl.use_lora. Paper default false (multi-GPU full
+    # fine-tune); single-GPU profiles (pilot.yaml, smoke.yaml) flip to true.
+    peft_config = None
+    # Fallback default matches paper-grade default.yaml::rl.use_lora=false
+    # (full fine-tune; ZeRO-3 sharding handles memory). Single-GPU
+    # profiles override to True via configs/profiles/{pilot,smoke}.yaml.
+    if get_phase_param('rl', 'use_lora', False):
+        peft_config = LoraConfig(
+            r=get_phase_param('sft', 'lora_r', 32),
+            lora_alpha=get_phase_param('sft', 'lora_alpha', 64),
+            lora_dropout=get_phase_param('sft', 'lora_dropout', 0.05),
+            bias="none",
+            task_type="CAUSAL_LM",
+            target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
+                             "gate_proj", "up_proj", "down_proj"],
+        )
+        logging.info(f"RL LoRA enabled: r={peft_config.r}, alpha={peft_config.lora_alpha}, "
+                     f"dropout={peft_config.lora_dropout}")
+    else:
+        logging.info("RL LoRA disabled (rl.use_lora=False) — full fine-tune (multi-GPU only)")
+
     trainer = GRPOTrainer(
         model=model,
         processing_class=tokenizer,
@@ -727,6 +754,7 @@ def train():
         args=training_args,
         train_dataset=train_dataset,
         callbacks=callbacks_list,
+        peft_config=peft_config,
     )
 
     gen_dump_cb.trainer = trainer

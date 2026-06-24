@@ -59,6 +59,10 @@ rl:
   # multi-GPU; on single-GPU it triggers an mpi4py ImportError via
   # deepspeed.comm.mpi_discovery. See default.yaml::rl.use_deepspeed.
   use_deepspeed: false
+  # Enable LoRA-on-RL — required to fit Qwen3-14B GRPO on single A6000
+  # (~28GB shared base instead of 56GB policy+reference). See
+  # default.yaml::rl.use_lora for the inverse paper-grade default.
+  use_lora: true
 
 # RunPod hardware defaults for this scale (read by scripts/runpod/launch.sh).
 #
