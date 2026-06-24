@@ -50,10 +50,26 @@ while [[ $# -gt 0 ]]; do
 done
 
 # --- find the run dir -------------------------------------------------------
-# Supports both layouts: outputs/<RUN_ID>/ (per-run base) and
-# outputs/logs/<RUN_ID>/ (shared logs). Falls back to listing if neither
-# matches, so the operator sees what's available.
+# Three layouts to handle:
+#   (A) OUTPUT_BASE is already the RUN dir  — outputs/<RUN_ID>/
+#       (pipeline.sh convention when operator exports OUTPUT_BASE)
+#       Detected by: run_manifest.json present DIRECTLY at $OUTPUT_BASE/
+#   (B) OUTPUT_BASE is the runs parent      — outputs/  (default when
+#       OUTPUT_BASE unset; $REPO_ROOT/outputs)
+#       Detected by: child dirs matching ^YYYYMMDD-HHMMSS-* WITH manifest
+#   (C) Shared-logs layout (legacy)         — outputs/logs/<RUN_ID>/
+#       Detected by: matching child under $OUTPUT_BASE/logs/
 find_run_dir() {
+    # (A) OUTPUT_BASE itself is the run dir — most common when the operator
+    # follows the pipeline.sh-style export OUTPUT_BASE=outputs/<RUN_ID>.
+    # The earlier bug here was iterating to $OUTPUT_BASE/logs first and
+    # finding the nested LOG_DIR (which IS named outputs/<RUN_ID>/logs/<RUN_ID>/
+    # per pipeline.sh:219), producing a doubled-RUN_ID path.
+    if [[ -f "$OUTPUT_BASE/run_manifest.json" ]]; then
+        echo "$OUTPUT_BASE"
+        return 0
+    fi
+    # (B) and (C): scan for run-id-shaped child dirs that contain a manifest
     local layout
     for layout in "$OUTPUT_BASE" "$OUTPUT_BASE/logs"; do
         [[ -d "$layout" ]] || continue
@@ -61,12 +77,14 @@ find_run_dir() {
             local latest
             latest=$(find "$layout" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null \
                 | grep -E '^[0-9]{8}-[0-9]{6}' | sort -r | head -1 || true)
-            [[ -n "$latest" ]] && { echo "$layout/$latest"; return 0; }
+            [[ -n "$latest" && -f "$layout/$latest/run_manifest.json" ]] && \
+                { echo "$layout/$latest"; return 0; }
         else
             local match
             match=$(find "$layout" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null \
                 | grep -E "^${RUN_PREFIX}" | sort -r | head -1 || true)
-            [[ -n "$match" ]] && { echo "$layout/$match"; return 0; }
+            [[ -n "$match" && -f "$layout/$match/run_manifest.json" ]] && \
+                { echo "$layout/$match"; return 0; }
         fi
     done
     return 1
