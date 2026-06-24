@@ -1,23 +1,18 @@
 #!/usr/bin/env bash
-# Phase: validate - two-LLM consensus filter on candidate triples.
-# Venv: graphrag.
+# Phase: validate - Two-LLM consensus on extract's seed KG (paper §4.2).
+# Delegates to 2_graphmert/utils/llm_scores/fact_score.py. Venv: graphmert.
 #
-# NOTE (2026-06-15): Princeton's reference implementation does NOT have a
-# dedicated validate phase as a separate Python script. The "two-LLM
-# consensus" check happens in two distinct places downstream:
+# Implementation plan per Jake's clarification (2026-06-24):
+#   - fact_score.py is generic: takes any CSV (head, relation, tail)
+#   - Run it on extract's seed KG (kg_final.csv) BEFORE graphmert preprocess
+#   - Output validated seed KG (kg_final_validated.csv)
+#   - Graphmert preprocess consumes the validated version
+#   - Downstream curriculum gets higher-quality triples, fewer errors
 #
-#   1. 2_graphmert/utils/llm_scores/fact_score.py — scores graphmert-predicted
-#      triples by two-LLM agreement (Stage 2.7 in the Princeton README).
-#      Triggered by the GRAPHMERT phase, not here.
-#
-#   2. 3_si_curriculum/curriculum_generator/verify_questions.py — two-LLM
-#      filter over generated Q&A items (Stage 3.2 in the Princeton README).
-#      Triggered by the CURRICULUM phase.
-#
-# This phase is reserved for a future seed-KG-level two-LLM validation
-# (after extract, before graphmert) that the Stephen & Jha 2026 paper
-# describes but isn't implemented as a standalone script. For now it's a
-# no-op so orchestration smoke still passes through the phase.
+# Paper reference: Stephen & Jha 2026, §4.2 "Two-LLM Validation Strategy"
+# - validate_a: Qwen/Qwen3-14B (consensus LLM #1)
+# - validate_b: mistralai/Mistral-Nemo-Instruct-2407 (consensus LLM #2)
+# - consensus_threshold: 0.6 (both must agree above confidence)
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -31,24 +26,59 @@ STEP_FILTER="${1:-all}"
 export PIPELINE_STEP_FILTER="$STEP_FILTER"
 
 PHASE_NAME=validate
-STEPS=(prepare_candidates llm_check_a llm_check_b consensus dedupe_merge emit_seed_kg)
-PHASE_DESC="(no-op) 2-LLM consensus checks happen inline in graphmert + curriculum"
+STEPS=(seed_kg_consensus)
+PHASE_DESC="Two-LLM consensus on extract seed KG (paper §4.2 / Phase 2)"
 STEP_DESCS=(
-    "(no-op)"
-    "(no-op)"
-    "(no-op)"
-    "(no-op)"
-    "(no-op)"
-    "(no-op)"
+    "Two-LLM consensus filter on seed KG (fact_score.py)"
 )
 
-source_venv graphrag
+source_venv graphmert
 
-# Every step is an intentional no-op (see header). They still flow through
-# run_step so the manifest records them as completed/skipped with timestamps.
-step_noop() {
-    log_info "validate :: $1 (no-op — two-LLM checks happen in graphmert + curriculum phases)"
+OUTPUT_BASE=$(resolve_output_base)
+SEED_KG="$OUTPUT_BASE/graphrag/output/kg_final.csv"
+VALIDATED_SEED_KG="$OUTPUT_BASE/graphrag/output/kg_final_validated.csv"
+
+# --- Steps ---
+step_seed_kg_consensus() {
+    log_info "validate :: seed_kg_consensus (fact_score.py on seed KG)"
+
+    # Resolve the two consensus models from config
+    local validate_a validate_b
+    validate_a=$(get_model_id validate_a "")
+    validate_b=$(get_model_id validate_b "")
+
+    if [[ -z "$validate_a" || -z "$validate_b" ]]; then
+        log_error "validate needs models.validate_a + models.validate_b from configs/default.yaml"
+        return 1
+    fi
+
+    if [[ ! -f "$SEED_KG" ]]; then
+        log_error "seed KG not found at $SEED_KG — extract phase must run first"
+        return 1
+    fi
+
+    log_info "validate :: Running two-LLM consensus:"
+    log_info "  Input: $SEED_KG"
+    log_info "  Models: $validate_a (A) + $validate_b (B)"
+    log_info "  Output: $VALIDATED_SEED_KG"
+
+    ( cd "$REPO_ROOT/2_graphmert" && \
+      python utils/llm_scores/fact_score.py \
+          --input_csv   "$SEED_KG" \
+          --output_csv  "$VALIDATED_SEED_KG" \
+          --model_ids   "$validate_a" "$validate_b" \
+          --batch_size  64 \
+          --max_model_len 4096 ) \
+        || { log_error "seed_kg_consensus failed"; return 1; }
+
+    # Report drop rate
+    local before after drop pct
+    before=$(($(wc -l < "$SEED_KG") - 1))
+    after=$(($(wc -l < "$VALIDATED_SEED_KG") - 1))
+    drop=$((before - after))
+    pct=$((drop * 100 / before))
+    log_info "validate :: consensus filter: $before triples in → $after passed (dropped $drop, $pct%)"
 }
-for step in "${STEPS[@]}"; do
-    run_step "$PHASE_NAME" "$step" step_noop "$step" || exit $?
-done
+
+# --- Step dispatch ---
+run_step "$PHASE_NAME" "seed_kg_consensus" "step_seed_kg_consensus" || exit $?

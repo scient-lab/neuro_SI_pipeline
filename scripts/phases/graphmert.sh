@@ -56,7 +56,16 @@ PREDICT_TAILS_MODEL_ID=$(get_model_id predict_tails "")
 STABLE_TOKENIZER="$GRAPHMERT_DIR/stable_tokenizer"
 
 # Seed KG CSV (the format dataset_preprocessing_utils.py expects).
-SEED_KG_CSV="$GRAPHRAG_DIR/output/kg_final.csv"
+# Prefer validated seed KG from validate phase (paper §4.2 two-LLM consensus).
+# Fall back to raw seed KG if validate phase was skipped.
+VALIDATED_SEED_KG="$GRAPHRAG_DIR/output/kg_final_validated.csv"
+if [[ -f "$VALIDATED_SEED_KG" ]]; then
+    SEED_KG_CSV="$VALIDATED_SEED_KG"
+    log_info "graphmert :: Using validated seed KG (from validate phase)"
+else
+    SEED_KG_CSV="$GRAPHRAG_DIR/output/kg_final.csv"
+    log_warn "graphmert :: validate phase skipped — using unvalidated seed KG"
+fi
 
 # args_mlm.yaml is a TEMPLATE with ${VAR} placeholders. Resolve once at phase
 # start via envsubst so all later steps (preprocess, train_mnm) read the same

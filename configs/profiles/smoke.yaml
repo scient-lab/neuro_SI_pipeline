@@ -10,6 +10,18 @@ models:
   # Closer to Qwen3-14B behavior than 3B; catches extraction issues that 3B would miss.
   # Requires 24 GB GPU minimum (8B model + KV cache + batch overhead).
   extract: Qwen/Qwen3-8B-Instruct
+  # Phase 2 validation: default.yaml uses Qwen3-14B (28GB) + Mistral-Nemo (24GB).
+  # Smoke can't fit two large models at once. Use Qwen3-8B for both to stay within
+  # 24GB. Trades paper-grade diversity (14B + Mistral) for smoke-scale feasibility.
+  # Paper-grade will run full (14B + Mistral) with more VRAM on pilot/paper profiles.
+  validate_a: Qwen/Qwen3-8B-Instruct
+  validate_b: Qwen/Qwen3-8B-Instruct
+  # Phase 3 tail prediction: default.yaml uses Qwen3-14B (28GB). Use 8B for smoke.
+  predict_tails: Qwen/Qwen3-8B-Instruct
+  # Phase 4 curriculum final checks: default.yaml uses Qwen3-14B + Mistral-Nemo (52GB combined).
+  # Smoke uses Qwen3-8B for both checks (feasibility over paper-grade diversity).
+  curriculum_check_a: Qwen/Qwen3-8B-Instruct
+  curriculum_check_b: Qwen/Qwen3-8B-Instruct
 
 extract:
   max_input_examples: 500
