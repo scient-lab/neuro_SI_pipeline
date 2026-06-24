@@ -28,6 +28,7 @@ from pathlib import Path
 from typing import List, Dict
 
 from vllm import LLM, SamplingParams
+from transformers import AutoTokenizer
 
 # Pipeline config loader (repo root, 2 levels up from this file).
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
@@ -91,20 +92,29 @@ def validate_with_model(items: List[Dict], model_id: str,
         gpu_memory_utilization=gpu_memory_utilization,
         trust_remote_code=True,
     )
+    # vLLM 0.7.3's `llm.chat()` triggers
+    #   AttributeError: Qwen2Tokenizer has no attribute all_special_tokens_extended
+    # on Qwen3 because the tokenizer wrapper doesn't proxy that property to
+    # the underlying slow tokenizer. Workaround: load the tokenizer ourselves,
+    # apply the chat template manually, and call `llm.generate()` (which
+    # doesn't touch that codepath). When vLLM upgrades past 0.10.x revert
+    # to llm.chat().
+    tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
     sampling = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=256)
     results = []
 
     for start in range(0, len(items), batch_size):
         batch = items[start:start + batch_size]
-        prompts = []
+        formatted_prompts = []
         for item in batch:
             messages = [
                 {"role": "system", "content": SYSTEM_PROMPT_QA_VALIDATION},
                 {"role": "user", "content": build_validation_prompt(item)},
             ]
-            prompts.append(messages)
+            formatted_prompts.append(tokenizer.apply_chat_template(
+                messages, tokenize=False, add_generation_prompt=True))
 
-        outputs = llm.chat(prompts, sampling_params=sampling)
+        outputs = llm.generate(formatted_prompts, sampling_params=sampling)
         for out in outputs:
             text = out.outputs[0].text if out.outputs else ""
             results.append(_parse_verdict(text))
