@@ -70,12 +70,29 @@ step_train_grpo() {
     # NOT config.model_name. Previously passed --model_name which
     # rl_training silently ignored, then tried from_pretrained("") and
     # crashed. Pass via --sft_checkpoint_path (which the field name expects).
+    #
+    # audit bug #14 fix: --deepspeed is YAML-gated via rl.use_deepspeed.
+    # The default config (3_si_curriculum/RL/deepspeed_config.json) is
+    # ZeRO-3 + multi-GPU; on single-GPU smoke/pilot, ZeRO-3's
+    # init_distributed() falls through to mpi4py which isn't installed.
+    # Single-GPU doesn't benefit from ZeRO-3 partitioning anyway.
+    # Paper-grade default in configs/default.yaml::rl.use_deepspeed=true;
+    # pilot.yaml and smoke.yaml override to false for single-GPU runs.
+    local DS_ARGS=()
+    local USE_DS
+    USE_DS=$(get_phase_param rl use_deepspeed true)
+    if [[ "$USE_DS" == "true" || "$USE_DS" == "True" || "$USE_DS" == "1" ]]; then
+        DS_ARGS=(--deepspeed "$DEEPSPEED_CFG")
+        log_info "rl.train_grpo: deepspeed ENABLED — config: $DEEPSPEED_CFG"
+    else
+        log_info "rl.train_grpo: single-GPU mode (rl.use_deepspeed=$USE_DS)"
+    fi
     ( cd "$REPO_ROOT/3_si_curriculum/RL" && \
       python rl_training.py \
           --sft_checkpoint_path "$SFT_MERGED_MODEL" \
           --dataset_path        "$RL_DATASET_DIR" \
           --output_dir          "$RL_CHECKPOINTS_DIR" \
-          --deepspeed           "$DEEPSPEED_CFG" \
+          "${DS_ARGS[@]}" \
           --wandb_project       "${WANDB_PROJECT:-${SI_DOMAIN:-neuroscience}_rl_kg}" ) \
         || { log_error "rl.train_grpo failed"; return 1; }
 }

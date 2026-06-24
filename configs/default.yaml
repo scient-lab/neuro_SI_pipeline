@@ -220,3 +220,10 @@ rl:
   length_penalty_hard_cap: 1500
   # Path-alignment reward gates on the first N tokens of <think>.
   path_alignment_thinking_tokens: 550
+  # Pass --deepspeed <config> to rl_training.py when True. The config at
+  # 3_si_curriculum/RL/deepspeed_config.json is ZeRO-3 + multi-GPU. On
+  # single-GPU smoke/pilot, ZeRO-3's init_distributed falls through to
+  # mpi4py which isn't in our venv (would also need OpenMPI in bootstrap).
+  # Default True matches the paper-grade multi-GPU SLURM setup; profiles
+  # for single-GPU hardware (pilot.yaml, smoke.yaml) override to False.
+  use_deepspeed: true
