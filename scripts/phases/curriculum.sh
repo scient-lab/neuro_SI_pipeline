@@ -104,13 +104,17 @@ step_validate_qa() {
     local INPUT="$CURRICULUM_DIR/curriculum.json"
     local VERIFIED="$OUTPUT_BASE/curriculum_verified"
     mkdir -p "$VERIFIED"
+    # vLLM init knobs (batch_size, tensor_parallel_size, gpu_memory_utilization,
+    # max_model_len) come from configs/default.yaml::curriculum.validate_qa_*
+    # via get_phase_param inside verify_questions.py. Keeping them out of the
+    # CLI here means the YAML is the single source of truth — change a knob
+    # in default.yaml or a profile YAML, no shell script edit needed.
     ( cd "$REPO_ROOT/3_si_curriculum" && \
       python curriculum_generator/verify_questions.py \
           --input_json  "$INPUT" \
           --output_json "$VERIFIED/curriculum_verified.json" \
-          --model_ids   "$CHECK_A" "$CHECK_B" \
-          --batch_size  64 \
-          --tensor_parallel_size 1 ) || { log_error "validate_qa failed"; return 1; }
+          --model_ids   "$CHECK_A" "$CHECK_B" ) \
+        || { log_error "validate_qa failed"; return 1; }
 }
 
 step_assemble_curriculum() {

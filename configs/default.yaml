@@ -159,6 +159,19 @@ curriculum:
   # (generate_curriculum.py main loop). 100 matches the original hardcoded
   # value; smoke profile drops to 5 so a crash at q=99 doesn't lose work.
   checkpoint_every: 100
+  # vLLM init for verify_questions.py (validate_qa step). Values mirror the
+  # upstream CLI defaults — paper/HPC-scale. Smaller GPUs cap things via
+  # profile YAML (see configs/profiles/pilot.yaml::curriculum overrides).
+  #
+  # max_model_len: null → DO NOT pass to vLLM, let it use the model's
+  # nominal config.max_position_embeddings (40960 for Qwen3-14B, ~1M for
+  # Mistral-Nemo-12B). Matches the upstream behaviour: original code never
+  # passed this kwarg. On a 48 GB GPU at 0.70 mem_util this OOMs the KV
+  # cache; pilot/smoke profiles override to a concrete cap (e.g. 4096).
+  validate_qa_max_model_len: null
+  validate_qa_gpu_memory_utilization: 0.70
+  validate_qa_tensor_parallel_size: 1
+  validate_qa_batch_size: 64
 
 # --- Phase: sft (matches 3_si_curriculum/training/trainer.py) ------------
 sft:

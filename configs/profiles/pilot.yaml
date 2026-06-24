@@ -27,6 +27,12 @@ graphmert:
 curriculum:
   num_questions: 5000
   hop_range: [1, 4]
+  # vLLM cap for validate_qa on 48GB-class GPUs (L40/L40S/A6000/A40). At
+  # default-yaml's null (model nominal context = 40960 for Qwen3-14B),
+  # vLLM's KV cache exceeds available memory at 0.70 mem_util and OOMs.
+  # 4096 is comfortable: validation prompts are ~1.3k tokens, response
+  # cap is 256, so 4096 = 3× headroom.
+  validate_qa_max_model_len: 4096
 
 # sft: matches trainer.py::TrainingConfig wired fields (lora_r/alpha/dropout
 # inherit from default.yaml). block_size larger than smoke since A6000 has 48 GB.

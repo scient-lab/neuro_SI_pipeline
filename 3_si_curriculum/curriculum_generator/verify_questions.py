@@ -33,7 +33,7 @@ from transformers import AutoTokenizer
 # Pipeline config loader + Qwen3 tokenizer compat shim (repo root, 2 levels up).
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 import _tokenizer_compat  # noqa: F401, E402  # side effect: vLLM 0.7.3 + Qwen3 fix
-from pipeline_config import render_prompt  # noqa: E402
+from pipeline_config import render_prompt, get_phase_param  # noqa: E402
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -54,9 +54,22 @@ def parse_args():
                     help="Output JSON file for validated Q&A items")
     ap.add_argument("--model_ids", nargs="+", required=True,
                     help="Exactly 2 model paths for two-LLM validation")
-    ap.add_argument("--tensor_parallel_size", type=int, default=1)
-    ap.add_argument("--gpu_memory_utilization", type=float, default=0.70)
-    ap.add_argument("--batch_size", type=int, default=64)
+    # vLLM init defaults read from configs/default.yaml::curriculum.validate_qa_*.
+    # In-code fallbacks (3rd arg of get_phase_param) preserve historical
+    # values per [Preserve upstream defaults]. CLI flags still override YAML.
+    ap.add_argument("--tensor_parallel_size", type=int,
+                    default=get_phase_param('curriculum', 'validate_qa_tensor_parallel_size', 1))
+    ap.add_argument("--gpu_memory_utilization", type=float,
+                    default=get_phase_param('curriculum', 'validate_qa_gpu_memory_utilization', 0.70))
+    # max_model_len: if 0/None, do NOT pass to vLLM — let it use the
+    # model's nominal context. default.yaml ships `null` (upstream
+    # behaviour); pilot/smoke profiles override with a concrete cap to
+    # fit on 48 GB GPUs (~4096 is comfortable for tiny validation prompts).
+    ap.add_argument("--max_model_len", type=int,
+                    default=get_phase_param('curriculum', 'validate_qa_max_model_len', None),
+                    help="vLLM KV cache cap; omit/0 to use model's nominal context")
+    ap.add_argument("--batch_size", type=int,
+                    default=get_phase_param('curriculum', 'validate_qa_batch_size', 64))
     ap.add_argument("--subset", type=int, default=0,
                     help="If > 0, only validate this many items (for debugging)")
     return ap.parse_args()
@@ -85,14 +98,22 @@ def _parse_verdict(text: str) -> bool:
 
 def validate_with_model(items: List[Dict], model_id: str,
                         tensor_parallel_size: int, gpu_memory_utilization: float,
-                        batch_size: int) -> List[bool]:
-    logger.info("Loading model: %s", model_id)
-    llm = LLM(
+                        batch_size: int, max_model_len = None) -> List[bool]:
+    # Build LLM kwargs conditionally — when max_model_len is None or 0, omit
+    # it so vLLM uses the model's nominal config.max_position_embeddings.
+    # This mirrors the original upstream behaviour (script never passed it).
+    llm_kwargs = dict(
         model=model_id,
         tensor_parallel_size=tensor_parallel_size,
         gpu_memory_utilization=gpu_memory_utilization,
         trust_remote_code=True,
     )
+    if max_model_len:  # treats None and 0 as "don't cap"
+        llm_kwargs['max_model_len'] = int(max_model_len)
+        logger.info("Loading model: %s (max_model_len=%d)", model_id, max_model_len)
+    else:
+        logger.info("Loading model: %s (max_model_len=model nominal)", model_id)
+    llm = LLM(**llm_kwargs)
     # vLLM 0.7.3's `llm.chat()` triggers
     #   AttributeError: Qwen2Tokenizer has no attribute all_special_tokens_extended
     # on Qwen3 because the tokenizer wrapper doesn't proxy that property to
@@ -147,11 +168,13 @@ def main():
 
     scores_1 = validate_with_model(
         items, args.model_ids[0],
-        args.tensor_parallel_size, args.gpu_memory_utilization, args.batch_size
+        args.tensor_parallel_size, args.gpu_memory_utilization, args.batch_size,
+        max_model_len=args.max_model_len
     )
     scores_2 = validate_with_model(
         items, args.model_ids[1],
-        args.tensor_parallel_size, args.gpu_memory_utilization, args.batch_size
+        args.tensor_parallel_size, args.gpu_memory_utilization, args.batch_size,
+        max_model_len=args.max_model_len
     )
 
     validated = [
