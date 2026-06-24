@@ -43,17 +43,21 @@ if [[ -z "$BASE_MODEL" ]]; then
 fi
 
 VERIFIED_CURRICULUM="$OUTPUT_BASE/curriculum_verified/curriculum_verified.json"
-SFT_MAX_LENGTH=$(get_phase_param sft block_size 32768)
 
 # --- Steps ---------------------------------------------------------------
 step_prepare_data() {
     log_info "sft :: prepare_data (data_prep.py)"
+    # data_prep.py emits a DatasetDict({"train","test"}) with a `text` column
+    # via tokenizer.apply_chat_template; it does NOT tokenize (TRL SFTTrainer
+    # handles that inside trainer.py using sft.block_size from YAML). So
+    # there's no --max_length flag here. Earlier wiring passed --max_length
+    # via SFT_MAX_LENGTH, which crashed argparse on 2026-06-24 because
+    # data_prep.py never defined that argument.
     ( cd "$REPO_ROOT/3_si_curriculum/training" && \
       python data_prep.py \
           --input_file  "$VERIFIED_CURRICULUM" \
           --output_path "$SFT_DATASET_DIR" \
           --model_name  "$BASE_MODEL" \
-          --max_length  "$SFT_MAX_LENGTH" \
           --cache_dir   "${HF_HOME:-$HOME/.cache/huggingface}" ) \
         || { log_error "sft.prepare_data failed"; return 1; }
 }
