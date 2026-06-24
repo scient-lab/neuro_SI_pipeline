@@ -32,6 +32,7 @@ import logging
 
 # Pipeline config loader (repo root, 2 levels up from this file).
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+import _tokenizer_compat  # noqa: F401, E402  # vLLM 0.7.3 + Qwen3 chat-template shim
 from pipeline_config import get_model_id, get_phase_param, render_prompt  # noqa: E402
 
 warnings.filterwarnings("ignore", category=FutureWarning)

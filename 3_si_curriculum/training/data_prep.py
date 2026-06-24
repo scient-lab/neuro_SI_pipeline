@@ -32,6 +32,7 @@ Usage:
 """
 
 import os
+import sys
 import json
 import random
 import argparse
@@ -41,6 +42,10 @@ from typing import Dict, List, Tuple
 
 from datasets import Dataset, DatasetDict
 from transformers import AutoTokenizer
+
+# vLLM 0.7.3 + Qwen3 chat-template shim — see _tokenizer_compat.py docstring.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+import _tokenizer_compat  # noqa: F401, E402  # side effect: patches Qwen2Tokenizer
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")

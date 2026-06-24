@@ -21,6 +21,7 @@ import torch.distributed as dist
 
 # Pipeline config loader (repo root, 2 levels up).
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+import _tokenizer_compat  # noqa: F401, E402  # vLLM 0.7.3 + Qwen3 chat-template shim
 from pipeline_config import get_model_id, get_phase_param  # noqa: E402
 
 # MONKEY PATCH: transformers internally calls dist.fsdp.register_fsdp_forward_method,

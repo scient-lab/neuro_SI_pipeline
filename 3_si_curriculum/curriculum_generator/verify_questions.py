@@ -30,8 +30,9 @@ from typing import List, Dict
 from vllm import LLM, SamplingParams
 from transformers import AutoTokenizer
 
-# Pipeline config loader (repo root, 2 levels up from this file).
+# Pipeline config loader + Qwen3 tokenizer compat shim (repo root, 2 levels up).
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+import _tokenizer_compat  # noqa: F401, E402  # side effect: vLLM 0.7.3 + Qwen3 fix
 from pipeline_config import render_prompt  # noqa: E402
 
 
