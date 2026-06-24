@@ -113,8 +113,10 @@ elif [[ -z "${RUN_ID:-}" ]]; then
         }
     else  # pull
         # shellcheck disable=SC2086
+        # AWS S3 ls output for directories: "                           PRE dirname/"
+        # awk '{print $NF}' grabs the last field (dirname/), tr -d '/' removes trailing slash
         RUN_ID=$(aws $PROFILE_FLAG s3 ls "${S3_URI%/}/runs/" 2>/dev/null \
-                     | awk '{print $2}' | tr -d '/' \
+                     | awk '{print $NF}' | tr -d '/' \
                      | grep -E '^[0-9]{8}-[0-9]{6}' | sort -r | head -1 || true)
         [[ -z "$RUN_ID" ]] && {
             echo "RUN_ID not set and no runs found in ${S3_URI%/}/runs/" >&2
@@ -122,6 +124,12 @@ elif [[ -z "${RUN_ID:-}" ]]; then
         }
     fi
     echo "[sync_outputs] auto-detected latest RUN_ID: $RUN_ID  (mode=$MODE)"
+fi
+
+# Sanity check: RUN_ID should match the full format (timestamp-timestamp-profile-hash)
+if ! [[ "$RUN_ID" =~ ^[0-9]{8}-[0-9]{6}-[a-z0-9-]+$ ]]; then
+    echo "WARNING: RUN_ID '$RUN_ID' doesn't match expected format (YYYYMMDD-HHMMSS-profile-hash)" >&2
+    echo "  This could indicate a detection bug. Set RUN_ID explicitly with --run-id to override." >&2
 fi
 
 REMOTE="${S3_URI%/}/runs/${RUN_ID}/outputs"
