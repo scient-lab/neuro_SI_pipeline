@@ -126,9 +126,9 @@ if [[ -n "$SWEEP" ]]; then
 fi
 
 # --- 5. Periodic S3 sync loop (separate process, not in PGID) --------------
-if pgrep -f 'sync_outputs.sh --loop' >/dev/null 2>&1; then
-    echo "[5/5] Stopping sync_outputs.sh --loop..."
-    pkill -f 'sync_outputs.sh --loop' 2>/dev/null || true
+if pgrep -f 's3_sync.sh --loop' >/dev/null 2>&1; then
+    echo "[5/5] Stopping s3_sync.sh --loop..."
+    pkill -f 's3_sync.sh --loop' 2>/dev/null || true
 fi
 
 # --- Final state ----------------------------------------------------------

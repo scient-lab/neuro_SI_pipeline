@@ -23,7 +23,7 @@
 #   diagnose [args]      — run ./scripts/diagnose.sh <args> on the pod.
 #   diagnose-llm [args]  — run ./scripts/diagnose_llm_extraction.sh.
 #   kill                 — run ./scripts/kill_pipeline.sh on the pod.
-#   sync                 — run ./scripts/data_prep/sync_outputs.sh on the pod.
+#   sync                 — run ./scripts/s3_sync.sh on the pod.
 #   exec '<cmd>'         — run an arbitrary bash command in $SI_HOME on the pod.
 #   ssh                  — open an interactive SSH session (cd $SI_HOME first).
 #
@@ -237,7 +237,7 @@ echo \"pipeline.sh started — pid=\$PID  log=$SI_HOME_REMOTE/nohup.out\"
 
     sync)
         args=$(quote_args "${SUBARGS[@]}")
-        remote_run "cd $SI_HOME_REMOTE && ./scripts/data_prep/sync_outputs.sh $args"
+        remote_run "cd $SI_HOME_REMOTE && ./scripts/s3_sync.sh $args"
         ;;
 
     exec)

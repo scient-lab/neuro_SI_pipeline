@@ -187,10 +187,10 @@ nohup ./scripts/pipeline.sh --profile pilot --platform runpod --phase graphmert 
 ```bash
 # Pod -> S3 (push, automatic at phase boundaries via pipeline.sh)
 # To force a manual push from pod:
-./scripts/data_prep/sync_outputs.sh
+./scripts/s3_sync.sh
 
 # Loop mode (continuous push every N seconds from a second ssh session):
-./scripts/data_prep/sync_outputs.sh --loop --interval 60
+./scripts/s3_sync.sh --loop --interval 60
 
 # S3 -> workstation (pull, no helper exists yet; use aws s3 sync directly)
 set -a; source .env; set +a

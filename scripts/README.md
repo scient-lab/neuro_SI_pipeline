@@ -13,7 +13,8 @@ Orchestrator + extension points for the specialized-SLM pipeline.
 | `phases/<phase>.sh` | (sourced by pipeline.sh) | Per-phase wrapper. Sources the right venv, dispatches by step name. |
 | `platforms/<platform>.sh` | (sourced by pipeline.sh) | Per-platform wrapper. Defines `exec_phase_on_platform`. |
 | `lib/{common,venv,manifest}.sh\|.py` | (sourced helpers) | Logging, step filtering, venv activation, manifest mutations. |
-| `data_prep/{sync_corpus,sync_outputs}.sh` | local + pod | S3 ↔ local sync for input corpus and run outputs. |
+| `sync_corpus.sh` (in `data_prep/`) | local + pod | S3 ↔ local sync for input corpus. |
+| `s3_sync.sh` | local + pod | S3 ↔ local sync for run outputs (push/pull modes). |
 
 ---
 
@@ -384,7 +385,7 @@ unified agent in `runpod/bootstrap.sh` pointed at `logs/<run_id>/`.
 
 ## Output → S3 sync
 
-`scripts/data_prep/sync_outputs.sh` pushes the entire `$OUTPUT_BASE/` to
+`scripts/s3_sync.sh` (formerly `scripts/data_prep/sync_outputs.sh`) pushes the entire `$OUTPUT_BASE/` to
 `s3://${S3_URI}/runs/${RUN_ID}/outputs/`. Excludes `graphrag/cache/*`,
 `graphrag/input/*`, `__pycache__/*`, `*.pyc`. Logs ARE included.
 
@@ -404,7 +405,7 @@ writing checkpoints every `save_steps`), a pod crash mid-phase loses
 everything since the last phase boundary.
 
 Set `S3_SYNC_INTERVAL_SEC` (e.g. `300` for 5 min) in `.env.runpod` and
-`pipeline.sh` will spawn a background loop that runs `sync_outputs.sh`
+`pipeline.sh` will spawn a background loop that runs `s3_sync.sh`
 every N seconds for the lifetime of the run. The loop is killed by an
 EXIT trap on success, failure, or `Ctrl-C`. `aws s3 sync` is incremental,
 so cost is tiny even on a 3-hour training step.

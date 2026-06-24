@@ -292,8 +292,8 @@ _s3_sync_if_configured() {
     # Push outputs to s3://$S3_URI/runs/$RUN_ID/outputs/. No-op when S3_URI
     # isn't set (local workstation case). Non-fatal — sync failure prints a
     # warning but doesn't kill the pipeline.
-    if [[ -n "${S3_URI:-}" && -x "$SCRIPT_DIR/data_prep/sync_outputs.sh" ]]; then
-        "$SCRIPT_DIR/data_prep/sync_outputs.sh" \
+    if [[ -n "${S3_URI:-}" && -x "$SCRIPT_DIR/s3_sync.sh" ]]; then
+        "$SCRIPT_DIR/s3_sync.sh" \
             || log_warn "S3 output sync failed (non-fatal) — outputs still on local disk"
     fi
 }
@@ -305,7 +305,7 @@ _s3_sync_if_configured() {
 SYNC_BG_PID=""
 _start_background_sync() {
     if [[ -z "${S3_URI:-}" || -z "${S3_SYNC_INTERVAL_SEC:-}" ]]; then return; fi
-    if [[ ! -x "$SCRIPT_DIR/data_prep/sync_outputs.sh" ]]; then return; fi
+    if [[ ! -x "$SCRIPT_DIR/s3_sync.sh" ]]; then return; fi
     # Validate interval is a positive integer.
     if ! [[ "$S3_SYNC_INTERVAL_SEC" =~ ^[0-9]+$ ]] || [[ "$S3_SYNC_INTERVAL_SEC" -lt 10 ]]; then
         log_warn "S3_SYNC_INTERVAL_SEC='$S3_SYNC_INTERVAL_SEC' invalid (need int >= 10s); skipping background sync"
@@ -317,7 +317,7 @@ _start_background_sync() {
         # the parent pipeline.sh might be under nohup itself.
         trap '' HUP
         while sleep "$S3_SYNC_INTERVAL_SEC"; do
-            "$SCRIPT_DIR/data_prep/sync_outputs.sh" >/dev/null 2>&1 || true
+            "$SCRIPT_DIR/s3_sync.sh" >/dev/null 2>&1 || true
         done
     ) &
     SYNC_BG_PID=$!
