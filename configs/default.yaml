@@ -82,6 +82,16 @@ extract:
   # relationships. Restored to upstream. DO NOT change without Jake's
   # review.
   max_model_len: 20000
+  # Ontological vocabulary (paper-grade: closed-vocabulary extraction per §4.1).
+  # Prof Jha guidance (2026-06-15): entity categories and relations should be
+  # frequency-derived from the extracted corpus AFTER analyzing actual outputs,
+  # not hand-picked before extraction. These knobs prepare for that transition.
+  #
+  # Paper-grade: use all categories/relations from domains/<domain>.yaml
+  # Later (post-audit): can set to frequency-derived counts after running
+  # 1_seed_kg/analyze_relations.py on seed KG extraction output.
+  num_entity_categories: 8          # Use top N categories from domains/
+  num_relation_types: 40            # Use top N relations from domains/
   # Single-GPU by default. Paper multi-GPU pilots set this in their profile.
   tensor_parallel_size: 1
   # Fraction of GPU memory vLLM is allowed to occupy. 0.90 default; bump up
