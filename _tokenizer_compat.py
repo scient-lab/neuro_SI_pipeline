@@ -73,3 +73,39 @@ try:
     _patch_class(Qwen2TokenizerFast)
 except ImportError:
     pass
+
+
+# ---------------------------------------------------------------------------
+# vLLM 0.7.3 + Mistral fix: MistralCommonBackend strict-validates kwargs.
+# ---------------------------------------------------------------------------
+# vLLM passes internal kwargs (max_loras, _from_auto, ...) to
+# AutoTokenizer.from_pretrained. For Mistral models, transformers' newer
+# `MistralCommonBackend.from_pretrained` rejects ANY kwarg it doesn't
+# recognize with:
+#   ValueError: Some kwargs in ['max_loras', '_from_auto'] are not
+#   supported by `MistralCommonBackend.from_pretrained`.
+#
+# Workaround: wrap from_pretrained to silently drop the vLLM-internal
+# kwargs the backend doesn't understand. The dropped kwargs aren't
+# load-time configuration the tokenizer needs anyway (max_loras is a
+# vLLM LoRA-tracking shim; _from_auto is just AutoTokenizer's internal
+# routing marker).
+try:
+    from transformers.tokenization_mistral_common import MistralCommonBackend
+
+    _orig_mcb_from_pretrained = MistralCommonBackend.from_pretrained.__func__
+
+    # Kwargs vLLM 0.7.3 passes that newer MistralCommonBackend rejects.
+    # Update this set if a future vLLM or transformers version adds more.
+    _VLLM_INTERNAL_KWARGS = ('max_loras', '_from_auto', 'trust_remote_code',
+                              'gpu_memory_utilization', 'tensor_parallel_size')
+
+    @classmethod
+    def _patched_mcb_from_pretrained(cls, *args, **kwargs):
+        for k in _VLLM_INTERNAL_KWARGS:
+            kwargs.pop(k, None)
+        return _orig_mcb_from_pretrained(cls, *args, **kwargs)
+
+    MistralCommonBackend.from_pretrained = _patched_mcb_from_pretrained
+except ImportError:
+    pass  # transformers too old to have MistralCommonBackend; nothing to patch
