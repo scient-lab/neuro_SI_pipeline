@@ -66,6 +66,11 @@ step_train_lora() {
     log_info "sft :: train_lora (trainer.py — HfArgumentParser)"
     # W&B guard is centralized in pipeline.sh::wandb_autodisable (common.sh) and
     # inherited via WANDB_MODE — no per-phase guard needed.
+    # Clear stale checkpoints from a prior run on this RUN_ID: trainer.py trains
+    # fresh (no resume-from-checkpoint), so a leftover higher-epoch dir (e.g.
+    # checkpoint-epoch-2 from an old epochs=2 run) would otherwise shadow this
+    # run's checkpoint-epoch-1 in merge_lora and waste disk.
+    rm -rf "$SFT_CHECKPOINTS_DIR"/checkpoint-* 2>/dev/null || true
     local NPROC="${NPROC:-1}"
 
     # Memory/scale knobs from config (sft.*) with single-GPU-safe FALLBACKS.
@@ -110,7 +115,10 @@ step_train_lora() {
 
 step_merge_lora() {
     log_info "sft :: merge_lora (merge_lora.py)"
-    local ADAPTER_DIR="${ADAPTER_DIR:-$(ls -d "$SFT_CHECKPOINTS_DIR"/checkpoint-* 2>/dev/null | tail -1)}"
+    # Newest checkpoint by mtime (-t + head -1), NOT alphabetical (tail -1 would
+    # pick a stale higher-numbered checkpoint-epoch-N left by a prior run with
+    # more epochs — e.g. an old epoch-2 shadowing this run's epoch-1).
+    local ADAPTER_DIR="${ADAPTER_DIR:-$(ls -dt "$SFT_CHECKPOINTS_DIR"/checkpoint-* 2>/dev/null | head -1)}"
     if [[ -z "$ADAPTER_DIR" || ! -d "$ADAPTER_DIR" ]]; then
         log_error "sft.merge_lora: no checkpoint found in $SFT_CHECKPOINTS_DIR"
         return 1

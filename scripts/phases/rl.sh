@@ -37,9 +37,12 @@ mkdir -p "$RL_DATASET_DIR" "$RL_CHECKPOINTS_DIR"
 VERIFIED_CURRICULUM="$OUTPUT_BASE/curriculum_verified/curriculum_verified.json"
 SFT_MERGED_MODEL="${SFT_MERGED_MODEL:-}"
 
-# If not set explicitly, find the last merged SFT model.
+# If not set explicitly, find the NEWEST merged SFT model by mtime — not
+# alphabetical (tail -1), which would grab a stale checkpoint-epoch-N/
+# merged_final_model from a prior run with more epochs. Same fix as sft.sh's
+# merge selector (twin).
 if [[ -z "$SFT_MERGED_MODEL" ]]; then
-    SFT_MERGED_MODEL=$(ls -d "$OUTPUT_BASE/sft_checkpoints"/checkpoint-*/merged_final_model 2>/dev/null | tail -1 || true)
+    SFT_MERGED_MODEL=$(ls -dt "$OUTPUT_BASE/sft_checkpoints"/checkpoint-*/merged_final_model 2>/dev/null | head -1 || true)
 fi
 
 DEEPSPEED_CFG="${DEEPSPEED_CFG:-$REPO_ROOT/3_si_curriculum/RL/deepspeed_config.json}"
