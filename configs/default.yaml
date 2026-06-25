@@ -199,6 +199,12 @@ curriculum:
   validate_qa_gpu_memory_utilization: 0.70
   validate_qa_tensor_parallel_size: 1
   validate_qa_batch_size: 64
+  # Generation cap for the two-LLM QA check (verify_questions.py). MUST fit a
+  # Qwen3 <think> block + the final [yes]/[no] — the upstream hardcoded 256
+  # truncated thinking mid-reason → no verdict → 97% false-reject (smoke
+  # 2026-06-25, 151 Q&A → 4 kept). Bounded above by validate_qa_max_model_len.
+  # Raise if the drop rate looks implausibly high; lower for speed.
+  validate_qa_max_tokens: 1024
 
 # --- Phase: sft (matches 3_si_curriculum/training/trainer.py) ------------
 sft:

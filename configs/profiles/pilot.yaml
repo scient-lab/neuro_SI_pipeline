@@ -37,17 +37,13 @@ curriculum:
   validate_qa_max_model_len: 8192
 
 # sft: matches trainer.py::TrainingConfig wired fields (lora_r/alpha/dropout
-# inherit from default.yaml). block_size larger than smoke since A6000 has 48 GB.
+# inherit from default.yaml). block_size larger than smoke since H100 has 80 GB+.
 sft:
   block_size: 8192
-  # Force SDPA — flash-attn pin in 3_si_curriculum/requirements.txt is
-  # commented out (chained build-dep failures: torch → setuptools → ...).
-  # SDPA is PyTorch built-in, no extra package, ~10-15% slower than FA2
-  # at our block_size=8192. Acceptable cost for pilot validation;
-  # paper-grade work should install flash-attn via the pre-built wheel
-  # documented in 3_si_curriculum/requirements.txt and remove this
-  # override.
-  attn_implementation: sdpa
+  # attn_implementation inherits default.yaml's flash_attention_2 — the FA2
+  # pre-built wheel is now installed via 3_si_curriculum/requirements.txt, so
+  # the old sdpa override is removed (its own note said to drop it once the
+  # wheel was wired). H100/A100-80 are sm_80/sm_90 → FA2 supported.
 
 # rl: keys match rl_training.py::TrainingConfig (NOT n_completions /
 # max_completion_tokens — those names are ignored).

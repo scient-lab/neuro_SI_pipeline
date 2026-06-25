@@ -47,24 +47,20 @@ deepspeed
 # (configs/default.yaml::sft.attn_implementation). The paper used FA2 on
 # Princeton's Della HPC.
 #
-# WHY THIS PIN IS COMMENTED OUT (2026-06-24):
-# flash-attn's build chain has chained missing-dep errors that uv's
-# isolated build env doesn't resolve cleanly. After setup.sh adds
-# --no-build-isolation-package flash-attn (torch becomes visible), the
-# next failure is setuptools missing from the build env, then likely
-# packaging, etc. Each fix uncovers the next layer — flash-attn relies
-# on `pip install`'s implicit base of build tools that uv doesn't replicate.
+# We install a PRE-BUILT WHEEL, not the sdist. flash-attn is compiled CUDA C++,
+# and its source build has chained missing-dep errors in uv's isolated build
+# env (torch → setuptools → packaging → …) that never converge. The wheel skips
+# the compile entirely — pip just unpacks a binary someone already built.
 #
-# Path forward when paper-grade FA2 is needed:
-#   1) Install via pre-built wheel (flash-attn releases ship binaries for
-#      specific torch+CUDA combos). Check https://github.com/Dao-AILab/flash-attention/releases
-#      for the wheel matching torch==2.5.1+cu121, python==3.10.
-#   2) Or use a Docker image that pre-bakes flash-attn (RunPod has some).
-#   3) Or wait for vLLM 0.10+ adoption (different attention path).
-#
-# Until then, pilot/smoke profiles override sft.attn_implementation to
-# "sdpa" (PyTorch built-in, no extra build, ~10-15% slower at our scale).
-# flash-attn>=2.5,<3
+# The wheel tags MUST match THIS venv exactly, or it won't import:
+#   cu12 · torch2.5 · cxx11abiFALSE · cp310 · linux_x86_64
+#   (python 3.10 per setup.sh, torch==2.5.1+cu121 pinned above, ABI=False, Ada+ GPU).
+# If you bump torch/python/CUDA, pick the matching asset from
+# https://github.com/Dao-AILab/flash-attention/releases and update this URL.
+# With this present, attn_implementation=flash_attention_2 works and NO profile
+# needs the sdpa override. (A non-Ada/Hopper GPU without sm_80+ still can't use
+# FA2 — fall back to sdpa there.)
+flash_attn @ https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.5cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
 # accelerate pin propagated from 2_graphmert/requirements.txt (the venv where
 # this pin was originally tested). transformers Trainer hard-requires
 # accelerate; unpinned resolution can pick a version with API drift vs

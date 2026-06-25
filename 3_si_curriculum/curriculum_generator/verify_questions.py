@@ -70,6 +70,12 @@ def parse_args():
                     help="vLLM KV cache cap; omit/0 to use model's nominal context")
     ap.add_argument("--batch_size", type=int,
                     default=get_phase_param('curriculum', 'validate_qa_batch_size', 64))
+    # Generation cap. MUST fit Qwen3's <think> block + the final [yes]/[no];
+    # the upstream hardcoded 256 truncated thinking mid-reason -> no verdict ->
+    # 97% false-reject (smoke 2026-06-25). Bounded above by max_model_len.
+    ap.add_argument("--max_tokens", type=int,
+                    default=get_phase_param('curriculum', 'validate_qa_max_tokens', 1024),
+                    help="generation cap; must fit Qwen3 <think> + the [yes]/[no] verdict")
     ap.add_argument("--subset", type=int, default=0,
                     help="If > 0, only validate this many items (for debugging)")
     return ap.parse_args()
@@ -89,16 +95,27 @@ def build_validation_prompt(item: Dict) -> str:
 
 
 def _parse_verdict(text: str) -> bool:
-    text = text.lower()
-    m = re.search(r"\[(yes|no)\]", text)
-    if m:
-        return m.group(1) == "yes"
-    return False
+    # Thinking models (Qwen3) emit "<think>...</think>" then the [yes]/[no]
+    # verdict, and the reasoning itself may mention "[yes]"/"[no]" hypothetically.
+    #   1. If <think> opened but never closed, the budget ran out before the
+    #      verdict — no real answer was emitted, so reject (any [yes]/[no] in the
+    #      raw reasoning is hypothetical). High drop here = raise
+    #      curriculum.validate_qa_max_tokens.
+    if "<think>" in text and "</think>" not in text:
+        return False
+    #   2. Read only the post-think answer.
+    if "</think>" in text:
+        text = text.rsplit("</think>", 1)[-1]
+    #   3. Take the LAST [yes]/[no] — not re.search's FIRST, which could grab a
+    #      reasoning mention before the final verdict.
+    matches = re.findall(r"\[(yes|no)\]", text.lower())
+    return matches[-1] == "yes" if matches else False
 
 
 def validate_with_model(items: List[Dict], model_id: str,
                         tensor_parallel_size: int, gpu_memory_utilization: float,
-                        batch_size: int, max_model_len = None) -> List[bool]:
+                        batch_size: int, max_model_len = None,
+                        max_tokens: int = 1024) -> List[bool]:
     # Build LLM kwargs conditionally — when max_model_len is None or 0, omit
     # it so vLLM uses the model's nominal config.max_position_embeddings.
     # This mirrors the original upstream behaviour (script never passed it).
@@ -122,7 +139,7 @@ def validate_with_model(items: List[Dict], model_id: str,
     # doesn't touch that codepath). When vLLM upgrades past 0.10.x revert
     # to llm.chat().
     tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
-    sampling = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=256)
+    sampling = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=max_tokens)
     results = []
 
     for start in range(0, len(items), batch_size):
@@ -169,12 +186,12 @@ def main():
     scores_1 = validate_with_model(
         items, args.model_ids[0],
         args.tensor_parallel_size, args.gpu_memory_utilization, args.batch_size,
-        max_model_len=args.max_model_len
+        max_model_len=args.max_model_len, max_tokens=args.max_tokens
     )
     scores_2 = validate_with_model(
         items, args.model_ids[1],
         args.tensor_parallel_size, args.gpu_memory_utilization, args.batch_size,
-        max_model_len=args.max_model_len
+        max_model_len=args.max_model_len, max_tokens=args.max_tokens
     )
 
     validated = [

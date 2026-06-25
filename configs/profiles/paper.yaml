@@ -23,10 +23,11 @@ curriculum:
   num_questions: 5000
   hop_range: [1, 5]
 
-sft:
-  # Paper uses flash_attention_2 (pre-built wheel); inherits default.yaml.
-  # block_size: 32768 from default.yaml. attn_implementation: flash_attention_2.
-  pass
+# sft: no overrides — paper inherits default.yaml wholesale (block_size 32768,
+# attn_implementation flash_attention_2 via the pre-built wheel). NOTE: do NOT
+# write `sft:\n  pass` here — YAML parses the bare `pass` as the string "pass",
+# making cfg['sft'] a str, which crashes get_phase_param('sft', ...). Omitting
+# the block entirely lets it fall through to default cleanly.
 
 rl:
   # Multi-GPU: use ZeRO-3 for sharding, full fine-tune (no LoRA).
