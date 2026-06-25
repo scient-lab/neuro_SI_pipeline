@@ -67,17 +67,24 @@ step_seed_kg_consensus() {
           --input_csv   "$SEED_KG" \
           --output_csv  "$VALIDATED_SEED_KG" \
           --model_ids   "$validate_a" "$validate_b" \
-          --batch_size  64 \
-          --max_model_len 4096 ) \
+          --batch_size  64 ) \
         || { log_error "seed_kg_consensus failed"; return 1; }
+    # NOTE: --max_model_len intentionally omitted — fact_score.py reads
+    # graphmert.fact_score_max_model_len from config (4096) so the cap is
+    # profile-tunable in one place. See configs/default.yaml.
 
-    # Report drop rate
+    # Report drop rate (guard before==0 so an empty seed KG gives a clear
+    # message instead of a bash "division by 0" crash that masks the real cause).
     local before after drop pct
     before=$(($(wc -l < "$SEED_KG") - 1))
     after=$(($(wc -l < "$VALIDATED_SEED_KG") - 1))
     drop=$((before - after))
-    pct=$((drop * 100 / before))
-    log_info "validate :: consensus filter: $before triples in → $after passed (dropped $drop, $pct%)"
+    if [[ "$before" -gt 0 ]]; then
+        pct=$((drop * 100 / before))
+        log_info "validate :: consensus filter: $before triples in → $after passed (dropped $drop, $pct%)"
+    else
+        log_warn "validate :: seed KG had 0 triples — nothing to validate (check the extract phase output)"
+    fi
 }
 
 # --- Step dispatch ---

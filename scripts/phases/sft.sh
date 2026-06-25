@@ -64,6 +64,17 @@ step_prepare_data() {
 
 step_train_lora() {
     log_info "sft :: train_lora (trainer.py — HfArgumentParser)"
+    # Same guard as rl.sh (audit bug #17, commit f94c515): trainer.py sets
+    # WANDB_PROJECT, so HF Trainer auto-registers WandbCallback, and wandb
+    # crashes at authenticate_session if no API key is present. Disable via
+    # WANDB_MODE=disabled when the operator hasn't provided a key. Paper-grade
+    # operators set WANDB_API_KEY in .env.runpod to opt into online tracking.
+    if [[ -z "${WANDB_API_KEY:-}" ]]; then
+        export WANDB_MODE=disabled
+        log_info "sft.train_lora: WANDB_API_KEY not set — WANDB_MODE=disabled (set it in .env.runpod for online tracking)"
+    else
+        log_info "sft.train_lora: WANDB_API_KEY present — wandb online"
+    fi
     # Single-GPU or multi-GPU via torchrun. Operator can set NPROC.
     local NPROC="${NPROC:-1}"
     local CMD=(

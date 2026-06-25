@@ -61,7 +61,11 @@ def parse_args():
     ap.add_argument("--model_ids", nargs="+", required=True,
                     help="Two model paths to use for validation (must provide exactly 2)")
     ap.add_argument("--batch_size", type=int, default=64)
-    ap.add_argument("--max_model_len", type=int, default=4096)
+    # None → fall back to graphmert.fact_score_max_model_len (resolved in main).
+    # A concrete cap is REQUIRED because a validation model can be Mistral-Nemo,
+    # whose 131072 nominal context overflows the KV cache on a 48 GB GPU.
+    ap.add_argument("--max_model_len", type=int, default=None,
+                    help="vLLM KV-cache cap; omit → graphmert.fact_score_max_model_len")
     ap.add_argument("--tensor_parallel_size", type=int, default=1)
     return ap.parse_args()
 
@@ -162,18 +166,22 @@ def main():
         from pipeline_config import get_phase_param
         no_think = bool(get_phase_param('graphmert', 'fact_score_no_think', False))
         max_tokens = int(get_phase_param('graphmert', 'fact_score_max_tokens', 512))
+        # CLI --max_model_len wins (ad-hoc override); else the config knob.
+        max_model_len = args.max_model_len or int(
+            get_phase_param('graphmert', 'fact_score_max_model_len', 4096))
     except Exception as e:
         logger.warning("could not read graphmert.fact_score_* (%s) — defaulting "
-                       "no_think=False, max_tokens=512", e)
+                       "no_think=False, max_tokens=512, max_model_len=4096", e)
         no_think = False
         max_tokens = 512
+        max_model_len = args.max_model_len or 4096
 
     # Score with both models
     scores_1 = score_triples(df, args.model_ids[0], args.batch_size,
-                              args.max_model_len, args.tensor_parallel_size,
+                              max_model_len, args.tensor_parallel_size,
                               no_think=no_think, max_tokens=max_tokens)
     scores_2 = score_triples(df, args.model_ids[1], args.batch_size,
-                              args.max_model_len, args.tensor_parallel_size,
+                              max_model_len, args.tensor_parallel_size,
                               no_think=no_think, max_tokens=max_tokens)
 
     df["valid_model_1"] = scores_1

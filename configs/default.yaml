@@ -155,6 +155,11 @@ graphmert:
   # verdict AFTER </think>, NOT disabling thinking here. Until that lands, the
   # two-LLM seed-KG validate step on Qwen3 will drop everything.
   fact_score_no_think: false
+  # NOTE: the three fact_score_* knobs below live in the `graphmert` namespace
+  # because fact_score.py is a 2_graphmert/ helper — but they govern BOTH callers
+  # of it: the graphmert validate_predictions step AND the seed-KG `validate`
+  # phase (scripts/phases/validate.sh). Tuning seed-KG consensus = edit these.
+  #
   # Generation cap for the fact_score judge (fact_score.py SamplingParams).
   # Replaces the upstream hardcoded max_tokens=10, which truncated Qwen3's
   # <think> block before the verdict → 100% drop. Must fit reasoning + the final
@@ -162,6 +167,12 @@ graphmert:
   # an unexpectedly high drop rate (a sign think blocks are being cut off),
   # lower for speed. Profiles may override per scale.
   fact_score_max_tokens: 512
+  # vLLM KV-cache context cap for the fact_score judge. REQUIRED: a validation
+  # model can be Mistral-Nemo (131072 nominal context), which overflows the KV
+  # cache on a 48 GB GPU at 0.70 mem_util. The shell call sites no longer pass
+  # --max_model_len, so this is the single source of truth. Fact-check prompts
+  # are small, so 4096 is ample on any tier; raise only if prompts grow.
+  fact_score_max_model_len: 4096
   combine_tails_gpu_memory_utilization: 0.90
 
 # --- Phase: curriculum ---------------------------------------------------

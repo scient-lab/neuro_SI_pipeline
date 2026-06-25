@@ -264,8 +264,9 @@ step_validate_predictions() {
           --output_csv  "$GRAPHMERT_DIR/final_kg/validated_triples.csv" \
           --model_ids   "$VALIDATE_A" "$VALIDATE_B" \
           --batch_size  64 \
-          --max_model_len 4096 \
           --tensor_parallel_size 1 ) || { log_error "fact_score failed"; return 1; }
+    # NOTE: --max_model_len omitted — fact_score.py reads the cap from
+    # graphmert.fact_score_max_model_len (config, 4096). Single source of truth.
 }
 
 step_expand_kg() {
