@@ -2,7 +2,9 @@
 # Target: ~300-500 input examples → ~100 curriculum Q&A pairs → ~50-100 SFT examples.
 # Validates all 6 phases work end-to-end. Fits on a single 32-48 GB GPU (L40S/L40/A6000/A40).
 #
-# Uses Qwen 8B for extract (fidelity closer to Qwen3-14B than 3B, but still single-GPU).
+# Model SIZES are scaled to 8B for speed (extract / predict_tails / SFT student),
+# but the two-LLM consensus steps keep a DISTINCT second model (Mistral-Nemo) so
+# validation BEHAVIOR matches pilot/paper. Differs from pilot in scale, not logic.
 # Every key below verified to match the consuming code (see comments).
 
 models:
@@ -10,18 +12,19 @@ models:
   # Closer to Qwen3-14B behavior than 3B; catches extraction issues that 3B would miss.
   # Requires 24 GB GPU minimum (8B model + KV cache + batch overhead).
   extract: Qwen/Qwen3-8B
-  # Phase 2 validation: default.yaml uses Qwen3-14B (28GB) + Mistral-Nemo (24GB).
-  # Smoke can't fit two large models at once. Use Qwen3-8B for both to stay within
-  # 24GB. Trades paper-grade diversity (14B + Mistral) for smoke-scale feasibility.
-  # Paper-grade will run full (14B + Mistral) with more VRAM on pilot/paper profiles.
+  # Phase 2 validation: TWO DISTINCT models for genuine consensus. fact_score.py
+  # loads them SEQUENTIALLY (del llm between scoring passes), so peak VRAM =
+  # max(model), not the sum — both fit on a 48 GB card. validate_a stays 8B for
+  # smoke speed; validate_b is Mistral-Nemo so the two-LLM agreement is real
+  # (not one model agreeing with itself, which is what 8B+8B was doing).
   validate_a: Qwen/Qwen3-8B
-  validate_b: Qwen/Qwen3-8B
+  validate_b: mistralai/Mistral-Nemo-Instruct-2407
   # Phase 3 tail prediction: default.yaml uses Qwen3-14B (28GB). Use 8B for smoke.
   predict_tails: Qwen/Qwen3-8B
-  # Phase 4 curriculum final checks: default.yaml uses Qwen3-14B + Mistral-Nemo (52GB combined).
-  # Smoke uses Qwen3-8B for both checks (feasibility over paper-grade diversity).
+  # Phase 4 curriculum final checks: same two-distinct-model logic as validate.
+  # check_a stays 8B (speed); check_b is Mistral-Nemo for genuine consensus.
   curriculum_check_a: Qwen/Qwen3-8B
-  curriculum_check_b: Qwen/Qwen3-8B
+  curriculum_check_b: mistralai/Mistral-Nemo-Instruct-2407
   # Phase 5 SFT base model: default.yaml uses Qwen3-14B (~28GB fp16). Smoke's VRAM
   # band starts at 32GB, so a 14B SFT+LoRA can OOM if discovery lands a low-end card.
   # Keep SFT/RL at 8B for consistency with the downgraded inference models above —
@@ -33,7 +36,10 @@ extract:
   max_input_examples: 500
   # 500 input docs → ~200-300 triples → ~100-150 curriculum Q&A → ~50-100 SFT examples.
   # Ensures downstream stages (SFT, RL) have minimum viable data to exercise code paths.
-  max_model_len: 4096
+  # NOTE: max_model_len inherits default.yaml's 20000. A prior 4096 override
+  # truncated Qwen3's <think> block before the JSON was ever emitted → only 3
+  # triples from 70 chunks (smoke 2026-06-25). Do NOT re-cap below ~16k while
+  # extract_triples_no_think is false (thinking ON).
   # Smoke-scale input corpus (committed to the repo for reproducibility).
   # 10 Wikipedia neuroscience articles, ~360 KB total. See README in that
   # directory for provenance and regeneration instructions.
@@ -108,9 +114,9 @@ rl:
   use_lora: true
 
 # RunPod hardware defaults for this scale (read by scripts/runpod/launch.sh).
-# A4000 (16 GB) is one tier above the 3060 (12 GB) so it has more headroom —
-# but the config above is calibrated for 12 GB so the same profile works on
-# either box.
+# 32-48 GB band (L40S/L40/A6000/A40). 48 GB is enough to load Qwen3-14B (~28 GB)
+# or Mistral-Nemo (~24 GB) one-at-a-time, so the consensus steps run real
+# distinct-model agreement and smoke mirrors pilot/paper validation behavior.
 runpod:
   # Primary GPU selection: dynamic discovery. Band 32-48 GB; launch tries the
   # highest-VRAM match first (high->low). 48 GB-class (L40S/L40/A6000/A40) preferred.

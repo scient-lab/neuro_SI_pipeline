@@ -146,10 +146,16 @@ graphmert:
   # Dedup/normalize tail prediction shards (substep of validate_predictions).
   combine_tails_no_think: false
   # Judgment: (head, relation, tail) → "is this triple factually consistent?"
-  # (substep of validate_predictions, the second LLM in the two-LLM consensus.)
-  # Real reasoning value — thinking helps the merge step (combine_tails)
-  # weight votes by reasoning quality.
-  fact_score_no_think: false
+  # MUST be true with our Qwen3 validation models. fact_score.py caps generation
+  # at max_tokens=10 (terse yes/no by design) and decides validity via
+  # text.startswith("yes"). With thinking ON, Qwen3 emits "<think>" and the
+  # 10-token budget is exhausted before any verdict → startswith fails → 100% of
+  # triples dropped (smoke 2026-06-25). Jake's code is correct for his original
+  # models (gpt-oss-20b + Mistral-Nemo, no <think>); WE swapped in Qwen3
+  # (gpt-oss-20b is vLLM-0.7.3-incompatible, see models.validate_a), which makes
+  # /no_think mandatory here. To restore thinking you'd also have to raise
+  # max_tokens in fact_score.py — not worth it for a binary yes/no judgment.
+  fact_score_no_think: true
   combine_tails_gpu_memory_utilization: 0.90
 
 # --- Phase: curriculum ---------------------------------------------------

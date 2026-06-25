@@ -99,6 +99,20 @@ run_phase() {
     [[ "$rc" -gt "$EXIT_CODE" ]] && EXIT_CODE="$rc"
 }
 
+# Guard against an unrecognized --phase value silently producing no output.
+# Only extract/graphmert/curriculum have analysis modules; anything else
+# (typo, or a phase without analysis like validate/sft/rl) is a hard error
+# rather than a confusing no-op + exit 0.
+if [[ -n "$PHASE_FILTER" ]]; then
+    case "$PHASE_FILTER" in
+        extract|graphmert|curriculum) ;;
+        # exit 64 = EX_USAGE; distinct from the analysis modules' 0/1/2
+        # (0 = clean, 2 = passed-with-warnings) so a typo can't be mistaken
+        # for a real analysis verdict by callers checking $?.
+        *) echo "unknown --phase '$PHASE_FILTER' (expected: extract, graphmert, curriculum)" >&2; exit 64 ;;
+    esac
+fi
+
 if [[ -z "$PHASE_FILTER" || "$PHASE_FILTER" == "extract" ]]; then
     run_phase extract
 fi
