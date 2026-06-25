@@ -28,13 +28,13 @@ Detailed sections below.
 ## 1. Launch new pod
 
 ```bash
-# Smoke (12-16 GB GPU, RTX 3060/A4000-class)
+# Smoke (32-48 GB — L40S/L40/A6000/A40-class)
 ./scripts/runpod/launch.sh --profile smoke
 
-# Pilot (48 GB-class — L40/L40S/A100-40)
+# Pilot (80-96 GB — A100-80/H100/H100-NVL)
 ./scripts/runpod/launch.sh --profile pilot
 
-# Paper (80 GB — H100 / A100-80)
+# Paper (96-288 GB — H200/B200 ultra-tier)
 ./scripts/runpod/launch.sh --profile paper
 
 # Override corpus path (default per profile YAML)
@@ -93,6 +93,34 @@ nohup ./scripts/pipeline.sh --profile pilot --platform runpod --phase graphmert 
 export RUN_ID=20260620-030304-pilot-d311fd5
 nohup ./scripts/pipeline.sh --profile pilot --platform runpod --phase graphmert > nohup.out 2>&1 &
 ```
+
+---
+
+## 3.5. Nighttime runs with auto-kill safety (unattended)
+
+For nighttime/unattended runs: auto-kill pod if pipeline fails (saves GPU costs).
+
+```bash
+# === NIGHTTIME: run pipeline with auto-kill on failure ===
+# On pod:
+nohup ./scripts/pipeline.sh --profile pilot --platform runpod > nohup.out 2>&1 &
+./scripts/monitor_pipeline.sh &  # Background monitor: kills pod if failed after 10 min
+
+# === Custom timeout (default 600s = 10 min) ===
+MONITOR_TIMEOUT=900 ./scripts/monitor_pipeline.sh &  # 15 min grace period
+
+# === Check monitor log ===
+tail -f outputs/*/monitor.log
+```
+
+**Behavior:**
+- Monitors `run_manifest.json` every 30 seconds
+- Detects phase failures
+- Waits 10 min (configurable) for manual intervention
+- Auto-kills pod if still failed (stops all billing immediately)
+- Logs all events to `outputs/<RUN_ID>/monitor.log`
+
+**For daytime runs:** skip monitor script — debug manually if pipeline fails.
 
 ---
 

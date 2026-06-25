@@ -45,15 +45,16 @@ rl:
 # Fallback: single H100 on RunPod for demo/validation.
 # For multi-GPU SLURM: scripts/runpod/launch.sh --gpu-type ... --num-gpus 8
 runpod:
-  # Single-GPU fallback: 80 GB-class hardware (H100s preferred).
-  # For paper-grade multi-GPU, use SLURM on Della or add paper-multi.yaml
-  vram_gb_min: 80
-  vram_gb_max: 0        # no upper limit; H100 NVL (94GB) if available
-  # Static fallback if discovery fails / returns empty.
+  # Single-GPU: 96-288 GB ultra-tier (H200 141GB / B200 192GB). Launch tries
+  # the highest-VRAM match first (high->low). NOTE: the 96 GB floor EXCLUDES
+  # H100/A100-80GB — those now belong to the pilot profile (80-96 GB).
+  # For paper-grade multi-GPU, use SLURM on Della or add paper-multi.yaml.
+  vram_gb_min: 96
+  vram_gb_max: 288      # accept up to 288 GB (single-GPU max today is B200 192GB)
+  # Static fallback if discovery fails / returns empty. Ordered high->low VRAM.
   gpu_types:
-    - "NVIDIA H100 80GB HBM3"
-    - "NVIDIA H100 PCIe"
-    - "NVIDIA A100-SXM4-80GB"
+    - "NVIDIA B200"
+    - "NVIDIA H200"
   cloud_type: SECURE
   disk_gb: 500
   num_gpus: 1

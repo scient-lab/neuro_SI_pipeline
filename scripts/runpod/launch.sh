@@ -18,7 +18,7 @@
 #
 # GPU selection (in order of precedence):
 #   1. --gpu-type / RUNPOD_GPU_TYPE       — pin one type, no fallback
-#   2. profile vram_gb_min/max + cloud    — dynamic via GET /v1/gpus, sorted by $/hr
+#   2. profile vram_gb_min/max + cloud    — dynamic via GET /v1/gpus, VRAM desc (high->low), $/hr tiebreak
 #   3. profile gpu_types (list)           — static fallback chain
 #   4. profile gpu_type (scalar, legacy)  — single type
 
@@ -152,7 +152,8 @@ for t in types:
 }
 
 # Query RunPod's GET /v1/gpus, filter by VRAM range + cloud-tier
-# availability, sort by price ascending. Emits one GPU-type ID per line.
+# availability, sort by VRAM descending (high->low), price ascending as
+# tiebreak. Emits one GPU-type ID per line.
 #
 # Args: vram_min  vram_max  cloud_type  ('SECURE' or 'COMMUNITY')
 # vram_max=0 means no upper bound. Returns empty (and exits 0) on any failure
@@ -217,7 +218,8 @@ def gpu_id(g):
     return g.get('id') or g.get('displayName') or g.get('name') or ''
 
 matches = [g for g in gpus if vmin <= vram_gb(g) <= vmax and cloud_ok(g)]
-matches.sort(key=price)
+# High-to-low: try the largest-VRAM GPU first; cheapest wins within a VRAM tier.
+matches.sort(key=lambda g: (-vram_gb(g), price(g)))
 for g in matches:
     gid = gpu_id(g)
     if gid:
@@ -293,6 +295,10 @@ for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "HF_TOKEN", "WANDB_API_KEY",
           "S3_URI", "CORPUS_PATH", "AWS_ACCESS_KEY_ID",
           "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION",
           "S3_SYNC_INTERVAL_SEC", "AWS_CLOUDWATCH_LOG_GROUP",
+          # Pipeline monitoring for nighttime runs (scripts/monitor_pipeline.sh)
+          "MONITOR_TIMEOUT",
+          # RunPod control-plane API (required for monitor_pipeline.sh to kill pod on failure)
+          "RUNPOD_API_KEY",
           # Pod-side diagnostics (vllm_smoke.sh, diagnose_llm_extraction.py)
           # point at a separate vLLM serving pod via the OpenAI-compatible API.
           "VLLM_ENDPOINT_URL", "VLLM_API_KEY"):

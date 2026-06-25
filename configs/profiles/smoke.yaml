@@ -106,16 +106,16 @@ rl:
 # but the config above is calibrated for 12 GB so the same profile works on
 # either box.
 runpod:
-  # Primary GPU selection: dynamic discovery. Requires 24 GB minimum for Qwen 8B.
-  # L4 is preferred (Ada architecture, faster inference than Ampere).
-  vram_gb_min: 24
+  # Primary GPU selection: dynamic discovery. Band 32-48 GB; launch tries the
+  # highest-VRAM match first (high->low). 48 GB-class (L40S/L40/A6000/A40) preferred.
+  vram_gb_min: 32
   vram_gb_max: 48
-  # Static fallback: used only if discovery returns empty / API hiccup.
+  # Static fallback (ordered high->low VRAM): only if discovery returns empty / API hiccup.
   gpu_types:
-    - "NVIDIA L4"
-    - "NVIDIA RTX A5000"
-    - "NVIDIA RTX A6000"
+    - "NVIDIA L40S"
     - "NVIDIA L40"
+    - "NVIDIA RTX A6000"
+    - "NVIDIA A40"
   cloud_type: COMMUNITY
   disk_gb: 100
   num_gpus: 1

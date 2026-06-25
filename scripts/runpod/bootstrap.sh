@@ -215,8 +215,15 @@ ENV_FILE="$SI_HOME/.env"
     # Periodic background output sync — pipeline.sh runs sync_outputs.sh
     # every N sec to catch mid-phase HF Trainer checkpoints. Unset = off.
     [[ -n "${S3_SYNC_INTERVAL_SEC:-}"   ]] && echo "S3_SYNC_INTERVAL_SEC=$S3_SYNC_INTERVAL_SEC"
+    # Pipeline monitoring for nighttime runs (scripts/monitor_pipeline.sh).
+    # Grace period (seconds) before auto-killing pod on pipeline failure. Default 600 (10 min).
+    [[ -n "${MONITOR_TIMEOUT:-}"        ]] && echo "MONITOR_TIMEOUT=$MONITOR_TIMEOUT"
     # CloudWatch Logs target (per-step ship by lib/common.sh::_cw_ship).
     [[ -n "${AWS_CLOUDWATCH_LOG_GROUP:-}"        ]] && echo "AWS_CLOUDWATCH_LOG_GROUP=$AWS_CLOUDWATCH_LOG_GROUP"
+    # RunPod control-plane API key (REQUIRED for scripts/monitor_pipeline.sh to kill pod on failure).
+    # Used to stop/delete the pod via RunPod's GraphQL API. Written to .env like
+    # the other secrets above (file is chmod 600).
+    [[ -n "${RUNPOD_API_KEY:-}"                  ]] && echo "RUNPOD_API_KEY=$RUNPOD_API_KEY"
     # Separate vLLM serving pod (used by scripts/runpod/vllm_smoke.sh and
     # 1_seed_kg/diagnose_llm_extraction.py). Different from RUNPOD_API_KEY,
     # which is for the RunPod control-plane API. Optional.

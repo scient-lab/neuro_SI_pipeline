@@ -77,15 +77,15 @@ rl:
 # in favor of L40 ($0.86/hr but fast) reduces total spend because the run
 # finishes in ~1-2h instead of 5-7h.
 runpod:
-  # Primary: dynamic discovery — 48 GB-class compute-strong (Ada+) hardware
-  # plus A100 fallback. Discovery sorts by price asc within this range.
-  vram_gb_min: 48
-  vram_gb_max: 80
-  # Static fallback if discovery fails / returns empty. Order is best-effort
-  # preference (Ada > Ampere data-center; Ampere desktop deliberately absent).
+  # Primary: dynamic discovery — 80-96 GB single-GPU (A100-80/H100/H100-NVL).
+  # Launch tries the highest-VRAM match first (high->low), price asc as tiebreak.
+  vram_gb_min: 80
+  vram_gb_max: 96
+  # Static fallback if discovery fails / returns empty. Ordered high->low VRAM.
   gpu_types:
-    - "NVIDIA L40"
-    - "NVIDIA L40S"
+    - "NVIDIA H100 NVL"
+    - "NVIDIA H100 80GB HBM3"
+    - "NVIDIA H100 PCIe"
     - "NVIDIA A100 80GB PCIe"
     - "NVIDIA A100-SXM4-80GB"
   cloud_type: SECURE
