@@ -66,19 +66,9 @@ step_train_grpo() {
         log_error "rl.train_grpo: no merged SFT model found. Run sft phase first or set SFT_MERGED_MODEL."
         return 1
     fi
-    # audit bug #17 fix: TRL GRPOTrainer auto-registers WandbCallback when
-    # WANDB_PROJECT is set, and wandb crashes at authenticate_session if
-    # no API key is present. Auto-disable via WANDB_MODE=disabled when
-    # the operator hasn't provided a key. WANDB_MODE is wandb's
-    # documented public env var (read by wandb.init() internally) —
-    # values: online | offline | disabled. Paper-grade operators set
-    # WANDB_API_KEY in .env.runpod to opt into online tracking.
-    if [[ -z "${WANDB_API_KEY:-}" ]]; then
-        export WANDB_MODE=disabled
-        log_info "rl.train_grpo: WANDB_API_KEY not set — WANDB_MODE=disabled (set WANDB_API_KEY in .env.runpod to enable online tracking)"
-    else
-        log_info "rl.train_grpo: WANDB_API_KEY present — wandb online"
-    fi
+    # W&B guard is centralized in pipeline.sh::wandb_autodisable (common.sh) and
+    # inherited via WANDB_MODE — no per-phase guard needed (audit bug #17 moved
+    # here from this script so sft/rl can't drift out of sync again).
     # audit bug #8 fix: rl_training.py:589 reads config.sft_checkpoint_path,
     # NOT config.model_name. Previously passed --model_name which
     # rl_training silently ignored, then tried from_pretrained("") and

@@ -54,6 +54,11 @@ if [[ -f "$ENV_FILE" ]]; then
     unset _operator_overrides _key
 fi
 
+# Single W&B guard for all phases — now that .env is loaded, WANDB_API_KEY is
+# visible. Exports WANDB_MODE=disabled (+ warns) when no key, inherited by every
+# phase subprocess. Replaces the per-phase guards in sft.sh/rl.sh.
+wandb_autodisable
+
 # --- Defaults ---------------------------------------------------------------
 DOMAIN="neuroscience"
 PROFILE=""

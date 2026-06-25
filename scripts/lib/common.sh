@@ -5,6 +5,23 @@ log_info()  { printf '[%(%H:%M:%S)T] INFO  %s\n'  -1 "$*" >&2; }
 log_warn()  { printf '[%(%H:%M:%S)T] WARN  %s\n'  -1 "$*" >&2; }
 log_error() { printf '[%(%H:%M:%S)T] ERROR %s\n'  -1 "$*" >&2; }
 
+# wandb_autodisable — ONE central W&B guard for the whole pipeline.
+# HF/TRL Trainers (sft trainer.py, rl GRPOTrainer) auto-register a WandbCallback
+# when WANDB_PROJECT is set, and wandb crashes at authenticate_session with no
+# API key. So: no key → export WANDB_MODE=disabled (wandb's documented public
+# env var) and WARN clearly; the export is inherited by every phase subprocess,
+# so this replaces the per-phase guards that used to live (and drift) in
+# sft.sh/rl.sh. MUST be called AFTER .env is sourced so WANDB_API_KEY is visible.
+# Idempotent: a present key, or an already-set WANDB_MODE, is left untouched.
+wandb_autodisable() {
+    if [[ -n "${WANDB_API_KEY:-}" ]]; then
+        log_info "W&B: WANDB_API_KEY present — online tracking enabled."
+        return 0
+    fi
+    [[ -z "${WANDB_MODE:-}" ]] && export WANDB_MODE=disabled
+    log_warn "W&B: WANDB_API_KEY not set — WANDB_MODE=${WANDB_MODE} (no W&B logging). Set WANDB_API_KEY in .env.runpod to enable online tracking."
+}
+
 require_env() {
     local name="$1"
     if [[ -z "${!name:-}" ]]; then
