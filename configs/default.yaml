@@ -237,6 +237,16 @@ sft:
   #   "sdpa"               PyTorch built-in, no extra package, ~10-15% slower
   #   "eager"              naive attention, slowest, only for debugging
   attn_implementation: flash_attention_2
+  # Training-loop knobs — NOW config-driven and symmetric with the rl block
+  # below. Previously trainer.py relied on HF/SFTConfig defaults, where
+  # per_device_train_batch_size=8 silently OOM'd an 8B+LoRA SFT on a 48 GB GPU
+  # (smoke 2026-06-25 — there was no knob to scale it). batch=1 + grad-accum
+  # gives an effective batch without the activation blowup; gradient
+  # checkpointing trades compute for activation memory. Profiles override.
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  num_train_epochs: 3
+  gradient_checkpointing: true
 
 # --- Phase: rl (matches 3_si_curriculum/RL/rl_training.py) --------------
 rl:

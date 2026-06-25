@@ -97,6 +97,10 @@ curriculum:
 # HF Trainer — not in this YAML.
 sft:
   block_size: 4096          # default 32768 OOMs on 12 GB; 4k is enough for smoke
+  # batch=1 / grad-accum=8 / gradient_checkpointing now come from default.yaml
+  # (the single-GPU-safe base). Only epochs differs — smoke validates wiring,
+  # not convergence.
+  num_train_epochs: 1
 
 # rl: keys match 3_si_curriculum/RL/rl_training.py::TrainingConfig.
 # DO NOT use n_completions / max_completion_tokens — those names existed in
