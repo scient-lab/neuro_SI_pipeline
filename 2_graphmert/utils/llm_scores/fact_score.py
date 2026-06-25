@@ -68,18 +68,25 @@ def parse_args():
 
 def score_triples(df: pd.DataFrame, model_id: str, batch_size: int,
                   max_model_len: int, tensor_parallel_size: int,
-                  no_think: bool = False) -> List[bool]:
+                  no_think: bool = False, max_tokens: int = 512) -> List[bool]:
     """Returns a list of booleans — True if model judges the triple as valid.
 
     no_think: when True, append '/no_think' control token to the user prompt
     so Qwen3-class models skip <think>. Defaults False because this is a
     judgment task where the reasoning trace genuinely helps consensus.
-    Override via configs/default.yaml::graphmert.validate_predictions_no_think.
+    Override via configs/default.yaml::graphmert.fact_score_no_think.
+
+    max_tokens: generation cap. With thinking ON, a Qwen3-class model emits a
+    <think>...</think> block BEFORE the verdict, so the budget must fit reasoning
+    + the final yes/no. The old hardcoded 10 truncated mid-think and dropped 100%
+    of triples (smoke 2026-06-25). Sourced from
+    configs/default.yaml::graphmert.fact_score_max_tokens.
     """
-    logger.info("Loading model: %s  (think=%s)", model_id, "OFF" if no_think else "ON")
+    logger.info("Loading model: %s  (think=%s, max_tokens=%d)",
+                model_id, "OFF" if no_think else "ON", max_tokens)
     llm = LLM(model=model_id, max_model_len=max_model_len,
                tensor_parallel_size=tensor_parallel_size, trust_remote_code=True)
-    sampling = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=10)
+    sampling = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=max_tokens)
 
     results = []
     t0 = time.time()
@@ -99,8 +106,24 @@ def score_triples(df: pd.DataFrame, model_id: str, batch_size: int,
 
         outputs = llm.chat(prompts, sampling_params=sampling)
         for out in outputs:
-            text = (out.outputs[0].text if out.outputs else "").strip().lower()
-            results.append(text.startswith("yes") or text.startswith("true"))
+            raw = out.outputs[0].text if out.outputs else ""
+            # The verdict follows the </think> block. prompts/fact_score.yaml
+            # instructs the model to emit "[yes]" / "[no]" on a new line after
+            # reasoning, so:
+            #   - take the text after the final </think> (drop the reasoning);
+            #   - if <think> opened but never closed (budget truncated mid-think),
+            #     there is no verdict → reject (conservative; surfaces as drop
+            #     rate → raise graphmert.fact_score_max_tokens);
+            #   - accept the bracketed "[yes]" the prompt asks for, a bare "yes"
+            #     from a loosely-formatted model, or legacy "true".
+            if "</think>" in raw:
+                verdict = raw.rsplit("</think>", 1)[-1]
+            elif "<think>" in raw:
+                verdict = ""          # truncated mid-think — no verdict emitted
+            else:
+                verdict = raw          # no-think response
+            verdict = verdict.strip().lower()
+            results.append(verdict.startswith(("[yes]", "yes", "[true]", "true")))
 
         done = start + len(batch)
         if done % (batch_size * 10) == 0 or done == len(df):
@@ -138,17 +161,20 @@ def main():
             _sys.path.insert(0, _repo_root)
         from pipeline_config import get_phase_param
         no_think = bool(get_phase_param('graphmert', 'fact_score_no_think', False))
+        max_tokens = int(get_phase_param('graphmert', 'fact_score_max_tokens', 512))
     except Exception as e:
-        logger.warning("could not read graphmert.fact_score_no_think (%s) — defaulting False", e)
+        logger.warning("could not read graphmert.fact_score_* (%s) — defaulting "
+                       "no_think=False, max_tokens=512", e)
         no_think = False
+        max_tokens = 512
 
     # Score with both models
     scores_1 = score_triples(df, args.model_ids[0], args.batch_size,
                               args.max_model_len, args.tensor_parallel_size,
-                              no_think=no_think)
+                              no_think=no_think, max_tokens=max_tokens)
     scores_2 = score_triples(df, args.model_ids[1], args.batch_size,
                               args.max_model_len, args.tensor_parallel_size,
-                              no_think=no_think)
+                              no_think=no_think, max_tokens=max_tokens)
 
     df["valid_model_1"] = scores_1
     df["valid_model_2"] = scores_2

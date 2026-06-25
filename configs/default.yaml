@@ -155,6 +155,13 @@ graphmert:
   # verdict AFTER </think>, NOT disabling thinking here. Until that lands, the
   # two-LLM seed-KG validate step on Qwen3 will drop everything.
   fact_score_no_think: false
+  # Generation cap for the fact_score judge (fact_score.py SamplingParams).
+  # Replaces the upstream hardcoded max_tokens=10, which truncated Qwen3's
+  # <think> block before the verdict → 100% drop. Must fit reasoning + the final
+  # yes/no. 512 suits a terse reasoned judgment; raise (1024+) if you still see
+  # an unexpectedly high drop rate (a sign think blocks are being cut off),
+  # lower for speed. Profiles may override per scale.
+  fact_score_max_tokens: 512
   combine_tails_gpu_memory_utilization: 0.90
 
 # --- Phase: curriculum ---------------------------------------------------
