@@ -489,6 +489,49 @@ def cmd_set_outcome(a) -> None:
                              "outcome": a.outcome, "reason": a.reason}])
 
 
+def cmd_resume_info(a) -> int:
+    """For pipeline.sh --resume. Validate the existing run is actually
+    resumable, then print run_id (line 1) + a one-line summary (line 2) to
+    stdout. On any non-resumable condition, print a clear reason to stderr and
+    return non-zero so the caller refuses rather than silently adopting a stale
+    or mismatched run."""
+    try:
+        data = _load(a.path)
+    except Exception as e:
+        print(f"cannot read manifest {a.path}: {e}", file=sys.stderr)
+        return 1
+    run = data.get("run", {}) or {}
+    rid = run.get("run_id")
+    if not rid:
+        print("manifest has no run_id", file=sys.stderr)
+        return 1
+    status = run.get("status")
+    if status == "completed":
+        print(f"run {rid} already completed — nothing to resume (omit --resume "
+              f"for a fresh run, or export RUN_ID={rid} to force).", file=sys.stderr)
+        return 1
+    if a.profile and run.get("profile") and a.profile != run.get("profile"):
+        print(f"manifest is profile '{run.get('profile')}' but you requested "
+              f"'{a.profile}'. Refusing — export RUN_ID={rid} to force, or omit "
+              f"--resume for a fresh run.", file=sys.stderr)
+        return 1
+    if a.domain and run.get("domain") and a.domain != run.get("domain"):
+        print(f"manifest is domain '{run.get('domain')}' but you requested "
+              f"'{a.domain}'. Refusing.", file=sys.stderr)
+        return 1
+    phases = run.get("phases", []) or []
+    total = len(phases)
+    done = sum(1 for p in phases if p.get("status") == "completed")
+    summary = f"status={status}, {done}/{total} phases done"
+    failure = run.get("failure") or {}
+    if failure:
+        step = failure.get("step")
+        summary += f", last failure at {failure.get('phase')}" + (f".{step}" if step else "")
+    print(rid)
+    print(summary)
+    return 0
+
+
 def cmd_finalize(a) -> None:
     def fn(d):
         d["run"]["status"] = a.status
@@ -621,14 +664,21 @@ def main() -> int:
     p.add_argument("--reason", default="")
     p.set_defaults(func=cmd_set_outcome)
 
+    p = sub.add_parser("resume-info")
+    p.add_argument("--path", required=True)
+    p.add_argument("--profile", default="")
+    p.add_argument("--domain", default="")
+    p.set_defaults(func=cmd_resume_info)
+
     p = sub.add_parser("finalize")
     p.add_argument("--path", required=True)
     p.add_argument("--status", required=True, choices=["completed", "failed"])
     p.set_defaults(func=cmd_finalize)
 
     a = ap.parse_args()
-    a.func(a)
-    return 0
+    # Most subcommands mutate and return None (→ exit 0); resume-info returns an
+    # int exit code that must propagate so pipeline.sh can refuse a bad resume.
+    return a.func(a) or 0
 
 
 if __name__ == "__main__":

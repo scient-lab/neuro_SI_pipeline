@@ -67,6 +67,7 @@ PHASES="all"
 STEPS="all"
 LIST_ONLY=0
 FINAL=0
+RESUME=0
 
 ALL_PHASES=(extract validate graphmert curriculum sft rl)
 
@@ -74,7 +75,7 @@ ALL_PHASES=(extract validate graphmert curriculum sft rl)
 usage() {
     cat <<'EOF'
 Usage: pipeline.sh [--domain <name>] [--profile <name>] [--platform <name>]
-                   [--phase <list>] [--step <list>] [--list]
+                   [--phase <list>] [--step <list>] [--resume] [--list]
 
 Options:
   --domain    Domain name (default: neuroscience). Must exist as domains/<name>.yaml.
@@ -89,11 +90,20 @@ Options:
   --final     Force the run's terminal status to "completed" (+ _SUCCESS) at
               the end of this invocation, even if the last canonical phase
               (rl) wasn't selected. Use to close out a partial pipeline.
+  --resume    Adopt the RUN_ID from the existing outputs/run_manifest.json
+              instead of starting a fresh run — no need to hand-copy the id.
+              Refuses (with a clear reason) if the run already completed or its
+              profile/domain doesn't match what you passed. An explicit
+              RUN_ID in the env still wins (force).
 
 Run identity:
-  RUN_ID is generated per invocation (<utc>-<profile>-<sha>). To run phases in
-  SEPARATE invocations but have them belong to ONE logical run (one manifest,
-  one logs/<run_id>/ dir, one S3 prefix), export RUN_ID once and reuse it:
+  RUN_ID is generated per invocation (<utc>-<profile>-<sha>); each run is FRESH
+  by default. To continue a previous run (shared manifest / logs dir / S3
+  prefix), either pass --resume (auto-reads the manifest's RUN_ID) or export
+  RUN_ID explicitly:
+    # easiest — resume the run sitting in outputs/ (e.g. after a phase failed):
+    ./scripts/pipeline.sh --profile smoke --resume --phase sft,rl
+    # or pin it by hand across separate invocations:
     export RUN_ID=$(date -u +%Y%m%d-%H%M%S)-pilot-$(git rev-parse --short HEAD)
     ./scripts/pipeline.sh --phase extract
     ./scripts/pipeline.sh --phase graphmert
@@ -168,6 +178,7 @@ while [[ $# -gt 0 ]]; do
         --step)     STEPS="$2"; shift 2 ;;
         --list)     LIST_ONLY=1; shift ;;
         --final)    FINAL=1; shift ;;
+        --resume)   RESUME=1; shift ;;
         -h|--help)  usage; exit 0 ;;
         *)          log_error "Unknown flag: $1"; usage; exit 2 ;;
     esac
@@ -220,6 +231,28 @@ mkdir -p "$OUTPUT_BASE"
 _git_sha=$(git -C "$REPO_ROOT" rev-parse --short HEAD 2>/dev/null || echo nogit)
 _git_branch=$(git -C "$REPO_ROOT" rev-parse --abbrev-ref HEAD 2>/dev/null || echo nogit)
 _ts=$(date -u +%Y%m%d-%H%M%S)
+
+# --resume: adopt the RUN_ID from the existing manifest instead of hand-copying
+# it via `export RUN_ID=...`. Fresh-by-default is preserved — resume is opt-in.
+# manifest.py resume-info validates the run is actually resumable (not already
+# completed; profile/domain match what was requested) and prints run_id + a
+# one-line summary; it exits non-zero with a clear reason otherwise. An explicit
+# RUN_ID in the env still wins (force/override).
+if [[ "$RESUME" -eq 1 && -z "${RUN_ID:-}" ]]; then
+    _resume_mf="$OUTPUT_BASE/run_manifest.json"
+    if [[ ! -f "$_resume_mf" ]]; then
+        log_error "--resume: no manifest at $_resume_mf — nothing to resume (omit --resume for a fresh run)"
+        exit 1
+    fi
+    if ! _resume_out=$(python3 "$SCRIPT_DIR/lib/manifest.py" resume-info \
+            --path "$_resume_mf" --profile "${PROFILE:-default}" --domain "$DOMAIN"); then
+        # resume-info already printed the reason to stderr.
+        exit 1
+    fi
+    RUN_ID=$(printf '%s\n' "$_resume_out" | head -1)
+    log_info "Resuming run $RUN_ID — $(printf '%s\n' "$_resume_out" | tail -n +2)"
+fi
+
 RUN_ID="${RUN_ID:-${_ts}-${PROFILE:-default}-${_git_sha}}"
 LOG_DIR="$OUTPUT_BASE/logs/$RUN_ID"
 mkdir -p "$LOG_DIR"
