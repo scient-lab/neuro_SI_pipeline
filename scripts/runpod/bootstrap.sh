@@ -219,6 +219,7 @@ ENV_FILE="$SI_HOME/.env"
     # Health CSVs are ALWAYS logged; auto-kill is opt-in via these knobs.
     [[ -n "${MONITOR_INTERVAL:-}"       ]] && echo "MONITOR_INTERVAL=$MONITOR_INTERVAL"
     [[ -n "${MONITOR_KILL_ON_FAIL:-}"   ]] && echo "MONITOR_KILL_ON_FAIL=$MONITOR_KILL_ON_FAIL"
+    [[ -n "${MONITOR_KILL_ON_COMPLETE:-}" ]] && echo "MONITOR_KILL_ON_COMPLETE=$MONITOR_KILL_ON_COMPLETE"
     [[ -n "${MONITOR_MAX_RUNTIME:-}"    ]] && echo "MONITOR_MAX_RUNTIME=$MONITOR_MAX_RUNTIME"
     [[ -n "${MONITOR_IDLE_MIN:-}"       ]] && echo "MONITOR_IDLE_MIN=$MONITOR_IDLE_MIN"
     [[ -n "${MONITOR_DISK_CRIT:-}"      ]] && echo "MONITOR_DISK_CRIT=$MONITOR_DISK_CRIT"
@@ -264,6 +265,7 @@ done
 if [[ "${MONITOR_ENABLED:-1}" != "0" ]]; then
     mon_args=(--interval "${MONITOR_INTERVAL:-60}")
     [[ "${MONITOR_KILL_ON_FAIL:-0}" == "1" ]] && mon_args+=(--kill-on-fail)
+    [[ "${MONITOR_KILL_ON_COMPLETE:-0}" == "1" ]] && mon_args+=(--kill-on-complete)
     [[ -n "${MONITOR_MAX_RUNTIME:-}" ]] && mon_args+=(--max-runtime "$MONITOR_MAX_RUNTIME")
     [[ -n "${MONITOR_IDLE_MIN:-}"    ]] && mon_args+=(--idle-min "$MONITOR_IDLE_MIN")
     [[ -n "${MONITOR_DISK_CRIT:-}"   ]] && mon_args+=(--disk-crit "$MONITOR_DISK_CRIT")

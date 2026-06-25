@@ -32,6 +32,9 @@
 #   --interval N    MONITOR_INTERVAL      60       sample/poll period (seconds)
 #   --kill-on-fail  MONITOR_KILL_ON_FAIL  0 (off)  MASTER switch for the fail/disk/hang
 #                                                  kills below; log-only when off
+#   --kill-on-complete  MONITOR_KILL_ON_COMPLETE  0 (off)  pipeline reached 'completed'
+#                                                  -> final sync + stop pod (cost control).
+#                                                  Independent of --kill-on-fail
 #   --fail-grace N  MONITOR_FAIL_GRACE    600      seconds a 'failed' phase persists
 #                                                  before kill (MONITOR_TIMEOUT = alias)
 #   --max-runtime D MONITOR_MAX_RUNTIME   0 (off)  hard deadline -> final sync + stop pod;
@@ -57,6 +60,7 @@ fi
 # --- config: each knob = env var (default), overridable by the matching flag ---
 INTERVAL="${MONITOR_INTERVAL:-60}"
 KILL_ON_FAIL="${MONITOR_KILL_ON_FAIL:-0}"
+KILL_ON_COMPLETE="${MONITOR_KILL_ON_COMPLETE:-0}"
 FAIL_GRACE="${MONITOR_FAIL_GRACE:-${MONITOR_TIMEOUT:-600}}"   # MONITOR_TIMEOUT = alias
 MAX_RUNTIME_RAW="${MONITOR_MAX_RUNTIME:-0}"
 DISK_CRIT="${MONITOR_DISK_CRIT:-95}"
@@ -66,6 +70,7 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         --interval)     INTERVAL="$2"; shift 2 ;;
         --kill-on-fail) KILL_ON_FAIL=1; shift ;;
+        --kill-on-complete) KILL_ON_COMPLETE=1; shift ;;
         --fail-grace)   FAIL_GRACE="$2"; shift 2 ;;
         --max-runtime)  MAX_RUNTIME_RAW="$2"; shift 2 ;;
         --disk-crit)    DISK_CRIT="$2"; shift 2 ;;
@@ -136,7 +141,7 @@ read_summary() {
     for kv in $line; do k="${kv%%=*}"; v="${kv#*=}"; S["$k"]="$v"; done
 }
 
-log_m "monitor start: interval=${INTERVAL}s kill_on_fail=$KILL_ON_FAIL fail_grace=${FAIL_GRACE}s max_runtime=${MAX_RUNTIME}s disk_crit=${DISK_CRIT}% idle_min=${IDLE_MIN}m pod=${POD_ID:-<none>}"
+log_m "monitor start: interval=${INTERVAL}s kill_on_fail=$KILL_ON_FAIL kill_on_complete=$KILL_ON_COMPLETE fail_grace=${FAIL_GRACE}s max_runtime=${MAX_RUNTIME}s disk_crit=${DISK_CRIT}% idle_min=${IDLE_MIN}m pod=${POD_ID:-<none>}"
 
 START=$(date +%s)
 fail_since=""
@@ -155,6 +160,13 @@ while true; do
     # --- max-runtime deadline (its own opt-in: only when set) ---
     if [[ "$MAX_RUNTIME" -gt 0 && $((now - START)) -ge "$MAX_RUNTIME" ]]; then
         stop_pod "max-runtime ${MAX_RUNTIME}s reached"; exit 0
+    fi
+
+    # --- pipeline completed successfully -> optional shutdown (cost control) ---
+    # Independent of --kill-on-fail. finalize is gated to the last phase, so a
+    # partial --phase run stays 'running' and won't trip this.
+    if [[ "$KILL_ON_COMPLETE" -eq 1 && "${S[pipeline_status]:-}" == "completed" ]]; then
+        stop_pod "pipeline completed"; exit 0
     fi
 
     # everything below only KILLS when --kill-on-fail; otherwise it just logs.

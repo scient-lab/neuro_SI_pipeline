@@ -296,7 +296,7 @@ for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "HF_TOKEN", "WANDB_API_KEY",
           "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION",
           "S3_SYNC_INTERVAL_SEC", "AWS_CLOUDWATCH_LOG_GROUP",
           # Health monitor (scripts/monitor.sh): health CSVs always on; kill opt-in.
-          "MONITOR_INTERVAL", "MONITOR_KILL_ON_FAIL", "MONITOR_MAX_RUNTIME",
+          "MONITOR_INTERVAL", "MONITOR_KILL_ON_FAIL", "MONITOR_KILL_ON_COMPLETE", "MONITOR_MAX_RUNTIME",
           "MONITOR_IDLE_MIN", "MONITOR_DISK_CRIT", "MONITOR_ENABLED",
           # Back-compat grace (superseded monitor_pipeline.sh / monitor.sh --fail-grace)
           "MONITOR_TIMEOUT", "MONITOR_FAIL_GRACE",
