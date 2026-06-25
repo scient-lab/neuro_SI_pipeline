@@ -45,6 +45,10 @@
 #                                                  --kill-on-fail). GPU util for compute
 #                                                  phases; net rx rate for curriculum
 #   (none)          MONITOR_ENABLED       1        set 0 to disable the monitor entirely
+#
+# The kill toggles accept a bare flag (= on) OR an explicit 0|1 to mirror the
+# env var, so all of these are equivalent: --kill-on-complete | --kill-on-complete 1
+# | MONITOR_KILL_ON_COMPLETE=1
 set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -69,8 +73,9 @@ IDLE_MIN="${MONITOR_IDLE_MIN:-0}"
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --interval)     INTERVAL="$2"; shift 2 ;;
-        --kill-on-fail) KILL_ON_FAIL=1; shift ;;
-        --kill-on-complete) KILL_ON_COMPLETE=1; shift ;;
+        # boolean flags: bare = on, or take an explicit 0|1 to match the env var
+        --kill-on-fail)     if [[ "${2:-}" =~ ^[01]$ ]]; then KILL_ON_FAIL="$2"; shift 2; else KILL_ON_FAIL=1; shift; fi ;;
+        --kill-on-complete) if [[ "${2:-}" =~ ^[01]$ ]]; then KILL_ON_COMPLETE="$2"; shift 2; else KILL_ON_COMPLETE=1; shift; fi ;;
         --fail-grace)   FAIL_GRACE="$2"; shift 2 ;;
         --max-runtime)  MAX_RUNTIME_RAW="$2"; shift 2 ;;
         --disk-crit)    DISK_CRIT="$2"; shift 2 ;;
