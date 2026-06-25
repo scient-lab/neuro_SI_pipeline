@@ -1,6 +1,6 @@
 # configs/profiles/smoke.yaml - full pipeline validation on single GPU.
 # Target: ~300-500 input examples → ~100 curriculum Q&A pairs → ~50-100 SFT examples.
-# Validates all 6 phases work end-to-end. Fits on a single 24 GB GPU (A10G/A40/A6000).
+# Validates all 6 phases work end-to-end. Fits on a single 32-48 GB GPU (L40S/L40/A6000/A40).
 #
 # Uses Qwen 8B for extract (fidelity closer to Qwen3-14B than 3B, but still single-GPU).
 # Every key below verified to match the consuming code (see comments).
@@ -22,6 +22,12 @@ models:
   # Smoke uses Qwen3-8B for both checks (feasibility over paper-grade diversity).
   curriculum_check_a: Qwen/Qwen3-8B
   curriculum_check_b: Qwen/Qwen3-8B
+  # Phase 5 SFT base model: default.yaml uses Qwen3-14B (~28GB fp16). Smoke's VRAM
+  # band starts at 32GB, so a 14B SFT+LoRA can OOM if discovery lands a low-end card.
+  # Keep SFT/RL at 8B for consistency with the downgraded inference models above —
+  # smoke validates wiring, not training quality. RL builds on the SFT merged output,
+  # so this keeps the whole train tail at 8B too.
+  base_sft: Qwen/Qwen3-8B
 
 extract:
   max_input_examples: 500
