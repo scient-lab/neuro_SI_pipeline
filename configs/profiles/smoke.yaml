@@ -84,6 +84,12 @@ curriculum:
   # Smoke uses 3 for balance: parallelization without hammering Gemini API.
   # 3-4h (sequential) → ~1.5-2h (3 workers). Respects rate limits (429 backoff).
   parallel_generation_workers: 3
+  # vLLM cap for validate_qa (verify_questions.py). REQUIRED on smoke: default
+  # is null → vLLM uses the model's nominal context, and curriculum_check_b is
+  # Mistral-Nemo (131072). At 0.70 mem_util on a 48 GB GPU the KV cache only
+  # fits ~46k tokens, so 131072 crashes ("max seq len > KV cache"). Validation
+  # prompts are ~1.3k tokens + 256 response, so 4096 is ample headroom.
+  validate_qa_max_model_len: 4096
 
 # sft: keys match 3_si_curriculum/training/trainer.py::TrainingConfig fields
 # that are wired via get_phase_param (lora_r, lora_alpha, lora_dropout,

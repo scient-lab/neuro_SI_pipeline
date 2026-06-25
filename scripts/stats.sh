@@ -135,12 +135,12 @@ bar() {
 }
 
 # Layout constants. Bar width + separator width + history-buffer length.
-# Phase table in stats_render.py is 96 display columns wide:
-#   2 indent + 24 PHASE + 1 + 13 STATUS + 1 + 10 STARTED + 1 + 10 FINISHED
-#   + 1 + 11 DURATION + 1 + 14 ETA + 1 + 6 STEPS = 96
+# Phase table in stats_render.py is 105 display columns wide:
+#   2 indent + 24 PHASE + 1 + 13 STATUS + 1 + 8 OUTCOME + 1 + 10 STARTED
+#   + 1 + 10 FINISHED + 1 + 11 DURATION + 1 + 14 ETA + 1 + 6 STEPS = 105
 # Match that here so the system section visually extends to the same right
 # edge as STEPS instead of trailing short like before.
-TABLE_W=96
+TABLE_W=105
 BAR_W=50         # was 20 — wider gauge gives finer visual resolution
 HIST_W=80        # last 80 samples per metric in --live mode (~6.5 min at 5s refresh)
 SPARK_CHARS=$(( HIST_W / 2 ))   # braille packs 2 samples per char → 40 chars wide
@@ -403,9 +403,15 @@ render_one_frame() {
     fi
     local extra_args=( --manifest "$MANIFEST" --run-id "$RUN_ID" )
     [[ "$SHOW_STEPS" -eq 1 ]] && extra_args+=( --details )
+    # In live mode every line must end in \033[K so the in-place cursor-home
+    # redraw doesn't ghost when a line shrinks (e.g. the variable-height
+    # OUTPUT QUALITY block). render_system already does this; tell the table to.
+    [[ "$LIVE" -eq 1 ]] && extra_args+=( --clear-eol )
     python3 "$SCRIPT_DIR/lib/stats_render.py" "${extra_args[@]}"
     if [[ "$SHOW_SYSTEM" -eq 1 ]]; then
-        echo
+        # Blank separator before the system panel — erase its tail in live mode
+        # too, so it doesn't ghost when the frame above changes height.
+        [[ "$LIVE" -eq 1 ]] && printf '\033[K\n' || echo
         render_system
     fi
 }

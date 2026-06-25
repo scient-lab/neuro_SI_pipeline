@@ -295,9 +295,12 @@ for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "HF_TOKEN", "WANDB_API_KEY",
           "S3_URI", "CORPUS_PATH", "AWS_ACCESS_KEY_ID",
           "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION",
           "S3_SYNC_INTERVAL_SEC", "AWS_CLOUDWATCH_LOG_GROUP",
-          # Pipeline monitoring for nighttime runs (scripts/monitor_pipeline.sh)
-          "MONITOR_TIMEOUT",
-          # RunPod control-plane API (required for monitor_pipeline.sh to kill pod on failure)
+          # Health monitor (scripts/monitor.sh): health CSVs always on; kill opt-in.
+          "MONITOR_INTERVAL", "MONITOR_KILL_ON_FAIL", "MONITOR_MAX_RUNTIME",
+          "MONITOR_IDLE_MIN", "MONITOR_DISK_CRIT", "MONITOR_ENABLED",
+          # Back-compat grace (superseded monitor_pipeline.sh / monitor.sh --fail-grace)
+          "MONITOR_TIMEOUT", "MONITOR_FAIL_GRACE",
+          # RunPod control-plane API (required for monitor.sh to kill pod on failure)
           "RUNPOD_API_KEY",
           # Pod-side diagnostics (vllm_smoke.sh, diagnose_llm_extraction.py)
           # point at a separate vLLM serving pod via the OpenAI-compatible API.

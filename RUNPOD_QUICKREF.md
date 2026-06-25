@@ -103,14 +103,19 @@ For nighttime/unattended runs: auto-kill pod if pipeline fails (saves GPU costs)
 ```bash
 # === NIGHTTIME: run pipeline with auto-kill on failure ===
 # On pod:
+# The health monitor (scripts/monitor.sh) AUTO-STARTS from bootstrap and always
+# logs outputs/health/health_{system,gpu}.csv. To enable auto-KILL + an 8h
+# deadline, launch the pod with these env vars (forwarded into .env):
+#   MONITOR_KILL_ON_FAIL=1 MONITOR_MAX_RUNTIME=8h MONITOR_IDLE_MIN=15 \
+#       ./scripts/runpod/launch.sh --profile pilot
 nohup ./scripts/pipeline.sh --profile pilot --platform runpod > nohup.out 2>&1 &
-./scripts/monitor_pipeline.sh &  # Background monitor: kills pod if failed after 10 min
 
-# === Custom timeout (default 600s = 10 min) ===
-MONITOR_TIMEOUT=900 ./scripts/monitor_pipeline.sh &  # 15 min grace period
+# === Tune the failure grace (default 600s = 10 min) ===
+# MONITOR_FAIL_GRACE=900 at launch (15 min). MONITOR_TIMEOUT still honored.
 
-# === Check monitor log ===
-tail -f outputs/*/monitor.log
+# === Check monitor log + live health CSVs ===
+tail -f outputs/health/monitor.log
+tail -f outputs/health/health_system.csv
 ```
 
 **Behavior:**

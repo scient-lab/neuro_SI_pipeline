@@ -253,6 +253,12 @@ def _fresh_phase(cat_phase: dict) -> dict:
                 "exit_code": None,
                 "log_file": None,
                 "cw_log_stream": None,
+                # Output-quality verdict (pass/warn/fail/skip/unknown) + reason,
+                # written post-hoc by scripts/lib/step_quality.py. Orthogonal to
+                # status: status = did it RUN, outcome = did it PRODUCE meaningful
+                # output. Null until a probe runs.
+                "outcome": None,
+                "outcome_reason": None,
             }
             for s in cat_phase["steps"]
         ],
@@ -319,6 +325,9 @@ def cmd_init(a) -> None:
             run["pgid"] = int(a.pgid)
         if a.corpus_path:
             run["corpus_path"] = a.corpus_path
+        # Refresh the pod id on resume — a re-launched run may land on a new pod.
+        if a.runpod_pod_id:
+            run["runpod_pod_id"] = a.runpod_pod_id
         # If a previous top-level failure was set by cmd_finalize (e.g.
         # yesterday's failed graphmert), clear it when the SAME phase is
         # being re-run now. Stale failure blocks confuse the operator into
@@ -355,6 +364,7 @@ def cmd_init(a) -> None:
             "pid": int(a.pid) if a.pid else None,
             "pgid": int(a.pgid) if a.pgid else None,
             "corpus_path": a.corpus_path or None,
+            "runpod_pod_id": a.runpod_pod_id or None,
             "progress": 0.0,
             "estimated_completion_at": None,
             "selected_phases": [p for p in phase_order if p in selected],
@@ -460,6 +470,25 @@ def cmd_skip_step(a) -> None:
     _mutate(a.path, fn)
 
 
+def apply_outcomes(path: str, outcomes: list) -> None:
+    """Write per-step quality outcomes in ONE atomic mutation.
+    outcomes: [{"phase","step","outcome","reason"}, ...]. Imported and called
+    by scripts/lib/step_quality.py --write; also exposed as the `set-outcome`
+    subcommand for shell callers."""
+    def fn(d):
+        for o in outcomes:
+            s = _step(d, o.get("phase"), o.get("step"))
+            if s:
+                s["outcome"] = o.get("outcome")
+                s["outcome_reason"] = o.get("reason", "")
+    _mutate(path, fn)
+
+
+def cmd_set_outcome(a) -> None:
+    apply_outcomes(a.path, [{"phase": a.phase, "step": a.step,
+                             "outcome": a.outcome, "reason": a.reason}])
+
+
 def cmd_finalize(a) -> None:
     def fn(d):
         d["run"]["status"] = a.status
@@ -538,6 +567,10 @@ def main() -> int:
     # being processed — especially useful when overriding pilot config with
     # a smoke fixture for debugging (CORPUS_PATH=corpus/<domain>/smoke).
     p.add_argument("--corpus-path", default="")
+    # RunPod injects RUNPOD_POD_ID into every pod container. Recorded here so the
+    # S3-synced manifest carries the pod id for an out-of-band watchdog
+    # (scripts/monitor_pipeline.sh / a Lambda) to stop the pod on failure/stall.
+    p.add_argument("--runpod-pod-id", default="")
     p.set_defaults(func=cmd_init)
 
     p = sub.add_parser("start-phase")
@@ -578,6 +611,15 @@ def main() -> int:
     p.add_argument("--phase", required=True)
     p.add_argument("--step", required=True)
     p.set_defaults(func=cmd_skip_step)
+
+    p = sub.add_parser("set-outcome")
+    p.add_argument("--path", required=True)
+    p.add_argument("--phase", required=True)
+    p.add_argument("--step", required=True)
+    p.add_argument("--outcome", required=True,
+                   choices=["pass", "warn", "fail", "skip", "unknown"])
+    p.add_argument("--reason", default="")
+    p.set_defaults(func=cmd_set_outcome)
 
     p = sub.add_parser("finalize")
     p.add_argument("--path", required=True)

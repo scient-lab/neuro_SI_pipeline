@@ -26,6 +26,36 @@ STATUS_MARK = {
     "skipped":  "-", "pending":  " ",
 }
 
+# Output-quality verdict (written by step_quality.py). Orthogonal to STATUS:
+# status = did it RUN, outcome = did it PRODUCE meaningful output. `unknown`
+# (no probe yet) renders BLANK — an empty cell beside a "completed" status
+# already reads as "not checked", and avoids an ugly truncated word on the
+# many un-probed steps. Only real verdicts get a glyph.
+OUTCOME_MARK = {
+    "pass": "● pass", "warn": "◐ warn", "fail": "✗ fail",
+    "skip": "– skip", "unknown": "",
+}
+# Rollup precedence: real problems first, then a real pass, and only fall to
+# unknown/skip when there's NO meaningful verdict. pass OUTRANKS unknown so a
+# phase whose probed steps passed reads "pass", not "unknown" just because some
+# sibling steps have no probe yet.
+_OUTCOME_RANK = {"fail": 4, "warn": 3, "pass": 2, "unknown": 1, "skip": 0}
+
+
+def _phase_rollup(steps):
+    """Worst meaningful outcome among COMPLETED steps
+    (fail>warn>pass>unknown>skip), or None."""
+    worst = None
+    for s in steps:
+        if s.get("status") != "completed":
+            continue
+        o = s.get("outcome")
+        if o is None:
+            continue
+        if worst is None or _OUTCOME_RANK.get(o, 0) > _OUTCOME_RANK.get(worst, 0):
+            worst = o
+    return worst
+
 PHASE_W = 24
 # Step name field width chosen so step prefix matches parent prefix exactly:
 #   parent prefix = 2 (indent) + PHASE_W (24) = 26 chars before status
@@ -125,10 +155,10 @@ def render_phase_table(m, show_details):
     phases = m.get("phases", []) or []
     run_eta = _parse(m.get("estimated_completion_at"))
 
-    print(f'  {"PHASE".ljust(PHASE_W)} {"STATUS".ljust(13)} '
+    print(f'  {"PHASE".ljust(PHASE_W)} {"STATUS".ljust(13)} {"OUTCOME".ljust(8)} '
           f'{"STARTED".ljust(10)} {"FINISHED".ljust(10)} '
           f'{"DURATION".ljust(11)} {"ETA".ljust(14)} {"STEPS".rjust(6)}')
-    print(f'  {("-" * PHASE_W)} {("-" * 13)} {("-" * 10)} '
+    print(f'  {("-" * PHASE_W)} {("-" * 13)} {("-" * 8)} {("-" * 10)} '
           f'{("-" * 10)} {("-" * 11)} {("-" * 14)} {("-" * 6)}')
 
     for p in phases:
@@ -146,7 +176,9 @@ def render_phase_table(m, show_details):
         ok = sum(1 for s in steps if s.get("status") == "completed")
         total = len(steps)
         steps_str = f"{ok}/{total}" if total else ""
-        print(f'  {name.ljust(PHASE_W)} {mark} {st.ljust(11)} '
+        roll = _phase_rollup(steps)
+        roll_str = OUTCOME_MARK.get(roll, "") if roll else ""
+        print(f'  {name.ljust(PHASE_W)} {mark} {st.ljust(11)} {roll_str.ljust(8)} '
               f'{started.ljust(10)} {finished.ljust(10)} {dur.ljust(11)} '
               f'{eta.ljust(14)} {steps_str.rjust(6)}')
 
@@ -164,7 +196,8 @@ def render_phase_table(m, show_details):
                 # 2+24 — so STATUS / STARTED / FINISHED / DURATION / ETA
                 # / STEPS columns all line up between phase and step rows.
                 # No ├─/└─ tree glyphs (indent alone is enough cue).
-                print(f'    {sname.ljust(STEP_NAME_MAX)} {smark} {sst.ljust(11)} '
+                soc = OUTCOME_MARK.get(s.get("outcome"), "") if sst == "completed" else ""
+                print(f'    {sname.ljust(STEP_NAME_MAX)} {smark} {sst.ljust(11)} {soc.ljust(8)} '
                       f'{sstart.ljust(10)} {sfinish.ljust(10)} {sdur.ljust(11)} '
                       f'{"".ljust(14)} {"".rjust(6)}')
 
@@ -206,12 +239,55 @@ def render_failure_block(m):
         print(f'  Full log : ./scripts/logs.sh --run {this_run} --phase {f.get("phase")}')
 
 
+def render_quality_block(m):
+    """List completed steps whose OUTPUT was not meaningful (warn/fail) with the
+    probe's reason — the 'completed but empty/garbage' combo that status hides.
+    Populated by scripts/lib/step_quality.py --write; silent if no outcomes yet."""
+    flagged = []
+    for p in m.get("phases", []) or []:
+        for s in p.get("steps", []) or []:
+            if s.get("status") == "completed" and s.get("outcome") in ("warn", "fail"):
+                flagged.append((p.get("name"), s.get("name"),
+                                s.get("outcome"), s.get("outcome_reason") or ""))
+    if not flagged:
+        return
+    print()
+    print("OUTPUT QUALITY — completed but not meaningful:")
+    for ph, st, oc, reason in flagged:
+        print(f'  {OUTCOME_MARK.get(oc, oc):<8} {ph}.{st}: {reason}')
+
+
+def _enable_clear_eol():
+    """Live mode (stats.sh --live) redraws btop-style: cursor-home each frame,
+    no full clear. For that to be ghost-free EVERY emitted line must end with
+    \\033[K (erase-to-end-of-line), so a line that shrinks between frames — a
+    variable-length OUTPUT QUALITY reason, a step set that grew/shrank — doesn't
+    leave tail garbage. render_system already does this; this makes the table +
+    quality block participate too. All stdout prints here are single-line;
+    file=stderr diagnostics pass through untouched."""
+    import builtins
+    _orig = builtins.print
+
+    def _p(*args, **kwargs):
+        if "file" in kwargs:
+            return _orig(*args, **kwargs)
+        line = args[0] if args else ""
+        return _orig(f"{line}\033[K")
+
+    builtins.print = _p
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--manifest", required=True)
     p.add_argument("--run-id", default=None, help="Validate manifest is for this run")
     p.add_argument("--details", action="store_true")
+    p.add_argument("--clear-eol", action="store_true",
+                   help="append \\033[K to each line (for stats.sh --live in-place redraw)")
     args = p.parse_args()
+
+    if args.clear_eol:
+        _enable_clear_eol()
 
     try:
         with open(args.manifest) as f:
@@ -226,6 +302,7 @@ def main():
 
     render_phase_table(m, args.details)
     render_failure_block(m)
+    render_quality_block(m)
     return 0
 
 

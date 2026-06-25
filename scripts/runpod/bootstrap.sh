@@ -215,12 +215,20 @@ ENV_FILE="$SI_HOME/.env"
     # Periodic background output sync — pipeline.sh runs sync_outputs.sh
     # every N sec to catch mid-phase HF Trainer checkpoints. Unset = off.
     [[ -n "${S3_SYNC_INTERVAL_SEC:-}"   ]] && echo "S3_SYNC_INTERVAL_SEC=$S3_SYNC_INTERVAL_SEC"
-    # Pipeline monitoring for nighttime runs (scripts/monitor_pipeline.sh).
-    # Grace period (seconds) before auto-killing pod on pipeline failure. Default 600 (10 min).
+    # Health monitor (scripts/monitor.sh — supersedes monitor_pipeline.sh).
+    # Health CSVs are ALWAYS logged; auto-kill is opt-in via these knobs.
+    [[ -n "${MONITOR_INTERVAL:-}"       ]] && echo "MONITOR_INTERVAL=$MONITOR_INTERVAL"
+    [[ -n "${MONITOR_KILL_ON_FAIL:-}"   ]] && echo "MONITOR_KILL_ON_FAIL=$MONITOR_KILL_ON_FAIL"
+    [[ -n "${MONITOR_MAX_RUNTIME:-}"    ]] && echo "MONITOR_MAX_RUNTIME=$MONITOR_MAX_RUNTIME"
+    [[ -n "${MONITOR_IDLE_MIN:-}"       ]] && echo "MONITOR_IDLE_MIN=$MONITOR_IDLE_MIN"
+    [[ -n "${MONITOR_DISK_CRIT:-}"      ]] && echo "MONITOR_DISK_CRIT=$MONITOR_DISK_CRIT"
+    [[ -n "${MONITOR_ENABLED:-}"        ]] && echo "MONITOR_ENABLED=$MONITOR_ENABLED"
+    # Grace before failure-kill. MONITOR_TIMEOUT kept for back-compat.
+    [[ -n "${MONITOR_FAIL_GRACE:-}"     ]] && echo "MONITOR_FAIL_GRACE=$MONITOR_FAIL_GRACE"
     [[ -n "${MONITOR_TIMEOUT:-}"        ]] && echo "MONITOR_TIMEOUT=$MONITOR_TIMEOUT"
     # CloudWatch Logs target (per-step ship by lib/common.sh::_cw_ship).
     [[ -n "${AWS_CLOUDWATCH_LOG_GROUP:-}"        ]] && echo "AWS_CLOUDWATCH_LOG_GROUP=$AWS_CLOUDWATCH_LOG_GROUP"
-    # RunPod control-plane API key (REQUIRED for scripts/monitor_pipeline.sh to kill pod on failure).
+    # RunPod control-plane API key (REQUIRED for scripts/monitor.sh to kill pod on failure).
     # Used to stop/delete the pod via RunPod's GraphQL API. Written to .env like
     # the other secrets above (file is chmod 600).
     [[ -n "${RUNPOD_API_KEY:-}"                  ]] && echo "RUNPOD_API_KEY=$RUNPOD_API_KEY"
@@ -247,6 +255,23 @@ for k in GEMINI_API_KEY HF_TOKEN; do
         echo "  ⚠  $k not set — phases that depend on it will fail"
     fi
 done
+
+# --- Start the health monitor (scripts/monitor.sh) -------------------------
+# Always logs outputs/health/health_{system,gpu}.csv (rides the S3 sync). Auto-
+# kill is opt-in: MONITOR_KILL_ON_FAIL=1 and/or MONITOR_MAX_RUNTIME=8h (forwarded
+# by launch.sh into .env). Disable entirely with MONITOR_ENABLED=0. setsid+nohup
+# detaches it so it survives this bootstrap shell and lives with the pod.
+if [[ "${MONITOR_ENABLED:-1}" != "0" ]]; then
+    mon_args=(--interval "${MONITOR_INTERVAL:-60}")
+    [[ "${MONITOR_KILL_ON_FAIL:-0}" == "1" ]] && mon_args+=(--kill-on-fail)
+    [[ -n "${MONITOR_MAX_RUNTIME:-}" ]] && mon_args+=(--max-runtime "$MONITOR_MAX_RUNTIME")
+    [[ -n "${MONITOR_IDLE_MIN:-}"    ]] && mon_args+=(--idle-min "$MONITOR_IDLE_MIN")
+    [[ -n "${MONITOR_DISK_CRIT:-}"   ]] && mon_args+=(--disk-crit "$MONITOR_DISK_CRIT")
+    mkdir -p "$SI_HOME/outputs/health"
+    setsid nohup "$SI_HOME/scripts/monitor.sh" "${mon_args[@]}" \
+        >"$SI_HOME/outputs/health/monitor.out" 2>&1 &
+    echo "✓ health monitor started (pid $!, kill_on_fail=${MONITOR_KILL_ON_FAIL:-0}, interval=${MONITOR_INTERVAL:-60}s)"
+fi
 
 echo
 echo "✓ bootstrap complete"

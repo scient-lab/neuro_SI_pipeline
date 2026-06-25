@@ -271,3 +271,31 @@ rl:
   # LoRA params (when enabled) reuse sft.lora_r / sft.lora_alpha /
   # sft.lora_dropout — typical RL LoRA ranks match SFT.
   use_lora: false
+
+# --- Quality expectations ------------------------------------------------
+# Read by scripts/lib/step_quality.py to judge per-step OUTPUT (not exit code):
+# pass / warn / fail / skip / unknown. Same verdict drives the future quality
+# gate. SCALE-INVARIANT band/ratio params ONLY — the scale anchors (target
+# counts, corpus sizes) are read from each step's OWN signal (input row count,
+# input-doc count, curriculum.num_questions), NEVER duplicated here, so smoke
+# and paper judge correctly with one rule. Profiles override a key below only
+# when a band genuinely differs at that scale (rare).
+expectations:
+  extract:
+    extract_triples:
+      # triples ÷ input-doc count (a ratio, profile-free)
+      triples_per_doc_fail: 1.0     # < → fail (near-empty extraction)
+      triples_per_doc_warn: 5.0     # < → warn (thin)
+  validate:
+    seed_kg_consensus:
+      # drop = 1 - kept/input, anchored to the step's own input
+      drop_fail_high: 0.95          # ≥ → fail (~all dropped: parser/model broken)
+      drop_warn_high: 0.60          # > → warn (low yield)
+      drop_warn_low:  0.01          # ≤ → warn (nothing filtered: consensus a no-op)
+  graphmert:
+    preprocess:
+      min_grounding_success: 1      # 0 → fail (no trainable samples; the success==0 dead end)
+  curriculum:
+    generate_qa:
+      # got vs the profile's OWN curriculum.num_questions (not duplicated here)
+      frac_of_target_warn: 0.5      # < 50% of target → warn
