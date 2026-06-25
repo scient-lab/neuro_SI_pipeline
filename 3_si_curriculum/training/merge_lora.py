@@ -1,14 +1,23 @@
 import os
 import gc
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
 from peft import PeftModel
 import argparse
 
 
 def merge_adapter(base_model_path, adapter_path):
     print(f"Loading tokenizer from {adapter_path}...")
-    tokenizer = AutoTokenizer.from_pretrained(adapter_path, trust_remote_code=True)
+    # The adapter dir holds the RESIZED tokenizer (SFT added a pad token, so
+    # len(tokenizer) below must reflect it to match the adapter's embeddings),
+    # but it only has adapter_config.json — no base `model_type` — so
+    # AutoTokenizer's fallback AutoConfig.from_pretrained(adapter_path) raises
+    # "Unrecognized model". Pass the BASE model's config so the tokenizer CLASS
+    # resolves, while the tokenizer FILES (incl. the added pad token) are still
+    # read from the adapter dir.
+    base_config = AutoConfig.from_pretrained(base_model_path, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(
+        adapter_path, config=base_config, trust_remote_code=True)
 
     print(f"Reloading base model: {base_model_path}")
     # ML ENGINEER FIX: Force CPU loading to prevent VRAM OOM spikes during merge.

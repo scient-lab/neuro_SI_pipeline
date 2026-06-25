@@ -264,6 +264,16 @@ mkdir -p "$LOG_DIR"
 #   run  — per-run status, tz-aware start/end timestamps per phase AND step,
 #          exit codes, per-step log_file paths.
 MANIFEST="$OUTPUT_BASE/run_manifest.json"
+
+# Preflight: CORPUS_PATH is REQUIRED whenever the extract phase will run. Fail
+# at startup (sub-second) instead of after a venv/vLLM spin-up — better UX for
+# an orchestrator (e.g. Step Functions), which gets a fast, clear failure.
+if printf '%s\n' "${selected_phases[@]}" | grep -qx extract && [[ -z "${CORPUS_PATH:-}" ]]; then
+    log_error "CORPUS_PATH is not set but the 'extract' phase is selected — it is REQUIRED."
+    log_error "  e.g. CORPUS_PATH=corpus/${DOMAIN:-<domain>}/smoke (committed fixture), or the mounted/S3 corpus prefix."
+    exit 1
+fi
+
 manifest_selected=$(IFS=,; echo "${selected_phases[*]}")
 manifest_all=$(IFS=,; echo "${ALL_PHASES[*]}")
 # Record this pipeline.sh's PID + process-group ID so scripts/kill_pipeline.sh

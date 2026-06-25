@@ -40,15 +40,11 @@ extract:
   # truncated Qwen3's <think> block before the JSON was ever emitted → only 3
   # triples from 70 chunks (smoke 2026-06-25). Do NOT re-cap below ~16k while
   # extract_triples_no_think is false (thinking ON).
-  # Smoke-scale input corpus (committed to the repo for reproducibility).
-  # 10 Wikipedia neuroscience articles, ~360 KB total. See README in that
-  # directory for provenance and regeneration instructions.
-  #
-  # NOT YET WIRED (2026-06-15): graphrag_index.py reads input from
-  # 1_seed_kg/settings.yaml::input.base_dir. Set that to the path below
-  # until the args_mlm/settings.yaml integration lands (deferred from
-  # the orchestration branch — see kg-pipeline/.claude/docs).
-  input_dir: corpus/neuroscience/smoke
+  # Corpus is NOT pinned here — CORPUS_PATH is REQUIRED (extract.sh fails fast if
+  # unset; there is no input_dir / default). The committed smoke fixture is 10
+  # Wikipedia neuroscience articles (~360 KB) at corpus/neuroscience/smoke:
+  #   CORPUS_PATH=corpus/neuroscience/smoke \
+  #       ./scripts/pipeline.sh --profile smoke --domain neuroscience
 
 # graphmert: architecture inherits Recipe B from default.yaml
 # (6L/4H/256H/1024FFN, scalar LR 4e-4) — that combination was validated
@@ -139,7 +135,10 @@ runpod:
     - "NVIDIA RTX A6000"
     - "NVIDIA A40"
   cloud_type: COMMUNITY
-  disk_gb: 100
+  # 100 GB was too tight: 3 uv venvs (~20 GB) + HF cache (Qwen3-8B ~16 GB +
+  # Mistral-Nemo ~24 GB) + graphmert checkpoints + curriculum/sft outputs filled
+  # it, and the SFT checkpoint save hit "No space left on device" (2026-06-25).
+  disk_gb: 150
   num_gpus: 1
   expected_runtime_min: 90
   approx_cost_usd: 1.0

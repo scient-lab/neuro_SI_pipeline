@@ -42,21 +42,23 @@ source_venv graphrag
 OUTPUT_BASE=$(resolve_output_base)
 GRAPHRAG_DIR="$OUTPUT_BASE/graphrag"
 
-# Input path resolution. Symmetric model:
-#     local:  ${REPO_ROOT}/${CORPUS_PATH}
-#     cloud:  ${S3_URI}/${CORPUS_PATH}
-# Precedence (highest first):
-#   1. profile YAML extract.input_dir   (smoke fixture override)
-#   2. $CORPUS_PATH env (from .env)      (pilot/paper — operator's choice)
-#   3. default: corpus/${SI_DOMAIN}/source_txt
-# CORPUS_PATH can be a directory OR a single .txt file.
-# REPO_ROOT is exported by pipeline.sh (computed from script location).
-# On the pod it equals SI_HOME; on the workstation, SI_HOME may be unset.
-INPUT_DIR_REPO=$(get_phase_param extract input_dir "")
-if [[ -z "$INPUT_DIR_REPO" ]]; then
-    INPUT_DIR_REPO="${CORPUS_PATH:-corpus/${SI_DOMAIN:-neuroscience}/source_txt}"
-    log_info "Using CORPUS_PATH-derived input: $INPUT_DIR_REPO"
+# Corpus location — CORPUS_PATH is the SINGLE, REQUIRED source. There is no
+# profile input_dir and no magic default: under orchestration (e.g. an AWS Step
+# Functions workflow) the caller knows where the corpus is mounted / staged in
+# S3 and MUST set CORPUS_PATH. Fail fast and loud if it's missing rather than
+# silently reading the wrong or empty corpus.
+#   local:  ${REPO_ROOT}/${CORPUS_PATH}     cloud:  ${S3_URI}/${CORPUS_PATH}
+# CORPUS_PATH may be a directory of .txt files OR a single .txt file.
+# REPO_ROOT is exported by pipeline.sh; on the pod it equals SI_HOME.
+if [[ -z "${CORPUS_PATH:-}" ]]; then
+    log_error "CORPUS_PATH is not set — it is REQUIRED (no input_dir, no default)."
+    log_error "  point it at the corpus dir or .txt file, e.g.:"
+    log_error "    local smoke : CORPUS_PATH=corpus/${SI_DOMAIN:-<domain>}/smoke"
+    log_error "    pilot/paper : CORPUS_PATH=corpus/${SI_DOMAIN:-<domain>}/source_txt"
+    log_error "    orchestrated: CORPUS_PATH=<mounted dir or S3 prefix under \$S3_URI>"
+    exit 1
 fi
+INPUT_DIR_REPO="$CORPUS_PATH"
 
 ABS_INPUT="$REPO_ROOT/$INPUT_DIR_REPO"
 ABS_INPUT="${ABS_INPUT%/}"

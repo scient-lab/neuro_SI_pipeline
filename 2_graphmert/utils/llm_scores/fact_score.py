@@ -88,8 +88,15 @@ def score_triples(df: pd.DataFrame, model_id: str, batch_size: int,
     """
     logger.info("Loading model: %s  (think=%s, max_tokens=%d)",
                 model_id, "OFF" if no_think else "ON", max_tokens)
+    # ignore_patterns: skip the redundant single-file weights some repos ship
+    # alongside the HF sharded format vLLM actually loads. Mistral-Nemo carries
+    # BOTH model-*.safetensors AND consolidated.safetensors (+ an original/ dir),
+    # so without this it caches ~46 GB instead of ~24 GB (smoke 2026-06-25).
+    # No-op for repos without those files (e.g. Qwen3). TWIN: same list in
+    # 3_si_curriculum/curriculum_generator/verify_questions.py — keep in sync.
     llm = LLM(model=model_id, max_model_len=max_model_len,
-               tensor_parallel_size=tensor_parallel_size, trust_remote_code=True)
+               tensor_parallel_size=tensor_parallel_size, trust_remote_code=True,
+               ignore_patterns=["original/**/*", "consolidated.safetensors"])
     sampling = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=max_tokens)
 
     results = []

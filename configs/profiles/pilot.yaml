@@ -5,10 +5,9 @@
 
 extract:
   max_input_examples: 2500
-  # input_dir is intentionally NOT set here — extract.sh defaults to
-  # corpus/${SI_DOMAIN}/ when unset, so pilot picks up whatever .txt files
-  # the operator drops under corpus/<domain>/ (e.g. corpus/neuroscience/).
-  # Smoke explicitly overrides to corpus/<domain>/smoke/ for its fixture.
+  # No input_dir — CORPUS_PATH is REQUIRED and is the single source of the
+  # corpus location (extract.sh fails fast if unset). e.g. pilot:
+  #   CORPUS_PATH=corpus/${SI_DOMAIN}/source_txt
 
 graphmert:
   train_epochs: 20
@@ -84,7 +83,9 @@ runpod:
     - "NVIDIA A100 80GB PCIe"
     - "NVIDIA A100-SXM4-80GB"
   cloud_type: SECURE
-  disk_gb: 200
+  # 3 venvs (~20 GB) + HF cache (Qwen3-14B ~28 GB + Mistral-Nemo ~24-46 GB) +
+  # graphmert checkpoints + 1000-Q&A curriculum + multi-epoch SFT/RL checkpoints.
+  disk_gb: 250
   num_gpus: 1
   expected_runtime_min: 360          # 6h: empirically ~90s/100q × 10 epochs graphmert + curriculum + sft + rl
   approx_cost_usd: 5.0

@@ -37,9 +37,10 @@ rl:
   max_completion_length: 1280
   num_train_epochs: 10
 
-# extract.input_dir is intentionally NOT set — extract.sh defaults to
-# corpus/${SI_DOMAIN}/ when unset. Paper-faithful replication: drop Kandel's
-# Principles of Neural Science .txt files under corpus/<domain>/.
+# No extract.input_dir — CORPUS_PATH is REQUIRED (extract.sh fails fast if
+# unset). Paper-faithful replication: drop Kandel's Principles of Neural Science
+# .txt files under corpus/neuroscience/source_txt and set
+#   CORPUS_PATH=corpus/neuroscience/source_txt
 
 # RunPod hardware defaults for this scale (read by scripts/runpod/launch.sh).
 # Primary use: Princeton Della HPC via SLURM (multi-GPU, ZeRO-3).

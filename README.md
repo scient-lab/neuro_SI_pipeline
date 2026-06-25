@@ -209,15 +209,17 @@ automatically — `nohup.out` captures the orchestrator's own banner lines
 (RUN_ID, manifest path, etc.).
 
 ```bash
-# Smoke test — minimal scale, ~minutes
-nohup ./scripts/pipeline.sh --profile smoke > nohup.out 2>&1 &
+# Smoke test — minimal scale, ~minutes. CORPUS_PATH is REQUIRED (see below).
+CORPUS_PATH=corpus/neuroscience/smoke \
+    nohup ./scripts/pipeline.sh --profile smoke --domain neuroscience > nohup.out 2>&1 &
 
-# Single phase, or a single step within one
-nohup ./scripts/pipeline.sh --phase extract > nohup.out 2>&1 &
-nohup ./scripts/pipeline.sh --phase extract --step parse_pdf > nohup.out 2>&1 &
+# Single phase, or a single step within one (extract needs CORPUS_PATH)
+CORPUS_PATH=corpus/neuroscience/smoke nohup ./scripts/pipeline.sh --phase extract > nohup.out 2>&1 &
+CORPUS_PATH=corpus/neuroscience/smoke nohup ./scripts/pipeline.sh --phase extract --step parse_pdf > nohup.out 2>&1 &
 
-# Paper-faithful run on RunPod
-nohup ./scripts/pipeline.sh --profile paper --platform runpod > nohup.out 2>&1 &
+# Paper-faithful run on RunPod (point CORPUS_PATH at your full corpus)
+CORPUS_PATH=corpus/neuroscience/source_txt \
+    nohup ./scripts/pipeline.sh --profile paper --platform runpod --domain neuroscience > nohup.out 2>&1 &
 
 # Track the run
 tail -f nohup.out                              # orchestrator stdout
@@ -257,16 +259,51 @@ Configuration lives in YAML files at the repo root and is loaded by
 The env vars `SI_DOMAIN`, `SI_PROFILE`, and `SI_PLATFORM` are set by
 `pipeline.sh` based on `--domain`/`--profile`/`--platform` flags.
 
+### Corpus input (`CORPUS_PATH`, required)
+
+`CORPUS_PATH` is the **single, required** source of the corpus — there is no
+profile `input_dir` and no default. If the `extract` phase runs without it set,
+the pipeline **fails fast at startup** with an actionable message, rather than
+silently reading the wrong or empty corpus. This is deliberate: under an
+orchestrator (e.g. an AWS Step Functions workflow) the caller knows where the
+corpus is mounted or staged in S3 and is responsible for providing it.
+
+- **Value** — a directory of `.txt` files, or a single `.txt` file.
+- **Local** — read from `$REPO_DIR/$CORPUS_PATH`.
+- **S3 / orchestration** — if the local path is missing and `S3_URI` is set,
+  `extract.sh` auto-pulls `$S3_URI/$CORPUS_PATH` before extracting, so the
+  orchestrator only needs to set `CORPUS_PATH` to the logical prefix.
+
+```bash
+# smoke — committed fixture (10 Wikipedia articles, ~360 KB)
+CORPUS_PATH=corpus/neuroscience/smoke \
+    ./scripts/pipeline.sh --profile smoke --domain neuroscience
+
+# pilot/paper — your full corpus
+CORPUS_PATH=corpus/neuroscience/source_txt \
+    ./scripts/pipeline.sh --profile pilot --domain neuroscience
+
+# a new domain — drop .txt under corpus/<domain>/… and point CORPUS_PATH at it
+CORPUS_PATH=corpus/fifa_world_cup/smoke \
+    ./scripts/pipeline.sh --profile smoke --domain fifa_world_cup
+```
+
 ### Adding a new domain
 
 ```bash
 cp domains/_template.yaml domains/<your-domain>.yaml
-# fill in entity_categories, relations, few_shot_examples, focus_instructions
-nohup ./scripts/pipeline.sh --domain <your-domain> --profile smoke > nohup.out 2>&1 &
+# Fill in EVERY key the template documents — not just the obvious ones. The
+# prompts require: entity_categories, relations, few_shot_examples,
+# focus_instructions, fact_score_scope, and the extract_*/*_examples
+# worked-example blocks. A YAML missing fact_score_scope fails at `validate`.
+
+mkdir -p corpus/<your-domain>/smoke          # drop your .txt corpus here
+CORPUS_PATH=corpus/<your-domain>/smoke \
+    nohup ./scripts/pipeline.sh --domain <your-domain> --profile smoke > nohup.out 2>&1 &
 ```
 
 `domains/_template.yaml` is the schema contract; its comments document
-every key.
+every key. A new domain = **new YAML + a corpus**, no code changes.
 
 ### Manual per-stage control
 

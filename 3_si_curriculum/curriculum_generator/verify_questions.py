@@ -124,6 +124,12 @@ def validate_with_model(items: List[Dict], model_id: str,
         tensor_parallel_size=tensor_parallel_size,
         gpu_memory_utilization=gpu_memory_utilization,
         trust_remote_code=True,
+        # Skip redundant single-file weights (Mistral-Nemo ships both the HF
+        # sharded format vLLM loads AND consolidated.safetensors + original/),
+        # which otherwise ~doubles the cache to 46 GB (smoke 2026-06-25). No-op
+        # for repos without them (Qwen3). TWIN: same list in
+        # 2_graphmert/utils/llm_scores/fact_score.py — keep in sync.
+        ignore_patterns=["original/**/*", "consolidated.safetensors"],
     )
     if max_model_len:  # treats None and 0 as "don't cap"
         llm_kwargs['max_model_len'] = int(max_model_len)
