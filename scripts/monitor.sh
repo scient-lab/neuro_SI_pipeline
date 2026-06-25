@@ -125,12 +125,16 @@ stop_pod() {
     log_m "STOPPING POD ($reason) pod_id=${POD_ID:-<unknown>}"
     final_sync
     if [[ -n "$POD_ID" && -n "${RUNPOD_API_KEY:-}" ]]; then
-        local resp
-        resp=$(curl -s -X POST "https://api.runpod.io/graphql" \
-            -H "Content-Type: application/json" -H "api_key: $RUNPOD_API_KEY" \
-            -d "{\"query\":\"mutation { podStop(input: {podId: \\\"$POD_ID\\\"}) { id status } }\"}" 2>&1 || echo "{}")
-        if echo "$resp" | grep -q '"id"'; then log_m "SUCCESS: pod $POD_ID stopped"; return 0; fi
-        log_m "WARN: RunPod API stop may have failed: $resp"
+        # RunPod REST API v1 (same Bearer auth as scripts/runpod/launch.sh).
+        # POST /v1/pods/{podId}/stop -> HTTP 200 on success; preserves the volume.
+        # (DELETE /v1/pods/{podId} would terminate instead — we want stop.)
+        local resp code
+        resp=$(curl -s -w '\n%{http_code}' -X POST \
+            "https://rest.runpod.io/v1/pods/$POD_ID/stop" \
+            -H "Authorization: Bearer $RUNPOD_API_KEY" 2>/dev/null || printf '\n000')
+        code="${resp##*$'\n'}"; resp="${resp%$'\n'*}"
+        if [[ "$code" == "200" ]]; then log_m "SUCCESS: pod $POD_ID stopped (HTTP 200)"; return 0; fi
+        log_m "WARN: RunPod stop returned HTTP $code (pod may still be running): $resp"
     else
         log_m "WARN: no POD_ID / RUNPOD_API_KEY — cannot stop pod via API"
     fi
