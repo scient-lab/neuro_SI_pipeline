@@ -72,7 +72,7 @@ elif [[ -n "${S3_URI:-}" ]]; then
     if [[ "$ABS_INPUT" == *.txt ]]; then
         [[ -f "$ABS_INPUT" ]] || need_pull=1
     else
-        n_txt=$(find "$ABS_INPUT" -maxdepth 1 -name '*.txt' -type f 2>/dev/null | wc -l)
+        n_txt=$(find "$ABS_INPUT" -name '*.txt' -type f 2>/dev/null | wc -l)   # recursive
         [[ "$n_txt" -eq 0 ]] && need_pull=1
     fi
 fi
@@ -89,8 +89,14 @@ mkdir -p "$GRAPHRAG_DIR/input"
 if [[ -f "$ABS_INPUT" ]]; then
     cp "$ABS_INPUT" "$GRAPHRAG_DIR/input/"
 elif [[ -d "$ABS_INPUT" ]]; then
-    find "$ABS_INPUT" -maxdepth 1 -name '*.txt' -type f \
-        -exec cp -t "$GRAPHRAG_DIR/input" {} +
+    # Recurse subdirs (CORPUS_PATH may hold nested corpus dirs). Flatten each
+    # file's relative path into the staged name so files in different subdirs
+    # don't collide (core/Sun.txt + Sun.txt -> core_Sun.txt + Sun.txt). graphrag
+    # reads a FLAT input dir, hence the count below stays -maxdepth 1.
+    while IFS= read -r -d '' f; do
+        rel="${f#"$ABS_INPUT"/}"
+        cp "$f" "$GRAPHRAG_DIR/input/${rel//\//_}"
+    done < <(find "$ABS_INPUT" -name '*.txt' -type f -print0)
 else
     log_error "Input path not found: $ABS_INPUT"
     log_error "  Set CORPUS_PATH in .env / .env.runpod, or drop files locally."

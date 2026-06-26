@@ -25,3 +25,6 @@ corpus/*/source_*/
 slurm_logs/*.out
 slurm_logs/*.err
 !slurm_logs/.gitkeep
+
+# Temporary files
+tmp/
