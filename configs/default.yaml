@@ -53,8 +53,30 @@ models:
 
 # --- Phase: extract -------------------------------------------------------
 extract:
-  chunk_tokens: 300
-  chunk_overlap: 50
+  # expected_input_docs — ADVISORY corpus-size sanity check, NOT a cap.
+  # It is the number of source .txt documents in CORPUS_PATH this profile is
+  # SIZED FOR. The extraction code does NOT read or enforce it — there is no
+  # input cap anywhere; extract processes the WHOLE corpus (every .txt in
+  # CORPUS_PATH, chunked by 1_seed_kg/settings.yaml::chunks.size). extract.sh
+  # uses it ONLY to warn LOUDLY when the staged corpus has MORE docs than this,
+  # so an oversized corpus on a paid pod doesn't silently blow up runtime/cost.
+  # Definition: an "input doc" = one .txt file in CORPUS_PATH (a corpus is a
+  # directory of them, or a single .txt). 0 = no expectation / no warning.
+  # Profiles set it (smoke 500 / pilot 2500 / paper 10000). Renamed from the
+  # old, misleading `max_input_examples` (which read like a hard limit but was
+  # dead — read by no code).
+  expected_input_docs: 0
+  # Chunk granularity for graphrag's text-unit splitter. NOW LIVE (was dead): the
+  # extract step (1_seed_kg/graphrag_index.py) injects these as cli_overrides into
+  # graphrag's load_config, overriding 1_seed_kg/settings.yaml::chunks.{size,
+  # overlap}. This is the SINGLE source of truth — edit here, not settings.yaml.
+  # 1200/100 preserves the value graphrag's settings.yaml has always used (graphrag
+  # default), so making them live changes nothing today. The paper (§4.1) uses
+  # ~300-token chunks: set chunk_tokens: 300 (chunk_overlap ~50) in a profile for
+  # paper-faithful chunking — a DELIBERATE change (smaller chunks → more chunks →
+  # more extraction calls / finer granularity), not a silent default.
+  chunk_tokens: 1200
+  chunk_overlap: 100
   max_candidates_per_chunk: 20
   strip_equations: true
   strip_references: true
@@ -163,10 +185,13 @@ graphmert:
   # Generation cap for the fact_score judge (fact_score.py SamplingParams).
   # Replaces the upstream hardcoded max_tokens=10, which truncated Qwen3's
   # <think> block before the verdict → 100% drop. Must fit reasoning + the final
-  # yes/no. 512 suits a terse reasoned judgment; raise (1024+) if you still see
-  # an unexpectedly high drop rate (a sign think blocks are being cut off),
-  # lower for speed. Profiles may override per scale.
-  fact_score_max_tokens: 512
+  # yes/no. 1024 matches curriculum.validate_qa_max_tokens (the other Qwen3
+  # inline-<think> judge): the 14B-class validation models reason longer than the
+  # old 512, which was anchored to gpt-oss's harmony format (reasoning in a
+  # SEPARATE channel, so it didn't count against the answer budget — wrong anchor
+  # for Qwen3's inline <think>). No speed cost — generation stops at the
+  # [yes]/[no]. Raise if drop rate looks implausibly high; lower only for speed.
+  fact_score_max_tokens: 1024
   # vLLM KV-cache context cap for the fact_score judge. REQUIRED: a validation
   # model can be Mistral-Nemo (131072 nominal context), which overflows the KV
   # cache on a 48 GB GPU at 0.70 mem_util. The shell call sites no longer pass
@@ -192,10 +217,12 @@ curriculum:
   # (generate_curriculum.py main loop). 100 matches the original hardcoded
   # value; smoke profile drops to 5 so a crash at q=99 doesn't lose work.
   checkpoint_every: 100
-  # Parallel Gemini question generation (generate_curriculum.py).
-  # Default: 5 (parallel workers to speed up 100q from 3-4h to ~1h).
-  # More workers = faster, respects Gemini rate limits (429 errors backoff).
-  # Paper/conservative: override to 1 if hitting API quotas. Smoke: override to 3.
+  # Concurrent Gemini calls for question generation (generate_curriculum.py).
+  # Bounded by your Gemini ACCOUNT's requests-per-minute limit — which is
+  # account-level, NOT profile scale. So it's the SAME across smoke/pilot/paper:
+  # do NOT add per-profile overrides (a previous smoke=3 / default=5 split was
+  # arbitrary — same API key, same RPM). Tune this ONE value to your tier: lower
+  # if you hit 429s, higher if your RPM allows. 5 is a safe default.
   parallel_generation_workers: 5
   # vLLM init for verify_questions.py (validate_qa step). Values mirror the
   # upstream CLI defaults — paper/HPC-scale. Smaller GPUs cap things via
@@ -214,7 +241,11 @@ curriculum:
   # Qwen3 <think> block + the final [yes]/[no] — the upstream hardcoded 256
   # truncated thinking mid-reason → no verdict → 97% false-reject (smoke
   # 2026-06-25, 151 Q&A → 4 kept). Bounded above by validate_qa_max_model_len.
-  # Raise if the drop rate looks implausibly high; lower for speed.
+  # WHY 1024 (2x graphmert.fact_score_max_tokens=512): this judge reasons over a
+  # whole multi-hop Q&A item (question + answer + reasoning trace), whereas
+  # fact_score judges a single (head, relation, tail) — more to reason about
+  # here, so a bigger think budget. Heuristic, not derived (curriculum_verify.yaml
+  # declares no generation cap). Raise if drop rate looks implausibly high.
   validate_qa_max_tokens: 1024
 
 # --- Phase: sft (matches 3_si_curriculum/training/trainer.py) ------------
@@ -244,6 +275,11 @@ sft:
   # gives an effective batch without the activation blowup; gradient
   # checkpointing trades compute for activation memory. Profiles override.
   per_device_train_batch_size: 1
+  # Flat at 8 across profiles (unlike rl's 4/8/16) ON PURPOSE: effective batch =
+  # 1 × num_gpus × 8, so it already scales with GPU count on multi-GPU paper.
+  # SFT effective batch is about gradient quality (~8 is fine at any data scale),
+  # whereas rl scales accum because GRPO's effective batch couples to
+  # num_generations (the rollout group size, which DOES scale per profile).
   gradient_accumulation_steps: 8
   num_train_epochs: 3
   gradient_checkpointing: true

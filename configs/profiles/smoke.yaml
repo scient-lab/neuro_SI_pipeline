@@ -33,9 +33,11 @@ models:
   base_sft: Qwen/Qwen3-8B
 
 extract:
-  max_input_examples: 500
-  # 500 input docs → ~200-300 triples → ~100-150 curriculum Q&A → ~50-100 SFT examples.
-  # Ensures downstream stages (SFT, RL) have minimum viable data to exercise code paths.
+  # ADVISORY only (see default.yaml::extract.expected_input_docs) — NOT a cap.
+  # The committed smoke fixture is just 10 .txt files, so this never warns; it
+  # exists so pointing smoke at a >500-doc corpus warns loudly (smoke is meant
+  # to be tiny/fast). extract processes the WHOLE corpus regardless.
+  expected_input_docs: 500
   # NOTE: max_model_len inherits default.yaml's 20000. A prior 4096 override
   # truncated Qwen3's <think> block before the JSON was ever emitted → only 3
   # triples from 70 chunks (smoke 2026-06-25). Do NOT re-cap below ~16k while
@@ -76,10 +78,9 @@ curriculum:
   thinking_budget: 1024
   # Checkpoint every 20 questions: at 150 total, ~7 checkpoints for safety.
   checkpoint_every: 20
-  # Parallel Gemini workers for question generation. Default is 5 (fast).
-  # Smoke uses 3 for balance: parallelization without hammering Gemini API.
-  # 3-4h (sequential) → ~1.5-2h (3 workers). Respects rate limits (429 backoff).
-  parallel_generation_workers: 3
+  # parallel_generation_workers NOT overridden — it's bounded by the Gemini
+  # account RPM (account-level, not profile scale), so it stays at default.yaml's
+  # value across all profiles.
   # vLLM cap for validate_qa (verify_questions.py). REQUIRED on smoke: default
   # is null → vLLM uses the model's nominal context, and curriculum_check_b is
   # Mistral-Nemo (131072). At 0.70 mem_util on a 48 GB GPU the KV cache only

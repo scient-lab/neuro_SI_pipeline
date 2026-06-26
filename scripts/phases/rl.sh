@@ -88,8 +88,27 @@ step_train_grpo() {
     local USE_DS
     USE_DS=$(get_phase_param rl use_deepspeed true)
     if [[ "$USE_DS" == "true" || "$USE_DS" == "True" || "$USE_DS" == "1" ]]; then
+        # Guard: ZeRO-3 needs >1 GPU. On a single GPU it dies deep inside
+        # deepspeed.comm.mpi_discovery (cryptic mpi4py ImportError). Fail fast
+        # with guidance instead — and do NOT silently flip the regime, since
+        # paper's identity is full-FT ZeRO-3 (rl.use_lora=false). The paper
+        # single-GPU "demo" must explicitly opt into LoRA.
+        # grep -c always prints a count (0 when none); `|| true` swallows its
+        # exit-1-on-no-match so it doesn't emit a stray second line, and the
+        # regex guards against a non-numeric value. 0 or 1 GPU → can't ZeRO-3.
+        local _ngpu
+        _ngpu=$(nvidia-smi -L 2>/dev/null | grep -c "^GPU " || true)
+        [[ "$_ngpu" =~ ^[0-9]+$ ]] || _ngpu=1
+        if [[ "$_ngpu" -le 1 ]]; then
+            log_error "rl.train_grpo: rl.use_deepspeed=true (ZeRO-3) but only ${_ngpu} GPU detected."
+            log_error "  ZeRO-3 requires multi-GPU. Options:"
+            log_error "    - multi-GPU: launch with --num-gpus N (>=2), e.g. SLURM/Della."
+            log_error "    - single-GPU demo: override rl.use_deepspeed=false AND rl.use_lora=true"
+            log_error "      (full-FT 14B will NOT fit one GPU; LoRA is required)."
+            return 1
+        fi
         DS_ARGS=(--deepspeed "$DEEPSPEED_CFG")
-        log_info "rl.train_grpo: deepspeed ENABLED — config: $DEEPSPEED_CFG"
+        log_info "rl.train_grpo: deepspeed ENABLED (${_ngpu} GPUs) — config: $DEEPSPEED_CFG"
     else
         log_info "rl.train_grpo: single-GPU mode (rl.use_deepspeed=$USE_DS)"
     fi

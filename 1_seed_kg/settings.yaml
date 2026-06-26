@@ -52,6 +52,10 @@ input:
   file_encoding: utf-8
   file_pattern: ".*\\.txt$$"
 
+# size/overlap are OVERRIDDEN at runtime by graphrag_index.py from our config
+# (configs/ extract.chunk_tokens / chunk_overlap) — edit THERE, not here. The
+# values below are only the fallback for running graphrag directly (not via the
+# extract phase); they match the cli_overrides defaults so the two stay in sync.
 chunks:
   size: 1200
   overlap: 100

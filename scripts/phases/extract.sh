@@ -101,6 +101,23 @@ if [[ "$n" -eq 0 ]]; then
     log_error "No .txt files staged from $INPUT_DIR_REPO"
     exit 1
 fi
+
+# Advisory scale check. extract.expected_input_docs (configs/profiles/<p>.yaml)
+# documents the corpus size this profile is sized for. It is NOT enforced — there
+# is no input cap in code, so extract processes ALL $n docs. Warn LOUDLY when the
+# corpus exceeds the expectation so an oversized corpus on a paid pod doesn't
+# silently blow up runtime/cost.
+_expected_docs=$(get_phase_param extract expected_input_docs 0)
+if [[ "${_expected_docs:-0}" -gt 0 && "$n" -gt "$_expected_docs" ]]; then
+    log_warn "########################################################################"
+    log_warn "# CORPUS LARGER THAN PROFILE EXPECTS"
+    log_warn "#   staged $n .txt docs, but profile '${SI_PROFILE:-default}' is sized"
+    log_warn "#   for ~${_expected_docs} (extract.expected_input_docs)."
+    log_warn "#   This is ADVISORY, NOT a cap — extract will process ALL $n docs, so"
+    log_warn "#   this run takes longer / costs more than the profile implies."
+    log_warn "#   Trim CORPUS_PATH or use a larger profile if that's not intended."
+    log_warn "########################################################################"
+fi
 log_info "Staged input: $GRAPHRAG_DIR/input (${n} .txt files from $INPUT_DIR_REPO)"
 
 # graphrag_index.py expects settings.yaml at --root_dir; copy from the

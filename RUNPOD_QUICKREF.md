@@ -293,6 +293,9 @@ SI_DOMAIN=neuroscience SI_PROFILE=smoke \
 | `Keys mismatch ... source ... and {} (target)` from graphmert.preprocess | `Grounding results: success == 0` — likely entity-vocab mismatch between extract and entity_discovery. Pull preprocess.log and check |
 | Stats.sh shows `[K` literal in output | Pull latest — that was a tty-detection bug |
 | Pod's `git pull` says `Already up to date` after you pushed | Verify the right branch — `./scripts/runpod/remote.sh exec 'git status -sb; git log --oneline -3'` |
+| `sft.train_lora` → `ImportError: flash_attn seems to be not installed` (pilot/paper) | pilot/paper use `attn_implementation: flash_attention_2` with NO sdpa fallback — the FA2 wheel must be in the si_curriculum venv. After a `git pull` that changed `3_si_curriculum/requirements.txt`, **rebuild the venv**: `./scripts/runpod/remote.sh bootstrap STAGES=si_curriculum` (or `./setup.sh si_curriculum`). A fresh pod bootstrap already installs it. |
+| `rl.train_grpo` exits with a "ZeRO-3 requires multi-GPU" error | paper's `rl.use_deepspeed=true` needs >1 GPU. Launch `--num-gpus N`, or for a single-GPU demo override `rl.use_deepspeed=false` + `rl.use_lora=true`. |
+| `rl.train_grpo` → `mpi4py` / `mpi_discovery` ImportError | Same root cause as above on an older checkout — pull latest; rl.sh now fails fast with guidance instead. |
 
 ---
 

@@ -4,7 +4,11 @@
 # Runs on the 80-96 GB tier (H100 NVL / H100-80 / A100-80).
 
 extract:
-  max_input_examples: 2500
+  # ADVISORY only (see default.yaml::extract.expected_input_docs) — NOT a cap.
+  # extract.sh warns loudly if CORPUS_PATH holds more than this many .txt docs,
+  # since extract processes the WHOLE corpus (no input limit in code) — so an
+  # oversized FIFA/neuroscience corpus won't silently blow up the paid pilot.
+  expected_input_docs: 2500
   # No input_dir — CORPUS_PATH is REQUIRED and is the single source of the
   # corpus location (extract.sh fails fast if unset). e.g. pilot:
   #   CORPUS_PATH=corpus/${SI_DOMAIN}/source_txt
@@ -14,6 +18,8 @@ graphmert:
   # 64 (was 32): the 80-96 GB tier has the headroom; larger batch → faster,
   # smoother MNM convergence. Still well below paper's 256.
   effective_batch_size: 64
+  # fact_score_max_tokens NOT overridden — default.yaml is now 1024 (the Qwen3
+  # inline-<think> budget), which already covers pilot's 14B validate_a.
   # NOTE: most graphmert TRAINING knobs still live in
   # 2_graphmert/launch_configs/args_mlm.yaml. The block below is the
   # partial integration: 2_graphmert/utils/architecture.py reads
@@ -29,10 +35,12 @@ graphmert:
 curriculum:
   num_questions: 1000
   hop_range: [1, 4]
-  # vLLM cap for validate_qa. On the 80-96 GB tier (H100/A100-80) there's ample
-  # KV headroom, so 8192 (vs the old 48 GB-era 4096). Still far under the model
-  # nominal 40960 that OOMs at 0.70 mem_util; prompts are ~1.3k tokens + 256 cap,
-  # so 8192 is generous margin.
+  # vLLM cap for validate_qa, DERIVED from the prompt: the Q&A item's
+  # explanation/thinking_trace (≤ curriculum.thinking_budget = 4096) +
+  # question/answer/path + ~400-tok system prompt ≈ 4.7k, plus the validator's
+  # generation (validate_qa_max_tokens = 1024) ≈ 5.7k → 8192 covers it. Far
+  # under Mistral-Nemo's 131072 nominal (which overflows KV cache at 0.70
+  # mem_util). The cap tracks thinking_budget — same as paper (both 4096).
   validate_qa_max_model_len: 8192
 
 # sft: matches trainer.py::TrainingConfig wired fields (lora_r/alpha/dropout

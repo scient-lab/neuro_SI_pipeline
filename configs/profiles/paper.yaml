@@ -4,7 +4,10 @@
 # Uses ZeRO-3 + full fine-tune (no LoRA, no SDPA, paper-grade quality).
 
 extract:
-  max_input_examples: 10000
+  # ADVISORY only (see default.yaml::extract.expected_input_docs) — NOT a cap.
+  # extract.sh warns if CORPUS_PATH exceeds this; extract processes the whole
+  # corpus regardless (no input limit in code).
+  expected_input_docs: 10000
 
 graphmert:
   train_epochs: 50
@@ -22,6 +25,16 @@ graphmert:
 curriculum:
   num_questions: 5000
   hop_range: [1, 5]
+  # Cap validate_qa context (else default.yaml's null → Mistral-Nemo's 131072
+  # nominal context overflows the KV cache — the crash smoke/pilot fixed).
+  # DERIVED, not a round number: the validation prompt = the Q&A item's
+  # explanation/thinking_trace (bounded by curriculum.thinking_budget = 4096) +
+  # question/answer/path + the ~400-tok system prompt ≈ 4.7k, plus the
+  # validator's own generation (validate_qa_max_tokens = 1024) ≈ 5.7k. 8192
+  # covers that with headroom. Equals pilot's cap because both share
+  # thinking_budget=4096 (smoke's is 1024 → its 4096 cap suffices). The cap
+  # tracks thinking_budget; bump both together if you raise it.
+  validate_qa_max_model_len: 8192
 
 # sft: no overrides — paper inherits default.yaml wholesale (block_size 32768,
 # attn_implementation flash_attention_2 via the pre-built wheel). NOTE: do NOT

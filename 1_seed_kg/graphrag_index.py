@@ -94,7 +94,19 @@ ROOT_DIR = Path(ARGS.root_dir)
 # ------------------------------------------------
 
 callback_chain = WorkflowCallbacksManager()
-cli_overrides: dict = {}
+# Single source of truth for chunk granularity. graphrag reads chunks.{size,
+# overlap} from 1_seed_kg/settings.yaml, but we override them here from our
+# config (configs/ extract.chunk_tokens / chunk_overlap) so chunking lives in
+# ONE place and is profile-tunable — instead of being split between our config
+# and settings.yaml. load_config applies these via _apply_overrides (flat dotted
+# keys) onto the raw dict before pydantic validation. Fallbacks match graphrag's
+# settings.yaml defaults (1200/100) so behavior is unchanged if the keys are
+# absent. NOTE: the paper (§4.1) uses ~300-token chunks — set extract.chunk_tokens
+# (and chunk_overlap) in a profile for paper-faithful chunking.
+cli_overrides: dict = {
+    "chunks.size":    get_phase_param('extract', 'chunk_tokens', 1200),
+    "chunks.overlap": get_phase_param('extract', 'chunk_overlap', 100),
+}
 
 config = load_config(ROOT_DIR, None, cli_overrides)
 
