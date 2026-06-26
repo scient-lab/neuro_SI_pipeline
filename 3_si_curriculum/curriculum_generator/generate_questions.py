@@ -9,7 +9,9 @@ See LICENSE file for full terms.
 
 import networkx as nx
 import json
+import hashlib
 import random
+import threading
 import pickle
 import sys
 from pathlib import Path
@@ -102,6 +104,72 @@ def _extract_model_text(response) -> Optional[str]:
         return last_part.text
     
     return None
+
+
+# --- Answer-key balancing (training-data de-biasing) -------------------------
+# LLM-written MCQs skew the correct option toward early letters (esp. "A"); a
+# model SFT'd on that learns a position shortcut ("lean A") instead of reasoning.
+# After parsing, move the correct option to a RANDOM-uniform slot so the dataset
+# answer key is balanced. The correct option's CONTENT is preserved verbatim —
+# only its letter/position changes — so the correct answer is never corrupted.
+# Reproducible + thread-safe: the shuffle is driven by a PER-QUESTION RNG seeded
+# from a stable hash of the question text — NOT the global `random`, which is
+# non-deterministic under generate_curriculum.py's parallel ThreadPoolExecutor
+# (workers interleave global draws, so a single random.seed() can't reproduce a
+# run). Same question text -> same layout, every run, at any worker count. Note:
+# this is seed-by-content, so it's independent of args.seed; the de-bias goal
+# (uniform answer-key distribution) holds because distinct questions hash apart.
+_ANSWER_KEY_DIST = {"A": 0, "B": 0, "C": 0, "D": 0}
+_ANSWER_KEY_DIST_LOCK = threading.Lock()   # _ANSWER_KEY_DIST is shared across workers
+_OPT_RE = re.compile(r"^\s*([A-D])[.)]\s*(.+?)\s*$")
+
+
+def balance_answer_key(question_text, answer_letter):
+    """Move the correct option to a uniformly-random position; update the
+    <Options> block + return the new correct letter. Safe no-op (returns inputs
+    unchanged) if options can't be parsed — never raises, never drops a question."""
+    letters = ["A", "B", "C", "D"]
+    try:
+        if "<Options>" not in question_text or "</Options>" not in question_text:
+            return question_text, answer_letter
+        head, rest = question_text.split("<Options>", 1)
+        block, tail = rest.split("</Options>", 1)
+        opts = {}
+        for ln in block.splitlines():
+            m = _OPT_RE.match(ln)
+            if m:
+                opts[m.group(1)] = m.group(2)
+        if set(opts) != set(letters) or answer_letter not in opts:
+            print(f"[balance] skip: unparseable options or bad answer '{answer_letter}'")
+            return question_text, answer_letter
+        correct_text = opts[answer_letter]                 # preserve the CORRECT content
+        distractors = [opts[l] for l in letters if l != answer_letter]
+        # Per-question RNG seeded from a STABLE hash of the question text. builtin
+        # hash() is salted per-process (PYTHONHASHSEED), so use hashlib for a value
+        # that's identical across runs. Local Random instance → no shared global
+        # state, so worker interleaving can't make it non-deterministic.
+        seed = int.from_bytes(hashlib.sha256(question_text.encode("utf-8")).digest()[:8], "big")
+        rng = random.Random(seed)
+        rng.shuffle(distractors)
+        target = rng.randrange(4)                           # uniform new slot
+        it = iter(distractors)
+        new_opts = [correct_text if i == target else next(it) for i in range(4)]
+        new_letter = letters[target]
+        new_block = "\n".join(f"{letters[i]}. {new_opts[i]}" for i in range(4))
+        new_text = f"{head}<Options>\n{new_block}\n</Options>{tail}"
+        # Counter is shared across worker threads → guard the read-modify-write and
+        # snapshot under the lock so the periodic log is consistent.
+        with _ANSWER_KEY_DIST_LOCK:
+            _ANSWER_KEY_DIST[new_letter] += 1
+            n = sum(_ANSWER_KEY_DIST.values())
+            snapshot = dict(_ANSWER_KEY_DIST) if n % 50 == 0 else None
+        print(f"[balance] correct option {answer_letter} -> {new_letter}")
+        if snapshot is not None:
+            print(f"[balance] answer-key distribution after {n} questions: {snapshot}")
+        return new_text, new_letter
+    except Exception as e:
+        print(f"[balance] error, leaving question unchanged: {e}")
+        return question_text, answer_letter
 
 
 class PathGenerator:
@@ -686,6 +754,10 @@ class QAGenerator:
         question, answer = self.llm.separate_question_and_answer(question_full)
         if not question or not answer:
             return None
+        # Balance the answer key BEFORE the trace is generated, so the trace
+        # explains the post-shuffle letter (content of the correct option is
+        # preserved; only its position/letter changes).
+        question, answer = balance_answer_key(question, answer)
 
         # Step 2: quality filter
         if not self.llm.quality_filtering(question):
@@ -744,6 +816,7 @@ class QAGenerator:
                     question_extracted, answer = self.llm.separate_question_and_answer(question_full)
 
                     if question_extracted and answer:
+                        question_extracted, answer = balance_answer_key(question_extracted, answer)
                         path['question'] = question_extracted
                         path['answer'] = answer
                         return path

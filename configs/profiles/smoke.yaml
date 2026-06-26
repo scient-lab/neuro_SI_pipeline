@@ -105,7 +105,13 @@ sft:
 # num_generations and max_completion_length.
 rl:
   num_generations: 2
-  max_completion_length: 256
+  # 1024 (was 256): Qwen3 reasons ~400-1000 <think> tokens before <answer>. At
+  # 256 EVERY completion clipped mid-think → never reached <answer> →
+  # correctness/format = -1/0 flat → reward_std=0 → zero GRPO advantage → no
+  # gradient (model generated cleanly but never trained; observed 2026-06-26).
+  # 1024 lets completions finish so reward varies and GRPO can learn. Costs
+  # ~3-4x generation time/step; raise toward default 1280 if reward stays flat.
+  max_completion_length: 1024
   per_device_train_batch_size: 1
   gradient_accumulation_steps: 4
   num_train_epochs: 1

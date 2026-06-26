@@ -56,7 +56,14 @@ sft:
 # max_completion_tokens — those names are ignored).
 rl:
   num_generations: 4
-  max_completion_length: 512
+  # 1280 (was 512): matches main/paper — the authors' tuned value, sitting just
+  # under the length-penalty hard_cap (1500). 512 was BROKEN: it's below even
+  # length_penalty_soft_start (550), so Qwen3-14B (which reasons longer than 8B)
+  # clipped before <answer> on every rollout → correctness/format = -1/0 flat →
+  # reward_std=0 → zero GRPO gradient → no learning (same bug found in smoke at
+  # 256, 2026-06-26 — worse here at 14B, and this is the PAID run). Drop toward
+  # 1024 only if the pilot GPU OOMs at 1280; do NOT go back below ~768.
+  max_completion_length: 1280
   per_device_train_batch_size: 1
   gradient_accumulation_steps: 8
   num_train_epochs: 3
