@@ -1,0 +1,198 @@
+The Artemis program is a Moon exploration program led by the United States' National Aeronautics and Space Administration (NASA), aimed at returning humans to the Moon for the first time since the Apollo program and building a permanent lunar base. It was formally established via Space Policy Directive-1 in 2017 by President Donald Trump.
+Among the principal elements of the Artemis program are Space Shuttle–derived hardware, such as the Space Launch System's (SLS) core stage, its RS-25 engines, and solid rocket boosters, as well as systems originating from the canceled Constellation program, including the Orion spacecraft (paired with the European Service Module) and booster upgrades initially developed for Ares V. Other elements, such as the Human Landing System (HLS), are in development by private spaceflight companies under contract. International collaborations are bound by the Artemis Accords.
+The uncrewed Artemis I mission sent an Orion spacecraft to lunar orbit in 2022. Artemis II sent four astronauts on a lunar flyby in 2026, becoming the first crewed flight beyond low Earth orbit since the Apollo program. Artemis III, scheduled for late 2027, is planned to test an HLS lunar lander in Earth orbit. Artemis IV, targeted for 2028, is planned to be the first crewed lunar landing since Apollo. Beginning with Artemis V, scheduled for no earlier than late 2028, NASA intends yearly lunar landings to develop a permanent lunar base, as a step toward human missions to deeper space.
+
+
+== Overview ==
+The Artemis program is organized around a series of missions of increasing complexity, intended to be spaced about a year apart. NASA and its partners have planned missions Artemis I to Artemis V, with additional missions proposed. Each numbered mission centers on launching an SLS rocket carrying an Orion spacecraft. Missions after Artemis II will also rely on support missions by other organizations and spacecraft. Referred to under the name Lunar Codex, Artemis missions have also contemplated sending to the moon an archive of cultural works from creators across the world.
+The core infrastructure of Artemis consists of SLS, Orion, and the HLS. Additional program elements include the Commercial Lunar Payload Services, Exploration Ground Systems, Artemis Base Camp, the Lunar Terrain Vehicle, and spacesuit development. Certain program choices, including the use of a near-rectilinear halo orbit and long-term sustainability plans, have drawn criticism.
+Orion's first launch on SLS, originally scheduled for 2016, was delayed repeatedly and ultimately flew on November 16, 2022, as Artemis I, carrying mannequins and robotic payloads. The crewed Artemis II (lunar fly-by) mission flew on April 1, 2026. The future Artemis III (Earth orbit) is planned for late 2027, Artemis IV (lunar landing) for early 2028 and Artemis V (lunar landing) for late 2028. NASA plans approximately annual lunar landings thereafter.
+
+
+=== SLS missions ===
+Artemis I (November 16, 2022) was the first uncrewed test flight of the SLS, Orion, and ESM. The mission sent Orion into a polar distant retrograde lunar orbit for about six days before returning to Earth, where the capsule re-entered the atmosphere and landed in the Pacific Ocean with parachutes. Although the mission was successful overall, Orion's ablative heat shield experienced greater-than-expected erosion during reentry.
+Artemis II (April 1, 2026) was the first crewed test flight of SLS and Orion. The four crew members performed extensive testing of the spacecraft in high Earth orbit before Orion was boosted into a free-return trajectory around the Moon, returning to Earth for re-entry and splashdown. The mission was broadly comparable to Apollo 7 and Apollo 8, although Artemis II did not orbit the Moon and flew a more distant lunar flyby than the Apollo missions.
+Artemis III (late 2027) is planned to be the second crewed Artemis mission. The crew will launch aboard SLS/Orion and conduct rendezvous and docking tests in Earth orbit with one or both commercially developed lunar landers launched separately—SpaceX's Starship HLS and Blue Origin's Blue Moon—as well as test the Axiom Extravehicular Mobility Unit (AxEMU) space suit. The mission is broadly comparable to Apollo 9.
+Artemis IV (early 2028) is planned to be the first American crewed lunar landing since Apollo 17 in December 1972. The mission depends on a prior support flight to place a lander in lunar orbit before the launch of SLS/Orion. After arrival, astronauts will transfer to the lander for descent to the lunar surface, conduct at least two extravehicular activities (EVAs), and then return to lunar orbit for rendezvous with Orion. Orion will subsequently return the four astronauts to Earth. Launch is scheduled for no earlier than early 2028.
+Artemis V (late 2028) is planned to be the second crewed lunar landing. This mission also is when NASA is expected to begin building its Moon base.
+
+
+== History ==
+
+
+=== Early history ===
+The Artemis program incorporates several major components of previously canceled NASA programs and missions, including the Constellation program and the Asteroid Redirect Mission.
+Originally legislated by the NASA Authorization Act of 2005, as the retirement of the Space Shuttle drew near, the Constellation program included the development of the Ares I and Ares V rockets along with the Orion spacecraft. In May 2009, US president Barack Obama established the Augustine Committee to take into account several objectives including support for the International Space Station, development of missions beyond low Earth orbit (including the Moon, Mars, and near-Earth objects), and use of the commercial space industry within defined budget limits. The committee concluded that the Constellation program was massively underfunded and that a 2020 Moon landing was impossible. Constellation was subsequently put on hold.
+On April 15, 2010, President Obama spoke at the Kennedy Space Center, announcing the administration's plans for NASA and canceling the non-Orion elements of Constellation, saying that the program was not viable. He instead proposed US$6 billion in additional funding and called for the development of a new heavy-lift rocket program to be ready for construction by 2015 with crewed missions to Mars orbit by the mid-2030s.
+On October 11, 2010, President Obama signed into law the NASA Authorization Act of 2010, which included requirements for the immediate development of the SLS rocket and the Orion spacecraft to support missions beyond low Earth orbit starting in 2016, while making use of the workforce, assets, and capabilities of the Space Shuttle program, Constellation program, and other NASA programs. The law also invested in space technologies and robotics capabilities tied to the overall space exploration framework, ensured continued support for Commercial Orbital Transportation Services, Commercial Resupply Services, and expanded the Commercial Crew Development program.
+On June 30, 2017, President Donald Trump signed an executive order to re-establish the National Space Council, chaired by Vice President Mike Pence. The administration's first budget request kept Obama-era human spaceflight programs: Commercial Resupply Services, Commercial Crew Development, the Space Launch System, and the Orion spacecraft for deep space missions, while reducing Earth science research and calling for the elimination of NASA's education office.
+
+
+=== Redefinition and naming as Artemis ===
+On December 11, 2017, President Trump signed Space Policy Directive 1, calling for a US-led program for a human return to the Moon, followed by missions to Mars and beyond. The policy calls for the NASA administrator to "lead an innovative and sustainable program of exploration with commercial and international partners to enable human expansion across the Solar System and to bring back to Earth new knowledge and opportunities". The effort intends to more effectively organize government, private industry, and international efforts toward returning humans to the Moon and working toward eventual human exploration of Mars.
+Space Policy Directive 1 authorized the lunar-focused campaign, later named Artemis, drawing upon legacy US programs, including the Orion space capsule, the Lunar Gateway space station, and Commercial Lunar Payload Services, and created the new Human Landing System program. The Space Launch System was expected to serve as the primary launch vehicle for Orion, while commercial launch vehicles were to launch various other elements of the program.
+
+On March 26, 2019, Pence announced that NASA's Moon landing goal would be accelerated by four years with a planned landing in 2024. On May 16, 2019, NASA Administrator Jim Bridenstine announced that the new program would be named Artemis, after the goddess of the Moon in Greek mythology who is the twin sister of Apollo, after which NASA's 1960's moon landing program was named. Mars missions by the 2030s were still intended as of May 2019.
+In mid-2019, NASA requested US$1.6 billion in additional funding for Artemis for fiscal year 2020, while the Senate Appropriations Committee requested from NASA a five-year budget profile which is needed for evaluation and approval by Congress.
+In February 2020, the White House requested a funding increase of 12% to cover the Artemis program as part of its fiscal year 2021 budget. The total budget would have been US$25.2 billion per year with US$3.7 billion dedicated toward a Human Landing System. NASA chief financial officer Jeff DeWit said he thought the agency had "a very good shot" to get this budget through Congress despite Democratic concerns around the program. However, in July 2020, the House Appropriations Committee rejected the White House's requested funding increase. The bill proposed in the House dedicated only US$700 million toward the Human Landing System, 81% (US$3 billion) short of the requested amount.
+In April 2020, NASA awarded funding to Blue Origin, Dynetics, and SpaceX for 10-month-long preliminary design studies for the HLS.
+On February 4, 2021, the Biden administration endorsed the Artemis program. More specifically, White House Press Secretary Jen Psaki expressed the Biden administration's "support [for] this effort and endeavor". However, throughout February 2021, Acting Administrator of NASA Steve Jurczyk reiterated those budget concerns when asked about the project's schedule, clarifying that "The 2024 lunar landing goal may no longer be a realistic target [...]".
+On April 16, 2021, NASA contracted SpaceX to develop, manufacture, and fly two lunar landing flights with the Starship HLS lunar lander. Blue Origin and Dynetics protested the award to the Government Accountability Office (GAO) on April 26. After the GAO rejected the protests, Blue Origin sued NASA over the award, and NASA agreed to stop work on the contract until November 1 as the lawsuit proceeded. The judge dismissed the suit on November 4, and NASA resumed work with SpaceX.
+On November 15, 2021, an audit of NASA's Office of Inspector General estimated the true cost of the Artemis program at about $93 billion until 2025.
+In addition to the initial SpaceX contract, NASA awarded two rounds of separate contracts in May 2019 and September 2021, on aspects of the HLS to encourage alternative designs, separately from the initial HLS development effort. It announced in March 2022 that it was developing new sustainability rules and pursuing both a Starship HLS upgrade (an option under the initial SpaceX contract) and new competing alternative designs. These came after criticism from members of Congress over the lack of redundancy and competition, and led NASA to ask for additional support.
+
+
+== Missions ==
+
+
+=== Orion test flights ===
+
+The Pad Abort-1 test on May 6, 2010, demonstrated Orion's launch abort system, proving it could pull a crew module away from a rocket during a pad emergency. The Ascent Abort-2 test on July 2, 2019, proved that the system could pull a crew module away during launch at the point of maximum aerodynamic pressure (max q). For the second test, the boilerplate capsule launched on a custom Minotaur IV-derived rocket.
+In between, a prototype Orion crew module flew on Exploration Flight Test-1 on December 5, 2014 atop a Delta IV Heavy rocket. Its reaction control system and other components were tested during two medium Earth orbits, reaching an apogee of 5,800 km (3,600 mi) and crossing the Van Allen radiation belts before making a high-energy re-entry at 32,000 km/h (20,000 mph).
+
+
+=== Artemis I (2022) ===
+
+Artemis I was originally scheduled for late 2016, and as delays accrued, eventually for late 2021, but the launch date was then pushed back to August 29, 2022. Various delays related to final infrastructure repairs and weather pushed the launch date further out.
+In October 2022, NASA launch managers decided on a new launch date in November, which was again slightly delayed due to preparation and weather. On November 16 at 01:47:44 EST (06:47:44 UTC), Artemis I successfully launched from the Kennedy Space Center.
+Artemis I was completed at 09:40 PST (17:40 UTC) on December 11, when the Orion spacecraft splashed down in the Pacific Ocean, west of Baja California, after a record-breaking mission, which saw Artemis travel more than 2.3 million kilometers (1.4 million miles) on a path around the Moon before returning safely to Earth. The splashdown occurred 50 years to the day since NASA's Apollo 17 Moon landing, the last human crewed mission to touch down on the lunar surface.
+
+
+=== Artemis II (2026) ===
+
+Artemis II splashed down in the Pacific Ocean on April 11 at 00:07 UTC, concluding their nine-day trip around the Moon.
+
+
+=== Artemis III (2027) ===
+
+
+=== Artemis IV (early 2028) ===
+
+
+=== Artemis V (late 2028) ===
+
+
+== Supporting programs ==
+
+
+=== Commercial Lunar Payload Services ===
+
+
+=== Artemis Accords ===
+
+
+=== Exploration Ground Systems (EGS) ===
+
+
+== Supporting Earth-launch vehicles ==
+Previously, according to the early mission concepts outlined by NASA in May 2020 and refined by the HLS contract award in July 2021, the primary Earth-launch vehicles planned to support the Artemis program will include the NASA Space Launch System for the Orion vehicle, the Falcon Heavy for various components of the Lunar Gateway, and the Starship HLS configuration for the eventual delivery of the HLS vehicle. Other standard SpaceX Starships may be used later to meet other and yet to be determined crew or cargo handling mission needs. Additional launch vehicles will also be employed later for CLPS cargo services. The European Ariane 6 has been proposed to be part of the program in July 2019.
+The Power and Propulsion Element (PPE) module and the Habitation and Logistics Outpost (HALO) of the Gateway, which were previously planned for the SLS Block 1B, were then planned to fly together on a Falcon Heavy in 2027. The Gateway was to be supported and resupplied by approximately 28 commercial cargo missions launched by undetermined commercial launch vehicles. The Gateway Logistics Services (GLS) was to be in charge of resupply missions. GLS had also contracted for the construction of a resupply vehicle, Dragon XL, capable of remaining docked to the Gateway for one year of operations, providing and generating its own power while docked, and capable of autonomous disposal at the end of its mission.
+In May 2019, the plan was for components of a crewed lunar lander to be deployed to the Gateway on commercial launchers before the arrival of the first crewed mission, Artemis III. An alternative approach where the HLS and Orion dock together directly was discussed.
+As late as mid-2019, NASA considered use of Delta IV Heavy and Falcon Heavy to launch a crewed Orion mission given SLS delays. Given the complexity of conversion to a different vehicle, the agency ultimately decided to use only the SLS to launch astronauts.
+
+
+=== Space Launch System ===
+
+
+=== SpaceX Starship ===
+
+The SpaceX Starship system is a fully-reusable super heavy-lift Earth-launch system which is under development. It consists of a first-stage booster named Super-Heavy and a second-stage space vehicle which is generally named Starship and which will have several variants. A Starship HLS mission will use three variants: a tanker, a propellant depot, and the Starship HLS itself which will be designed only for lunar landings and takeoffs, and not for Earth landings. Some variants will be able to return to Earth for reuse.
+The second-stage Starships are fully self-contained spacecraft, complete with their own propulsion systems. The combined Starship system using standard Starship variants for its second stage is planned to launch crews and cargo, which may then be used to support the various developmental needs of the Artemis program, and also to support the needs of other NASA and SpaceX programs.
+The SpaceX Starship is also qualified to be bid for Commercial Lunar Payload Services (CLPS) launches, and in 2021 was the winning NASA bid for a crewed lunar landing.
+
+
+== Space vehicles ==
+
+
+=== Orion ===
+
+Orion is a class of partially reusable spacecraft to be used in the Artemis program. The spacecraft consists of a Crew Module (CM) space capsule designed by Lockheed Martin and the European Service Module (ESM) manufactured by Airbus Defence and Space. Capable of supporting a crew of six beyond low Earth orbit, Orion is equipped with solar panels, an automated docking system, and glass cockpit interfaces modeled after those used in the Boeing 787 Dreamliner. It has a single AJ10 engine for primary propulsion, and others including reaction control system engines. Although designed to be compatible with other launch vehicles, Orion is primarily intended to launch atop a Space Launch System (SLS) rocket, with a tower launch escape system.
+Orion was originally conceived by Lockheed Martin as a proposal for the Crew Exploration Vehicle (CEV) to be used in NASA's Constellation program. Following the cancellation of the Constellation program in 2010, Orion was heavily redesigned for use in NASA's Journey to Mars initiative; later named Moon to Mars. The SLS replaced the Ares I as Orion's primary launch vehicle, and the service module was replaced with a design based on the European Space Agency's Automated Transfer Vehicle. A development version of Orion's CM was launched in 2014 during Exploration Flight Test-1, while at least four test articles were produced. By 2022, three flight-worthy Orion crew modules have been built, with an additional one ordered, for use in the Artemis program; the first of these was due to be launched on November 30, 2020, however, Artemis I did not launch until November 16, 2022.
+
+
+=== Human Landing System (HLS) ===
+
+
+=== Lunar Gateway (canceled) ===
+
+
+== Planned surface operations ==
+
+The Artemis Base Camp will support missions of up to two months and will be used to study technologies to use on future Moon or Mars bases, and then future stationary settlements may be used regularly for decades to come through both Government and commercial programs. A base will consist of three main modules:
+
+The Surface Habitat (SH) modules, which is the initial dwelling structure and a surface home base for the first residents of the Moon.
+The Lunar Terrain Vehicle (LTV), which is an unpressurized rover cart for transporting suited astronauts and cargo around in the vicinity of the Base.
+The Pressurized Rovers (PR), a pressurized vehicle complete with small backup habitation facilities, thus enabling multi-day and longer-range explorations tens of kilometers away from the Base.
+
+
+=== Transportation on the Moon ===
+
+
+==== Landing zone ====
+In 2022, NASA identified 13 candidate regions near the lunar South Pole for initial landing and inspection missions.
+
+
+==== Ground transportation development ====
+
+In February 2020, NASA released two requests for information regarding both a crewed and uncrewed unpressurized surface rover. The latter, Lunar Terrain Vehicle (LTV) would be prepositioned by a CLPS vehicle before the Artemis III mission. It would be used to transport crews around the exploration site and serve a similar function to the Apollo Lunar Roving Vehicle. In July 2020, NASA established a program office for the rover at the Johnson Space Center in Houston.
+NASA has specified its need for a Lunar Terrain Vehicle (LTV) that has a cargo capacity of 800 kg, traversal distances of up to 20 km without battery recharging, continuous operations for 8 hours within a 24-hour period, the ability to survive the lunar night, and the ability to traverse grades as steep as ±20 degrees.
+On April 3, 2024, NASA announced that Intuitive Machines, Lunar Outpost and Venturi Astrolab are the three companies developing the LTV in a 12-month feasibility and demo phase. A source selection statement by NASA provided further details on cost and overall feasibility on April 9, 2024. The Intuitive Machines proposal was for $1.692 billion, Lunar Outpost for $1.727 billion and Astrolab for $1.928 billion to develop the vehicle.
+
+
+=== Shelter building construction ===
+
+The Artemis Base Camp (ABC) is the proposed first lunar base to be established at the end of the 2020s. The Base camp is to be in the south pole region near the two adjacent Shackleton and de Gerlache craters, due to this area's wide variety of lunar geography and also due to the abundance of water ice that is believed to exist in the lunar soils of the crater floors. The environs of these craters fall under the guidelines of the Outer Space Treaty.
+
+
+==== Foundational Surface Habitat ====
+
+Most of the information about the Surface Habitat (SH) modules comes from studies and launch manifests which include a reference to its launch. It will be commercially built and commercially launched in the early 2030s along with the Pressurized Vehicle (PV). The SH was formerly referred to as the Artemis Surface Asset. Launch plans as of February 2020 showed that landing it on the surface would be similar to the HLS. The SH would be sent to the Gateway where it would then be attached to a descent stage and subsequently transported to the lunar surface with a commercial launcher and lander. It would use the same lunar transfer stage as used for the HLS. Other designs from 2019 envisioned it being launched from an SLS Block 1B as a single unit and landing directly on the surface. It would then be hooked up to a surface power system launched by a CLPS mission and tested by the Artemis VI crew. The Italian Space Agency signed a contract with Thales Alenia Space in late 2023 for the Multi Purpose Habitation module, which may become the second module for the Artemis Base Camp.
+
+
+=== Resource prospecting and research programs ===
+As of February 2020, a lunar stay during a Phase 1 Artemis mission will be about seven days and will have five extravehicular activities (EVA). A notional concept of operations, i.e., a hypothetical but possible plan, would include the following: On Day 1 of the stay, astronauts touchdown on the Moon but do not conduct an EVA. Instead, they prepare for the EVA scheduled for the next day, in what is referred to as "The Road to EVA".
+On Day 2, the astronauts open the hatch on the Human Landing System and embark on EVA 1, which will be six hours long. It will include collecting a contingency sample, conducting public affairs activities, deploying the experiment package, and acquiring samples. The astronauts will stay close to the landing site on this first EVA. EVA 2 begins on day 3. The astronauts characterize and collect samples from permanently shadowed regions. Unlike the previous EVA, the astronauts will go farther from the landing site, up to 2 kilometres (1.2 mi), and up and down slopes of 20°.
+Day 4 will not include an EVA, but Day 5 will. EVA 3 may include activities such as collecting samples from an ejecta blanket. Day 6 will have the two astronauts deploy a geotechnical instrument alongside an environmental monitoring station for in-situ resource utilization (ISRU). Day 7 will have the final and shortest EVA. This EVA will last one hour, rather than the others' six hours in duration from egress to ingress, and mostly comprises preparations for the lunar ascent, including jettisoning hardware. Once the final EVA is concluded, the astronauts will return to the Human Landing System and the vehicle will launch from the surface and join up with Orion/Gateway.
+
+
+==== Pressurized rover ("Mobile Habitat") ====
+
+The Pressurized Rover (PR) is a large, pressurized module used to enable crewed operation across large distances and live for multiple days. NASA had developed multiple pressurized rovers including what was formerly called the Space Exploration Vehicle (SEV). This rover was built for the Constellation program and was fabricated and then tested. In the 2020 flight manifest it was later referred to as the "Mobile Habitat" suggesting it could fill a similar role to the ILREC Lunar Bus. It would be ready for the crew to use on the surface but could also be autonomously controlled from the Gateway or other locations.
+In regard to the PR, senior-lunar-scientist Clive Neal said "Under Constellation, NASA had a sophisticated rover put together. It's pretty sad if it's never going to get to the Moon". However Neal also said that he understands the different mission objectives between the Constellation Program and those of the Artemis Program, and the need of the Artemis Program to focus more on international collaboration.
+On April 9, 2024, it was announced that JAXA and NASA had signed an agreement stipulating that Japan would join the pressurized rover collaboration venture and would design, develop, and operate a rover for crewed and uncrewed exploration of the Moon. In return, NASA will provide the launch and delivery of the rover to the Moon, as well as providing seats for two Japanese astronaut missions to the lunar surface, with the goal of these astronauts being the first non-Americans to travel to the Moon's surface. The pressurized rover is planned to accommodate two astronauts for up to 30 days outside. NASA plans to use the pressurized rover from Artemis VII and subsequent missions, over an approximate 10 year lifespan.
+
+
+== Spacesuits ==
+
+The Artemis program uses two types of space suit first unveiled in October 2019: the Orion Crew Survival System (OCSS) for launch and entry, and a next-generation extravehicular mobility unit (EMU) for lunar surface operations.
+The OCSS, developed by the David Clark Company, functions as a contingency safety system for the Orion spacecraft, providing pressurized life support for up to 144 hours in the event of cabin depressurization. The suits are primarily colored international orange, a high-visibility shade used to aid recovery operations by improving visibility against ocean and sky backgrounds. Each suit is custom-fitted and incorporates flotation devices for post-splashdown survival.
+Development of NASA's Exploration Extravehicular Mobility Unit (xEMU) encountered delays; a 2021 audit by the NASA Office of Inspector General found it would not be ready before 2025. In response, NASA shifted to a commercial services model and selected Axiom Space and Collins Aerospace in 2022 to develop lunar spacesuits. Collins later withdrew from the contract in 2024.
+Development has since focused on the Axiom Extravehicular Mobility Unit (AxEMU), which entered critical design review and testing in 2024. By February 2026, the suit had passed internal reviews and was undergoing further evaluation by NASA, with assembly of the first flight unit underway following pressurized and underwater mobility testing at the Neutral Buoyancy Laboratory. NASA plans to conduct an in-space demonstration of the AxEMU aboard the International Space Station in 2027, where the suit could be used during a spacewalk. NASA also plans to fly an AxEMU on Artemis III, where astronauts are expected to conduct hardware interface evaluations with at least one commercial lunar lander.
+
+
+== Criticism ==
+The Artemis program has received criticism from several space professionals. Mark Whittington, who is a contributor to The Hill and an author of several space exploration studies, stated in an article that the "lunar orbit project doesn't help us get back to the Moon".
+Aerospace engineer, author, and Mars Society founder Robert Zubrin disliked the Lunar Gateway component of Artemis prior to its cancellation. He presented an alternative approach to a 2024 crewed lander called "Moon Direct", a proposed successor to his Mars Direct. Zubrin envisions phasing out the SLS and Orion, replacing them with the SpaceX launch vehicles and the SpaceX Dragon 2. This would see ferry-lander refueling on the lunar surface via in situ resource utilization with crew transfer from LEO to the lunar surface. The concept resembles NASA's own Space Transportation System proposal from the 1970s.
+At least 15 launches will be required to refuel HLS in orbit per crewed mission. In 2024, SpaceX's Jennifer Jensen stated on a call that Starship HLS will require ten launches. Apollo 11 astronaut Buzz Aldrin disagrees with NASA's lunar outpost plan. He questioned the benefit of NASA to "send a crew to an intermediate point in space, pick up a lander there and go down." Aldrin has expressed support for Zubrin's "Moon Direct".
+
+
+== See also ==
+
+
+== Notes ==
+ 
+
+
+== References ==
+
+
+=== Sources ===
+
+
+== External links ==
+
+Moon to Mars portal at NASA
+Artemis program at NASA
+Monthly report Archived October 4, 2020, at the Wayback Machine by the Exploration Systems Development (ESD)
+View Artemis I in NASA's Eyes Eyes on the Solar System – NASA/JPL
+Artemis Launch Calendar from Artemis Base Camp media

@@ -1,0 +1,1097 @@
+Figure 8.1 Active Geology. This image, taken from the International Space Station in 2006, shows a plume of ash coming from the
+Cleveland Volcano in the Aleutian Islands. Although the plume was only visible for around two hours, such events are a testament to
+the dynamic nature of Earth’s crust. (credit: modification of work by NASA)
+Chapter Outline
+8.1 The Global Perspective
+8.2 Earth’s Crust
+8.3 Earth’s Atmosphere
+8.4 Life, Chemical Evolution, and Climate Change
+8.5 Cosmic Influences on the Evolution of Earth
+Thinking Ahead
+Airless worlds in our solar system seem peppered with craters large and small. Earth, on the other hand, has
+few craters, but a thick atmosphere and much surface activity. Although impacts occurred on Earth at the
+same rate, craters have since been erased by forces in the planet’s crust and atmosphere. What can the
+comparison between the obvious persistent cratering on so many other worlds, and the different appearance
+of Earth, tell us about the history of our planet?
+As our first step in exploring the solar system in more detail, we turn to the most familiar planet, our own
+Earth. The first humans to see Earth as a blue sphere floating in the blackness of space were the astronauts
+who made the first voyage around the Moon in 1968. For many people, the historic images showing our world
+as a small, distant globe represent a pivotal moment in human history, when it became difficult for educated
+human beings to view our world without a global perspective. In this chapter, we examine the composition
+and structure of our planet with its envelope of ocean and atmosphere. We ask how our terrestrial
+environment came to be the way it is today, and how it compares with other planets.
+Earth as a Planet
+8 • Thinking Ahead
+8.1
+The Global Perspective
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the components of Earth’s interior and explain how scientists determined its structure
+Specify the origin, size, and extent of Earth’s magnetic field
+Earth is a medium-size planet with a diameter of approximately 12,760 kilometers (Figure 8.2). As one of the
+inner or terrestrial planets, it is composed primarily of heavy elements such as iron, silicon, and oxygen—very
+different from the composition of the Sun and stars, which are dominated by the light elements hydrogen and
+helium. Earth’s orbit is nearly circular, and Earth is warm enough to support liquid water on its surface. It is
+the only planet in our solar system that is neither too hot nor too cold, but “just right” for the development of
+life as we know it. Some of the basic properties of Earth are summarized in Table 8.1.
+Figure 8.2 Blue Marble. This image of Earth from space, taken by the Apollo 17 astronauts, is known as the “Blue Marble.” This is
+one of the rare images of a full Earth taken during the Apollo program; most images show only part of Earth’s disk in sunlight.
+(credit: modification of work by NASA)
+Some Properties of Earth
+Property
+Measurement
+Semimajor axis
+1.00 AU
+Period
+1.00 year
+Mass
+5.98 × 1024 kg
+Diameter
+12,756 km
+Radius
+6378 km
+Escape velocity
+11.2 km/s
+Table 8.1
+8 • Earth as a Planet
+Property
+Measurement
+Rotational period
+23 h 56 m 4 s
+Surface area
+5.1 × 108 km2
+Density
+5.514 g/cm3
+Atmospheric pressure
+1.00 bar
+Table 8.1
+Earth’s Interior
+The interior of a planet—even our own Earth—is difficult to study, and its composition and structure must be
+determined indirectly. Our only direct experience is with the outermost skin of Earth’s crust, a layer no more
+than a few kilometers deep. It is important to remember that, in many ways, we know less about our own
+planet 5 kilometers beneath our feet than we do about the surfaces of Venus and Mars.
+Earth is composed largely of metal and silicate rock (see the Composition and Structure of Planets section).
+Most of this material is in a solid state, but some of it is hot enough to be molten. The structure of material in
+Earth’s interior has been probed in considerable detail by measuring the transmission of seismic waves
+through Earth. These are waves that spread through the interior of Earth from earthquakes or explosion sites.
+Seismic waves travel through a planet rather like sound waves through a struck bell. Just as the sound
+frequencies vary depending on the material the bell is made of and how it is constructed, so a planet’s
+response depends on its composition and structure. By monitoring the seismic waves in different locations,
+scientists can learn about the layers through which the waves have traveled. Some of these vibrations travel
+along the surface; others pass directly through the interior. Seismic studies have shown that Earth’s interior
+consists of several distinct layers with different compositions, illustrated in Figure 8.3. As waves travel through
+different materials in Earth’s interior, the waves—just like light waves in telescope lenses—bend (or refract) so
+that some seismic stations on Earth receive the waves and others are in “shadows.” Detecting the waves in a
+network of seismographs helps scientists construct a model of Earth’s interior, showing liquid and solid layers.
+This type of seismic imaging is not unlike that used in ultrasound, a type of imaging used to see inside the
+body.
+8.1 • The Global Perspective
+Figure 8.3 Interior Structure of Earth. The crust, mantle, and inner and outer cores (solid and liquid, respectively) as shown as
+revealed by seismic studies.
+The top layer is the crust, the part of Earth we know best (Figure 8.4). Oceanic crust covers 55% of Earth’s
+surface and lies mostly submerged under the oceans. It is typically about 6 kilometers thick and is composed
+of volcanic rocks called basalt. Produced by the cooling of volcanic lava, basalts are made primarily of the
+elements silicon, oxygen, iron, aluminum, and magnesium. The continental crust covers 45% of the surface,
+some of which is also beneath the oceans. The continental crust is 20 to 70 kilometers thick and is composed
+predominantly of a different volcanic class of silicates (rocks made of silicon and oxygen) called granite. These
+crustal rocks, both oceanic and continental, typically have densities of about 3 g/cm3. (For comparison, the
+density of water is 1 g/cm3.) The crust is the easiest layer for geologists to study, but it makes up only about
+0.3% of the total mass of Earth.
+Figure 8.4 Earth’s Crust. This computer-generated image shows the surface of Earth’s crust as determined from satellite images
+and ocean floor radar mapping. Oceans and lakes are shown in blue, with darker areas representing depth. Dry land is shown in
+shades of green and brown, and the Greenland and Antarctic ice sheets are depicted in shades of white. (credit: modification of work
+by C. Amante, B. W. Eakins, National Geophysical Data Center, NOAA)
+The largest part of the solid Earth, called the mantle, stretches from the base of the crust downward to a
+depth of 2900 kilometers. The mantle is more or less solid, but at the temperatures and pressures found there,
+8 • Earth as a Planet
+mantle rock can deform and flow slowly. The density in the mantle increases downward from about 3.5 g/cm3
+to more than 5 g/cm3 as a result of the compression produced by the weight of overlying material. Samples of
+upper mantle material are occasionally ejected from volcanoes, permitting a detailed analysis of its chemistry.
+Beginning at a depth of 2900 kilometers, we encounter the dense metallic core of Earth. With a diameter of
+7000 kilometers, our core is substantially larger than the entire planet Mercury. The outer core is liquid, but the
+innermost part of the core (about 2400 kilometers in diameter) is probably solid. In addition to iron, the core
+probably also contains substantial quantities of nickel and sulfur, all compressed to a very high density.
+The separation of Earth into layers of different densities is an example of differentiation, the process of sorting
+the major components of a planet by density. The fact that Earth is differentiated suggests that it was once
+warm enough for its interior to melt, permitting the heavier metals to sink to the center and form the dense
+core. Evidence for differentiation comes from comparing the planet’s bulk density (5.5 g/cm3) with the surface
+materials (3 g/cm3) to suggest that denser material must be buried in the core.
+Magnetic Field and Magnetosphere
+We can find additional clues about Earth’s interior from its magnetic field. Our planet behaves in some ways as
+if a giant bar magnet were inside it, aligned approximately with the rotational poles of Earth. This magnetic
+field is generated by moving material in Earth’s liquid metallic core. As the liquid metal inside Earth circulates,
+it sets up a circulating electric current. When many charged particles are moving together like that—in the
+laboratory or on the scale of an entire planet—they produce a magnetic field.
+Earth’s magnetic field extends into surrounding space. When a charged particle encounters a magnetic field in
+space, it becomes trapped in the magnetic zone. Above Earth’s atmosphere, our field is able to trap small
+quantities of electrons and other atomic particles. This region, called the magnetosphere, is defined as the
+zone within which Earth’s magnetic field dominates over the weak interplanetary magnetic field that extends
+outward from the Sun (Figure 8.5).
+Figure 8.5 Earth’s Magnetosphere. A cross-sectional view of our magnetosphere (or zone of magnetic influence), as revealed by
+numerous spacecraft missions. Note how the wind of charged particles from the Sun “blows” the magnetic field outward like a wind
+sock.
+Where do the charged particles trapped in our magnetosphere come from? They flow outward from the hot
+surface of the Sun; this is called the solar wind. It not only provides particles for Earth’s magnetic field to trap,
+it also stretches our field in the direction pointing away from the Sun. Typically, Earth’s magnetosphere
+extends about 60,000 kilometers, or 10 Earth radii, in the direction of the Sun. But, in the direction away from
+the Sun, the magnetic field can reach as far as the orbit of the Moon, and sometimes farther.
+8.1 • The Global Perspective
+The magnetosphere was discovered in 1958 by instruments on the first US Earth satellite, Explorer 1, which
+recorded the ions (charged particles) trapped in its inner part. The regions of high-energy ions in the
+magnetosphere are often called the Van Allen belts in recognition of the University of Iowa professor who built
+the scientific instrumentation for Explorer 1. Since 1958, hundreds of spacecraft have explored various regions
+of the magnetosphere. You can read more about its interaction with the Sun in a later chapter.
+8.2
+Earth’s Crust
+Learning Objectives
+By the end of this section, you will be able to:
+Denote the primary types of rock that constitute Earth’s crust
+Explain the theory of plate tectonics
+Describe the difference between rift and subduction zones
+Describe the relationship between fault zones and mountain building
+Explain the various types of volcanic activity occurring on Earth
+Let us now examine our planet’s outer layers in more detail. Earth’s crust is a dynamic place. Volcanic
+eruptions, erosion, and large-scale movements of the continents rework the surface of our planet constantly.
+Geologically, ours is the most active planet. Many of the geological processes described in this section have
+taken place on other planets as well, but usually in their distant pasts. Some of the moons of the giant planets
+also have impressive activity levels. For example, Jupiter’s moon Io has a remarkable number of active
+volcanoes.
+Composition of the Crust
+Earth’s crust is largely made up of oceanic basalt and continental granite. These are both igneous rock, the
+term used for any rock that has cooled from a molten state. All volcanically produced rock is igneous (Figure
+8.6).
+Figure 8.6 Formation of Igneous Rock as Liquid Lava Cools and Freezes. This is a lava flow from a basaltic eruption. Basaltic lava
+flows quickly and can move easily over distances of more than 20 kilometers. (credit: USGS)
+Two other kinds of rock are familiar to us on Earth, although it turns out that neither is common on other
+planets. Sedimentary rocks are made of fragments of igneous rock or the shells of living organisms
+deposited by wind or water and cemented together without melting. On Earth, these rocks include the
+common sandstones, shales, and limestones. Metamorphic rocks are produced when high temperature or
+pressure alters igneous or sedimentary rock physically or chemically (the word metamorphic means “changed
+in form”). Metamorphic rocks are produced on Earth because geological activity carries surface rocks down to
+considerable depths and then brings them back up to the surface. Without such activity, these changed rocks
+would not exist at the surface.
+There is a fourth very important category of rock that can tell us much about the early history of the planetary
+system: primitive rock, which has largely escaped chemical modification by heating. Primitive rock represents
+8 • Earth as a Planet
+the original material out of which the planetary system was made. No primitive material is left on Earth
+because the entire planet was heated early in its history. To find primitive rock, we must look to smaller objects
+such as comets, asteroids, and small planetary moons. We can sometimes see primitive rock in samples that
+fall to Earth from these smaller objects.
+A block of quartzite on Earth is composed of materials that have gone through all four of these states.
+Beginning as primitive material before Earth was born, it was heated in the early Earth to form igneous rock,
+transformed chemically and redeposited (perhaps many times) to form sedimentary rock, and finally changed
+several kilometers below Earth’s surface into the hard, white metamorphic stone we see today.
+Plate Tectonics
+Geology is the study of Earth’s crust and the processes that have shaped its surface throughout history.
+(Although geo- means “related to Earth,” astronomers and planetary scientists also talk about the geology of
+other planets.) Heat escaping from the interior provides energy for the formation of our planet’s mountains,
+valleys, volcanoes, and even the continents and ocean basins themselves. But not until the middle of the
+twentieth century did geologists succeed in understanding just how these landforms are created.
+Plate tectonics is an idea that explains how slow motions within the mantle of Earth move large segments of
+the crust, resulting in a gradual “drifting” of the continents as well as the formation of mountains and other
+large-scale geological features. Plate tectonics is a concept as basic to geology as evolution by natural
+selection is to biology or gravity is to understanding the orbits of planets. Looking at it from a different
+perspective, plate tectonics is a mechanism for Earth to transport heat efficiently from the interior, where it
+has accumulated, out to space. It is a cooling system for the planet. All planets develop a heat transfer process
+as they evolve; mechanisms may differ from that on Earth as a result of chemical makeup and other
+constraints.
+Earth’s crust and upper mantle (to a depth of about 60 kilometers) are divided into about a dozen tectonic
+plates that fit together like the pieces of a jigsaw puzzle (Figure 8.7). In some places, such as the Atlantic
+Ocean, the plates are moving apart; in others, such as off the western coast of South America, they are being
+forced together. The power to move the plates is provided by slow convection of the mantle, a process by
+which heat escapes from the interior through the upward flow of warmer material and the slow sinking of
+cooler material. (Convection, in which energy is transported from a warm region, such as the interior of Earth,
+to a cooler region, such as the upper mantle, is a process we encounter often in astronomy—in stars as well as
+planets. It is also important in boiling water for coffee while studying for astronomy exams.)
+Figure 8.7 Earth’s Continental Plates. This map shows the major plates into which the crust of Earth is divided. Arrows indicate the
+8.2 • Earth’s Crust
+motion of the plates at average speeds of 4 to 5 centimeters per year, similar to the rate at which your hair grows.
+The US Geological Survey provides a map of recent earthquakes (https://openstax.org/l/30geosurmapeart)
+and shows the boundaries of the tectonic plates and where earthquakes occur in relation to these
+boundaries. You can look close-up at the United States or zoom out for a global view.
+As the plates slowly move, they bump into each other and cause dramatic changes in Earth’s crust over time.
+Four basic kinds of interactions between crustal plates are possible at their boundaries: (1) they can pull apart,
+(2) one plate can burrow under another, (3) they can slide alongside each other, or (4) they can jam together.
+Each of these activities is important in determining the geology of Earth.
+Alfred Wegener: Catching the Drift of Plate Tectonics
+When studying maps or globes of Earth, many students notice that the coast of North and South America,
+with only minor adjustments, could fit pretty well against the coast of Europe and Africa. It seems as if these
+great landmasses could once have been together and then were somehow torn apart. The same idea had
+occurred to others (including Francis Bacon as early as 1620), but not until the twentieth century could such
+a proposal be more than speculation. The scientist who made the case for continental drift in 1920 was a
+German meteorologist and astronomer named Alfred Wegener (Figure 8.8).
+Figure 8.8 Alfred Wegener (1880–1930). Wegener proposed a scientific theory for the slow shifting of the continents.
+Born in Berlin in 1880, Wegener was, from an early age, fascinated by Greenland, the world’s largest island,
+which he dreamed of exploring. He studied at the universities in Heidelberg, Innsbruck, and Berlin,
+receiving a doctorate in astronomy by reexamining thirteenth-century astronomical tables. But, his
+interests turned more and more toward Earth, particularly its weather. He carried out experiments using
+LINK TO LEARNING
+VOYAGERS IN ASTRONOMY
+8 • Earth as a Planet
+kites and balloons, becoming so accomplished that he and his brother set a world record in 1906 by flying
+for 52 hours in a balloon.
+Wegener first conceived of continental drift in 1910 while examining a world map in an atlas, but it took 2
+years for him to assemble sufficient data to propose the idea in public. He published the results in book
+form in 1915. Wegener’s evidence went far beyond the congruence in the shapes of the continents. He
+proposed that the similarities between fossils found only in South America and Africa indicated that these
+two continents were joined at one time. He also showed that resemblances among living animal species on
+different continents could best be explained by assuming that the continents were once connected in a
+supercontinent he called Pangaea (from Greek elements meaning “all land”).
+Wegener’s suggestion was met with a hostile reaction from most scientists. Although he had marshaled an
+impressive list of arguments for his hypothesis, he was missing a mechanism. No one could explain how
+solid continents could drift over thousands of miles. A few scientists were sufficiently impressed by
+Wegener’s work to continue searching for additional evidence, but many found the notion of moving
+continents too revolutionary to take seriously. Developing an understanding of the mechanism (plate
+tectonics) would take decades of further progress in geology, oceanography, and geophysics.
+Wegener was disappointed in the reception of his suggestion, but he continued his research and, in 1924,
+he was appointed to a special meteorology and geophysics professorship created especially for him at the
+University of Graz (where he was, however, ostracized by most of the geology faculty). Four years later, on
+his fourth expedition to his beloved Greenland, he celebrated his fiftieth birthday with colleagues and then
+set off on foot toward a different camp on the island. He never made it; he was found a few days later, dead
+of an apparent heart attack.
+Critics of science often point to the resistance to the continental drift hypothesis as an example of the
+flawed way that scientists regard new ideas. (Many people who have advanced crackpot theories have
+claimed that they are being ridiculed unjustly, just as Wegener was.) But we think there is a more positive
+light in which to view the story of Wegener’s suggestion. Scientists in his day maintained a skeptical
+attitude because they needed more evidence and a clear mechanism that would fit what they understood
+about nature. Once the evidence and the mechanism were clear, Wegener’s hypothesis quickly became the
+centerpiece of our view of a dynamic Earth.
+See how the drift of the continents (https://openstax.org/l/30contintdrift) has changed the appearance of
+our planet’s crust.
+Rift and Subduction Zones
+Plates pull apart from each other along rift zones, such as the Mid-Atlantic ridge, driven by upwelling currents
+in the mantle (Figure 8.9). A few rift zones are found on land. The best known is the central African rift—an
+area where the African continent is slowly breaking apart. Most rift zones, however, are in the oceans. Molten
+rock rises from below to fill the space between the receding plates; this rock is basaltic lava, the kind of
+igneous rock that forms most of the ocean basins.
+LINK TO LEARNING
+8.2 • Earth’s Crust
+Figure 8.9 Rift Zone and Subduction Zone. Rift and subduction zones are the regions (mostly beneath the oceans) where new crust
+is formed and old crust is destroyed as part of the cycle of plate tectonics.
+From a knowledge of how the seafloor is spreading, we can calculate the average age of the oceanic crust.
+About 60,000 kilometers of active rifts have been identified, with average separation rates of about 5
+centimeters per year. The new area added to Earth each year is about 2 square kilometers, enough to renew
+the entire oceanic crust in a little more than 100 million years. This is a very short interval in geological
+time—less than 3% of the age of Earth. The present ocean basins thus turn out to be among the youngest
+features on our planet.
+As new crust is added to Earth, the old crust must go somewhere. When two plates come together, one plate is
+often forced beneath another in what is called a subduction zone (Figure 8.9). In general, the thick continental
+masses cannot be subducted, but the thinner oceanic plates can be rather readily thrust down into the upper
+mantle. Often a subduction zone is marked by an ocean trench; a fine example of this type of feature is the
+deep Japan trench along the coast of Asia. The subducted plate is forced down into regions of high pressure
+and temperature, eventually melting several hundred kilometers below the surface. Its material is recycled
+into a downward-flowing convection current, ultimately balancing the flow of material that rises along rift
+zones. The amount of crust destroyed at subduction zones is approximately equal to the amount formed at rift
+zones.
+All along the subduction zone, earthquakes and volcanoes mark the death throes of the plate. Some of the
+most destructive earthquakes in history have taken place along subduction zones, including the 1923
+Yokohama earthquake and fire that killed 100,000 people, the 2004 Sumatra earthquake and tsunami that
+killed more than 200,000 people, and the 2011 Tohoku earthquake that resulted in the meltdown of three
+nuclear power reactors in Japan.
+Fault Zones and Mountain Building
+Along much of their length, the crustal plates slide parallel to each other. These plate boundaries are marked
+by cracks or faults. Along active fault zones, the motion of one plate with respect to the other is several
+centimeters per year, about the same as the spreading rates along rifts.
+8 • Earth as a Planet
+One of the most famous faults is the San Andreas Fault in California, which lies at the boundary between the
+Pacific plate and the North American plate (Figure 8.10). This fault runs from the Gulf of California to the Pacific
+Ocean northwest of San Francisco. The Pacific plate, to the west, is moving northward, carrying Los Angeles,
+San Diego, and parts of the southern California coast with it. In several million years, Los Angeles may be an
+island off the coast of San Francisco.
+Figure 8.10 San Andreas Fault. We see part of a very active region in California where one crustal plate is sliding sideways with
+respect to the other. The fault is marked by the valley running up the right side of the photo. Major slippages along this fault can
+produce extremely destructive earthquakes. (credit: John Wiley)
+Unfortunately for us, the motion along fault zones does not take place smoothly. The creeping motion of the
+plates against each other builds up stresses in the crust that are released in sudden, violent slippages that
+generate earthquakes. Because the average motion of the plates is constant, the longer the interval between
+earthquakes, the greater the stress and the more energy released when the surface finally moves.
+For example, the part of the San Andreas Fault near the central California town of Parkfield has slipped every
+25 years or so during the past century, moving an average of about 1 meter each time. In contrast, the
+average interval between major earthquakes in the Los Angeles region is about 150 years, and the average
+motion is about 7 meters. The last time the San Andreas fault slipped in this area was in 1857; tension has
+been building ever since, and sometime soon it is bound to be released. Sensitive instruments placed within
+the Los Angeles basin show that the basin is distorting and contracting in size as these tremendous pressures
+build up beneath the surface.
+E X A M P L E 8 . 1
+Fault Zones and Plate Motion
+After scientists mapped the boundaries between tectonic plates in Earth’s crust and measured the annual
+rate at which the plates move (which is about 5 cm/year), we could estimate quite a lot about the rate at
+which the geology of Earth is changing. As an example, let’s suppose that the next slippage along the San
+Andreas Fault in southern California takes place in the year 2027 and that it completely relieves the
+accumulated strain in this region. How much slippage is required for this to occur?
+Solution
+The speed of motion of the Pacific plate relative to the North American plate is 5 cm/y. That’s 500 cm (or 5
+m) per century. The last southern California earthquake was in 1857. The time from 1857 to 2027 is
+8.2 • Earth’s Crust
+170 y, or 1.7 centuries, so the slippage to relieve the strain completely would be
+5 m/century × 1.7 centuries = 8.5 m.
+Check Your Learning
+If the next major southern California earthquake occurs in 2047 and only relieves one-half of the
+accumulated strain, how much slippage will occur?
+Answer:
+The difference in time from 1857 to 2047 is 190 y, or 1.9 centuries. Because only half the strain is released,
+this is equivalent to half the annual rate of motion. The total slippage comes to
+0.5 × 5 m/century × 1.9 centuries = 4.75 m.
+When two continental masses are moving on a collision course, they push against each other under great
+pressure. Earth buckles and folds, dragging some rock deep below the surface and raising other folds to
+heights of many kilometers. This is the way many, but not all, of the mountain ranges on Earth were formed.
+The Alps, for example, are a result of the African plate bumping into the Eurasian plate. As we will see,
+however, quite different processes produced the mountains on other planets.
+Once a mountain range is formed by upthrusting of the crust, its rocks are subject to erosion by water and ice.
+The sharp peaks and serrated edges have little to do with the forces that make the mountains initially. Instead,
+they result from the processes that tear down mountains. Ice is an especially effective sculptor of rock (Figure
+8.11). In a world without moving ice or running water (such as the Moon or Mercury), mountains remain
+smooth and dull.
+Figure 8.11 Mountains on Earth. The Torres del Paine are a young region of Earth’s crust where sharp mountain peaks are being
+sculpted by glaciers. We owe the beauty of our young, steep mountains to the erosion by ice and water. (credit: David Morrison)
+Volcanoes
+Volcanoes mark locations where lava rises to the surface. One example is mid ocean ridges, which are long
+undersea mountain ranges formed by lava rising from Earth’s mantle at plate boundaries. A second major
+kind of volcanic activity is associated with subduction zones, and volcanoes sometimes also appear in regions
+where continental plates are colliding. In each case, the volcanic activity gives us a way to sample some of the
+material from deeper within our planet.
+Other volcanic activity occurs above mantle “hot spots”—areas far from plate boundaries where heat is
+nevertheless rising from the interior of Earth. One of the best-known hot spots is under the island of Hawaii,
+where it currently supplies the heat to maintain three active volcanoes, two on land and one under the ocean.
+The Hawaii hot spot has been active for at least 100 million years. As Earth’s plates have moved during that
+8 • Earth as a Planet
+time, the hot spot has generated a 3500-kilometer-long chain of volcanic islands. The tallest Hawaiian
+volcanoes are among the largest individual mountains on Earth, more than 100 kilometers in diameter and
+rising 9 kilometers above the ocean floor. One of the Hawaiian volcanic mountains, the now-dormant
+Maunakea, has become one of the world’s great sites for doing astronomy.
+The US Geological Service provides an interactive map (https://openstax.org/l/30mapringoffire) of the
+famous “ring of fire,” which is the chain of volcanoes surrounding the Pacific Ocean, and shows the
+Hawaiian “hot spot” enclosed within.
+Not all volcanic eruptions produce mountains. If lava flows rapidly from long cracks, it can spread out to form
+lava plains. The largest known terrestrial eruptions, such as those that produced the Snake River basalts in the
+northwestern United States or the Deccan plateau in India, are of this type. Similar lava plains are found on the
+Moon and the other terrestrial planets.
+8.3
+Earth’s Atmosphere
+Learning Objectives
+By the end of this section, you will be able to:
+Differentiate between Earth’s various atmospheric layers
+Describe the chemical composition and possible origins of our atmosphere
+Explain the difference between weather and climate
+We live at the bottom of the ocean of air that envelops our planet. The atmosphere, weighing down upon
+Earth’s surface under the force of gravity, exerts a pressure at sea level that scientists define as 1 bar (a term
+that comes from the same root as barometer, an instrument used to measure atmospheric pressure). A bar of
+pressure means that each square centimeter of Earth’s surface has a weight equivalent to 1.03 kilograms
+pressing down on it. Humans have evolved to live at this pressure; make the pressure a lot lower or higher and
+we do not function well.
+The total mass of Earth’s atmosphere is about 5 × 1018 kilograms. This sounds like a large number, but it is
+only about a millionth of the total mass of Earth. The atmosphere represents a smaller fraction of Earth than
+the fraction of your mass represented by the hair on your head.
+Structure of the Atmosphere
+The structure of the atmosphere is illustrated in Figure 8.12. Most of the atmosphere is concentrated near the
+surface of Earth, within about the bottom 10 kilometers where clouds form and airplanes fly. Within this
+region—called the troposphere—warm air, heated by the surface, rises and is replaced by descending
+currents of cooler air; this is an example of convection. This circulation generates clouds and wind. Within the
+troposphere, temperature decreases rapidly with increasing elevation to values near 50 °C below freezing at its
+upper boundary, where the stratosphere begins. Most of the stratosphere, which extends to about 50
+kilometers above the surface, is cold and free of clouds.
+LINK TO LEARNING
+8.3 • Earth’s Atmosphere
+Figure 8.12 Structure of Earth’s Atmosphere. Height increases up the left side of the diagram, and the names of the different
+atmospheric layers are shown at the right. In the upper ionosphere, ultraviolet radiation from the Sun can strip electrons from their
+atoms, leaving the atmosphere ionized. The curving red line shows the temperature (see the scale on the x-axis).
+Near the top of the stratosphere is a layer of ozone (O3), a form of oxygen with three atoms per molecule
+instead of the usual two. Because ozone is a good absorber of ultraviolet light, it protects the surface from
+some of the Sun’s dangerous ultraviolet radiation, making it possible for life to exist on Earth. The breakup of
+ozone adds heat to the stratosphere, reversing the decreasing temperature trend in the troposphere. Because
+ozone is essential to our survival, we reacted with justifiable concern to evidence that became clear in the
+1980s that atmospheric ozone was being destroyed by human activities. By international agreement, the
+production of industrial chemicals that cause ozone depletion, called chlorofluorocarbons, or CFCs, has been
+phased out. As a result, ozone loss has stopped and the “ozone hole” over the Antarctic is shrinking gradually.
+This is an example of how concerted international action can help maintain the habitability of Earth.
+Visit NASA’s scientific visualization studio for a short video (https://openstax.org/l/302065regcfc) of what
+would have happened to Earth’s ozone layer by 2065 if CFCs had not been regulated.
+At heights above 100 kilometers, the atmosphere is so thin that orbiting satellites can pass through it with very
+little friction. Many of the atoms are ionized by the loss of an electron, and this region is often called the
+ionosphere. At these elevations, individual atoms can occasionally escape completely from the gravitational
+field of Earth. There is a continuous, slow leaking of atmosphere—especially of lightweight atoms, which move
+faster than heavy ones. Earth’s atmosphere cannot, for example, hold on for long to hydrogen or helium,
+which escape into space. Earth is not the only planet to experience atmosphere leakage. Atmospheric leakage
+also created Mars’ thin atmosphere. Venus’ dry atmosphere evolved because its proximity to the Sun
+vaporized and dissociated any water, with the component gases lost to space.
+Atmospheric Composition and Origin
+At Earth’s surface, the atmosphere consists of 78% nitrogen (N2), 21% oxygen (O2), and 1% argon (Ar), with
+traces of water vapor (H2O), carbon dioxide (CO2), and other gases. Variable amounts of dust particles and
+LINK TO LEARNING
+8 • Earth as a Planet
+water droplets are also found suspended in the air.
+A complete census of Earth’s volatile materials, however, should look at more than the gas that is now present.
+Volatile materials are those that evaporate at a relatively low temperature. If Earth were just a little bit warmer,
+some materials that are now liquid or solid might become part of the atmosphere. Suppose, for example, that
+our planet were heated to above the boiling point of water (100 °C, or 373 K); that’s a large change for
+humans, but a small change compared to the range of possible temperatures in the universe. At 100 °C, the
+oceans would boil and the resulting water vapor would become a part of the atmosphere.
+To estimate how much water vapor would be released, note that there is enough water to cover the entire
+Earth to a depth of about 300 meters. Because the pressure exerted by 10 meters of water is equal to about 1
+bar, the average pressure at the ocean floor is about 300 bars. Water weighs the same whether in liquid or
+vapor form, so if the oceans boiled away, the atmospheric pressure of the water would still be 300 bars. Water
+would therefore greatly dominate Earth’s atmosphere, with nitrogen and oxygen reduced to the status of
+trace constituents.
+On a warmer Earth, another source of additional atmosphere would be found in the sedimentary carbonate
+rocks of the crust. These minerals contain abundant carbon dioxide. If all these rocks were heated, they would
+release about 70 bars of CO2, far more than the current CO2 pressure of only 0.0005 bar. Thus, the atmosphere
+of a warm Earth would be dominated by water vapor and carbon dioxide, with a surface pressure nearing 400
+bars.
+Several lines of evidence show that the composition of Earth’s atmosphere has changed over our planet’s
+history. Scientists can infer the amount of atmospheric oxygen, for example, by studying the chemistry of
+minerals that formed at various times. We examine this issue in more detail later in this chapter.
+Today we see that CO2, H2O, sulfur dioxide (SO2), and other gases are released from deeper within Earth
+through the action of volcanoes. (For CO2, the primary source today is the burning of fossil fuels, which
+releases far more CO2 than that from volcanic eruptions.) Much of this apparently new gas, however, is
+recycled material that has been subducted through plate tectonics. But where did our planet’s original
+atmosphere come from?
+Three possibilities exist for the original source of Earth’s atmosphere and oceans: (1) the atmosphere could
+have been formed with the rest of Earth as it accumulated from debris left over from the formation of the Sun;
+(2) it could have been released from the interior through volcanic activity, subsequent to the formation of
+Earth; or (3) it may have been derived from impacts by comets and asteroids from the outer parts of the solar
+system. Current evidence favors a combination of the interior and impact sources.
+Weather and Climate
+All planets with atmospheres have weather, which is the name we give to the circulation of the atmosphere.
+The energy that powers the weather is derived primarily from the sunlight that heats the surface. Both the
+rotation of the planet and slower seasonal changes cause variations in the amount of sunlight striking
+different parts of Earth. The atmosphere and oceans redistribute the heat from warmer to cooler areas.
+Weather on any planet represents the response of its atmosphere to changing inputs of energy from the Sun
+(see Figure 8.13 for a dramatic example).
+8.3 • Earth’s Atmosphere
+Figure 8.13 Storm from Space. This satellite image shows Hurricane Irene in 2011, shortly before the storm hit land in New York
+City. The combination of Earth’s tilted axis of rotation, moderately rapid rotation, and oceans of liquid water can lead to violent
+weather on our planet. (credit: NASA/NOAA GOES Project)
+Climate is a term used to refer to the effects of the atmosphere that last through decades and centuries.
+Changes in climate (as opposed to the random variations in weather from one year to the next) are often
+difficult to detect over short time periods, but as they accumulate, their effect can be devastating. One saying
+is that “Climate is what you expect, and weather is what you get.” Modern farming is especially sensitive to
+temperature and rainfall; for example, calculations indicate that a drop of only 2 °C throughout the growing
+season would cut the wheat production by half in Canada and the United States. At the other extreme, an
+increase of 2 °C in the average temperature of Earth would be enough to melt many glaciers, including much
+of the ice cover of Greenland, raising sea level by as much as 10 meters, flooding many coastal cities and ports,
+and putting small islands completely under water.
+The best documented changes in Earth’s climate are the great ice ages, which have lowered the temperature
+of the Northern Hemisphere periodically over the past half million years or so (Figure 8.14). The last ice age,
+which ended about 14,000 years ago, lasted some 20,000 years. At its height, the ice was almost 2 kilometers
+thick over Boston and stretched as far south as New York City.
+8 • Earth as a Planet
+Figure 8.14 Ice Age. This computer-generated image shows the frozen areas of the Northern Hemisphere during past ice ages from
+the vantage point of looking down on the North Pole. The area in black indicates the most recent glaciation (coverage by glaciers),
+and the area in gray shows the maximum level of glaciation ever reached. (credit: modification of work by Hannes Grobe/AWI)
+These ice ages were primarily the result of changes in the tilt of Earth’s rotational axis, produced by the
+gravitational effects of the other planets. We are less certain about evidence that at least once (and perhaps
+twice) about a billion years ago, the entire ocean froze over, a situation called snowball Earth.
+The development and evolution of life on Earth has also produced changes in the composition and
+temperature of our planet’s atmosphere, as we shall see in the next section.
+8.4
+Life, Chemical Evolution, and Climate Change
+Learning Objectives
+By the end of this section, you will be able to:
+Outline the origins and subsequent diversity of life on Earth
+Explain the ways that life and geological activity have influenced the evolution of the atmosphere
+Describe the causes and effects of the atmospheric greenhouse effect and global warming
+Describe the impact of human activity on our planet’s atmosphere and ecology
+As far as we know, Earth seems to be the only planet in the solar system with life. The origin and development
+of life are an important part of our planet’s story. Life arose early in Earth’s history, and living organisms have
+been interacting with their environment for billions of years. We recognize that life-forms have evolved to
+adapt to the environment on Earth, and we are now beginning to realize that Earth itself has been changed in
+important ways by the presence of living matter. The study of the coevolution of life and our planet is one of
+the subjects of the modern science of astrobiology.
+8.4 • Life, Chemical Evolution, and Climate Change
+The Origin of Life
+The record of the birth of life on Earth has been lost in the restless motions of the crust. According to chemical
+evidence, by the time the oldest surviving rocks were formed about 3.9 billion years ago, life already existed. At
+3.5 billion years ago, life had achieved the sophistication to build large colonies called stromatolites, a form so
+successful that stromatolites still grow on Earth today (Figure 8.15). But, few rocks survive from these ancient
+times, and abundant fossils have been preserved only during the past 600 million years—less than 15% of our
+planet’s history.
+Figure 8.15 Cross-Sections of Fossil Stromatolites. This polished cross-section of a fossilized colony of stromatolites dates to the
+Precambrian Era. The layered, domelike structures are mats of sediment trapped in shallow waters by large numbers of blue-green
+bacteria that can photosynthesize. Such colonies of microorganisms date back more than 3 billion years. (credit: James St. John)
+There is little direct evidence about the actual origin of life. We know that the atmosphere of early Earth, unlike
+today’s, contained abundant carbon dioxide and some methane, but no oxygen gas. In the absence of oxygen,
+many complex chemical reactions are possible that lead to the production of amino acids, proteins, and other
+chemical building blocks of life. Therefore, it seems likely that these chemical building blocks were available
+very early in Earth’s history and they would have combined to make living organisms.
+For tens of millions of years after Earth’s formation, life (perhaps little more than large molecules, like the
+viruses of today) probably existed in warm, nutrient-rich seas, living off accumulated organic chemicals. When
+this easily accessible food became depleted, life began the long evolutionary road that led to the vast numbers
+of different organisms on Earth today. As it did so, life began to influence the chemical composition of the
+atmosphere.
+In addition to the study of life’s history as revealed by chemical and fossil evidence in ancient rocks, scientists
+use tools from the rapidly advancing fields of genetics and genomics—the study of the genetic code that is
+shared by all life on Earth. While each individual has a unique set of genes (which is why genetic
+“fingerprinting” is so useful for the study of crime), we also have many genetic traits in common. Your
+genome, the complete map of the DNA in your body, is identical at the 99.9% level to that of Julius Caesar or
+Marie Curie. At the 99% level, human and chimpanzee genomes are the same. By looking at the gene
+sequences of many organisms, we can determine that all life on Earth is descended from a common ancestor,
+and we can use the genetic variations among species as a measure of how closely different species are related.
+These genetic analysis tools have allowed scientists to construct what is called the “tree of life” (Figure 8.16).
+This diagram illustrates the way organisms are related by examining one sequence of the nucleic acid RNA
+that all species have in common. This figure shows that life on Earth is dominated by microscopic creatures
+that you have probably never heard of. Note that the plant and animal kingdoms are just two little branches at
+the far right. Most of the diversity of life, and most of our evolution, has taken place at the microbial level.
+Indeed, it may surprise you to know that there are more microbes in a bucket of soil than there are stars in the
+Galaxy. You may want to keep this in mind when, later in this book, we turn to the search for life on other
+worlds. The “aliens” that are most likely to be out there are microbes.
+8 • Earth as a Planet
+Figure 8.16 Tree of Life. This chart shows the main subdivisions of life on Earth and how they are related. Note that the animal and
+plant kingdoms are just short branches on the far right, along with the fungi. The most fundamental division of Earth’s living things
+is onto three large domains called bacteria, archaea, and eukarya. Most of the species listed are microscopic. (credit: modification of
+work by Eric Gaba)
+Such genetic studies lead to other interesting conclusions as well. For example, it appears that the earliest
+surviving terrestrial life-forms were all adapted to live at high temperatures. Some biologists think that life
+might actually have begun in locations on our planet that were extremely hot. Yet another intriguing
+possibility is that life began on Mars (which cooled sooner) rather than Earth and was “seeded” onto our
+planet by meteorites traveling from Mars to Earth. Mars rocks are still making their way to Earth, but so far
+none has shown evidence of serving as a “spaceship” to carry microorganisms from Mars to Earth.
+The Evolution of the Atmosphere
+One of the key steps in the evolution of life on Earth was the development of blue-green algae, a very
+successful life-form that takes in carbon dioxide from the environment and releases oxygen as a waste
+product. These successful microorganisms proliferated, giving rise to all the lifeforms we call plants. Since the
+energy for making new plant material from chemical building blocks comes from sunlight, we call the process
+photosynthesis.
+Studies of the chemistry of ancient rocks show that Earth’s atmosphere lacked abundant free oxygen until
+about 2 billion years ago, despite the presence of plants releasing oxygen by photosynthesis. Apparently,
+chemical reactions with Earth’s crust removed the oxygen gas as quickly as it formed. Slowly, however, the
+increasing evolutionary sophistication of life led to a growth in the plant population and thus increased oxygen
+production. At the same time, it appears that increased geological activity led to heavy erosion on our planet’s
+surface. This buried much of the plant carbon before it could recombine with oxygen to form CO2.
+Free oxygen began accumulating in the atmosphere about 2 billion years ago, and the increased amount of
+this gas led to the formation of Earth’s ozone layer (recall that ozone is a triple molecule of oxygen, O3), which
+8.4 • Life, Chemical Evolution, and Climate Change
+protects the surface from deadly solar ultraviolet light. Before that, it was unthinkable for life to venture
+outside the protective oceans, so the landmasses of Earth were barren.
+The presence of oxygen, and hence ozone, thus allowed colonization of the land. It also made possible a
+tremendous proliferation of animals, which lived by taking in and using the organic materials produced by
+plants as their own energy source.
+As animals evolved in an environment increasingly rich in oxygen, they were able to develop techniques for
+breathing oxygen directly from the atmosphere. We humans take it for granted that plenty of free oxygen is
+available in Earth’s atmosphere, and we use it to release energy from the food we take in. Although it may
+seem funny to think of it this way, we are lifeforms that have evolved to breathe in the waste product of plants.
+It is plants and related microbes that are the primary producers, using sunlight to create energy-rich “food”
+for the rest of us.
+On a planetary scale, one of the consequences of life has been a decrease in atmospheric carbon dioxide. In
+the absence of life, Earth would probably have an atmosphere dominated by CO2, like Mars or Venus. But
+living things, in combination with high levels of geological activity, have effectively stripped our atmosphere of
+most of this gas.
+The Greenhouse Effect and Global Warming
+We have a special interest in the carbon dioxide content of the atmosphere because of the key role this gas
+plays in retaining heat from the Sun through a process called the greenhouse effect. To understand how the
+greenhouse effect works, consider the fate of sunlight that strikes the surface of Earth. The light penetrates
+our atmosphere, is absorbed by the ground, and heats the surface layers. At the temperature of Earth’s
+surface, that energy is then reemitted as infrared or heat radiation (Figure 8.17). However, the molecules of
+our atmosphere, which allow visible light through, are good at absorbing infrared energy. As a result, CO2
+(along with methane and water vapor) acts like a blanket, trapping heat in the atmosphere and impeding its
+flow back to space. To maintain an energy balance, the temperature of the surface and lower atmosphere
+must increase until the total energy radiated by Earth to space equals the energy received from the Sun. The
+more CO2 there is in our atmosphere, the higher the temperature at which Earth’s surface reaches a new
+balance.
+Figure 8.17 How the Greenhouse Effect Works. Sunlight that penetrates to Earth’s lower atmosphere and surface is reradiated as
+infrared or heat radiation, which is trapped by greenhouse gases such as water vapor, methane, and CO2 in the atmosphere. The
+result is a higher surface temperature for our planet.
+The greenhouse effect in a planetary atmosphere is similar to the heating of a gardener’s greenhouse or the
+inside of a car left out in the Sun with the windows rolled up. In these examples, the window glass plays the
+role of greenhouse gases, letting sunlight in but reducing the outward flow of heat radiation. As a result, a
+greenhouse or car interior winds up much hotter than would be expected from the heating of sunlight alone.
+8 • Earth as a Planet
+On Earth, the current greenhouse effect elevates the surface temperature by about 23 °C. Without this
+greenhouse effect, the average surface temperature would be well below freezing and Earth would be locked
+in a global ice age.
+That’s the good news; the bad news is that the heating due to the greenhouse effect is increasing. Modern
+industrial society depends on energy extracted from burning fossil fuels. In effect, we are exploiting the
+energy-rich material created by photosynthesis tens of millions of years ago. As these ancient coal and oil
+deposits are oxidized (burned using oxygen), large quantities of carbon dioxide are released into the
+atmosphere. The problem is exacerbated by the widespread destruction of tropical forests, which we depend
+on to extract CO2 from the atmosphere and replenish our supply of oxygen. In the past century of increased
+industrial and agricultural development, the amount of CO2 in the atmosphere increased by about 30% and
+continues to rise at more than 0.5% per year.
+Before the end of the present century, Earth’s CO2 level is predicted to reach twice the value it had before the
+industrial revolution (Figure 8.18). The consequences of such an increase for Earth’s surface and atmosphere
+(and the creatures who live there) are likely to be complex changes in climate, and may be catastrophic for
+many species. Many groups of scientists are now studying the effects of such global warming with elaborate
+computer models, and climate change has emerged as the greatest known threat (barring nuclear war) to
+both industrial civilization and the ecology of our planet.
+Figure 8.18 Increase of Atmospheric Carbon Dioxide over Time. Scientists expect that the amount of CO2 will double its
+preindustrial level before the end of the twenty-first century. Measurements of the isotopic signatures of this added CO2
+demonstrate that it is mostly coming from burning fossil fuels. (credit: modification of work by NOAA)
+This short PBS video (https://openstax.org/l/30pbsgreengas) explains the physics of the greenhouse effect.
+Already climate change is widely apparent. Around the world, temperature records are constantly set and
+broken; all but one of the hottest recorded years have taken place since 2000. Glaciers are retreating, and the
+Arctic Sea ice is now much thinner than when it was first explored with nuclear submarines in the 1950s. Rising
+sea levels (from both melting glaciers and expansion of the water as its temperature rises) pose one of the
+most immediate threats, and many coastal cities have plans to build dikes or seawalls to hold back the
+expected flooding. The rate of temperature increase is without historical precedent, and we are rapidly
+entering “unknown territory” where human activities are leading to the highest temperatures on Earth in
+more than 50 million years.
+LINK TO LEARNING
+8.4 • Life, Chemical Evolution, and Climate Change
+Human Impacts on Our Planet
+Earth is so large and has been here for so long that some people have trouble accepting that humans are
+really changing the planet, its atmosphere, and its climate. They are surprised to learn, for example, that the
+carbon dioxide released from burning fossil fuels is 100 times greater than that emitted by volcanoes. But, the
+data clearly tell the story that our climate is changing rapidly, and that almost all of the change is a result of
+human activity.
+This is not the first time that humans have altered our environment dramatically. Some of the greatest
+changes were caused by our ancestors, before the development of modern industrial society. If aliens had
+visited Earth 50,000 years ago, they would have seen much of the planet supporting large animals of the sort
+that now survive only in Africa. The plains of Australia were occupied by giant marsupials such as diprotodon
+and zygomaturus (the size of our elephants today), and a species of kangaroo that stood 10 feet high. North
+America and North Asia hosted mammoths, saber tooth cats, mastodons, giant sloths, and even camels. The
+Islands of the Pacific teemed with large birds, and vast forests covered what are now the farms of Europe and
+China. Early human hunters killed many large mammals and marsupials, early farmers cut down most of the
+forests, and the Polynesian expansion across the Pacific doomed the population of large birds.
+An even greater mass extinction is underway as a result of rapid climate change. In recognition of our impact
+on the environment, scientists have proposed giving a new name to the current epoch, the anthropocene,
+when human activity started to have a significant global impact. Although not an officially approved name, the
+concept of “anthropocene” is useful for recognizing that we humans now represent the dominant influence on
+our planet’s atmosphere and ecology, for better or for worse.
+8.5
+Cosmic Influences on the Evolution of Earth
+Learning Objectives
+By the end of this section, you will be able to:
+Explain the scarcity of impact craters on Earth compared with other planets and moons
+Describe the evidence for recent impacts on Earth
+Detail how a massive impact changed the conditions for life on Earth, leading to the extinction of the
+dinosaurs
+Describe how impacts have influenced the evolution of life on Earth
+Discuss the search for objects that could potentially collide with our planet
+In discussing Earth’s geology earlier in this chapter, we dealt only with the effects of internal forces, expressed
+through the processes of plate tectonics and volcanism. On the Moon, in contrast, we see primarily craters,
+produced by the impacts of interplanetary debris such as asteroids and comets. Why don’t we see more
+evidence on Earth of the kinds of impact craters that are so prominent on the Moon and other worlds?
+Where Are the Craters on Earth?
+It is not possible that Earth escaped being struck by the interplanetary debris that has pockmarked the Moon.
+From a cosmic perspective, the Moon is almost next door. Our atmosphere does make small pieces of cosmic
+debris burn up (which we see as meteors—commonly called shooting stars). But, the layers of our air provide
+no shield against the large impacts that form craters several kilometers in diameter and are common on the
+Moon.
+In the course of its history, Earth must therefore have been impacted as heavily as the Moon. The difference is
+that, on Earth, these craters are destroyed by our active geology before they can accumulate. As plate
+tectonics constantly renews our crust, evidence of past cratering events is slowly erased. Only in the past few
+decades have geologists succeeded in identifying the eroded remnants of many impact craters (Figure 8.19).
+Even more recent is our realization that, over the history of Earth, these impacts have had an important
+influence on the evolution of life.
+8 • Earth as a Planet
+Figure 8.19 Ouarkziz Impact Crater. Located in Algeria, this 4-km-wide crater (the round feature in the center) is the result of a
+meteor impact during the Cretaceous period. Although the crater has experienced heavy erosion, this image from the International
+Space Station shows the circular pattern resulting from impact. (credit: modification of work by NASA)
+Recent Impacts
+The collision of interplanetary debris with Earth is not a hypothetical idea. Evidence of relatively recent impacts
+can be found on our planet’s surface. One well-studied historic collision took place on June 30, 1908, near the
+Tunguska River in Siberia. In this desolate region, there was a remarkable explosion in the atmosphere about 8
+kilometers above the surface. The shock wave flattened more than a thousand square kilometers of forest
+(Figure 8.20). Herds of reindeer and other animals were killed, and a man at a trading post 80 kilometers from
+the blast was thrown from his chair and knocked unconscious. The blast wave spread around the world, as
+recorded by instruments designed to measure changes in atmospheric pressure.
+Figure 8.20 Aftermath of the Tunguska Explosion. This photograph, taken 19 years after the blast, shows a part of the forest that
+was destroyed by the 5-megaton explosion, resulting when a stony projectile about the size of a small office building (40 meters in
+diameter) collided with our planet. (credit: modification of work by Leonid Kulik)
+Despite this violence, no craters were formed by the Tunguska explosion. Shattered by atmospheric pressure,
+8.5 • Cosmic Influences on the Evolution of Earth
+the stony projectile with a diameter of approximately 60 meters disintegrated above our planet’s surface to
+create a blast equivalent to a 10-megaton nuclear bomb. Had it been smaller or more fragile, the impacting
+body would have dissipated its energy at high altitude and probably attracted no attention. Today, such highaltitude atmospheric explosions are monitored regularly by military surveillance systems.
+If it had been larger or made of stronger material (such as metal), the Tunguska projectile would have
+penetrated all the way to the surface of Earth and exploded to form a crater. Instead, only the heat and shock
+of the atmospheric explosion reached the surface, but the devastation it left behind in Siberia bore witness to
+the power of such impacts. Imagine if the same rocky impactor had exploded over New York City in 1908;
+history books might today record it as one of the most deadly events in human history.
+Tens of thousands of people witnessed directly the explosion of a smaller (20-meter) projectile over the
+Russian city of Chelyabinsk on an early winter morning in 2013. It exploded at a height of 21 kilometers in a
+burst of light brighter than the Sun, and the shockwave of the 0.5-megaton explosion broke tens of thousands
+of windows and sent hundreds of people to the hospital. Rock fragments (meteorites) were easily collected by
+people in the area after the blast because they landed on fresh snow.
+Dr. David Morrison, one of the original authors of this textbook, provides a nontechnical talk
+(https://openstax.org/l/30chelyabinskex) about the Chelyabinsk explosion, and impacts in general.
+The best-known recent crater on Earth was formed about 50,000 years ago in Arizona. The projectile in this
+case was a lump of iron about 40 meters in diameter. Now called Meteor Crater and a major tourist attraction
+on the way to the Grand Canyon, the crater is about a mile across and has all the features associated with
+similar-size lunar impact craters (Figure 8.21). Meteor Crater is one of the few impact features on Earth that
+remains relatively intact; some older craters are so eroded that only a trained eye can distinguish them.
+Nevertheless, more than 150 have been identified. (See the list of suggested online sites at the end of this
+chapter if you want to find out more about these other impact scars.)
+Figure 8.21 Meteor Crater in Arizona. Here we see a 50,000-year-old impact crater made by the collision of a 40-meter lump of iron
+with our planet. Although impact craters are common on less active bodies such as the Moon, this is one of the very few wellpreserved craters on Earth. (modification of work by D. Roddy/USGS)
+LINK TO LEARNING
+8 • Earth as a Planet
+Mass Extinction
+The impact that produced Meteor Crater would have been dramatic indeed to any humans who witnessed it
+(from a safe distance) since the energy release was equivalent to a 10-megaton nuclear bomb. But such
+explosions are devastating only in their local areas; they have no global consequences. Much larger (and rarer)
+impacts, however, can disturb the ecological balance of the entire planet and thus influence the course of
+evolution.
+The best-documented large impact took place 65 million years ago, at the end of what is now called the
+Cretaceous period of geological history. This time in the history of life on Earth was marked by a mass
+extinction, in which more than half of the species on our planet died out. There are a dozen or more mass
+extinctions in the geological record, but this particular event (nicknamed the “great dying”) has always
+intrigued paleontologists because it marks the end of the dinosaur age. For tens of millions of years these
+great creatures had flourished and dominated. Then, they suddenly disappeared (along with many other
+species), and thereafter mammals began the development and diversification that ultimately led to all of us.
+The object that collided with Earth at the end of the Cretaceous period struck a shallow sea in what is now the
+Yucatán peninsula of Mexico. Its mass must have been more than a trillion tons, determined from study of a
+worldwide layer of sediment deposited from the dust cloud that enveloped the planet after its impact. First
+identified in 1979, this sediment layer is rich in the rare metal iridium and other elements that are relatively
+abundant in asteroids and comets, but exceedingly rare in Earth’s crust. Even though it was diluted by the
+material that the explosion excavated from the surface of Earth, this cosmic component can still be identified.
+In addition, this layer of sediment contains many minerals characteristic of the temperatures and pressures of
+a gigantic explosion.
+The impact that led to the extinction of dinosaurs released energy equivalent to 5 billion Hiroshima-size
+nuclear bombs and excavated a crater 200 kilometers across and deep enough to penetrate through Earth’s
+crust. This large crater, named Chicxulub for a small town near its center, has subsequently been buried in
+sediment, but its outlines can still be identified (Figure 8.22). The explosion that created the Chicxulub crater
+lifted about 100 trillion tons of dust into the atmosphere. We can determine this amount by measuring the
+thickness of the sediment layer that formed when this dust settled to the surface.
+Figure 8.22 Site of the Chicxulub Crater. This map shows the location of the impact crater created 65 million years ago on Mexico’s
+8.5 • Cosmic Influences on the Evolution of Earth
+Yucatán peninsula. The crater is now buried under more than 500 meters of sediment. (credit: modification of work by
+“Carport”/Wikimedia)
+Such a quantity of airborne material would have blocked sunlight completely, plunging Earth into a period of
+cold and darkness that lasted several months. Many plants dependent on sunlight would have died, leaving
+plant-eating animals without a food supply. Other worldwide effects included large-scale fires (started by the
+hot, flying debris from the explosion) that destroyed much of the planet’s forests and grasslands, and a long
+period in which rainwater around the globe was acidic. It was these environmental effects, rather than the
+explosion itself, that were responsible for the mass extinction, including the demise of the dinosaurs.
+Impacts and the Evolution of Life
+It is becoming clear that many—perhaps most—mass extinctions in Earth’s long history resulted from a
+variety of other causes, but in the case of the dinosaur killer, the cosmic impact certainly played a critical role
+and may have been the “final straw” in a series of climactic disturbances that resulted in the “great dying.”
+A catastrophe for one group of living things, however, may create opportunities for another group. Following
+each mass extinction, there is a sudden evolutionary burst as new species develop to fill the ecological niches
+opened by the event. Sixty-five million years ago, our ancestors, the mammals, began to thrive when so many
+other species died out. We are the lucky beneficiaries of this process.
+Impacts by comets and asteroids represent the only mechanisms we know of that could cause truly global
+catastrophes and seriously influence the evolution of life all over the planet. As paleontologist Stephen Jay
+Gould of Harvard noted, such a perspective changes fundamentally our view of biological evolution. The
+central issues for the survival of a species must now include more than just its success in competing with other
+species and adapting to slowly changing environments, as envisioned by Darwin’s idea of natural selection.
+Also required is an ability to survive random global catastrophes due to impacts.
+Still earlier in its history, Earth was subject to even larger impacts from the leftover debris of planet formation.
+We know that the Moon was struck repeatedly by objects larger than 100 kilometers in diameter—1000 times
+more massive than the object that wiped out most terrestrial life 65 million years ago. Earth must have
+experienced similar large impacts during its first 700 million years of existence. Some of them were probably
+violent enough to strip the planet of most its atmosphere and to boil away its oceans. Such events would
+sterilize the planet, destroying any life that had begun. Life may have formed and been wiped out several
+times before our own microbial ancestors took hold sometime about 4 billion years ago.
+The fact that the oldest surviving microbes on Earth are thermophiles (adapted to very high temperatures) can
+also be explained by such large impacts. An impact that was just a bit too small to sterilize the planet would
+still have destroyed anything that lived in what we consider “normal” environments, and only the creatures
+adapted to high temperatures would survive. Thus, the oldest surviving terrestrial lifeforms are probably the
+remnants of a sort of evolutionary bottleneck caused by repeated large impacts early in the planet’s history.
+Impacts in Our Future?
+The impacts by asteroids and comets that have had such a major influence on life are not necessarily a thing
+of the past. In the full scope of planetary history, 65 million years ago was just yesterday. Earth actually orbits
+the Sun within a sort of cosmic shooting gallery, and although major impacts are rare, they are by no means
+over. Humanity could suffer the same fate as the dinosaurs, or lose a city to the much more frequent impacts
+like the one over Tunguska, unless we figure out a way to predict the next big impact and to protect our
+planet. The fact that our solar system is home to some very large planets in outer orbits may be beneficial to
+us; the gravitational fields of those planets can be very effective at pulling in cosmic debris and shielding us
+from larger, more frequent impacts.
+Beginning in the 1990s, a few astronomers began to analyze the cosmic impact hazard and to persuade the
+government to support a search for potentially hazardous asteroids. Several small but sophisticated wide-field
+telescopes are now used for this search, which is called the NASA Spaceguard Survey. Already we know that
+8 • Earth as a Planet
+there are currently no asteroids on a collision course with Earth that are as big (10–15 kilometers) as the one
+that killed the dinosaurs. The Spaceguard Survey now concentrates on finding smaller potential impactors. By
+2021, the search had netted more than 98 percent of the hazardous near-Earth asteroids larger than 1
+kilometer. The Spaceguard Survey will soon be augmented by the Vera Rubin Telescope that will scan the full
+sky on a regular basis, and an orbiting search telescope is under development by NASA. Of course, we cannot
+make a similar statement about the asteroids that have not yet been discovered, but these will be found and
+evaluated one by one for their potential hazard. These asteroid surveys are one of the few really life-and-death
+projects carried out by astronomers, with a potential to help to save our planet from future major impacts.
+Scientists are now studying how we could protect ourselves from an impact if a large asteroid were discovered
+on a collision course. The NASA spacecraft called DART (Double Asteroid Redirection Test), launched in late
+2021, will demonstrate one example of such technology by crashing into the small asteroid Diomorphos to
+slightly alter its orbit.
+The Torino Impact Hazard Scale (https://openstax.org/l/30torhazscale) is a method for categorizing the
+impact hazard associated with near-Earth objects such as asteroids and comets. It is a communication tool
+for astronomers and the public to assess the seriousness of collision predictions by combining probability
+statistics and known kinetic damage potentials into a single threat value.
+Purdue University’s “Impact: Earth” calculator (https://openstax.org/l/30purimpearcal) lets you input the
+characteristics of an approaching asteroid to determine the effect of its impact on our planet.
+LINK TO LEARNING
+8.5 • Cosmic Influences on the Evolution of Earth
+Key Terms
+bar
+a force of 100,000 Newtons acting on a surface area of 1 square meter; the average pressure of Earth’s
+atmosphere at sea level is 1.013 bars
+basalt
+igneous rock produced by the cooling of lava; makes up most of Earth’s oceanic crust and is found on
+other planets that have experienced extensive volcanic activity
+convection
+movement caused within a gas or liquid by the tendency of hotter, and therefore less dense
+material, to rise and colder, denser material to sink under the influence of gravity, which consequently
+results in transfer of heat
+core
+the central part of the planet; consists of higher density material
+crust
+the outer layer of a terrestrial planet
+fault
+in geology, a crack or break in the crust of a planet along which slippage or movement can take place,
+accompanied by seismic activity
+granite
+a type of igneous silicate rock that makes up most of Earth’s continental crust
+greenhouse effect
+the blanketing (absorption) of infrared radiation near the surface of a planet—for
+example, by CO2 in its atmosphere
+greenhouse gas
+a gas in an atmosphere that absorbs and emits radiation within the thermal infrared range;
+on Earth, these atmospheric gases primarily include carbon dioxide, methane, and water vapor
+igneous rock
+rock produced by cooling from a molten state
+magnetosphere
+the region around a planet in which its intrinsic magnetic field dominates the interplanetary
+field carried by the solar wind; hence, the region within which charged particles can be trapped by the
+planetary magnetic field
+mantle
+the largest part of Earth’s interior; lies between the crust and the core
+mass extinction
+the sudden disappearance in the fossil record of a large number of species of life, to be
+replaced by fossils of new species in subsequent layers; mass extinctions are indicators of catastrophic
+changes in the environment, such as might be produced by a large impact on Earth
+metamorphic rock
+rock produced by physical and chemical alteration (without melting) under high
+temperature and pressure
+ozone
+(O3) a heavy molecule of oxygen that contains three atoms rather than the more normal two
+photosynthesis
+a complex sequence of chemical reactions through which some living things can use
+sunlight to manufacture products that store energy (such as carbohydrates), releasing oxygen as one byproduct
+plate tectonics
+the motion of segments or plates of the outer layer of a planet over the underlying mantle
+primitive rock
+rock that has not experienced great heat or pressure and therefore remains representative of
+the original condensed materials from the solar nebula
+rift zone
+in geology, a place where the crust is being torn apart by internal forces generally associated with
+the injection of new material from the mantle and with the slow separation of tectonic plates
+sedimentary rock
+rock formed by the deposition and cementing of fine grains of material, such as pieces of
+igneous rock or the shells of living things
+seismic wave
+a vibration that travels through the interior of Earth or any other object; on Earth, these are
+generally caused by earthquakes
+stratosphere
+the layer of Earth’s atmosphere above the troposphere and below the ionosphere
+subduction
+the sideways and downward movement of the edge of a plate of Earth’s crust into the mantle
+beneath another plate
+troposphere
+the lowest level of Earth’s atmosphere, where most weather takes place
+volcano
+a place where material from a planet’s mantle erupts on its surface
+8 • Key Terms
+Summary
+8.1 The Global Perspective
+Earth is the prototype terrestrial planet. Its interior composition and structure are probed using seismic waves.
+Such studies reveal that Earth has a metal core and a silicate mantle. The outer layer, or crust, consists
+primarily of oceanic basalt and continental granite. A global magnetic field, generated in the core, produces
+Earth’s magnetosphere, which can trap charged atomic particles.
+8.2 Earth’s Crust
+Terrestrial rocks can be classified as igneous, sedimentary, or metamorphic. A fourth type, primitive rock, is
+not found on Earth. Our planet’s geology is dominated by plate tectonics, in which crustal plates move slowly
+in response to mantle convection. The surface expression of plate tectonics includes continental drift, recycling
+of the ocean floor, mountain building, rift zones, subduction zones, faults, earthquakes, and volcanic eruptions
+of lava from the interior.
+8.3 Earth’s Atmosphere
+The atmosphere has a surface pressure of 1 bar and is composed primarily of N2 and O2, plus such important
+trace gases as H2O, CO2, and O3. Its structure consists of the troposphere, stratosphere, mesosphere, and
+ionosphere. Changing the composition of the atmosphere also influences the temperature. Atmospheric
+circulation (weather) is driven by seasonally changing deposition of sunlight. Many longer term climate
+variations, such as the ice ages, are related to changes in the planet’s orbit and axial tilt.
+8.4 Life, Chemical Evolution, and Climate Change
+Life originated on Earth at a time when the atmosphere lacked O2 and consisted mostly of CO2. Later,
+photosynthesis gave rise to free oxygen and ozone. Modern genomic analysis lets us see how the wide
+diversity of species on the planet are related to each other. CO2 and methane in the atmosphere heat the
+surface through the greenhouse effect. Increasing amounts of atmospheric CO2 from burning of fossils fuels
+and release of frozen methane are causing the global warming of our planet.
+8.5 Cosmic Influences on the Evolution of Earth
+Earth, like the Moon and other planets, has been influenced by the impacts of cosmic debris, including such
+recent examples as Meteor Crater and the Tunguska explosion. Larger past impacts are implicated in some
+mass extinctions, including the large impact 65 million years ago at the end of the Cretaceous period that
+wiped out the dinosaurs and many other species. Today, astronomers are working to predict the next impact
+in advance, while other scientists are coming to grips with the effect of impacts on the evolution and diversity
+of life on Earth.
+For Further Exploration
+Articles
+Earth
+Collins, W., et al. “The Physical Science behind Climate Change.” Scientific American (August 2007): 64. Why
+scientists are now confident that human activities are changing our planet’s climate.
+Glatzmaier, G., & Olson, P. “Probing the Geodynamo.” Scientific American (April 2005): 50. Experiments and
+modeling that tell us about the source and reversals of Earth’s magnetic field.
+Gurnis, M. “Sculpting the Earth from Inside Out.” Scientific American (March 2001): 40. On motions that lift and
+lower the continents.
+Hartmann, W. “Piecing Together Earth’s Early History.” Astronomy (June 1989): 24.
+8 • Summary
+Jewitt, D., & Young, E. “Oceans from the Skies.” Scientific American (March 2015): 36. How did Earth get its
+water after its initial hot period?
+Impacts
+Boslaugh, M. “In Search of Death-Plunge Asteroids.” Astronomy (July 2015): 28. On existing and proposed
+programs to search for earth-crossing asteroids.
+Brusatte, S. “What Killed the Dinosaurs?” Scientific American (December 2015): 54. The asteroid hit Earth at an
+already vulnerable time.
+Chyba, C. “Death from the Sky: Tunguska.” Astronomy (December 1993): 38. Excellent review article.
+Durda, D. “The Chelyabinsk Super-Meteor.” Sky & Telescope (June 2013): 24. A nice summary with photos and
+eyewitness reporting.
+Gasperini, L., et al. “The Tunguska Mystery.” Scientific American (June 2008): 80. A more detailed exploration of
+the site of the 1908 impact over Siberia.
+Kring, D. “Blast from the Past.” Astronomy (August 2006): 46. Six-page introduction to Arizona’s meteor crater.
+Websites
+Earth
+Astronaut Photography of Earth from Space: https://eol.jsc.nasa.gov/ (https://eol.jsc.nasa.gov/). A site with
+many images and good information.
+Exploration of the Earth’s Magnetosphere: http://phy6.org/Education/Intro.html (http://phy6.org/Education/
+Intro.html). An educational website by Dr. Daniel Stern.
+NASA Goddard: Earth from Space: Fifteen Amazing Things in 15 Years: https://www.nasa.gov/content/
+goddard/earth-from-space-15-amazing-things-in-15-years (https://www.nasa.gov/content/goddard/earthfrom-space-15-amazing-things-in-15-years). Images and videos that reveal things about our planet and its
+atmosphere.
+U.S. Geological Survey: Earthquake Information Center: http://earthquake.usgs.gov/learn/
+(http://earthquake.usgs.gov/learn/)
+Views of the Solar System: http://www.solarviews.com/eng/earth.htm (http://www.solarviews.com/eng/
+earth.htm). Overview of Earth.
+Impacts
+B612 Foundation : https://b612foundation.org/ (https://b612foundation.org/). Set up by several astronauts for
+research and education about the asteroid threat to Earth and to build a telescope in space to search for
+dangerous asteroids.
+Lunar and Planetary Institute: Introduction to Terrestrial Impact Craters: http://www.lpi.usra.edu/
+publications/slidesets/craters/ (http://www.lpi.usra.edu/publications/slidesets/craters/). Includes images.
+Meteor Crater Tourist Site: http://meteorcrater.com/ (http://meteorcrater.com/).
+NASA/Jet Propulsion Lab Near Earth Object Program: http://neo.jpl.nasa.gov/neo/ (http://neo.jpl.nasa.gov/
+neo/).
+What Are Near-Earth-Objects: http://spaceguardcentre.com/what-are-neos/ (http://spaceguardcentre.com/
+what-are-neos/). From the British Spaceguard Centre.
+8 • For Further Exploration
+Videos
+Earth
+All Alone in the Night: http://apod.nasa.gov/apod/ap120305.html (http://apod.nasa.gov/apod/
+ap120305.html). Flying over Earth at night (2:30).
+Earth: The Operator’s Manual: http://earththeoperatorsmanual.com/feature-video/earth-the-operatorsmanual (http://earththeoperatorsmanual.com/feature-video/earth-the-operators-manual). A National
+Science Foundation–sponsored miniseries on climate change and energy, with geologist Richard Alley
+(53:43).
+PBS NOVA Videos about Earth: http://www.pbs.org/wgbh/nova/earth/ (http://www.pbs.org/wgbh/nova/
+earth/). Programs and information about planet Earth. Click full episodes on the menu at left to be taken to
+a nice array of videos.
+U. S. National Weather Service: http://earth.nullschool.net (http://earth.nullschool.net). Real Time Globe of
+Earth showing wind patterns which can be zoomed and moved to your preferred view.
+Impacts
+Chelyabinsk Meteor: Can We Survive a Bigger Impact?: https://www.youtube.com/watch?v=Y-e6xyUZLLs
+(https://www.youtube.com/watch?v=Y-e6xyUZLLs). Talk by Dr. David Morrison (1:34:48).
+Large Asteroid Impact Simulation: https://www.youtube.com/watch?v=bU1QPtOZQZU
+(https://www.youtube.com/watch?v=bU1QPtOZQZU). Large asteroid impact simulation from the Discovery
+Channel (4:45).
+Meteor Hits Russia February 15, 2013: https://www.youtube.com/watch?v=dpmXyJrs7iU
+(https://www.youtube.com/watch?v=dpmXyJrs7iU). Archive of eyewitness footage (10:11).
+Sentinel Mission: Finding an Asteroid Headed for Earth: https://www.youtube.com/watch?v=efz8c3ijD_A
+(https://www.youtube.com/watch?v=efz8c3ijD_A). Public lecture by astronaut Ed Lu (1:08:57).
+Collaborative Group Activities
+A.
+If we can predict that lots of ground movement takes place along subduction zones and faults, then why
+do so many people live there? Should we try to do anything to discourage people from living in these
+areas? What inducement would your group offer people to move? Who would pay for the relocation?
+(Note that two of the original authors of this book live quite close to the San Andreas and Hayward faults.
+If they wrote this chapter and haven’t moved, what are the chances others living in these kinds of areas
+will move?)
+B.
+After your group reads the feature box on Alfred Wegener: Catching the Drift of Plate Tectonics, discuss
+some reasons his idea did not catch on right away among scientists. From your studies in this course and
+in other science courses (in college and before), can you cite other scientific ideas that we now accept but
+that had controversial beginnings? Can you think of any scientific theories that are still controversial
+today? If your group comes up with some, discuss ways scientists could decide whether each theory on
+your list is right.
+C.
+Suppose we knew that a large chunk of rock or ice (about the same size as the one that hit 65 million years
+ago) will impact Earth in about 5 years. What could or should we do about it? (The film Deep Impact dealt
+with this theme.) Does your group think that the world as a whole should spend more money to find and
+predict the orbits of cosmic debris near Earth?
+D.
+Carl Sagan pointed out that any defensive weapon that we might come up with to deflect an asteroid away
+from Earth could be used as an offensive weapon by an unstable dictator in the future to cause an
+8 • Collaborative Group Activities
+asteroid not heading our way to come toward Earth. The history of human behavior, he noted, has shown
+that most weapons that are built (even with the best of motives) seem to wind up being used. Bearing this
+in mind, does your group think we should be building weapons to protect Earth from asteroid or comet
+impact? Can we afford not to build them? How can we safeguard against these collisions?
+E.
+Is there evidence of climate change in your area over the past century? How would you distinguish a true
+climate change from the random variations in weather that take place from one year to the next?
+Exercises
+Review Questions
+1. What is the thickest interior layer of Earth? The thinnest?
+2. What are Earth’s core and mantle made of? Explain how we know.
+3. Describe the differences among primitive, igneous, sedimentary, and metamorphic rock, and relate these
+differences to their origins.
+4. Explain briefly how the following phenomena happen on Earth, relating your answers to the theory of plate
+tectonics
+A.
+earthquakes
+B.
+continental drift
+C.
+mountain building
+D.
+volcanic eruptions
+E.
+creation of the Hawaiian island chain
+5. What is the source of Earth’s magnetic field?
+6. Why is the shape of the magnetosphere not spherical like the shape of Earth?
+7. Although he did not present a mechanism, what were the key points of Alfred Wegener’s proposal for the
+concept of continental drift?
+8. List the possible interactions between Earth’s crustal plates that can occur at their boundaries.
+9. List, in order of decreasing altitude, the principle layers of Earth’s atmosphere.
+10. In which atmospheric layer are almost all water-based clouds formed?
+11. What is, by far, the most abundant component of Earth’s atmosphere?
+12. In which domain of living things do you find humankind?
+13. Describe three ways in which the presence of life has affected the composition of Earth’s atmosphere.
+14. Briefly describe the greenhouse effect.
+15. How do impacts by comets and asteroids influence Earth’s geology, its atmosphere, and the evolution of
+life?
+16. Why are there so many impact craters on our neighbor world, the Moon, and so few on Earth?
+17. Detail some of the anthropogenic changes to Earth’s climate and their potential impact on life.
+Thought Questions
+18. If you wanted to live where the chances of a destructive earthquake were small, would you pick a location
+near a fault zone, near a mid ocean ridge, near a subduction zone, or on a volcanic island such as Hawaii?
+What are the relative risks of earthquakes at each of these locations?
+8 • Exercises
+19. Which type of object would likely cause more damage if it struck near an urban area: a small metallic
+object or a large stony/icy one?
+20. If all life were destroyed on Earth by a large impact, would new life eventually form to take its place?
+Explain how conditions would have to change for life to start again on our planet.
+21. Why is a decrease in Earth’s ozone harmful to life?
+22. Why are we concerned about the increases in CO2 and other gases that cause the greenhouse effect in
+Earth’s atmosphere? What steps can we take in the future to reduce the levels of CO2 in our atmosphere?
+What factors stand in the way of taking the steps you suggest? (You may include technological, economic,
+and political factors in your answer.)
+23. Do you think scientists should make plans to defend Earth from future asteroid impacts? Is it right to
+intervene in the same evolutionary process that made the development of mammals (including us)
+possible after the big impact 65 million years ago?
+Figuring for Yourself
+24. Europe and North America are moving apart by about 5 m per century. As the continents separate, new
+ocean floor is created along the mid-Atlantic Rift. If the rift is 5000 km long, what is the total area of new
+ocean floor created in the Atlantic each century? (Remember that 1 km = 1000 m.)
+25. Over the entire Earth, there are 60,000 km of active rift zones, with average separation rates of 5 m/
+century. How much area of new ocean crust is created each year over the entire planet? (This area is
+approximately equal to the amount of ocean crust that is subducted since the total area of the oceans
+remains about the same.)
+26. With the information from Exercise 8.25, you can calculate the average age of the ocean floor. First, find
+the total area of the ocean floor (equal to about 60% of the surface area of Earth). Then compare this with
+the area created (or destroyed) each year. The average lifetime is the ratio of these numbers: the total
+area of ocean crust compared to the amount created (or destroyed) each year.
+27. What is the volume of new oceanic basalt added to Earth’s crust each year? Assume that the thickness of
+the new crust is 5 km, that there are 60,000 km of rifts, and that the average speed of plate motion is
+4 cm/y. What fraction of Earth’s entire volume does this annual addition of new material represent?
+28. Suppose a major impact that produces a mass extinction takes place on Earth once every 5 million years.
+Suppose further that if such an event occurred today, you and most other humans would be killed (this
+would be true even if the human species as a whole survived). Such impact events are random, and one
+could take place at any time. Calculate the probability that such an impact will occur within the next 50
+years (within your lifetime).
+29. How do the risks of dying from the impact of an asteroid or comet compare with other risks we are
+concerned about, such as dying in a car accident or from heart disease or some other natural cause?
+(Hint: To find the annual risk, go to the library or internet and look up the annual number of deaths from a
+particular cause in a particular country, and then divide by the population of that country.)
+30. What fraction of Earth’s volume is taken up by the core?
+31. Approximately what percentage of Earth’s radius is represented by the crust?
+32. What is the drift rate of the Pacific plate over the Hawaiian hot spot?
+33. What is the percent increase of atmospheric CO2 in the past 20 years?
+34. Estimate the mass of the object that formed Meteor Crater in Arizona.
+8 • Exercises
+8 • Exercises

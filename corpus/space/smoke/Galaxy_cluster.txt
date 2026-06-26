@@ -1,0 +1,67 @@
+A galaxy cluster, or a cluster of galaxies, is a structure that consists of anywhere from hundreds to thousands of galaxies that are bound together by gravity, with typical masses ranging from 1014 to 1015 solar masses (M☉). Clusters consist of galaxies, heated gas, and dark matter. They are the biggest known gravitationally bound structures in the universe. They were believed to be the largest known structures in the universe until the 1980s, when superclusters were discovered. Small aggregates of galaxies are referred to as galaxy groups rather than clusters of galaxies. Together, galaxy groups and clusters form superclusters.
+
+
+== Basic properties ==
+
+Galaxy clusters typically have the following properties:
+
+They contain 100 to 1,000 galaxies, hot X-ray emitting gas and large amounts of dark matter. Details are described in the "Composition" section.
+They have total masses of 1014 to 1015 solar masses.
+They typically have diameters from 1 to 5 Mpc (see 1023 m for distance comparisons).
+The spread of velocities for the individual galaxies is about 800–1000 km/s.
+
+
+== Composition ==
+Galaxy clusters have three main components. Galaxies themselves only make up a small fraction of clusters, although they are the only component we can detect in the visible spectrum. The heated gas of the intracluster medium (ICM) has a peak temperature between 30 and 100 million degrees Celsius. Dark matter makes up the majority of the mass of galaxy clusters, but cannot be detected optically. 
+
+
+== Cluster formation and evolution ==
+As galaxy clusters form, massive amounts of energy are released due to shock waves, the heating of gas, and galaxy interactions. Gas collides with existing material which generates shock waves, heating it to tens of millions of degrees and producing X-ray emissions. Galaxy evolution within the cluster is governed by interactions between galaxies, such as galaxy mergers, and gas stripping. 
+
+
+== Classification ==
+There are many classification systems for galaxy clusters, based on characteristics such as shape symmetry, X-ray luminosity, and dominant galaxy type. The Bautz-Morgan classification sorts clusters into types I, II, and III based on the relative brightness of their galaxies–type I with greatest contrast and type III with the least.
+
+
+== As measuring instruments ==
+
+
+=== Gravitational redshift ===
+Galaxy clusters have been used by Radek Wojtak from the Niels Bohr Institute at the University of Copenhagen to test predictions of general relativity: energy loss from light escaping a gravitational field. Photons emitted from the center of a galaxy cluster should lose more energy than photons coming from the edge of the cluster because gravity is stronger in the center. Light emitted from the center of a cluster has a longer wavelength than light coming from the edge. This effect is known as gravitational redshift. Using the data collected from 8000 galaxy clusters, Wojtak was able to study the properties of gravitational redshift for the distribution of galaxies in clusters. He found that the light from the clusters was redshifted in proportion to the distance from the center of the cluster as predicted by general relativity. The result also strongly supports the Lambda-Cold Dark Matter model of the Universe, according to which most of the cosmos is made up of Dark Matter that does not interact with matter.
+
+
+=== Gravitational lensing ===
+Galaxy clusters are also used for their strong gravitational potential as gravitational lenses to boost the reach of telescopes. The gravitational lensing provided by these clusters allows for the observation of distant galaxies during their early stages that would otherwise be unable to be detected. The gravitational distortion of space-time occurs near massive galaxy clusters and bends the path of photons to create a cosmic magnifying glass. This can be done with photons of any wavelength from the optical to the X-ray band. The latter is more difficult, because galaxy clusters emit a lot of X-rays. However, X-ray emission may still be detected when combining X-ray data to optical data. One particular case is the use of the Phoenix galaxy cluster to observe a dwarf galaxy in its early high energy stages of star formation.
+
+
+== Notable galaxy clusters ==
+
+Notable galaxy clusters in the relatively nearby universe include the Virgo Cluster, Fornax Cluster, Hercules Cluster, and the Coma Cluster. A very large aggregation of galaxies known as the Great Attractor, dominated by the Norma Cluster, is massive enough to affect the local expansion of the Universe. Notable galaxy clusters in the distant, high-redshift universe include SPT-CL J0546-5345 and SPT-CL J2106-5844, the most massive galaxy clusters found in the early Universe. In the last few decades, they are also found to be relevant sites of particle acceleration, a feature that has been discovered by observing non-thermal diffuse radio emissions, such as radio halos and radio relics. Using the Chandra X-ray Observatory, structures such as cold fronts and shock waves have also been found in many galaxy clusters.
+
+
+== In the early Universe ==
+Combined observational data from the James Webb Space Telescope and the Chandra X-ray Observatory for a precursor galaxy cluster or  protocluster, JADES-ID1, suggest that the universe expanded and was forming galaxy clusters very early on in the evolution of the universe.
+
+
+== Gallery ==
+
+
+=== Images ===
+
+Additional images from NASA gallery:
+https://openverse.org/image/ecc037aa-784a-47e6-bc35-b7564b6f5dfc?q=galaxy+clusters&p=10
+https://openverse.org/image/9b87e249-569b-43c4-a3b8-e5246e05373d?q=galaxy+clusters&p=3
+https://openverse.org/image/b093531f-9254-4e49-9e74-a26b5a452acd?q=galaxy+clusters&p=17
+
+
+=== Videos ===
+
+
+== See also ==
+
+Abell catalogue
+Intracluster medium
+List of Abell clusters
+
+
+== References ==

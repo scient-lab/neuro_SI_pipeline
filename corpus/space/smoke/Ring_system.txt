@@ -1,0 +1,107 @@
+A ring system is a disc or torus orbiting an astronomical object that is composed of numerous solid bodies such as dust particles, meteoroids, minor planets, moonlets, or stellar objects.
+Ring systems are best known as planetary rings, common components of satellite systems around giant planets such as the rings of Saturn, or circumplanetary disks. But they can also be galactic rings and circumstellar discs, belts of minor planets, such as the asteroid belt or Kuiper belt, or rings of interplanetary dust, such as around the Sun at distances of Mercury, Venus, and Earth, in mean motion resonance with these planets. Evidence suggests that ring systems may also be found around other types of astronomical objects, including moons and brown dwarfs.
+In the Solar System, all four giant planets (Jupiter, Saturn, Uranus, and Neptune) have ring systems, but Saturn's ring system is the biggest and the most visible one out of the four. Ring systems around minor planets have also been discovered via occultations. Some studies even theorize that the Earth may have had a ring system during the mid-late Ordovician period.
+
+
+== Formation ==
+There are three ways that thicker planetary rings have been proposed to have formed: from material originating from the protoplanetary disk that was within the Roche limit of the planet and thus could not coalesce to form moons, from the debris of a moon that was disrupted by a large impact, or from the debris of a moon that was disrupted by tidal stresses when it passed within the planet's Roche limit. Most rings were thought to be unstable and to dissipate over the course of tens or hundreds of millions of years, but it now appears that Saturn's rings might be quite old, dating to the early days of the Solar System.
+Fainter planetary rings can form as a result of meteoroid impacts with moons orbiting around the planet or, in the case of Saturn's E-ring, the ejecta of cryovolcanic material.
+Ring systems may form around centaurs when they are tidally disrupted in a close encounter (within 0.4 to 0.8 times the Roche limit) with a giant planet. For a differentiated body approaching a giant planet at an initial relative velocity of 3−6 km/s with an initial rotational period of 8 hours, a ring mass of 0.1%−10% of the centaur's mass is predicted. Ring formation from an undifferentiated body is less likely. The rings would be composed mostly or entirely of material from the parent body's icy mantle. After forming, the ring would spread laterally, leading to satellite formation from whatever portion of it spreads beyond the centaur's Roche Limit. Satellites could also form directly from the disrupted icy mantle. This formation mechanism predicts that roughly 10% of centaurs will have experienced potentially ring-forming encounters with giant planets.
+
+
+== Ring systems of planets ==
+
+The composition of planetary ring particles varies, ranging from silicates to icy dust. Larger rocks and boulders may also be present, as seen in 2007 when tidal effects from eight moonlets only a few hundred meters across were detected within Saturn's rings. The maximum size of a ring particle is determined by the specific strength of the material it is made of, its density, and the tidal force at its altitude. The tidal force is proportional to the average density inside the radius of the ring, or to the mass of the planet divided by the radius of the ring cubed. It is also inversely proportional to the square of the orbital period of the ring.
+Some planetary rings are influenced by shepherd moons, small moons that orbit near the inner or outer edges of a ringlet or within gaps in the rings. The gravity of shepherd moons serves to maintain a sharply defined edge to the ring; material that drifts closer to the shepherd moon's orbit is either deflected back into the body of the ring, ejected from the system, or accreted onto the moon itself.
+It is also predicted that Phobos, a moon of Mars, will break up and form into a planetary ring in about 50 million years. Its low orbit, with an orbital period that is shorter than a Martian day, is decaying due to tidal deceleration.
+
+
+=== Jupiter ===
+
+Jupiter's ring system was the third to be discovered, when it was first observed by the Voyager 1 probe in 1979, and was observed more thoroughly by the Galileo orbiter in the 1990s. Its four main parts are a faint thick torus known as the "halo"; a thin, relatively bright main ring; and two wide, faint "gossamer rings". The system consists mostly of dust.
+
+
+=== Saturn ===
+
+Saturn's rings are the most extensive ring system of any planet in the Solar System, and thus have been known to exist for quite some time. Galileo Galilei first observed them in 1610, but they were not accurately described as a disk around Saturn until Christiaan Huygens did so in 1655. The rings are not a series of tiny ringlets as many think, but are more of a disk with varying density. They consist mostly of water ice and trace amounts of rock, and the particles range in size from micrometers to meters.
+
+
+=== Uranus ===
+
+Uranus's ring system lies between the level of complexity of Saturn's vast system and the simpler systems around Jupiter and Neptune. They were discovered in 1977 by James L. Elliot, Edward W. Dunham, and Jessica Mink. In the time between then and 2005, observations by Voyager 2 and the Hubble Space Telescope led to a total of 13 distinct rings being identified, most of which are opaque and only a few kilometers wide. They are dark and likely consist of water ice and some radiation-processed organics. The relative lack of dust is due to aerodynamic drag from the extended exosphere-corona of Uranus.
+
+
+=== Neptune ===
+
+The system around Neptune consists of five principal rings that, at their densest, are comparable to the low-density regions of Saturn's rings. However, they are faint and dusty, much more similar in structure to those of Jupiter. The very dark material that makes up the rings is likely organics processed by radiation, like in the rings of Uranus. 20 to 70 percent of the rings are dust, a relatively high proportion. Hints of the rings were seen for decades prior to their conclusive discovery by Voyager 2 in 1989.
+
+
+=== Prehistoric ring systems ===
+
+
+==== Earth ====
+
+A 2024 study suggests that Earth may have had a ring system for a period of 40 million years, starting from the middle of the Ordovician period (around 466 million years ago). This ring system may have originated from a large asteroid that passed by Earth at this time and had a significant amount of debris stripped by Earth's gravitational pull, forming a ring system. Evidence for this ring comes from impact craters from the Ordovician meteor event appearing to cluster in a distinctive band around the Earth's equator at that time. The presence of this ring may have led to significant shielding of Earth from sun's rays and a severe cooling event, thus causing the Hirnantian glaciation, the coldest known period of the last 450 million years.
+
+
+=== Hypothetical future ring systems ===
+
+
+==== Mars ====
+Mars may develop dusty rings in about 50 million years when its moon Phobos, slowly spiraling inward, crashes in to the planet. The resulting temporary ring system might eventually clump back into a new moon, a cycle that could have repeated several times in Martian history, as suggested by studies of the Borealis Basin and Deimos's orbit.
+
+
+== Rings systems of minor planets and moons ==
+Reports in March 2008 suggested that Saturn's moon Rhea may have its own tenuous ring system, which would make it the only moon known to have a ring system. A later study published in 2010 revealed that imaging of Rhea by the Cassini spacecraft was inconsistent with the predicted properties of the rings, suggesting that some other mechanism is responsible for the magnetic effects that had led to the ring hypothesis.
+Prior to the arrival of New Horizons, some astronomers hypothesized that Pluto and Charon might have a circumbinary ring system created from dust ejected off of Pluto's small outer moons in impacts. A dust ring would have posed a considerable risk to the New Horizons spacecraft. However, this possibility was ruled out when New Horizons failed to detect any dust rings around Pluto.
+
+
+=== Chariklo ===
+
+10199 Chariklo, a centaur, was the first minor planet discovered to have rings. It has two rings, perhaps due to a collision that caused a chain of debris to orbit it. The rings were discovered when astronomers observed Chariklo passing in front of the star UCAC4 248-108672 on June 3, 2013 from seven locations in South America. While watching, they saw two dips in the star's apparent brightness just before and after the occultation. Because this event was observed at multiple locations, the conclusion that the dip in brightness was in fact due to rings is unanimously the leading hypothesis. The observations revealed what is likely a 19-kilometer-wide (12-mile) ring system that is about 1,000 times closer than the Moon is to Earth. In addition, astronomers suspect there could be a moon orbiting amidst the ring debris. If these rings are the leftovers of a collision as astronomers suspect, this would give fodder to the idea that moons (such as the Moon) form through collisions of smaller bits of material. Chariklo's rings have not been officially named, but the discoverers have nicknamed them Oiapoque and Chuí, after two rivers near the northern and southern ends of Brazil.
+
+
+=== Chiron ===
+
+A second centaur, 2060 Chiron, has a constantly evolving disk of rings. Based on stellar-occultation data that were initially interpreted as resulting from jets associated with Chiron's comet-like activity, the rings are proposed to be 324±10 km in radius, though their evolution does change the radius somewhat. Their changing appearance at different viewing angles can explain the long-term variation in Chiron's brightness over time. Chiron's rings are suspected to be maintained by orbiting material ejected during seasonal outbursts, as a third partial ring detected in 2018 had become a full ring by 2022, with an outburst in between in 2021.
+
+
+=== Haumea ===
+
+A ring around Haumea, a dwarf planet and resonant Kuiper belt member, was revealed by a stellar occultation observed on 21 January 2017. This makes it the first trans-Neptunian object found to have a ring system. The ring has a radius of about 2,287 km, a width of ≈70 km and an opacity of 0.5. The ring plane coincides with Haumea's equator and the orbit of its larger, outer moon Hi’iaka (which has a semimajor axis of ≈25,657 km). The ring is close to the 3:1 resonance with Haumea's rotation, which is located at a radius of 2,285±8 km. It is well within Haumea's Roche limit, which would lie at a radius of about 4,400 km if Haumea were spherical (being nonspherical pushes the limit out farther).
+
+
+=== Quaoar ===
+
+In 2023, astronomers announced the discovery of a widely separated ring around the dwarf planet and Kuiper belt object Quaoar. Further analysis of the occultation data uncovered a second inner, fainter ring.
+Both rings display unusual properties. The outer ring orbits at a distance of 4,057±6 km, approximately 7.5 times the radius of Quaoar and more than double the distance of its Roche limit. The inner ring orbits at a distance of 2,520±20 km, approximately 4.6 times the radius of Quaoar and also beyond its Roche limit. The outer ring appears to be inhomogeneous, containing a thin, dense section as well as a broader, more diffuse section.
+
+
+== Rings around exoplanets ==
+
+Because all giant planets of the Solar System have rings, the existence of exoplanets with rings is plausible. Although particles of ice, the material that is predominant in the rings of Saturn, can only exist around planets beyond the frost line, within this line rings consisting of rocky material can be stable in the long term. Such ring systems can be detected for planets observed by the transit method by additional reduction of the light of the central star if their opacity is sufficient. As of 2024, two candidate extrasolar ring systems have been found by this method, around HIP 41378 f and K2-33b.
+Fomalhaut b was found to be large and unclearly defined when detected in 2008. This was hypothesized to either be due to a cloud of dust attracted from the dust disc of the star, or a possible ring system, though in 2020 Fomalhaut b itself was determined to very likely be an expanding debris cloud from a collision of asteroids rather than a planet. Similarly, Proxima Centauri c has been observed to be far brighter than expected for its low mass of 7 Earth masses, which may be attributed to a ring system of about 5 RJ.
+A 56-day-long sequence of dimming events in the star V1400 Centauri observed in 2007 was interpreted as a substellar object with a circumstellar disk or massive rings transiting the star. This substellar object, dubbed "J1407b", is most likely a free-floating brown dwarf or rogue planet several times the mass of Jupiter. The circumstellar disk or ring system of J1407b is about 0.6 astronomical units (90,000,000 km; 56,000,000 mi) in radius. J1407b's transit of V1400 Centauri revealed gaps and density variations within its disk or ring system, which has been interpreted as hints of exomoons or exoplanets forming around J1407b.
+The rings of the Solar System's gas giants are aligned with their planet's equator. However, for exoplanets that orbit close to their star, tidal forces from the star would lead to the outermost rings of a planet being aligned with the planet's orbital plane around the star. A planet's innermost rings would still be aligned with the planet's equator so that if the planet has a tilted rotational axis, then the different alignments between the inner and outer rings would create a warped ring system.
+
+
+== Visual comparison ==
+
+
+== See also ==
+Shepherd moon
+Circumplanetary disk
+Circumstellar disc
+Accretion disk
+Lists of astronomical objects
+
+
+== References ==
+
+
+== External links ==
+
+USGS/IAU Ring and Ring Gap Nomenclature
+Everything a Curious Mind Should Know About Planetary Ring Systems with Dr Mark Showalter, Bridging the Gaps: A Portal for Curious Minds
+Physical Chemistry of Evolution of Planetary Systems
+Gladyshev G. P. Thermodynamics and Macrokinetics of Natural Hierarchical Processes, p. 217. Nauka, Moscow, 1988 (in Russian).

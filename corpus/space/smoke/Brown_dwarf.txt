@@ -1,0 +1,456 @@
+Brown dwarfs are substellar objects that have more mass than the biggest gas giant planets, but less than the least massive main-sequence stars.  Their mass is approximately 13 to 80 times that of Jupiter (MJ)—not big enough to sustain nuclear fusion of hydrogen into helium in their cores, but massive enough to emit some light and heat from deuterium fusion, 2H, an isotope of hydrogen with a neutron as well as a proton, that can undergo fusion at lower temperatures.  The most massive ones (> 65 MJ) can fuse lithium (7Li).
+Astronomers classify self-luminous objects by spectral type, a distinction intimately tied to the surface temperature -- brown dwarfs occupy types M (2100–3500 K), L (1300–2100 K), T (600–1300 K), and Y (< 600 K). As brown dwarfs do not undergo stable hydrogen fusion, they cool down over time, progressively passing through later spectral types as they age.
+The "brown" in brown dwarf was meant to name a color between red and black. To the naked eye, most brown dwarfs would appear to be magenta, purple, or even black with others in different colors depending on their temperature. Brown dwarfs may be fully convective, with no layers or chemical differentiation by depth.
+Though their existence was initially theorized in the 1960s, it was not until 1994 that the first unambiguous brown dwarfs were discovered. As brown dwarfs have relatively low surface temperatures, they are not very bright at visible wavelengths, emitting most of their light in the infrared. However, with the advent of more capable infrared detecting devices, thousands of brown dwarfs have been identified. The nearest known brown dwarfs are located in the Luhman 16 system, a binary of L- and T-type brown dwarfs about 6.5 light-years (2.0 parsecs) from the Sun. Luhman 16 is the third closest system to the Sun after Alpha Centauri and Barnard's Star.
+
+
+== History ==
+
+
+=== Early theorizing ===
+
+In the 1960s Shiv Kumar theorized the existence of objects now called brown dwarfs; they were originally called black dwarfs,
+a classification for dark substellar objects floating freely in space that were not massive enough to sustain hydrogen fusion. However:
+
+(a) the term black dwarf was already in use to refer to a cold white dwarf
+(b) red dwarfs fuse hydrogen
+(c) these objects may be luminous at visible wavelengths early in their lives.
+Because of this, alternative names for these objects were proposed, including planetar and substar. In 1975 Jill Tarter, as part of her PhD thesis at University of California at Berkeley was the first to suggest that the term to describe these objects should be brown dwarf, using brown as a color "somewhere between red and black", suggesting that the dwarfs appeared dim, dark, and dull, even though not exactly brown.
+The term black dwarf continues to be used to refer to a white dwarf that has cooled to the point that it no longer emits significant amounts of light. However, the time required for even the lowest-mass white dwarf to cool to this temperature is calculated to be longer than the current age of the universe; hence such objects are expected to not yet exist.
+Early theories concerning the nature of the lowest-mass stars and the hydrogen-burning limit suggested that a population I object with a mass less than 0.07 solar masses (M☉) or a population II object less than 0.09 M☉ would never go through normal stellar evolution and would become a completely degenerate star.
+The resulting brown dwarf is sometimes called a failed star.
+The first self-consistent calculation of the hydrogen-burning minimum mass confirmed a value between 0.07–0.08 solar masses for population I objects.
+
+
+=== Deuterium fusion ===
+The discovery of deuterium fusion down to 0.013 M☉ (13.6 MJ) and the impact of dust formation in the cool outer atmospheres of brown dwarfs in the late 1980s brought these theories into question. However, such objects were hard to find because they emit almost no visible light. Their strongest emissions are in the infrared (IR) spectrum, and ground-based IR detectors were too imprecise at that time to readily identify any brown dwarfs.
+Since then, numerous searches by various methods have sought these objects. These methods included multi-color imaging surveys around field stars, imaging surveys for faint companions of main-sequence dwarfs and white dwarfs, surveys of young star clusters, and radial velocity monitoring for close companions.
+
+
+=== First observations ===
+For many years, efforts to discover brown dwarfs were fruitless: they are very faint and emit most of their light in the near-infrared part of the spectrum. Then in the mid-1990s several brown dwarfs were found.
+
+
+==== Teide 1 and class M ====
+In 1994, Spanish astrophysicists Rafael Rebolo (head of the team), María Rosa Zapatero-Osorio, and Eduardo L. Martín discovered a confirmed class "M" brown dwarf. This object, found in the Pleiades open cluster, received the name Teide 1.
+Teide 1 was discovered in images collected by the IAC team on 6 January 1994 using the 80 cm telescope (IAC 80) at Teide Observatory, and its spectrum was first recorded in December 1994 using the 4.2 m William Herschel Telescope at Roque de los Muchachos Observatory (La Palma). The distance, chemical composition, and age of Teide 1 could be established because of its membership in the young Pleiades star cluster. Using the most advanced stellar and substellar evolution models at that moment, the team estimated for Teide 1 a mass of 55 ± 15 MJ, which is below the stellar-mass limit. The object became a reference in subsequent young brown dwarf related works.
+In theory, a brown dwarf below 65 MJ is unable to burn lithium by thermonuclear fusion at any time during its evolution. This fact is one of the lithium test principles used to judge the substellar nature of low-luminosity and low-surface-temperature astronomical bodies.
+High-quality spectral data acquired by the Keck 1 telescope in November 1995 showed that Teide 1 still had the initial lithium abundance of the original molecular cloud from which Pleiades stars formed, proving the lack of thermonuclear fusion in its core. These observations fully confirmed that Teide 1 is a brown dwarf, as well as the efficiency of the spectroscopic lithium test.
+For some time, Teide 1 was the smallest known object outside the Solar System that had been identified by direct observation. Since then, over 1,800 brown dwarfs have been identified, even some very close to Earth, like Epsilon Indi Ba and Bb, a pair of brown dwarfs gravitationally bound to a Sun-like star 12 light-years from the Sun, and Luhman 16, a binary system of brown dwarfs at 6.5 light-years from the Sun.
+
+
+==== Gliese 229B and class T ====
+The first class "T" brown dwarf was discovered in 1994 by Caltech astronomers Shrinivas Kulkarni, Tadashi Nakajima, Keith Matthews and Rebecca Oppenheimer, and Johns Hopkins scientists Samuel T. Durrance and David Golimowski. It was confirmed in 1995 as a substellar companion to Gliese 229. Gliese 229b is one of the first two instances of clear evidence for a brown dwarf, along with Teide 1. Confirmed in 1995, both were identified by the presence of the 670.8 nm lithium line. The latter was found to have a temperature and luminosity well below the stellar range.
+Its near-infrared spectrum clearly exhibited a methane absorption band at 2 micrometres, a feature that had previously only been observed in the atmospheres of giant planets and that of Saturn's moon Titan. Methane absorption is not expected at any temperature of a main-sequence star. This discovery helped to establish yet another spectral class even cooler than L dwarfs, known as "T dwarfs", for which Gliese 229b is the prototype.
+
+
+==== GD 165B and class L ====
+In 1988 a faint companion to the white dwarf star GD 165 was found in an infrared search of white dwarfs. The spectrum of the companion GD 165B was very red and enigmatic, showing none of the features expected of a low-mass red dwarf. It became clear that GD 165B would need to be classified as a much cooler object than the latest M dwarfs then known. GD 165B remained unique for almost a decade until the advent of the Two Micron All-Sky Survey (2MASS) in 1997, which discovered many objects with similar colors and spectral features.
+Although the discovery of the coolest dwarf was highly significant at the time, it was debated whether GD 165B would be classified as a brown dwarf or simply a very-low-mass star, because observationally it is very difficult to distinguish between the two. Today, GD 165B is recognized as the prototype of a class of objects now called "L dwarfs".
+
+
+== Theory ==
+
+
+=== Formation ===
+Five different theories for the formation of brown dwarfs have been proposed:
+
+A massive collapsing core produces fragments of different mass; tidal shear prevent the low mass fragments from growing;
+Low mass fragments in collapsing core are ejected before they can grow by accretion;
+Low mass fragments in a collapsing core are stripped of surrounding gas by ionizing radiation from hot massive OB stars;
+Fragmentation and subsequent ejection of material in the circumstellar disc of a large star;
+Gravitational collapse of turbulent molecular gas clouds results in range a masses for the collapsing core; the smallest masses lead to low mass stars and brown dwarfs.
+The last mechanism, turbulent fragmentation, predicts the observations of brown dwarfs in many more circumstances than the other mechanisms, which matches observations. The other mechanisms could also occur but clear evidence has not been found.
+
+
+=== Evolution ===
+If the initial mass of the protostar is less than about 0.08 M☉, normal hydrogen thermonuclear fusion reactions will not ignite in the core. Gravitational contraction does not heat the small protostar very effectively, and before the temperature in the core can increase enough to trigger fusion, the density reaches the point where electrons become closely packed enough to create quantum electron degeneracy pressure. According to the brown dwarf interior models, typical conditions in the core for density, temperature and pressure are expected to be the following:
+
+  
+    
+      
+        10
+        
+        
+          g
+          
+            /
+          
+          c
+          
+            m
+            
+              3
+            
+          
+        
+        
+        ≲
+        
+        
+          ρ
+          
+            c
+          
+        
+        
+        ≲
+        
+        
+          10
+          
+            3
+          
+        
+        
+        
+          
+            g
+          
+          
+            /
+          
+          
+            c
+            
+              m
+              
+                3
+              
+            
+          
+        
+      
+    
+    {\displaystyle 10\,\mathrm {g/cm^{3}} \,\lesssim \,\rho _{c}\,\lesssim \,10^{3}\,\mathrm {{g}/{cm^{3}}} }
+  
+
+  
+    
+      
+        
+          T
+          
+            c
+          
+        
+        ≲
+        3
+        ×
+        
+          10
+          
+            6
+          
+        
+        
+        
+          K
+        
+      
+    
+    {\displaystyle T_{c}\lesssim 3\times 10^{6}\,\mathrm {K} }
+  
+
+  
+    
+      
+        
+          P
+          
+            c
+          
+        
+        ∼
+        
+          10
+          
+            5
+          
+        
+        
+        
+          M
+          b
+          a
+          r
+        
+        .
+      
+    
+    {\displaystyle P_{c}\sim 10^{5}\,\mathrm {Mbar} .}
+  
+
+This means that the protostar is not massive or dense enough ever to reach the conditions needed to sustain hydrogen fusion. The infalling matter is prevented, by electron degeneracy pressure, from reaching the densities and pressures needed.
+Further gravitational contraction is prevented and the result is a brown dwarf that simply cools off by radiating away its internal thermal energy. Note that, in principle, it is possible for a brown dwarf to slowly accrete mass above the hydrogen burning limit without initiating hydrogen fusion. This could happen via mass transfer in a binary brown dwarf system.
+
+
+=== High-mass brown dwarfs versus low-mass stars ===
+Lithium is generally present in brown dwarfs and not in low-mass stars. Stars, which reach the high temperature necessary for fusing hydrogen, rapidly deplete their lithium. Fusion of lithium-7 and a proton occurs, producing two helium-4 nuclei. The temperature necessary for this reaction is just below that necessary for hydrogen fusion. Convection in low-mass stars ensures that lithium in the whole volume of the star is eventually depleted. Therefore, the presence of the lithium spectral line in a candidate brown dwarf is a strong indicator that it is indeed a substellar object.
+
+
+==== Lithium test ====
+Objects with more mass than 63MJ will burn lithium isotopes to helium. Dwarfs of mass greater than 65 MJ can burn their lithium by the time they are half a billion years old.
+Thus presence of the atomic lithium spectral line was originally used as a test for older substellar objects. This is known as the lithium test. As more was learned about substellar objects, the test now divides brown dwarfs into two classes.
+
+
+==== Atmospheric methane ====
+Older brown dwarfs are sometimes cool enough (1000K) that their atmospheres can maintain observable quantities of methane. Dwarfs confirmed in this fashion include Gliese 229B.
+
+
+==== Iron, silicate and sulfide clouds ====
+
+Clouds are used to explain the weakening of the iron hydride (FeH) spectral line in late L-dwarfs. Iron clouds deplete FeH in the upper atmosphere, and the cloud layer blocks the view to lower layers still containing FeH. The later strengthening of this chemical compound at cooler temperatures of mid- to late T-dwarfs is explained by disturbed clouds that allows a telescope to look into the deeper layers of the atmosphere that still contains FeH. Young L/T-dwarfs (L2-T4) show high variability, which could be explained with clouds, hot spots, magnetically driven aurorae or thermochemical instabilities. The clouds of these brown dwarfs are explained as either iron clouds with varying thickness or a lower thick iron cloud layer and an upper silicate cloud layer. This upper silicate cloud layer can consist out of quartz, enstatite, corundum and/or fosterite. It is however not clear if silicate clouds are always necessary for young objects. Silicate absorption can be directly observed in the mid-infrared at 8 to 12 μm. Observations with Spitzer IRS have shown that silicate absorption is common, but not ubiquitous, for L2-L8 dwarfs. Additionally, MIRI has observed silicate absorption in the planetary-mass companion VHS 1256b.
+Iron rain as part of atmospheric convection processes is possible only in brown dwarfs, and not in small stars. The spectroscopy research into iron rain is still ongoing, but not all brown dwarfs will always have this atmospheric anomaly. In 2013, a heterogeneous iron-containing atmosphere was imaged around the B component in the nearby Luhman 16 system.
+For late T-type brown dwarfs only a few variable searches were carried out. Thin cloud layers are predicted to form in late T-dwarfs from chromium and potassium chloride, as well as several sulfides. These sulfides are manganese sulfide, sodium sulfide and zinc sulfide. The variable T7 dwarf 2M0050–3322 is explained to have a top layer of potassium chloride clouds, a mid layer of sodium sulfide clouds and a lower layer of manganese sulfide clouds. Patchy clouds of the top two cloud layers could explain why the methane and water vapor bands are variable.
+At the lowest temperatures of the Y-dwarf WISE 0855-0714 patchy cloud layers of sulfide and water ice clouds could cover 50% of the surface.
+
+
+=== Low-mass brown dwarfs versus high-mass planets ===
+
+
+==== Current IAU standard ====
+Currently, the International Astronomical Union has no official definition for a brown dwarf. The working definition considers an object above 13 MJ (the limiting mass for thermonuclear fusion of deuterium) to be a brown dwarf no matter where the object was formed. An object under that mass and orbiting a star or stellar remnant is considered a planet. A free object under that mass limit is can be called a "sub-brown dwarf" or "free-floating planetary mass
+objects". The minimum mass required to trigger sustained hydrogen burning (about 80 MJ) forms the upper limit of the definition.
+
+
+==== Size and fuel-burning ambiguities ====
+The dividing line between planets and brown dwarfs has been controversial. Different groups of scientists favor a mass limit, while others point to the formation process or orbital circumstances. 
+Brown dwarfs are all roughly the same radius as Jupiter. At the high end of their mass range (60–90 MJ), the volume of a brown dwarf is governed primarily by free electron-degeneracy pressure, as it is in white dwarfs; at the low end of the range (10 MJ), their volume is governed primarily by bound electron degeneracy or the Pauli exclusion principle, as it is in planets. The net result is that the radii of brown dwarfs vary by only 10–15% over the range of possible masses. Moreover, the mass–radius relationship shows no change from about one Saturn mass to the onset of hydrogen burning (0.080±0.008 M☉), suggesting that from this perspective brown dwarfs are simply high-mass Jovian planets. This can make distinguishing them from planets difficult.
+In addition, many brown dwarfs undergo no fusion; even those at the high end of the mass range (over 60 MJ) cool quickly enough that after 10 million years they no longer undergo deuterium fusion.
+
+
+==== Defining brown dwarfs ====
+X-ray and infrared spectra are telltale signs of brown dwarfs. Some emit X-rays, and all "warm" dwarfs continue to glow tellingly in the red and infrared spectra until they cool to planet-like temperatures (under 1000 K).
+It is also debated whether brown dwarfs would be better defined by their formation process rather than by theoretical mass limits based on nuclear fusion reactions. Under this interpretation brown dwarfs are those objects that represent the lowest-mass products of the star formation process, while planets are objects formed in an accretion disk surrounding a star. The coolest free-floating objects discovered, such as WISE 0855, as well as the lowest-mass young objects known, like PSO J318.5−22, are thought to have masses below 13 MJ, and as a result are sometimes referred to as planetary-mass objects due to the ambiguity of whether they should be regarded as rogue planets or brown dwarfs. There are planetary-mass objects known to orbit brown dwarfs, such as 2M1207b, 2MASS J044144b and Oph 98 B.
+The 13-Jupiter-mass cutoff is a rule of thumb rather than a quantity with precise physical significance. Larger objects will burn most of their deuterium and smaller ones will burn only a little, and the 13‑Jupiter-mass value is somewhere in between. The amount of deuterium burnt also depends to some extent on the composition of the object, specifically on the amount of helium and deuterium present and on the fraction of heavier elements, which determines the atmospheric opacity and thus the radiative cooling rate.
+As of 2011 the Extrasolar Planets Encyclopaedia included objects up to 25 Jupiter masses, saying, "The fact that there is no special feature around 13 MJup in the observed mass spectrum reinforces the choice to forget this mass limit". As of 2016, this limit was increased to 60 Jupiter masses, based on a study of mass–density relationships.
+The Exoplanet Data Explorer includes objects up to 24 Jupiter masses with the advisory: "The 13 Jupiter-mass distinction by the IAU Working Group is physically unmotivated for planets with rocky cores, and observationally problematic due to the sin i ambiguity." The NASA Exoplanet Archive includes objects with a mass (or minimum mass) equal to or less than 30 Jupiter masses.
+
+
+==== Sub-brown dwarf ====
+
+Objects below 13 MJ, called sub-brown dwarfs or planetary-mass brown dwarfs, form through the collapse of a gas cloud, in the same manner as stars and brown dwarfs, but have a mass below the limiting mass for thermonuclear fusion of deuterium. Some researchers call them free-floating planets, whereas others call them planetary-mass brown dwarfs.
+
+
+=== Role of other physical properties in the mass estimate ===
+While spectroscopic features can help to distinguish between low-mass stars and brown dwarfs, it is often necessary to estimate the mass to come to a conclusion. The theory behind the mass estimate is that brown dwarfs with a similar mass form in a similar way and are hot when they form. Some have spectral types that are similar to low-mass stars, such as 2M1101AB. As they cool down the brown dwarfs should retain a range of luminosities depending on the mass. 
+Without the age and luminosity, a mass estimate is difficult; for example, an L-type brown dwarf could be an old brown dwarf with a high mass (possibly a low-mass star) or a young brown dwarf with a very low mass. For Y dwarfs this is less of a problem, as they remain low-mass objects near the sub-brown dwarf limit, even for relatively high age estimates. For L and T dwarfs it is still useful to have an accurate age estimate. The luminosity is here the less concerning property, as this can be estimated from the spectral energy distribution. The age estimate can be done in two ways. Either the brown dwarf is young and still has spectral features that are associated with youth, or the brown dwarf co-moves with a star or stellar group (star cluster or association), where age estimates are easier to obtain. A very young brown dwarf that was further studied with this method is 2M1207 and the companion 2M1207b. Based on the location, proper motion and spectral signature, this object was determined to belong to the ~8-million-year-old TW Hydrae association, and the mass of the secondary was determined to be 8 ± 2 MJ, below the deuterium burning limit. An example of a very old age obtained by the co-movement method is the brown dwarf + white dwarf binary COCONUTS-1, with the white dwarf estimated to be 7.3+2.8−1.6 billion years old. In this case the mass was not estimated with the derived age, but the co-movement provided an accurate distance estimate, using Gaia parallax. Using this measurement the authors estimated the radius, which was then used to estimate the mass for the brown dwarf as 15.4+0.9−0.8 MJ.
+
+
+== Observations ==
+
+
+=== Classification of brown dwarfs ===
+
+
+==== Spectral class M ====
+
+These are brown dwarfs with a spectral class of M5.5 or later; they are also called late-M dwarfs. All brown dwarfs with spectral type M are young objects, such as Teide 1, which is the first M-type brown dwarf discovered, and LP 944-20, the closest M-type brown dwarf.
+
+
+==== Spectral class L ====
+
+The defining characteristic of spectral class M, the coolest type in the long-standing classical stellar sequence, is an optical spectrum dominated by absorption bands of titanium(II) oxide (TiO) and vanadium(II) oxide (VO) molecules. However, GD 165B, the cool companion to the white dwarf GD 165, had none of the hallmark TiO features of M dwarfs. The subsequent identification of many objects like GD 165B ultimately led to the definition of a new spectral class, the L dwarfs, defined in the red optical region of the spectrum not by metal-oxide absorption bands (TiO, VO), but by metal hydride emission bands (FeH, CrH, MgH, CaH) and prominent atomic lines of alkali metals (Na, K, Rb, Cs). As of 2013, over 900 L dwarfs had been identified, most by wide-field surveys: the Two Micron All Sky Survey (2MASS), the Deep Near Infrared Survey of the Southern Sky (DENIS), and the Sloan Digital Sky Survey (SDSS). This spectral class also contains the coolest main-sequence stars (> 80 MJ), which have spectral classes L2 to L6.
+
+
+==== Spectral class T ====
+
+As GD 165B is the prototype of the L dwarfs, Gliese 229B is the prototype of a second new spectral class, the T dwarfs. T dwarfs are pinkish-magenta. Whereas near-infrared (NIR) spectra of L dwarfs show strong absorption bands of H2O and carbon monoxide (CO), the NIR spectrum of Gliese 229B is dominated by absorption bands from methane (CH4), a feature which in the Solar System is found only in the giant planets and Titan. CH4, H2O, and molecular hydrogen (H2) collision-induced absorption (CIA) give Gliese 229B blue near-infrared colors. Its steeply sloped red optical spectrum also lacks the FeH and CrH bands that characterize L dwarfs and instead is influenced by exceptionally broad absorption features from the alkali metals Na and K. These differences led J. Davy Kirkpatrick to propose the T spectral class for objects exhibiting H- and K-band CH4 absorption. As of 2013, 355 T dwarfs were known. NIR classification schemes for T dwarfs have recently been developed by Adam Burgasser and Tom Geballe. Theory suggests that L dwarfs are a mixture of very-low-mass stars and sub-stellar objects (brown dwarfs), whereas the T dwarf class is composed entirely of brown dwarfs. Because of the absorption of sodium and potassium in the green part of the spectrum of T dwarfs, the actual appearance of T dwarfs to human visual perception is estimated to be not brown, but magenta. Early observations limited how distant T-dwarfs could be observed. T-class brown dwarfs, such as WISE 0316+4307, have been detected more than 100 light-years from the Sun. Observations with JWST have detected T-dwarfs such as UNCOVER-BD-1 up to 4500 parsec distant from the Sun.
+
+
+==== Spectral class Y ====
+
+In 2009, the coolest-known brown dwarfs had estimated effective temperatures between 500 and 600 K (227–327 °C; 440–620 °F), and have been assigned the spectral class T9. Three examples are the brown dwarfs CFBDS J005910.90–011401.3, ULAS J133553.45+113005.2 and ULAS J003402.77−005206.7. The spectra of these objects have absorption peaks around 1.55 micrometres. Delorme et al. have suggested that this feature is due to absorption from ammonia and that this should be taken as indicating the T–Y transition, making these objects of type Y0. However, the feature is difficult to distinguish from absorption by water and methane, and other authors have stated that the assignment of class Y0 is premature.
+
+The first James Webb Space Telescope spectral energy distribution of a Y-dwarf was able to observe several bands of molecules in the atmosphere of the Y0-dwarf WISE 0359−5401. The observations covered spectroscopy from 1 to 12 μm and photometry at 15, 18 and 21 μm. The molecules water (H2O), methane (CH4), carbon monoxide (CO), carbon dioxide (CO2) and ammonia (NH3) were detected in WISE 0359−5401. Many of these features have been observed before in this Y-dwarf and warmer T-dwarfs by other observatories, but JWST was able to observe them in a single spectrum. Methane is the main reservoir of carbon in the atmosphere of WISE 0359−5401, but there is still enough carbon left to form detectable carbon monoxide (at 4.5–5.0 μm) and carbon dioxide (at 4.2–4.35 μm) in the Y-dwarf. Ammonia was difficult to detect before JWST, as it blends in with the absorption feature of water in the near-infrared, as well at 5.5–7.1 μm. At longer wavelengths of 8.5–12 μm the spectrum of WISE 0359−5401 is dominated by the absorption of ammonia. At 3 μm there is an additional newly detected ammonia feature.
+
+
+==== Proposed spectral class H ====
+In 2025, astronomers Kevin Luhman and Catarina Alves de Oliveira proposed a new spectral class H (H from hydrocarbon). Using data from the James Webb Space Telescope, they identified many brown dwarfs in the star-forming region IC 348, that have very low masses (many under the deuterium burning limit) and have an absorption line at 3.4 μm corresponding to an as-of-yet unidentified aliphatic hydrocarbon. Such absorption line would define the H-class.
+
+
+==== Role of vertical mixing ====
+
+In the hydrogen-dominated atmosphere of brown dwarfs a chemical equilibrium between carbon monoxide and methane exists. Carbon monoxide reacts with hydrogen molecules and forms methane and hydroxyl in this reaction. The hydroxyl radical might later react with hydrogen and form water molecules. In the other direction of the reaction, methane reacts with hydroxyl and forms carbon monoxide and hydrogen. The chemical reaction is tilted towards carbon monoxide at higher temperatures (L-dwarfs) and lower pressure. At lower temperatures (T-dwarfs) and higher pressure the reaction is tilted towards methane, and methane predominates at the T/Y-boundary. However, vertical mixing of the atmosphere can cause methane to sink into lower layers of the atmosphere and carbon monoxide to rise from these lower and hotter layers. The carbon monoxide is slow to react back into methane because of an energy barrier that prevents the breakdown of the C-O bonds. This forces the observable atmosphere of a brown dwarf to be in a chemical disequilibrium. The L/T transition is mainly defined with the transition from a carbon-monoxide-dominated atmosphere in L-dwarfs to a methane-dominated atmosphere in T-dwarfs. The amount of vertical mixing can therefore push the L/T-transition to lower or higher temperatures. This becomes important for objects with modest surface gravity and extended atmospheres, such as giant exoplanets. This pushes the L/T transition to lower temperatures for giant exoplanets. For brown dwarfs this transition occurs at around 1200 K. The exoplanet HR 8799c, on the other hand, does not show any methane, while having a temperature of 1100K.
+The transition between T- and Y-dwarfs is often defined as 500 K because of the lack of spectral observations of these cold and faint objects. Future observations with JWST and the ELTs might improve the sample of Y-dwarfs with observed spectra. Y-dwarfs are dominated by deep spectral features of methane, water vapor and possibly absorption features of ammonia and water ice. Vertical mixing, clouds, metallicity, photochemistry, lightning, impact shocks and metallic catalysts might influence the temperature at which the L/T and T/Y transition occurs.
+
+
+==== Secondary features ====
+
+Young brown dwarfs have low surface gravities because they have larger radii and lower masses than the field stars of similar spectral type. These sources are noted by a letter beta (β) for intermediate surface gravity or gamma (γ) for low surface gravity. Indicators of low surface gravity include weak CaH, K I and Na I lines, as well as a strong VO line. Alpha (α) denotes normal surface gravity and is usually dropped. Sometimes an extremely low surface gravity is denoted by a delta (δ). The suffix "pec" stands for "peculiar"; this suffix is still used for other features that are unusual, and summarizes different properties, indicating low surface gravity, subdwarfs and unresolved binaries. The prefix sd stands for subdwarf and only includes cool subdwarfs. This prefix indicates a low metallicity and kinematic properties that are more similar to halo stars than to disk stars. Subdwarfs appear bluer than disk objects. The red suffix describes objects with red color, but an older age. This is not interpreted as low surface gravity, but as a high dust content. The blue suffix describes objects with blue near-infrared colors that cannot be explained with low metallicity. Some are explained as L+T binaries, others are not binaries, such as 2MASS J11263991−5003550 and are explained with thin and/or large-grained clouds.
+
+
+=== Spectral and atmospheric properties of brown dwarfs ===
+
+The majority of flux emitted by L and T dwarfs is in the 1- to 2.5-micrometre near-infrared range. Low and decreasing temperatures through the late-M, -L, and -T dwarf sequence result in a rich near-infrared spectrum containing a wide variety of features, from relatively narrow lines of neutral atomic species to broad molecular bands, all of which have different dependencies on temperature, gravity, and metallicity. Furthermore, these low temperature conditions favor condensation out of the gas state and the formation of grains.
+
+Typical atmospheres of known brown dwarfs range in temperature from 2200 down to 750 K. Compared to stars, which warm themselves with steady internal fusion, brown dwarfs cool quickly over time; more massive dwarfs cool more slowly than less massive ones. There is some evidence that the cooling of brown dwarfs slows down at the transition between spectral classes L and T (about 1000 K).
+Observations of known brown dwarf candidates have revealed a pattern of brightening and dimming of infrared emissions that suggests relatively cool, opaque cloud patterns obscuring a hot interior that is stirred by extreme winds. The weather on such bodies is thought to be extremely strong, comparable to but far exceeding Jupiter's famous storms.
+On January 8, 2013, astronomers using NASA's Hubble and Spitzer space telescopes probed the stormy atmosphere of a brown dwarf named 2MASS J22282889–4310262, creating the most detailed "weather map" of a brown dwarf thus far. It shows wind-driven, planet-sized clouds. The new research is a stepping stone toward a better understanding not only brown dwarfs, but also of the atmospheres of planets beyond the Solar System.
+In April 2020 scientists reported measuring wind speeds of +650±310 metres per second (up to 1,450 miles per hour) on the nearby brown dwarf 2MASS J10475385+2124234. To calculate the measurements, scientists compared the rotational movement of atmospheric features, as ascertained by brightness changes, against the electromagnetic rotation generated by the brown dwarf's interior. The results confirmed previous predictions that brown dwarfs would have high winds. Scientists are hopeful that this comparison method can be used to explore the atmospheric dynamics of other brown dwarfs and extrasolar planets.
+
+
+=== Observational techniques ===
+
+Coronagraphs have recently been used to detect faint objects orbiting bright visible stars, including Gliese 229B.
+Sensitive telescopes equipped with charge-coupled devices (CCDs) have been used to search distant star clusters for faint objects, including Teide 1.
+Wide-field searches have identified individual faint objects, such as Kelu-1 (30 light-years away).
+Brown dwarfs are often discovered in surveys to discover exoplanets. Methods of detecting exoplanets work for brown dwarfs as well, although brown dwarfs are much easier to detect.
+Brown dwarfs can be powerful emitters of radio emission due to their strong magnetic fields. Observing programs at the Arecibo Observatory and the Very Large Array have detected over a dozen such objects, which are also called ultracool dwarfs because they share common magnetic properties with other objects in this class. The detection of radio emission from brown dwarfs permits their magnetic field strengths to be measured directly.
+
+
+=== Milestones ===
+1995: First brown dwarf verified. Teide 1, an M8 object in the Pleiades cluster, is picked out with a CCD in the Spanish Observatory of Roque de los Muchachos of the Instituto de Astrofísica de Canarias.
+First methane brown dwarf verified. Gliese 229B is discovered orbiting red dwarf Gliese 229A (20 ly away) using an adaptive optics coronagraph to sharpen images from the 60-inch (1.5 m) reflecting telescope at Palomar Observatory on Southern California's Mount Palomar; follow-up infrared spectroscopy made with their 200-inch (5.1 m) Hale Telescope shows an abundance of methane.
+1998: First X-ray-emitting brown dwarf found. Cha Hα 1, an M8 object in the Chamaeleon I dark cloud, is determined to be an X-ray source, similar to convective late-type stars.
+15 December 1999: First X-ray flare detected from a brown dwarf. A team at the University of California monitoring LP 944-20 (60 MJ, 16 ly away) via the Chandra X-ray Observatory, catches a 2-hour flare.
+27 July 2000: First radio emission (in flare and quiescence) detected from a brown dwarf. A team of students at the Very Large Array detected emission from LP 944–20.
+30 April 2004: First detection of a candidate exoplanet around a brown dwarf: 2M1207b discovered with the VLT and the first directly imaged exoplanet.
+20 March 2013: Discovery of the closest brown dwarf system: Luhman 16.
+25 April 2014: Coldest-known brown dwarf discovered. WISE 0855−0714 is 7.2 light-years away (seventh-closest system to the Sun) and has a temperature between −48 and −13 °C.
+
+
+=== Brown dwarfs X-ray sources ===
+
+X-ray flares detected from brown dwarfs since 1999 suggest changing magnetic fields within them, similar to those in very-low-mass stars.  Although they do not fuse hydrogen into helium in their cores like stars, energy from the fusion of deuterium and gravitational contraction keep their interiors warm and generate strong magnetic fields.  The interior of a brown dwarf is in a rapidly boiling, or convective state. When combined with the rapid rotation that most brown dwarfs exhibit, convection sets up conditions for the development of a strong, tangled magnetic field near the surface. The magnetic fields that generated the flare observed by Chandra from LP 944-20 has its origin in the turbulent magnetized plasma beneath the brown dwarf's "surface".
+Using NASA's Chandra X-ray Observatory, scientists have detected X-rays from a low-mass brown dwarf in a multiple star system. This is the first time that a brown dwarf this close to its parent star(s) (Sun-like stars TWA 5A) has been resolved in X-rays. "Our Chandra data show that the X-rays originate from the brown dwarf's coronal plasma which is some 3 million degrees Celsius", said Yohko Tsuboi of Chuo University in Tokyo. "This brown dwarf is as bright as the Sun today in X-ray light, while it is fifty times less massive than the Sun", said Tsuboi. "This observation, thus, raises the possibility that even massive planets might emit X-rays by themselves during their youth!"
+
+
+=== Brown dwarfs as radio sources ===
+
+The first brown dwarf that was discovered to emit radio signals was LP 944-20, which was observed since it is also a source of X-ray emission, and both types of emission are signatures of coronae. Approximately 5–10% of brown dwarfs appear to have strong magnetic fields and emit radio waves, and there may be as many as 40 magnetic brown dwarfs within 25 pc of the Sun based on Monte Carlo modeling and their average spatial density. The power of the radio emissions of brown dwarfs is roughly constant despite variations in their temperatures. Brown dwarfs may maintain magnetic fields of up to 6 kG in strength. Astronomers have estimated brown dwarf magnetospheres to span an altitude of approximately 107 m given properties of their radio emissions. It is unknown whether the radio emissions from brown dwarfs more closely resemble those from planets or stars. Some brown dwarfs emit regular radio pulses, which are sometimes interpreted as radio emission beamed from the poles but may also be beamed from active regions. The regular, periodic reversal of radio wave orientation may indicate that brown dwarf magnetic fields periodically reverse polarity. These reversals may be the result of a brown dwarf magnetic activity cycle, similar to the solar cycle.
+The first brown dwarf of spectral class M found to emit radio waves was LP 944-20, detected in 2001. The first brown dwarf of spectral class L found to emit radio waves was 2MASS J0036159+182110, detected in 2008. The first brown dwarf of spectral class T found to emit radio waves was 2MASS J10475385+2124234. This last discovery was significant since it revealed that brown dwarfs with temperatures similar to exoplanets could host strong >1.7 kG magnetic fields. Although a sensitive search for radio emission from Y dwarfs was conducted at the Arecibo Observatory in 2010, no emission was detected.
+
+
+=== Recent developments ===
+
+Estimates of brown dwarf populations in the solar neighbourhood suggest that there may be as many as six stars for every brown dwarf. A more recent estimate from 2017 using the young massive star cluster RCW 38 concluded that the Milky Way galaxy contains between 25 and 100 billion brown dwarfs. (Compare these numbers to the estimates of the number of stars in the Milky Way; 100 to 400 billion.)
+In a study published in Aug 2017 NASA's Spitzer Space Telescope monitored infrared brightness variations in brown dwarfs caused by cloud cover of variable thickness. The observations revealed large-scale waves propagating in the atmospheres of brown dwarfs (similarly to the atmosphere of Neptune and other Solar System giant planets). These atmospheric waves modulate the thickness of the clouds and propagate with different velocities (probably due to differential rotation).
+In August 2020, astronomers discovered 95 brown dwarfs near the Sun through the project Backyard Worlds: Planet 9.
+In 2024 the James Webb Space Telescope provided the most detailed weather report yet on two brown dwarfs, revealing "stormy" conditions. These brown dwarfs, part of a binary star system named Luhman 16 discovered in 2013, are only 6.5 light-years away from Earth and are the closest brown dwarfs to the Sun. Researchers discovered that they have turbulent clouds, likely made of silicate grains, with temperatures ranging from 875 °C (1,607 °F) to 1,026 °C (1,879 °F). This indicates that hot sand is being blown by winds on the brown dwarfs. Additionally, absorption signatures of carbon monoxide, methane, and water vapor were detected.
+
+
+== Binary brown dwarfs ==
+
+
+=== Brown dwarf–brown dwarf binaries ===
+
+Brown dwarfs binaries of type M, L, and T are less common with a lower mass of the primary. L-dwarfs have a binary fraction of about 24+6−2% and the binary fraction for late T, early Y-dwarfs (T5-Y0) is about 8%±6%.
+Brown dwarf binaries have a higher companion-to-host ratio 
+  
+    
+      
+        q
+        =
+        
+          M
+          
+            B
+          
+        
+        
+          /
+        
+        
+          M
+          
+            A
+          
+        
+      
+    
+    {\displaystyle q=M_{B}/M_{A}}
+  
+ for lower mass binaries. Binaries with a M-type star as a primary have for example a broad distribution of q with a preference of q ≥ 0.4. Brown dwarfs on the other hand show a strong preference for q ≥ 0.7. The separation is decreasing with mass: M-type stars have a separation peaking at 3–30 astronomical units (au), M-L-type brown dwarfs have a projected separation peaking at 5–8 au and T5–Y0 objects have a projected separation that follows a lognormal distribution with a peak separation of about 2.9 au.
+An example is the closest brown dwarf binary Luhman 16 AB with a primary L7.5 dwarf and a separation of 3.5 au and q = 0.85. The separation is on the lower end of the expected separation for M-L-type brown dwarfs, but the mass ratio is typical.
+It is not known if the same trend continues with Y-dwarfs, because their sample size is so small. The Y+Y dwarf binaries should have a high mass ratio q and a low separation, reaching scales of less than one au. In 2023, the Y+Y dwarf WISE J0336-0143 was confirmed as a binary with JWST, with a mass ratio of q=0.62±0.05 and a separation of 0.97 astronomical units. The researchers point out that the sample size of low-mass binary brown dwarfs is too small to determine if WISE J0336-0143 is a typical representative of low-mass binaries or a peculiar system.
+Observations of the orbit of binary systems containing brown dwarfs can be used to measure the mass of the brown dwarf. In the case of 2MASSW J0746425+2000321, the secondary weighs 6% of the solar mass. This measurement is called a dynamical mass. The brown dwarf system closest to the Solar System is the binary Luhman 16. It was attempted to search for planets around this system with a similar method, but none were found.
+
+
+=== Unusual brown dwarf binaries ===
+
+The wide binary system 2M1101AB was the first binary with a separation greater than 20 AU. The discovery of the system gave definitive insights to the formation of brown dwarfs. It was previously thought that wide binary brown dwarfs are not formed or at least are disrupted at ages of 1–10 Myr. The existence of this system is also inconsistent with the ejection hypothesis. The ejection hypothesis was a proposed hypothesis in which brown dwarfs form in a multiple system, but are ejected before they gain enough mass to burn hydrogen.
+More recently the wide binary W2150AB was discovered. It has a similar mass ratio and binding energy as 2M1101AB, but a greater age and is located in a different region of the galaxy. While 2M1101AB is in a closely crowded region, the binary W2150AB is in a sparsely-separated field. It must have survived any dynamical interactions in its natal star cluster. The binary belongs also to a few L+T binaries that can be easily resolved by ground-based observatories. The other two are SDSS J1416+13AB and Luhman 16.
+There are other interesting binary systems such as the eclipsing binary brown dwarf system 2MASS J05352184–0546085. Photometric studies of this system have revealed that the less massive brown dwarf in the system is hotter than its higher-mass companion. Another unusual binary brown dwarf system is ZTF J1239+8347, whose components orbit so closely together that they are undergoing mass transfer. In that system, the more massive brown dwarf directly pulls matter from its companion and becomes heated to temperatures of 8,900 K (8,630 °C; 15,560 °F), producing a bright blue hotspot in its atmosphere.
+
+
+=== Brown dwarfs around stars ===
+
+Brown dwarfs and massive planets in a close orbit (less than 5 au) around stars are rare and this is sometimes described as the brown dwarf desert. Less than 1% of stars with the mass of the sun have a brown dwarf within 3–5 au.
+An example for a star–brown dwarf binary is the first discovered T-dwarf Gliese 229 B, which orbits around the main-sequence star Gliese 229 A, a red dwarf. Brown dwarfs orbiting subgiants are also known, such as TOI-1994b which orbits its star every 4.03 days.
+There is also disagreement if some low-mass brown dwarfs should be considered planets. The NASA Exoplanet archive includes brown dwarfs with a minimum mass less or equal to 30 Jupiter masses as planets as long as there are other criteria fulfilled (e.g. orbiting a star). The Working Group on Extrasolar Planets (WGESP) of the IAU on the other hand only considers planets with a mass below 13 Jupiter masses.
+
+
+=== White dwarf–brown dwarf binaries ===
+
+Brown dwarfs around white dwarfs are quite rare. GD 165 B, the prototype of the L dwarfs, is one such system. Such systems can be useful in determining the age of the system and the mass of the brown dwarf. Other white dwarf-brown dwarf binaries are COCONUTS-1 AB (7 billion years old), and LSPM J0055+5948 AB (10 billion years old), SDSS J22255+0016 AB (2 billion years old) WD 0806−661 AB (1.5–2.7 billion years old).
+Systems with close, tidally locked brown dwarfs orbiting around white dwarfs belong to the post common envelope binaries or PCEBs. Only eight confirmed PCEBs containing a white dwarf with a brown dwarf companion are known, including WD 0137-349 AB. In the past history of these close white dwarf–brown dwarf binaries, the brown dwarf is engulfed by the star in the red giant phase. Brown dwarfs with a mass lower than 20 Jupiter masses would evaporate during the engulfment. The dearth of brown dwarfs orbiting close to white dwarfs can be compared with similar observations of brown dwarfs around main-sequence stars, described as the brown-dwarf desert. The PCEB might evolve into a cataclysmic variable star (CV*) with the brown dwarf as the donor. Simulations have shown that highly evolved CV* are mostly associated with substellar donors (up to 80%). A type of CV*, called WZ Sge-type dwarf nova often show donors with a mass near the borderline of low-mass stars and brown dwarfs. The binary BW Sculptoris is such a dwarf nova with a brown dwarf donor. This brown dwarf likely formed when a donor star lost enough mass to become a brown dwarf. The mass loss comes with a loss of the orbital period until it reaches a minimum of 70–80 minutes at which the period increases again. This gives this evolutionary stage the name period bouncer. There could also exist brown dwarfs that merged with white dwarfs. The nova CK Vulpeculae might be a result of such a white dwarf–brown dwarf merger.
+
+
+== Formation and evolution ==
+The earliest stage of brown dwarf formation is called proto- or pre-brown dwarf. Proto-brown dwarfs are low-mass equivalents of protostars (class 0/I objects). Additionally Very Low Luminosity Objects (VeLLOs) that have Lint ≤0.1-0.2 L☉ are often proto-brown dwarfs. They are found in nearby star-forming clouds. Around 67 promising proto-brown dwarfs and 26 pre-brown dwarfs are known as of 2024. As of 2017 there is only one known proto-brown dwarf that is connected with a large Herbig–Haro object. This is the brown dwarf Mayrit 1701117, which is surrounded by a pseudo-disk and a Keplerian disk. Mayrit 1701117 launches the 0.7-light-year-long jet HH 1165, mostly seen in ionized sulfur.
+Brown dwarfs form similarly to stars and are surrounded by protoplanetary disks, such as Cha 110913−773444. Disks around brown dwarfs have been found to have many of the same features as disks around stars; therefore, it is expected that there will be accretion-formed planets around brown dwarfs. Given the small mass of brown dwarf disks, most planets will be terrestrial planets rather than gas giants. If a giant planet orbits a brown dwarf across our line of sight, then, because they have approximately the same diameter, this would give a large signal for detection by transit. The accretion zone for planets around a brown dwarf is very close to the brown dwarf itself, so tidal forces would have a strong effect.
+
+In 2020, the closest brown dwarf with an associated primordial disk (class II disk)—WISEA J120037.79-784508.3 (W1200-7845)—was discovered by the Disk Detective project when classification volunteers noted its infrared excess. It was vetted and analyzed by the science team who found that W1200-7845 had a 99.8% probability of being a member of the ε Chamaeleontis (ε Cha) young moving group association. Its parallax (using Gaia DR2 data) puts it at a distance of 102 parsecs (or 333 lightyears) from Earth—which is within the local Solar neighborhood.
+
+A paper from 2021 studied circumstellar discs around brown dwarfs in stellar associations that are a few million years old and 140 to 200 parsecs away. The researchers found that these disks are not massive enough to form planets in the future. There is evidence in these disks that might indicate that planet formation begins at earlier stages and that planets are already present in these disks. The evidence for disk evolution includes a decreasing disk mass over time, dust grain growth and dust settling. Two brown dwarf disks were also found in absorption and at least 4 disks are photoevaporating from external UV-ratiation in the Orion Nebula. Such objects are also called proplyds. Proplyd 181−247, which is a brown dwarf or low-mass star, is surrounded by a disk with a radius of 30 astronomical units and the disk has a mass of 6.2±1.0 MJ. Disks around brown dwarfs usually have a radius smaller than 40 astronomical units, but three disks in the more distant Taurus molecular cloud have a radius larger than 70 au and were resolved with ALMA. These larger disks are able to form rocky planets with a mass >1 M🜨. There are also brown dwarfs with disks in associations older than a few million years, which might be evidence that disks around brown dwarfs need more time to dissipate. Especially old disks (>20 Myrs) are sometimes called Peter Pan disks. Currently 2MASS J02265658-5327032 is the only known brown dwarf that has a Peter Pan disk.
+The brown dwarf Cha 110913−773444, located 500 light-years away in the constellation Chamaeleon, may be in the process of forming a miniature planetary system. Astronomers from Pennsylvania State University have detected what they believe to be a disk of gas and dust similar to the one hypothesized to have formed the Solar System. Cha 110913−773444 is the smallest brown dwarf found to date (8 MJ), and if it formed a planetary system, it would be the smallest-known object to have one.
+
+
+== Planets around brown dwarfs ==
+
+According to the IAU working definition (from August 2018) an exoplanet can orbit a brown dwarf. It requires a mass below 13 MJ and a mass ratio of M/Mcentral<2/(25+√{621}), or roughly 1/25. This means that an object with a mass up to 3.2 MJ around a brown dwarf with a mass of 80 MJ is considered a planet. It also means that an object with a mass up to 0.52 MJ around a brown dwarf with a mass of 13 MJ is considered a planet.
+The super-Jupiter planetary-mass objects 2M1207b, 2MASS J044144 and Oph 98 B that are orbiting brown dwarfs at large orbital distances may have formed by cloud collapse rather than accretion and so may be sub-brown dwarfs rather than planets, which is inferred from relatively large masses and large orbits. The first discovery of a low-mass companion orbiting a brown dwarf (ChaHα8) at a small orbital distance using the radial velocity technique paved the way for the detection of planets around brown dwarfs on orbits of a few AU or smaller. However, with a mass ratio between the companion and primary in ChaHα8 of about 0.3, this system rather resembles a binary star. Then, in 2008, the first planetary-mass companion in a relatively small orbit (MOA-2007-BLG-192Lb) was discovered orbiting a brown dwarf.
+Planets around brown dwarfs are likely to be carbon planets depleted of water.
+A 2017 study, based upon observations with Spitzer estimates that 175 brown dwarfs need to be monitored in order to guarantee (95%) at least one detection of a below earth-sized planet via the transiting method. JWST could potentially detect smaller planets. The orbits of planets and moons in the solar system often align with the orientation of the host star/planet they orbit. Assuming the orbit of a planet is aligned with the rotational axis of a brown dwarf or planetary-mass object, the geometric transit probability of an object similar to Io can be calculated with the formula cos(79.5°)/cos(inclination). The inclination was estimated for several brown dwarfs and planetary-mass objects. SIMP 0136 for example has an estimated inclination of 80°±12. Assuming the lower bound of i≥68° for SIMP 0136, this results in a transit probability of ≥48.6% for close-in planets. It is however not known how common close-in planets are around brown dwarfs and they might be more common for lower-mass objects, as disk sizes seem to decrease with mass.
+Strong evidence of a circumbinary planet in a polar orbit around 2M1510 was presented in 2025. The discovery was made with the Very Large Telescope.
+
+
+=== Habitability ===
+
+Habitability for hypothetical planets orbiting brown dwarfs has been studied. Computer models suggesting conditions for these bodies to have habitable planets are very stringent, the habitable zone being narrow, close (T dwarf 0.005 au) and decreasing with time, due to the cooling of the brown dwarf (they fuse for at most 10 million years).    The orbits there would have to be of extremely low eccentricity (on the order of 10−6) to avoid strong tidal forces that would trigger a runaway greenhouse effect on the planets, rendering them uninhabitable. There would also be no moons.
+
+
+== Superlative brown dwarfs ==
+
+In 1984, it was postulated by some astronomers that the Sun may be orbited by an undetected brown dwarf (sometimes referred to as Nemesis) that could interact with the Oort cloud just as passing stars can. However, this hypothesis has fallen out of favor.
+
+
+=== Table of firsts ===
+
+
+=== Table of extremes ===
+
+
+== See also ==
+Fusor (astronomy)
+Brown-dwarf desert – Concept in astronomy
+Hot Jupiter
+Blue dwarf (red-dwarf stage) – Hypothetical class of star that develops from a red dwarf
+Dark matter – Hypothetical invisible cosmic material
+Exoplanet – Planet outside of the Solar System
+Stellification
+Sub-brown dwarf
+WD 0032-317 b
+List of brown dwarfs
+List of Y-dwarfs
+
+
+== Footnotes ==
+
+
+== References ==
+
+
+== Further reading ==
+Allard, France; Homeier, Derek (2007). "Brown dwarfs". Scholarpedia. 2 (12): 4475. Bibcode:2007SchpJ...2.4475A. doi:10.4249/scholarpedia.4475.
+"brown dwarf. The Columbia Encyclopedia, Sixth Edition. 2001". www.bartleby.com. Archived from the original on 2005-01-14. Retrieved 2025-12-20.
+Luhman, Kevin L.; Adame, Lucía; d'Alessio, Paola; Calvet, Nuria; Hartmann, Lee; Megeath, S. Thomas; Fazio, Giovanni G. (2005). "Discovery of a Planetary-Mass Brown Dwarf with a Circumstellar Disk". The Astrophysical Journal. 635 (1): L93–L96. arXiv:astro-ph/0511807. Bibcode:2005ApJ...635L..93L. doi:10.1086/498868. S2CID 11685964.
+Deacon, N. R.; Hambly, N. C. (2006). "The possiblity of detection of ultracool dwarfs with the UKIRT Infrared Deep Sky Survey". Monthly Notices of the Royal Astronomical Society. 371 (4): 1722–1730. arXiv:astro-ph/0607305. Bibcode:2006MNRAS.371.1722D. doi:10.1111/j.1365-2966.2006.10795.x.
+
+
+== External links ==
+
+HubbleSite newscenter – Weather patterns on a brown dwarf
+A current list of L and T dwarfs

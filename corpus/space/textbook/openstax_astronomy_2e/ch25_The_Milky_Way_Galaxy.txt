@@ -1,0 +1,1133 @@
+Figure 25.1 Milky Way Galaxy. The Milky Way rises over Square Tower, an ancestral pueblo building at Hovenweep National
+Monument in Utah. Many stars and dark clouds of dust combine to make a spectacular celestial sight of our home Galaxy. The
+location has been designated an International Dark Sky Park by the International Dark Sky Association.
+Chapter Outline
+25.1 The Architecture of the Galaxy
+25.2 Spiral Structure
+25.3 The Mass of the Galaxy
+25.4 The Center of the Galaxy
+25.5 Stellar Populations in the Galaxy
+25.6 The Formation of the Galaxy
+Thinking Ahead
+Today, we know that our Sun is just one of the many billions of stars that make up the huge cosmic island we
+call the Milky Way Galaxy. How can we “weigh” such an enormous system of stars and measure its total mass?
+One of the most striking features you can see in a truly dark sky—one without light pollution—is the band of
+faint white light called the Milky Way, which stretches from one horizon to the other. The name comes from an
+ancient Greek legend that compared its faint white splash of light to a stream of spilled milk. But folktales
+differ from culture to culture: one East African tribe thought of the hazy band as the smoke of ancient
+campfires, several Native American stories tell of a path across the sky traveled by sacred animals, and in
+Siberia, the diffuse arc was known as the seam of the tent of the sky.
+In 1610, Galileo made the first telescopic survey of the Milky Way and discovered that it is composed of a
+multitude of individual stars. Today, we know that the Milky Way comprises our view inward of the huge
+cosmic pinwheel that we call the Milky Way Galaxy and that is our home. Moreover, our Galaxy is now
+recognized as just one galaxy among many billions of other galaxies in the cosmos.
+The Milky Way Galaxy
+25 • Thinking Ahead
+25.1
+The Architecture of the Galaxy
+Learning Objectives
+By the end of this section, you will be able to:
+Explain why William and Caroline Herschel concluded that the Milky Way has a flattened structure
+centered on the Sun and solar system
+Describe the challenges of determining the Galaxy’s structure from our vantage point within it
+Identify the main components of the Galaxy
+The Milky Way Galaxy surrounds us, and you might think it is easy to study because it is so close. However,
+the very fact that we are embedded within it presents a difficult challenge. Suppose you were given the task of
+mapping New York City. You could do a much better job from a helicopter flying over the city than you could if
+you were standing in Times Square. Similarly, it would be easier to map our Galaxy if we could only get a little
+way outside it, but instead we are trapped inside and way out in its suburbs—far from the galactic equivalent
+of Times Square.
+Herschel Measures the Galaxy
+In 1785, William Herschel (Figure 25.2) made the first important discovery about the architecture of the Milky
+Way Galaxy. Using a large reflecting telescope that he had built, William and his sister Caroline counted stars
+in different directions of the sky. They found that most of the stars they could see lay in a flattened structure
+encircling the sky, and that the numbers of stars were about the same in any direction around this structure.
+Herschel therefore concluded that the stellar system to which the Sun belongs has the shape of a disk or
+wheel (he might have called it a Frisbee except Frisbees hadn’t been invented yet), and that the Sun must be
+near the hub of the wheel (Figure 25.3).
+Figure 25.2 William Herschel (1738–1822) and Caroline Herschel (1750–1848). William Herschel was a German musician who
+emigrated to England and took up astronomy in his spare time. He discovered the planet Uranus, built several large telescopes, and
+made measurements of the Sun’s place in the Galaxy, the Sun’s motion through space, and the comparative brightnesses of stars.
+This painting shows William and his sister Caroline polishing a telescope lens. (credit: modification of work by the Wellcome Library)
+To understand why Herschel reached this conclusion, imagine that you are a member of a band standing in
+formation during halftime at a football game. If you count the band members you see in different directions
+and get about the same number each time, you can conclude that the band has arranged itself in a circular
+pattern with you at the center. Since you see no band members above you or underground, you know that the
+circle made by the band is much flatter than it is wide.
+25 • The Milky Way Galaxy
+Figure 25.3 Herschel’s Diagram of the Milky Way. Herschel constructed this cross section of the Galaxy by counting stars in
+various directions.
+We now know that Herschel was right about the shape of our system, but wrong about where the Sun lies
+within the disk. As we saw in Between the Stars: Gas and Dust in Space, we live in a dusty Galaxy. Because
+interstellar dust absorbs the light from stars, Herschel could see only those stars within about 6000 light-years
+of the Sun. Today we know that this is a very small section of the entire 100,000-light-year-diameter disk of
+stars that makes up the Galaxy.
+Harlow Shapley: Mapmaker to the Stars
+Until the early 1900s, astronomers generally accepted Herschel’s conclusion that the Sun is near the center
+of the Galaxy. The discovery of the Galaxy’s true size and our actual location came about largely through
+the efforts of Harlow Shapley. In 1917, he was studying RR Lyrae variable stars in globular clusters. By
+comparing the known intrinsic luminosity of these stars to how bright they appeared, Shapley could
+calculate how far away they are. (Recall that it is distance that makes the stars look dimmer than they would
+be “up close,” and that the brightness fades as the distance squared.) Knowing the distance to any star in a
+cluster then tells us the distance to the cluster itself.
+Globular clusters can be found in regions that are free of interstellar dust and so can be seen at very large
+distances. When Shapley used the distances and directions of 93 globular clusters to map out their
+positions in space, he found that the clusters are distributed in a spherical volume, which has its center not
+at the Sun but at a distant point along the Milky Way in the direction of Sagittarius. Shapley then made the
+bold assumption, verified by many other observations since then, that the point on which the system of
+globular clusters is centered is also the center of the entire Galaxy (Figure 25.4).
+VOYAGERS IN ASTRONOMY
+25.1 • The Architecture of the Galaxy
+Figure 25.4 Harlow Shapley and His Diagram of the Milky Way. (a) Shapley poses for a formal portrait. (b) His diagram shows
+the location of globular clusters, with the position of the Sun also marked. The black area shows Herschel’s old diagram, centered
+on the Sun, approximately to scale.
+Shapley’s work showed once and for all that our star has no special place in the Galaxy. We are in a
+nondescript region of the Milky Way, only one of 200 to 400 billion stars that circle the distant center of our
+Galaxy.
+Born in 1885 on a farm in Missouri, Harlow Shapley at first dropped out of school with the equivalent of only
+a fifth-grade education. He studied at home and at age 16 got a job as a newspaper reporter covering crime
+stories. Frustrated by the lack of opportunities for someone who had not finished high school, Shapley went
+back and completed a six-year high-school program in only two years, graduating as class valedictorian.
+In 1907, at age 22, he went to the University of Missouri, intent on studying journalism, but found that the
+school of journalism would not open for a year. Leafing through the college catalog (or so he told the story
+later), he chanced to see “Astronomy” among the subjects beginning with “A.” Recalling his boyhood
+interest in the stars, he decided to study astronomy for the next year (and the rest, as the saying goes, is
+history).
+Upon graduation Shapley received a fellowship for graduate study at Princeton and began to work with the
+brilliant Henry Norris Russell (see the Henry Norris Russell feature box). For his PhD thesis, Shapley made
+major contributions to the methods of analyzing the behavior of eclipsing binary stars. He was also able to
+show that cepheid variable stars are not binary systems, as some people thought at the time, but individual
+stars that pulsate with striking regularity.
+Impressed with Shapley’s work, George Ellery Hale offered him a position at the Mount Wilson Observatory,
+where the young man took advantage of the clear mountain air and the 60-inch reflector to do his
+pioneering study of variable stars in globular clusters.
+Shapley subsequently accepted the directorship of the Harvard College Observatory, and over the next 30
+years, he and his collaborators made contributions to many fields of astronomy, including the study of
+neighboring galaxies, the discovery of dwarf galaxies, a survey of the distribution of galaxies in the
+universe, and much more. He wrote a series of nontechnical books and articles and became known as one
+of the most effective popularizers of astronomy. Shapley enjoyed giving lectures around the country,
+25 • The Milky Way Galaxy
+including at many smaller colleges where students and faculty rarely got to interact with scientists of his
+caliber.
+During World War II, Shapley helped rescue many scientists and their families from Eastern Europe; later,
+he helped found UNESCO, the United Nations Educational, Scientific, and Cultural Organization. He wrote a
+pamphlet called Science from Shipboard for men and women in the armed services who had to spend
+many weeks on board transport ships to Europe. And during the difficult period of the 1950s, when
+congressional committees began their “witch hunts” for communist sympathizers (including such liberal
+leaders as Shapley), he spoke out forcefully and fearlessly in defense of the freedom of thought and
+expression. A man of many interests, he was fascinated by the behavior of ants, and wrote scientific papers
+about them as well as about galaxies.
+By the time he died in 1972, Shapley was acknowledged as one of the pivotal figures of modern astronomy,
+a “twentieth-century Copernicus” who mapped the Milky Way and showed us our place in the Galaxy.
+To find more information about Shapley’s life and work (https://openstax.org/l/30shapbrumed), see the
+entry for him on the Bruce Medalists website. (This site features the winners of the Bruce Medal of the
+Astronomical Society of the Pacific, one of the highest honors in astronomy; the list is a who’s who of some
+of the greatest astronomers of the last twelve decades.)
+Disks and Haloes
+With modern instruments, astronomers can now penetrate the “smog” of the Milky Way by studying radio and
+infrared emissions from distant parts of the Galaxy. Measurements at these wavelengths (as well as
+observations of other galaxies like ours) have given us a good idea of what the Milky Way would look like if we
+could observe it from a distance.
+Figure 25.5 sketches what we would see if we could view the Galaxy face-on and edge-on. The brightest part of
+the Galaxy consists of a thin, circular, rotating disk of stars distributed across a region about 100,000 lightyears in diameter and about 2000 light-years thick. (Given how thin the disk is, perhaps a CD is a more
+appropriate analogy than a wheel.) The very youngest stars, and the dust and gas from which stars form, are
+found typically within 100 light-years of the plane of the Milky Way Galaxy. The mass of the interstellar matter
+is about 15% of the mass of the stars in this disk.
+LINK TO LEARNING
+25.1 • The Architecture of the Galaxy
+Figure 25.5 Schematic Representation of the Galaxy. The left image shows the face-on view of the spiral disk; the right image
+shows the view looking edge-on along the disk. The major spiral arms are labeled. The Sun is located on the inside edge of the short
+Orion spur.
+As the diagram in Figure 25.5 shows, the stars, gas, and dust are not spread evenly throughout the disk but are
+concentrated into a central bar and a series of spiral arms. Recent infrared observations have confirmed that
+the central bar is composed mostly of old yellow-red stars. The two main spiral arms appear to connect with
+the ends of the bar. They are highlighted by the blue light from young hot stars. We know many other spiral
+galaxies that also have bar-shaped concentrations of stars in their central regions; for that reason they are
+called barred spirals. Figure 25.6 shows two other galaxies—one without a bar and one with a strong bar—to
+give you a basis for comparison to our own. We will describe our spiral structure in more detail shortly. The
+Sun is located about halfway between the center of the Galaxy and the edge of the disk and only about 70
+light-years above its central plane.
+Figure 25.6 Unbarred and Barred Spiral Galaxies. (a) This image shows the unbarred spiral galaxy M74. It contains a small central
+bulge of mostly old yellow-red stars, along with spiral arms that are highlighted with the blue light from young hot stars. (b) This
+25 • The Milky Way Galaxy
+image shows the strongly barred spiral galaxy NGC 1365. The bulge and the fainter bar both appear yellowish because the brightest
+stars in them are mostly old yellow and red giants. Two main spiral arms project from the ends of the bar. As in M74, these spiral
+arms are populated with blue stars and red patches of glowing gas—hallmarks of recent star formation. The Milky Way Galaxy is
+thought to have a barred spiral structure that is intermediate between these two examples. (credit a: modification of work by ESO/
+PESSTO/S. Smartt; credit b: modification of work by ESO)
+Our thin disk of young stars, gas, and dust is embedded in a thicker but more diffuse disk of older stars; this
+thicker disk extends about 1000 light-years above and 1000 light-years below the midplane of the thin disk and
+contains only about 5% as much mass as the thin disk. The stars thin out with distance from the galactic plane
+and don’t have a sharp edge. Approximately 2/3 of the stars in the thick disk are within 1000 light-years of
+midplane.
+Close in to the galactic center (within about 10,000 light-years), the stars are no longer confined to the disk but
+form a central bulge (or nuclear bulge). When we observe with visible light, we can glimpse the stars in the
+bulge only in those rare directions where there happens to be relatively little interstellar dust. The first picture
+that actually succeeded in showing the bulge as a whole was taken at infrared wavelengths (Figure 25.7).
+Figure 25.7 Inner Part of the Milky Way Galaxy. This beautiful infrared map, showing half a billion stars, was obtained as part of
+the Two Micron All Sky Survey (2MASS). Because interstellar dust does not absorb infrared as strongly as visible light, this view
+reveals the previously hidden bulge of old stars that surrounds the center of our Galaxy, along with the Galaxy’s thin disk
+component. (credit: modification of work by 2MASS/J. Carpenter, T. H. Jarrett, and R. Hurt)
+The fact that much of the bulge is obscured by dust makes its shape difficult to determine. For a long time,
+astronomers assumed it was spherical. However, infrared images and other data indicate that the bulge is
+about two times longer than it is wide, and shaped rather like a peanut. The relationship between this
+elongated inner bulge and the larger bar of stars remains uncertain. At the very center of the nuclear bulge is
+a tremendous concentration of matter, which we will discuss later in this chapter.
+In our Galaxy, the thin and thick disks and the nuclear bulge are embedded in a spherical halo of very old,
+faint stars that extends to a distance of at least 150,000 light-years from the galactic center. Most of the
+globular clusters are also found in this halo.
+The mass in the Milky Way extends even farther out, well beyond the boundary of the luminous stars to a
+distance of at least 200,000 light-years from the center of the Galaxy. This invisible mass has been give the
+name dark matter because it emits no light and cannot be seen with any telescope. Its composition is
+unknown, and it can be detected only because of its gravitational effects on the motions of luminous matter
+that we can see. We know that this extensive dark matter halo exists because of its effects on the orbits of
+distant star clusters and other dwarf galaxies that are associated with the Galaxy. This mysterious halo will be
+a subject of the section on The Mass of the Galaxy, and the properties of dark matter will be discussed more in
+the chapter on The Big Bang.
+Some vital statistics of the thin and thick disks and the stellar halo are given in Table 25.1, with an illustration in
+Figure 25.8. Note particularly how the ages of stars correlate with where they are found. As we shall see, this
+information holds important clues to how the Milky Way Galaxy formed.
+25.1 • The Architecture of the Galaxy
+Characteristics of the Milky Way Galaxy
+Property
+Thin Disk
+Thick Disk
+Stellar Halo (Excludes
+Dark Matter)
+Stellar mass
+4 × 1010 MSun
+A few percent of the thin disk
+mass
+1010 MSun
+Luminosity
+3 × 1010 LSun
+A few percent of the thin disk
+luminosity
+8 × 108 LSun
+Typical age of stars
+1 million to 10
+billion years
+11 billion years
+13 billion years
+Heavier-element
+abundance
+High
+Intermediate
+Very low
+Rotation
+High
+Intermediate
+Very low
+Table 25.1
+Figure 25.8 Major Parts of the Milky Way Galaxy. This schematic shows the major components of our Galaxy.
+Establishing this overall picture of the Galaxy from our dust-shrouded viewpoint inside the thin disk has been
+one of the great achievements of modern astronomy (and one that took decades of effort by astronomers
+working with a wide range of telescopes). One thing that helped enormously was the discovery that our
+Galaxy is not unique in its characteristics. There are many other flat, spiral-shaped islands of stars, gas, and
+dust in the universe. For example, the Milky Way somewhat resembles the Andromeda galaxy, which, at a
+distance of about 2.3 million light-years, is our nearest neighboring giant spiral galaxy. Just as you can get a
+much better picture of yourself if someone else takes the photo from a distance away, pictures and other
+diagnostic observations of nearby galaxies that resemble ours have been vital to our understanding of the
+properties of the Milky Way.
+25 • The Milky Way Galaxy
+Start this video (https://openstax.org/l/30gaiastars), then click-and-drag to look in all directions from Earth
+in the Gaia space telescope’s visualization of the stars of our galaxy.
+The Milky Way viewer (https://openstax.org/l/30milkywayview) allows you to move to different locations in
+the Milky Way (using the Move and Zoom buttons) and view different stellar populations.
+The Milky Way Galaxy in Myth and Legend
+To most of us living in the twenty-first century, the Milky Way Galaxy is an elusive sight. We must make an
+effort to leave our well-lit homes and streets and venture beyond our cities and suburbs into less populated
+environments. Once the light pollution subsides to negligible levels, the Milky Way can be readily spotted
+arching over the sky on clear, moonless nights. The Milky Way is especially bright in late summer and early
+fall in the Northern Hemisphere. Some of the best places to view the Milky Way are in our national and state
+parks, where residential and industrial developments have been kept to a minimum. Some of these parks
+host special sky-gazing events that are definitely worth checking out—especially during the two weeks
+surrounding the new moon, when the faint stars and Milky Way don’t have to compete with the Moon’s
+brilliance.
+Go back a few centuries, and these starlit sights would have been the norm rather than the exception.
+Before the advent of electric or even gas lighting, people relied on short-lived fires to illuminate their
+homes and byways. Consequently, their night skies were typically much darker. Confronted by myriad
+stellar patterns and the Milky Way’s gauzy band of diffuse light, people of all cultures developed myths to
+make sense of it all.
+Some of the oldest myths relating to the Milky Way are maintained by the aboriginal Australians through
+their rock painting and storytelling. These legacies are thought to go back tens of thousands of years, to
+when the aboriginal people were being “dreamed” along with the rest of the cosmos. The Milky Way played
+a central role as an arbiter of the Creation. Taking the form of a great serpent, it joined with the Earth
+serpent to dream and thus create all the creatures on Earth.
+The ancient Greeks viewed the Milky Way as a spray of milk that spilled from the breast of the goddess
+Hera. In this legend, Zeus had secretly placed his infant son Heracles at Hera’s breast while she was asleep
+in order to give his half-human son immortal powers. When Hera awoke and found Heracles suckling, she
+pushed him away, causing her milk to spray forth into the cosmos (Figure 25.9).
+The dynastic Chinese regarded the Milky Way as a “silver river” that was made to separate two star-crossed
+lovers. To the east of the Milky Way, Zhi Nu, the weaving maiden, was identified with the bright star Vega in
+the constellation of Lyra the Harp. To the west of the Milky Way, her lover Niu Lang, the cowherd, was
+associated with the star Altair in the constellation of Aquila the Eagle. They had been exiled on opposite
+sides of the Milky Way by Zhi Nu’s mother, the Queen of Heaven, after she heard of their secret marriage
+and the birth of their two children. However, once a year, they are permitted to reunite. On the seventh day
+of the seventh lunar month (which typically occurs in our month of August), they would meet on a bridge
+over the Milky Way that thousands of magpies had made (Figure 25.9). This romantic time continues to be
+celebrated today as Qi Xi, meaning “Double Seventh,” with couples reenacting the cosmic reunion of Zhi Nu
+LINK TO LEARNING
+MAKING CONNECTIONS
+25.1 • The Architecture of the Galaxy
+and Niu Lang.
+Figure 25.9 The Milky Way in Myth. (a) Origin of the Milky Way by Jacopo Tintoretto (circa 1575) illustrates the Greek myth that
+explains the formation of the Milky Way. (b) The Moon of the Milky Way by Japanese painter Tsukioka Yoshitoshi depicts the
+Chinese legend of Zhi Nu and Niu Lang.
+To the Quechua Indians of Andean Peru, the Milky Way was seen as the celestial abode for all sorts of
+cosmic creatures. Arrayed along the Milky Way are myriad dark patches that they identified with partridges,
+llamas, a toad, a snake, a fox, and other animals. The Quechua’s orientation toward the dark regions rather
+than the glowing band of starlight appears to be unique among all the myth makers. Likely, their access to
+the richly structured southern Milky Way had something to do with it.
+Among Finns, Estonians, and related northern European cultures, the Milky Way is regarded as the
+“pathway of birds” across the night sky. Having noted that birds seasonally migrate along a north-south
+route, they identified this byway with the Milky Way. Recent scientific studies have shown that this myth is
+rooted in fact: the birds of this region use the Milky Way as a guide for their annual migrations.
+Today, we regard the Milky Way as our galactic abode, where the foment of star birth and star death plays
+out on a grand stage, and where sundry planets have been found to be orbiting all sorts of stars. Although
+our perspective on the Milky Way is based on scientific investigations, we share with our forebears an
+affinity for telling stories of origin and transformation. In these regards, the Milky Way continues to
+fascinate and inspire us.
+25.2
+Spiral Structure
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the structure of the Milky Way Galaxy and how astronomers discovered it
+Compare theoretical models for the formation of spiral arms in disk galaxies
+Astronomers were able to make tremendous progress in mapping the spiral structure of the Milky Way after
+the discovery of the 21-cm line that comes from cool hydrogen (see Between the Stars: Gas and Dust in Space).
+Remember that the obscuring effect of interstellar dust prevents us from seeing stars at large distances in the
+25 • The Milky Way Galaxy
+disk at visible wavelengths. However, radio waves of 21-cm wavelength pass right through the dust, enabling
+astronomers to detect hydrogen atoms throughout the Galaxy. More recent surveys of the infrared emission
+from stars in the disk have provided a similar dust-free perspective of our Galaxy’s stellar distribution. Despite
+all this progress over the past fifty years, we are still just beginning to pin down the precise structure of our
+Galaxy.
+The Arms of the Milky Way
+Our radio observations of the disk’s gaseous component indicate that the Galaxy has two major spiral arms
+that emerge from the bar and several fainter arms and shorter spurs. You can see a recently assembled map
+of our Galaxy’s arm structure—derived from studies in the infrared—in Figure 25.10.
+Figure 25.10 Milky Way Bar and Arms. Here, we see the Milky Way Galaxy as it would look from above. This image, assembled from
+data from NASA’s Spitzer mission, shows that the Milky Way Galaxy has a modest bar in its central regions. Two spiral arms, Scutum-
+Centaurus and Perseus, emerge from the ends of the bar and wrap around the bulge. The Sagittarius and Outer arms have fewer
+stars than the other two arms. (credit: modification of work by NASA/JPL-Caltech/R. Hurt (SSC/Caltech))
+The Sun is near the inner edge of a short arm called the Orion Spur, which is about 10,000 light-years long and
+contains such conspicuous features as the Cygnus Rift (the great dark nebula in the summer Milky Way) and
+the bright Orion Nebula. Figure 25.11 shows a few other objects that share this small section of the Galaxy
+with us and are easy to see. Remember, the farther away we try to look from our own arm, the more the dust
+25.2 • Spiral Structure
+in the Galaxy builds up and makes it hard to see with visible light.
+Figure 25.11 Orion Spur. The Sun is located in the Orion Spur, which is a minor spiral arm located between two other arms. In this
+diagram, the white lines point to some other noteworthy objects that share this feature of the Milky Way Galaxy with the Sun. (credit:
+modification of work by NASA/JPL-Caltech)
+Formation of Spiral Structure
+At the Sun’s distance from its center, the Galaxy does not rotate like a solid wheel or a CD inside your player.
+Instead, the way individual objects turn around the center of the Galaxy is more like the solar system. Stars, as
+well as the clouds of gas and dust, obey Kepler’s third law. Objects farther from the center take longer to
+complete an orbit around the Galaxy than do those closer to the center. In other words, stars (and interstellar
+matter) in larger orbits in the Galaxy trail behind those in smaller ones. This effect is called differential
+galactic rotation.
+Differential rotation would appear to explain why so much of the material in the disk of the Milky Way is
+concentrated into elongated features that resemble spiral arms. No matter what the original distribution of
+the material might be, the differential rotation of the Galaxy can stretch it out into spiral features. Figure 25.12
+shows the development of spiral arms from two irregular blobs of interstellar matter. Notice that as the
+portions of the blobs closest to the galactic center move faster, those farther out trail behind.
+25 • The Milky Way Galaxy
+Figure 25.12 Simplified Model for the Formation of Spiral Arms. This sketch shows how spiral arms might form from irregular
+clouds of interstellar material stretched out by the different rotation rates throughout the Galaxy. The regions farthest from the
+galactic center take longer to complete their orbits and thus lag behind the inner regions. If this were the only mechanism for
+creating spiral arms, then over time the spiral arms would completely wind up and disappear. Since many galaxies have spiral arms,
+they must be long-lived, and there must be other processes at work to maintain them.
+But this picture of spiral arms presents astronomers with an immediate problem. If that’s all there were to the
+story, differential rotation—over the roughly 13-billion-year history of the Galaxy—would have wound the
+Galaxy’s arms tighter and tighter until all semblance of spiral structure had disappeared. But did the Milky
+Way actually have spiral arms when it formed 13 billion years ago? And do spiral arms, once formed, last for
+that long a time?
+With the advent of the Hubble Space Telescope, it has become possible to observe the structure of very distant
+galaxies and to see what they were like shortly after they began to form more than 13 billion years ago. What
+the observations show is that galaxies in their infancy had bright, clumpy star-forming regions, but no regular
+spiral structure.
+Over the next few billion years, the galaxies began to “settle down.” The galaxies that were to become spirals
+lost their massive clumps and developed a central bulge. The turbulence in these galaxies decreased, rotation
+began to dominate the motions of the stars and gas, and stars began to form in a much quieter disk. Smaller
+star-forming clumps began to form fuzzy, not-very-distinct spiral arms. Bright, well-defined spiral arms began
+to appear only when the galaxies were about 3.6 billion years old. Initially, there were two well-defined arms.
+Multi-armed structures in galaxies like we see in the Milky Way appeared only when the universe was about 8
+billion years old.
+We will discuss the history of galaxies in more detail in The Evolution and Distribution of Galaxies. But, even
+from our brief discussion, you can get the sense that the spiral structures we now observe in mature galaxies
+have come along later in the full story of how things develop in the universe.
+Scientists have used supercomputer calculations to model the formation and evolution of the arms. These
+calculations follow the motions of up to 100 million “star particles” to see whether gravitational forces can
+cause them to form spiral structure. What these calculations show is that giant molecular clouds (which we
+discussed in Between the Stars: Gas and Dust in Space) have enough gravitational influence over their
+surroundings to initiate the formation of structures that look like spiral arms. These arms then become selfperpetuating and can survive for at least several billion years. The arms may change their brightness over time
+as star formation comes and goes, but they are not temporary features. The concentration of matter in the
+arms exerts sufficient gravitational force to keep the arms together over long periods of time.
+25.2 • Spiral Structure
+25.3
+The Mass of the Galaxy
+Learning Objectives
+By the end of this section, you will be able to:
+Describe historical attempts to determine the mass of the Galaxy
+Interpret the observed rotation curve of our Galaxy to suggest the presence of dark matter whose
+distribution extends well beyond the Sun’s orbit
+When we described the sections of the Milky Way, we said that the stars are now known to be surrounded by a
+much larger halo of invisible matter. Let’s see how this surprising discovery was made.
+Kepler Helps Weigh the Galaxy
+The Sun, like all the other stars in the Galaxy, orbits the center of the Milky Way. Our star’s orbit is nearly
+circular and lies in the Galaxy’s disk. The speed of the Sun in its orbit is about 200 kilometers per second, which
+means it takes us approximately 225 million years to go once around the center of the Galaxy. We call the
+period of the Sun’s revolution the galactic year. It is a long time compared to human time scales; during the
+entire lifetime of Earth, only about 20 galactic years have passed. This means that we have gone only a tiny
+fraction of the way around the Galaxy in all the time that humans have gazed into the sky.
+We can use the information about the Sun’s orbit to estimate the mass of the Galaxy (just as we could “weigh”
+the Sun by monitoring the orbit of a planet around it—see Orbits and Gravity). Let’s assume that the Sun’s
+orbit is circular and that the Galaxy is roughly spherical, (we know the Galaxy is shaped more like a disk, but to
+simplify the calculation we will make this assumption, which illustrates the basic approach). Long ago, Newton
+showed that if you have matter distributed in the shape of a sphere, then it is simple to calculate the pull of
+gravity on some object just outside that sphere: you can assume that gravity acts as if all the matter were
+concentrated at a point in the center of the sphere. For our calculation, then, we can assume that all the mass
+that lies inward of the Sun’s position is concentrated at the center of the Galaxy, and that the Sun orbits that
+point from a distance of about 26,000 light-years.
+This is the sort of situation to which Kepler’s third law (as modified by Newton) can be directly applied.
+Plugging numbers into Kepler’s formula, we can calculate the sum of the masses of the Galaxy and the Sun.
+However, the mass of the Sun is completely trivial compared to the mass of the Galaxy. Thus, for all practical
+purposes, the result (about 100 billion times the mass of the Sun) is the mass of the Milky Way. More
+sophisticated calculations based on more sophisticated models give a similar result.
+Our estimate tells us how much mass is contained in the volume inside the Sun’s orbit. This is a good estimate
+for the total mass of the Galaxy only if hardly any mass lies outside the Sun’s orbit. For many years
+astronomers thought this assumption was reasonable. The number of bright stars and the amount of
+luminous matter (meaning any material from which we can detect electromagnetic radiation) both drop off
+dramatically at distances of more than about 30,000 light-years from the galactic center. Little did we suspect
+how wrong our assumption was.
+A Galaxy of Mostly Invisible Matter
+In science, what seems to be a reasonable assumption can later turn out to be wrong (which is why we
+continue to do observations and experiments every chance we get). There is a lot more to the Milky Way than
+meets the eye (or our instruments). While there is relatively little luminous matter beyond 30,000 light-years,
+we now know that a lot of invisible matter exists at great distances from the galactic center.
+We can understand how astronomers detected this invisible matter by remembering that according to
+Kepler’s third law, objects orbiting at large distances from a massive object will move more slowly than objects
+that are closer to that central mass. In the case of the solar system, for example, the outer planets move more
+slowly in their orbits than the planets close to the Sun.
+25 • The Milky Way Galaxy
+There are a few objects, including globular clusters and some nearby small satellite galaxies, that lie well
+outside the luminous boundary of the Milky Way. If most of the mass of our Galaxy were concentrated within
+the luminous region, then these very distant objects should travel around their galactic orbits at lower speeds
+than, for example, the Sun does.
+It turns out, however, that the few objects seen at large distances from the luminous boundary of the Milky
+Way Galaxy are not moving more slowly than the Sun. There are some globular clusters and RR Lyrae stars
+between 30,000 and 150,000 light-years from the center of the Galaxy, and their orbital velocities are even
+greater than the Sun’s (Figure 25.13).
+Figure 25.13 Rotation Curve of the Galaxy. The orbital speed of carbon monoxide (CO) and hydrogen (H) gas at different distances
+from the center of the Milky Way Galaxy is shown in red. The blue curve shows what the rotation curve would look like if all the
+matter in the Galaxy were located inside a radius of 50,000 light-years. Instead of going down, the speed of gas clouds farther out
+remains high, indicating a great deal of mass beyond the Sun’s orbit. The horizontal axis shows the distance from the galactic center
+in kiloparsecs (where a kiloparsec equals 3,260 light-years).
+What do these higher speeds mean? Kepler’s third law tells us how fast objects must orbit a source of gravity if
+they are neither to fall in (because they move too slowly) nor to escape (because they move too fast). If the
+Galaxy had only the mass calculated by Kepler, then the high-speed outer objects should long ago have
+escaped the grip of the Milky Way. The fact that they have not done so means that our Galaxy must have more
+gravity than can be supplied by the luminous matter—in fact, a lot more gravity. The high speed of these outer
+objects tells us that the source of this extra gravity must extend outward from the center far beyond the Sun’s
+orbit.
+If the gravity were supplied by stars or by something else that gives off radiation, we should have spotted this
+additional outer material long ago. We are therefore forced to the reluctant conclusion that this matter is
+invisible and has, except for its gravitational pull, gone entirely undetected.
+Studies of the motions of the most remote globular clusters and the small galaxies that orbit our own show
+that the total mass of the Galaxy is at least 2 × 1012 MSun, which is about twenty times greater than the amount
+of luminous matter. Moreover, the dark matter (as astronomers have come to call the invisible material)
+extends to a distance of at least 200,000 light-years from the center of the Galaxy. Observations indicate that
+this dark matter halo is almost but not quite spherical.
+The obvious question is: what is the dark matter made of? Let’s look at a list of “suspects” taken from our
+study of astronomy so far. Since this matter is invisible, it clearly cannot be in the form of ordinary stars. And it
+cannot be gas in any form (remember that there has to be a lot of it). If it were neutral hydrogen gas, its 21-cm
+wavelength spectral-line emission would have been detected as radio waves. If it were ionized hydrogen, it
+should be hot enough to emit visible radiation. If a lot of hydrogen atoms out there had combined into
+hydrogen molecules, these should produce dark features in the ultraviolet spectra of objects lying beyond the
+Galaxy, but such features have not been seen. Nor can the dark matter consist of interstellar dust, since in the
+25.3 • The Mass of the Galaxy
+required quantities, the dust would significantly obscure the light from distant galaxies.
+What are our other possibilities? The dark matter cannot be a huge number of black holes (of stellar mass) or
+old neutron stars, since interstellar matter falling onto such objects would produce more X-rays than are
+observed. Also, recall that the formation of black holes and neutron stars is preceded by a substantial amount
+of mass loss, which scatters heavy elements into space to be incorporated into subsequent generations of
+stars. If the dark matter consisted of an enormous number of any of those objects, they would have blown off
+and recycled a lot of heavier elements over the history of the Galaxy. In that case, the young stars we observe
+in our Galaxy today would contain much greater abundances of heavy elements than they actually do.
+Brown dwarfs and lone Jupiter-like planets have also been ruled out. First of all, there would have to be an
+awful lot of them to make up so much dark matter. But we have a more direct test of whether so many lowmass objects could actually be lurking out there. As we learned in Black Holes and Curved Spacetime, the
+general theory of relativity predicts that the path traveled by light is changed when it passes near a
+concentration of mass. It turns out that when the two objects appear close enough together in the sky, the
+mass closer to us can bend the light from farther away. With just the right alignment, the image of the more
+distant object also becomes significantly brighter. By looking for the temporary brightening that occurs when
+a dark matter object in our own Galaxy moves across the path traveled by light from stars in the Magellanic
+Clouds, astronomers have now shown that the dark matter cannot be made up of a lot of small objects with
+masses between one-millionth and one-tenth the mass of the Sun.
+What’s left? One possibility is that the dark matter is composed of exotic subatomic particles of a type not yet
+detected on Earth. Very sophisticated (and difficult) experiments are now under way to look for such particles.
+Stay tuned to see whether anything like that turns up.
+We should add that the problem of dark matter is by no means confined to the Milky Way. Observations show
+that dark matter must also be present in other galaxies (whose outer regions also orbit too fast “for their own
+good”—they also have flat rotation curves). As we will see, dark matter even exists in great clusters of galaxies
+whose members are now known to move around under the influence of far more gravity than can be
+accounted for by luminous matter alone.
+Stop a moment and consider how astounding the conclusion we have reached really is. Perhaps as much as
+95% of the mass in our Galaxy (and many other galaxies) is not only invisible, but we do not even know what it
+is made of. The stars and raw material we can observe may be merely the tip of the cosmic iceberg; underlying
+it all may be other matter, perhaps familiar, perhaps startlingly new. Understanding the nature of this dark
+matter is one of the great challenges of astronomy today; you will learn more about this in A Universe of
+(Mostly) Dark Matter and Dark Energy.
+You can use the Dark Matter Simulator (https://openstax.org/l/30darkmattsim) to explore the distribution
+of invisible dark matter in our galaxy. Use the controls in the upper right to change the amount of dark
+matter at different distances from the center of the galaxy. You can then compare the orbital speeds in
+your simulated galaxy with orbital speeds measured in the Milky Way.
+LINK TO LEARNING
+25 • The Milky Way Galaxy
+25.4
+The Center of the Galaxy
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the radio and X-ray observations that indicate energetic phenomena are occurring at the galactic
+center
+Explain what has been revealed by high-resolution near-infrared imaging of the galactic center
+Discuss how these near-infrared images, when combined with Kepler’s third law of motion, can be used to
+derive the mass of the central gravitating object
+At the beginning of this chapter, we hinted that the core of our Galaxy contains a large concentration of mass.
+In fact, we now have evidence that the very center contains a black hole with a mass equivalent to 4.6 million
+Suns and that all this mass fits within a sphere that has less than the diameter of Mercury’s orbit. Such
+monster black holes are called supermassive black holes by astronomers, to indicate that the mass they
+contain is far greater than that of the typical black hole created by the death of a single star. It is amazing that
+we have very convincing evidence that this black hole really does exist. After all, recall from the chapter on
+Black Holes and Curved Spacetime that we cannot see a black hole directly because by definition it radiates no
+energy. And we cannot even see into the center of the Galaxy in visible light because of absorption by the
+interstellar dust that lies between us and the galactic center. Light from the central region of the Galaxy is
+dimmed by a factor of a trillion (1012) by all this dust.
+Fortunately, we are not so blind at other wavelengths. Infrared and radio radiation, which have long
+wavelengths compared to the sizes of the interstellar dust grains, flow unimpeded past the dust particles and
+so reach our telescopes with hardly any dimming. In fact, the very bright radio source in the nucleus of the
+Galaxy, now known as Sagittarius A* (pronounced “Sagittarius A-star” and abbreviated Sgr A*), was the first
+cosmic radio source astronomers discovered.
+A Journey toward the Center
+Let’s take a voyage to the mysterious heart of our Galaxy and see what’s there. Figure 25.14 is a radio image of
+a region about 1500 light-years across, centered on Sagittarius A, a bright radio source that contains the
+smaller Sagittarius A*. Much of the radio emission comes from hot gas heated either by clusters of hot stars
+(the stars themselves do not produce radio emission and can’t be seen in the image) or by supernova blast
+waves. Most of the hollow circles visible on the radio image are supernova remnants. The other main source of
+radio emission is from electrons moving at high speed in regions with strong magnetic fields. The bright thin
+arcs and “threads” on the figure show us where this type of emission is produced.
+25.4 • The Center of the Galaxy
+Figure 25.14 Radio Image of Galactic Center Region. This radio map of the center of the Galaxy (at a wavelength of 90
+centimeters) was constructed from data obtained with the Very Large Array (VLA) of radio telescopes in Socorro, New Mexico.
+Brighter regions are more intense in radio waves. The galactic center is inside the region labeled Sagittarius A. Sagittarius B1 and B2
+are regions of active star formation. Many filaments or threadlike features are seen, as well as a number of shells (labeled SNR),
+which are supernova remnants. The scale bar at the bottom left is about 240 light-years long. Notice that radio astronomers also give
+fanciful animal names to some of the structures, much as visible-light nebulae are sometimes given the names of animals they
+resemble. (credit: modification of work by N. E. Kassim, D. S. Briggs, T. J. W. Lazio, T. N. LaRosa, and J. Imamura (NRL/RSD))
+Now let’s focus in on the central region using a more energetic form of electromagnetic radiation. Figure 25.15
+shows the X-ray emission from a smaller region 400 light-years wide and 900 light-years across centered in
+Sagittarius A*. Seen in this picture are hundreds of hot white dwarfs, neutron stars, and stellar black holes with
+accretion disks glowing with X-rays. The diffuse haze in the picture is emission from gas that lies among the
+stars and is at a temperature of 10 million K.
+Figure 25.15 Galactic Center in X-Rays. This artificial-color mosaic of 30 images taken with the Chandra X-ray satellite shows a
+region 400 × 900 light-years in extent and centered on Sagittarius A*, the bright white source in the center of the picture. The X-rayemitting point sources are white dwarfs, neutron stars, and stellar black holes. The diffuse “haze” is emission from gas at a
+temperature of 10 million K. This hot gas is flowing away from the center out into the rest of the Galaxy. The colors indicate X-ray
+energy bands: red (low energy), green (medium energy), and blue (high energy). (credit: modification of work by NASA/CXC/ UMass/
+25 • The Milky Way Galaxy
+D. Wang et al.)
+As we approach the center of the Galaxy, we find the supermassive black hole Sagittarius A*. There are also
+thousands of stars within a few lightyears of Sagittarius A*. Most of these are old, reddish main-sequence
+stars. But there are also about a hundred hot OB stars that must have formed within the last few million years.
+There is as yet no good explanation for how stars could have formed recently so close to a supermassive black
+hole. Perhaps they formed in a dense cluster of stars that was originally at a larger distance from the black
+hole and subsequently migrated closer.
+There is currently no star formation at the galactic center, but there is lots of dust and molecular gas that is
+revolving around the black hole, along with some ionized gas streamers that are heated by the hot stars.
+Figure 25.16 is a radio map that shows these gas streamers.
+Figure 25.16 Sagittarius A. This image, taken with the Very Large Array of radio telescopes, shows the radio emission from hot,
+ionized gas in the center of the Milky Way. The lines slanting across the top of the image are gas streamers. Sagittarius A* is the
+bright spot in the lower right. (credit: modification of work by Farhad Zadeh et al. (Northwestern), VLA, NRAO)
+Finding the Heart of the Galaxy
+Just what is Sagittarius A*, which lies right at the center our Galaxy? To establish that there really is a black
+hole there, we must show that there is a very large amount of mass crammed into a very tiny volume. As we
+saw in Black Holes and Curved Spacetime, proving that a black hole exists is a challenge because the black
+hole itself emits no radiation. What astronomers must do is prove that a black hole is the only possible
+explanation for our observations—that a small region contains far more mass than could be accounted for by
+a very dense cluster of stars or something else made of ordinary matter.
+To put some numbers with this discussion, the radius of the event horizon of a galactic black hole with a mass
+of about 4 million MSun would be only about 17 times the size of the Sun—the equivalent of a single red giant
+star. The corresponding density within this region of space would be much higher than that of any star cluster
+or any other ordinary astronomical object. Therefore, we must measure both the diameter of Sagittarius A*
+and its mass. Both radio and infrared observations are required to give us the necessary evidence.
+First, let’s look at how the mass can be measured. If we zero in on the inner few light-days of the Galaxy with
+an infrared telescope equipped with adaptive optics, we see a region crowded with individual stars (Figure
+25.17). These stars have now been observed for almost two decades, and astronomers have detected their
+25.4 • The Center of the Galaxy
+rapid orbital motions around the very center of the Galaxy.
+Figure 25.17 Near-Infrared View of the Galactic Center. This image shows the inner 1 arcsecond, or 0.13 light-year, at the center
+of the Galaxy, as observed with the giant Keck Telescope. Tracks of the orbiting stars measured from 1995 to 2014 have been added
+to this “snapshot.” The stars are moving around the center very fast, and their tracks are all consistent with a single massive
+“gravitator” that resides in the very center of this image. (credit: modification of work by Andrea Ghez, UCLA Galactic Center Group,
+W.M. Keck Observatory Laser Team)
+Check out an animated version (https://openstax.org/l/30anifiginfgal) of Figure 25.17, showing the motion
+of the stars over the years.
+If we combine observations of their periods and the size of their orbits with Kepler’s third law, we can estimate
+the mass of the object that keeps them in their orbits. One of the stars has been observed for its full orbit of
+15.6 years. Its closest approach takes it to a distance of only 124 AU or about 17 light-hours from the black
+hole. This orbit, when combined with observations of other stars close to the galactic center, indicates that a
+mass of 4.6 million MSun must be concentrated inside the orbit—that is, within 17 light-hours of the center of
+the Galaxy.
+Even tighter limits on the size of the concentration of mass at the center of the Galaxy come from radio
+astronomy, which provided the first clue that a black hole might lie at the center of the Galaxy. As matter
+spirals inward toward the event horizon of a black hole, it is heated in a whirling accretion disk and produces
+radio radiation. (Such accretion disks were explained in Black Holes and Curved Spacetime.) Measurements of
+the size of the accretion disk with the Very Long Baseline Array, which provides very high spatial resolution,
+show that the diameter of the radio source Sagittarius A* is no larger than about 0.3 AU, or about the size of
+Mercury’s orbit. (In light units, that’s only 2.5 light-minutes!)
+The observations thus show that 4.6 million solar masses are crammed into a volume that has a diameter that
+is no larger than the orbit of Mercury. If this were anything other than a supermassive black hole—low-mass
+stars that emit very little light or neutron stars or a very large number of small black holes— calculations show
+that these objects would be so densely packed that they would collapse to a single black hole within a hundred
+thousand years. That is a very short time compared with the age of the Galaxy, which probably began forming
+more than 13 billion years ago. Since it seems very unlikely that we would have caught such a complex cluster
+of objects just before it collapsed, the evidence for a supermassive black hole at the center of the Galaxy is
+LINK TO LEARNING
+25 • The Milky Way Galaxy
+convincing indeed.
+Finding the Source
+Where did our galactic black hole come from? The origin of supermassive black holes in galaxies like ours is
+currently an active field of research. One possibility is that a large cloud of gas near the center of the Milky
+Way collapsed directly to form a black hole. Since we find large black holes at the centers of most other large
+galaxies (see Active Galaxies, Quasars, and Supermassive Black Holes)—even ones that are very young—this
+collapse probably would have taken place when the Milky Way was just beginning to take shape. The initial
+mass of this black hole might have been only a few tens of solar masses. Another way it could have started is
+that a massive star might have exploded to leave behind a seed black hole, or a dense cluster of stars might
+have collapsed into a black hole.
+Once a black hole exists at the center of a galaxy, it can grow over the next several billion years by devouring
+nearby stars and gas clouds in the crowded central regions. It can also grow by merging with other black
+holes.
+It appears that the monster black hole at the center of our Galaxy is not finished “eating.” At the present time,
+we observe clouds of gas and dust falling into the galactic center at the rate of about 1 MSun per thousand
+years. Stars are also on the black hole’s menu. The density of stars near the galactic center is high enough that
+we would expect a star to pass near the black hole and be swallowed by it every ten thousand years or so. As
+this happens, some of the energy of infall is released as radiation. As a result, the center of the Galaxy might
+flare up and even briefly outshine all the stars in the Milky Way. Other objects might also venture too close to
+the black hole and be pulled in. How great a flare we observe would depend on the mass of the object falling
+in.
+In 2013, the Chandra X-ray satellite detected a flare from the center of our Galaxy that was 400 times brighter
+than the usual output from Sagittarius A*. A year later, a second flare, only half as bright, was also detected.
+This is much less energy than swallowing a whole star would produce. There are two theories to account for
+the flares. First, an asteroid might have ventured too close to the black hole and been heated to a very high
+temperature before being swallowed up. Alternatively, the flares might have involved interactions of the
+magnetic fields near the galactic center in a process similar to the one described for solar flares (see The Sun:
+A Garden-Variety Star). Astronomers continue to monitor the galactic center area for flares or other activity.
+Although the monster in the center of the Galaxy is not close enough to us to represent any danger, we still
+want to keep our eyes on it.
+Andrea Ghez
+A lover of puzzles, Andrea Ghez has been pursuing one of the greatest mysteries in astronomy: what
+strange entity lurks within the center of our Milky Way Galaxy?
+VOYAGERS IN ASTRONOMY
+25.4 • The Center of the Galaxy
+Figure 25.18 Andrea Ghez. Research by Ghez and her team has helped shape our understanding of supermassive black holes.
+(credit: modification of work by John D. and Catherine T. MacArthur Foundation)
+As a child living in Chicago during the late 1960s, Andrea Ghez (Figure 25.18) was fascinated by the Apollo
+Moon landings. But she was also drawn to ballet and to solving all sorts of puzzles. By high school, she had
+lost the ballet bug in favor of competing in field hockey, playing the flute, and digging deeper into
+academics. Her undergraduate years at MIT were punctuated by a number of changes in her major—from
+mathematics to chemistry, mechanical engineering, aerospace engineering, and finally physics—where she
+felt her options were most open. As a physics major, she became involved in astronomical research under
+the guidance of one of her instructors. Once she got to do some actual observing at Kitt Peak National
+Observatory in Arizona, and later at Cerro Tololo Inter-American Observatory in Chile, Ghez had found her
+calling.
+Pursuing her graduate studies at Caltech, she stuck with physics but oriented her efforts toward
+observational astrophysics, an area where Caltech had access to cutting-edge facilities. Though initially
+attracted to studying the black holes that were suspected of dwelling inside most massive galaxies, Ghez
+ended up spending most of her graduate study and later postdoctoral research at the University of Arizona
+studying stars in formation. By taking very high-resolution (detailed) imaging of regions where new stars
+are born, she discovered that most stars form as members of binary systems. As technologies advanced,
+she was able to track the orbits danced by these stellar pairings and thereby could ascertain their
+respective masses.
+Now an astronomy professor at UCLA, Ghez has since used similar high-resolution imaging techniques to
+study the orbits of stars in the innermost core of the Milky Way. These orbits take years to delineate, so
+Ghez and her science team have logged more than 20 years of taking super-resolution infrared images with
+the giant Keck telescopes in Hawaii. Based on the resulting stellar orbits, the UCLA Galactic Center Group
+has settled (as we saw) on a gravitational solution that requires the presence of a supermassive black hole
+with a mass equivalent to 4.6 million Suns—all nestled within a space smaller than that occupied by our
+solar system. Ghez’s achievements have been recognized with one of the “genius” awards given by the
+MacArthur Foundation. More recently, her team discovered glowing clouds of warm ionized gas that coorbit with the stars but may be more vulnerable to the disruptive effects of the central black hole. By
+monitoring these clouds, the team hopes to better understand the evolution of supermassive black holes
+and their immediate environs. They also hope to test Einstein’s theory of general relativity by carefully
+scrutinizing the orbits of stars that careen closest to the intensely gravitating black hole.
+In 2020, Ghez received the Nobel Prize in Physics for her work on the black hole at the center of the Galaxy.
+You can see her explain her work in non-technical language in this video (https://openstax.org/l/ghez).
+Besides her pioneering work as an astronomer, Ghez competes as a master swimmer, enjoys family life as a
+25 • The Milky Way Galaxy
+mother of two children, and actively encourages other women to pursue scientific careers.
+25.5
+Stellar Populations in the Galaxy
+Learning Objectives
+By the end of this section, you will be able to:
+Distinguish between population I and population II stars according to their locations, motions, heavyelement abundances, and ages
+Explain why the oldest stars in the Galaxy are poor in elements heavier than hydrogen and helium, while
+stars like the Sun and even younger stars are typically richer in these heavy elements
+In the first section of his chapter, we described the thin disk, thick disk, and stellar halo. Look back at Table
+25.1 and note some of the patterns. Young stars lie in the thin disk, are rich in metals, and orbit the Galaxy’s
+center at high speed. The stars in the halo are old, have low abundances of elements heavier than hydrogen
+and helium, and have highly elliptical orbits randomly oriented in direction (see Figure 25.19). Halo stars can
+plunge through the disk and central bulge, but they spend most of their time far above or below the plane of
+the Galaxy. The stars in the thick disk are intermediate between these two extremes. Let’s first see why age
+and heavier-element abundance are correlated and then see what these correlations tell us about the origin of
+our Galaxy.
+Figure 25.19 How Objects Orbit the Galaxy. (a) In this image, you see stars in the thin disk of our Galaxy in nearly circular orbits.
+(b) In this image, you see the motion of stars in the Galaxy’s halo in randomly oriented and elliptical orbits.
+Two Kinds of Stars
+The discovery that there are two different kinds of stars was first made by Walter Baade during World War II.
+As a German national, Baade was not allowed to do war research as many other U.S.-based scientists were
+doing, so he was able to make regular use of the Mount Wilson telescopes in southern California. His
+observations were aided by the darker skies that resulted from the wartime blackout of Los Angeles.
+Among the things a large telescope and dark skies enabled Baade to examine carefully were other
+galaxies—neighbors of our Milky Way Galaxy. We will discuss other galaxies in the next chapter (Galaxies), but
+for now we will just mention that the nearest Galaxy that resembles our own (with a similar disk and spiral
+structure) is often called the Andromeda galaxy, after the constellation in which we find it.
+Baade was impressed by the similarity of the mainly reddish stars in the Andromeda galaxy’s nuclear bulge to
+those in our Galaxy’s globular clusters and the halo. He also noted the difference in color between all these
+and the bluer stars found in the spiral arms near the Sun (Figure 25.20). On this basis, he called the bright blue
+25.5 • Stellar Populations in the Galaxy
+stars in the spiral arms population I and all the stars in the halo and globular clusters population II.
+Figure 25.20 Andromeda Galaxy (M31). This neighboring spiral looks similar to our own Galaxy in that it is a disk galaxy with a
+central bulge. Note the bulge of older, yellowish stars in the center, the bluer and younger stars in the outer regions, and the dust in
+the disk that blocks some of the light from the bulge. (credit: Adam Evans)
+We now know that the populations differ not only in their locations in the Galaxy, but also in their chemical
+composition, age, and orbital motions around the center of the Galaxy. Population I stars are found only in the
+disk and follow nearly circular orbits around the galactic center. Examples are bright supergiant stars, mainsequence stars of high luminosity (spectral classes O and B), which are concentrated in the spiral arms, and
+members of young open star clusters. Interstellar matter and molecular clouds are found in the same places
+as population I stars.
+Population II stars show no correlation with the location of the spiral arms. These objects are found
+throughout the Galaxy. Some are in the disk, but many others follow eccentric elliptical orbits that carry them
+high above the galactic disk into the halo. Examples include stars surrounded by planetary nebulae and RR
+Lyrae variable stars. The stars in globular clusters, found almost entirely in the Galaxy’s halo, are also classified
+as population II.
+Today, we know much more about stellar evolution than astronomers did in the 1940s, and we can determine
+the ages of stars. Population I includes stars with a wide range of ages. While some are as old as 10 billion
+years, others are still forming today. For example, the Sun, which is about 5 billion years old, is a population I
+star. But so are the massive young stars in the Orion Nebula that have formed in the last few million years.
+Population II, on the other hand, consists entirely of old stars that formed very early in the history of the
+Galaxy; typical ages are 11 to 13 billion years.
+We also now have good determinations of the compositions of stars. These are based on analyses of the stars’
+detailed spectra. Nearly all stars appear to be composed mostly of hydrogen and helium, but their abundances
+of the heavier elements differ. In the Sun and other population I stars, the heavy elements (those heavier than
+hydrogen and helium) account for 1–4% of the total stellar mass. Population II stars in the outer galactic halo
+and in globular clusters have much lower abundances of the heavy elements—often less than one-hundredth
+the concentrations found in the Sun and in rare cases even lower. The oldest population II star discovered to
+date has less than one ten-millionth as much iron as the Sun, for example.
+As we discussed in earlier chapters, heavy elements are created deep within the interiors of stars. They are
+added to the Galaxy’s reserves of raw material when stars die, and their material is recycled into new
+25 • The Milky Way Galaxy
+generations of stars. Thus, as time goes on, stars are born with larger and larger supplies of heavy elements.
+Population II stars formed when the abundance of elements heavier than hydrogen and helium was low.
+Population I stars formed later, after mass lost by dying members of the first generations of stars had seeded
+the interstellar medium with elements heavier than hydrogen and helium. Some are still forming now, when
+further generations have added to the supply of heavier elements available to new stars.
+The Real World
+With rare exceptions, we should never trust any theory that divides the world into just two categories. While
+they can provide a starting point for hypotheses and experiments, they are often oversimplifications that need
+refinement a research continue. The idea of two populations helped organize our initial thoughts about the
+Galaxy, but we now know it cannot explain everything we observe. Even the different structures of the
+Galaxy—disk, halo, central bulge—are not so cleanly separated in terms of their locations, ages, and the heavy
+element content of the stars within them.
+The exact definition of the Galaxy’s disk depends on what objects we use to define it, and, as we saw earlier, it
+has no sharp boundary. The hottest young stars and their associated gas and dust clouds are mostly in a
+region about 200 light-years thick. Older stars define a thicker disk that is about 2000 light-years thick. Halo
+stars spend most of their time high above or below the disk but pass through it on their highly elliptical orbits
+and so are sometimes found relatively near the Sun.
+The highest density of stars is found in the central bulge, that bar-shaped inner region of the Galaxy. There are
+a few hot, young stars in the bulge, but most of the bulge stars are more than 10 billion years old. Yet unlike
+the halo stars of similar age, the abundance of heavy elements in the bulge stars is about the same as in the
+Sun. Why would that be?
+Astronomers think that star formation in the crowded nuclear bulge occurred very rapidly just after the Milky
+Way Galaxy formed. After a few million years, the first generation of massive and short-lived stars then
+expelled heavy elements in supernova explosions and thereby enriched subsequent generations of stars.
+Thus, even stars that formed in the bulge more than 10 billion years ago started with a good supply of heavy
+elements.
+Exactly the opposite occurred in the Small Magellanic Cloud, a small galaxy near the Milky Way, visible from
+Earth’s Southern Hemisphere. Even the youngest stars in this galaxy are deficient in heavy elements. We think
+this is because the little galaxy is not especially crowded, and star formation has occurred quite slowly. As a
+result there have been, so far, relatively few supernova explosions. Smaller galaxies also have more trouble
+holding onto the gas expelled by supernova explosions in order to recycle it. Low-mass galaxies exert only a
+modest gravitational force, and the high-speed gas ejected by supernovae can easily escape from them.
+Which elements a star is endowed with thus depends not only on when the star formed in the history of its
+galaxy, but also on how many stars in its part of the galaxy had already completed their lives by the time the
+star is ready to form.
+25.6
+The Formation of the Galaxy
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the roles played by the collapse of a single cloud and mergers with other galaxies in building the
+Milky Way Galaxy we see today
+Provide examples of globular clusters and satellite galaxies affected by the Milky Way’s strong gravity.
+Information about stellar populations holds vital clues to how our Galaxy was built up over time. The flattened
+disk shape of the Galaxy suggests that it formed through a process similar to the one that leads to the
+formation of a protostar (see The Birth of Stars and the Discovery of Planets outside the Solar System).
+25.6 • The Formation of the Galaxy
+Building on this idea, astronomers first developed models that assumed the Galaxy formed from a single
+rotating cloud. But, as we shall see, this turns out to be only part of the story.
+The Protogalactic Cloud and the Monolithic Collapse Model
+Because the oldest stars—those in the halo and in globular clusters—are distributed in a sphere centered on
+the nucleus of the Galaxy, it makes sense to assume that the protogalactic cloud that gave birth to our Galaxy
+was roughly spherical. The oldest stars in the halo have ages of 12 to 13 billion years, so we estimate that the
+formation of the Galaxy began about that long ago. (See the chapter on The Big Bang for other evidence that
+galaxies in general began forming a little more than 13 billion years ago.) Then, just as in the case of star
+formation, the protogalactic cloud collapsed and formed a thin rotating disk. Stars born before the cloud
+collapsed did not participate in the collapse, but have continued to orbit in the halo to the present day (Figure
+25.21).
+Figure 25.21 Monolithic Collapse Model for the Formation of the Galaxy. According to this model, the Milky Way Galaxy initially
+formed from a rotating cloud of gas that collapsed due to gravity. Halo stars and globular clusters either formed prior to the collapse
+or were formed elsewhere. Stars in the disk formed later, when the gas from which they were made was already “contaminated”
+with heavy elements produced in earlier generations of stars.
+Gravitational forces caused the gas in the thin disk to fragment into clouds or clumps with masses like those of
+star clusters. These individual clouds then fragmented further to form stars. Since the oldest stars in the disk
+are nearly as old as the youngest stars in the halo, the collapse must have been rapid (astronomically
+speaking), requiring perhaps no more than a few hundred million years.
+Collision Victims and the Multiple Merger Model
+In past decades, astronomers have learned that the evolution of the Galaxy has not been quite as peaceful as
+this monolithic collapse model suggests. In 1994, astronomers discovered a small new galaxy in the direction
+of the constellation of Sagittarius. The Sagittarius dwarf galaxy is currently about 70,000 light-years away from
+25 • The Milky Way Galaxy
+Earth and 50,000 light-years from the center of the Galaxy. It is the closest galaxy known (Figure 25.22). It is
+very elongated, and its shape indicates that it is being torn apart by our Galaxy’s gravitational tides—just as
+Comet Shoemaker-Levy 9 was torn apart when it passed too close to Jupiter in 1992.
+The Sagittarius galaxy is much smaller than the Milky Way and is about 10,000 times less massive than our
+Galaxy. All of the stars in the Sagittarius dwarf galaxy seem destined to end up in the bulge and halo of the
+Milky Way. But don’t sound the funeral bells for the little galaxy quite yet; the ingestion of the Sagittarius
+dwarf will take another 100 million years or so, and the stars themselves will survive.
+Figure 25.22 Sagittarius Dwarf. In 1994, British astronomers discovered a galaxy in the constellation of Sagittarius, located only
+about 50,000 light-years from the center of the Milky Way and falling into our Galaxy. This image covers a region approximately 70° ×
+50° and combines a black-and-white view of the disk of our Galaxy with a red contour map showing the brightness of the dwarf
+galaxy. The dwarf galaxy lies on the other side of the galactic center from us. The white stars in the red region mark the locations of
+several globular clusters contained within the Sagittarius dwarf galaxy. The cross marks the galactic center. The horizontal line
+corresponds to the galactic plane. The blue outline on either side of the galactic plane corresponds to the infrared image in Figure
+25.7. The boxes mark regions where detailed studies of individual stars led to the discovery of this galaxy. (credit: modification of
+work by R. Ibata (UBC), R. Wyse (JHU), R. Sword (IoA))
+Since that discovery, evidence has been found for many more close encounters between our Galaxy and other
+neighbor galaxies. When a small galaxy ventures too close, the force of gravity exerted by our Galaxy tugs
+harder on the near side than on the far side. The net effect is that the stars that originally belonged to the
+small galaxy are spread out into a long stream that orbits through the halo of the Milky Way (Figure 25.23).
+25.6 • The Formation of the Galaxy
+Figure 25.23 Streams in the Galactic Halo. When a small galaxy is swallowed by the Milky Way, its member stars are stripped away
+and form streams of stars in the galactic halo. This image is based on calculations of what some of these tidal streams might look
+like if the Milky Way swallowed 50 dwarf galaxies over the past 10 billion years. (credit: modification of work by NASA/JPL-Caltech/R.
+Hurt (SSC/Caltech))
+Such a tidal stream can maintain its identity for billions of years. To date, astronomers have now identified
+streams originating from 12 small galaxies that ventured too close to the much larger Milky Way. Six more
+streams are associated with globular clusters. It has been suggested that large globular clusters, like Omega
+Centauri, are actually dense nuclei of cannibalized dwarf galaxies. The globular cluster M54 is now thought to
+be the nucleus of the Sagittarius dwarf we discussed earlier, which is currently merging with the Milky Way
+(Figure 25.24). The stars in the outer regions of such galaxies are stripped off by the gravitational pull of the
+Milky Way, but the central dense regions may survive.
+25 • The Milky Way Galaxy
+Figure 25.24 Globular Cluster M54. This beautiful Hubble Space Telescope image shows the globular cluster that is now believed to
+be the nucleus of the Sagittarius Dwarf Galaxy. (credit: ESA/Hubble & NASA)
+Calculations indicate that the Galaxy’s thick disk may be a product of one or more such collisions with other
+galaxies. Accretion of a satellite galaxy would stir up the orbits of the stars and gas clouds originally in the thin
+disk and cause them to move higher above and below the mid-plane of the Galaxy. Meanwhile, the Galaxy’s
+stars would add to the fluffed-up mix. If such a collision happened about 10 billion years ago, then any gas in
+the two galaxies that had not yet formed into stars would have had plenty of time to settle back down into the
+thin disk. The gas could then have begun forming subsequent generations of population I stars. This timing is
+also consistent with the typical ages of stars in the thick disk.
+The Milky Way has more collisions in store. An example is the Canis Major dwarf galaxy, which has a mass of
+about 1% of the mass of the Milky Way. Already long tidal tails have been stripped from this galaxy, which have
+wrapped themselves around the Milky Way three times. Several of the globular clusters found in the Milky Way
+may also have come from the Canis Major dwarf, which is expected to merge gradually with the Milky Way
+over about the next billion years.
+In about 4 billion years, the Milky Way itself will be swallowed up, since it and the Andromeda galaxy are on a
+collision course. Our computer models show that after a complex interaction, the two will merge to form a
+larger, more rounded galaxy (Figure 25.25).
+25.6 • The Formation of the Galaxy
+Figure 25.25 Collision of the Milky Way with Andromeda. In about 3 billion years, the Milky Way Galaxy and Andromeda Galaxy
+will begin a long process of colliding, separating, and then coming back together to form an elliptical galaxy. The whole interaction
+will take 3 to 4 billion years. These computer-simulated images show the following sequence: (1) In 3.75 billion years, Andromeda
+has approached the Milky Way. (2) New star formation fills the sky 3.85 billion years from now. (3) Star formation continues at 3.9
+billion years. (4) The galaxy shapes change as they interact, with Andromeda being stretched and our Galaxy becoming warped,
+about 4 billion years from now. (5) In 5.1 billion years, the cores of the two galaxies are bright lobes. (6) In 7 billion years, the merged
+galaxies form a huge elliptical galaxy whose brightness fills the night sky. This artist’s illustrations show events from a vantage point
+25,000 light-years from the center of the Milky Way. However, we should mention that the Sun may not be at that distance
+throughout the sequence of events, as the collision readjusts the orbits of many stars within each galaxy. (credit: NASA; ESA; Z.
+Levay, R. van der Marel, STScl; T. Hallas, and A. Mellinger)
+We are thus coming to realize that “environmental influences” (and not just a galaxy’s original characteristics)
+play an important role in determining the properties and development of our Galaxy. In future chapters we
+will see that collisions and mergers are a major factor in the evolution of many other galaxies as well.
+25 • The Milky Way Galaxy
+Key Terms
+central bulge
+(or nuclear bulge) the central (round) part of the Milky Way or a similar galaxy
+dark matter
+nonluminous mass, whose presence can be inferred only because of its gravitational influence
+on luminous matter; the composition of the dark matter is not known
+dark matter halo
+the mass in the Milky Way that extends well beyond the boundary of the luminous stars to
+a distance of at least 200,000 light-years from the center of the Galaxy; although we deduce its existence
+from its gravity, the composition of this matter remains a mystery
+differential galactic rotation
+the idea that different parts of the Galaxy turn at different rates, since the
+parts of the Galaxy follow Kepler’s third law: more distant objects take longer to complete one full orbit
+around the center of the Galaxy
+halo
+the outermost extent of our Galaxy (or another galaxy), containing a sparse distribution of stars and
+globular clusters in a more or less spherical distribution
+Milky Way Galaxy
+the band of light encircling the sky, which is due to the many stars and diffuse nebulae
+lying near the plane of the Milky Way Galaxy
+population I star
+a star containing heavy elements; typically young and found in the disk
+population II star
+a star with very low abundance of heavy elements; found throughout the Galaxy
+spiral arm
+a spiral-shaped region, characterized by relatively dense interstellar material and young stars,
+that is observed in the disks of spiral galaxies
+supermassive black hole
+the object in the center of most large galaxies that is so massive and compact that
+light cannot escape from it; the Milky Way’s supermassive black hole contains 4.6 millions of Suns’ worth of
+mass
+Summary
+25.1 The Architecture of the Galaxy
+The Milky Way Galaxy consists of a thin disk containing dust, gas, and young and old stars; a spherical halo
+containing populations of very old stars, including RR Lyrae variable stars and globular star clusters; a thick,
+more diffuse disk with stars that have properties intermediate between those in the thin disk and the halo; a
+peanut-shaped nuclear bulge of mostly old stars around the center; and a supermassive black hole at the very
+center. The Sun is located roughly halfway out of the Milky Way, about 26,000 light-years from the center.
+25.2 Spiral Structure
+The gaseous distribution in the Galaxy’s disk has two main spiral arms that emerge from the ends of the
+central bar, along with several fainter arms and short spurs; the Sun is located in one of those spurs.
+Measurements show that the Galaxy does not rotate as a solid body, but instead its stars and gas follow
+differential rotation, such that the material closer to the galactic center completes its orbit more quickly.
+Observations show that galaxies like the Milky Way take several billion years after they began to form to
+develop spiral structure.
+25.3 The Mass of the Galaxy
+The Sun revolves completely around the galactic center in about 225 million years (a galactic year). The mass
+of the Galaxy can be determined by measuring the orbital velocities of stars and interstellar matter. The total
+mass of the Galaxy is about 2 × 1012 MSun. As much as 95% of this mass consists of dark matter that emits no
+electromagnetic radiation and can be detected only because of the gravitational force it exerts on visible stars
+and interstellar matter. This dark matter is located mostly in the Galaxy’s halo; its nature is not well
+understood at present.
+25.4 The Center of the Galaxy
+A supermassive black hole is located at the center of the Galaxy. Measurements of the velocities of stars
+25 • Key Terms
+located within a few light-days of the center show that the mass inside their orbits around the center is about
+4.6 million MSun. Radio observations show that this mass is concentrated in a volume with a diameter similar to
+that of Mercury’s orbit. The density of this matter concentration exceeds that of the densest known star
+clusters by a factor of nearly a million. The only known object with such a high density and total mass is a black
+hole.
+25.5 Stellar Populations in the Galaxy
+We can roughly divide the stars in the Galaxy into two categories. Old stars with few heavy elements are
+referred to as population II stars and are found in the halo and in globular clusters. Population I stars contain
+more heavy elements than globular cluster and halo stars, are typically younger and found in the disk, and are
+especially concentrated in the spiral arms. The Sun is a member of population I. Population I stars formed
+after previous generations of stars had produced heavy elements and ejected them into the interstellar
+medium. The bulge stars, most of which are more than 10 billion years old, have unusually high amounts of
+heavy elements, presumably because there were many massive first-generation stars in this dense region, and
+these quickly seeded the next generations of stars with heavier elements.
+25.6 The Formation of the Galaxy
+The Galaxy began forming a little more than 13 billion years ago. Models suggest that the stars in the halo and
+globular clusters formed first, while the Galaxy was spherical. The gas, somewhat enriched in heavy elements
+by the first generation of stars, then collapsed from a spherical distribution to a rotating disk-shaped
+distribution. Stars are still forming today from the gas and dust that remain in the disk. Star formation occurs
+most rapidly in the spiral arms, where the density of interstellar matter is highest. The Galaxy captured (and
+still is capturing) additional stars and globular clusters from small galaxies that ventured too close to the Milky
+Way. In 3 to 4 billion years, the Galaxy will begin to collide with the Andromeda galaxy, and after about 7 billion
+years, the two galaxies will merge to form a giant elliptical galaxy.
+For Further Exploration
+Articles
+Blitz, L. “The Dark Side of the Milky Way.” Scientific American (October 2011): 36–43. How we find dark matter
+and what it tells us about our Galaxy, its warped disk, and its satellite galaxies.
+Dvorak, J. “Journey to the Heart of the Milky Way.” Astronomy (February 2008): 28. Measuring nearby stars to
+determine the properties of the black hole at the center.
+Gallagher, J., Wyse, R., & Benjamin, R. “The New Milky Way.” Astronomy (September 2011): 26. Highlights all
+aspects of the Milky Way based on recent observations.
+Goldstein, A. “Finding our Place in the Milky Way.” Astronomy (August 2015): 50. On the history of
+observations that pinpointed the Sun’s location in the Galaxy.
+Haggard, D., & Bower, G. “In the Heart of the Milky Way.” Sky & Telescope (February 2016): 16. On
+observations of the Galaxy’s nucleus and the supermassive black hole and magnetar there.
+Ibata, R., & Gibson, B. “The Ghosts of Galaxies Past.” Scientific American (April 2007): 40. About star streams in
+the Galaxy that are evidence of past mergers and collisions.
+Irion, R. “A Crushing End for Our Galaxy.” Science (January 7, 2000): 62. On the role of mergers in the evolution
+of the Milky Way.
+Irion, R. “Homing in on Black Holes.” Smithsonian (April 2008). On how astronomers probe the large black hole
+at the center of the Milky Way Galaxy.
+Kruesi, L. “How We Mapped the Milky Way.” Astronomy (October 2009): 28.
+25 • For Further Exploration
+Kruesi, L. “What Lurks in the Monstrous Heart of the Milky Way?” Astronomy (October 2015): 30. On the center
+of the Galaxy and the black hole there.
+Laughlin, G., & Adams, F. “Celebrating the Galactic Millennium.” Astronomy (November 2001): 39. The longterm future of the Milky Way in the next 90 billion years.
+Loeb, A., & Cox, T.J. “Our Galaxy’s Date with Destruction.” Astronomy (June 2008): 28. Describes the upcoming
+merger of Milky Way and Andromeda.
+Szpir, M. “Passing the Bar Exam.” Astronomy (March 1999): 46. On evidence that our Galaxy is a barred spiral.
+Tanner, A. “A Trip to the Galactic Center.” Sky & Telescope (April 2003): 44. Nice introduction, with observations
+pointing to the presence of a black hole.
+Trimble, V., & Parker, S. “Meet the Milky Way.” Sky & Telescope (January 1995): 26. Overview of our Galaxy.
+Wakker, B., & Richter, P. “Our Growing, Breathing Galaxy.” Scientific American (January 2004): 38. Evidence that
+our Galaxy is still being built up by the addition of gas and smaller neighbors.
+Waller, W. “Redesigning the Milky Way.” Sky & Telescope (September 2004): 50. On recent multi-wavelength
+surveys of the Galaxy.
+Whitt, K. “The Milky Way from the Inside.” Astronomy (November 2001): 58. Fantastic panorama image of the
+Galaxy, with finder charts and explanations.
+Websites
+International Dark Sky Sanctuaries: http://darksky.org/idsp/sanctuaries/ (http://darksky.org/idsp/
+sanctuaries/). A listing of dark-sky sanctuaries, parks, and reserves.
+Multiwavelength Milky Way: https://asd.gsfc.nasa.gov/archive/mwmw/mmw_edu.html
+(https://asd.gsfc.nasa.gov/archive/mwmw/mmw_edu.html). This NASA site shows the plane of our Galaxy in a
+variety of wavelength bands, and includes background material and other resources.
+Shapley-Curtis Debate in 1920: https://apod.nasa.gov/debate/debate20.html (https://apod.nasa.gov/debate/
+debate20.html). In 1920, astronomers Harlow Shapley and Heber Curtis engaged in a historic debate about
+how large our Galaxy was and whether other galaxies existed. Here you can find historical and educational
+material about the debate.
+UCLA Galactic Center Group: http://www.galacticcenter.astro.ucla.edu/
+(http://www.galacticcenter.astro.ucla.edu/). Learn more about the work of Andrea Ghez and colleagues on the
+central region of the Milky Way Galaxy.
+Videos
+Crash of the Titans: http://www.spacetelescope.org/videos/hubblecast55a/ (http://www.spacetelescope.org/
+videos/hubblecast55a/). This Hubblecast from 2012 features Jay Anderson and Roeland van der Marel
+explaining how Andromeda will collide with the Milky Way in the distant future (5:07).
+Diner at the Center of the Galaxy: https://www.youtube.com/watch?v=UP7ig8Gxftw
+(https://www.youtube.com/watch?v=UP7ig8Gxftw). A short discussion from NASA ScienceCast of NuSTAR
+observations of flares from our Galaxy’s central black hole (3:23).
+Hunt for a Supermassive Black Hole: https://www.ted.com/talks/
+andrea_ghez_the_hunt_for_a_supermassive_black_hole (https://www.ted.com/talks/
+andrea_ghez_the_hunt_for_a_supermassive_black_hole). 2009 TED talk by Andrea Ghez on searching for
+supermassive black holes, particularly the one at the center of the Milky Way (16:19).
+Journey to the Galactic Center: https://www.youtube.com/watch?v=36xZsgZ0oSo (https://www.youtube.com/
+25 • For Further Exploration
+watch?v=36xZsgZ0oSo). A brief silent trip into the cluster of stars near the galactic center showing their
+motions around the center (3:00).
+The Nobel Prize Lecture by Dr. Andrea Ghez in 2020: https://www.youtube.com/watch?v=wGw6_CdvGKM
+(https://www.youtube.com/watch?v=wGw6_CdvGKM).
+Collaborative Group Activities
+A.
+You are captured by space aliens, who take you inside a complex cloud of interstellar gas, dust, and a few
+newly formed stars. To escape, you need to make a map of the cloud. Luckily, the aliens have a complete
+astronomical observatory with equipment for measuring all the bands of the electromagnetic spectrum.
+Using what you have learned in this chapter, have your group discuss what kinds of maps you would make
+of the cloud to plot your most effective escape route.
+B.
+The diagram that Herschel made of the Milky Way has a very irregular outer boundary (see Figure 25.3).
+Can your group think of a reason for this? How did Herschel construct his map?
+C.
+Suppose that for your final exam in this course, your group is assigned telescope time to observe a star
+selected for you by your professor. The professor tells you the position of the star in the sky (its right
+ascension and declination) but nothing else. You can make any observations you wish. How would you go
+about determining whether the star is a member of population I or population II?
+D.
+The existence of dark matter comes as a great surprise, and its nature remains a mystery today. Someday
+astronomers will know a lot more about it (you can learn more about current findings in The Evolution and
+Distribution of Galaxies). Can your group make a list of earlier astronomical observations that began as a
+surprise and mystery, but wound up (with more observations) as well-understood parts of introductory
+textbooks?
+E.
+Physicist Gregory Benford has written a series of science fiction novels that take place near the center of
+the Milky Way Galaxy in the far future. Suppose your group were writing such a story. Make a list of ways
+that the environment near the galactic center differs from the environment in the “galactic suburbs,”
+where the Sun is located. Would life as we know it have an easier or harder time surviving on planets that
+orbit stars near the center (and why)?
+F.
+These days, in most urban areas, city lights completely swamp the faint light of the Milky Way in our skies.
+Have each member of your group survey 5 to 10 friends or relatives (you could spread out on campus to
+investigate or use social media or the phone), explaining what the Milky Way is and then asking if they
+have seen it. Also ask their age. Report back to your group and discuss your reactions to the survey. Is
+there any relationship between a person’s age and whether they have seen the Milky Way? How
+important is it that many kids growing up on Earth today never (or rarely) get to see our home Galaxy in
+the sky?
+Exercises
+Review Questions
+1. Explain why we see the Milky Way as a faint band of light stretching across the sky.
+2. Explain where in a spiral galaxy you would expect to find globular clusters, molecular clouds, and atomic
+hydrogen.
+3. Describe several characteristics that distinguish population I stars from population II stars.
+4. Briefly describe the main parts of our Galaxy.
+5. Describe the evidence indicating that a black hole may be at the center of our Galaxy.
+25 • Collaborative Group Activities
+6. Explain why the abundances of heavy elements in stars correlate with their positions in the Galaxy.
+7. What will be the long-term future of our Galaxy?
+Thought Questions
+8. Suppose the Milky Way was a band of light extending only halfway around the sky (that is, in a semicircle).
+What, then, would you conclude about the Sun’s location in the Galaxy? Give your reasoning.
+9. Suppose somebody proposed that rather than invoking dark matter to explain the increased orbital
+velocities of stars beyond the Sun’s orbit, the problem could be solved by assuming that the Milky Way’s
+central black hole was much more massive. Does simply increasing the assumed mass of the Milky Way’s
+central supermassive black hole correctly resolve the issue of unexpectedly high orbital velocities in the
+Galaxy? Why or why not?
+10. The globular clusters revolve around the Galaxy in highly elliptical orbits. Where would you expect the
+clusters to spend most of their time? (Think of Kepler’s laws.) At any given time, would you expect most
+globular clusters to be moving at high or low speeds with respect to the center of the Galaxy? Why?
+11. Shapley used the positions of globular clusters to determine the location of the galactic center. Could he
+have used open clusters? Why or why not?
+12. Consider the following five kinds of objects: open cluster, giant molecular cloud, globular cluster, group of
+O and B stars, and planetary nebulae.
+A.
+Which occur only in spiral arms?
+B.
+Which occur only in the parts of the Galaxy other than the spiral arms?
+C.
+Which are thought to be very young?
+D.
+Which are thought to be very old?
+E.
+Which have the hottest stars?
+13. The dwarf galaxy in Sagittarius is the one closest to the Milky Way, yet it was discovered only in 1994. Can
+you think of a reason it was not discovered earlier? (Hint: Think about what else is in its constellation.)
+14. Suppose three stars lie in the disk of the Galaxy at distances of 20,000 light-years, 25,000 light-years, and
+30,000 light-years from the galactic center, and suppose that right now all three are lined up in such a way
+that it is possible to draw a straight line through them and on to the center of the Galaxy. How will the
+relative positions of these three stars change with time? Assume that their orbits are all circular and lie in
+the plane of the disk.
+15. Why does star formation occur primarily in the disk of the Galaxy?
+16. Where in the Galaxy would you expect to find Type II supernovae, which are the explosions of massive
+stars that go through their lives very quickly? Where would you expect to find Type I supernovae, which
+involve the explosions of white dwarfs?
+17. Suppose that stars evolved without losing mass—that once matter was incorporated into a star, it
+remained there forever. How would the appearance of the Galaxy be different from what it is now? Would
+there be population I and population II stars? What other differences would there be?
+25 • Exercises
+Figuring for Yourself
+18. Assume that the Sun orbits the center of the Galaxy at a speed of 220 km/s and a distance of 26,000 lightyears from the center.
+A.
+Calculate the circumference of the Sun’s orbit, assuming it to be approximately circular. (Remember that
+the circumference of a circle is given by 2πR, where R is the radius of the circle. Be sure to use consistent
+units. The conversion from light-years to km/s can be found in an online calculator or appendix, or you
+can calculate it for yourself: the speed of light is 300,000 km/s, and you can determine the number of
+seconds in a year.)
+B.
+Calculate the Sun’s period, the “galactic year.” Again, be careful with the units. Does it agree with the
+number we gave above?
+19. The Sun orbits the center of the Galaxy in 225 million years at a distance of 26,000 light-years. Given that
+where a is the semimajor axis and P is the orbital period, what is the mass of the
+Galaxy within the Sun’s orbit?
+20. Suppose the Sun orbited a little farther out, but the mass of the Galaxy inside its orbit remained the same
+as we calculated in Exercise 25.19. What would be its period at a distance of 30,000 light-years?
+21. We have said that the Galaxy rotates differentially; that is, stars in the inner parts complete a full 360°
+orbit around the center of the Galaxy more rapidly than stars farther out. Use Kepler’s third law and the
+mass we derived in Exercise 25.19 to calculate the period of a star that is only 5000 light-years from the
+center. Now do the same calculation for a globular cluster at a distance of 50,000 light-years. Suppose the
+Sun, this star, and the globular cluster all fall on a straight line through the center of the Galaxy. Where
+will they be relative to each other after the Sun completes one full journey around the center of the
+Galaxy? (Assume that all the mass in the Galaxy is concentrated at its center.)
+22. If our solar system is 4.6 billion years old, how many galactic years has planet Earth been around?
+23. Suppose the average mass of a star in the Galaxy is one-third of a solar mass. Use the value for the mass
+of the Galaxy that we calculated in Exercise 25.19, and estimate how many stars are in the Milky Way. Give
+some reasons it is reasonable to assume that the mass of an average star is less than the mass of the Sun.
+24. The first clue that the Galaxy contains a lot of dark matter was the observation that the orbital velocities of
+stars did not decreases with increasing distance from the center of the Galaxy. Construct a rotation curve
+for the solar system by using the orbital velocities of the planets, which can be found in Appendix F. How
+does this curve differ from the rotation curve for the Galaxy? What does it tell you about where most of
+the mass in the solar system is concentrated?
+25. The best evidence for a black hole at the center of the Galaxy also comes from the application of Kepler’s
+third law. Suppose a star at a distance of 20 light-hours from the center of the Galaxy has an orbital speed
+of 6200 km/s. How much mass must be located inside its orbit?
+26. The next step in deciding whether the object in Exercise 25.25 is a black hole is to estimate the density of
+this mass. Assume that all of the mass is spread uniformly throughout a sphere with a radius of 20 lighthours. What is the density in kg/km3? (Remember that the volume of a sphere is given by
+.)
+Explain why the density might be even higher than the value you have calculated. How does this density
+compare with that of the Sun or other objects we have talked about in this book?
+27. Suppose the Sagittarius dwarf galaxy merges completely with the Milky Way and adds 150,000 stars to it.
+Estimate the percentage change in the mass of the Milky Way. Will this be enough mass to affect the orbit
+of the Sun around the galactic center? Assume that all of the Sagittarius galaxy’s stars end up in the
+nuclear bulge of the Milky Way Galaxy and explain your answer.
+25 • Exercises

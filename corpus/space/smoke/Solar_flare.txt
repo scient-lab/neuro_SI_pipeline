@@ -1,0 +1,131 @@
+A solar flare is a relatively intense, localized emission of electromagnetic radiation in the Sun's atmosphere. Flares occur in active regions and are often, but not always, accompanied by coronal mass ejections, solar particle events, and other eruptive solar phenomena. The occurrence of solar flares varies with the 11-year solar cycle.
+Solar flares are thought to occur when stored magnetic energy in the Sun's atmosphere accelerates charged particles in the surrounding plasma. This results in the emission of electromagnetic radiation across the electromagnetic spectrum. The typical time profile of these emissions features three identifiable phases: a precursor phase, an impulsive phase when particle acceleration dominates, a gradual phase in which hot plasma injected into the corona by the flare cools by a combination of radiation and conduction of energy back down to the lower atmosphere, and a currently unexplained extreme ultraviolet (EUV) late phase  that occurs in some flares.
+The extreme ultraviolet and X-ray radiation from solar flares is absorbed by the daylight side of Earth's upper atmosphere, in particular the ionosphere, and does not reach the surface. This absorption can temporarily increase the ionization of the ionosphere which may interfere with short-wave radio communication. The prediction of solar flares is an active area of research.
+Flares also occur on other stars, where the term stellar flare applies.
+
+
+== Physical description ==
+
+Solar flares are eruptions of electromagnetic radiation originating in the Sun's atmosphere. They affect all layers of the solar atmosphere (photosphere, chromosphere, and corona). The plasma medium is heated to >107 kelvin, while electrons, protons, and heavier ions are accelerated to near the speed of light. Flares emit electromagnetic radiation across the electromagnetic spectrum, from radio waves to gamma rays.
+Flares occur in active regions, often around sunspots, where intense magnetic fields penetrate the photosphere to link the corona to the solar interior. Flares are powered by the sudden (timescales of minutes to tens of minutes) release of magnetic energy stored in the corona. The same energy releases may also produce coronal mass ejections (CMEs), although the relationship between CMEs and flares is not well understood.
+Associated with solar flares are flare sprays. They involve faster ejections of material than eruptive prominences, and reach velocities of 20 to 2,000 kilometres per second.
+
+
+=== Cause ===
+Flares occur when accelerated charged particles, mainly electrons, interact with the plasma medium. Evidence suggests that the phenomenon of magnetic reconnection leads to this extreme acceleration of charged particles. On the Sun, magnetic reconnection may happen on solar arcades—a type of prominence consisting of a series of closely occurring coronal loops following magnetic lines of force. These lines of force quickly reconnect into a lower arcade of loops leaving a helix of magnetic field unconnected to the rest of the arcade. The sudden release of energy in this reconnection is the origin of the particle acceleration. The unconnected magnetic helical field and the material that it contains may violently expand outwards forming a CME. This also explains why solar flares typically erupt from active regions on the Sun where magnetic fields are much stronger.
+Although there is a general agreement on the source of a flare's energy, the mechanisms involved are not well understood. It is not clear how the magnetic energy is transformed into the kinetic energy of the particles, nor is it known how some particles can be accelerated to the GeV range (109 electron volt) and beyond. There are also some inconsistencies regarding the total number of accelerated particles, which sometimes seems to be greater than the total number in the coronal loop.
+
+
+=== Post-eruption loops and arcades ===
+
+After the eruption of a solar flare, post-eruption loops made of hot plasma begin to form across the neutral line separating regions of opposite magnetic polarity near the flare's source. These loops extend from the photosphere up into the corona and form along the neutral line at increasingly greater distances from the source as time progresses. The existence of these hot loops is thought to be continued by prolonged heating present after the eruption and during the flare's decay stage.
+In sufficiently powerful flares, typically of C-class or higher, the loops may combine to form an elongated arch-like structure known as a post-eruption arcade. These structures may last anywhere from multiple hours to multiple days after the initial flare. In some cases, dark sunward-traveling plasma voids known as supra-arcade downflows may form above these arcades.
+
+
+== Frequency ==
+The frequency of occurrence of solar flares varies with the 11-year solar cycle. It can typically range from several per day during solar maxima to less than one every week during solar minima. Additionally, more powerful flares are less frequent than weaker ones. For example, X10-class (severe) flares occur on average about eight times per cycle, whereas M1-class (minor) flares occur on average about 2,000 times per cycle.
+In 1984, Erich Rieger and coworkers discovered an approximately 154-day period in the occurrence of gamma-ray emitting solar flares at least since the solar cycle 19. The period has since been confirmed in most heliophysics data and the interplanetary magnetic field and is commonly known as the Rieger period. The period's resonance harmonics also have been reported from most data types in the heliosphere.
+The frequency distributions of various flare phenomena can be characterized by power-law distributions. For example, the peak fluxes of radio, extreme ultraviolet, and hard and soft X-ray emissions; total energies; and flare durations (see § Duration) have been found to follow power-law distributions.
+
+
+== Classification ==
+
+
+=== Soft X-ray ===
+
+The modern classification system for solar flares uses the letters A, B, C, M, or X, according to the peak flux in watts per square metre (W/m2) of soft X-rays with wavelengths 0.1 to 0.8 nanometres (1 to 8 ångströms), as measured by GOES satellites in geosynchronous orbit.
+
+The strength of an event within a class is noted by a numerical suffix ranging from 1 to 9. Hence, an X2 flare is twice the strength of an X1 flare, an X3 flare is three times as powerful as an X1. M-class flares are a tenth the size of X-class flares with the same numeric suffix. An X2 is four times more powerful than an M5 flare. X-class flares with a peak flux that exceeds 10−3 W/m2 may be noted with a numerical suffix equal to or greater than 10.
+This system was originally devised in 1970 and included only the letters C, M, and X. These letters were chosen to avoid confusion with other optical classification systems. The A and B classes were added in the 1990s as instruments became more sensitive to weaker flares. Around the same time, the backronym moderate for M-class flares and extreme for X-class flares began to be used.
+
+
+=== Importance ===
+An earlier classification system, sometimes referred to as the flare importance, was based on H-alpha spectral observations. The scheme uses both the intensity and emitting surface. The classification in intensity is qualitative, referring to the flares as: faint (f), normal (n), or brilliant (b). The emitting surface is measured in terms of millionths of the hemisphere and is described below (the total hemisphere area AH = 15.5 × 1012 km2).
+
+A flare is then classified taking S or a number that represents its size and a letter that represents its peak intensity, e.g., Sn is a normal sunflare.
+
+
+=== Duration ===
+A common measure of flare duration is the full width at half maximum (FWHM) time of flux in the soft X-ray bands 0.05 to 0.4 and 0.1 to 0.8 nm measured by GOES. The FWHM time spans from when a flare's flux first reaches halfway between its maximum flux and the background flux and when it again reaches this value as the flare decays. Using this measure, the duration of a flare ranges from approximately tens of seconds to several hours with a median duration of approximately 6 and 11 minutes in the 0.05 to 0.4 and 0.1 to 0.8 nm bands, respectively.
+Flares can also be classified based on their duration as either impulsive or long duration events (LDE). The time threshold separating the two is not well defined. The SWPC regards events requiring 30 minutes or more to decay to half maximum as LDEs, whereas Belgium's Solar-Terrestrial Centre of Excellence regards events with duration greater than 60 minutes as LDEs.
+
+
+== Effects ==
+
+The electromagnetic radiation emitted during a solar flare propagates away from the Sun at the speed of light with intensity inversely proportional to the square of the distance from its source region. The excess ionizing radiation, namely X-ray and extreme ultraviolet (XUV) radiation, is known to affect planetary atmospheres and is of relevance to human space exploration and the search for extraterrestrial life.
+Solar flares also affect other objects in the Solar System. Research into these effects has primarily focused on the atmosphere of Mars and, to a lesser extent, that of Venus. The impacts on other planets in the Solar System are little studied in comparison. As of 2024, research on their effects on Mercury have been limited to modeling of the response of ions in the planet's magnetosphere, and their impact on Jupiter and Saturn have only been studied in the context of X-ray radiation back scattering off of the planets' upper atmospheres.
+
+
+=== Ionosphere ===
+
+Enhanced XUV irradiance during solar flares can result in increased ionization, dissociation, and heating in the ionospheres of Earth and Earth-like planets. On Earth, these changes to the upper atmosphere, collectively referred to as sudden ionospheric disturbances, can interfere with short-wave radio communication and global navigation satellite systems (GNSS) such as GPS, and subsequent expansion of the upper atmosphere can increase drag on satellites in low Earth orbit leading to orbital decay over time.
+Flare-associated XUV photons interact with and ionize neutral constituents of planetary atmospheres via the process of photoionization. The electrons that are freed in this process, referred to as photoelectrons to distinguish them from the ambient ionospheric electrons, are left with kinetic energies equal to the photon energy in excess of the ionization threshold. In the lower ionosphere where flare impacts are greatest and transport phenomena are less important, the newly liberated photoelectrons lose energy primarily via thermalization with the ambient electrons and neutral species and via secondary ionization due to collisions with the latter, or so-called photoelectron impact ionization. In the process of thermalization, photoelectrons transfer energy to neutral species, resulting in heating and expansion of the neutral atmosphere. The greatest increases in ionization occur in the lower ionosphere where wavelengths with the greatest relative increase in irradiance—the highly penetrative X-ray wavelengths—are absorbed, corresponding to Earth's E and D layers and Mars's M1 layer.
+
+
+==== Radio blackouts ====
+
+The temporary increase in ionization of the daylight side of Earth's atmosphere, in particular the D layer of the ionosphere, can interfere with short-wave radio communications that rely on its level of ionization for skywave propagation. Skywave, or skip, refers to the propagation of radio waves reflected or refracted off of the ionized ionosphere. When ionization is higher than normal, radio waves get degraded or completely absorbed by losing energy from the more frequent collisions with free electrons.
+The level of ionization of the atmosphere correlates with the strength of the associated solar flare in soft X-ray radiation. The Space Weather Prediction Center, a part of the United States National Oceanic and Atmospheric Administration, classifies radio blackouts by the peak soft X-ray intensity of the associated flare.
+
+
+==== Solar flare effect ====
+
+During non-flaring or solar quiet conditions, electric currents flow through the ionosphere's dayside E layer inducing small-amplitude diurnal variations in the geomagnetic field. These ionospheric currents can be strengthened during large solar flares due to increases in electrical conductivity associated with enhanced ionization of the E and D layers. The subsequent increase in the induced geomagnetic field variation is referred to as a solar flare effect (sfe) or historically as a magnetic crochet. The latter term derives from the French word crochet meaning hook reflecting the hook-like disturbances in magnetic field strength observed by ground-based magnetometers. These disturbances are on the order of a few nanoteslas and last for a few minutes, which is relatively minor compared to those induced during geomagnetic storms.
+
+
+=== Health ===
+
+
+==== Low Earth orbit ====
+For astronauts in low Earth orbit, an expected radiation dose from the electromagnetic radiation emitted during a solar flare is about 0.05 gray, which is not immediately lethal on its own. Of much more concern for astronauts is the particle radiation associated with solar particle events.
+
+
+==== Mars ====
+The impacts of solar flare radiation on Mars are relevant to exploration and the search for life on the planet. Models of its atmosphere indicate that the most energetic solar flares previously recorded may have provided acute doses of radiation that would have been harmful or almost lethal to mammals and other higher organisms on Mars's surface. Furthermore, flares energetic enough to provide lethal doses, while not yet observed on the Sun, are thought to occur and have been observed on other Sun-like stars.
+
+
+== Observational history ==
+
+Flares produce radiation across the electromagnetic spectrum, although with different intensity. They are not intense in visible light, but they can be bright at particular spectral lines. They normally produce bremsstrahlung in X-rays and synchrotron radiation in radio.
+
+
+=== Optical observations ===
+
+Solar flares were first observed by Richard Carrington and Richard Hodgson independently on 1 September 1859 by projecting the image of the solar disk produced by an optical telescope through a broad-band filter. It was an extraordinarily intense white light flare, a flare emitting a high amount of light in the visual spectrum.
+Since flares produce copious amounts of radiation at H-alpha, adding a narrow (≈1 Å) passband filter centered at this wavelength to the optical telescope allows the observation of not bright flares with small telescopes. For years Hα was the main, if not the only, source of information about solar flares. Other passband filters are also used.
+
+
+=== Radio observations ===
+
+During World War II, on February 25 and 26, 1942, British radar operators observed radiation that Stanley Hey interpreted as solar emission. Their discovery did not go public until the end of the conflict. The same year, Southworth also observed the Sun in radio, but as with Hey, his observations were only known after 1945. In 1943, Grote Reber was the first to report radioastronomical observations of the Sun at 160 MHz. The fast development of radioastronomy revealed new peculiarities of the solar activity like storms and bursts related to the flares. Today, ground-based radiotelescopes observe the Sun from c. 15 MHz up to 400 GHz.
+
+
+=== Space telescopes ===
+
+Because the Earth's atmosphere absorbs much of the electromagnetic radiation emitted by the Sun with wavelengths shorter than 300 nm, space-based telescopes allowed for the observation of solar flares in previously unobserved high-energy spectral lines. Since the 1970s, the GOES series of satellites have been continuously observing the Sun in soft X-rays, and their observations have become the standard measure of flares, diminishing the importance of the H-alpha classification. Additionally, space-based telescopes allow for the observation of extremely long wavelengths—as long as a few kilometres—which cannot propagate through the ionosphere.
+
+
+=== Examples of large solar flares ===
+
+The most powerful flare ever observed is thought to be the flare associated with the 1859 Carrington Event. While no soft X-ray measurements were made at the time, the magnetic crochet associated with the flare was recorded by ground-based magnetometers allowing the flare's strength to be estimated after the event. Using these magnetometer readings, its soft X-ray class has been estimated to be greater than X10 and around X45 (±5).
+In modern times, the largest solar flare measured with instruments occurred on 4 November 2003. This event saturated the GOES detectors, and because of this, its classification is only approximate. Initially, extrapolating the GOES curve, it was estimated to be X28. Later analysis of the ionospheric effects suggested increasing this estimate to X45. This event produced the first clear evidence of a new spectral component above 100 GHz.
+
+
+== Prediction ==
+Current methods of flare prediction are problematic, and there is no certain indication that an active region on the Sun will produce a flare. However, many properties of active regions and their sunspots correlate with flaring. For example, magnetically complex regions (based on line-of-sight magnetic field) referred to as delta spots frequently produce the largest flares. A simple scheme of sunspot classification based on the McIntosh system for sunspot groups, or related to a region's fractal complexity is commonly used as a starting point for flare prediction. Predictions are usually stated in terms of probabilities for occurrence of flares above M- or X-class within 24 or 48 hours. The U.S. National Oceanic and Atmospheric Administration (NOAA) issues forecasts of this kind. MAG4 was developed at the University of Alabama in Huntsville with support from the Space Radiation Analysis Group at Johnson Space Flight Center (NASA/SRAG) for forecasting M- and X-class flares, CMEs, fast CME, and solar energetic particle events. A physics-based method that can predict imminent large solar flares was proposed by the Institute for Space-Earth Environmental Research (ISEE), Nagoya University, Japan.
+
+
+== See also ==
+
+
+== References ==
+
+
+== External links ==
+
+NOAA Space Weather Prediction Center's near real-time solar flare data and resources:
+GOES X-Ray Flux (1-minute data)
+GOES Solar Ultraviolet Imager (SUVI)
+D Region Absorption Predictions (D-RAP)
+3-Day Forecast
+Forecast Discussion

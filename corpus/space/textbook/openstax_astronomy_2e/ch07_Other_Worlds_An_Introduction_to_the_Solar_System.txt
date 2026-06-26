@@ -1,0 +1,1000 @@
+Figure 7.1 “Self-Portrait” of Mars. This picture was taken by the Curiosity Rover on Mars in 2012. The image is reconstructed
+digitally from 55 different images taken by a camera on the rover’s extended mast, so that the many positions of the mast (which
+acted like a selfie stick) are edited out. (credit: modification of work by NASA/JPL-Caltech/MSSS)
+Chapter Outline
+7.1 Overview of Our Planetary System
+7.2 Composition and Structure of Planets
+7.3 Dating Planetary Surfaces
+7.4 Origin of the Solar System
+Thinking Ahead
+Surrounding the Sun is a complex system of worlds with a wide range of conditions: eight major planets, many
+dwarf planets, hundreds of moons, and countless smaller objects. Thanks largely to visits by spacecraft, we can
+now envision the members of the solar system as other worlds like our own, each with its own chemical and
+geological history, and unique sights that interplanetary tourists may someday visit. Some have called these
+past few decades the “golden age of planetary exploration,” comparable to the golden age of exploration in
+the fifteenth century, when great sailing ships plied Earth’s oceans and humanity became familiar with our
+own planet’s surface.
+In this chapter, we discuss our planetary system and introduce the idea of comparative planetology—studying
+how the planets work by comparing them with one another. We want to get to know the planets not only for
+what we can learn about them, but also to see what they can tell us about the origin and evolution of the
+entire solar system. In the upcoming chapters, we describe the better-known members of the solar system
+and begin to compare them to the thousands of planets that have been discovered recently, orbiting other
+stars.
+Other Worlds: An Introduction to the Solar System
+7 • Thinking Ahead
+7.1
+Overview of Our Planetary System
+Learning Objectives
+By the end of this section, you will be able to:
+Describe how the objects in our solar system are identified, explored, and characterized
+Describe the types of small bodies in our solar system, their locations, and how they formed
+Model the solar system with distances from everyday life to better comprehend distances in space
+The solar system1 consists of the Sun and many smaller objects: the planets, their moons and rings, and such
+“debris” as asteroids, comets, and dust. Decades of observation and spacecraft exploration have revealed that
+most of these objects formed together with the Sun about 4.5 billion years ago. They represent clumps of
+material that condensed from an enormous cloud of gas and dust. The central part of this cloud became the
+Sun, and a small fraction of the material in the outer parts eventually formed the other objects.
+During the past 50 years, we have learned more about the solar system than anyone imagined before the
+space age. In addition to gathering information with powerful new telescopes, we have sent spacecraft directly
+to many members of the planetary system. (Planetary astronomy is the only branch of our science in which we
+can, at least vicariously, travel to the objects we want to study.) With evocative names such as Voyager,
+Pioneer, Curiosity, and Pathfinder, our robot explorers have flown past, orbited, or landed on every planet,
+returning images and data that have dazzled both astronomers and the public. In the process, we have also
+investigated two dwarf planets, hundreds of fascinating moons, four ring systems, a dozen asteroids, and
+several comets (smaller members of our solar system that we will discuss later).
+Our probes have penetrated the atmosphere of Jupiter and landed on the surfaces of Venus, Mars, our Moon,
+Saturn’s moon Titan, the asteroids Eros, Itokawa, Ryugu, and Bennu, and the Comet Churyumov-Gerasimenko
+(usually referred to as 67P). Humans have set foot on the Moon and returned samples of its surface soil for
+laboratory analysis (Figure 7.2). We have flown a helicopter drone on Mars. We have even discovered other
+places in our solar system that might be able to support some kind of life.
+Figure 7.2 Astronauts on the Moon. The lunar lander and surface rover from the Apollo 15 mission are seen in this view of the one
+place beyond Earth that has been explored directly by humans. (credit: modification of work by David R. Scott, NASA)
+The generic term for a group of planets and other bodies circling a star is planetary system. Ours is called the solar system
+because our Sun is sometimes called Sol. Strictly speaking, then, there is only one solar system; planets orbiting other stars are in
+planetary systems.
+7 • Other Worlds: An Introduction to the Solar System
+View this gallery of NASA images (https://openstax.org/l/30projapolloarc) that trace the history of the
+Apollo mission.
+An Inventory
+The Sun, a star that is brighter than about 80% of the stars in the Galaxy, is by far the most massive member of
+the solar system, as shown in Table 7.1. It is an enormous ball about 1.4 million kilometers in diameter, with
+surface layers of incandescent gas and an interior temperature of millions of degrees. The Sun will be
+discussed in later chapters as our first, and best-studied, example of a star.
+Mass of Members of the Solar System
+Object
+Percentage of Total Mass of Solar System
+Sun
+99.80
+Jupiter
+0.10
+Comets
+0.0005–0.03 (estimate)
+All other planets and dwarf planets
+0.04
+Moons and rings
+0.00005
+Asteroids
+0.000002 (estimate)
+Cosmic dust
+0.0000001 (estimate)
+Table 7.1
+Table 7.1 also shows that most of the material of the planets is actually concentrated in the largest one, Jupiter,
+which is more massive than all the rest of the planets combined. Astronomers were able to determine the
+masses of the planets centuries ago using Kepler’s laws of planetary motion and Newton’s law of gravity to
+measure the planets’ gravitational effects on one another or on moons that orbit them (see Orbits and
+Gravity). Today, we make even more precise measurements of their masses by tracking their gravitational
+effects on the motion of spacecraft that pass near them.
+Beside Earth, five other planets were known to the ancients—Mercury, Venus, Mars, Jupiter, and Saturn—and
+two were discovered after the invention of the telescope: Uranus and Neptune. The eight planets all revolve in
+the same direction around the Sun. They orbit in approximately the same plane, like cars traveling on
+concentric tracks on a giant, flat racecourse. Each planet stays in its own “traffic lane,” following a nearly
+circular orbit about the Sun and obeying the “traffic” laws discovered by Galileo, Kepler, and Newton. Besides
+these planets, we have also been discovering smaller worlds beyond Neptune that are called trans-Neptunian
+objects or TNOs (see Figure 7.3). The first to be found, in 1930, was Pluto, but others have been discovered
+during the twenty-first century. One of them, Eris, is about the same size as Pluto and has at least one moon
+(Pluto has five known moons.) The largest TNOs are also classed as dwarf planets, as is the largest asteroid,
+LINK TO LEARNING
+7.1 • Overview of Our Planetary System
+Ceres. (Dwarf planets will be discussed further in the chapter on Rings, Moons, and Pluto). To date, more than
+2600 of these TNOs have been discovered, and one, called Arrokoth, was explored by the New Horizons
+spacecraft.
+Figure 7.3 Orbits of the Planets. All eight major planets orbit the Sun in roughly the same plane. The five currently known dwarf
+planets are also shown: Eris, Haumea, Pluto, Ceres, and Makemake. Note that Pluto’s orbit is not in the plane of the planets.
+Each of the planets and dwarf planets also rotates (spins) about an axis running through it, and in most cases
+the direction of rotation is the same as the direction of revolution about the Sun. The exceptions are Venus,
+which rotates backward very slowly (that is, in a retrograde direction), and Uranus and Pluto, which also have
+strange rotations, each spinning about an axis tipped nearly on its side. We do not yet know the spin
+orientations of Eris, Haumea, and Makemake.
+The four planets closest to the Sun (Mercury through Mars) are called the inner or terrestrial planets. Often,
+the Moon is also discussed as a part of this group, bringing the total of terrestrial objects to five. (We generally
+call Earth’s satellite “the Moon,” with a capital M, and the other satellites “moons,” with lowercase m’s.) The
+terrestrial planets are relatively small worlds, composed primarily of rock and metal. All of them have solid
+surfaces that bear the records of their geological history in the forms of craters, mountains, and volcanoes
+(Figure 7.4).
+7 • Other Worlds: An Introduction to the Solar System
+Figure 7.4 Surface of Mercury. The pockmarked face of the terrestrial world of Mercury is more typical of the inner planets than the
+watery surface of Earth. This black-and-white image, taken with the Mariner 10 spacecraft, shows a region more than 400 kilometers
+wide. (credit: modification of work by NASA/John Hopkins University Applied Physics Laboratory/Carnegie Institution of Washington)
+The next four planets (Jupiter through Neptune) are much larger and are composed primarily of lighter ices,
+liquids, and gases. We call these four the jovian planets (after “Jove,” another name for Jupiter in mythology)
+or giant planets—a name they richly deserve (Figure 7.5). About 1,300 Earths could fit inside Jupiter, for
+example. These planets do not have solid surfaces on which future explorers might land. They are more like
+vast, spherical oceans with much smaller, dense cores.
+Figure 7.5 The Four Giant Planets. This montage shows the four giant planets: Jupiter, Saturn, Uranus, and Neptune. Below them,
+Earth is shown to scale. (credit: modification of work by NASA, Solar System Exploration)
+Near the outer edge of the system lies Pluto, which was the first of the distant icy worlds to be discovered
+beyond Neptune (Pluto was visited by a spacecraft, the NASA New Horizons mission, in 2015 [see Figure 7.6]).
+Table 7.2 summarizes some of the main facts about the planets.
+7.1 • Overview of Our Planetary System
+Figure 7.6 Pluto Close-up. This intriguing image from the New Horizons spacecraft, taken when it flew by the dwarf planet in July
+2015, shows some of its complex surface features. The rounded white area is called the Sputnik Plain, after humanity’s first
+spacecraft. (credit: modification of work by NASA/Johns Hopkins University Applied Physics Laboratory/Southwest Research
+Institute)
+The Planets
+Name
+Distance from Sun
+(AU)2
+Revolution Period
+(y)
+Diameter
+(km)
+Mass
+(1023 kg)
+Density
+(g/cm3)3
+Mercury
+0.39
+0.24
+4,878
+3.3
+5.4
+Venus
+0.72
+0.62
+12,120
+48.7
+5.2
+Earth
+1.00
+1.00
+12,756
+59.8
+5.5
+Mars
+1.52
+1.88
+6,787
+6.4
+3.9
+Jupiter
+5.20
+11.86
+142,984
+18,991
+1.3
+Saturn
+9.54
+29.46
+120,536
+0.7
+Uranus
+19.18
+84.07
+51,118
+1.3
+Neptune
+30.06
+164.82
+49,660
+1.6
+Table 7.2
+E X A M P L E 7. 1
+Comparing Densities
+Let’s compare the densities of several members of the solar system. The density of an object equals its
+mass divided by its volume. The volume (V) of a sphere (like a planet) is calculated using the equation
+An AU (or astronomical unit) is the distance from Earth to the Sun.
+We give densities in units where the density of water is 1 g/cm3. To get densities in units of kg/m3, multiply the given value by
+1000.
+7 • Other Worlds: An Introduction to the Solar System
+where π (the Greek letter pi) has a value of approximately 3.14. Although planets are not perfect spheres,
+this equation works well enough. The masses and diameters of the planets are given in Table 7.2. For data
+on selected moons, see Appendix G. Let’s use Saturn’s moon Mimas as our example, with a mass of 4 × 1019
+kg and a diameter of approximately 400 km (radius, 200 km = 2 × 105 m).
+Solution
+The volume of Mimas is
+Density is mass divided by volume:
+Note that the density of water in these units is 1000 kg/m3, so Mimas must be made mainly of ice, not rock.
+(Note that the density of Mimas given in Appendix G is 1.2, but the units used there are different. In that
+table, we give density in units of
+g/cm3, for which the density of water equals 1. Can you show, by converting units, that 1 g/cm3 is the same
+as 1000 kg/m3?)
+Check Your Learning
+Calculate the average density of our own planet, Earth. Show your work. How does it compare to the
+density of an ice moon like Mimas? See Table 7.2 for data.
+Answer:
+For a sphere,
+For Earth, then,
+This density is four to five times greater than Mimas’. In fact, Earth is the densest of the planets.
+Learn more about NASA’s mission to Pluto (https://openstax.org/l/30NASAmisspluto) and see highresolution images of Pluto and its moon Charon.
+Smaller Members of the Solar System
+Most of the planets are accompanied by one or more moons; only Mercury and Venus move through space
+alone. There are more than 210 known moons orbiting planets and dwarf planets (see Appendix G for a listing
+of the larger ones), and undoubtedly many other small ones remain undiscovered. The largest of the moons
+are as big as small planets and just as interesting. In addition to our Moon, they include the four largest
+moons of Jupiter (called the Galilean moons, after their discoverer) and the largest moons of Saturn and
+Neptune (confusingly named Titan and Triton).
+Each of the giant planets also has rings made up of countless small bodies ranging in size from mountains to
+LINK TO LEARNING
+7.1 • Overview of Our Planetary System
+mere grains of dust, all in orbit about the equator of the planet. The bright rings of Saturn are, by far, the
+easiest to see. They are among the most beautiful sights in the solar system (Figure 7.7). But, all four ring
+systems are interesting to scientists because of their complicated forms, influenced by the pull of the moons
+that also orbit these giant planets.
+Figure 7.7 Saturn and Its Rings. This 2007 Cassini image shows Saturn and its complex system of rings, taken from a distance of
+about 1.2 million kilometers. This natural-color image is a composite of 36 images taken over the course of 2.5 hours. (credit:
+modification of work by NASA/JPL/Space Science Institute)
+The solar system has many other less-conspicuous members. Another group is the asteroids, rocky bodies
+that orbit the Sun like miniature planets, mostly in the space between Mars and Jupiter (although some do
+cross the orbits of planets like Earth—see Figure 7.8). Most asteroids are remnants of the initial population of
+the solar system that existed before the planets themselves formed. Some of the smallest moons of the
+planets, such as the moons of Mars, are very likely captured asteroids.
+Figure 7.8 Asteroid Eros. This small Earth-crossing asteroid image was taken by the NEAR-Shoemaker spacecraft from an altitude of
+about 100 kilometers. This view of the heavily cratered surface is about 10 kilometers wide. The spacecraft orbited Eros for a year
+before landing gently on its surface. (credit: modification of work by NASA/JHUAPL)
+Another class of small bodies is composed mostly of ice, made of frozen gases such as water, carbon dioxide,
+and carbon monoxide; these objects are called comets (see Figure 7.9). Comets also are remnants from the
+formation of the solar system, but they were formed and continue (with rare exceptions) to orbit the Sun in
+distant, cooler regions—stored in a sort of cosmic deep freeze. This is also the realm of the larger icy worlds,
+called dwarf planets.
+7 • Other Worlds: An Introduction to the Solar System
+Figure 7.9 Comet Churyumov-Gerasimenko (67P). This image shows Comet Churyumov-Gerasimenko, also known as 67P, near its
+closest approach to the Sun in 2015, as seen from the Rosetta spacecraft. Note the jets of gas escaping from the solid surface.
+(credit: modification of work by ESA/Rosetta/NAVACAM, CC BY-SA IGO 3.0 (http://creativecommons.org/licenses/by-sa/3.0/igo/))
+Finally, there are countless grains of broken rock, which we call cosmic dust, scattered throughout the solar
+system. When these particles enter Earth’s atmosphere (as millions do each day) they burn up, producing a
+brief flash of light in the night sky known as a meteor (meteors are often referred to as shooting stars).
+Occasionally, some larger chunk of rocky or metallic material survives its passage through the atmosphere
+and lands on Earth. Any piece that strikes the ground is known as a meteorite. (You can see meteorites on
+display in many natural history museums and can sometimes even purchase pieces of them from gem and
+mineral dealers.)
+Carl Sagan: Solar System Advocate
+The best-known astronomer in the world during the 1970s and 1980s, Carl Sagan devoted most of his
+professional career to studying the planets and considerable energy to raising public awareness of what we
+can learn from exploring the solar system (see Figure 7.10). Born in Brooklyn, New York, in 1934, Sagan
+became interested in astronomy as a youngster; he also credits science fiction stories for sustaining his
+fascination with what’s out in the universe.
+VOYAGERS IN ASTRONOMY
+7.1 • Overview of Our Planetary System
+Figure 7.10 Carl Sagan (1934–1996) and Neil deGrasse Tyson. Sagan was Tyson’s inspiration to become a scientist. (credit
+“Sagan”: modification of work by NASA, JPL; credit “Tyson”: modification of work by Bruce F. Press)
+In the early 1960s, when many scientists still thought Venus might turn out to be a hospitable place, Sagan
+calculated that the thick atmosphere of Venus could act like a giant greenhouse, keeping the heat in and
+raising the temperature enormously. He showed that the seasonal changes astronomers had seen on Mars
+were caused, not by vegetation, but by wind-blown dust. He was a member of the scientific teams for many
+of the robotic missions that explored the solar system and was instrumental in getting NASA to put a
+message-bearing plaque aboard the Pioneer spacecraft, as well as audio-video records on the Voyager
+spacecraft—all of them destined to leave our solar system entirely and send these little bits of Earth
+technology out among the stars.
+To encourage public interest and public support of planetary exploration, Sagan helped found The
+Planetary Society, now the largest space-interest organization in the world. He was a tireless and eloquent
+advocate of the need to study the solar system close-up and the value of learning about other worlds in
+order to take better care of our own.
+Sagan simulated conditions on early Earth to demonstrate how some of life’s fundamental building blocks
+might have formed from the “primordial soup” of natural compounds on our planet. In addition, he and his
+colleagues developed computer models showing the consequences of nuclear war for Earth would be even
+more devastating than anyone had thought (this is now called the nuclear winter hypothesis) and
+demonstrating some of the serious consequences of continued pollution of our atmosphere.
+Sagan was perhaps best known, however, as a brilliant popularizer of astronomy and the author of many
+books on science, including the best-selling Cosmos, and several evocative tributes to solar system
+exploration such as The Cosmic Connection and Pale Blue Dot. His book The Demon Haunted World,
+completed just before his death in 1996, is perhaps the best antidote to fuzzy thinking about pseudoscience and irrationality in print today. An intriguing science fiction novel he wrote, titled Contact, which
+became a successful film as well, is still recommended by many science instructors as a scenario for making
+contact with life elsewhere that is much more reasonable than most science fiction.
+Sagan was a master, too, of the television medium. His 13-part public television series, Cosmos, was seen by
+an estimated 500 million people in 60 countries and has become one of the most-watched series in the
+history of public broadcasting. A few astronomers scoffed at a scientist who spent so much time in the
+public eye, but it is probably fair to say that Sagan’s enthusiasm and skill as an explainer won more friends
+for the science of astronomy than anyone or anything else in the second half of the twentieth century.
+7 • Other Worlds: An Introduction to the Solar System
+In the two decades since Sagan’s death, no other scientist has achieved the same level of public
+recognition. Perhaps closest is the director of the Hayden Planetarium, Neil deGrasse Tyson, who followed
+in Sagan’s footsteps by making an updated version of the Cosmos program in 2014. Tyson is quick to point
+out that Sagan was his inspiration to become a scientist, telling how Sagan invited him to visit for a day at
+Cornell when he was a high school student looking for a career. However, the media environment has
+fragmented a great deal since Sagan’s time. It is interesting to speculate whether Sagan could have
+adapted his communication style to the world of cable television, Twitter, Facebook, and podcasts.
+Two imaginative videos provide a tour of the solar system objects we have been discussing. Shane Gellert’s
+I Need Some Space (https://openstax.org/l/30needsomespace) uses NASA photography and models to
+show the various worlds with which we share our system. In the more science fiction-oriented Wanderers
+(https://openstax.org/l/30wanderers) video, we see some of the planets and moons as tourist destinations
+for future explorers, with commentary taken from recordings by Carl Sagan.
+A Scale Model of the Solar System
+Astronomy often deals with dimensions and distances that far exceed our ordinary experience. What does 1.4
+billion kilometers—the distance from the Sun to Saturn—really mean to anyone? It can be helpful to visualize
+such large systems in terms of a scale model.
+In our imaginations, let us build a scale model of the solar system, adopting a scale factor of 1 billion
+(109)—that is, reducing the actual solar system by dividing every dimension by a factor of 109. Earth, then, has
+a diameter of 1.3 centimeters, about the size of a grape. The Moon is a pea orbiting this at a distance of 40
+centimeters, or a little more than a foot away. The Earth-Moon system fits into a standard backpack.
+In this model, the Sun is nearly 1.5 meters in diameter, about the average height of an adult, and our Earth is
+at a distance of 150 meters—about one city block—from the Sun. Jupiter is five blocks away from the Sun, and
+its diameter is 15 centimeters, about the size of a very large grapefruit. Saturn is 10 blocks from the Sun;
+Uranus, 20 blocks; and Neptune, 30 blocks. Pluto, with a distance that varies quite a bit during its 249-year
+orbit, is currently just beyond 30 blocks and getting farther with time. Most of the moons of the outer solar
+system are the sizes of various kinds of seeds orbiting the grapefruit, oranges, and lemons that represent the
+outer planets.
+In our scale model, a human is reduced to the dimensions of a single atom, and cars and spacecraft to the size
+of molecules. Sending the Voyager spacecraft to Neptune involves navigating a single molecule from the
+Earth–grape toward a lemon 5 kilometers away with an accuracy equivalent to the width of a thread in a
+spider’s web.
+If that model represents the solar system, where would the nearest stars be? If we keep the same scale, the
+closest stars would be tens of thousands of kilometers away. If you built this scale model in the city where you
+live, you would have to place the representations of these stars on the other side of Earth or beyond.
+By the way, model solar systems like the one we just presented have been built in cities throughout the world.
+In Sweden, for example, Stockholm’s huge Globe Arena has become a model for the Sun, and Pluto is
+represented by a 12-centimeter sculpture in the small town of Delsbo, 300 kilometers away. Another model
+solar system is in Washington on the Mall between the White House and Congress (perhaps proving they are
+worlds apart?).
+LINK TO LEARNING
+7.1 • Overview of Our Planetary System
+This model of the solar system (https://openstax.org/l/30modsolsys) shows all orbits and sizes to scale, and
+it lets you fly between the planets at an enhanced speed.
+Names in the Solar System
+We humans just don’t feel comfortable until something has a name. Types of butterflies, new elements, and
+the mountains of Venus all need names for us to feel we are acquainted with them. How do we give names
+to objects and features in the solar system?
+Planets and moons are named after gods and heroes in Greek and Roman mythology (with a few
+exceptions among the moons of Uranus, which have names drawn from English literature). When William
+Herschel, a German immigrant to England, first discovered the planet we now call Uranus, he wanted to
+name it Georgium Sidus (George’s star) after King George III of his adopted country. This caused such an
+outcry among astronomers in other nations, however, that the classic tradition was upheld—and has been
+maintained ever since. Luckily, there were a lot of minor gods in the ancient pantheon, so plenty of names
+are left for the many small moons we are discovering around the giant planets. (Appendix G lists the larger
+moons). More recently, the names of dwarf planets and their moons have been drawn from the mythology
+of other cultures besides Greek and Roman.
+Comets are often named after their discoverers (offering an extra incentive to comet hunters). Asteroids
+are named by their discoverers after just about anyone or anything they want. Recently, asteroid names
+have been used to recognize people who have made significant contributions to astronomy, including the
+three senior authors of this book.
+That was pretty much all the naming that was needed while our study of the solar system was confined to
+Earth. But now, our spacecraft have surveyed and photographed many worlds in great detail, and each
+world has a host of features that also need names. To make sure that naming things in space remains
+multinational, rational, and somewhat dignified, astronomers have given the responsibility of approving
+names to a special committee of the International Astronomical Union (IAU), the body that includes
+scientists from every country that does astronomy.
+This IAU committee has developed a set of rules for naming features on other worlds. For example, craters
+on Venus are named for women who have made significant contributions to human knowledge and
+welfare. Volcanic features on Jupiter’s moon Io, which is in a constant state of volcanic activity, are named
+after gods of fire and thunder from the mythologies of many cultures. Craters on Mercury commemorate
+famous novelists, playwrights, artists, and composers. On Saturn’s moon Tethys, all the features are named
+after characters and places in Homer’s great epic poem, The Odyssey. As we explore further, it may well
+turn out that more places in the solar system need names than Earth history can provide. Perhaps by then,
+explorers and settlers on these worlds will be ready to develop their own names for the places they may (if
+but for a while) call home.
+You may be surprised to know that the meaning of the word planet has recently become controversial
+because we have discovered many other planetary systems that don’t look very much like our own. Even
+within our solar system, the planets differ greatly in size and chemical properties. The biggest dispute
+LINK TO LEARNING
+MAKING CONNECTIONS
+7 • Other Worlds: An Introduction to the Solar System
+concerns Pluto, which is much smaller than the other eight major planets. The category of dwarf planet was
+invented to include Pluto and similar icy objects beyond Neptune. But is a dwarf planet also a planet?
+Logically, it should be, but even this simple issue of grammar has been the subject of heated debate among
+both astronomers and the general public.
+7.2
+Composition and Structure of Planets
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the characteristics of the giant planets, terrestrial planets, and small bodies in the solar system
+Explain what influences the temperature of a planet’s surface
+Explain why there is geological activity on some planets and not on others
+The fact that there are two distinct kinds of planets—the rocky terrestrial planets and the gas-rich jovian
+planets—leads us to believe that they formed under different conditions. Certainly their compositions are
+dominated by different elements. Let us look at each type in more detail.
+The Giant Planets
+The two largest planets, Jupiter and Saturn, have nearly the same chemical makeup as the Sun; they are
+composed primarily of the two elements hydrogen and helium, with 75% of their mass being hydrogen and
+25% helium. On Earth, both hydrogen and helium are gases, so Jupiter and Saturn are sometimes called gas
+planets. But, this name is misleading. Jupiter and Saturn are so large that the gas is compressed in their
+interior until the hydrogen becomes a liquid. Because the bulk of both planets consists of compressed,
+liquefied hydrogen, we should really call them liquid planets.
+Under the force of gravity, the heavier elements sink toward the inner parts of a liquid or gaseous planet. Both
+Jupiter and Saturn, therefore, have cores composed of heavier rock, metal, and ice, but we cannot see these
+regions directly. In fact, when we look down from above, all we see is the atmosphere with its swirling clouds
+(Figure 7.11). We must infer the existence of the denser core inside these planets from studies of each planet’s
+gravity.
+Figure 7.11 Jupiter. This true-color image of Jupiter was taken from the Cassini spacecraft in 2000. The dark spot is the shadow of
+one of the giant planet’s moons. (credit: modification of work by NASA/JPL/University of Arizona)
+Uranus and Neptune are much smaller than Jupiter and Saturn, but each also has a core of rock, metal, and
+ice. Uranus and Neptune were less efficient at attracting hydrogen and helium gas, so they have much smaller
+7.2 • Composition and Structure of Planets
+atmospheres in proportion to their cores.
+Chemically, each giant planet is dominated by hydrogen and its many compounds. Nearly all the oxygen
+present is combined chemically with hydrogen to form water (H2O). Chemists call such a hydrogen-dominated
+composition reduced. Throughout the outer solar system, we find abundant water (mostly in the form of ice)
+and reducing chemistry.
+The Terrestrial Planets
+The terrestrial planets are quite different from the giants. In addition to being much smaller, they are
+composed primarily of rocks and metals. These, in turn, are made of elements that are less common in the
+universe as a whole. The most abundant rocks, called silicates, are made of silicon and oxygen, and the most
+common metal is iron. We can tell from their densities (see Table 7.2) that Mercury has the greatest proportion
+of metals (which are denser) and the Moon has the lowest. Earth, Venus, and Mars all have roughly similar
+bulk compositions: about one third of their mass consists of iron-nickel or iron-sulfur combinations; two thirds
+is made of silicates. Because these planets are largely composed of oxygen compounds (such as the silicate
+minerals of their crusts), their chemistry is said to be oxidized.
+When we look at the internal structure of each of the terrestrial planets, we find that the densest metals are in
+a central core, with the lighter silicates near the surface. If these planets were liquid, like the giant planets, we
+could understand this effect as the result the sinking of heavier elements due to the pull of gravity. This leads
+us to conclude that, although the terrestrial planets are solid today, at one time they must have been hot
+enough to melt.
+Differentiation is the process by which gravity helps separate a planet’s interior into layers of different
+compositions and densities. The heavier metals sink to form a core, while the lightest minerals float to the
+surface to form a crust. Later, when the planet cools, this layered structure is preserved. In order for a rocky
+planet to differentiate, it must be heated to the melting point of rocks, which is typically more than 1300 K.
+Moons, Asteroids, and Comets
+Chemically and structurally, Earth’s Moon is like the terrestrial planets, but most moons are in the outer solar
+system, and they have compositions similar to the cores of the giant planets around which they orbit. The
+three largest moons—Ganymede and Callisto in the jovian system, and Titan in the saturnian system—are
+composed half of frozen water, and half of rocks and metals. Most of these moons differentiated during
+formation, and today they have cores of rock and metal, with upper layers and crusts of very cold and—thus
+very hard—ice (Figure 7.12).
+Figure 7.12 Ganymede. This view of Jupiter’s moon Ganymede was taken in June 1996 by the Galileo spacecraft. The brownish gray
+color of the surface indicates a dusty mixture of rocky material and ice. The bright spots are places where recent impacts have
+uncovered fresh ice from underneath. (credit: modification of work by NASA/JPL)
+7 • Other Worlds: An Introduction to the Solar System
+Most of the asteroids and comets, as well as the smallest moons, were probably never heated to the melting
+point. However, some of the largest asteroids, such as Vesta, appear to be differentiated; others are fragments
+from differentiated bodies. Many of the smaller objects seem to be fragments or rubble piles that are the
+result of collisions. Because most asteroids and comets retain their original composition, they represent
+relatively unmodified material dating back to the time of the formation of the solar system. In a sense, they act
+as chemical fossils, helping us to learn about a time long ago whose traces have been erased on larger worlds.
+Temperatures: Going to Extremes
+Generally speaking, the farther a planet or moon is from the Sun, the cooler its surface. The planets are heated
+by the radiant energy of the Sun, which gets weaker with the square of the distance. You know how rapidly the
+heating effect of a fireplace or an outdoor radiant heater diminishes as you walk away from it; the same effect
+applies to the Sun. Mercury, the closest planet to the Sun, has a blistering surface temperature that ranges
+from 280–430 °C on its sunlit side, whereas the surface temperature on Pluto is only about –220 °C, colder than
+liquid air.
+Mathematically, the temperatures decrease approximately in proportion to the square root of the distance
+from the Sun. Pluto is about 30 AU at its closest to the Sun (or 100 times the distance of Mercury) and about 49
+AU at its farthest from the Sun. Thus, Pluto’s temperature is less than that of Mercury by the square root of
+100, or a factor of 10: from 500 K to 50 K.
+In addition to its distance from the Sun, the surface temperature of a planet can be influenced strongly by its
+atmosphere. Without our atmospheric insulation (the greenhouse effect, which keeps the heat in), the oceans
+of Earth would be permanently frozen. Conversely, if Mars once had a larger atmosphere in the past, it could
+have supported a more temperate climate than it has today. Venus is an even more extreme example, where
+its thick atmosphere of carbon dioxide acts as insulation, reducing the escape of heat built up at the surface,
+resulting in temperatures greater than those on Mercury. Today, Earth is the only planet where surface
+temperatures generally lie between the freezing and boiling points of water. As far as we know, Earth is the
+only planet to support life.
+There’s No Place Like Home
+In the classic film The Wizard of Oz, Dorothy, the heroine, concludes after her many adventures in “alien”
+environments that “there’s no place like home.” The same can be said of the other worlds in our solar
+system. There are many fascinating places, large and small, that we might like to visit, but humans could
+not survive on any without a great deal of artificial assistance.
+A thick carbon dioxide atmosphere keeps the surface temperature on our neighbor Venus at a sizzling 700
+K (near 900 °F). Mars, on the other hand, has temperatures generally below freezing, with air (also mostly
+carbon dioxide) so thin that it resembles that found at an altitude of 30 kilometers (100,000 feet) in Earth’s
+atmosphere. And the red planet is so dry that it has not had any rain for billions of years.
+The outer layers of the jovian planets are neither warm enough nor solid enough for human habitation. Any
+bases we build in the systems of the giant planets may well have to be in space or one of their
+moons—none of which is particularly hospitable to a luxury hotel with a swimming pool and palm trees.
+Perhaps we will find warmer havens deep inside the clouds of Jupiter or in the ocean under the frozen ice of
+its moon Europa.
+All of this suggests that we had better take good care of Earth because it is the only site where life as we
+know it could survive. Recent human activity may be reducing the habitability of our planet by adding
+ASTRONOMY BASICS
+7.2 • Composition and Structure of Planets
+pollutants to the atmosphere, especially the potent greenhouse gas carbon dioxide. Human civilization is
+changing our planet dramatically, and these changes are not necessarily for the better. In a solar system
+that seems unready to receive us, making Earth less hospitable to life may be a grave mistake.
+Geological Activity
+The crusts of all of the terrestrial planets, as well as of the larger moons, and Pluto, have been modified over
+their histories by both internal and external forces. Externally, each has been battered by a slow rain of
+projectiles from space, leaving their surfaces pockmarked by impact craters of all sizes (see Figure 7.4). We
+have good evidence that this bombardment was far greater in the early history of the solar system, but it
+certainly continues to this day, even if at a lower rate. The collision of more than 20 large pieces of Comet
+Shoemaker–Levy 9 with Jupiter in the summer of 1994 (see Figure 7.13) is one dramatic example of this
+process.
+Figure 7.13 Comet Shoemaker–Levy 9. In this image of Comet Shoemaker–Levy 9 taken on May 17, 1994, by NASA’s Hubble Space
+Telescope, you can see about 20 icy fragments into which the comet broke. The comet was approximately 660 million kilometers
+from Earth, heading on a collision course with Jupiter. (credit: modification of work by NASA, ESA, H. Weaver (STScl), E. Smith (STScl))
+Figure 7.14 shows the aftermath of these collisions, when debris clouds larger than Earth could be seen in
+Jupiter’s atmosphere.
+Figure 7.14 Jupiter with Huge Dust Clouds. The Hubble Space Telescope took this sequence of images of Jupiter in summer 1994,
+when fragments of Comet Shoemaker–Levy 9 collided with the giant planet. Here we see the site hit by fragment G, from five
+minutes to five days after impact. Several of the dust clouds generated by the collisions became larger than Earth. (credit:
+modification of work by H. Hammel, NASA)
+During the time all the planets have been subject to such impacts, internal forces on the terrestrial planets
+have buckled and twisted their crusts, built up mountain ranges, erupted as volcanoes, and generally
+reshaped the surfaces in what we call geological activity. (The prefix geo means “Earth,” so this is a bit of an
+“Earth-chauvinist” term, but it is so widely used that we bow to tradition.) Among the terrestrial planets, Earth
+7 • Other Worlds: An Introduction to the Solar System
+and Venus have experienced the most geological activity over their histories, although some of the moons in
+the outer solar system are also surprisingly active. In contrast, our own Moon is a dead world where geological
+activity ceased billions of years ago.
+Geological activity on a planet is the result of a hot interior. The forces of volcanism and mountain building are
+driven by heat escaping from the interiors of planets. As we will see, each of the planets was heated at the
+time of its birth, and this primordial heat initially powered extensive volcanic activity, even on our Moon. But,
+small objects such as the Moon soon cooled off. The larger the planet or moon, the longer it retains its internal
+heat, and therefore the more we expect to see surface evidence of continuing geological activity. The effect is
+similar to our own experience with a hot baked potato: the larger the potato, the more slowly it cools. If we
+want a potato to cool quickly, we cut it into small pieces.
+For the most part, the history of volcanic activity on the terrestrial planets conforms to the predictions of this
+simple theory. The Moon, the smallest of these objects, is a geologically dead world. Although we know less
+about Mercury, it seems likely that this planet, too, ceased most volcanic activity about the same time the
+Moon did. Mars represents an intermediate case. It has been much more active than the Moon, but less so
+than Earth. Earth and Venus, the largest terrestrial planets, still have molten interiors even today, some 4.5
+billion years after their birth.
+7.3
+Dating Planetary Surfaces
+Learning Objectives
+By the end of this section, you will be able to:
+Explain how astronomers can tell whether a planetary surface is geologically young or old
+Describe different methods for dating planets
+How do we know the age of the surfaces we see on planets and moons? If a world has a surface (as opposed
+to being mostly gas and liquid), astronomers have developed some techniques for estimating how long ago
+that surface solidified. Note that the age of these surfaces is not necessarily the age of the planet as a whole.
+On geologically active objects (including Earth), vast outpourings of molten rock or the erosive effects of water
+and ice, which we call planet weathering, have erased evidence of earlier epochs and present us with only a
+relatively young surface for investigation.
+Counting the Craters
+One way to estimate the age of a surface is by counting the number of impact craters. This technique works
+because the rate at which impacts have occurred in the solar system has been roughly constant for several
+billion years. Thus, in the absence of forces to eliminate craters, the number of craters is simply proportional
+to the length of time the surface has been exposed. This technique has been applied successfully to many
+solid planets and moons (Figure 7.15).
+7.3 • Dating Planetary Surfaces
+Figure 7.15 Our Cratered Moon. This composite image of the Moon’s surface was made from many smaller images taken between
+November 2009 and February 2011 by the Lunar Reconnaissance Orbiter (LRO) and shows craters of many different sizes. (credit:
+modification of work by NASA/GSFC/Arizona State University)
+Bear in mind that crater counts can tell us only the time since the surface experienced a major change that
+could modify or erase preexisting craters. Estimating ages from crater counts is a little like walking along a
+sidewalk in a snowstorm after the snow has been falling steadily for a day or more. You may notice that in
+front of one house the snow is deep, while next door the sidewalk may be almost clear. Do you conclude that
+less snow has fallen in front of Ms. Jones’ house than Mr. Smith’s? More likely, you conclude that Jones has
+recently swept the walk clean and Smith has not. Similarly, the numbers of craters indicate how long it has
+been since a planetary surface was last “swept clean” by ongoing lava flows or by molten materials ejected
+when a large impact happened nearby.
+Still, astronomers can use the numbers of craters on different parts of the same world to provide important
+clues about how regions on that world evolved. On a given planet or moon, the more heavily cratered terrain
+will generally be older (that is, more time will have elapsed there since something swept the region clean).
+Radioactive Rocks
+Another way to trace the history of a solid world is to measure the age of individual rocks. After samples were
+brought back from the Moon by Apollo astronauts, the techniques that had been developed to date rocks on
+Earth were applied to rock samples from the Moon to establish a geological chronology for the Moon.
+Furthermore, a few samples of material from the Moon, Mars, and the large asteroid Vesta have fallen to Earth
+as meteorites and can be examined directly (see the chapter on Cosmic Samples and the Origin of the Solar
+System).
+Scientists measure the age of rocks using the properties of natural radioactivity. Around the beginning of the
+twentieth century, physicists began to understand that some atomic nuclei are not stable but can split apart
+(decay) spontaneously into smaller nuclei. The process of radioactive decay involves the emission of particles
+such as electrons, or of radiation in the form of gamma rays (see the chapter on Radiation and Spectra).
+For any one radioactive nucleus, it is not possible to predict when the decay process will happen. Such decay is
+random in nature, like the throw of dice: as gamblers have found all too often, it is impossible to say just when
+the dice will come up 7 or 11. But, for a very large number of dice tosses, we can calculate the odds that 7 or 11
+will come up. Similarly, if we have a very large number of radioactive atoms of one type (say, uranium), there is
+a specific time period, called its half-life, during which the chances are fifty-fifty that decay will occur for any of
+the nuclei.
+A particular nucleus may last a shorter or longer time than its half-life, but in a large sample, almost exactly
+half of the nuclei will have decayed after a time equal to one half-life. Half of the remaining nuclei will have
+7 • Other Worlds: An Introduction to the Solar System
+decayed after two half-lives pass, leaving only one half of a half—or one quarter—of the original sample
+(Figure 7.16).
+Figure 7.16 Radioactive Decay. This graph shows (in pink) the amount of a radioactive sample that remains after several half-lives
+have passed. After one half-life, half the sample is left; after two half-lives, one half of the remainder (or one quarter) is left; and after
+three half-lives, one half of that (or one eighth) is left. Note that, in reality, the decay of radioactive elements in a rock sample would
+not cause any visible change in the appearance of the rock; the splashes of color are shown here for conceptual purposes only.
+If you had 1 gram of pure radioactive nuclei with a half-life of 100 years, then after 100 years you would have
+1/2 gram; after 200 years, 1/4 gram; after 300 years, only 1/8 gram; and so forth. However, the material does
+not disappear. Instead, the radioactive atoms are replaced with their decay products. Sometimes the
+radioactive atoms are called parents and the decay products are called daughter elements.
+In this way, radioactive elements with half-lives we have determined can provide accurate nuclear clocks. By
+comparing how much of a radioactive parent element is left in a rock to how much of its daughter products
+have accumulated, we can learn how long the decay process has been going on and hence how long ago the
+rock formed. Table 7.3 summarizes the decay reactions used most often to date lunar and terrestrial rocks.
+Radioactive Decay Reaction Used to Date Rocks4
+Parent
+Daughter
+Half-Life (billions of years)
+Samarium-147
+Neodymium-143
+Rubidium-87
+Strontium-87
+48.8
+Thorium-232
+Lead-208
+14.0
+Uranium-238
+Lead-206
+4.47
+Potassium-40
+Argon-40
+1.31
+Table 7.3
+The number after each element is its atomic weight, equal to the number of protons plus neutrons in its nucleus. This specifies
+the isotope of the element; different isotopes of the same element differ in the number of neutrons.
+7.3 • Dating Planetary Surfaces
+PBS provides an evolution series excerpt (https://openstax.org/l/30pbsradiomat) that explains how we use
+radioactive elements to date Earth.
+This Science Channel video (https://openstax.org/l/30billnyevideo) features Bill Nye the Science Guy
+showing how scientists have used radioactive dating to determine the age of Earth.
+This radioactive (https://openstax.org/l/30radiodecay) decay simulator lets you examine how the number
+of atoms of a radioactive element decreases over time and see how the ratio of parent to child atoms could
+be used to figure out the age of the whole set of atoms.
+When astronauts first flew to the Moon, one of their most important tasks was to bring back lunar rocks for
+radioactive age-dating. Until then, astronomers and geologists had no reliable way to measure the age of the
+lunar surface. Counting craters had let us calculate relative ages (for example, the heavily cratered lunar
+highlands were older than the dark lava plains), but scientists could not measure the actual age in years. Some
+thought that the ages were as young as those of Earth’s surface, which has been resurfaced by many
+geological events. For the Moon’s surface to be so young would imply active geology on our satellite. Only in
+1969, when the first Apollo samples were dated, did we learn that the Moon is an ancient, geologically dead
+world. Using such dating techniques, we have been able to determine the ages of both Earth and the Moon:
+each was formed about 4.5 billion years ago (although, as we shall see, Earth probably formed earlier than the
+Moon).
+We should also note that the decay of radioactive nuclei generally releases energy in the form of heat.
+Although the energy from a single nucleus is not very large (in human terms), the enormous numbers of
+radioactive nuclei in a planet or moon (especially early in its existence) can be a significant source of internal
+energy for that world. Geologists estimate that about half of Earth’s current internal heat budget comes from
+the decay of radioactive isotopes in its interior.
+7.4
+Origin of the Solar System
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the characteristics of planets that are used to create formation models of the solar system
+Describe how the characteristics of extrasolar systems help us to model our own solar system
+Explain the importance of collisions in the formation of the solar system
+Much of astronomy is motivated by a desire to understand the origin of things: to find at least partial answers
+to age-old questions of where the universe, the Sun, Earth, and we ourselves came from. Each planet and
+moon is a fascinating place that may stimulate our imagination as we try to picture what it would be like to
+visit. Taken together, the members of the solar system preserve patterns that can tell us about the formation
+of the entire system. As we begin our exploration of the planets, we want to introduce our modern picture of
+how the solar system formed.
+The recent discovery of thousands of planets in orbit around other stars has shown astronomers that many
+exoplanetary systems can be quite different from our own solar system. For example, it is common for these
+systems to include planets intermediate in size between our terrestrial and giant planets. These are often
+called superearths. Some exoplanet systems even have giant planets close to the star, reversing the order we
+see in our system. In The Birth of Stars and the Discovery of Planets outside the Solar System, we will look at
+these exoplanet systems. But for now, let us focus on theories of how our own particular system has formed
+LINK TO LEARNING
+7 • Other Worlds: An Introduction to the Solar System
+and evolved.
+Looking for Patterns
+One way to approach our question of origin is to look for regularities among the planets. We found, for
+example, that all the planets lie in nearly the same plane and revolve in the same direction around the Sun.
+The Sun also spins in the same direction about its own axis. Astronomers interpret this pattern as evidence
+that the Sun and planets formed together from a spinning cloud of gas and dust that we call the solar nebula
+(Figure 7.17).
+Figure 7.17 Solar Nebula. This artist’s conception of the solar nebula shows the flattened cloud of gas and dust from which our
+planetary system formed. Icy and rocky planetesimals (precursors of the planets) can be seen in the foreground. The bright center is
+where the Sun is forming. (credit: William K. Hartmann, Planetary Science Institute)
+The composition of the planets gives another clue about origins. Spectroscopic analysis allows us to determine
+which elements are present in the Sun and the planets. The Sun has the same hydrogen-dominated
+composition as Jupiter and Saturn, and therefore appears to have been formed from the same reservoir of
+material. In comparison, the terrestrial planets and our Moon are relatively deficient in the light gases and the
+various ices that form from the common elements oxygen, carbon, and nitrogen. Instead, on Earth and its
+neighbors, we see mostly the rarer heavy elements such as iron and silicon. This pattern suggests that the
+processes that led to planet formation in the inner solar system must somehow have excluded much of the
+lighter materials that are common elsewhere. These lighter materials must have escaped, leaving a residue of
+heavy stuff.
+The reason for this is not hard to guess, bearing in mind the heat of the Sun. The inner planets and most of the
+asteroids are made of rock and metal, which can survive heat, but they contain very little ice or gas, which
+evaporate when temperatures are high. (To see what we mean, just compare how long a rock and an ice cube
+survive when they are placed in the sunlight.) In the outer solar system, where it has always been cooler, the
+planets and their moons, as well as icy dwarf planets and comets, are composed mostly of ice and gas.
+The Evidence from Far Away
+A second approach to understanding the origins of the solar system is to look outward for evidence that other
+systems of planets are forming elsewhere. We cannot look back in time to the formation of our own system,
+but many stars in space are much younger than the Sun. In these systems, the processes of planet formation
+might still be accessible to direct observation. We observe that there are many other “solar nebulas” or
+circumstellar disks—flattened, spinning clouds of gas and dust surrounding young stars. These disks resemble
+our own solar system’s initial stages of formation billions of years ago (Figure 7.18).
+7.4 • Origin of the Solar System
+Figure 7.18 Atlas of Planetary Nurseries. These Hubble Space Telescope photos show sections of the Orion Nebula, a relatively
+close-by region where stars are currently forming. Each image shows an embedded circumstellar disk orbiting a very young star.
+Seen from different angles, some are energized to glow by the light of a nearby star while others are dark and seen in silhouette
+against the bright glowing gas of the Orion Nebula. Each is a contemporary analog of our own solar nebula—a location where
+planets are probably being formed today. (credit: modification of work by NASA/ESA, L. Ricci (ESO))
+Building Planets
+Circumstellar disks are a common occurrence around very young stars, suggesting that disks and stars form
+together. Astronomers can use theoretical calculations to see how solid bodies might form from the gas and
+dust in these disks as they cool. These models show that material begins to coalesce first by forming smaller
+objects, precursors of the planets, which we call planetesimals.
+Today’s fast computers can simulate the way millions of planetesimals, probably no larger than 100 kilometers
+in diameter, might gather together under their mutual gravity to form the planets we see today. We are
+beginning to understand that this process was a violent one, with planetesimals crashing into each other and
+sometimes even disrupting the growing planets themselves. As a consequence of those violent impacts (and
+the heat from radioactive elements in them), all the planets were heated until they were liquid and gas, and
+therefore differentiated, which helps explain their present internal structures.
+The process of impacts and collisions in the early solar system was complex and, apparently, often random.
+The solar nebula model can explain many of the regularities we find in the solar system, but the random
+collisions of massive collections of planetesimals could be the reason for some exceptions to the “rules” of
+solar system behavior. For example, why do the planets Uranus and Pluto spin on their sides? Why does Venus
+spin slowly and in the opposite direction from the other planets? Why does the composition of the Moon
+resemble Earth in many ways and yet exhibit substantial differences? The answers to such questions probably
+lie in enormous collisions that took place in the solar system long before life on Earth began.
+Today, some 4.5 billion years after its origin, the solar system is—thank goodness—a much less violent place.
+As we will see, however, some planetesimals have continued to interact and collide, and their fragments move
+about the solar system as roving “transients” that can make trouble for the established members of the Sun’s
+family, such as our own Earth. (We discuss this “troublemaking” in Comets and Asteroids: Debris of the Solar
+System.)
+A great variety of infographics (https://openstax.org/l/30worldsinsolar) at space.com let you explore what
+it would be like to live on various worlds in the solar system.
+LINK TO LEARNING
+7 • Other Worlds: An Introduction to the Solar System
+Key Terms
+asteroid
+a stony or metallic object orbiting the Sun that is smaller than a planet but that shows no evidence
+of an atmosphere or of other types of activity associated with comets
+comet
+a small body of icy and dusty matter that revolves about the Sun; when a comet comes near the Sun,
+some of its material vaporizes, forming a large head of tenuous gas and often a tail
+differentiation
+gravitational separation of materials of different density into layers in the interior of a planet
+or moon
+giant planet
+any of the planets Jupiter, Saturn, Uranus, and Neptune in our solar system, or planets of
+roughly that mass and composition in other planetary systems
+half-life
+time required for half of the radioactive atoms in a sample to disintegrate
+meteor
+a small piece of solid matter that enters Earth’s atmosphere and burns up, popularly called a
+shooting star because it is seen as a small flash of light
+meteorite
+a portion of a meteor that survives passage through an atmosphere and strikes the ground
+planetesimals
+objects, from tens to hundreds of kilometers in diameter, that formed in the solar nebula as
+an intermediate step between tiny grains and the larger planetary objects we see today; the comets and
+some asteroids may be leftover planetesimals
+radioactivity
+process by which certain kinds of atomic nuclei decay naturally, with the spontaneous emission
+of subatomic particles and gamma rays
+solar nebula
+the cloud of gas and dust from which the solar system formed
+terrestrial planet
+any of the planets Mercury, Venus, Earth, or Mars; sometimes the Moon is included in the
+list
+Summary
+7.1 Overview of Our Planetary System
+Our solar system currently consists of the Sun, eight planets, five dwarf planets, nearly 200 known moons, and
+a host of smaller objects. The planets can be divided into two groups: the inner terrestrial planets and the
+outer giant planets. Pluto, Eris, Haumea, and Makemake do not fit into either category; as icy dwarf planets,
+they exist in an ice realm on the fringes of the main planetary system. The giant planets are composed mostly
+of liquids and gases. Smaller members of the solar system include asteroids (including the dwarf planet
+Ceres), which are rocky and metallic objects found mostly between Mars and Jupiter; comets, which are made
+mostly of frozen gases and generally orbit far from the Sun; and countless smaller grains of cosmic dust.
+When a meteor survives its passage through our atmosphere and falls to Earth, we call it a meteorite.
+7.2 Composition and Structure of Planets
+The giant planets have dense cores roughly 10 times the mass of Earth, surrounded by layers of hydrogen and
+helium. The terrestrial planets consist mostly of rocks and metals. They were once molten, which allowed their
+structures to differentiate (that is, their denser materials sank to the center). The Moon resembles the
+terrestrial planets in composition, but most of the other moons—which orbit the giant planets—have larger
+quantities of frozen ice within them. In general, worlds closer to the Sun have higher surface temperatures.
+The surfaces of terrestrial planets have been modified by impacts from space and by varying degrees of
+geological activity.
+7.3 Dating Planetary Surfaces
+The ages of the surfaces of objects in the solar system can be estimated by counting craters: on a given world,
+a more heavily cratered region will generally be older than one that is less cratered. We can also use samples
+of rocks with radioactive elements in them to obtain the time since the layer in which the rock formed last
+solidified. The half-life of a radioactive element is the time it takes for half the sample to decay; we determine
+how many half-lives have passed by how much of a sample remains the radioactive element and how much
+7 • Key Terms
+has become the decay product. In this way, we have estimated the age of the Moon and Earth to be roughly
+4.5 billion years.
+7.4 Origin of the Solar System
+Regularities among the planets have led astronomers to hypothesize that the Sun and the planets formed
+together in a giant, spinning cloud of gas and dust called the solar nebula. Astronomical observations show
+tantalizingly similar circumstellar disks around other stars. Within the solar nebula, material first coalesced
+into planetesimals; many of these gathered together to make the planets and moons. The remainder can still
+be seen as comets and asteroids. Probably all planetary systems have formed in similar ways, but many
+exoplanet systems have evolved along quite different paths, as we will see in Cosmic Samples and the Origin
+of the Solar System.
+For Further Exploration
+Articles
+Davidson, K. “Carl Sagan’s Coming of Age.” Astronomy. (November 1999): 40. About the noted popularizer of
+science and how he developed his interest in astronomy.
+Garget, J. “Mysterious Microworlds.” Astronomy. (July 2005): 32. A quick tour of a number of the moons in the
+solar system.
+Hartmann, W. “The Great Solar System Revision.” Astronomy. (August 1998): 40. How our views have changed
+over the past 25 years.
+Kross, J. “What’s in a Name?” Sky & Telescope. (May 1995): 28. How worlds are named.
+Rubin, A. “Secrets of Primitive Meteorites.” Scientific American. (February 2013): 36. What meteorites can teach
+us about the environment in which the solar system formed.
+Soter, S. “What Is a Planet?” Scientific American. (January 2007): 34. The IAU’s new definition of a planet in our
+solar system, and what happened to Pluto as a result.
+Talcott, R. “How the Solar System Came to Be.” Astronomy. (November 2012): 24. On the formation period of
+the Sun and the planets.
+Wood, J. “Forging the Planets: The Origin of our Solar System.” Sky & Telescope. (January 1999): 36. Good
+overview.
+Websites
+Gazetteer of Planetary Nomenclature: http://planetarynames.wr.usgs.gov/
+(http://planetarynames.wr.usgs.gov/). Outlines the rules for naming bodies and features in the solar system.
+Planetary Photojournal: http://photojournal.jpl.nasa.gov/index.html (http://photojournal.jpl.nasa.gov/
+index.html). This NASA site features thousands of the best images from planetary exploration, with detailed
+captions and excellent indexing. You can find images by world, feature name, or mission, and download them
+in a number of formats. And the images are copyright-free because your tax dollars paid for them.
+The following sites present introductory information and pictures about each of the worlds of our solar
+system:
+•
+NASA/JPL Solar System Exploration pages: http://solarsystem.nasa.gov/index.cfm
+(http://solarsystem.nasa.gov/index.cfm).
+•
+National Space Science Data Center Lunar and Planetary Science pages: http://nssdc.gsfc.nasa.gov/planetary/
+(http://nssdc.gsfc.nasa.gov/planetary/).
+•
+Nine [now 8] Planets Solar System Tour: http://www.nineplanets.org/ (http://www.nineplanets.org/).
+7 • For Further Exploration
+•
+Planetary Society solar system pages: http://www.planetary.org/explore/space-topics/
+(http://www.planetary.org/explore/space-topics/).
+•
+Views of the Solar System by Calvin J. Hamilton: http://www.solarviews.com/eng/homepage.htm
+(http://www.solarviews.com/eng/homepage.htm).
+Videos
+Brown Dwarfs and Free Floating Planets: When You Are Just Too Small to Be a Star: https://www.youtube.com/
+watch?v=zXCDsb4n4KU (https://www.youtube.com/watch?v=zXCDsb4n4KU). A nontechnical talk by Gibor
+Basri of the University of California at Berkeley, discussing some of the controversies about the meaning of the
+word “planet” (1:32:52).
+In the Land of Enchantment: The Epic Story of the Cassini Mission to Saturn: https://www.youtube.com/
+watch?v=Vx135n8VFxY (https://www.youtube.com/watch?v=Vx135n8VFxY). A public lecture by Dr. Carolyn
+Porco that focuses mainly on the exploration of Saturn and its moons, but also presents an eloquent
+explanation of why we explore the solar system (1:37:52).
+Origins of the Solar System: http://www.pbs.org/wgbh/nova/space/origins-solar-system.html
+(http://www.pbs.org/wgbh/nova/space/origins-solar-system.html). A video from PBS that focuses on the
+evidence from meteorites, narrated by Neil deGrasse Tyson (13:02).
+To Scale: The Solar System: https://www.youtube.com/watch?t=84&v=zR3Igc3Rhfg
+(https://www.youtube.com/watch?t=84&v=zR3Igc3Rhfg). Constructing a scale model of the solar system in the
+Nevada desert (7:06).
+Collaborative Group Activities
+A.
+Discuss and make a list of the reasons why we humans might want to explore the other worlds in the solar
+system. Does your group think such missions of exploration are worth the investment? Why?
+B.
+Your instructor will assign each group a world. Your task is to think about what it would be like to be there.
+(Feel free to look ahead in the book to the relevant chapters.) Discuss where on or around your world we
+would establish a foothold and what we would need to survive there.
+C.
+In the There’s No Place Like Home feature, we discuss briefly how human activity is transforming our
+planet’s overall environment. Can you think of other ways that this is happening?
+D.
+Some scientists criticized Carl Sagan for “wasting his research time” popularizing astronomy. To what
+extent do you think scientists should spend their time interpreting their field of research for the public?
+Why or why not? Are there ways that scientists who are not as eloquent or charismatic as Carl Sagan or
+Neil deGrasse Tyson can still contribute to the public understanding of science?
+E.
+Your group has been named to a special committee by the International Astronomical Union to suggest
+names of features (such as craters, trenches, and so on) on a newly explored asteroid. Given the
+restriction that any people after whom features are named must no longer be alive, what names or types
+of names would you suggest? (Keep in mind that you are not restricted to names of people, by the way.)
+F.
+A member of your group has been kidnapped by a little-known religious cult that worships the planets.
+They will release him only if your group can tell which of the planets are currently visible in the sky during
+the evening and morning. You are forbidden from getting your instructor involved. How and where else
+could you find out the information you need? (Be as specific as you can. If your instructor says it’s okay,
+feel free to answer this question using online or library resources.)
+G.
+In the Carl Sagan: Solar System Advocate feature, you learned that science fiction helped spark and
+sustain his interest in astronomy. Did any of the members of your group get interested in astronomy as a
+result of a science fiction story, movie, or TV show? Did any of the stories or films you or your group
+7 • Collaborative Group Activities
+members saw take place on the planets of our solar system? Can you remember any specific ones that
+inspired you? If no one in the group is into science fiction, perhaps you can interview some friends or
+classmates who are and report back to the group.
+H.
+A list of NASA solar system spacecraft missions can be found at http://www.nasa.gov/content/solarmissions-list. Your instructor will assign each group a mission. Look up when the mission was launched
+and executed, and describe the mission goals, the basic characteristics of the spacecraft (type of
+instruments, propellant, size, and so on), and what was learned from the mission. If time allows, each
+group should present its findings to the rest of the class.
+I.
+What would be some of the costs or risks of developing a human colony or base on another planetary
+body? What technologies would need to be developed? What would people need to give up to live on a
+different world in our solar system?
+Exercises
+Review Questions
+1. Venus rotates backward and Uranus and Pluto spin about an axis tipped nearly on its side. Based on what
+you learned about the motion of small bodies in the solar system and the surfaces of the planets, what
+might be the cause of these strange rotations?
+2. What is the difference between a differentiated body and an undifferentiated body, and how might that
+influence a body’s ability to retain heat for the age of the solar system?
+3. What does a planet need in order to retain an atmosphere? How does an atmosphere affect the surface of
+a planet and the ability of life to exist?
+4. Which type of planets have the most moons? Where did these moons likely originate?
+5. What is the difference between a meteor and a meteorite?
+6. Explain our ideas about why the terrestrial planets are rocky and have less gas than the giant planets.
+7. Do all planetary systems look the same as our own?
+8. What is comparative planetology and why is it useful to astronomers?
+9. What changed in our understanding of the Moon and Moon-Earth system as a result of humans landing on
+the Moon’s surface?
+10. If Earth was to be hit by an extraterrestrial object, where in the solar system could it come from and how
+would we know its source region?
+11. List some reasons that the study of the planets has progressed more in the past few decades than any
+other branch of astronomy.
+7 • Exercises
+12. Imagine you are a travel agent in the next century. An eccentric billionaire asks you to arrange a
+“Guinness Book of Solar System Records” kind of tour. Where would you direct him to find the following
+(use this chapter and Appendix F and Appendix G):
+A.
+the least-dense planet
+B.
+the densest planet
+C.
+the largest moon in the solar system
+D.
+excluding the jovian planets, the planet where you would weigh the most on its surface (Hint: Weight is
+directly proportional to surface gravity.)
+E.
+the smallest planet
+F.
+the planet that takes the longest time to rotate
+G.
+the planet that takes the shortest time to rotate
+H.
+the planet with a diameter closest to Earth’s
+I.
+the moon with the thickest atmosphere
+J.
+the densest moon
+K.
+the most massive moon
+13. What characteristics do the worlds in our solar system have in common that lead astronomers to believe
+that they all formed from the same “mother cloud” (solar nebula)?
+14. How do terrestrial and giant planets differ? List as many ways as you can think of.
+15. Why are there so many craters on the Moon and so few on Earth?
+16. How do asteroids and comets differ?
+17. How and why is Earth’s Moon different from the larger moons of the giant planets?
+18. Where would you look for some “original” planetesimals left over from the formation of our solar system?
+19. Describe how we use radioactive elements and their decay products to find the age of a rock sample. Is
+this necessarily the age of the entire world from which the sample comes? Explain.
+20. What was the solar nebula like? Why did the Sun form at its center?
+Thought Questions
+21. What can we learn about the formation of our solar system by studying other stars? Explain.
+22. Earlier in this chapter, we modeled the solar system with Earth at a distance of about one city block from
+the Sun. If you were to make a model of the distances in the solar system to match your height, with the
+Sun at the top of your head and Pluto at your feet, which planet would be near your waist? How far down
+would the zone of the terrestrial planets reach?
+23. Seasons are a result of the inclination of a planet’s axial tilt being inclined from the normal of the planet’s
+orbital plane. For example, Earth has an axis tilt of 23.4° (Appendix F). Using information about just the
+inclination alone, which planets might you expect to have seasonal cycles similar to Earth, although
+different in duration because orbital periods around the Sun are different?
+24. Again using Appendix F, which planet(s) might you expect not to have significant seasonal activity? Why?
+25. Again using Appendix F, which planets might you expect to have extreme seasons? Why?
+26. Using some of the astronomical resources in your college library or the Internet, find five names of
+features on each of three other worlds that are named after real people. In a sentence or two, describe
+each of these people and what contributions they made to the progress of science or human thought.
+27. Explain why the planet Venus is differentiated, but asteroid Fraknoi, a very boring and small member of
+the asteroid belt, is not.
+7 • Exercises
+28. Would you expect as many impact craters per unit area on the surface of Venus as on the surface of Mars?
+Why or why not?
+29. Interview a sample of 20 people who are not taking an astronomy class and ask them if they can name a
+living astronomer. What percentage of those interviewed were able to name one? Typically, the two living
+astronomers the public knows these days are Stephen Hawking and Neil deGrasse Tyson. Why are they
+better known than most astronomers? How would your result have differed if you had asked the same
+people to name a movie star or a professional basketball player?
+30. Using Appendix G, complete the following table that describes the characteristics of the Galilean moons of
+Jupiter, starting from Jupiter and moving outward in distance.
+Moon
+Semimajor Axis (km3)
+Diameter
+Density (g/cm3)
+Io
+Europa
+Ganymede
+Callisto
+This system has often been described as a mini solar system. Why might this be so? If Jupiter were to
+represent the Sun and the Galilean moons represented planets, which moons could be considered more
+terrestrial in nature and which ones more like gas/ice giants? Why? (Hint: Use the values in your table to
+help explain your categorization.)
+Figuring for Yourself
+31. Calculate the density of Jupiter. Show your work. Is it more or less dense than Earth? Why?
+32. Calculate the density of Saturn. Show your work. How does it compare with the density of water? Explain
+how this can be.
+33. What is the density of Jupiter’s moon Europa (see Appendix G for data on moons)? Show your work.
+34. Look at Appendix F and Appendix G and indicate the moon with a diameter that is the largest fraction of
+the diameter of the planet or dwarf planet it orbits.
+35. Barnard’s Star, the second closest star to us, is about 56 trillion (5.6 × 1012) km away. Calculate how far it
+would be using the scale model of the solar system given in Overview of Our Planetary System.
+36. A radioactive nucleus has a half-life of 5 × 108 years. Assuming that a sample of rock (say, in an asteroid)
+solidified right after the solar system formed, approximately what fraction of the radioactive element
+should be left in the rock today?
+7 • Exercises

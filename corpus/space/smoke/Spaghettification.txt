@@ -1,0 +1,63 @@
+In astrophysics, spaghettification, or noodle effect is the vertical stretching and horizontal compression of objects into long thin shapes in a very strong, non-homogeneous gravitational field. The term was popularized by Stephen Hawking who described the flight of a fictional astronaut who, passing within a black hole's event horizon, is "stretched like spaghetti". It is caused by extreme tidal forces. In the most extreme cases, near a black hole, the stretching and compression are so powerful that no object can resist it. Within a small region, the horizontal compression balances the vertical stretching so that a small object being spaghettified experiences no net change in volume. If a person were to fall into a black hole feet first, the gravity at their feet would be much stronger than at their head, causing them to be vertically stretched. Along with that, the right side of the body will be pulled to the left, and the left side of the body will be pulled to the right, horizontally compressing the person.
+
+
+== A simple example ==
+
+The concept can be illustrated with four objects in space above a planet, positioned in a diamond formation. The force on each object is directed towards the planet's center. In accordance with the inverse-square law, the lowest of the four objects experiences the biggest gravitational acceleration, and two objects on each side are pulled towards each other, so that the whole formation becomes stretched along the line to the planet and compressed transversely.
+If these four objects are connected parts of a larger rigid object, then it will resist distortion. Internal elastic forces develop as the body distorts to balance the tidal forces, to maintain mechanical equilibrium. If the tidal forces become too large, the body may yield creating a narrow line of broken pieces.
+The forces responsible for spaghettification are called tidal forces. The radial tidal force across an object of mass m and size 
+  
+    
+      
+        Δ
+        r
+      
+    
+    {\displaystyle \Delta r}
+  
+ at a distance r from an object of mass M can be estimated with Newton's law of gravity:
+
+  
+    
+      
+        Δ
+        F
+        =
+        Δ
+        r
+        
+          
+            
+              2
+              G
+              m
+              M
+            
+            
+              r
+              
+                3
+              
+            
+          
+        
+      
+    
+    {\displaystyle \Delta F=\Delta r{\frac {2GmM}{r^{3}}}}
+  
+
+where G is the gravitational constant.
+
+
+== Relation to the event horizon ==
+
+The point at which tidal forces destroy an object or kill a person is proportional to the black hole's mass. This point is not the event horizon.  For a supermassive black hole, such as those found at a galaxy's center, this point lies within the event horizon, so an astronaut may cross the event horizon without noticing any squashing and pulling, although it remains only a matter of time, as once inside an event horizon, falling towards the center is inevitable.  Stellar black holes have much higher spacetime curvature at their event horizon, so the tidal forces would spaghettify the astronaut before the event horizon.
+
+
+== References ==
+
+
+== External links ==
+
+Neil DeGrasse Tyson: Death by Black Hole (clear explanation of the term)
+Crew, Bec (March 24, 2017). "An Encounter With a Neutron Star Would Dwarf Our Entire Nuclear Arsenal". ScienceAlert. Retrieved October 5, 2024. Describes Science Channel video of spaghettification in a neutron star.

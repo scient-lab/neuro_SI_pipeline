@@ -1,0 +1,953 @@
+Figure 19.1 Globular Cluster M80. This beautiful image shows a giant cluster of stars called Messier 80, located about 28,000
+light-years from Earth. Such crowded groups, which astronomers call globular clusters, contain hundreds of thousands of stars,
+including some of the RR Lyrae variables discussed in this chapter. Especially obvious in this picture are the bright red giants, which
+are stars similar to the Sun in mass that are nearing the ends of their lives. (credit: modification of work by The Hubble Heritage
+Team (AURA/ STScI/ NASA))
+Chapter Outline
+19.1 Fundamental Units of Distance
+19.2 Surveying the Stars
+19.3 Variable Stars: One Key to Cosmic Distances
+19.4 The H–R Diagram and Cosmic Distances
+Thinking Ahead
+How large is the universe? What is the most distant object we can see? These are among the most
+fundamental questions astronomers can ask. But just as babies must crawl before they can take their first
+halting steps, so too must we start with a more modest question: How far away are the stars? And even this
+question proves to be very hard to answer. After all, stars are mere points of light. Suppose you see a point of
+light in the darkness when you are driving on a country road late at night. How can you tell whether it is a
+nearby firefly, an oncoming motorcycle some distance away, or the porchlight of a house much farther down
+the road? It’s not so easy, is it? Astronomers faced an even more difficult problem when they tried to estimate
+how far away the stars are.
+In this chapter, we begin with the fundamental definitions of distances on Earth and then extend our reach
+outward to the stars. We will also examine the newest satellites that are surveying the night sky and discuss
+the special types of stars that can be used as trail markers to distant galaxies.
+Celestial Distances
+19 • Thinking Ahead
+19.1
+Fundamental Units of Distance
+Learning Objectives
+By the end of this section, you will be able to:
+Understand the importance of defining a standard distance unit
+Explain how the meter was originally defined and how it has changed over time
+Discuss how radar is used to measure distances to the other members of the solar system
+The first measures of distances were based on human dimensions—the inch as the distance between knuckles
+on the finger, or the yard as the span from the extended index finger to the nose of the British king. Later, the
+requirements of commerce led to some standardization of such units, but each nation tended to set up its own
+definitions. It was not until the middle of the eighteenth century that any real efforts were made to establish a
+uniform, international set of standards.
+The Metric System
+One of the enduring legacies of the era of the French emperor Napoleon is the establishment of the metric
+system of units, officially adopted in France in 1799 and now used in most countries around the world. The
+fundamental metric unit of length is the meter, originally defined as one ten-millionth of the distance along
+Earth’s surface from the equator to the pole. French astronomers of the seventeenth and eighteenth centuries
+were pioneers in determining the dimensions of Earth, so it was logical to use their information as the
+foundation of the new system.
+Practical problems exist with a definition expressed in terms of the size of Earth, since anyone wishing to
+determine the distance from one place to another can hardly be expected to go out and re-measure the
+planet. Therefore, an intermediate standard meter consisting of a bar of platinum-iridium metal was set up in
+Paris. In 1889, by international agreement, this bar was defined to be exactly one meter in length, and precise
+copies of the original meter bar were made to serve as standards for other nations.
+Other units of length are derived from the meter. Thus, 1 kilometer (km) equals 1000 meters, 1 centimeter
+(cm) equals 1/100 meter, and so on. Even the old British and American units, such as the inch and the mile, are
+now defined in terms of the metric system.
+Modern Redefinitions of the Meter
+In 1960, the official definition of the meter was changed again. As a result of improved technology for
+generating spectral lines of precisely known wavelengths (see the chapter on Radiation and Spectra), the
+meter was redefined to equal 1,650,763.73 wavelengths of a particular atomic transition in the element
+krypton-86. The advantage of this redefinition is that anyone with a suitably equipped laboratory can
+reproduce a standard meter, without reference to any particular metal bar.
+In 1983, the meter was defined once more, this time in terms of the velocity of light. Light in a vacuum can
+travel a distance of one meter in 1/299,792,458 second. Today, therefore, light travel time provides our basic
+unit of length. Put another way, a distance of one light-second (the amount of space light covers in one
+second) is defined to be 299,792,458 meters. That’s almost 300 million meters that light covers in just one
+second; light really is very fast! We could just as well use the light-second as the fundamental unit of length,
+but for practical reasons (and to respect tradition), we have defined the meter as a small fraction of the lightsecond.
+Distance within the Solar System
+The work of Copernicus and Kepler established the relative distances of the planets—that is, how far from the
+Sun one planet is compared to another (see Observing the Sky: The Birth of Astronomy and Orbits and
+Gravity). But their work could not establish the absolute distances (in light-seconds or meters or other
+standard units of length). This is like knowing the height of all the students in your class only as compared to
+19 • Celestial Distances
+the height of your astronomy instructor, but not in inches or centimeters. Somebody’s height has to be
+measured directly.
+Similarly, to establish absolute distances, astronomers had to measure one distance in the solar system
+directly. Generally, the closer to us the object is, the easier such a measurement would be. Estimates of the
+distance to Venus were made as Venus crossed the face of the Sun in 1761 and 1769, and an international
+campaign was organized to estimate the distance to the asteroid Eros in the early 1930s, when its orbit
+brought it close to Earth. More recently, Venus crossed (or transited) the surface of the Sun in 2004 and 2012,
+and allowed us to make a modern distance estimate, although, as we will see below, by then it wasn’t needed
+(Figure 19.2).
+If you would like more information on just how the motion of Venus across the Sun helped us pin down
+distances in the solar system, you can turn to a nice explanation (https://openstax.org/l/30VenusandSun)
+by a NASA astronomer.
+Figure 19.2 Venus Transits the Sun, 2012. This striking “picture” of Venus crossing the face of the Sun (it’s the black dot at about 2
+o’clock) is more than just an impressive image. Taken with the Solar Dynamics Observatory spacecraft and special filters, it shows a
+modern transit of Venus. Such events allowed astronomers in the 1800s to estimate the distance to Venus. They measured the time it
+took Venus to cross the face of the Sun from different latitudes on Earth. The differences in times can be used to estimate the
+distance to the planet. Today, radar is used for much more precise distance estimates. (credit: modification of work by NASA/SDO,
+AIA)
+The key to our modern determination of solar system dimensions is radar, a type of radio wave that can
+bounce off solid objects (Figure 19.3). As discussed in several earlier chapters, by timing how long a radar
+beam (traveling at the speed of light) takes to reach another world and return, we can measure the distance
+involved very accurately. In 1961, radar signals were bounced off Venus for the first time, providing a direct
+measurement of the distance from Earth to Venus in terms of light-seconds (from the roundtrip travel time of
+the radar signal).
+Subsequently, radar has been used to determine the distances to Mercury, Mars, the satellites of Jupiter, the
+rings of Saturn, and several asteroids. Note, by the way, that it is not possible to use radar to measure the
+distance to the Sun directly because the Sun does not reflect radar very efficiently. But we can measure the
+LINK TO LEARNING
+19.1 • Fundamental Units of Distance
+distance to many other solar system objects and use Kepler’s laws to give us the distance to the Sun.
+Figure 19.3 Radar Telescope. This dish-shaped antenna, part of the NASA Deep Space Network in California’s Mojave Desert, is 70
+meters wide. Nicknamed the “Mars antenna,” this radar telescope can send and receive radar waves, and thus measure the
+distances to planets, satellites, and asteroids. (credit: NASA/JPL-Caltech)
+From the various (related) solar system distances, astronomers selected the average distance from Earth to
+the Sun as our standard “measuring stick” within the solar system. When Earth and the Sun are closest, they
+are about 147.1 million kilometers apart; when Earth and the Sun are farthest, they are about 152.1 million
+kilometers apart. The average of these two distances is called the astronomical unit (AU). We then express all
+the other distances in the solar system in terms of the AU. Years of painstaking analyses of radar
+measurements have led to a determination of the length of the AU to a precision of about one part in a billion.
+The length of 1 AU can be expressed in light travel time as 499.004854 light-seconds, or about 8.3 lightminutes. If we use the definition of the meter given previously, this is equivalent to 1 AU = 149,597,870,700
+meters.
+These distances are, of course, given here to a much higher level of precision than is normally needed. In this
+text, we are usually content to express numbers to a couple of significant places and leave it at that. For our
+purposes, it will be sufficient to round off these numbers:
+We now know the absolute distance scale within our own solar system with fantastic accuracy. This is the first
+link in the chain of cosmic distances.
+The distances between the celestial bodies in our solar system are sometimes difficult to grasp or put into
+perspective. This interactive website (https://openstax.org/l/30DistanceScale) provides a “map” that shows
+the distances by using a scale at the bottom of the screen and allows you to scroll (using your arrow keys)
+LINK TO LEARNING
+19 • Celestial Distances
+through screens of “empty space” to get to the next planet—all while your current distance from the Sun is
+visible on the scale.
+19.2
+Surveying the Stars
+Learning Objectives
+By the end of this section, you will be able to:
+Understand the concept of triangulating distances to distant objects, including stars
+Explain why space-based satellites deliver more precise distances than ground-based methods
+Discuss astronomers’ efforts to determine the distance of the stars closest to the Sun
+It is an enormous step to go from the planets to the stars. For example, our Voyager 1 probe, which was
+launched in 1977, has now traveled farther from Earth than any other spacecraft. As of 2021, Voyager 1 is 152
+AU from the Sun.1 The nearest star, however, is hundreds of thousands of AU from Earth. Even so, we can, in
+principle, survey distances to the stars using the same technique that a civil engineer employs to survey the
+distance to an inaccessible mountain or tree—the method of triangulation.
+Triangulation in Space
+A practical example of triangulation is your own depth perception. As you are pleased to discover every
+morning when you look in the mirror, your two eyes are located some distance apart. You therefore view the
+world from two different vantage points, and it is this dual perspective that allows you to get a general sense
+of how far away objects are.
+To see what we mean, take a pen and hold it a few inches in front of your face. Look at it first with one eye
+(closing the other) and then switch eyes. Note how the pen seems to shift relative to objects across the room.
+Now hold the pen at arm’s length: the shift is less. If you play with moving the pen for a while, you will notice
+that the farther away you hold it, the less it seems to shift. Your brain automatically performs such
+comparisons and gives you a pretty good sense of how far away things in your immediate neighborhood are.
+If your arms were made of rubber, you could stretch the pen far enough away from your eyes that the shift
+would become imperceptible. This is because our depth perception fails for objects more than a few tens of
+meters away. In order to see the shift of an object a city block or more from you, your eyes would need to be
+spread apart a lot farther.
+Let’s see how surveyors take advantage of the same idea. Suppose you are trying to measure the distance to a
+tree across a deep river (Figure 19.4). You set up two observing stations some distance apart. That distance
+(line AB in Figure 19.4) is called the baseline. Now the direction to the tree (C in the figure) in relation to the
+baseline is observed from each station. Note that C appears in different directions from the two stations. This
+apparent change in direction of the remote object due to a change in vantage point of the observer is called
+parallax.
+To have some basis for comparison, the dwarf planet Pluto orbits at an average distance of 40 AU from the Sun, and the dwarf
+planet Eris is currently roughly 96 AU from the Sun.
+19.2 • Surveying the Stars
+Figure 19.4 Triangulation. Triangulation allows us to measure distances to inaccessible objects. By getting the angle to a tree from
+two different vantage points, we can calculate the properties of the triangle they make and thus the distance to the tree.
+The parallax is also the angle that lines AC and BC make—in mathematical terms, the angle subtended by the
+baseline. A knowledge of the angles at A and B and the length of the baseline, AB, allows the triangle ABC to
+be solved for any of its dimensions—say, the distance AC or BC. The solution could be reached by constructing
+a scale drawing or by using trigonometry to make a numerical calculation. If the tree were farther away, the
+whole triangle would be longer and skinnier, and the parallax angle would be smaller. Thus, we have the
+general rule that the smaller the parallax, the more distant the object we are measuring must be.
+In practice, the kinds of baselines surveyors use for measuring distances on Earth are completely useless when
+we try to gauge distances in space. The farther away an astronomical object lies, the longer the baseline has to
+be to give us a reasonable chance of making a measurement. Unfortunately, nearly all astronomical objects
+are very far away. To measure their distances requires a very large baseline and highly precise angular
+measurements. The Moon is the only object near enough that its distance can be found fairly accurately with
+measurements made without a telescope. Ptolemy determined the distance to the Moon correctly to within a
+few percent. He used the turning Earth itself as a baseline, measuring the position of the Moon relative to the
+stars at two different times of night.
+With the aid of telescopes, later astronomers were able to measure the distances to the nearer planets and
+asteroids using Earth’s diameter as a baseline. This is how the AU was first established. To reach for the stars,
+however, requires a much longer baseline for triangulation and extremely sensitive measurements. Such a
+baseline is provided by Earth’s annual trip around the Sun.
+Distances to Stars
+As Earth travels from one side of its orbit to the other, it graciously provides us with a baseline of 2 AU, or
+about 300 million kilometers. Although this is a much bigger baseline than the diameter of Earth, the stars are
+so far away that the resulting parallax shift is still not visible to the naked eye—not even for the closest stars.
+In the chapter on Observing the Sky: The Birth of Astronomy, we discussed how this dilemma perplexed the
+ancient Greeks, some of whom had actually suggested that the Sun might be the center of the solar system,
+with Earth in motion around it. Aristotle and others argued, however, that Earth could not be revolving about
+the Sun. If it were, they said, we would surely observe the parallax of the nearer stars against the background
+of more distant objects as we viewed the sky from different parts of Earth’s orbit (Figure 19.6). Tycho Brahe
+(1546–1601) advanced the same faulty argument nearly 2000 years later, when his careful measurements of
+19 • Celestial Distances
+stellar positions with the unaided eye revealed no such shift.
+These early observers did not realize how truly distant the stars were and how small the change in their
+positions therefore was, even with the entire orbit of Earth as a baseline. The problem was that they did not
+have tools to measure parallax shifts too small to be seen with the human eye. By the eighteenth century,
+when there was no longer serious doubt about Earth’s revolution, it became clear that the stars must be
+extremely distant. Astronomers equipped with telescopes began to devise instruments capable of measuring
+the tiny shifts of nearby stars relative to the background of more distant (and thus unshifting) celestial objects.
+This was a significant technical challenge, since, even for the nearest stars, parallax angles are usually only a
+fraction of a second of arc. Recall that one second of arc (arcsec) is an angle of only 1/3600 of a degree. A coin
+the size of a US quarter would appear to have a diameter of 1 arcsecond if you were viewing it from a distance
+of about 5 kilometers (3 miles). Think about how small an angle that is. No wonder it took astronomers a long
+time before they could measure such tiny shifts.
+The first successful detections of stellar parallax were in the year 1838, when Friedrich Bessel in Germany
+(Figure 19.5), Thomas Henderson, a Scottish astronomer working at the Cape of Good Hope, and Friedrich
+Struve in Russia independently measured the parallaxes of the stars 61 Cygni, Alpha Centauri, and Vega,
+respectively. Even the closest star, Alpha Centauri, showed a total displacement of only about 1.5 arcseconds
+during the course of a year.
+Figure 19.5 Friedrich Wilhelm Bessel (1784–1846), Thomas J. Henderson (1798–1844), and Friedrich Struve (1793–1864). (a)
+Bessel made the first authenticated measurement of the distance to a star (61 Cygni) in 1838, a feat that had eluded many dedicated
+astronomers for almost a century. But two others, (b) Scottish astronomer Thomas J. Henderson and (c) Friedrich Struve, in Russia,
+were close on his heels.
+Figure 19.6 shows how such measurements work. Seen from opposite sides of Earth’s orbit, a nearby star
+shifts position when compared to a pattern of more distant stars. Astronomers actually define parallax to be
+one-half the angle that a star shifts when seen from opposite sides of Earth’s orbit (the angle labeled P in
+Figure 19.6). The reason for this definition is just that they prefer to deal with a baseline of 1 AU instead of 2
+AU.
+19.2 • Surveying the Stars
+Figure 19.6 Parallax. As Earth revolves around the Sun, the direction in which we see a nearby star varies with respect to distant
+stars. We define the parallax of the nearby star to be one half of the total change in direction, and we usually measure it in
+arcseconds.
+Use the Astronomical Parallax model (https://openstax.org/l/30parallaxmod) to explore how the Earth’s
+motion around the Sun causes nearby stars to appear to “wobble” back and forth compared to background
+stars. Click on the Orbit box, and use the view along the bottom to see the apparent motion of the nearby
+object.
+Units of Stellar Distance
+With a baseline of one AU, how far away would a star have to be to have a parallax of 1 arcsecond? The answer
+turns out to be 206,265 AU, or 3.26 light-years. This is equal to 3.1 × 1013 kilometers (in other words, 31 trillion
+kilometers). We give this unit a special name, the parsec (pc)—derived from “the distance at which we have a
+parallax of one second.” The distance (D) of a star in parsecs is just the reciprocal of its parallax (p) in
+arcseconds; that is,
+Thus, a star with a parallax of 0.1 arcsecond would be found at a distance of 10 parsecs, and one with a
+parallax of 0.05 arcsecond would be 20 parsecs away.
+Back in the days when most of our distances came from parallax measurements, a parsec was a useful unit of
+distance, but it is not as intuitive as the light-year. One advantage of the light-year as a unit is that it
+emphasizes the fact that, as we look out into space, we are also looking back into time. The light that we see
+from a star 100 light-years away left that star 100 years ago. What we study is not the star as it is now, but
+rather as it was in the past. The light that reaches our telescopes today from distant galaxies left them before
+Earth even existed.
+In this text, we will use light-years as our unit of distance, but many astronomers still use parsecs when they
+LINK TO LEARNING
+19 • Celestial Distances
+write technical papers or talk with each other at meetings. To convert between the two distance units, just
+bear in mind: 1 parsec = 3.26 light-year, and 1 light-year = 0.31 parsec.
+E X A M P L E 1 9 . 1
+How Far Is a Light-Year?
+A light-year is the distance light travels in 1 year. Given that light travels at a speed of 300,000 km/s, how
+many kilometers are there in a light-year?
+Solution
+We learned earlier that speed = distance/time. We can rearrange this equation so that distance = velocity ×
+time. Now, we need to determine the number of seconds in a year.
+There are approximately 365 days in 1 year. To determine the number of seconds, we must estimate the
+number of seconds in 1 day.
+We can change units as follows (notice how the units of time cancel out):
+Next, to get the number of seconds per year:
+Now we can multiply the speed of light by the number of seconds per year to get the distance traveled by
+light in 1 year:
+That’s almost 10,000,000,000,000 km that light covers in a year. To help you imagine how long this distance
+is, we’ll mention that a string 1 light-year long could fit around the circumference of Earth 236 million times.
+Check Your Learning
+The number above is really large. What happens if we put it in terms that might be a little more
+understandable, like the diameter of Earth? Earth’s diameter is about 12,700 km.
+Answer:
+That means that 1 light-year is about 745 million times the diameter of Earth.
+Naming Stars
+You may be wondering why stars have such a confusing assortment of names. Just look at the first three
+stars to have their parallaxes measured: 61 Cygni, Alpha Centauri, and Vega. Each of these names comes
+from a different tradition of designating stars.
+ASTRONOMY BASICS
+19.2 • Surveying the Stars
+The brightest stars have names that derive from the ancients. Some are from the Greek, such as Sirius,
+which means “the scorched one”—a reference to its brilliance. A few are from Latin, but many of the bestknown names are from Arabic because, as discussed in Observing the Sky: The Birth of Astronomy, much of
+Greek and Roman astronomy was “rediscovered” in Europe after the Dark Ages by means of Arabic
+translations. Vega, for example, means “swooping Eagle,” and Betelgeuse (pronounced “Beetle-juice”)
+means “right hand of the central one.”
+In 1603, German astronomer Johann Bayer (1572–1625) introduced a more systematic approach to naming
+stars. For each constellation, he assigned a Greek letter to the brightest stars, roughly in order of
+brightness. In the constellation of Orion, for example, Betelgeuse is the brightest star, so it got the first
+letter in the Greek alphabet—alpha—and is known as Alpha Orionis. (“Orionis” is the possessive form of
+Orion, so Alpha Orionis means “the first of Orion.”) A star called Rigel, being the second brightest in that
+constellation, is called Beta Orionis (Figure 19.7). Since there are 24 letters in the Greek alphabet, this
+system allows the labeling of 24 stars in each constellation, but constellations have many more stars than
+that.
+Figure 19.7 Objects in Orion. (a) This image shows the brightest objects in or near the star pattern of Orion, the hunter (of
+Greek mythology), in the constellation of Orion. (b) Note the Greek letters of Bayer’s system in this diagram of the Orion
+constellation. The objects denoted M42, M43, and M78 are not stars but nebulae—clouds of gas and dust; these numbers come
+from a list of “fuzzy objects” made by Charles Messier in 1781. (credit a: modification of work by Matthew Spinelli; credit b:
+modification of work by ESO, IAU and Sky & Telescope)
+In 1725, the English Astronomer Royal John Flamsteed introduced yet another system, in which the brighter
+stars eventually got a number in each constellation in order of their location in the sky or, more precisely,
+their right ascension. (The system of sky coordinates that includes right ascension was discussed in Earth,
+Moon, and Sky.) In this system, Betelgeuse is called 58 Orionis and 61 Cygni is the 61st star in the
+constellation of Cygnus, the swan.
+It gets worse. As astronomers began to understand more and more about stars, they drew up a series of
+specialized star catalogs, and fans of those catalogs began calling stars by their catalog numbers. If you
+look at Appendix I—our list of the nearest stars (many of which are much too faint to get an ancient name,
+19 • Celestial Distances
+Bayer letter, or Flamsteed number)—you will see references to some of these catalogs. An example is a set
+of stars labeled with a BD number, for “Bonner Durchmusterung.” This was a mammoth catalog of over
+324,000 stars in a series of zones in the sky, organized at the Bonn Observatory in the 1850s and 1860s.
+Keep in mind that this catalog was made before photography or computers came into use, so the position
+of each star had to be measured (at least twice) by eye, a daunting undertaking.
+There is also a completely different system for keeping track of stars whose luminosity varies, and another
+for stars that brighten explosively at unpredictable times. Astronomers have gotten used to the many
+different star-naming systems, but students often find them bewildering and wish astronomers would
+settle on one. Don’t hold your breath: in astronomy, as in many fields of human thought, tradition holds a
+powerful attraction. Still, with high-speed computer databases to aid human memory, names may become
+less and less necessary. Today’s astronomers often refer to stars by their precise locations in the sky rather
+than by their names or various catalog numbers.
+The Nearest Stars
+No known star (other than the Sun) is within 1 light-year or even 1 parsec of Earth. The stellar neighbors
+nearest the Sun are three stars in the constellation of Centaurus. To the unaided eye, the brightest of these
+three stars is Alpha Centauri, which is only 30○from the south celestial pole and hence not visible from the
+mainland United States. Alpha Centauri itself is a binary star—two stars in mutual revolution—too close
+together to be distinguished without a telescope. These two stars are 4.4 light-years from us. Nearby is a third
+faint star, known as Proxima Centauri. Proxima, with a distance of 4.3 light-years, is slightly closer to us than
+the other two stars. If Proxima Centauri is part of a triple star system with the binary Alpha Centauri, as seems
+likely, then its orbital period may be longer than 500,000 years.
+Proxima Centauri is an example of the most common type of star, and our most common type of stellar
+neighbor (as we saw in Stars: A Celestial Census.) Low-mass red M dwarfs make up about 70% of all stars and
+dominate the census of stars within 10 parsecs (33 light-years) of the Sun. For example, a recent survey of the
+solar neighborhood counted 357 stars and brown dwarfs within 10 parsecs, and 248 of these are red dwarfs.
+Yet, if you wanted to see an M dwarf with your naked eye, you would be out of luck. These stars only produce a
+fraction of the Sun’s light, and nearly all of them require a telescope to be detected.
+The nearest star visible without a telescope from most of the United States is the brightest appearing of all the
+stars, Sirius, which has a distance of a little more than 8 light-years. It too is a binary system, composed of a
+faint white dwarf orbiting a bluish-white, main-sequence star. It is an interesting coincidence of numbers that
+light reaches us from the Sun in about 8 minutes and from the next brightest star in the sky in about 8 years.
+E X A M P L E 1 9 . 2
+Calculating the Diameter of the Sun
+For nearby stars, we can measure the apparent shift in their positions as Earth orbits the Sun. We wrote
+earlier that an object must be 206,265 AU distant to have a parallax of one second of arc. This must seem
+like a very strange number, but you can figure out why this is the right value. We will start by estimating the
+diameter of the Sun and then apply the same idea to a star with a parallax of 1 arcsecond. Make a sketch
+that has a round circle to represent the Sun, place Earth some distance away, and put an observer on it.
+Draw two lines from the point where the observer is standing, one to each side of the Sun. Sketch a circle
+centered at Earth with its circumference passing through the center of the Sun. Now think about
+proportions. The Sun spans about half a degree on the sky. A full circle has 360○. The circumference of the
+circle centered on Earth and passing through the Sun is given by:
+19.2 • Surveying the Stars
+Then, the following two ratios are equal:
+Calculate the diameter of the Sun. How does your answer compare to the actual diameter?
+Solution
+To solve for the diameter of the Sun, we can evaluate the expression above.
+This is very close to the true value of about 848,000 miles.
+Check Your Learning
+Now apply this idea to calculating the distance to a star that has a parallax of 1 arcsec. Draw a picture
+similar to the one we suggested above and calculate the distance in AU. (Hint: Remember that the parallax
+angle is defined by 1 AU, not 2 AU, and that 3600 arcseconds = 1 degree.)
+Answer:
+206,265 AU
+Measuring Parallaxes in Space
+The measurements of stellar parallax were revolutionized by the launch of the spacecraft Hipparcos in 1989,
+which measured distances for thousands of stars out to about 300 light-years with an accuracy of 10 to 20%
+(see Figure 19.8 and the feature on Parallax and Space Astronomy). However, even 300 light-years are less
+than 1% the size of our Galaxy’s main disk.
+In December 2013, the successor to Hipparcos, named Gaia, was launched by the European Space Agency.
+Gaia is measuring the position and distances to almost one billion stars with an accuracy of a few millionths of
+an arcsecond. Gaia’s distance limit extends well beyond Hipparcos, studying stars out to 30,000 light-years
+(100 times farther than Hipparcos, covering nearly 1/3 of the galactic disk). Gaia is also able to measure proper
+motions2 for thousands of stars in the halo of the Milky Way—something that can only be done for the
+brightest stars right now. At the end of Gaia’s mission, we will not only have a three-dimensional map of a
+large fraction of our own Milky Way Galaxy, but we will also have a strong link in the chain of cosmic distances
+that we are discussing in this chapter. Yet, to extend this chain beyond Gaia’s reach and explore distances to
+nearby galaxies, we need some completely new techniques.
+Proper motion (as discussed in Analyzing Starlight, is the motion of a star across the sky (perpendicular to our line of sight.)
+19 • Celestial Distances
+Figure 19.8 H–R Diagram of Stars Measured by Gaia and Hipparcos. This plot includes 16,631 stars for which the parallaxes have
+an accuracy of 10% or better. The colors indicate the numbers of stars at each point of the diagram, with red corresponding to the
+largest number and blue to the lowest. Luminosity is plotted along the vertical axis, with luminosity increasing upward. An infrared
+color is plotted as a proxy for temperature, with temperature decreasing to the right. Most of the data points are distributed along
+the diagonal running from the top left corner (high luminosity, high temperature) to the bottom right (low temperature, low
+luminosity). These are main sequence stars. The large clump of data points above the main sequence on the right side of the
+diagram is composed of red giant stars. (credit: modification of work by the European Space Agency)
+Parallax and Space Astronomy
+One of the most difficult things about precisely measuring the tiny angles of parallax shifts from Earth is
+that you have to observe the stars through our planet’s atmosphere. As we saw in Astronomical
+Instruments, the effect of the atmosphere is to spread out the points of starlight into fuzzy disks, making
+exact measurements of their positions more difficult. Astronomers had long dreamed of being able to
+measure parallaxes from space, and two orbiting observatories have now turned this dream into reality.
+The name of the Hipparcos satellite, launched in 1989 by the European Space Agency, is both an
+abbreviation for High Precision Parallax Collecting Satellite and a tribute to Hipparchus, the pioneering
+Greek astronomer whose work we discussed in the Observing the Sky: The Birth of Astronomy. The satellite
+was designed to make the most accurate parallax measurements in history, from 36,000 kilometers above
+Earth. However, its onboard rocket motor failed to fire, which meant it did not get the needed boost to
+reach the desired altitude. Hipparcos ended up spending its 4-year life in an elliptical orbit that varied from
+MAKING CONNECTIONS
+19.2 • Surveying the Stars
+500 to 36,000 kilometers high. In this orbit, the satellite plunged into Earth’s radiation belts every 5 hours or
+so, which finally took its toll on the solar panels that provided energy to power the instruments.
+Nevertheless, the mission was successful, resulting in two catalogs. One gives positions of 120,000 stars to
+an accuracy of one-thousandth of an arcsecond—about the diameter of a golf ball in New York as viewed
+from Europe. The second catalog contains information for more than a million stars, whose positions have
+been measured to thirty-thousandths of an arcsecond. We now have accurate parallax measurements of
+stars out to distances of about 300 light-years. (With ground-based telescopes, accurate measurements
+were feasible out to only about 60 light-years.)
+In order to build on the success of Hipparcos, in 2013, the European Space Agency launched a new satellite
+called Gaia. Because Gaia carries larger telescopes than Hipparcos, it can observe fainter stars and measure
+their positions 200 times more accurately. The main goal of the Gaia mission is to make an accurate threedimensional map of that portion of the Galaxy within about 30,000 light-years by observing 1 billion stars 70
+times each, measuring their positions and hence their parallaxes as well as their brightnesses.
+For a long time, the measurement of parallaxes and accurate stellar positions was a backwater of
+astronomical research—mainly because the accuracy of measurements did not improve much for about
+100 years. However, the ability to make measurements from space has revolutionized this field of
+astronomy and will continue to provide a critical link in our chain of cosmic distances.
+The European Space Agency (ESA) maintains a Gaia mission website (https://openstax.org/l/30GaiaMission)
+where you can learn more about the Gaia mission and to get the latest news on Gaia observations.
+To learn more about Hipparcos, explore this European Space Agency webpage (https://openstax.org/l/
+30Hipparcos) with an ESA vodcast Charting the Galaxy—from Hipparcos to Gaia.
+19.3
+Variable Stars: One Key to Cosmic Distances
+Learning Objectives
+By the end of this section, you will be able to:
+Describe how some stars vary their light output and why such stars are important
+Explain the importance of pulsating variable stars, such as cepheids and RR Lyrae-type stars, to our study
+of the universe
+Let’s briefly review the key reasons that measuring distances to the stars is such a struggle. As discussed in
+The Brightness of Stars, our problem is that stars come in a bewildering variety of intrinsic luminosities. (If
+stars were light bulbs, we’d say they come in a wide range of wattages.) Suppose, instead, that all stars had
+the same “wattage” or luminosity. In that case, the more distant ones would always look dimmer, and we
+could tell how far away a star is simply by how dim it appeared. In the real universe, however, when we look at
+a star in our sky (with eye or telescope) and measure its apparent brightness, we cannot know whether it looks
+dim because it’s a low-wattage bulb or because it is far away, or perhaps some of each.
+Astronomers need to discover something else about the star that allows us to “read off” its intrinsic
+luminosity—in effect, to know what the star’s true wattage is. With this information, we can then attribute how
+dim it looks from Earth to its distance. Recall that the apparent brightness of an object decreases with the
+square of the distance to that object. If two objects have the same luminosity but one is three times farther
+LINK TO LEARNING
+19 • Celestial Distances
+than the other, the more distant one will look nine times fainter. Therefore, if we know the luminosity of a star
+and its apparent brightness, we can calculate how far away it is. Astronomers have long searched for
+techniques that would somehow allow us to determine the luminosity of a star—and it is to these techniques
+that we turn next.
+Variable Stars
+The breakthrough in measuring distances to remote parts of our Galaxy, and to other galaxies as well, came
+from the study of variable stars. Most stars are constant in their luminosity, at least to within a percent or two.
+Like the Sun, they generate a steady flow of energy from their interiors. However, some stars are seen to vary
+in brightness and, for this reason, are called variable stars. Many such stars vary on a regular cycle, like the
+flashing bulbs that decorate stores and homes during the winter holidays.
+Let’s define some tools to help us keep track of how a star varies. A graph that shows how the brightness of a
+variable star changes with time is called a light curve (Figure 19.9). The maximum is the point of the light
+curve where the star has its greatest brightness; the minimum is the point where it is faintest. If the light
+variations repeat themselves periodically, the interval between the two maxima is called the period of the star.
+(If this kind of graph looks familiar, it is because we introduced it in Diameters of Stars.)
+Figure 19.9 Cepheid Light Curve. This light curve shows how the brightness changes with time for a typical cepheid variable, with a
+period of about 6 days.
+Pulsating Variables
+There are two special types of variable stars for which—as we will see—measurements of the light curve give
+us accurate distances. These are called cepheid and RR Lyrae variables, both of which are pulsating variable
+stars. Such a star actually changes its diameter with time—periodically expanding and contracting, as your
+chest does when you breathe. We now understand that these stars are going through a brief unstable stage
+late in their lives.
+The expansion and contraction of pulsating variables can be measured by using the Doppler effect. The lines
+in the spectrum shift toward the blue as the surface of the star moves toward us and then shift to the red as
+the surface shrinks back. As the star pulsates, it also changes its overall color, indicating that its temperature is
+also varying. And, most important for our purposes, the luminosity of the pulsating variable also changes in a
+regular way as it expands and contracts.
+Cepheid Variables
+Cepheids are large, yellow, pulsating stars named for the first-known star of the group, Delta Cephei. This, by
+the way, is another example of how confusing naming conventions get in astronomy; here, a whole class of
+stars is named after the constellation in which the first one happened to be found. (We textbook authors can
+only apologize to our readers for the whole mess!)
+The variability of Delta Cephei was discovered in 1784 by the young English astronomer John Goodricke (see
+John Goodricke). The star rises rather rapidly to maximum light and then falls more slowly to minimum light,
+taking a total of 5.4 days for one cycle. The curve in Figure 19.9 represents a simplified version of the light
+curve of Delta Cephei.
+19.3 • Variable Stars: One Key to Cosmic Distances
+Several hundred cepheid variables are known in our Galaxy. Most cepheids have periods in the range of 3 to
+50 days and luminosities that are about 1000 to 10,000 times greater than that of the Sun. Their variations in
+luminosity range from a few percent to a factor of 10.
+Polaris, the North Star, is a cepheid variable that, for a long time, varied by one tenth of a magnitude, or by
+about 10% in visual luminosity, in a period of just under 4 days. Recent measurements indicate that the
+amount by which the brightness of Polaris changes is decreasing and that, sometime in the future, this star
+will no longer be a pulsating variable. This is just one more piece of evidence that stars really do evolve and
+change in fundamental ways as they age, and that being a cepheid variable represents a stage in the life of the
+star.
+The Period-Luminosity Relation
+The importance of cepheid variables lies in the fact that their periods and average luminosities turn out to be
+directly related. The longer the period (the longer the star takes to vary), the greater the luminosity. This
+period-luminosity relation was a remarkable discovery, one for which astronomers still (pardon the
+expression) thank their lucky stars. The period of such a star is easy to measure: a good telescope and a good
+clock are all you need. Once you have the period, the relationship (which can be put into precise mathematical
+terms) will give you the luminosity of the star.
+Let’s be clear on what that means. The relation allows you to essentially “read off” how bright the star really is
+(how much energy it puts out). Astronomers can then compare this intrinsic brightness with the apparent
+brightness of the star. As we saw, the difference between the two allows them to calculate the distance.
+The relation between period and luminosity was discovered in 1908 by Henrietta Leavitt (Figure 19.10), a staff
+member at the Harvard College Observatory (and one of a number of women working for low wages assisting
+Edward Pickering, the observatory’s director; see Annie Cannon: Classifier of the Stars). Leavitt discovered
+hundreds of variable stars in the Large Magellanic Cloud and Small Magellanic Cloud, two great star systems
+that are actually neighboring galaxies (although they were not known to be galaxies then). A small fraction of
+these variables were cepheids (Figure 19.11).
+Figure 19.10 Henrietta Swan Leavitt (1868–1921). Leavitt worked as an astronomer at the Harvard College Observatory. While
+studying photographs of the Magellanic Clouds, she found over 1700 variable stars, including 20 cepheids. Since all the cepheids in
+these systems were at roughly the same distance, she was able to compare their luminosities and periods of variation. She thus
+discovered a fundamental relationship between these characteristics that led to a new and much better way of estimating cosmic
+distances. (credit: modification of work by AIP)
+These systems presented a wonderful opportunity to study the behavior of variable stars independent of their
+distance. For all practical purposes, the Magellanic Clouds are so far away that astronomers can assume that
+all the stars in them are at roughly the same distance from us. (In the same way, all the suburbs of Los Angeles
+are roughly the same distance from New York City. Of course, if you are in Los Angeles, you will notice
+annoying distances between the suburbs, but compared to how far away New York City is, the differences
+19 • Celestial Distances
+seem small.) If all the variable stars in the Magellanic Clouds are at roughly the same distance, then any
+difference in their apparent brightnesses must be caused by differences in their intrinsic luminosities.
+Figure 19.11 Large Magellanic Cloud. The Large Magellanic Cloud (so named because Magellan’s crew were the first Europeans to
+record it) is a small, irregularly shaped galaxy near our own Milky Way. It was in this galaxy that Henrietta Leavitt discovered the
+cepheid period-luminosity relation. (credit: ESO)
+Leavitt found that the brighter-appearing cepheids always have the longer periods of light variation. Thus, she
+reasoned, the period must be related to the luminosity of the stars. When Leavitt did this work, the distance to
+the Magellanic Clouds was not known, so she was only able to show that luminosity was related to period. She
+could not determine exactly what the relationship is.
+To define the period-luminosity relation with actual numbers (to calibrate it), astronomers first had to measure
+the actual distances to a few nearby cepheids in another way. (This was accomplished by finding cepheids
+associated in clusters with other stars whose distances could be estimated from their spectra, as discussed in
+the next section of this chapter.) But once the relation was thus defined, it could give us the distance to any
+cepheid, wherever it might be located (Figure 19.12).
+19.3 • Variable Stars: One Key to Cosmic Distances
+Figure 19.12 How to Use a Cepheid to Measure Distance. (a) Find a cepheid variable star and measure its period. (b) Use the
+period-luminosity relation to calculate the star’s luminosity. (c) Measure the star’s apparent brightness. (d) Compare the luminosity
+with the apparent brightness to calculate the distance.
+Here at last was the technique astronomers had been searching for to break the confines of distance that
+parallax imposed on them. Cepheids can be observed and monitored, it turns out, in many parts of our own
+Galaxy and in other nearby galaxies as well. Astronomers, including Ejnar Hertzsprung and Harvard’s Harlow
+Shapley, immediately saw the potential of the new technique; they and many others set to work exploring
+more distant reaches of space using cepheids as signposts. In the 1920s, Edwin Hubble made one of the most
+significant astronomical discoveries of all time using cepheids, when he observed them in nearby galaxies and
+discovered the expansion of the universe. As we will see, this work still continues, as the Hubble Space
+Telescope and other modern instruments try to identify and measure individual cepheids in galaxies farther
+and farther away. The most distant known variable stars are all cepheids, with some about 60 million lightyears away.
+John Goodricke
+The brief life of John Goodricke (Figure 19.13) is a testament to the human spirit under adversity. Born deaf
+and unable to speak, Goodricke nevertheless made a number of pioneering discoveries in astronomy
+through patient and careful observations of the heavens.
+Figure 19.13 John Goodricke (1764–1786). This portrait of Goodricke by artist J. Scouler hangs in the Royal Astronomical Society
+VOYAGERS IN ASTRONOMY
+19 • Celestial Distances
+in London. There is some controversy about whether this is actually what Goodricke looked like or whether the painting was
+much retouched to please his family. (credit: James Scouler)
+Born in Holland, where his father was on a diplomatic mission, Goodricke was sent back to England at age
+eight to study at a special school for the deaf. He did sufficiently well to enter Warrington Academy, a
+secondary school that offered no special assistance for students with handicaps. His mathematics teacher
+there inspired an interest in astronomy, and in 1781, at age 17, Goodricke began observing the sky at his
+family home in York, England. Within a year, he had discovered the brightness variations of the star Algol
+(discussed in The Stars: A Celestial Census) and suggested that an unseen companion star was causing the
+changes, a theory that waited over 100 years for proof. His paper on the subject was read before the Royal
+Society (the main British group of scientists) in 1783 and won him a medal from that distinguished group.
+In the meantime, Goodricke had discovered two other stars that varied regularly, Beta Lyrae and Delta
+Cephei, both of which continued to interest astronomers for years to come. Goodricke shared his interest in
+observing with his older cousin, Edward Pigott, who went on to discover other variable stars during his
+much longer life. But Goodricke’s time was quickly drawing to a close; at age 21, only 2 weeks after he was
+elected to the Royal Society, he caught a cold while making astronomical observations and never recovered.
+Today, the University of York has a building named Goodricke Hall and a plaque that honors his
+contributions to science. Yet if you go to the churchyard cemetery where he is buried, an overgrown
+tombstone has only the initials “J. G.” to show where he lies. Astronomer Zdenek Kopal, who looked
+carefully into Goodricke’s life, speculated on why the marker is so modest: perhaps the rather staid
+Goodricke relatives were ashamed of having a “deaf-mute” in the family and could not sufficiently
+appreciate how much a man who could not hear could nevertheless see.
+Go to https://www.bslzone.co.uk/watch/deaf-history/deaf-history-john-goodricke
+(https://www.bslzone.co.uk/watch/deaf-history/deaf-history-john-goodricke) to see a short video on the
+life and work of John Goodricke, which is part of the “Deaf History” series and set up so both hearing and
+hearing-impaired viewers can enjoy it.
+RR Lyrae Stars
+A related group of stars, whose nature was understood somewhat later than that of the cepheids, are called
+RR Lyrae variables, named for the star RR Lyrae, the best-known member of the group. More common than
+the cepheids, but less luminous, thousands of these pulsating variables are known in our Galaxy. The periods
+of RR Lyrae stars are always less than 1 day, and their changes in brightness are typically less than about a
+factor of two.
+Astronomers have observed that the RR Lyrae stars occurring in any particular cluster all have about the same
+apparent brightness. Since stars in a cluster are all at approximately the same distance, it follows that RR Lyrae
+variables must all have nearly the same intrinsic luminosity, which turns out to be about 50 LSun. In this sense,
+RR Lyrae stars are a little bit like standard light bulbs and can also be used to obtain distances, particularly
+within our Galaxy. Figure 19.14 displays the ranges of periods and luminosities for both the cepheids and the
+RR Lyrae stars.
+19.3 • Variable Stars: One Key to Cosmic Distances
+Figure 19.14 Period-Luminosity Relation for Cepheid Variables. In this class of variable stars, the time the star takes to go
+through a cycle of luminosity changes is related to the average luminosity of the star. Also shown are the period and luminosity for
+RR Lyrae stars.
+19.4
+The H–R Diagram and Cosmic Distances
+Learning Objectives
+By the end of this section, you will be able to:
+Understand how spectral types are used to estimate stellar luminosities
+Examine how these techniques are used by astronomers today
+Variable stars are not the only way that we can estimate the luminosity of stars. Another way involves the H–R
+diagram, which shows that the intrinsic brightness of a star can be estimated if we know its spectral type.
+Distances from Spectral Types
+As satisfying and productive as variable stars have been for distance measurement, these stars are rare and
+are not found near all the objects to which we wish to measure distances. Suppose, for example, we need the
+distance to a star that is not varying, or to a group of stars, none of which is a variable. In this case, it turns out
+the H–R diagram can come to our rescue.
+If we can observe the spectrum of a star, we can estimate its distance from our understanding of the H–R
+diagram. As discussed in Analyzing Starlight, a detailed examination of a stellar spectrum allows astronomers
+to classify the star into one of the spectral types indicating surface temperature. (The types are O, B, A, F, G, K,
+M, L, T, and Y; each of these can be divided into numbered subgroups.) In general, however, the spectral type
+alone is not enough to allow us to estimate luminosity. Look again at Figure 18.15. A G2 star could be a mainsequence star with a luminosity of 1 LSun, or it could be a giant with a luminosity of 100 LSun, or even a
+supergiant with a still higher luminosity.
+We can learn more from a star’s spectrum, however, than just its temperature. Remember, for example, that
+we can detect pressure differences in stars from the details of the spectrum. This knowledge is very useful
+because giant stars are larger (and have lower pressures) than main-sequence stars, and supergiants are still
+larger than giants. If we look in detail at the spectrum of a star, we can determine whether it is a mainsequence star, a giant, or a supergiant.
+Suppose, to start with the simplest example, that the spectrum, color, and other properties of a distant G2 star
+match those of the Sun exactly. It is then reasonable to conclude that this distant star is likely to be a mainsequence star just like the Sun and to have the same luminosity as the Sun. But if there are subtle differences
+between the solar spectrum and the spectrum of the distant star, then the distant star may be a giant or even
+a supergiant.
+19 • Celestial Distances
+The most widely used system of star classification divides stars of a given spectral class into six categories
+called luminosity classes. These luminosity classes are denoted by Roman numbers as follows:
+•
+Ia: Brightest supergiants
+•
+Ib: Less luminous supergiants
+•
+II: Bright giants
+•
+III: Giants
+•
+IV: Subgiants (intermediate between giants and main-sequence stars)
+•
+V: Main-sequence stars
+The full spectral specification of a star includes its luminosity class. For example, a main-sequence star with
+spectral class F3 is written as F3 V. The specification for an M2 giant is M2 III. Figure 19.15 illustrates the
+approximate position of stars of various luminosity classes on the H–R diagram. The dashed portions of the
+lines represent regions with very few or no stars.
+Figure 19.15 Luminosity Classes. Stars of the same temperature (or spectral class) can fall into different luminosity classes on the
+Hertzsprung-Russell diagram. By studying details of the spectrum for each star, astronomers can determine which luminosity class
+they fall in (whether they are main-sequence stars, giant stars, or supergiant stars).
+With both its spectral and luminosity classes known, a star’s position on the H–R diagram is uniquely
+determined. Since the diagram plots luminosity versus temperature, this means we can now read off the star’s
+luminosity (once its spectrum has helped us place it on the diagram). As before, if we know how luminous the
+star really is and see how dim it looks, the difference allows us to calculate its distance. (For historical reasons,
+astronomers sometimes call this method of distance determination spectroscopic parallax, even though the
+method has nothing to do with parallax.)
+The H–R diagram method allows astronomers to estimate distances to nearby stars, as well as some of the
+most distant stars in our Galaxy, but it is anchored by measurements of parallax. The distances measured
+using parallax are the gold standard for distances: they rely on no assumptions, only geometry. Once
+astronomers take a spectrum of a nearby star for which we also know the parallax, we know the luminosity
+that corresponds to that spectral type. Nearby stars thus serve as benchmarks for more distant stars because
+we can assume that two stars with identical spectra have the same intrinsic luminosity.
+A Few Words about the Real World
+Introductory textbooks such as ours work hard to present the material in a straightforward and simplified way.
+19.4 • The H–R Diagram and Cosmic Distances
+In doing so, we sometimes do our students a disservice by making scientific techniques seem too clean and
+painless. In the real world, the techniques we have just described turn out to be messy and difficult, and often
+give astronomers headaches that last long into the day.
+For example, the relationships we have described such as the period-luminosity relation for certain variable
+stars aren’t exactly straight lines on a graph. The points representing many stars scatter widely when plotted,
+and thus, the distances derived from them also have a certain built-in scatter or uncertainty.
+The distances we measure with the methods we have discussed are therefore only accurate to within a certain
+percentage of error—sometimes 10%, sometimes 25%, sometimes as much as 50% or more. A 25% error for a
+star estimated to be 10,000 light-years away means it could be anywhere from 7500 to 12,500 light-years away.
+This would be an unacceptable uncertainty if you were loading fuel into a spaceship for a trip to the star, but it
+is not a bad first figure to work with if you are an astronomer stuck on planet Earth.
+Nor is the construction of H–R diagrams as easy as you might think at first. To make a good diagram, one
+needs to measure the characteristics and distances of many stars, which can be a time-consuming task. Since
+our own solar neighborhood is already well mapped, the stars astronomers most want to study to advance our
+knowledge are likely to be far away and faint. It may take hours of observing to obtain a single spectrum.
+Observers may have to spend many nights at the telescope (and many days back home working with their
+data) before they get their distance measurement. Fortunately, this is changing because surveys like Gaia will
+study billions of stars, producing public datasets that all astronomers can use.
+Despite these difficulties, the tools we have been discussing allow us to measure a remarkable range of
+distances—parallaxes for the nearest stars, RR Lyrae variable stars; the H–R diagram for clusters of stars in our
+own and nearby galaxies; and cepheids out to distances of 60 million light-years. Table 19.1 describes the
+distance limits and overlap of each method.
+Each technique described in this chapter builds on at least one other method, forming what many call the
+cosmic distance ladder. Parallaxes are the foundation of all stellar distance estimates, spectroscopic methods
+use nearby stars to calibrate their H–R diagrams, and RR Lyrae and cepheid distance estimates are grounded
+in H–R diagram distance estimates (and even in a parallax measurement to a nearby cepheid, Delta Cephei).
+This chain of methods allows astronomers to push the limits when looking for even more distant stars. Recent
+work, for example, has used RR Lyrae stars to identify dim companion galaxies to our own Milky Way out at
+distances of 300,000 light-years. The H–R diagram method was recently used to identify the two most distant
+stars in the Galaxy: red giant stars way out in the halo of the Milky Way with distances of almost 1 million lightyears.
+We can combine the distances we find for stars with measurements of their composition, luminosity, and
+temperature—made with the techniques described in Analyzing Starlight and The Stars: A Celestial Census.
+Together, these make up the arsenal of information we need to trace the evolution of stars from birth to
+death, the subject to which we turn in the chapters that follow.
+Distance Range of Celestial Measurement Methods
+Method
+Distance Range
+Trigonometric parallax
+4–30,000 light-years when the Gaia mission is complete
+RR Lyrae stars
+Out to 300,000 light-years
+H–R diagram and spectroscopic distances
+Out to 1,200,000 light-years
+Table 19.1
+19 • Celestial Distances
+Method
+Distance Range
+Cepheid stars
+Out to 60,000,000 light-years
+Table 19.1
+19.4 • The H–R Diagram and Cosmic Distances
+Key Terms
+cepheid
+a star that belongs to a class of yellow supergiant pulsating stars; these stars vary periodically in
+brightness, and the relationship between their periods and luminosities is useful in deriving distances to
+them
+light curve
+a graph that displays the time variation of the light from a variable or eclipsing binary star or,
+more generally, from any other object whose radiation output changes with time
+luminosity class
+a classification of a star according to its luminosity within a given spectral class; our Sun, a
+G2V star, has luminosity class V, for example
+parallax
+an apparent displacement of a nearby star that results from the motion of Earth around the Sun
+parsec
+a unit of distance in astronomy, equal to 3.26 light-years; at a distance of 1 parsec, a star has a
+parallax of 1 arcsecond
+period-luminosity relation
+an empirical relation between the periods and luminosities of certain variable
+stars
+pulsating variable star
+a variable star that pulsates in size and luminosity
+RR Lyrae
+one of a class of giant pulsating stars with periods shorter than 1 day, useful for finding distances
+Summary
+19.1 Fundamental Units of Distance
+Early measurements of length were based on human dimensions, but today, we use worldwide standards that
+specify lengths in units such as the meter. Distances within the solar system are now determined by timing
+how long it takes radar signals to travel from Earth to the surface of a planet or other body and then return.
+19.2 Surveying the Stars
+For stars that are relatively nearby, we can “triangulate” the distances from a baseline created by Earth’s
+annual motion around the Sun. Half the shift in a nearby star’s position relative to very distant background
+stars, as viewed from opposite sides of Earth’s orbit, is called the parallax of that star and is a measure of its
+distance. The units used to measure stellar distance are the light-year, the distance light travels in 1 year, and
+the parsec (pc), the distance of a star with a parallax of 1 arcsecond (1 parsec = 3.26 light-years). The closest
+star, a red dwarf, is over 1 parsec away. The first successful measurements of stellar parallaxes were reported
+in 1838. Parallax measurements are a fundamental link in the chain of cosmic distances. The Hipparcos
+satellite has allowed us to measure accurate parallaxes for stars out to about 300 light-years, and the Gaia
+mission will result in parallaxes out to 30,000 light-years.
+19.3 Variable Stars: One Key to Cosmic Distances
+Cepheids and RR Lyrae stars are two types of pulsating variable stars. Light curves of these stars show that
+their luminosities vary with a regularly repeating period. RR Lyrae stars can be used as standard bulbs, and
+cepheid variables obey a period-luminosity relation, so measuring their periods can tell us their luminosities.
+Then, we can calculate their distances by comparing their luminosities with their apparent brightnesses, and
+this can allow us to measure distances to these stars out to over 60 million light-years.
+19.4 The H–R Diagram and Cosmic Distances
+Stars with identical temperatures but different pressures (and diameters) have somewhat different spectra.
+Spectral classification can therefore be used to estimate the luminosity class of a star as well as its
+temperature. As a result, a spectrum can allow us to pinpoint where the star is located on an H–R diagram and
+establish its luminosity. This, with the star’s apparent brightness, again yields its distance. The various distance
+methods can be used to check one against another and thus make a kind of distance ladder which allows us to
+find even larger distances.
+19 • Key Terms
+For Further Exploration
+Articles
+Adams, A. “The Triumph of Hipparcos.” Astronomy (December 1997): 60. Brief introduction.
+Dambeck, T. “Gaia’s Mission to the Milky Way.” Sky & Telescope (March 2008): 36–39. An introduction to the
+mission to measure distances and positions of stars with unprecedented accuracy.
+Hirshfeld, A. “The Absolute Magnitude of Stars.” Sky & Telescope (September 1994): 35. Good review of how
+we measure luminosity, with charts.
+Hirshfeld, A. “The Race to Measure the Cosmos.” Sky & Telescope (November 2001): 38. On parallax.
+Trefil, J. Puzzling Out Parallax.” Astronomy (September 1998): 46. On the concept and history of parallax.
+Turon, C. “Measuring the Universe.” Sky & Telescope (July 1997): 28. On the Hipparcos mission and its results.
+Zimmerman, R. “Polaris: The Code-Blue Star.” Astronomy (March 1995): 45. On the famous cepheid variable
+and how it is changing.
+Websites
+ABCs of Distance: http://www.astro.ucla.edu/~wright/distance.htm (http://www.astro.ucla.edu/~wright/
+distance.htm). Astronomer Ned Wright (UCLA) gives a concise primer on many different methods of obtaining
+distances. This site is at a higher level than our textbook, but is an excellent review for those with some
+background in astronomy.
+American Association of Variable Star Observers (AAVSO): https://www.aavso.org/ (https://www.aavso.org/).
+This organization of amateur astronomers helps to keep track of variable stars; its site has some background
+material, observing instructions, and links.
+Friedrich Wilhelm Bessel: http://messier.seds.org/xtra/Bios/bessel.html (http://messier.seds.org/xtra/Bios/
+bessel.html). A brief site about the first person to detect stellar parallax, with references and links.
+Gaia: http://sci.esa.int/gaia/ (http://sci.esa.int/gaia/). News from the Gaia mission, including images and a
+blog of the latest findings.
+Hipparchos: http://sci.esa.int/hipparcos/ (http://sci.esa.int/hipparcos/). Background, results, catalogs of data,
+and educational resources from the Hipparchos mission to observe parallaxes from space. Some sections are
+technical, but others are accessible to students.
+John Goodricke: The Deaf Astronomer: http://www.bbc.com/news/magazine-20725639 (http://www.bbc.com/
+news/magazine-20725639). A biographical article from the BBC.
+Women in Astronomy: http://bit.ly/astronomywomen (http://bit.ly/astronomywomen). More about Henrietta
+Leavitt’s and other women’s contributions to astronomy and the obstacles they faced.
+Videos
+Gaia’s Mission: Solving the Celestial Puzzle: https://www.youtube.com/watch?v=oGri4YNggoc
+(https://www.youtube.com/watch?v=oGri4YNggoc). Describes the Gaia mission and what scientists hope to
+learn, from Cambridge University (19:58).
+Hipparcos: Route Map to the Stars: http://www.esa.int/spaceinvideos/Videos/1997/05/
+Hipparcos_Route_Maps_to_the_Stars_May_97 (http://www.esa.int/spaceinvideos/Videos/1997/05/
+Hipparcos_Route_Maps_to_the_Stars_May_97). This ESA video describes the mission to measure parallax and its
+results (14:32)
+How Big Is the Universe: https://www.youtube.com/watch?v=K_xZuopg4Sk (https://www.youtube.com/
+19 • For Further Exploration
+watch?v=K_xZuopg4Sk). Astronomer Pete Edwards from the British Institute of Physics discusses the size of
+the universe and gives a step-by-step introduction to the concepts of distances (6:22)
+Henrietta Leavitt: Ahead of Her Time: https://www.youtube.com/watch?v=XQv03YqEPNM
+(https://www.youtube.com/watch?v=XQv03YqEPNM). A brief introduction to her life and work from
+HubbleCast (4:34).
+Women in Astronomy: http://www.youtube.com/watch?v=5vMR7su4fi8 (http://www.youtube.com/
+watch?v=5vMR7su4fi8). Emily Rice (CUNY) gives a talk on the contributions of women to astronomy, with many
+historical and contemporary examples, and an analysis of modern trends (52:54).
+Collaborative Group Activities
+A.
+In this chapter, we explain the various measurements that have been used to establish the size of a
+standard meter. Your group should discuss why we have changed the definitions of our standard unit of
+measurement in science from time to time. What factors in our modern society contribute to the growth
+of technology? Does technology “drive” science, or does science “drive” technology? Or do you think the
+two are so intertwined that it’s impossible to say which is the driver?
+B.
+Cepheids are scattered throughout our own Milky Way Galaxy, but the period-luminosity relation was
+discovered from observations of the Magellanic Clouds, a satellite galaxy now known to be about 160,000
+light-years away. What reasons can you give to explain why the relation was not discovered from
+observations of cepheids in our own Galaxy? Would your answer change if there were a small cluster in
+our own Galaxy that contained 20 cepheids? Why or why not?
+C.
+You want to write a proposal to use the Hubble Space Telescope to look for the brightest cepheids in
+galaxy M100 and estimate their luminosities. What observations would you need to make? Make a list of
+all the reasons such observations are harder than it first might appear.
+D.
+Why does your group think so many different ways of naming stars developed through history? (Think
+back to the days before everyone connected online.) Are there other fields where things are named
+confusingly and arbitrarily? How do stars differ from other phenomena that science and other professions
+tend to catalog?
+E.
+Although cepheids and RR Lyrae variable stars tend to change their brightness pretty regularly (while they
+are in that stage of their lives), some variable stars are unpredictable or change their behavior even
+during the course of a single human lifetime. Amateur astronomers all over the world follow such variable
+stars patiently and persistently, sending their nightly observations to huge databases that are being kept
+on the behavior of many thousands of stars. None of the hobbyists who do this get paid for making such
+painstaking observations. Have your group discuss why they do it. Would you ever consider a hobby that
+involves so much work, long into the night, often on work nights? If observing variable stars doesn’t pique
+your interest, is there something you think you could do as a volunteer after college that does excite you?
+Why?
+F.
+In Figure 19.8, the highest concentration of stars occurs in the middle of the main sequence. Can your
+group give reasons why this might be so? Why are there fewer very hot stars and fewer very cool stars on
+this diagram?
+G.
+In this chapter, we discuss two astronomers who were differently abled than their colleagues. John
+Goodricke could neither hear nor speak, and Henrietta Leavitt struggled with hearing impairment for all of
+her adult life. Yet they each made fundamental contributions to our understanding of the universe. Does
+your group know people who are handling a disability? What obstacles would people with different
+disabilities face in trying to do astronomy and what could be done to ease their way? For a set of
+resources in this area, see http://astronomerswithoutborders.org/gam2013/programs/1319-people-with-
+19 • Collaborative Group Activities
+disabilities-astronomy-resources.html.
+Exercises
+Review Questions
+1. Explain how parallax measurements can be used to determine distances to stars. Why can we not make
+accurate measurements of parallax beyond a certain distance?
+2. Suppose you have discovered a new cepheid variable star. What steps would you take to determine its
+distance?
+3. Explain how you would use the spectrum of a star to estimate its distance.
+4. Which method would you use to obtain the distance to each of the following?
+A.
+An asteroid crossing Earth’s orbit
+B.
+A star astronomers believe to be no more than 50 light-years from the Sun
+C.
+A tight group of stars in the Milky Way Galaxy that includes a significant number of variable stars
+D.
+A star that is not variable but for which you can obtain a clearly defined spectrum
+5. What are the luminosity class and spectral type of a star with an effective temperature of 5000 K and a
+luminosity of 100 LSun?
+Thought Questions
+6. The meter was redefined as a reference to Earth, then to krypton, and finally to the speed of light. Why do
+you think the reference point for a meter continued to change?
+7. While a meter is the fundamental unit of length, most distances traveled by humans are measured in miles
+or kilometers. Why do you think this is?
+8. Most distances in the Galaxy are measured in light-years instead of meters. Why do you think this is the
+case?
+9. The AU is defined as the average distance between Earth and the Sun, not the distance between Earth and
+the Sun. Why does this need to be the case?
+10. What would be the advantage of making parallax measurements from Pluto rather than from Earth?
+Would there be a disadvantage?
+11. Parallaxes are measured in fractions of an arcsecond. One arcsecond equals 1/60 arcmin; an arcminute is,
+in turn, 1/60th of a degree (°). To get some idea of how big 1° is, go outside at night and find the Big
+Dipper. The two pointer stars at the ends of the bowl are 5.5° apart. The two stars across the top of the
+bowl are 10° apart. (Ten degrees is also about the width of your fist when held at arm’s length and
+projected against the sky.) Mizar, the second star from the end of the Big Dipper’s handle, appears
+double. The fainter star, Alcor, is about 12 arcmin from Mizar. For comparison, the diameter of the full
+moon is about 30 arcmin. The belt of Orion is about 3° long. Keeping all this in mind, why did it take until
+1838 to make parallax measurements for even the nearest stars?
+12. For centuries, astronomers wondered whether comets were true celestial objects, like the planets and
+stars, or a phenomenon that occurred in the atmosphere of Earth. Describe an experiment to determine
+which of these two possibilities is correct.
+13. The Sun is much closer to Earth than are the nearest stars, yet it is not possible to measure accurately the
+diurnal parallax of the Sun relative to the stars by measuring its position relative to background objects in
+the sky directly. Explain why.
+19 • Exercises
+14. Parallaxes of stars are sometimes measured relative to the positions of galaxies or distant objects called
+quasars. Why is this a good technique?
+15. Estimating the luminosity class of an M star is much more important than measuring it for an O star if you
+are determining the distance to that star. Why is that the case?
+16. Figure 19.9 is the light curve for the prototype cepheid variable Delta Cephei. How does the luminosity of
+this star compare with that of the Sun?
+17. Which of the following can you determine about a star without knowing its distance, and which can you
+not determine: radial velocity, temperature, apparent brightness, or luminosity? Explain.
+18. A G2 star has a luminosity 100 times that of the Sun. What kind of star is it? How does its radius compare
+with that of the Sun?
+19. A star has a temperature of 10,000 K and a luminosity of 10–2 LSun. What kind of star is it?
+20. What is the advantage of measuring a parallax distance to a star as compared to our other distance
+measuring methods?
+21. What is the disadvantage of the parallax method, especially for studying distant parts of the Galaxy?
+22. Luhman 16 and WISE 0720 are brown dwarfs, also known as failed stars, and are some of the new closest
+neighbors to Earth, but were only discovered in the last decade. Why do you think they took so long to be
+discovered?
+23. Most stars close to the Sun are red dwarfs. What does this tell us about the average star formation event
+in our Galaxy?
+24. Why would it be easier to measure the characteristics of intrinsically less luminous cepheids than more
+luminous ones?
+25. When Henrietta Leavitt discovered the period-luminosity relationship, she used cepheid stars that were all
+located in the Small Magellanic Cloud. Why did she need to use stars in another galaxy and not cepheids
+located in the Milky Way?
+Figuring for Yourself
+26. A radar astronomer who is new at the job claims she beamed radio waves to Jupiter and received an echo
+exactly 48 min later. Should you believe her? Why or why not?
+27. The New Horizons probe flew past Pluto in July 2015. At the time, Pluto was about 32 AU from Earth. How
+long did it take for communication from the probe to reach Earth, given that the speed of light in km/hr is
+1.08 × 109?
+28. Estimate the maximum and minimum time it takes a radar signal to make the round trip between Earth
+and Venus, which has a semimajor axis of 0.72 AU.
+29. The Apollo program (not the lunar missions with astronauts) being conducted at the Apache Point
+Observatory uses a 3.5-m telescope to direct lasers at retro-reflectors left on the Moon by the Apollo
+astronauts. If the Moon is 384,472 km away, approximately how long do the operators need to wait to see
+the laser light return to Earth?
+30. In 1974, the Arecibo Radio telescope in Puerto Rico was used to transmit a signal to M13, a star cluster
+about 25,000 light-years away. How long will it take the message to reach M13, and how far has the
+message travelled so far (in light-years)?
+31. Demonstrate that 1 pc equals 3.09 × 1013 km and that it also equals 3.26 light-years. Show your
+calculations.
+19 • Exercises
+32. The best parallaxes obtained with Hipparcos have an accuracy of 0.001 arcsec. If you want to measure the
+distance to a star with an accuracy of 10%, its parallax must be 10 times larger than the typical error. How
+far away can you obtain a distance that is accurate to 10% with Hipparcos data? The disk of our Galaxy is
+100,000 light-years in diameter. What fraction of the diameter of the Galaxy’s disk is the distance for which
+we can measure accurate parallaxes?
+33. Astronomers are always making comparisons between measurements in astronomy and something that
+might be more familiar. For example, the Hipparcos web pages tell us that the measurement accuracy of
+0.001 arcsec is equivalent to the angle made by a golf ball viewed from across the Atlantic Ocean, or to the
+angle made by the height of a person on the Moon as viewed from Earth, or to the length of growth of a
+human hair in 10 sec as seen from 10 meters away. Use the ideas in Example 19.2 to verify one of the first
+two comparisons.
+34. Gaia will have greatly improved precision over the measurements of Hipparcos. The average uncertainty
+for most Gaia parallaxes will be about 50 microarcsec, or 0.00005 arcsec. How many times better than
+Hipparcos (see Exercise 19.32) is this precision?
+35. Using the same techniques as used in Exercise 19.32, how far away can Gaia be used to measure distances
+with an uncertainty of 10%? What fraction of the Galactic disk does this correspond to?
+36. The human eye is capable of an angular resolution of about one arcminute, and the average distance
+between eyes is approximately 2 in. If you blinked and saw something move about one arcmin across,
+how far away from you is it? (Hint: You can use the setup in Example 19.2 as a guide.)
+37. How much better is the resolution of the Gaia spacecraft compared to the human eye (which can resolve
+about 1 arcmin)?
+38. The most recently discovered system close to Earth is a pair of brown dwarfs known as Luhman 16. It has
+a distance of 6.5 light-years. How many parsecs is this?
+39. What would the parallax of Luhman 16 (see Exercise 19.38) be as measured from Earth?
+40. The New Horizons probe that passed by Pluto during July 2015 is one of the fastest spacecraft ever
+assembled. It was moving at about 14 km/s when it went by Pluto. If it maintained this speed, how long
+would it take New Horizons to reach the nearest star, Proxima Centauri, which is about 4.3 light-years
+away? (Note: It isn’t headed in that direction, but you can pretend that it is.)
+41. What physical properties are different for an M giant with a luminosity of 1000 LSun and an M dwarf with a
+luminosity of 0.5 LSun? What physical properties are the same?
+19 • Exercises
+19 • Exercises

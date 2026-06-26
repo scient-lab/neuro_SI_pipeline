@@ -1,0 +1,325 @@
+In astronomy and astrobiology, the habitable zone (HZ), also known as the circumstellar habitable zone (CHZ), or as the Goldilocks zone, is the range of orbits around a star within which a planetary surface could potentially support liquid water. Liquid water is considered by many scientists as necessary for a planet to be habitable. The range depends upon the brightness of the star interacting with a planet's atmosphere. At the inner edge the star's light, trapped by greenhouse gases in a planet's atmosphere, boils off the planet's water. At the outer edge light from the star is insufficient even with help from atmospheric gas and the planet's water freezes. Many other factors are added in various habitable zone models. The habitable zone has become a key tool in the search for habitable planets because discoveries of exoplanets yield approximate orbital radii.
+The alternative name, Goldilocks zone, is a metaphor, allusion and antonomasia of the children's fairy tale of "Goldilocks and the Three Bears", in which a little girl chooses from sets of three items, rejecting the ones that are too extreme (large or small, hot or cold, etc.), and settling on the one in the middle, which is "just right".
+Since the concept was first presented many stars have been confirmed to possess an HZ planet, including some systems that consist of multiple HZ planets. Most such planets, being either super-Earths or gas giants, are more massive than Earth, because massive planets are easier to detect. On November 4, 2013, astronomers reported, based on Kepler space telescope data, that there could be as many as 40 billion Earth-sized planets orbiting in the habitable zones of Sun-like stars and red dwarfs in the Milky Way. About 11 billion of these may be orbiting Sun-like stars. Proxima Centauri b, located about 4.2 light-years (1.3 parsecs) from Earth in the constellation of Centaurus, is the nearest known exoplanet, and is orbiting in the habitable zone of its star. The HZ is also of particular interest to the emerging field of habitability of natural satellites because planetary mass moons in the HZ might outnumber planets.
+The classical habitable zone concept was defined only for planetary surfaces where habitat depends on stellar energy. Deep biospheres are known on Earth, but they would not be detectable on exoplanets.  Other circumstellar zones, where non-water solvents favorable to hypothetical life based on alternative biochemistries could exist in liquid form at the surface, have been proposed.
+
+
+== History ==
+
+The concept of habitable zone arose in geography in the late 19th century. Alexander Winchell discussed planetary habitability in 1883, using a definition closer to what is now called a habitable zone for complex life.
+Possibly the earliest use of the term habitable zone was in 1913, by Edward Maunder in his book "Are The Planets Inhabited?". Hubertus Strughold's 1953 treatise The Green and the Red Planet: A Physiological Study of the Possibility of Life on Mars used the term "ecosphere" and referred to various "zones" in which life could emerge. In the same year, Harlow Shapley wrote "Liquid Water Belt", which described the same concept in further scientific detail. Both works stressed the importance of liquid water to life. Su-Shu Huang, an American astrophysicist developed the modern concept of circumstellar habitable zones in a series of papers in the 1950s and 60s.
+The concept of habitability was further developed in 1964 by Stephen H. Dole in a RAND Corporation study, Habitable Planets for Man, in which he discussed the determinants of planetary habitability for humans, eventually estimating the number of habitable planets in the Milky Way to be about 600 million and about 50 such planets within 100 ly. Dole subsequently co-authored a less technical version of the study in a book with science-fiction author Isaac Asimov which appeared in print at the height of the space race. The term "Goldilocks zone" emerged in the 1970s, referencing specifically a region around a star whose temperature is "just right" for water to be present in the liquid phase. 
+In 1993 James Kasting and colleagues developed a model for habitable zones across stars with different brightness using a simple climate model. Refinements of the climate model and extension to smaller stars led to new zone range estimates and the introduction of "conservative" and "optimistic" habitable zone concepts.
+Practical application of the habitable zone concept arrived with improvements in telescope technology.
+In 2009, the Kepler space telescope was launched specifically to detect exoplanets in habitable zones. By the end of the mission the data suggested that at least 20% and perhaps as many as 50% of the stars visible at night have Earth-sized planets in their habitable zone. In 2018, the Transiting Exoplanet Survey Satellite continued the search.
+
+
+=== Extensions of the concept ===
+In 1999, Guillermo Gonzalez and other noted that metals have important impact on planet formation and the development of life. Together with paleontologist Peter Ward and fellow astronomer Donald Brownlee Gonzalez introduced the idea of the "galactic habitable zone". The galactic habitable zone, defined as the region where life is most likely to emerge in a galaxy, encompasses those regions close enough to a galactic center that stars there are enriched with heavier elements, but not so close that star systems, planetary orbits, and the emergence of life would be frequently disrupted by the intense radiation and enormous gravitational forces commonly found at galactic centers.
+The discovery of exoplanets unlike any in the Solar System led to suggestions that life might emerge even in conditions outside of currently defined habitable zones.
+Subsequently, some astrobiologists propose that the concept be extended to other solvents, including dihydrogen, sulfuric acid, dinitrogen, formamide, and methane, among others, which would support hypothetical life forms that use an alternative biochemistry. In 2013, further developments in habitable zone concepts were made with the proposal of a circum- planetary habitable zone, also known as the "habitable edge", to encompass the region around a planet where the orbits of natural satellites would not be disrupted, and at the same time tidal heating from the planet would not cause liquid water to boil away.
+
+
+== Definition ==
+
+A 'circumstellar habitable zone' is the region around a star which allows planets with liquid water. Whether a planet is in the circumstellar habitable zone of its host star is dependent on the radius of the planet's orbit (for natural satellites, the host planet's orbit) and the radiative flux of the host star. These values are then used in climate models together with absorption coefficients for H−2 and CO2 to calculate the edges of the zone. Two different cutoffs may be applied. For the conservative habitable zone the inner edge represents water loss as the planet overheats and the outer edge is the maximum greenhouse effect limit where the atmospheric absorption is inadequate to keep water from freezing.
+The optimistic habitable zone (OHZ) expands the range to allow for changes in the host star luminosity with age. Based on analysis of possible water on Venus and Mars in the past, the inner edge of the OHZ is called the "recent Venus" edge and the outer edge is called "early Mars".
+Different climate models give different predictions for the size of the zone.
+
+
+=== Habitable planets ===
+The habitable zone concept is central to the search for habitable planets. Thousands of exoplanets have been discovered but detailed study of these remote objects is very difficult. Each discovery includes an estimate of the planet's orbital radius and this radius can be compared to the edges of the habital zone.
+A planet may be in a "habitable zone" and still be uninhabitable. While conventional habitable zones are defined by the possibility of water, whether a given planet in a habitable zone has water depends on surface conditions that are dependent on many of different individual properties of that planet beyond those considered in the definition of a habitable zone. This misunderstanding is reflected in excited reports of 'habitable planets'. Some astronomers have suggested that the term "habitability" should not even be used.
+Ultimately only technology for remote determination of signs of life will lead to discovery of habitable planets.
+Many additional criteria must be met for a habitable zone for complex life, but again a planet in such a zone may still not support complex life. Planets capable of supporting human life would face even more stringent requirements. These include surface temperatures between 0–30 °C and light in the visible range with brightness 0.02–30 lumens/cm2, gravity below about 1.5 G, an oxygen atmosphere without toxic gases, other life forms essential for food, tolerable wind velocity, low levels of dust, radioactivity, meteor impacts, earthquakes and lightning.
+
+
+=== Solar System estimates ===
+
+Estimates for the habitable zone within the Solar System vary widely. Zones based on the Sun's effective temperature (5778 K) and the redistribution of heat via an atmosphere lead a zone between 0.84 AU and 1.7 AU (the Earth is defined to be at 1 AU, an astronomical unit). These limits include Earth and Mars but not Venus. The inner edge of the zone could be small as 0.38 AU for particularly favorable atmospheric and planet surface reflectivity properties.
+For reference, the average distance from the Sun of some major bodies within the various estimates of the habitable zone is: Mercury, 0.39 AU; Venus, 0.72 AU; Earth, 1.00 AU; Mars, 1.52 AU; Vesta, 2.36 AU; Ceres and Pallas, 2.77 AU; Jupiter, 5.20 AU; Saturn, 9.58 AU. In the most conservative estimates, only Earth lies within the zone; in the most permissive estimates, even Saturn at perihelion, or Mercury at aphelion, might be included.
+
+
+== Effect of climate model ==
+
+A planet cannot have a hydrosphere—a key ingredient for the formation of carbon-based life—unless there is a source for water within its stellar system. The origin of water on Earth is still not completely understood; possible sources include the result of impacts with icy bodies, outgassing, mineralization, leakage from hydrous minerals from the lithosphere, and photolysis. For an extrasolar system, an icy body from beyond the frost line could migrate into the habitable zone of its star, creating an ocean planet with seas hundreds of kilometers deep such as GJ 1214 b or Kepler-22b may be.
+Maintenance of liquid surface water also requires a sufficiently thick atmosphere. Possible origins of terrestrial atmospheres are currently theorized to outgassing, impact degassing, and ingassing. Atmospheres are thought to be maintained through similar processes along with biogeochemical cycles and the mitigation of atmospheric escape. In a 2013 study led by Italian astronomer Giovanni Vladilo, it was shown that the size of the circumstellar habitable zone increased with greater atmospheric pressure. Below an atmospheric pressure of about 15 millibars, it was found that habitability could not be maintained because even a small shift in pressure or temperature could render water unable to form as a liquid.
+Although traditional definitions of the habitable zone assume that carbon dioxide and water vapor are the most important greenhouse gases (as they are on the Earth), a study led by Ramses Ramirez and co-author Lisa Kaltenegger has shown that the size of the habitable zone is greatly increased if prodigious volcanic outgassing of hydrogen is also included along with the carbon dioxide and water vapor. The outer edge in the Solar System would extend out as far as 2.4 AU in that case. Similar increases in the size of the habitable zone were computed for other stellar systems. An earlier study by Ray Pierrehumbert and Eric Gaidos had eliminated the CO2-H2O concept entirely, arguing that young planets could accrete many tens to hundreds of bars of hydrogen from the protoplanetary disc, providing enough of a greenhouse effect to extend the outer edge of the Solar System to 10 AU. In this case, though, the hydrogen is not continuously replenished by volcanism and is lost within millions to tens of millions of years.
+
+
+=== Desert planets ===
+
+A planet's atmospheric conditions influence its ability to retain heat so that the location of the habitable zone is also specific to each type of planet: desert planets (also known as dry planets), with very little water, will have less water vapor in the atmosphere than Earth and so have a reduced greenhouse effect, meaning that a desert planet could maintain oases of water closer to its star than Earth is to the Sun. The lack of water also means there is less ice to reflect heat into space, so the outer edge of desert-planet habitable zones is further out.
+
+
+== Effect of stellar luminosity ==
+
+Astronomers use stellar flux and the inverse-square law to extrapolate circumstellar habitable zone models created for the Solar System to other stars.
+The radial edges of the habitable zones for host stars with different luminosities and spectral types are given by 
+
+  
+    
+      
+        
+          r
+          
+            
+              e
+              d
+              g
+              e
+            
+          
+        
+        =
+        
+          
+            
+              (
+              
+                
+                  
+                    L
+                    
+                      /
+                    
+                    
+                      L
+                      
+                        ⊙
+                      
+                    
+                  
+                  
+                    
+                      S
+                      
+                        
+                          e
+                          d
+                          g
+                          e
+                        
+                      
+                    
+                    (
+                    
+                      T
+                      
+                        
+                          e
+                          f
+                          f
+                        
+                      
+                    
+                    )
+                  
+                
+              
+              )
+            
+          
+        
+      
+    
+    {\displaystyle r_{\mathrm {edge} }={\sqrt {\left({\frac {L/L_{\odot }}{S_{\mathrm {edge} }(T_{\mathrm {eff} })}}\right)}}}
+  
+
+where 
+  
+    
+      
+        L
+        
+          /
+        
+        
+          L
+          
+            ⊙
+          
+        
+      
+    
+    {\displaystyle L/L_{\odot }}
+  
+ is the ratio of the measured or inferred luminosity of the star to the luminosity of the Sun and 
+  
+    
+      
+        
+          T
+          
+            
+              e
+              f
+              f
+            
+          
+        
+      
+    
+    {\displaystyle T_{\mathrm {eff} }}
+  
+ is the effective stellar temperature which depends on the spectral type.
+Each edge defines a criterion on the surface of the planet and climate simulation are run to determine the stellar flux, 
+  
+    
+      
+        
+          S
+          
+            
+              e
+              d
+              g
+              e
+            
+          
+        
+        (
+        
+          T
+          
+            
+              e
+              f
+              f
+            
+          
+        
+        )
+      
+    
+    {\displaystyle S_{\mathrm {edge} }(T_{\mathrm {eff} })}
+  
+, that will produce that criterion (inverse climate modeling). 
+For each zone edge criteria, the stellar flux result is fit to a fourth order polynomial in 
+  
+    
+      
+        
+          T
+          
+            
+              e
+              f
+              f
+            
+          
+        
+      
+    
+    {\displaystyle T_{\mathrm {eff} }}
+  
+. The effective temperature for a given stellar type, say 7200K for an F0 star, substituted into the polynomial for the "runaway greenhouse" edge gives the stellar flux for runaway greenhouse results, and that is combined with the particular F0 stars luminosity to give radius of the inner edge of the conservative habitable zone.
+
+
+=== Spectral types and star-system characteristics ===
+
+Some scientists argue that the concept of a circumstellar habitable zone is actually limited to stars in certain types of systems or of certain spectral types. Binary systems, for example, have circumstellar habitable zones that differ from those of single-star planetary systems, in addition to the orbital stability concerns inherent with a three-body configuration.
+Studying ultraviolet emissions, Andrea Buccino found that only 40% of stars studied (including the Sun) had overlapping liquid water and ultraviolet habitable zones. Stars smaller than the Sun, on the other hand, have distinct impediments to habitability. For example, Michael Hart proposed that only main-sequence stars of spectral class K0 or brighter could offer habitable zones, an idea which has evolved in modern times into the concept of a tidal locking radius for red dwarfs. Within this radius, which is coincidental with the red-dwarf habitable zone, it has been suggested that the volcanism caused by tidal heating could cause a "tidal Venus" planet with high temperatures and no hospitable environment for life.
+Others maintain that circumstellar habitable zones are more common and that it is indeed possible for water to exist on planets orbiting cooler stars. Climate modeling from 2013 supports the idea that red dwarf stars can support planets with relatively constant temperatures over their surfaces despite tidal locking. Astronomy professor Eric Agol argues that even white dwarfs may support a relatively brief habitable zone through planetary migration. At the same time, others have written in similar support of semi-stable, temporary habitable zones around brown dwarfs. Also, a habitable zone in the outer parts of stellar systems may exist during the pre-main-sequence phase of stellar evolution, especially around M-dwarfs, potentially lasting for billion-year timescales.
+
+
+== Evolution ==
+
+Circumstellar habitable zones change over time with stellar evolution. For example, hot O-type stars, which may remain on the main sequence for fewer than 10 million years, would have rapidly changing habitable zones not conducive to the development of life. Red dwarf stars, on the other hand, which can live for hundreds of billions of years on the main sequence, would have planets with ample time for life to develop and evolve. Even while stars are on the main sequence, though, their energy output steadily increases, pushing their habitable zones farther out; the Sun, for example, was 75% as bright in the Archaean as it is now, and in the future, continued increases in energy output will put Earth outside the Sun's habitable zone, even before it reaches the red giant phase. In order to deal with this increase in luminosity, the concept of a continuously habitable zone has been introduced. As the name suggests, the continuously habitable zone is a region around a star in which planetary-mass bodies can sustain liquid water for a given period. Like the general circumstellar habitable zone, the continuously habitable zone of a star is divided into a conservative and extended region.
+In red dwarf systems, gigantic stellar flares which could double a star's brightness in minutes and huge starspots which can cover 20% of the star's surface area, have the potential to strip an otherwise habitable planet of its atmosphere and water. As with more massive stars, though, stellar evolution changes their nature and energy flux, so by about 1.2  billion years of age, red dwarfs generally become sufficiently constant to allow for the development of life.
+Once a star has evolved sufficiently to become a red giant, its circumstellar habitable zone will change dramatically from its main-sequence size. For example, the Sun is expected to engulf the previously habitable Earth as a red giant. However, once a red giant star reaches the horizontal branch, it achieves a new equilibrium and can sustain a new circumstellar habitable zone, which in the case of the Sun would range from 7 to 22 AU. At such stage, Saturn's moon Titan would likely be habitable in Earth's temperature sense. Given that this new equilibrium lasts for about 1 Gyr, and because life on Earth emerged by 0.7 Gyr from the formation of the Solar System at latest, life could conceivably develop on planetary mass objects in the habitable zone of red giants. However, around such a helium-burning star, important life processes like photosynthesis could only happen around planets where the atmosphere has carbon dioxide, as by the time a solar-mass star becomes a red giant, planetary-mass bodies would have already absorbed much of their free carbon dioxide. Moreover, as Ramirez and Kaltenegger (2016) showed, intense stellar winds would completely remove the atmospheres of such smaller planetary bodies, rendering them uninhabitable anyway. Thus, Titan would not be habitable even after the Sun becomes a red giant. Nevertheless, life need not originate during this stage of stellar evolution for it to be detected. Once the star becomes a red giant, and the habitable zone extends outward,  the icy surface would melt, forming a temporary atmosphere that can be searched for signs of life that may have been thriving before the start of the red giant stage.
+
+
+== Exoplanets in habitable zones ==
+Studies that have attempted to estimate the number of terrestrial planets within the circumstellar habitable zone tend to reflect the availability of scientific data. A 2013 study by Ravi Kumar Kopparapu put ηe, the fraction of stars with planets in the HZ, at 0.48, meaning that there may be roughly 95–180 billion habitable planets in the Milky Way. However, this is merely a statistical prediction; only a small fraction of these possible planets have yet been discovered.
+Previous studies have been more conservative. In 2011, Seth Borenstein concluded that there are roughly 500 million habitable planets in the Milky Way. NASA's Jet Propulsion Laboratory 2011 study, based on observations from the Kepler mission, raised the number somewhat, estimating that about "1.4 to 2.7 percent" of all stars of spectral class F, G, and K are expected to have planets in their HZs.
+
+
+== Habitable planets ==
+
+A 2015 review concluded that the exoplanets Kepler-62f, Kepler-186f and Kepler-442b were likely the best candidates for being potentially habitable. These are at a distance of 990, 490 and 1,120 light-years away, respectively. Of these, Kepler-186f is closest in size to Earth with 1.2 times Earth's radius, and it is located towards the outer edge of the habitable zone around its red dwarf star. Among nearest terrestrial exoplanet candidates, Tau Ceti e is 11.9 light-years away. It is in the inner edge of its planetary system's habitable zone, giving it an estimated average surface temperature of 68 °C (154 °F).
+
+
+=== Early findings ===
+
+The first discoveries of extrasolar planets in the HZ occurred just a few years after the first extrasolar planets were discovered. However, these early detections were all gas giant-sized, and many were in eccentric orbits. Despite this, studies indicate the possibility of large, Earth-like moons around these planets supporting liquid water.
+One of the first discoveries was 70 Virginis b, a gas giant initially nicknamed "Goldilocks" due to it being neither "too hot" nor "too cold". Later study revealed temperatures analogous to Venus, ruling out any potential for liquid water. 16 Cygni Bb, also discovered in 1996, has an extremely eccentric orbit that spends only part of its time in the HZ, such an orbit would causes extreme seasonal effects. In spite of this, simulations have suggested that a sufficiently large companion could support surface water year-round.
+Gliese 876 b, discovered in 1998, and Gliese 876 c, discovered in 2001, are both gas giants discovered in the habitable zone around Gliese 876 that may also have large moons. Another gas giant, Upsilon Andromedae d was discovered in 1999 orbiting Upsilon Andromidae's habitable zone.
+Announced on April 4, 2001, HD 28185 b is a gas giant found to orbit entirely within its star's circumstellar habitable zone and has a low orbital eccentricity, comparable to that of Mars in the Solar System. Tidal interactions suggest it could harbor habitable Earth-mass satellites in orbit around it for many billions of years, though it is unclear whether such satellites could form in the first place.
+HD 69830 d, a gas giant with 17 times the mass of Earth, was found in 2006 orbiting within the circumstellar habitable zone of HD 69830, 41 light years away from Earth. The following year, 55 Cancri f was discovered within the HZ of its host star 55 Cancri A. Hypothetical satellites with sufficient mass and composition are thought to be able to support liquid water at their surfaces.
+
+
+=== Super-Earths in a habitable zone ===
+
+The Kepler space telescope discovered that most Sun-like stars have close-in planets in the size range between Earth and Neptune. These planets have been called super-Earths but this term has been characterized as deceptive.
+Subsequent study has shown they have hydrogen gas atmospheres and they fall into two categories: the larger ones have retain atmospheres but the smaller ones are stipped cores. Models that simulate this bimodal distribution predict that stellar radiation perhaps combined with heat from planetary cooling drive off the atmosphere causing some of these exoplanets to appear smaller. In general, these exoplanets are not in the habitable zone.  Moreover, the processes which strip the hydrogen atmosphere from this type of exoplanet is unlikely to operate on planets in the habitable zone. Thus among this type of exoplanet, those orbital periods closer to the habitable zone more closely resemble Neptune. 
+
+Kepler-22 b, discovered in December 2011 by the Kepler space probe, is the first transiting exoplanet discovered around a Sun-like star. With a radius 2.4 times that of Earth, Kepler-22b has been predicted by some to be an ocean planet. Gliese 667 Cc, discovered in 2011 but announced in 2012, is a super-Earth orbiting in the circumstellar habitable zone of Gliese 667 C. It is one of the most Earth-like planets known.
+Gliese 163 c, discovered in September 2012 in orbit around the red dwarf Gliese 163 is located 49 light years from Earth. The planet has 6.9 Earth masses and 1.8–2.4 Earth radii, and with its close orbit receives 40 percent more stellar radiation than Earth, leading to surface temperatures of about 60° C. HD 40307 g, a candidate planet tentatively discovered in November 2012, is in the circumstellar habitable zone of HD 40307. In December 2012, Tau Ceti e and Tau Ceti f were found in the circumstellar habitable zone of Tau Ceti, a Sun-like star 12 light years away. Although more massive than Earth, they are among the least massive planets found to date orbiting in the habitable zone; however, Tau Ceti f, like HD 85512 b, did not fit the new circumstellar habitable zone criteria established by the 2013 Kopparapu study. It is now considered as uninhabitable.
+
+
+=== Near Earth-sized planets and Solar analogs ===
+
+Recent discoveries have uncovered planets that are thought to be similar in size or mass to Earth. "Earth-sized" ranges are typically defined by mass. The lower range used in many definitions of the super-Earth class is 1.9 Earth masses; likewise, sub-Earths range up to the size of Venus (~0.815 Earth masses). An upper limit of 1.5 Earth radii is also considered, given that above 1.5 R🜨 the average planet density rapidly decreases with increasing radius, indicating these planets have a significant fraction of volatiles by volume overlying a rocky core. A genuinely Earth-like planet – an Earth analog or "Earth twin" – would need to meet many conditions beyond size and mass; such properties are not observable using current technology.
+A solar analog (or "solar twin") is a star that resembles the Sun. No solar twin with an exact match as that of the Sun has been found. However, some stars are nearly identical to the Sun and are considered solar twins. An exact solar twin would be a G2V star with a 5,778 K temperature, be 4.6  billion years old, with the correct metallicity and a 0.1% solar luminosity variation. Stars with an age of 4.6 billion years are at the most stable state. Proper metallicity and size are also critical to low luminosity variation.
+Using data collected by NASA's Kepler space telescope and the W. M. Keck Observatory, scientists have estimated that 22% of solar-type stars in the Milky Way galaxy have Earth-sized planets in their habitable zone.
+On 7 January 2013, astronomers from the Kepler team announced the discovery of Kepler-69c (formerly KOI-172.02), an Earth-size exoplanet candidate (1.7 times the radius of Earth) orbiting Kepler-69, a star similar to the Sun, in the HZ and expected to offer habitable conditions. The discovery of two planets orbiting in the habitable zone of Kepler-62, by the Kepler team was announced on April 19, 2013. The planets, named Kepler-62e and Kepler-62f, are likely solid planets with sizes 1.6 and 1.4 times the radius of Earth, respectively.
+With a radius estimated at 1.1 Earth, Kepler-186f, discovery announced in April 2014, is the closest yet size to Earth of an exoplanet confirmed by the transit method though its mass remains unknown and its parent star is not a Solar analog.
+Kapteyn b, discovered in June 2014, was thought to is a possible rocky world of about 4.8 Earth masses and about 1.5 Earth radii orbiting the habitable zone of the red subdwarf Kapteyn's Star, 12.8 light-years away. However, further analysis concluded that this claim was an artefact of stellar rotation and activity.
+On 6 January 2015, NASA announced the 1000th confirmed exoplanet discovered by the Kepler Space Telescope. Three of the newly confirmed exoplanets were found to orbit within habitable zones of their related stars: two of the three, Kepler-438b and Kepler-442b, are near-Earth-size and likely rocky; the third, Kepler-440b, is a super-Earth. However, Kepler-438b is found to be a subject of powerful flares, so it is now considered uninhabitable. 16 January, K2-3d a planet of 1.5 Earth radii was found orbiting within the habitable zone of K2-3, receiving 1.4 times the intensity of visible light as Earth.
+Kepler-452b, announced on 23 July 2015 is 50% bigger than Earth, likely rocky and takes approximately 385 Earth days to orbit the habitable zone of its G-class (solar analog) star Kepler-452.
+The discovery of a system of three tidally locked planets orbiting the habitable zone of an ultracool dwarf star, TRAPPIST-1, was announced in May 2016. The discovery is considered significant because it dramatically increases the possibility of smaller, cooler, more numerous and closer stars possessing habitable planets.
+Two potentially habitable planets, discovered by the K2 mission in July 2016 orbiting around the M dwarf K2-72 around 227 light years from the Sun: K2-72c and K2-72e are both of similar size to Earth and receive similar amounts of stellar radiation.
+Announced on the 20 April 2017, LHS 1140b is a super-dense super-Earth 39 light years away, 6.6 times Earth's mass and 1.4 times radius, its star 15% the mass of the Sun but with much less observable stellar flare activity than most M dwarfs. The planet is one of few observable by both transit and radial velocity that's mass is confirmed with an atmosphere may be studied.
+Discovered by radial velocity in June 2017, with approximately three times the mass of Earth, Luyten b orbits within the habitable zone of Luyten's Star just 12.2 light-years away.
+At 11 light-years away, the second closest planet, Ross 128 b, was announced in November 2017 following a decade's radial velocity study of relatively "quiet" red dwarf star Ross 128. At 1.35 times Earth's mass, is it roughly Earth-sized and likely rocky in composition.
+Discovered in March 2018, K2-155d is about 1.64 times the radius of Earth, is likely rocky and orbits in the habitable zone of its red dwarf star 203 light years away.
+One of the earliest discoveries by the Transiting Exoplanet Survey Satellite (TESS) announced on July 31, 2019, is a Super-Earth planet GJ 357 d orbiting the outer edge of a red dwarf 31 light years away.
+K2-18b is an exoplanet 124 light-years away, orbiting in the habitable zone of the K2-18, a red dwarf. This planet is significant for water vapor found in its atmosphere; this was announced on September 17, 2019.
+In September 2020, astronomers identified 24 superhabitable planet (planets better than Earth) contenders, from among more than 4000 confirmed exoplanets at present, based on astrophysical parameters, as well as the natural history of known life forms on the Earth.
+
+In the case of planets orbiting in the HZs of red dwarf stars, the extremely close distances to the stars cause tidal locking, an important factor in habitability. For a tidally locked planet, the sidereal day is as long as the orbital period, causing one side to permanently face the host star and the other side to face away. In the past, such tidal locking was thought to cause extreme heat on the star-facing side and bitter cold on the opposite side, making many red dwarf planets uninhabitable; however, three-dimensional climate models in 2013 showed that the side of a red dwarf planet facing the host star could have extensive cloud cover, increasing its bond albedo and reducing significantly temperature differences between the two sides.
+
+
+=== Moons ===
+
+Planetary mass natural satellites have the potential to be habitable as well. However, these bodies need to fulfill additional parameters, in particular being located within the circumplanetary habitable zones of their host planets. More specifically, moons need to be far enough from their host giant planets that they are not transformed by tidal heating into volcanic worlds like Io, but must remain within the Hill radius of the planet so that they are not pulled out of the orbit of their host planet. Red dwarfs that have masses less than 20% of that of the Sun cannot have habitable moons around giant planets, as the small size of the circumstellar habitable zone would put a habitable moon so close to the star that it would be stripped from its host planet. In such a system, a moon close enough to its host planet to maintain its orbit would have tidal heating so intense as to eliminate any prospects of habitability.
+
+A planetary object that orbits a star with high orbital eccentricity may spend only some of its year in the HZ and experience a large variation in temperature and atmospheric pressure. This would result in dramatic seasonal phase shifts where liquid water may exist only intermittently. It is possible that subsurface habitats could be insulated from such changes and that extremophiles on or near the surface might survive through adaptions such as hibernation (cryptobiosis) and/or hyperthermostability. Tardigrades, for example, can survive in a dehydrated state temperature between 0.150 K (−273 °C) and 424 K (151 °C). Life on a planetary object orbiting outside HZ might hibernate on the cold side as the planet approaches the apastron where the planet is coolest and become active on approach to the periastron when the planet is sufficiently warm.
+
+
+== Alternative habitable zones ==
+
+Liquid-water environments have been found to exist in the absence of atmospheric pressure and at temperatures outside the HZ temperature range. For example, Saturn's moons Titan and Enceladus and Jupiter's moons Europa and Ganymede, all of which are outside the habitable zone, may hold large volumes of liquid water in subsurface oceans.
+Tidal heating and radioactive decay are two possible heat sources that could contribute to the existence of liquid water. A giant planet creates "tidally-heated habitable zone" with heat that might maintain underground water. 
+For example, Europa is considered be in such a zone. Abbot and Switzer (2011) put forward the possibility that subsurface water could exist on rogue planets as a result of radioactive decay-based heating and insulation by a thick surface layer of ice.
+Another possibility is that outside the HZ organisms may use alternative biochemistries that do not require water at all. Astrobiologist Christopher McKay, has suggested that methane (CH4) may be a solvent conducive to the development of "cryolife", with the Sun's "methane habitable zone" being centered on 1,610,000,000 km (1.0×109 mi; 11 AU) from the star. This distance is coincident with the location of Titan, whose lakes and rain of methane make it an ideal location to find McKay's proposed cryolife. In addition, testing of a number of organisms has found some are capable of surviving in extra-HZ conditions.
+
+
+== Significance for complex and intelligent life ==
+
+Conventional habitable zones only require liquid water, a minimum requirement for conventional microbial life. Complex aerobic life is likely to have many additional requirements, including limitations on the concentrations of CO2 and CO in the atmosphere. This has led to the concept of a habitable zone for complex life. The Rare Earth hypothesis argues that complex and intelligent life is uncommon and that the HZ is one of many critical factors. The secondary habitability factors required for multicellular life are both geological (the role of surface water in sustaining necessary plate tectonics) and biochemical (the role of radiant energy in supporting photosynthesis for necessary atmospheric oxygenation). 
+Researchers looking for intelligent life elsewhere in the universe begin with planets in the habitable zone. SETI uses habitable zone analysis to select target for their Project Phoenix project. and the Allen Telescope Array now extends Project Phoenix to such candidates.
+The Drake equation, sometimes used to estimate the number of intelligent civilizations in our galaxy, contains the factor or parameter ne, which is the average number of planetary-mass objects orbiting within the HZ of each star. A low value lends support to the Rare Earth hypothesis, which posits that intelligent life is a rarity in the Universe, whereas a high value provides evidence for the Copernican mediocrity principle, the view that habitability—and therefore life—is common throughout the Universe.
+
+
+== See also ==
+
+Habitability of binary star systems
+Habitability of F-type main-sequence star systems
+Habitability of K-type main-sequence star systems
+Habitability of neutron star systems
+Habitability of red dwarf systems
+Habitability of yellow dwarf systems
+Habitable zone for complex life
+
+
+== References ==
+
+
+== Further reading ==
+Schulze-Makuch, Dirk; Crawford, Ian A. (2018). "Was There an Early Habitability Window for Earth's Moon?". Astrobiology. 18 (8): 985–988. Bibcode:2018AsBio..18..985S. doi:10.1089/ast.2018.1844. PMC 6225594. PMID 30035616.
+Salvador, A.; Massol, H.; Davaille, A.; Marcq, E.; Sarda, P.; Chassefière, E. (2017). "The relative influence of H2 O and CO2 on the primitive surface conditions and evolution of rocky planets" (PDF). Journal of Geophysical Research: Planets. 122 (7): 1458–1486. Bibcode:2017JGRE..122.1458S. doi:10.1002/2017JE005286. ISSN 2169-9097. S2CID 135136696. Impactors can alter atmospheres and thus habitable zone.
+
+
+== External links ==

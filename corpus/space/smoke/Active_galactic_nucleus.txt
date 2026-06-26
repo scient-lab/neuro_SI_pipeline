@@ -1,0 +1,276 @@
+An active galactic nucleus (AGN) is a compact region at the center of a galaxy that emits a significant amount of energy across the electromagnetic spectrum, with characteristics indicating that this luminosity is not produced by the stars. Such excess, non-stellar emissions have been observed in the radio, microwave, infrared, optical, ultra-violet, X-ray, and gamma ray wavebands. A galaxy hosting an AGN is called an active galaxy. The non-stellar radiation from an AGN is theorized to result from the accretion of matter by a supermassive black hole at the center of its host galaxy. The super massive black hole at the center of the Milky Way galaxy is not currently active but it is believed to have been active about 8 billion years ago.
+Active galactic nuclei are the most luminous persistent sources of electromagnetic radiation in the universe and, as such, can be used as a means of discovering distant objects; their evolution as a function of cosmic time also puts constraints on models of the cosmos. The observed characteristics of an AGN depend on several properties such as the mass of the central black hole, the rate of gas accretion onto the black hole, the orientation of the accretion disk, the degree of obscuration of the nucleus by dust, and presence or absence of jets. Numerous subclasses of AGN have been defined on the basis of their observed characteristics; the most powerful AGN are classified as quasars. A blazar is an AGN with a jet pointed toward the Earth, in which radiation from the jet is enhanced by relativistic beaming.
+
+
+== History ==
+
+During the first half of the 20th century, photographic observations of nearby galaxies detected some characteristic signatures of active galactic nucleus emission, although there was not yet a physical understanding of the nature of the AGN phenomenon. Some early observations included the first spectroscopic detection of emission lines from the nuclei of NGC 1068 and Messier 81 by Edward Fath (published in 1909), and the discovery of the jet in Messier 87 by Heber Curtis (published in 1918). Further spectroscopic studies by astronomers including Vesto Slipher, Milton Humason, and Nicholas Mayall noted the presence of unusual emission lines in some galaxy nuclei. In 1943, Carl Seyfert published a paper in which he described observations of nearby galaxies having bright nuclei that were sources of unusually broad emission lines. Galaxies observed as part of this study included NGC 1068, NGC 4151, NGC 3516, and NGC 7469. Active galaxies such as these are known as Seyfert galaxies in honor of Seyfert's pioneering work.
+The development of radio astronomy was a major catalyst to understanding AGN. Some of the earliest detected radio sources are nearby active elliptical galaxies such as Messier 87 and Centaurus A. Another radio source, Cygnus A, was identified by Walter Baade and Rudolph Minkowski as a tidally distorted galaxy with an unusual emission-line spectrum, having a recessional velocity of 16,700 kilometers per second. The 3C radio survey led to further progress in discovery of new radio sources as well as identifying the visible-light sources associated with the radio emission. In photographic images, some of these objects were nearly point-like or quasi-stellar in appearance, and were classified as quasi-stellar radio sources (later abbreviated as "quasars").
+Soviet-Armenian astrophysicist Viktor Ambartsumian introduced the concept of active galactic nuclei in the early 1950s. At the Solvay Conference on Physics in 1958 Ambartsumian presented a report arguing that "explosions in galactic nuclei cause large amounts of mass to be expelled. For these explosions to occur, galactic nuclei must contain bodies of huge mass and unknown nature. From this point forward active galactic nuclei (AGN) became a key component in theories of galactic evolution." His idea was initially received skeptically.
+A major breakthrough was the measurement of the redshift of the quasar 3C 273 by Maarten Schmidt, published in 1963. Schmidt noted that if this object was extragalactic (outside the Milky Way, at a cosmological distance) then its large redshift of 0.158 implied that it was the nuclear region of a galaxy about 100 times more powerful than other radio galaxies that had been identified. Shortly afterward, optical spectra were used to measure the redshifts of a growing number of quasars including 3C 48, even more distant at redshift 0.37.
+The enormous luminosities of these quasars as well as their unusual spectral properties indicated that their power source could not be ordinary stars. Accretion of gas onto a supermassive black hole was suggested as the source of quasars' power in papers by Edwin Salpeter and Yakov Zeldovich in 1964. In 1969 Donald Lynden-Bell proposed that nearby galaxies contain supermassive black holes at their centers as relics of "dead" quasars, and that black hole accretion was the power source for the non-stellar emission in nearby Seyfert galaxies. In the 1960s and 1970s, early X-ray astronomy observations demonstrated that Seyfert galaxies and quasars are powerful sources of X-ray emission, which originates from the inner regions of black hole accretion disks.
+Today, AGN are a major topic of astrophysical research, both observational and theoretical. AGN research encompasses observational surveys to find AGN over broad ranges of luminosity and redshift, examination of the cosmic evolution and growth of black holes, studies of the physics of black hole accretion and the emission of electromagnetic radiation from AGN, examination of the properties of jets and outflows of matter from AGN, and the impact of black hole accretion and quasar activity on galaxy evolution.
+
+
+== Models ==
+Since the late 1960s it has been argued that an AGN must be powered by accretion of mass onto massive black holes (106 to 1010 times the Solar mass). AGN are both compact and persistently extremely luminous. Accretion can potentially give very efficient conversion of potential and kinetic energy to radiation, and a massive black hole has a high Eddington luminosity. As a result, it can provide the observed high persistent luminosity. Supermassive black holes are now believed to exist in the centres of most if not all massive galaxies, since the mass of the black hole correlates well with the velocity dispersion of the galactic bulge (the M–sigma relation) or with bulge luminosity. Thus, AGN-like characteristics are expected whenever a supply of material for accretion comes within the sphere of influence of the central black hole.
+
+
+=== Accretion disc ===
+
+In the standard model of AGN, cold material close to a black hole forms an accretion disc. Dissipative processes in the accretion disc transport matter inwards and angular momentum outwards, while causing the accretion disc to heat up. The expected spectrum of an accretion disc peaks in the optical-ultraviolet waveband; in addition, a corona of hot material forms above the accretion disc and can inverse-Compton scatter photons up to X-ray energies. The radiation from the accretion disc excites cold atomic material close to the black hole and this in turn radiates at particular emission lines. A large fraction of the AGN's radiation may be obscured by interstellar gas and dust close to the accretion disc, but (in a steady-state situation) this will be re-radiated at some other waveband, most likely the infrared.
+
+
+=== Relativistic jets ===
+
+Some accretion discs produce jets of twin, highly collimated, and fast outflows that emerge in opposite directions from close to the disc. The direction of the jet ejection is determined either by the angular momentum axis of the accretion disc or the spin axis of the black hole. The jet production mechanism and indeed the jet composition on very small scales are not understood at present due to the resolution of astronomical instruments being too low. The jets have their most obvious observational effects in the radio waveband, where very-long-baseline interferometry can be used to study the synchrotron radiation they emit at resolutions of sub-parsec scales. However, they radiate in all wavebands from the radio through to the gamma-ray range via the synchrotron and the inverse-Compton scattering process, and so AGN jets are a second potential source of any observed continuum radiation.
+
+
+=== Radiatively inefficient AGN ===
+There exists a class of "radiatively inefficient" solutions to the equations that govern accretion. Several theories exist, but the most widely known of these is the Advection Dominated Accretion Flow (ADAF). In this type of accretion, which is important for accretion rates well below the Eddington limit, the accreting matter does not form a thin disc and consequently does not efficiently radiate away the energy that it acquired as it moved close to the black hole. Radiatively inefficient accretion has been used to explain the lack of strong AGN-type radiation from massive black holes at the centres of elliptical galaxies in clusters, where otherwise we might expect high accretion rates and correspondingly high luminosities. Radiatively inefficient AGN would be expected to lack many of the characteristic features of standard AGN with an accretion disc.
+
+
+== Particle acceleration ==
+AGN are a candidate source of high and ultra-high energy cosmic rays (see also Centrifugal mechanism of acceleration).
+
+
+== Observational characteristics ==
+Among the many interesting characteristics of AGNs:
+
+very high luminosity, visible out to very high red shifts,
+small emitting regions, milli-parsecs in diameter, implying high energy density,
+strong evolution of luminosity functions, and
+detectable emission across the entire electromagnetic spectrum.
+
+
+== Types ==
+The observed AGNs are grouped into dozens of different sometimes overlapping classes.
+AGNs are classified along multiple criteria. Two AGN may be in the same group according observations at one wavelength and in different groups according observations at another wavelength. This issues are believed to reflect the current early stages of understanding AGN. Classifications based on observations have not yet been interpreted with consistent physical models.
+One criteria is the radio-to-optical emission ratio or radio loudness parameter, 
+
+  
+    
+      
+        R
+        =
+        
+          
+            
+              L
+              
+                5
+                G
+                H
+                z
+              
+            
+            
+              L
+              
+                B
+              
+            
+          
+        
+        ,
+      
+    
+    {\displaystyle R={\frac {L_{5GHz}}{L_{B}}},}
+  
+
+where 
+  
+    
+      
+        
+          L
+          
+            5
+            G
+            H
+            z
+          
+        
+      
+    
+    {\displaystyle L_{5GHz}}
+  
+ is the luminosity at the 5 GHz radio band and 
+  
+    
+      
+        
+          L
+          
+            B
+          
+        
+      
+    
+    {\displaystyle L_{B}}
+  
+ is the optical luminosity. The
+AGN with 
+  
+    
+      
+        R
+        ≫
+        10
+      
+    
+    {\displaystyle R\gg 10}
+  
+ and 
+  
+    
+      
+        
+          L
+          
+            5
+            G
+            H
+            z
+          
+        
+        >
+        
+          10
+          
+            25
+          
+        
+        
+          
+            Jy
+          
+        
+      
+    
+    {\displaystyle L_{5GHz}>10^{25}{\textrm {Jy}}}
+  
+ are called radio loud, otherwise they are radio quiet. This ratio is suspect in cases where the optical emission may be obscured by dust and direct star light along the line to the AGN. Alternatively this split can be defined as a radio luminosity cutoff at a fixed frequency, e.g. 
+  
+    
+      
+        
+          L
+          
+            1.4
+            G
+            H
+            z
+          
+        
+        >
+        
+          10
+          
+            24
+          
+        
+        
+          
+            W
+          
+        
+        
+          /
+        
+        
+          
+            Hz
+          
+        
+        .
+      
+    
+    {\displaystyle L_{1.4GHz}>10^{24}{\textrm {W}}/{\textrm {Hz}}.}
+  
+
+A second criteria is the existence of broad emission lines in the optical spectrum: type-1 has broad lines but type-2 does not.
+
+
+=== Radio-quiet AGN ===
+When the galaxy associated with an AGN is optically resolvable they are called Seyfert galaxies. These are classed as type-1 or type-2 according to the existence of broad emission lines.
+
+Radio-quiet quasars or QSOs. These are essentially more-luminous versions of Seyfert 1s. The distinction between radio-loud and radio-quiet is arbitrary, and is usually expressed in terms of a limiting optical magnitude or a optical-to-radio luminosity ratio. Quasars were originally 'quasi-stellar' in optical images, because they had optical luminosities that were greater than that of their host galaxy. They always show strong optical continuum emission, X-ray continuum emission, and broad and narrow optical emission lines. Some astronomers use the term QSO (Quasi-Stellar Object) for this class of AGN, reserving 'quasar' for radio-loud objects, while other astronomers talk about radio-quiet and radio-loud quasars. The host galaxies of quasars can be spirals, irregulars, or ellipticals. There is a correlation between the quasar's luminosity and the mass of its host galaxy, in that the most luminous quasars inhabit the most massive galaxies (ellipticals).
+'Quasar 2s'. By analogy with Seyfert 2s, these are objects with quasar-like luminosities, but without strong optical nuclear continuum emission or broad line emission. They are scarce in surveys, though a number of possible candidate quasar 2s have been identified.
+
+
+=== Radio-loud AGN ===
+There are several subtypes of radio-loud active galactic nuclei.
+
+Radio-loud quasars behave exactly like radio-quiet quasars with the addition of emission from a jet. Thus they show strong optical continuum emission, broad and narrow emission lines, and strong X-ray emission, together with nuclear and often extended radio emission.
+"Blazars" (BL Lacertae (BL Lac) objects and optically violent variable (OVV) quasars) are distinguished by rapidly variable, polarized optical, radio, and X-ray emissions. BL Lac objects show no optical emission lines, broad or narrow, so that their redshifts can only be determined from features in the spectra of their host galaxies. The emission-line features may be intrinsically absent, or simply swamped by the additional variable component. In the latter case, emission lines may become visible when the variable component is at a low level. OVV quasars behave more like standard radio-loud quasars with the addition of a rapidly variable component. In both classes of source, the variable emission is believed to originate in a relativistic jet that is oriented close to the line of sight. Relativistic effects amplify both the luminosity of the jet and the amplitude of variability.
+Radio galaxies. These objects show nuclear and extended radio emission. Their other AGN properties are heterogeneous. They can broadly be divided into low-excitation and high-excitation classes. Low-excitation objects show no strong narrow or broad emission lines, and the emission lines they do have may be excited by a different mechanism. Their optical and X-ray nuclear emission is consistent with originating purely in a jet. They may be the best current candidates for AGN with radiatively inefficient accretion. By contrast, high-excitation objects (narrow-line radio galaxies) have emission-line spectra similar to those of Seyfert 2s. The small class of broad-line radio galaxies, which show relatively strong nuclear optical continuum emission probably includes some objects that are simply low-luminosity radio-loud quasars. The host galaxies of radio galaxies, whatever their emission-line type, are essentially always ellipticals.
+
+
+== Unified models ==
+
+Unified models propose that different observational classes of AGN are a single type of physical object observed under different conditions.
+A "strict" unification model proposes that the apparent differences between different types of objects arise simply because of their different orientations of the jet and obscuring torus as viewed on Earth.
+The obscuring torus, also called a "dusty torus" is a cool outer layer surrounding an accretion disk. This model has had partial success, showing for example that Seyfert galaxies of type 1 and 2 are the same kinds of AGN viewed differently.
+Other effects that might lead the same kind of astrophysical object to have distinctive observational characteristics include the accretion rate, the strength of the relativistic jet, obscuring effects of the galaxy surrounding the AGN, or time of observation relative to the formation of the AGN. AGNs are the subject of numerous on-going studies seeking to clarify the nature of AGNs.
+
+
+== Effects on planets ==
+It is expected that all supermassive black holes at the center of galaxies have gone through high AGN activity to reach the mass we see today. These periods of high AGN activity can potentially affect the atmospheres of planets and their habitability. Planets located in compact galaxies such as “Red Nuggets” are likely to be more impacted than planets located in typical elliptical galaxies such as M87 or spiral galaxies such as the Milky Way galaxy.
+For a planet with a high amount of initial oxygen in its atmosphere, AGN radiation may allow a thicker ozone layer, possibly by shielding it from other UV radiation. This would potentially increase the habitability of a planet.
+The supermassive black hole at the center of our galaxy (Sagittarius A*) experienced a phase of AGN activity 8 Gyr ago. This would have caused loss of atmospheres to planets within 1 kpc comparable to present-day Earth. The X-ray and extreme UV radiation also would have caused biological damage to surface life on planets without proper shielding. This would potentially hinder the development of complex life within a few kiloparsecs.
+The inherent energy from AGNs can also heat up the atmosphere of planets leading to atmospheric escape. The combined effect of AGN outflows would likely make all planets within 1kpc (~3,262 light-years) of the center of a galaxy uninhabitable.
+
+
+== Examples ==
+
+
+=== Quasar ===
+3C 273: The first identified Quasar, notable for its relativistic jets (z=0.158).
+3C 48: One of the earliest known Quasar with a measured redshift (z=0.367).
+TON 618: An ultra-luminous quasar hosting one of the most massive known black holes (~66 billion solar masses), located at a redshift of z=2.219.
+Twin Quasar: The first gravitationally lensed quasar, split into two images by an intervening galaxy (z=1.41).
+Einstein Cross: A quasar lensed into four images forming a cross, demonstrating gravitational lensing predicted by general relativity (z=1.695).
+Pōniuāʻena: One of the most distant quasars known (z=7.52), formed ~700 million years after the Big Bang, offering insights into early black hole formation.
+CTA-102: A radio-loud quasar known for its variability (z=1.037).
+Cloverleaf Quasar: A quasar lensed into four images resembling a cloverleaf, brightest known high-redshift source of CO emission (z=2.558).
+
+
+=== Radio Galaxy ===
+Messier 87: A giant elliptical galaxy with a supermassive black hole (6.5 billion solar masses), imaged by the Event Horizon Telescope in 2019. Its jets extend thousands of light-years (z=0.00428).
+Centaurus A: One of the closest radio galaxies, known for its dust lanes and relativistic jets (0.00183).
+Cygnus A: A powerful radio source identified with a tidally distorted galaxy, a benchmark for studying AGN feedback (z=0.0561).
+Hercules A: Features massive radio jets spanning ~1 million light-years, observed with radio telescopes like VLA (z=0.154).
+Alcyoneus: The largest known radio galaxy, with jets extending 16.3 million light-years, discovered using LOFAR (z=0.2467).
+TGSS J1530+1049: The most distant radio galaxy known (z=5.72), providing insights into early universe structures.
+
+
+=== Seyfert Galaxy ===
+Messier 77: A prototypical Type 2 Seyfert with star-forming rings, extensively studied using ALMA for black hole interactions (z=0.00379).
+NGC 4151: A classic Type 1 Seyfert, noted for variable X-ray emission and a well-studied accretion disk (z=0.00332).
+Circinus Galaxy: A nearby Type 2 Seyfert with ejected gas rings, bright in infrared due to dust (z=0.00145).
+NGC 7469: A luminous infrared Seyfert 1 with starburst activity, included in early Seyfert studies (z=0.0163).
+NGC 7319: Part of Stephan's Quintet, harbors a hidden AGN revealed by Webb Telescope observations (z=0.0225).
+Markarian 231: A ultraluminous infrared galaxy with a quasar-like AGN, showing evidence of a major merger (z=0.0415).
+
+
+=== Blazar ===
+BL Lacertae: The prototype BL Lac object, characterized by minimal emission lines and variability (z=0.069).
+Markarian 501: A TeV blazar known for gamma-ray flares and jet studies; a key target for high-energy astronomy (z=0.034).
+PKS 0537-286: A distant gamma-ray blazar, one of NASA's top gamma-ray sources, probing early universe black holes (z=3.104).
+
+
+== See also ==
+M–sigma relation – Concept in astronomy
+Quasar – Active galactic nucleus (AGN) containing a supermassive black hole
+Radio galaxy – Type of active galaxy that is very luminous at radio wavelengths
+Relativistic jet – Stream of ionized matter flowing away from a rotating astronomical object
+Supermassive black hole – Largest type of black hole
+Reverberation mapping – Astrophysical technique
+
+
+== References ==
+
+
+== External links ==
+ Media related to Active galactic nuclei at Wikimedia Commons

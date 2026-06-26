@@ -1,0 +1,1588 @@
+Figure 6.1 Hubble Space Telescope (HST). This artist’s impression shows the Hubble above Earth, with the rectangular solar
+panels that provide it with power seen to the left and right.
+Chapter Outline
+6.1 Telescopes
+6.2 Telescopes Today
+6.3 Visible-Light Detectors and Instruments
+6.4 Radio Telescopes
+6.5 Observations outside Earth’s Atmosphere
+6.6 The Future of Large Telescopes
+Thinking Ahead
+If you look at the sky when you are far away from city lights, there seem to be an overwhelming number of
+stars up there. In reality, only about 9000 stars are visible to the unaided eye (from both hemispheres of our
+planet). The light from most stars is so weak that by the time it reaches Earth, it cannot be detected by the
+human eye. How can we learn about the vast majority of objects in the universe that our unaided eyes simply
+cannot see?
+In this chapter, we describe the tools astronomers use to extend their vision into space. We have learned
+almost everything we know about the universe from studying electromagnetic radiation, as discussed in the
+chapter on Radiation and Spectra. In the twentieth century, our exploration of space made it possible to detect
+electromagnetic radiation at all wavelengths, from gamma rays to radio waves. The different wavelengths
+carry different kinds of information, and the appearance of any given object often depends on the wavelength
+at which the observations are made.
+Astronomical Instruments
+6 • Thinking Ahead
+6.1
+Telescopes
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the three basic components of a modern system for measuring astronomical sources
+Describe the main functions of a telescope
+Describe the two basic types of visible-light telescopes and how they form images
+Systems for Measuring Radiation
+There are three basic components of a modern system for measuring radiation from astronomical sources.
+First, there is a telescope, which serves as a “bucket” for collecting visible light (or radiation at other
+wavelengths, as shown in (Figure 6.2). Just as you can catch more rain with a garbage can than with a coffee
+cup, large telescopes gather much more light than your eye can. Second, there is an instrument attached to
+the telescope that sorts the incoming radiation by wavelength. Sometimes the sorting is fairly crude. For
+example, we might simply want to separate blue light from red light so that we can determine the
+temperature of a star. But at other times, we want to see individual spectral lines to determine what an object
+is made of, or to measure its speed (as explained in the Radiation and Spectra chapter). Third, we need some
+type of detector, a device that senses the radiation in the wavelength regions we have chosen and
+permanently records the observations.
+Figure 6.2 Orion Region at Different Wavelengths. The same part of the sky looks different when observed with instruments that
+are sensitive to different bands of the spectrum. (a) Visible light: this shows part of the Orion region as the human eye sees it, with
+dotted lines added to show the figure of the mythical hunter, Orion. (b) X-rays: here, the view emphasizes the point-like X-ray
+sources nearby. The colors are artificial, changing from yellow to white to blue with increasing energy of the X-rays. The bright, hot
+stars in Orion are still seen in this image, but so are many other objects located at very different distances, including other stars, star
+corpses, and galaxies at the edge of the observable universe. (c) Infrared radiation: here, we mainly see the glowing dust in this
+region. (credit a: modification of work by Howard McCallon/NASA/IRAS; credit b: modification of work by Howard McCallon/NASA/
+IRAS; credit c: modification of work by Michael F. Corcoran)
+The history of the development of astronomical telescopes is about how new technologies have been applied
+to improve the efficiency of these three basic components: the telescopes, the wavelength-sorting device, and
+the detectors. Let’s first look at the development of the telescope.
+Many ancient cultures built special sites for observing the sky (Figure 6.3). At these ancient observatories, they
+could measure the positions of celestial objects, mostly to keep track of time and date. Many of these ancient
+observatories had religious and ritual functions as well. The eye was the only device available to gather light,
+all of the colors in the light were observed at once, and the only permanent record of the observations was
+made by human beings writing down or sketching what they saw.
+6 • Astronomical Instruments
+Figure 6.3 Two Pre-Telescopic Observatories. (a) Machu Picchu is a fifteenth century Incan site located in Peru. (b) Stonehenge, a
+prehistoric site (3000–2000 BCE), is located in England. (credit a: modification of work by Allard Schmidt)
+While Hans Lippershey, Zaccharias Janssen, and Jacob Metius are all credited with the invention of the
+telescope around 1608—applying for patents within weeks of each other—it was Galileo who, in 1610, used
+this simple tube with lenses (which he called a spyglass) to observe the sky and gather more light than his
+eyes alone could. Even his small telescope—used over many nights—revolutionized ideas about the nature of
+the planets and the position of Earth.
+How Telescopes Work
+Telescopes have come a long way since Galileo’s time. Now they tend to be huge devices; the most expensive
+cost hundreds of millions to billions of dollars. (To provide some reference point, however, keep in mind that
+just renovating college football stadiums typically costs hundreds of millions of dollars—with the most
+expensive recent renovation, at Texas A&M University’s Kyle Field, costing $450 million.) The reason
+astronomers keep building bigger and bigger telescopes is that celestial objects—such as planets, stars, and
+galaxies—send much more light to Earth than any human eye (with its tiny opening) can catch, and bigger
+telescopes can detect fainter objects. If you have ever watched the stars with a group of friends, you know that
+there’s plenty of starlight to go around; each of you can see each of the stars. If a thousand more people were
+watching, each of them would also catch a bit of each star’s light. Yet, as far as you are concerned, the light not
+shining into your eye is wasted. It would be great if some of this “wasted” light could also be captured and
+brought to your eye. This is precisely what a telescope does.
+The most important functions of a telescope are (1) to collect the faint light from an astronomical source and
+(2) to focus all the light into a point or an image. Most objects of interest to astronomers are extremely faint:
+the more light we can collect, the better we can study such objects. (And remember, even though we are
+focusing on visible light first, there are many telescopes that collect other kinds of electromagnetic radiation.)
+Telescopes that collect visible radiation use a lens or mirror to gather the light. Other types of telescopes may
+use collecting devices that look very different from the lenses and mirrors with which we are familiar, but they
+serve the same function. In all types of telescopes, the light-gathering ability is determined by the area of the
+device acting as the light-gathering “bucket.” Since most telescopes have mirrors or lenses, we can compare
+their light-gathering power by comparing the apertures, or diameters, of the opening through which light
+travels or reflects.
+The amount of light a telescope can collect increases with the size of the aperture. A telescope with a mirror
+that is 4 meters in diameter can collect 16 times as much light as a telescope that is 1 meter in diameter. (The
+diameter is squared because the area of a circle equals πd2/4, where d is the diameter of the circle.)
+6.1 • Telescopes
+E X A M P L E 6 . 1
+Calculating the Light-Collecting Area
+What is the area of a 1-m diameter telescope? A 4-m diameter one?
+Solution
+Using the equation for the area of a circle,
+the area of a 1-m telescope is
+and the area of a 4-m telescope is
+Check Your Learning
+Show that the ratio of the two areas is 16:1.
+Answer:
+Therefore, with 16 times the area, a 4-m telescope collects 16 times the light of a 1-m
+telescope.
+After the telescope forms an image, we need some way to detect and record it so that we can measure,
+reproduce, and analyze the image in various ways. Before the nineteenth century, astronomers simply viewed
+images with their eyes and wrote descriptions of what they saw. This was very inefficient and did not lead to a
+very reliable long-term record; you know from crime shows on television that eyewitness accounts are often
+inaccurate.
+In the nineteenth century, the use of photography became widespread. In those days, photographs were a
+chemical record of an image on a specially treated glass plate. Today, the image is generally detected with
+sensors similar to those in digital cameras, recorded electronically, and stored in computers. This permanent
+record can then be used for detailed and quantitative studies. Professional astronomers rarely look through
+the large telescopes that they use for their research.
+Formation of an Image by a Lens or a Mirror
+Whether or not you wear glasses, you see the world through lenses; they are key elements of your eyes. A lens
+is a transparent piece of material that bends the rays of light passing through it. If the light rays are parallel as
+they enter, the lens brings them together in one place to form an image (Figure 6.4). If the curvatures of the
+lens surfaces are just right, all parallel rays of light (say, from a star) are bent, or refracted, in such a way that
+they converge toward a point, called the focus of the lens. At the focus, an image of the light source appears.
+In the case of parallel light rays, the distance from the lens to the location where the light rays focus, or image,
+behind the lens is called the focal length of the lens.
+6 • Astronomical Instruments
+Figure 6.4 Formation of an Image by a Simple Lens. Parallel rays from a distant source are bent by the convex lens so that they all
+come together in a single place (the focus) to form an image.
+As you look at Figure 6.4, you may ask why two rays of light from the same star would be parallel to each
+other. After all, if you draw a picture of star shining in all directions, the rays of light coming from the star
+don’t look parallel at all. But remember that the stars (and other astronomical objects) are all extremely far
+away. By the time the few rays of light pointed toward us actually arrive at Earth, they are, for all practical
+purposes, parallel to each other. Put another way, any rays that were not parallel to the ones pointed at Earth
+are now heading in some very different direction in the universe.
+To view the image formed by the lens in a telescope, we use an additional lens called an eyepiece. The
+eyepiece focuses the image at a distance that is either directly viewable by a human or at a convenient place
+for a detector. Using different eyepieces, we can change the magnification (or size) of the image and also
+redirect the light to a more accessible location. Stars look like points of light, and magnifying them makes little
+difference, but the image of a planet or a galaxy, which has structure, can often benefit from being magnified.
+Many people, when thinking of a telescope, picture a long tube with a large glass lens at one end. This design,
+which uses a lens as its main optical element to form an image, as we have been discussing, is known as a
+refractor (Figure 6.5), and a telescope based on this design is called a refracting telescope. Galileo’s
+telescopes were refractors, as are today’s binoculars and field glasses. However, there is a limit to the size of a
+refracting telescope. The largest one ever built was a 49-inch refractor built for the Paris 1900 Exposition, and it
+was dismantled after the Exposition. Currently, the largest refracting telescope is the 40-inch refractor at
+Yerkes Observatory in Wisconsin.
+6.1 • Telescopes
+Figure 6.5 Refracting and Reflecting Telescopes. Light enters a refracting telescope through a lens at the upper end, which
+focuses the light near the bottom of the telescope. An eyepiece then magnifies the image so that it can be viewed by the eye, or a
+detector like a photographic plate can be placed at the focus. The upper end of a reflecting telescope is open, and the light passes
+through to the mirror located at the bottom of the telescope. The mirror then focuses the light at the top end, where it can be
+detected. Alternatively, as in this sketch, a second mirror may reflect the light to a position outside the telescope structure, where an
+observer can have easier access to it. Professional astronomers’ telescopes are more complicated than this, but they follow the same
+principles of reflection and refraction.
+One problem with a refracting telescope is that the light must pass through the lens of a refractor. That means
+the glass must be perfect all the way through, and it has proven very difficult to make large pieces of glass
+without flaws and bubbles in them. Also, optical properties of transparent materials change a little bit with the
+wavelengths (or colors) of light, so there is some additional distortion, known as chromatic aberration. Each
+wavelength focuses at a slightly different spot, causing the image to appear blurry.
+In addition, since the light must pass through the lens, the lens can only be supported around its edges (just
+like the frames of our eyeglasses). The force of gravity will cause a large lens to sag and distort the path of the
+light rays as they pass through it. Finally, because the light passes through it, both sides of the lens must be
+manufactured to precisely the right shape in order to produce a sharp image.
+A different type of telescope uses a concave primary mirror as its main optical element. The mirror is curved
+like the inner surface of a sphere, and it reflects light in order to form an image (Figure 6.5). Telescope mirrors
+are coated with a shiny metal, usually silver, aluminum, or, occasionally, gold, to make them highly reflective. If
+the mirror has the correct shape, all parallel rays are reflected back to the same point, the focus of the mirror.
+Thus, images are produced by a mirror exactly as they are by a lens.
+Telescopes designed with mirrors avoid the problems of refracting telescopes. Because the light is reflected
+from the front surface only, flaws and bubbles within the glass do not affect the path of the light. In a
+telescope designed with mirrors, only the front surface has to be manufactured to a precise shape, and the
+mirror can be supported from the back. For these reasons, most astronomical telescopes today (both amateur
+and professional) use a mirror rather than a lens to form an image; this type of telescope is called a reflecting
+telescope. The first successful reflecting telescope was built by Isaac Newton in 1668.
+In a reflecting telescope, the concave mirror is placed at the bottom of a tube or open framework. The mirror
+reflects the light back up the tube to form an image near the front end at a location called the prime focus.
+The image can be observed at the prime focus, or additional mirrors can intercept the light and redirect it to a
+6 • Astronomical Instruments
+position where the observer can view it more easily (Figure 6.6). Since an astronomer at the prime focus can
+block much of the light coming to the main mirror, the use of a small secondary mirror allows more light to
+get through the system.
+Figure 6.6 Focus Arrangements for Reflecting Telescopes. Reflecting telescopes have different options for where the light is
+brought to a focus. With prime focus, light is detected where it comes to a focus after reflecting from the primary mirror. With
+Newtonian focus, light is reflected by a small secondary mirror off to one side, where it can be detected (see also Figure 6.5). Most
+large professional telescopes have a Cassegrain focus in which light is reflected by the secondary mirror down through a hole in the
+primary mirror to an observing station below the telescope.
+Choosing Your Own Telescope
+If the astronomy course you are taking whets your appetite for exploring the sky further, you may be
+thinking about buying your own telescope. Many excellent amateur telescopes are available, and some
+research is required to find the best model for your needs. Some good sources of information about
+personal telescopes are the two popular US magazines aimed at amateur astronomers: Sky & Telescope
+and Astronomy. Both carry regular articles with advice, reviews, and advertisements from reputable
+telescope dealers.
+Some of the factors that determine which telescope is right for you depend upon your preferences:
+•
+Will you be setting up the telescope in one place and leaving it there, or do you want an instrument
+that is portable and can come with you on outdoor excursions? How portable should it be, in terms of
+size and weight?
+•
+Do you want to observe the sky with your eyes only, or do you want to take photographs? (Longexposure photography, for example, requires a good clock drive to turn your telescope to compensate
+for Earth’s rotation.)
+•
+What types of objects will you be observing? Are you interested primarily in comets, planets, star
+clusters, or galaxies, or do you want to observe all kinds of celestial sights?
+You may not know the answers to some of these questions yet. For this reason, you may want to “test-
+MAKING CONNECTIONS
+6.1 • Telescopes
+drive” some telescopes first. Most communities have amateur astronomy clubs that sponsor star parties
+open to the public. The members of those clubs often know a lot about telescopes and can share their ideas
+with you. Your instructor may know where the nearest amateur astronomy club meets; or, to find a club
+near you, use the websites suggested in Appendix B.
+Furthermore, you may already have an instrument like a telescope at home (or have access to one through
+a relative or friend). Many amateur astronomers recommend starting your survey of the sky with a good
+pair of binoculars. These are easily carried around and can show you many objects not visible (or clear) to
+the unaided eye.
+When you are ready to purchase a telescope, you might find the following ideas useful:
+•
+The key characteristic of a telescope is the aperture of the main mirror or lens; when someone says
+they have a 6-inch or 8-inch telescope, they mean the diameter of the collecting surface. The larger the
+aperture, the more light you can gather, and the fainter the objects you can see or photograph.
+•
+Telescopes of a given aperture that use lenses (refractors) are typically more expensive than those
+using mirrors (reflectors) because both sides of a lens must be polished to great accuracy. And,
+because the light passes through it, the lens must be made of high-quality glass throughout. In
+contrast, only the front surface of a mirror must be accurately polished.
+•
+Magnification is not one of the criteria on which to base your choice of a telescope. As we discussed,
+the magnification of the image is done by a smaller eyepiece, so the magnification can be adjusted by
+changing eyepieces. However, a telescope will magnify not only the astronomical object you are
+viewing but also the turbulence of Earth’s atmosphere. If the magnification is too high, your image will
+shimmer and shake and be difficult to view. A good telescope will come with a variety of eyepieces that
+stay within the range of useful magnification.
+•
+The mount of a telescope (the structure on which it rests) is one of its most critical elements. Because a
+telescope shows a tiny field of view, which is magnified significantly, even the smallest vibration or
+jarring of the telescope can move the object you are viewing around or out of your field of view. A
+sturdy and stable mount is essential for serious viewing or photography (although it clearly affects how
+portable your telescope can be).
+•
+A telescope requires some practice to set up and use effectively. Don’t expect everything to go
+perfectly on your first try. Take some time to read the instructions. If a local amateur astronomy club is
+nearby, use it as a resource.
+6.2
+Telescopes Today
+Learning Objectives
+By the end of this section, you will be able to:
+Recognize the largest visible-light and infrared telescopes in operation today
+Discuss the factors relevant to choosing an appropriate telescope site
+Define the technique of adaptive optics and describe the effects of the atmosphere on astronomical
+observations
+Since Newton’s time, when the sizes of the mirrors in telescopes were measured in inches, reflecting
+telescopes have grown ever larger. In 1948, US astronomers built a telescope with a 5-meter (200-inch)
+diameter mirror on Palomar Mountain in Southern California. It remained the largest visible-light telescope in
+the world for several decades. The giants of today, however, have primary mirrors (the largest mirrors in the
+telescope) that are 8- to 10-meters in diameter, and larger ones are being built (Figure 6.7).
+6 • Astronomical Instruments
+Figure 6.7 Large Telescope Mirror. This image shows one of the primary mirrors of the European Southern Observatory’s Very
+Large Telescope, named Yepun, just after it was recoated with aluminum. The mirror is a little over 8 meters in diameter. (credit:
+ESO/G. Huedepohl)
+Modern Visible-Light and Infrared Telescopes
+The decades starting in 1990 saw telescope building around the globe grow at an unprecedented rate. (See
+Table 6.1, which also includes websites for each telescope in case you want to visit or learn more about them.)
+Technological advancements had finally made it possible to build telescopes significantly larger than the
+5-meter telescope at Palomar at a reasonable cost. New technologies have also been designed to work well in
+the infrared, and not just visible, wavelengths.
+Large Single-Dish Visible-Light and Infrared Telescopes
+Aperture
+(m)
+Telescope Name
+Location
+Status
+Website
+European Extremely
+Large Telescope (E-
+ELT)
+Cerro Armazonas,
+Chile
+First light 2025
+(estimated)
+www.eso.org/sci/
+facilities/eelt
+Thirty-Meter Telescope
+(TMT)
+Maunakea, HI
+First light 2025
+(estimated)
+www.tmt.org
+24.5
+Giant Magellan
+Telescope (GMT)
+Las Campanas
+Observatory, Chile
+First light 2025
+(estimated)
+www.gmto.org
+11.1 × 9.9
+Southern African
+Large Telescope (SALT)
+Sutherland, South
+Africa
+www.salt.ac.za
+10.4
+Gran Telescopio
+Canarias (GTC)
+La Palma, Canary
+Islands
+First light 2007
+http://www.gtc.iac.es
+10.0
+Keck I and II (two
+telescopes)
+Maunakea, HI
+Completed
+1993–96
+www.keckobservatory.org
+9.1
+Hobby–Eberly
+Telescope (HET)
+Mount Locke, TX
+Completed 1997
+www.as.utexas.edu/
+mcdonald/het
+Table 6.1
+6.2 • Telescopes Today
+Aperture
+(m)
+Telescope Name
+Location
+Status
+Website
+8.4
+Large Binocular
+Telescope (LBT) (two
+telescopes)
+Mount Graham, AZ
+First light 2004
+www.lbto.org
+8.4
+Large Synoptic Survey
+Telescope (Rubin Obs.)
+The Cerro Pachón,
+Chile
+First light 2021
+www.lsst.org
+8.3
+Subaru Telescope
+Maunakea, HI
+First light 1998
+www.naoj.org
+8.2
+Very Large Telescope
+(VLT)
+Cerro Paranal, Chile
+All four
+telescopes
+completed 2000
+www.eso.org/public/
+teles-instr/paranal
+8.1
+Gemini North and
+Gemini South
+Maunakea, HI
+(North) and Cerro
+Pachón, Chile
+(South)
+First light 1999
+(North), First
+light 2000
+(South)
+www.gemini.edu
+6.5
+Magellan Telescopes
+(two telescopes:
+Baade and Landon
+Clay)
+Las Campanas,
+Chile
+First light 2000
+and 2002
+obs.carnegiescience.edu/
+Magellan
+6.5
+Multi-Mirror Telescope
+(MMT)
+Mount Hopkins, AZ
+Completed 1979
+www.mmto.org
+6.0
+Big Telescope
+Altazimuth (BTA-6)
+Mount Pastukhov,
+Russia
+Completed 1976
+w0.sao.ru/Doc-en/
+Telescopes/bta/
+descrip.html
+5.1
+Hale Telescope
+Mount Palomar, CA
+Completed 1948
+www.astro.caltech.edu/
+palomar/about/
+telescopes/hale.html
+Table 6.1
+The differences between the Palomar telescope and the modern Gemini North telescope (to take an example)
+are easily seen in Figure 6.8. The Palomar telescope is a massive steel structure designed to hold the 14.5-ton
+primary mirror with a 5-meter diameter. Glass tends to sag under its own weight; hence, a huge steel
+structure is needed to hold the mirror. A mirror 8 meters in diameter, the size of the Gemini North telescope, if
+it were built using the same technology as the Palomar telescope, would have to weigh at least eight times as
+much and would require an enormous steel structure to support it.
+6 • Astronomical Instruments
+Figure 6.8 Modern Reflecting Telescopes. (a) The Palomar 5-meter reflector: The Hale telescope on Palomar Mountain has a
+complex mounting structure that enables the telescope (in the open “tube” pointing upward in this photo) to swing easily into any
+position. (b) The Gemini North 8-meter telescope: The Gemini North mirror has a larger area than the Palomar mirror, but note how
+much less massive the whole instrument seems. (credit a: modification of work by Caltech/Palomar Observatory; credit b:
+modification of work by Gemini Observatory/AURA)
+The 8-meter Gemini North telescope looks like a featherweight by contrast, and indeed it is. The mirror is only
+about 8 inches thick and weighs 24.5 tons, less than twice as much as the Palomar mirror. The Gemini North
+telescope was completed about 50 years after the Palomar telescope. Engineers took advantage of new
+technologies to build a telescope that is much lighter in weight relative to the size of the primary mirror. The
+Gemini mirror does sag, but with modern computers, it is possible to measure that sag many times each
+second and apply forces at 120 different locations to the back of the mirror to correct the sag, a process called
+active control. Seventeen telescopes with mirrors 6.5 meters in diameter and larger have been constructed
+since 1990.
+The twin 10-meter Keck telescopes on Maunakea, which were the first of these new-technology instruments,
+use precision control in an entirely novel way. Instead of a single primary mirror 10 meters in diameter, each
+Keck telescope achieves its larger aperture by combining the light from 36 separate hexagonal mirrors, each
+1.8 meters wide (Figure 6.9). Computer-controlled actuators (motors) constantly adjust these 36 mirrors so
+that the overall reflecting surface acts like a single mirror with just the right shape to collect and focus the light
+into a sharp image.
+6.2 • Telescopes Today
+Figure 6.9 Thirty-Six Eyes Are Better Than One. The mirror of the 10-meter Keck telescope is composed of 36 hexagonal sections.
+(credit: NASA)
+Learn more about the Keck Observatory on Maunakea (https://openstax.org/l/30KeckObserv) through this
+History Channel clip on the telescopes and the work that they do.
+In addition to holding the mirror, the steel structure of a telescope is designed so that the entire telescope can
+be pointed quickly toward any object in the sky. Since Earth is rotating, the telescope must have a motorized
+drive system that moves it very smoothly from east to west at exactly the same rate that Earth is rotating from
+west to east, so it can continue to point at the object being observed. All this machinery must be housed in a
+dome to protect the telescope from the elements. The dome has an opening in it that can be positioned in
+front of the telescope and moved along with it, so that the light from the objects being observed is not
+blocked.
+George Ellery Hale: Master Telescope Builder
+George Ellery Hale (Figure 6.10) was a giant among early telescope builders. Not once, but four times, he
+initiated projects that led to the construction of what was the world’s largest telescope at the time. And he
+was a master at winning over wealthy benefactors to underwrite the construction of these new
+instruments.
+LINK TO LEARNING
+VOYAGERS IN ASTRONOMY
+6 • Astronomical Instruments
+Figure 6.10 George Ellery Hale (1868–1938). Hale’s work led to the construction of several major telescopes, including the
+40-inch refracting telescope at Yerkes Observatory, and three reflecting telescopes: the 60-inch Hale and 100-inch Hooker
+telescopes at Mount Wilson Observatory, and the 200-inch Hale Telescope at Palomar Observatory.
+Hale’s training and early research were in solar physics. In 1892, at age 24, he was named associate
+professor of astral physics and director of the astronomical observatory at the University of Chicago. At the
+time, the largest telescope in the world was the 36-inch refractor at the Lick Observatory near San Jose,
+California. Taking advantage of an existing glass blank for a 40-inch telescope, Hale set out to raise money
+for a larger telescope than the one at Lick. One prospective donor was Charles T. Yerkes, who, among other
+things, ran the trolley system in Chicago.
+Hale wrote to Yerkes, encouraging him to support the construction of the giant telescope by saying that
+“the donor could have no more enduring monument. It is certain that Mr. Lick’s name would not have been
+nearly so widely known today were it not for the famous observatory established as a result of his
+munificence.” Yerkes agreed, and the new telescope was completed in May 1897; it remains the largest
+refractor in the world (Figure 6.11).
+6.2 • Telescopes Today
+Figure 6.11 World’s Largest Refractor. The Yerkes 40-inch (1-meter) telescope.
+Even before the completion of the Yerkes refractor, Hale was not only dreaming of building a still larger
+telescope but was also taking concrete steps to achieve that goal. In the 1890s, there was a major
+controversy about the relative quality of refracting and reflecting telescopes. Hale realized that 40 inches
+was close to the maximum feasible aperture for refracting telescopes. If telescopes with significantly larger
+apertures were to be built, they would have to be reflecting telescopes.
+Using funds borrowed from his own family, Hale set out to construct a 60-inch reflector. For a site, he left
+the Midwest for the much better conditions on Mount Wilson—at the time, a wilderness peak above the
+small city of Los Angeles. In 1904, at the age of 36, Hale received funds from the Carnegie Foundation to
+establish the Mount Wilson Observatory. The 60-inch mirror was placed in its mount in December 1908.
+Two years earlier, in 1906, Hale had already approached John D. Hooker, who had made his fortune in
+hardware and steel pipe, with a proposal to build a 100-inch telescope. The technological risks were
+substantial. The 60-inch telescope was not yet complete, and the usefulness of large reflectors for
+astronomy had yet to be demonstrated. George Ellery Hale’s brother called him “the greatest gambler in
+the world.” Once again, Hale successfully obtained funds, and the 100-inch telescope was completed in
+November 1917. (It was with this telescope that Edwin Hubble was able to establish that the spiral nebulae
+were separate islands of stars—or galaxies—quite removed from our own Milky Way.)
+Hale was not through dreaming. In 1926, he wrote an article in Harper’s Magazine about the scientific value
+of a still larger telescope. This article came to the attention of the Rockefeller Foundation, which granted $6
+million for the construction of a 200-inch telescope. Hale died in 1938, but the 200-inch (5-meter) telescope
+on Palomar Mountain was dedicated 10 years later and is now named in Hale’s honor.
+Picking the Best Observing Sites
+A telescope like the Gemini or Keck telescope costs about $100 million to build. That kind of investment
+demands that the telescope be placed in the best possible site. Since the end of the nineteenth century,
+astronomers have realized that the best observatory sites are on mountains, far from the lights and pollution
+of cities. Although a number of urban observatories remain, especially in the large cities of Europe, they have
+become administrative centers or museums. The real action takes place far away, often on desert mountains
+or isolated peaks in the Atlantic and Pacific Oceans, where we find the staff’s living quarters, computers,
+electronic and machine shops, and of course the telescopes themselves. A large observatory today requires a
+supporting staff of 20 to 100 people in addition to the astronomers.
+6 • Astronomical Instruments
+The performance of a telescope is determined not only by the size of its mirror but also by its location. Earth’s
+atmosphere, so vital to life, presents challenges for the observational astronomer. In at least four ways, our air
+imposes limitations on the usefulness of telescopes:
+1.
+The most obvious limitation is weather conditions such as clouds, wind, and rain. At the best sites, the
+weather is clear as much as 75% of the time.
+2.
+Even on a clear night, the atmosphere filters out a certain amount of starlight, especially in the infrared,
+where the absorption is due primarily to water vapor. Astronomers therefore prefer dry sites, generally
+found at high altitudes.
+3.
+The sky above the telescope should be dark. Near cities, the air scatters the glare from lights, producing
+an illumination that hides the faintest stars and limits the distances that can be probed by telescopes.
+(Astronomers call this effect light pollution.) Observatories are best located at least 100 miles from the
+nearest large city.
+4.
+Finally, the air is often unsteady; light passing through this turbulent air is disturbed, resulting in blurred
+star images. Astronomers call these effects “bad seeing.” When seeing is bad, images of celestial objects
+are distorted by the constant twisting and bending of light rays by turbulent air.
+The best observatory sites are therefore high, dark, and dry. The world’s largest telescopes are found in such
+remote mountain locations as the Andes Mountains of Chile (Figure 6.12), the desert peaks of Arizona, the
+Canary Islands in the Atlantic Ocean, and Maunakea in Hawaii, a dormant volcano with an altitude of 13,700
+feet (4200 meters).
+Light pollution is a problem not just for professional astronomers but for everyone who wants to enjoy the
+beauty of the night sky. In addition research is now showing that it can disrupt the life cycle of animals with
+whom we share the urban and suburban landscape. And the light wasted shining into the sky leads to
+unnecessary municipal expenses and use of fossil fuels. Concerned people have formed an organization,
+the International Dark-Sky Association, whose website (https://openstax.org/l/30IntDSA) is full of good
+information. A citizen science project called Globe at Night (https://openstax.org/l/30GlbatNght) allows you
+to measure the light levels in your community by counting stars and to compare it to others around the
+world. Recently, a new threat to dark skies has emerged. A number of commercial companies are planning
+and launching large swarms of satellites into low-Earth orbit to provide internet access around the world.
+Unfortunately, these satellites reflect sunlight and have already begun to ruin astronomical photographs
+the world over. See the Further Exploration section at the end of this chapter for more resources on this
+topic. If you get interested in this topic and want to do a paper for your astronomy course or another
+course while you are in college, the Dark Night Skies guide (https://openstax.org/l/30DNSGuide) can point
+you to a variety of resources on the topic.
+LINK TO LEARNING
+6.2 • Telescopes Today
+Figure 6.12 High and Dry Site. Cerro Paranal, a mountain summit 2.7 kilometers above sea level in Chile’s Atacama Desert, is the
+site of the European Southern Observatory’s Very Large Telescope. This photograph shows the four 8-meter telescope buildings on
+the site and vividly illustrates that astronomers prefer high, dry sites for their instruments. The 4.1-meter Visible and Infrared Survey
+Telescope for Astronomy (VISTA) can be seen in the distance on the next mountain peak. (credit: ESO)
+The Resolution of a Telescope
+In addition to gathering as much light as they can, astronomers also want to have the sharpest images
+possible. Resolution refers to the precision of detail present in an image: that is, the smallest features that can
+be distinguished. Astronomers are always eager to make out more detail in the images they study, whether
+they are following the weather on Jupiter or trying to peer into the violent heart of a “cannibal galaxy” that
+recently ate its neighbor for lunch.
+One factor that determines how good the resolution will be is the size of the telescope. Larger apertures
+produce sharper images. Until very recently, however, visible-light and infrared telescopes on Earth’s surface
+could not produce images as sharp as the theory of light said they should.
+The problem—as we saw earlier in this chapter—is our planet’s atmosphere, which is turbulent. It contains
+many small-scale blobs or cells of gas that range in size from inches to several feet. Each cell has a slightly
+different temperature from its neighbor, and each cell acts like a lens, bending (refracting) the path of the light
+by a small amount. This bending slightly changes the position where each light ray finally reaches the detector
+in a telescope. The cells of air are in motion, constantly being blown through the light path of the telescope by
+winds, often in different directions at different altitudes. As a result, the path followed by the light is constantly
+changing.
+For an analogy, think about watching a parade from a window high up in a skyscraper. You decide to throw
+some confetti down toward the marchers. Even if you drop a handful all at the same time and in the same
+direction, air currents will toss the pieces around, and they will reach the ground at different places. As we
+described earlier, we can think of the light from the stars as a series of parallel beams, each making its way
+through the atmosphere. Each path will be slightly different, and each will reach the detector of the telescope
+at a slightly different place. The result is a blurred image, and because the cells are being blown by the wind,
+the nature of the blur will change many times each second. You have probably noticed this effect as the
+“twinkling” of stars seen from Earth. The light beams are bent enough that part of the time they reach your
+eye, and part of the time some of them miss, thereby making the star seem to vary in brightness. In space,
+however, the light of the stars is steady.
+Astronomers search the world for locations where the amount of atmospheric blurring, or turbulence, is as
+small as possible. It turns out that the best sites are in coastal mountain ranges and on isolated volcanic peaks
+in the middle of an ocean. Air that has flowed long distances over water before it encounters land is especially
+stable.
+The resolution of an image is measured in units of angle on the sky, typically in units of arcseconds. One
+arcsecond is 1/3600 degree, and there are 360 degrees in a full circle. So we are talking about tiny angles on
+6 • Astronomical Instruments
+the sky. To give you a sense of just how tiny, we might note that 1 arcsecond is how big a quarter would look
+when seen from a distance of 5 kilometers. The best images obtained from the ground with traditional
+techniques reveal details as small as several tenths of an arcsecond across. This image size is remarkably
+good. One of the main reasons for launching the Hubble Space Telescope was to escape Earth’s atmosphere
+and obtain even sharper images.
+But since we can’t put every telescope into space, astronomers have devised a technique called adaptive
+optics that can beat Earth’s atmosphere at its own game of blurring. This technique (which is most effective in
+the infrared region of the spectrum with our current technology) makes use of a small flexible mirror placed in
+the beam of a telescope. A sensor measures how much the atmosphere has distorted the image, and as often
+as 500 times per second, it sends instructions to the flexible mirror on how to change shape in order to
+compensate for distortions produced by the atmosphere. The light is thus brought back to an almost perfectly
+sharp focus at the detector. Figure 6.13 shows just how effective this technique is. With adaptive optics,
+ground-based telescopes can achieve resolutions of 0.1 arcsecond or a little better in the infrared region of the
+spectrum. This impressive figure is the equivalent of the resolution that the Hubble Space Telescope achieves
+in the visible-light region of the spectrum.
+Figure 6.13 Power of Adaptive Optics. One of the clearest pictures of Jupiter ever taken from the ground, this image was produced
+with adaptive optics using an 8-meter-diameter telescope at the Very Large Telescope in Chile. Adaptive optics uses infrared
+wavelengths to remove atmospheric blurring, resulting in a much clearer image. (credit: modification of work by ESO, F.Marchis,
+M.Wong (UC Berkeley); E.Marchetti, P.Amico, S.Tordo (ESO))
+How Astronomers Really Use Telescopes
+In the popular view (and some bad movies), an astronomer spends most nights in a cold observatory
+peering through a telescope, but this is not very accurate today. Most astronomers do not live at
+observatories, but near the universities or laboratories where they work. An astronomer might spend only a
+week or so each year observing at the telescope and the rest of the time measuring or analyzing the data
+acquired from large project collaborations and dedicated surveys. Many astronomers use radio telescopes
+for space experiments, which work just as well during the daylight hours. Still others work at purely
+theoretical problems using supercomputers and never observe at a telescope of any kind.
+ASTRONOMY BASICS
+6.2 • Telescopes Today
+Even when astronomers are observing with large telescopes, they seldom peer through them. Electronic
+detectors permanently record the data for detailed analysis later. At some observatories, observations may
+be made remotely, with the astronomer sitting at a computer thousands of miles away from the telescope.
+Time on major telescopes is at a premium, and an observatory director will typically receive many more
+requests for telescope time than can be accommodated during the year. Astronomers must therefore write
+a convincing proposal explaining how they would like to use the telescope and why their observations will
+be important to the progress of astronomy. A committee of astronomers is then asked to judge and rank
+the proposals, and time is assigned only to those with the greatest merit. Even if your proposal is among
+the high-rated ones, you may have to wait many months for your turn. If the skies are cloudy on the nights
+you have been assigned, it may be more than a year before you get another chance.
+Some older astronomers still remember long, cold nights spent alone in an observatory dome, with only
+music from a tape recorder or an all-night radio station for company. The sight of the stars shining
+brilliantly hour after hour through the open slit in the observatory dome was unforgettable. So, too, was
+the relief as the first pale light of dawn announced the end of a 12-hour observation session. Astronomy is
+much easier today, with teams of observers working together, often at their computers, in a warm room.
+Those who are more nostalgic, however, might argue that some of the romance has gone from the field,
+too.
+6.3
+Visible-Light Detectors and Instruments
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the difference between photographic plates and charge-coupled devices
+Describe the unique difficulties associated with infrared observations and their solutions
+Describe how a spectrometer works
+After a telescope collects radiation from an astronomical source, the radiation must be detected and
+measured. The first detector used for astronomical observations was the human eye, but it suffers from being
+connected to an imperfect recording and retrieving device—the human brain. Photography and modern
+electronic detectors have eliminated the quirks of human memory by making a permanent record of the
+information from the cosmos.
+The eye also suffers from having a very short integration time; it takes only a fraction of a second to add light
+energy together before sending the image to the brain. One important advantage of modern detectors is that
+the light from astronomical objects can be collected by the detector over longer periods of time; this technique
+is called “taking a long exposure.” Exposures of several hours are required to detect very faint objects in the
+cosmos.
+Before the light reaches the detector, astronomers today normally use some type of instrument to sort the
+light according to wavelength. The instrument may be as simple as colored filters, which transmit light within a
+specified range of wavelengths. A red transparent plastic is an everyday example of a filter that transmits only
+the red light and blocks the other colors. After the light passes through a filter, it forms an image that
+astronomers can then use to measure the apparent brightness and color of objects. We will show you many
+examples of such images in the later chapters of this book, and we will describe what we can learn from them.
+Alternatively, the instrument between telescope and detector may be one of several devices that spread the
+light out into its full rainbow of colors so that astronomers can measure individual lines in the spectrum. Such
+an instrument (which you learned about in the chapter on Radiation and Spectra) is called a spectrometer
+because it allows astronomers to measure (to meter) the spectrum of a source of radiation. Whether a filter or
+6 • Astronomical Instruments
+a spectrometer, both types of wavelength-sorting instruments still have to use detectors to record and
+measure the properties of light.
+Photographic and Electronic Detectors
+Throughout most of the twentieth century, photographic film or glass plates served as the prime astronomical
+detectors, whether for photographing spectra or direct images of celestial objects. In a photographic plate, a
+light-sensitive chemical coating is applied to a piece of glass that, when developed, provides a lasting record of
+the image. At observatories around the world, vast collections of photographs preserve what the sky has
+looked like during the past 100 years. Photography represents a huge improvement over the human eye, but it
+still has limitations. Photographic films are inefficient: only about 1% of the light that actually falls on the film
+contributes to the chemical change that makes the image; the rest is wasted.
+Astronomers today have much more efficient electronic detectors to record astronomical images. Most often,
+these are charge-coupled devices (CCDs), which are similar to the detectors used in video camcorders or in
+digital cameras (like the one more and more students have on their cell phones) (see Figure 6.14). In a CCD,
+photons of radiation hitting any part of the detector generate a stream of charged particles (electrons) that
+are stored and counted at the end of the exposure. Each place where the radiation is counted is called a pixel
+(picture element), and modern detectors can count the photons in millions of pixels (megapixels, or MPs).
+Figure 6.14 Charge-Coupled Devices (CCDs). (a) This CCD is a mere 300-micrometers thick (thinner than a human hair) yet holds
+more than 21 million pixels. (b) This matrix of 42 CCDs served the Kepler telescope. (credit a: modification of work by US Department
+of Energy; credit b: modification of work by NASA and Ball Aerospace)
+Because CCDs typically record as much as 60–70% of all the photons that strike them, and the best silicon and
+infrared CCDs exceed 90% sensitivity, we can detect much fainter objects. Among these are many small moons
+around the outer planets, icy dwarf planets beyond Pluto, and dwarf galaxies of stars. CCDs also provide more
+accurate measurements of the brightness of astronomical objects than photography, and their output is
+digital—in the form of numbers that can go directly into a computer for analysis.
+Infrared Observations
+Observing the universe in the infrared band of the spectrum presents some additional challenges. The
+infrared region extends from wavelengths near 1 micrometer (µm), which is about the long wavelength
+sensitivity limit of both CCDs and photography, to 100 micrometers or longer. Recall from the discussion on
+radiation and spectra that infrared is “heat radiation” (given off at temperatures that we humans are
+comfortable with). The main challenge to astronomers using infrared is to distinguish between the tiny
+amount of heat radiation that reaches Earth from stars and galaxies, and the much greater heat radiated by
+6.3 • Visible-Light Detectors and Instruments
+the telescope itself and our planet’s atmosphere.
+Typical temperatures on Earth’s surface are near 300 K, and the atmosphere through which observations are
+made is only a little cooler. According to Wien’s law (from the chapter on Radiation and Spectra), the
+telescope, the observatory, and even the sky are radiating infrared energy with a peak wavelength of about 10
+micrometers. To infrared eyes, everything on Earth is brightly aglow—including the telescope and camera
+(Figure 6.15). The challenge is to detect faint cosmic sources against this sea of infrared light. Another way to
+look at this is that an astronomer using infrared must always contend with the situation that a visible-light
+observer would face if working in broad daylight with a telescope and optics lined with bright fluorescent
+lights.
+Figure 6.15 Infrared Eyes. Infrared waves can penetrate places in the universe from which light is blocked, as shown in this infrared
+image where the plastic bag blocks visible light but not infrared. (credit: NASA/JPL-Caltech/R. Hurt (SSC))
+To solve this problem, astronomers must protect the infrared detector from nearby radiation, just as you
+would shield photographic film from bright daylight. Since anything warm radiates infrared energy, the
+detector must be isolated in very cold surroundings; often, it is held near absolute zero (1 to 3 K) by immersing
+it in liquid helium. The second step is to reduce the radiation emitted by the telescope structure and optics,
+and to block this heat from reaching the infrared detector.
+Check out The Infrared Zoo (https://openstax.org/l/30IFZoo) to get a sense of what familiar objects look
+like with infrared radiation. Slide the slider to change the wavelength of radiation for the picture, and click
+the arrow to see other animals.
+Spectroscopy
+Spectroscopy is one of the astronomer’s most powerful tools, providing information about the composition,
+temperature, motion, and other characteristics of celestial objects. More than half of the time spent on most
+large telescopes is used for spectroscopy.
+The many different wavelengths present in light can be separated by passing them through a spectrometer to
+form a spectrum. The design of a simple spectrometer is illustrated in Figure 6.16. Light from the source
+(actually, the image of a source produced by the telescope) enters the instrument through a small hole or
+LINK TO LEARNING
+6 • Astronomical Instruments
+narrow slit, and is collimated (made into a beam of parallel rays) by a lens. The light then passes through a
+prism, producing a spectrum: different wavelengths leave the prism in different directions because each
+wavelength is bent by a different amount when it enters and leaves the prism. A second lens placed behind
+the prism focuses the many different images of the slit or entrance hole onto a CCD or other detecting device.
+This collection of images (spread out by color) is the spectrum that astronomers can then analyze at a later
+point. As spectroscopy spreads the light out into more and more collecting bins, fewer photons go into each
+bin, so either a larger telescope is needed or the integration time must be greatly increased—usually both.
+Figure 6.16 Prism Spectrometer. The light from the telescope is focused on a slit. A prism (or grating) disperses the light into a
+spectrum, which is then photographed or recorded electronically.
+In practice, astronomers today are more likely to use a different device, called a grating, to disperse the
+spectrum. A grating is a piece of material with thousands of grooves on its surface. While it functions
+completely differently, a grating, like a prism, also spreads light out into a spectrum.
+6.4
+Radio Telescopes
+Learning Objectives
+By the end of this section, you will be able to:
+Describe how radio waves from space are detected
+Identify the world’s largest radio telescopes
+Define the technique of interferometry and discuss the benefits of interferometers over single-dish
+telescopes
+In addition to visible and infrared radiation, radio waves from astronomical objects can also be detected from
+the surface of Earth. In the early 1930s, Karl G. Jansky, an engineer at Bell Telephone Laboratories, was
+experimenting with antennas for long-range radio communication when he encountered some mysterious
+static—radio radiation coming from an unknown source (Figure 6.17). He discovered that this radiation came
+in strongest about four minutes earlier on each successive day and correctly concluded that since Earth’s
+sidereal rotation period (how long it takes us to rotate relative to the stars) is four minutes shorter than a solar
+day, the radiation must be originating from some region fixed on the celestial sphere. Subsequent
+investigation showed that the source of this radiation was part of the Milky Way Galaxy; Jansky had discovered
+the first source of cosmic radio waves.
+6.4 • Radio Telescopes
+Figure 6.17 First Radio Telescope. This rotating radio antenna was used by Jansky in his serendipitous discovery of radio radiation
+from the Milky Way.
+In 1936, Grote Reber, who was an amateur astronomer interested in radio communications, used galvanized
+iron and wood to build the first antenna specifically designed to receive cosmic radio waves. Over the years,
+Reber built several such antennas and used them to carry out pioneering surveys of the sky for celestial radio
+sources; he remained active in radio astronomy for more than 30 years. During the first decade, he worked
+practically alone because professional astronomers had not yet recognized the vast potential of radio
+astronomy.
+Detection of Radio Energy from Space
+It is important to understand that radio waves cannot be “heard”: they are not the sound waves you hear
+coming out of the radio receiver in your home or car. Like light, radio waves are a form of electromagnetic
+radiation, but unlike light, we cannot detect them with our senses—we must rely on electronic equipment to
+pick them up. In commercial radio broadcasting, we encode sound information (music or a newscaster’s voice)
+into radio waves. These must be decoded at the other end and then turned back into sound by speakers or
+headphones.
+The radio waves we receive from space do not, of course, have music or other program information encoded
+in them. If cosmic radio signals were translated into sound, they would sound like the static you hear when
+scanning between stations. Nevertheless, there is information in the radio waves we receive—information that
+can tell us about the chemistry and physical conditions of the sources of the waves.
+Just as vibrating charged particles can produce electromagnetic waves (see the Radiation and Spectra
+chapter), electromagnetic waves can make charged particles move back and forth. Radio waves can produce a
+current in conductors of electricity such as metals. An antenna is such a conductor: it intercepts radio waves,
+which create a feeble current in it. The current is then amplified in a radio receiver until it is strong enough to
+measure or record. Like your television or radio, receivers can be tuned to select a single frequency (channel).
+In astronomy, however, it is more common to use sophisticated data-processing techniques that allow
+thousands of separate frequency bands to be detected simultaneously. Thus, the astronomical radio receiver
+operates much like a spectrometer on a visible-light or infrared telescope, providing information about how
+much radiation we receive at each wavelength or frequency. After computer processing, the radio signals are
+recorded on magnetic disks for further analysis.
+Radio waves are reflected by conducting surfaces, just as light is reflected from a shiny metallic surface, and
+according to the same laws of optics. A radio-reflecting telescope consists of a concave metal reflector (called a
+dish), analogous to a telescope mirror. The radio waves collected by the dish are reflected to a focus, where
+they can then be directed to a receiver and analyzed. Because humans are such visual creatures, radio
+astronomers often construct a pictorial representation of the radio sources they observe. Figure 6.18 shows
+6 • Astronomical Instruments
+such a radio image of a distant galaxy, where radio telescopes reveal vast jets and complicated regions of
+radio emissions that are completely invisible in photographs taken with light.
+Figure 6.18 Radio Image. This image has been constructed of radio observations at the Very Large Array of a galaxy called Cygnus
+A. Colors have been added to help the eye sort out regions of different radio intensities. Red regions are the most intense, blue the
+least. The visible galaxy would be a small dot in the center of the image. The radio image reveals jets of expelled material (more than
+160,000 light-years long) on either side of the galaxy. (credit: NRAO/AUI)
+Radio astronomy is a young field compared with visible-light astronomy, but it has experienced tremendous
+growth in recent decades. The world’s largest radio reflectors that can be pointed to any direction in the sky
+have apertures of 100 meters. One of these has been built at the US National Radio Astronomy Observatory in
+West Virginia (Figure 6.19). Table 6.2 lists some of the major radio telescopes of the world.
+Figure 6.19 Robert C. Byrd Green Bank Telescope. This fully steerable radio telescope in West Virginia went into operation in
+August 2000. Its dish is about 100 meters across. (credit: modification of work by “b3nscott”/Flickr)
+Major Radio Observatories of the World
+Observatory
+Location
+Description
+Website
+Individual Radio Dishes
+Five-hundred-meter
+Aperture Spherical
+radio Telescope (FAST)
+Guizhou, China
+500-m fixed dish
+fast.bao.ac.cn/en/
+Table 6.2
+6.4 • Radio Telescopes
+Observatory
+Location
+Description
+Website
+Arecibo Observatory
+Arecibo, Puerto
+Rico
+305-m fixed dish
+www.naic.edu
+Green Bank Telescope
+(GBT)
+Green Bank, WV
+110 × 100-m steerable
+dish
+www.science.nrao.edu/facilities/
+gbt
+Effelsberg 100-m
+Telescope
+Bonn, Germany
+100-m steerable dish
+www.mpifr-bonn.mpg.de/en/
+effelsberg
+Lovell Telescope
+Manchester,
+England
+76-m steerable dish
+www.jb.man.ac.uk/aboutus/lovell
+Canberra Deep Space
+Communication
+Complex (CDSCC)
+Tidbinbilla,
+Australia
+70-m steerable dish
+www.cdscc.nasa.gov
+Goldstone Deep Space
+Communications
+Complex (GDSCC)
+Barstow, CA
+70-m steerable dish
+www.gdscc.nasa.gov
+Parkes Observatory
+Parkes,
+Australia
+64-m steerable dish
+www.parkes.atnf.csiro.au
+Arrays of Radio Dishes
+Square Kilometre Array
+(SKA)
+South Africa
+and Western
+Australia
+Thousands of dishes,
+km2 collecting area,
+partial array in 2020
+www.skatelescope.org
+Atacama Large
+Millimeter/
+submillimeter Array
+(ALMA)
+Atacama desert,
+Northern Chile
+66 7-m and 12-m dishes
+www.almaobservatory.org
+Jansky Very Large Array
+(VLA)
+Socorro, New
+Mexico
+27-element array of
+25-m dishes (36-km
+baseline)
+www.science.nrao.edu/facilities/
+vla
+Westerbork Synthesis
+Radio Telescope (WSRT)
+Westerbork, the
+Netherlands
+12-element array of
+25-m dishes (1.6-km
+baseline)
+www.astron.nl/radioobservatory/public/public-0
+Very Long Baseline
+Array (VLBA)
+Ten US sites, HI
+to the Virgin
+Islands
+10-element array of
+25-m dishes (9000 km
+baseline)
+www.science.nrao.edu/facilities/
+vlba
+Table 6.2
+6 • Astronomical Instruments
+Observatory
+Location
+Description
+Website
+Australia Telescope
+Compact Array (ATCA)
+Several sites in
+Australia
+8-element array (seven
+22-m dishes plus
+Parkes 64 m)
+www.narrabri.atnf.csiro.au
+Multi-Element Radio
+Linked Interferometer
+Network (MERLIN)
+Cambridge,
+England, and
+other British
+sites
+Network of seven
+dishes (the largest is 32
+m)
+www.e-merlin.ac.uk
+Millimeter-wave Telescopes
+IRAM
+Granada, Spain
+30-m steerable mmwave dish
+www.iram-institute.org
+James Clerk Maxwell
+Telescope (JCMT)
+Maunakea, HI
+15-m steerable mmwave dish
+www.eaobservatory.org/jcmt
+Nobeyama Radio
+Observatory (NRO)
+Minamimaki,
+Japan
+6-element array of
+10-m wave dishes
+www.nro.nao.ac.jp/en
+Hat Creek Radio
+Observatory (HCRO)
+Cassel, CA
+6-element array of 5-m
+wave dishes
+www.sri.com/researchdevelopment/specializedfacilities/hat-creek-radioobservatory
+Table 6.2
+Radio Interferometry
+As we discussed earlier, a telescope’s ability to show us fine detail (its resolution) depends upon its aperture,
+but it also depends upon the wavelength of the radiation that the telescope is gathering. The longer the
+waves, the harder it is to resolve fine detail in the images or maps we make. Because radio waves have such
+long wavelengths, they present tremendous challenges for astronomers who need good resolution. In fact,
+even the largest radio dishes on Earth, operating alone, cannot make out as much detail as the typical small
+visible-light telescope used in a college astronomy lab. To overcome this difficulty, radio astronomers have
+learned to sharpen their images by linking two or more radio telescopes together electronically. Two or more
+telescopes linked together in this way are called an interferometer.
+“Interferometer” may seem like a strange term because the telescopes in an interferometer work
+cooperatively; they don’t “interfere” with each other. Interference, however, is a technical term for the way
+that multiple waves interact with each other when they arrive in our instruments, and this interaction allows us
+to coax more detail out of our observations. The resolution of an interferometer depends upon the separation
+of the telescopes, not upon their individual apertures. Two telescopes separated by 1 kilometer provide the
+same resolution as would a single dish 1 kilometer across (although they are not, of course, able to collect as
+much radiation as a radio-wave bucket that is 1 kilometer across).
+To get even better resolution, astronomers combine a large number of radio dishes into an interferometer
+array. In effect, such an array works like a large number of two-dish interferometers, all observing the same
+6.4 • Radio Telescopes
+part of the sky together. Computer processing of the results permits the reconstruction of a high-resolution
+radio image. The most extensive such instrument in the United States is the National Radio Astronomy
+Observatory’s Jansky Very Large Array (VLA) near Socorro, New Mexico. It consists of 27 movable radio
+telescopes (on railroad tracks), each having an aperture of 25 meters, spread over a total span of about 36
+kilometers. By electronically combining the signals from all of its individual telescopes, this array permits the
+radio astronomer to make pictures of the sky at radio wavelengths comparable to those obtained with a
+visible-light telescope, with a resolution of about 1 arcsecond.
+The Atacama Large Millimeter/submillimeter array (ALMA) in the Atacama Desert of Northern Chile (Figure
+6.20), at an altitude of 16,400 feet, consists of 12 7-meter and 54 12-meter telescopes, and can achieve
+baselines up to 16 kilometers. Since it became operational in 2013, it has made observations at resolutions
+down to 6 milliarcseconds (0.006 arcseconds), a remarkable achievement for radio astronomy.
+Figure 6.20 Atacama Large Millimeter/Submillimeter Array (ALMA). Located in the Atacama Desert of Northern Chile, ALMA
+currently provides the highest resolution for radio observations. (credit: ESO/S. Guisard)
+Watch this documentary (https://openstax.org/l/30ALMAdoc) that explains the work that went into
+designing and building ALMA, discusses some of its first images, and explores its future.
+Initially, the size of interferometer arrays was limited by the requirement that all of the dishes be physically
+wired together. The maximum dimensions of the array were thus only a few tens of kilometers. However,
+larger interferometer separations can be achieved if the telescopes do not require a physical connection.
+Astronomers, with the use of current technology and computing power, have learned to time the arrival of
+electromagnetic waves coming from space very precisely at each telescope and combine the data later. If the
+telescopes are as far apart as California and Australia, or as West Virginia and Crimea in Ukraine, the resulting
+resolution far surpasses that of visible-light telescopes.
+The United States operates the Very Long Baseline Array (VLBA), made up of 10 individual telescopes
+stretching from the Virgin Islands to Hawaii (Figure 6.21). The VLBA, completed in 1993, can form astronomical
+images with a resolution of 0.0001 arcseconds, permitting features as small as 10 astronomical units (AU) to be
+distinguished at the center of our Galaxy.
+LINK TO LEARNING
+6 • Astronomical Instruments
+Figure 6.21 Very Long Baseline Array. This map shows the distribution of 10 antennas that constitute an array of radio telescopes
+stretching across the United States and its territories.
+Recent advances in technology have also made it possible to do interferometry at visible-light and infrared
+wavelengths. At the beginning of the twenty-first century, three observatories with multiple telescopes each
+began using their dishes as interferometers, combining their light to obtain a much greater resolution. In
+addition, a dedicated interferometric array was built on Mt. Wilson in California. Just as in radio arrays, these
+observations allow astronomers to make out more detail than a single telescope could provide.
+Visible-Light Interferometers
+Longest
+Baseline (m)
+Telescope Name
+Location
+Mirrors
+Status
+CHARA Array (Center for High Angular
+Resolution Astronomy)
+Mount
+Wilson, CA
+Six 1-m
+telescopes
+Operational
+since 2004
+Very Large Telescope
+Cerro
+Paranal,
+Chile
+Four 8.2-m
+telescopes
+Completed 2000
+Keck I and II telescopes
+Maunakea,
+HI
+Two 10-m
+telescopes
+Operated from
+2001 to 2012
+22.8
+Large Binocular Telescope
+Mount
+Graham, AZ
+Two 8.4-m
+telescopes
+First light 2004
+Table 6.3
+Radar Astronomy
+Radar is the technique of transmitting radio waves to an object in our solar system and then detecting the
+radio radiation that the object reflects back. The time required for the round trip can be measured
+electronically with great precision. Because we know the speed at which radio waves travel (the speed of light),
+we can determine the distance to the object or a particular feature on its surface (such as a mountain).
+Radar observations have been used to determine the distances to planets and how fast things are moving in
+the solar system (using the Doppler effect, discussed in the Radiation and Spectra chapter). Radar waves have
+played important roles in navigating spacecraft throughout the solar system. In addition, as will be discussed
+in later chapters, radar observations have determined the rotation periods of Venus and Mercury, probed tiny
+Earth-approaching asteroids, and allowed us to investigate the mountains and valleys on the surfaces of
+Mercury, Venus, Mars, and the large moons of Jupiter.
+Any radio dish can be used as a radar telescope if it is equipped with a powerful transmitter as well as a
+6.4 • Radio Telescopes
+receiver. For many years, the most spectacular facility in the world for radar astronomy was the 1000-foot
+(305-meter) telescope at Arecibo in Puerto Rico (Figure 6.22). The Arecibo telescope was too large to be
+pointed directly at different parts of the sky. Instead, it was constructed in a huge natural “bowl” (more than a
+mere dish) formed by several hills, and it was lined with reflecting metal panels. A limited ability to track
+astronomical sources was achieved by moving the receiver system, which was suspended on cables 100
+meters above the surface of the bowl. Unfortunately, the telescope was seriously damaged in the powerful
+storms of 2020 and had to be decommissioned. An even larger (500-meter) radar telescope has recently gone
+into operation in China and is called the Five-hundred-meter Aperture Spherical Telescope (FAST).
+Figure 6.22 Largest Radio and Radar Dish. The Arecibo Observatory in Puerto Rico was the largest and most powerful astronomical
+radar faculty in the world and was often featured in films. In November 2020 it collapsed, damaging the 300-meter diameter “dish”
+and destroying the radar transmitter and receiver. (credit: National Astronomy and Ionosphere Center, Cornell U., NSF)
+6.5
+Observations outside Earth’s Atmosphere
+Learning Objectives
+By the end of this section, you will be able to:
+List the advantages of making astronomical observations from space
+Explain the importance of the Hubble Space Telescope
+Describe some of the major space-based observatories astronomers use
+Earth’s atmosphere blocks most radiation at wavelengths shorter than visible light, so we can only make direct
+ultraviolet, X-ray, and gamma ray observations from space (though indirect gamma ray observations can be
+made from Earth). Getting above the distorting effects of the atmosphere is also an advantage at visible and
+infrared wavelengths. The stars don’t “twinkle” in space, so the amount of detail you can observe is limited
+only by the size of your instrument. On the other hand, it is expensive to place telescopes into space, and
+repairs can present a major challenge. This is why astronomers continue to build telescopes for use on the
+ground as well as for launching into space.
+Airborne and Space Infrared Telescopes
+Water vapor, the main source of atmospheric interference for making infrared observations, is concentrated in
+the lower part of Earth’s atmosphere. For this reason, a gain of even a few hundred meters in elevation can
+make an important difference in the quality of an infrared observatory site. Given the limitations of high
+mountains, most of which attract clouds and violent storms, and the fact that the ability of humans to perform
+complex tasks degrades at high altitudes, it was natural for astronomers to investigate the possibility of
+observing infrared waves from airplanes and ultimately from space.
+Infrared observations from airplanes have been made since the 1960s, starting with a 15-centimeter telescope
+on board a Learjet. From 1974 through 1995, NASA operated a 0.9-meter airborne telescope flying regularly
+6 • Astronomical Instruments
+out of the Ames Research Center south of San Francisco. Observing from an altitude of 12 kilometers, the
+telescope was above 99% of the atmospheric water vapor. More recently, NASA (in partnership with the
+German Aerospace Center) has constructed a much larger 2.5-meter telescope, called the Stratospheric
+Observatory for Infrared Astronomy (SOFIA), which flies in a modified Boeing 747SP (Figure 6.23).
+Figure 6.23 Stratospheric Observatory for Infrared Astronomy (SOFIA). SOFIA allows observations to be made above most of
+Earth’s atmospheric water vapor. (credit: NASA)
+To find out more about SOFIA, watch this video (https://openstax.org/l/30SOFIAvid) provided by NASA’s
+Armstrong Flight Research Center.
+Getting even higher and making observations from space itself have important advantages for infrared
+astronomy. First is the elimination of all interference from the atmosphere. Equally important is the
+opportunity to cool the entire optical system of the instrument in order to nearly eliminate infrared radiation
+from the telescope itself. If we tried to cool a telescope within the atmosphere, it would quickly become coated
+with condensing water vapor and other gases, making it useless. Only in the vacuum of space can optical
+elements be cooled to hundreds of degrees below freezing and still remain operational.
+The first orbiting infrared observatory, launched in 1983, was the Infrared Astronomical Satellite (IRAS), built as
+a joint project by the United States, the Netherlands, and Britain. IRAS was equipped with a 0.6-meter
+telescope cooled to a temperature of less than 10 K. For the first time, the infrared sky could be seen as if it
+were night, rather than through a bright foreground of atmospheric and telescope emissions. IRAS carried out
+a rapid but comprehensive survey of the entire infrared sky over a 10-month period, cataloging about 350,000
+sources of infrared radiation. Since then, several other infrared telescopes have operated in space with much
+better sensitivity and resolution due to improvements in infrared detectors. The most powerful of these
+infrared telescopes is the 0.85-meter Spitzer Space Telescope, which launched in 2003. A few of its
+observations are shown in Figure 6.24. With infrared observations, astronomers can detect cooler parts of
+cosmic objects, such as the dust clouds around star nurseries and the remnants of dying stars, that visiblelight images don’t reveal.
+LINK TO LEARNING
+6.5 • Observations outside Earth’s Atmosphere
+Figure 6.24 Observations from the Spitzer Space Telescope (SST). These infrared images—a region of star formation, the remnant
+of an exploded star, and a region where an old star is losing its outer shell—show just a few of the observations made and
+transmitted back to Earth from the SST. Since our eyes are not sensitive to infrared rays, we don’t perceive colors from them. The
+colors in these images have been selected by astronomers to highlight details like the composition or temperature in these regions.
+(credit “Flame nebula”: modification of work by NASA (X-ray: NASA/CXC/PSU/K.Getman, E.Feigelson, M.Kuhn & the MYStIX team;
+Infrared:NASA/JPL-Caltech); credit “Cassiopeia A”: modification of work by NASA/JPL-Caltech; credit “Helix nebula”: modification of
+work by NASA/JPL-Caltech)
+Hubble Space Telescope
+In April 1990, a great leap forward in astronomy was made with the launch of the Hubble Space Telescope
+(HST). With an aperture of 2.4 meters, this is the largest telescope put into space so far. (Its aperture was
+limited by the size of the payload bay in the Space Shuttle that served as its launch vehicle.) It was named for
+Edwin Hubble, the astronomer who discovered the expansion of the universe in the 1920s (whose work we will
+discuss in the chapters on Galaxies).
+HST is operated jointly by NASA’s Goddard Space Flight Center and the Space Telescope Science Institute in
+Baltimore. It was the first orbiting observatory designed to be serviced by Shuttle astronauts and, over the
+years since it was launched, they made several visits to improve or replace its initial instruments and to repair
+some of the systems that operate the spacecraft (Figure 6.1)—though this repair program has now been
+discontinued, and no more visits or improvements will be made.
+With the Hubble, astronomers have obtained some of the most detailed images of astronomical objects from
+the solar system outward to the most distant galaxies. Among its many great achievements is the Hubble
+Ultra-Deep Field, an image of a small region of the sky observed for almost 100 hours. It contains views of
+about 10,000 galaxies, some of which formed when the universe was just a few percent of its current age
+(Figure 6.25).
+6 • Astronomical Instruments
+Figure 6.25 Hubble Ultra-Deep Field (HUDF). The Hubble Space Telescope has provided an image of a specific region of space built
+from data collected between September 24, 2003, and January 16, 2004. These data allow us to search for galaxies that existed
+approximately 13 billion years ago. (credit: modification of work by NASA)
+The HST’s mirror was ground and polished to a remarkable degree of accuracy. If we were to scale up its
+2.4-meter mirror to the size of the entire continental United States, there would be no hill or valley larger than
+about 6 centimeters in its smooth surface. Unfortunately, after it was launched, scientists discovered that the
+primary mirror had a slight error in its shape, equal to roughly 1/50 the width of a human hair. Small as that
+sounds, it was enough to ensure that much of the light entering the telescope did not come to a clear focus
+and that all the images were blurry. (In a misplaced effort to save money, a complete test of the optical system
+had not been carried out before launch, so the error was not discovered until HST was in orbit.)
+The solution was to do something very similar to what we do for astronomy students with blurry vision: put
+corrective optics in front of their eyes. In December 1993, in one of the most exciting and difficult space
+missions ever flown, astronauts captured the orbiting telescope and brought it back into the shuttle payload
+bay. There they installed a package containing compensating optics as well as a new, improved camera before
+releasing HST back into orbit. The telescope now works as it was intended to, and further missions to it were
+able to install even more advanced instruments to take advantage of its capabilities.
+High-Energy Observatories
+Ultraviolet, X-ray, and direct gamma-ray (high-energy electromagnetic wave) observations can be made only
+from space. Such observations first became possible in 1946, with V2 rockets captured from Germany after
+World War II. The US Naval Research Laboratory put instruments on these rockets for a series of pioneering
+flights, used initially to detect ultraviolet radiation from the Sun. Since then, many other rockets have been
+launched to make X-ray and ultraviolet observations of the Sun, and later of other celestial objects.
+Beginning in the 1960s, a steady stream of high-energy observatories has been launched into orbit to reveal
+and explore the universe at short wavelengths. Among recent X-ray telescopes is the Chandra X-ray
+Observatory, which was launched in 1999 (Figure 6.26). It is producing X-ray images with unprecedented
+resolution and sensitivity. Designing instruments that can collect and focus energetic radiation like X-rays and
+gamma rays is an enormous technological challenge. The 2002 Nobel Prize in physics was awarded to Riccardo
+Giacconi, a pioneer in the field of building and launching sophisticated X-ray instruments. In 2008, NASA
+6.5 • Observations outside Earth’s Atmosphere
+launched the Fermi Gamma-ray Space Telescope, designed to measure cosmic gamma rays at energies
+greater than any previous telescope, and thus able to collect radiation from some of the most energetic events
+in the universe.
+Figure 6.26 Chandra X-Ray Satellite. Chandra, the world’s most powerful X-ray telescope, was developed by NASA and launched in
+July 1999. (credit: modification of work by NASA)
+One major challenge is to design “mirrors” to reflect such penetrating radiation as X-rays and gamma rays,
+which normally pass straight through matter. However, although the technical details of design are more
+complicated, the three basic components of an observing system, as we explained earlier in this chapter, are
+the same at all wavelengths: a telescope to gather up the radiation, filters or instruments to sort the radiation
+according to wavelength, and some method of detecting and making a permanent record of the observations.
+Table 6.4 lists some of the most important active space observatories that humanity has launched.
+Gamma-ray detections can also be made from Earth’s surface by using the atmosphere as the primary
+detector. When a gamma ray hits our atmosphere, it accelerates charged particles (mostly electrons) in the
+atmosphere. Those energetic particles hit other particles in the atmosphere and give off their own radiation.
+The effect is a cascade of light and energy that can be detected on the ground. The VERITAS array in Arizona
+and the H.E.S.S. array in Namibia are two such ground-based gamma-ray observatories.
+Recent Observatories in Space
+Observatory
+Date
+Operation
+Began
+Bands of
+the
+Spectrum
+Notes
+Website
+Hubble Space Telescope
+(HST)
+visible,
+UV, IR
+2.4-m mirror;
+images and
+spectra
+www.hubblesite.org
+Chandra X-Ray Observatory
+X-rays
+X-ray images and
+spectra
+www.chandra.si.edu
+Table 6.4
+6 • Astronomical Instruments
+Observatory
+Date
+Operation
+Began
+Bands of
+the
+Spectrum
+Notes
+Website
+XMM-Newton
+X-rays
+X-ray
+spectroscopy
+http://www.cosmos.esa.int/
+web/xmm-newton
+International Gamma-Ray
+Astrophysics Laboratory
+(INTEGRAL)
+X- and
+gammarays
+higher resolution
+gamma-ray
+images
+http://sci.esa.int/integral/
+Spitzer Space Telescope
+IR
+0.85-m telescope
+www.spitzer.caltech.edu
+Fermi Gamma-ray Space
+Telescope
+gammarays
+first high-energy
+gamma-ray
+observations
+fermi.gsfc.nasa.gov
+Kepler
+visiblelight
+planet finder
+http://kepler.nasa.gov
+Wide-field Infrared Survey
+Explorer (WISE)
+IR
+whole-sky map,
+asteroid searches
+www.nasa.gov/
+mission_pages/WISE/main
+Gaia
+visiblelight
+Precise map of
+the Milky Way
+http://sci.esa.int/gaia/
+Transiting Exoplanet Survey
+Satellite (TESS)
+visiblelight
+Planet finder
+http://tess.mit.edu
+Table 6.4
+6.6
+The Future of Large Telescopes
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the next generation of ground- and space-based observatories
+Explain some of the challenges involved in building these observatories
+If you’ve ever gone on a hike, you have probably been eager to see what lies just around the next bend in the
+path. Researchers are no different, and astronomers and engineers are working on the technologies that will
+allow us to explore even more distant parts of the universe and to see them more clearly.
+The premier space facility planned for the next decade is the James Webb Space Telescope (Figure 6.27), which
+was launched on December 25, 2021. James Webb was one of the early administrators in NASA. As we write
+this (in December 2021), the telescope is on its way to a stable orbit point, some 1.5 million kilometers from
+Earth (where no astronauts can currently travel if the facility needs repair). During its 29-day journey, a
+number of activities must be successfully executed in order to prepare the JWST to make observations. A solar
+array will be deployed to provide energy, and a sunshield will be stretched out to protect the telescope from
+the intense heat of the Sun. The secondary and primary mirrors will then be unfolded. The primary mirror is 6
+meters in diameter, made up, like the Keck telescopes, of 36 small hexagons. JWST has been designed to
+6.6 • The Future of Large Telescopes
+operate at infrared wavelengths and will have the sensitivity needed to detect the very first generation of
+stars, formed when the universe was only a few hundred million years old.
+Figure 6.27 James Webb Space Telescope (JWST). This image shows some of the mirrors of the JWST as they underwent cryogenic
+testing. The mirrors were exposed to extreme temperatures in order to gather accurate measurements on changes in their shape as
+they heated and cooled. (credit: NASA/MSFC/David Higginbotham/Emmett Given)
+Watch this video (https://openstax.org/l/30JWSTvid) to learn more about the James Webb Space Telescope
+and how it will build upon the work that Hubble has allowed us to begin in exploring the universe. Visit
+NASA's James Webb Space Telescope site (https://openstax.org/l/30JWSTtrack) to keep track of how the
+JWST is doing.
+On the ground, astronomers have started building the Vera Rubin Observatory1 , which has an 8.4-meter
+telescope with a significantly larger field of view than any existing telescopes. It will rapidly scan the sky to find
+transients, phenomena that change quickly, such as exploding stars and chunks of rock that orbit near Earth.
+It is expected to see first light in 2022.
+The international gamma-ray community is planning the Cherenkov Telescope Array (CTA), two arrays of
+telescopes, one in each hemisphere, which will indirectly measure gamma rays from the ground. The CTA will
+measure gamma-ray energies a thousand times as great as the Fermi telescope can detect.
+Several groups of astronomers around the globe interested in studying visible light and the infrared are
+exploring the feasibility of building ground-based telescopes with mirrors larger than 30 meters across. Stop
+and think what this means: 30 meters is one-third the length of a football field. It is technically impossible to
+build and transport a single astronomical mirror that is 30 meters or larger in diameter. The primary mirror of
+these giant telescopes will consist of smaller mirrors, all aligned so that they act as a very large mirror in
+combination.
+The most ambitious of these projects is the European Extremely Large Telescope (ELT) (Figure 6.28).
+(Astronomers try to outdo each other not only with the size of these telescopes, but also their names!) The
+design of the European ELT calls for a 39.3-meter primary mirror, which will follow the Keck design and be
+made up of 798 hexagonal mirrors, each 1.4 meters in diameter and all held precisely in position so that they
+form a continuous surface. Construction on the site in the Atacama Desert in Northern Chile started in 2014,
+and operations are expected to begin in about 2025.
+International consortia with major contributions from U.S. astronomers have developed plans for the
+LINK TO LEARNING
+The observatory is named after the American astronomer whose work led us to the understanding that much of the universe is
+made of a mysterious substance that scientists call dark matter (which we explain in The Mass of the Galaxy).
+6 • Astronomical Instruments
+construction of two large new telescopes. One is a Thirty-Meter Telescope (TMT) for which the preferred site is
+Maunakea in Hawaii. The design of this telescope is similar to that of the European ELT and will make use of
+492 hexagonal elements. Each segment is about 1.44 meters (56.6 inches) across corners. The segments are
+closely spaced, with gaps between the segments only 2.5 mm (0.1 inch) wide.
+The Giant Magellan Telescope (GMT) is the second ELT project with major participation by U.S. astronomers.
+The GMT is also a segmented mirror telescope that employs seven stiff monolith 8.4-meter mirrors as
+segments. Construction has started at the selected site, which is near the Las Campanas Observatory on the
+southern edge of the Atacama Desert.
+These giant telescopes will combine light-gathering power with high-resolution imaging. These powerful new
+instruments will enable astronomers to tackle many important astronomical problems. As just one example,
+they provide us images and spectra of planets around other stars and thus, perhaps, give us the first real
+evidence (from the chemistry of these planets’ atmospheres) that life exists elsewhere.
+Figure 6.28 Artist’s Conception of the European Extremely Large Telescope. The primary mirror in this telescope is 39.3 meters
+across. The telescope is under construction in the Atacama Desert in Northern Chile. (credit: ESO/L. Calçada)
+Check out this fun diagram (https://openstax.org/l/30JWSTdiag) comparing the sizes of the largest planned
+and existing telescopes to a regulation basketball and tennis court.
+LINK TO LEARNING
+6.6 • The Future of Large Telescopes
+Key Terms
+adaptive optics
+systems used with telescopes that can compensate for distortions in an image introduced
+by the atmosphere, thus resulting in sharper images
+aperture
+diameter of the primary lens or mirror of a telescope
+charge-coupled device (CCD)
+array of high-sensitivity electronic detectors of electromagnetic radiation,
+used at the focus of a telescope (or camera lens) to record an image or spectrum
+chromatic aberration
+distortion that causes an image to appear fuzzy when each wavelength coming into a
+transparent material focuses at a different spot
+detector
+device sensitive to electromagnetic radiation that makes a record of astronomical observations
+eyepiece
+magnifying lens used to view the image produced by the objective lens or primary mirror of a
+telescope
+focus
+(of telescope) point where the rays of light converged by a mirror or lens meet
+interference
+process in which waves mix together such that their crests and troughs can alternately
+reinforce and cancel one another
+interferometer
+instrument that combines electromagnetic radiation from one or more telescopes to obtain
+a resolution equivalent to what would be obtained with a single telescope with a diameter equal to the
+baseline separating the individual separate telescopes
+interferometer array
+combination of multiple radio dishes to, in effect, work like a large number of two-dish
+interferometers
+prime focus
+point in a telescope where the objective lens or primary mirror focuses the light
+radar
+technique of transmitting radio waves to an object and then detecting the radiation that the object
+reflects back to the transmitter; used to measure the distance to, and motion of, a target object or to form
+images of it
+reflecting telescope
+telescope in which the principal light collector is a concave mirror
+refracting telescope
+telescope in which the principal light collector is a lens or system of lenses
+resolution
+detail in an image; specifically, the smallest angular (or linear) features that can be distinguished
+seeing
+unsteadiness of Earth’s atmosphere, which blurs telescopic images; good seeing means the
+atmosphere is steady
+telescope
+instrument for collecting visible-light or other electromagnetic radiation
+Summary
+6.1 Telescopes
+A telescope collects the faint light from astronomical sources and brings it to a focus, where an instrument can
+sort the light according to wavelength. Light is then directed to a detector, where a permanent record is made.
+The light-gathering power of a telescope is determined by the diameter of its aperture, or opening—that is, by
+the area of its largest or primary lens or mirror. The primary optical element in a telescope is either a convex
+lens (in a refracting telescope) or a concave mirror (in a reflector) that brings the light to a focus. Most large
+telescopes are reflectors; it is easier to manufacture and support large mirrors because the light does not have
+to pass through glass.
+6.2 Telescopes Today
+New technologies for creating and supporting lightweight mirrors have led to the construction of a number of
+large telescopes since 1990. The site for an astronomical observatory must be carefully chosen for clear
+weather, dark skies, low water vapor, and excellent atmospheric seeing (low atmospheric turbulence). The
+resolution of a visible-light or infrared telescope is degraded by turbulence in Earth’s atmosphere. The
+technique of adaptive optics, however, can make corrections for this turbulence in real time and produce
+exquisitely detailed images.
+6 • Key Terms
+6.3 Visible-Light Detectors and Instruments
+Visible-light detectors include the human eye, photographic film, and charge-coupled devices (CCDs).
+Detectors that are sensitive to infrared radiation must be cooled to very low temperatures since everything in
+and near the telescope gives off infrared waves. A spectrometer disperses the light into a spectrum to be
+recorded for detailed analysis.
+6.4 Radio Telescopes
+In the 1930s, radio astronomy was pioneered by Karl G. Jansky and Grote Reber. A radio telescope is basically a
+radio antenna (often a large, curved dish) connected to a receiver. Significantly enhanced resolution can be
+obtained with interferometers, including interferometer arrays like the 27-element VLA and the 66-element
+ALMA. Expanding to very long baseline interferometers, radio astronomers can achieve resolutions as precise
+as 0.0001 arcsecond. Radar astronomy involves transmitting as well as receiving. The largest radar telescope
+currently in operation is a 305-meter bowl at Arecibo.
+6.5 Observations outside Earth’s Atmosphere
+Infrared observations are made with telescopes aboard aircraft and in space, as well as from ground-based
+facilities on dry mountain peaks. Ultraviolet, X-ray, and gamma-ray observations must be made from above
+the atmosphere. Many orbiting observatories have been flown to observe in these bands of the spectrum in
+the last few decades. The largest-aperture telescope in space is the Hubble Space telescope (HST), the most
+significant infrared telescope is Spitzer, and Chandra and Fermi are the premier X-ray and gamma-ray
+observatories, respectively.
+6.6 The Future of Large Telescopes
+New and even larger telescopes are on the drawing boards. The James Webb Space Telescope, a 6-meter
+successor to Hubble, is currently scheduled for launch in 2021. Gamma-ray astronomers are planning to build
+the CTA to measure very energetic gamma rays. Astronomers are building the LSST to observe with an
+unprecedented field of view and a new generation of visible-light/infrared telescopes with apertures of 24.5 to
+39 meters in diameter.
+For Further Exploration
+Articles
+Blades, J. C. “Fixing the Hubble One Last Time.” Sky & Telescope (October 2008): 26. On the last Shuttle service
+mission and what the Hubble was then capable of doing.
+Brown, A. “How Gaia will Map a Billion Stars.” Astronomy (December 2014): 32. Nice review of the mission to
+do photometry and spectroscopy of all stars above a certain brightness.
+Irion, R. “Prime Time.” Astronomy (February 2001): 46. On how time is allotted on the major research
+telescopes.
+Jedicke, Peter & Robert. “The Coming Giant Sky Patrols.” Sky & Telescope (September 2008): 30. About giant
+telescopes to survey the sky continuously.
+Lazio, Joseph, et al. “Tuning in to the Universe: 21st Century Radio Astronomy.” Sky & Telescope (July 2008): 21.
+About ALMA and the Square Kilometer Array.
+Lowe, Jonathan. “Mirror, Mirror.” Sky & Telescope (December 2007): 22. On the Large Binocular Telescope in
+Arizona.
+Lowe, Jonathan. “Next Light: Tomorrow’s Monster Telescopes.” Sky & Telescope (April 2008): 20. About plans
+for extremely large telescopes on the ground.
+6 • For Further Exploration
+Mason, Todd & Robin. “Palomar’s Big Eye.” Sky & Telescope (December 2008): 36. On the Hale 200-inch
+telescope.
+Subinsky, Raymond. “Who Really Invented the Telescope.” Astronomy (August 2008): 84. Brief historical
+introduction, focusing on Hans Lippershey.
+Young, Monica “The New Space Race (and Problem).” Sky & Telescope (March 2020): 14. A good discussion of
+the danger that huge numbers of new reflective satellites (to provide Wi-Fi) poses to the darkness of the night
+sky for astronomers.
+Websites
+Websites for major telescopes are given in Table 6.1, Table 6.2, Table 6.3, and Table 6.4.
+Information on Swarms of Satellites on Low-Earth Orbit
+•
+American Astronomical Society page on the issue with updates and links: https://aas.org/posts/advocacy/
+2020/12/impacts-large-satellite-constellations-astronomy-live-updates (https://aas.org/posts/advocacy/
+2020/12/impacts-large-satellite-constellations-astronomy-live-updates)
+•
+Lawler, S. “Space-X’s Starlink Satellites are About to Ruin Stargazing Forever” on the Astronomy magazine
+website (November 25, 2020): https://astronomy.com/news/2020/11/spacexs-starlink-satellites-are-aboutto-ruin-stargazing-for-everyone (https://astronomy.com/news/2020/11/spacexs-starlink-satellites-areabout-to-ruin-stargazing-for-everyone)
+•
+Patel, N. “Satellite Mega-constellations Risk Ruining Astronomy Forever” in Technology Review, September
+2, 2020: https://www.technologyreview.com/2020/09/02/1007938/satellite-mega-constellations-riskruining-astronomy-forever/ (https://www.technologyreview.com/2020/09/02/1007938/satellite-megaconstellations-risk-ruining-astronomy-forever/)
+Videos
+Astronomy from the Stratosphere: SOFIA: https://www.youtube.com/watch?v=NV98BcBBA9c
+(https://www.youtube.com/watch?v=NV98BcBBA9c). A talk by Dr. Dana Backman (1:15:32)
+Galaxies Viewed in Full Spectrum of Light: https://www.youtube.com/watch?v=368K0iQv8nE
+(https://www.youtube.com/watch?v=368K0iQv8nE). Scientists with the Spitzer Observatory show how a galaxy
+looks different at different wavelengths (6:22)
+Lifting the Cosmic Veil: Highlights from a Decade of the Spitzer Space Telescope: https://www.youtube.com/
+watch?v=nkrNQcwkY78 (https://www.youtube.com/watch?v=nkrNQcwkY78). A talk by Dr. Michael Bicay
+(1:42:44)
+Collaborative Group Activities
+A.
+Most large telescopes get many more proposals for observing projects than there is night observing time
+available in a year. Suppose your group is the telescope time allocation committee reporting to an
+observatory director. What criteria would you use in deciding how to give out time on the telescope? What
+steps could you take to make sure all your colleagues thought the process was fair and people would still
+talk to you at future astronomy meetings?
+B.
+Your group is a committee of nervous astronomers about to make a proposal to the government
+ministers of your small European country to chip in with other countries to build the world’s largest
+telescope in the high, dry desert of the Chilean Andes Mountains. You expect the government ministers to
+be very skeptical about supporting this project. What arguments would you make to convince them to
+participate?
+C.
+The same government ministers we met in the previous activity ask you to draw up a list of the pros and
+6 • Collaborative Group Activities
+cons of having the world’s largest telescope in the mountains of Chile (instead of a mountain in Europe).
+What would your group list in each column?
+D.
+Your group should discuss and make a list of all the ways in which an observing session at a large visiblelight telescope and a large radio telescope might differ. (Hint: Bear in mind that because the Sun is not
+especially bright at many radio wavelengths, observations with radio telescopes can often be done during
+the day.)
+E.
+Another “environmental threat” to astronomy (besides light pollution) comes from the spilling of
+terrestrial communications into the “channels”—wavelengths and frequencies—previously reserved for
+radio astronomy. For example, the demand for cellular phones means that more and more radio channels
+will be used for this purpose. The faint signals from cosmic radio sources could be drowned in a sea of
+earthly conversation (translated and sent as radio waves). Assume your group is a congressional
+committee being lobbied by both radio astronomers, who want to save some clear channels for doing
+astronomy, and the companies that stand to make a lot of money from expanding cellular phone use.
+What arguments would sway you to each side?
+F.
+When the site for the new Thirty-Meter Telescope on Hawaii’s Maunakea was dedicated, a group of native
+Hawaiians announced opposition to the project because astronomers were building too many telescopes
+on a mountain that native Hawaiians consider a sacred site. You can read more about this controversy at
+http://www.nytimes.com/2015/12/04/science/space/hawaii-court-rescinds-permit-to-build-thirty-metertelescope.html?_r=0 and at http://www.nature.com/news/the-mountain-top-battle-over-the-thirty-metertelescope-1.18446. Once your group has the facts, discuss the claims of each side in the controversy. How
+do you think it should be resolved?
+G.
+If you could propose to use a large modern telescope, what would you want to find out? What telescope
+would you use and why?
+H.
+Light pollution (spilled light in the night sky making it difficult to see the planets and stars) used to be an
+issue that concerned mostly astronomers. Now spilled light at night is also of concern to
+environmentalists and those worrying about global warming. Can your group come up with some nonastronomical reasons to be opposed to light pollution?
+Exercises
+Review Questions
+1. What are the three basic components of a modern astronomical instrument? Describe each in one to two
+sentences.
+2. Name the two spectral windows through which electromagnetic radiation easily reaches the surface of
+Earth and describe the largest-aperture telescope currently in use for each window.
+3. List the largest-aperture single telescope currently in use in each of the following bands of the
+electromagnetic spectrum: radio, X-ray, gamma ray.
+4. When astronomers discuss the apertures of their telescopes, they say bigger is better. Explain why.
+5. The Hooker telescope at Palomar Observatory has a diameter of 5 m, and the Keck I telescope has a
+diameter of 10 m. How much more light can the Keck telescope collect than the Hooker telescope in the
+same amount of time?
+6. What is meant by “reflecting” and “refracting” telescopes?
+7. Why are the largest visible-light telescopes in the world made with mirrors rather than lenses?
+6 • Exercises
+8. Compare the eye, photographic film, and CCDs as detectors for light. What are the advantages and
+disadvantages of each?
+9. What is a charge-coupled device (CCD), and how is it used in astronomy?
+10. Why is it difficult to observe at infrared wavelengths? What do astronomers do to address this difficulty?
+11. Radio and radar observations are often made with the same antenna, but otherwise they are very
+different techniques. Compare and contrast radio and radar astronomy in terms of the equipment
+needed, the methods used, and the kind of results obtained.
+12. Look back at Figure 6.18 of Cygnus A and read its caption again. The material in the giant lobes at the
+edges of the image had to have been ejected from the center at least how many years ago?
+13. Why do astronomers place telescopes in Earth’s orbit? What are the advantages for the different regions
+of the spectrum?
+14. What was the problem with the Hubble Space Telescope and how was it solved?
+15. Describe the techniques radio astronomers use to obtain a resolution comparable to what astronomers
+working with visible light can achieve.
+16. What kind of visible-light and infrared telescopes on the ground are astronomers planning for the future?
+Why are they building them on the ground and not in space?
+17. Describe one visible-light or infrared telescope that astronomers are planning to launch into space in the
+future.
+Thought Questions
+18. What happens to the image produced by a lens if the lens is “stopped down” (the aperture reduced,
+thereby reducing the amount of light passing through the lens) with an iris diaphragm—a device that
+covers its periphery?
+19. What would be the properties of an ideal astronomical detector? How closely do the actual properties of a
+CCD approach this ideal?
+20. Many decades ago, the astronomers on the staff of Mount Wilson and Palomar Observatories each
+received about 60 nights per year for their observing programs. Today, an astronomer feels fortunate to
+get 10 nights per year on a large telescope. Can you suggest some reasons for this change?
+21. The largest observatory complex in the world is on Maunakea, the tallest mountain on Earth. What are
+some factors astronomers consider when selecting an observatory site? Don’t forget practical ones.
+Should astronomers, for example, consider building an observatory on Denali (Mount McKinley) or Mount
+Everest?
+22. Suppose you are looking for sites for a visible-light observatory, an infrared observatory, and a radio
+observatory. What are the main criteria of excellence for each? What sites are actually considered the best
+today?
+23. Radio astronomy involves wavelengths much longer than those of visible light, and many orbiting
+observatories have probed the universe for radiation of very short wavelengths. What sorts of objects and
+physical conditions would you expect to be associated with emission of radiation at very long and very
+short wavelengths?
+24. The dean of a university located near the ocean (who was not a science major in college) proposes
+building an infrared telescope right on campus and operating it in a nice heated dome so that
+astronomers will be comfortable on cold winter nights. Criticize this proposal, giving your reasoning.
+6 • Exercises
+Figuring for Yourself
+25. What is the area, in square meters, of a 10-m telescope?
+26. Approximately 9000 stars are visible to the naked eye in the whole sky (imagine that you could see around
+the entire globe and both the northern and southern hemispheres), and there are about 41,200 square
+degrees on the sky. How many stars are visible per square degree? Per square arcsecond?
+27. Theoretically (that is, if seeing were not an issue), the resolution of a telescope is inversely proportional to
+its diameter. How much better is the resolution of the ALMA when operating at its longest baseline than
+the resolution of the Arecibo telescope?
+28. In broad daylight, the size of your pupil is typically 3 mm. In dark situations, it expands to about 7 mm.
+How much more light can it gather?
+29. How much more light can be gathered by a telescope that is 8 m in diameter than by your fully darkadapted eye at 7 mm?
+30. How much more light can the Keck telescope (with its 10-m diameter mirror) gather than an amateur
+telescope whose mirror is 25 cm (0.25 m) across?
+31. People are often bothered when they discover that reflecting telescopes have a second mirror in the
+middle to bring the light out to an accessible focus where big instruments can be mounted. “Don’t you
+lose light?” people ask. Well, yes, you do, but there is no better alternative. You can estimate how much
+light is lost by such an arrangement. The primary mirror (the one at the bottom in Figure 6.6) of the
+Gemini North telescope is 8 m in diameter. The secondary mirror at the top is about 1 m in diameter. Use
+the formula for the area of a circle to estimate what fraction of the light is blocked by the secondary
+mirror.
+32. Telescopes can now be operated remotely from a warm room, but until about 25 years ago, astronomers
+worked at the telescope to guide it so that it remained pointed in exactly the right place. In a large
+telescope, like the Palomar 200-inch telescope, astronomers sat in a cage at the top of the telescope,
+where the secondary mirror is located, as shown in Figure 6.6. Assume for the purpose of your calculation
+that the diameter of this cage was 40 inches. What fraction of the light is blocked?
+33. The HST cost about $1.7 billion for construction and $300 million for its shuttle launch, and it costs $250
+million per year to operate. If the telescope lasts for 20 years, what is the total cost per year? Per day? If
+the telescope can be used just 30% of the time for actual observations, what is the cost per hour and per
+minute for the astronomer’s observing time on this instrument? What is the cost per person in the United
+States? Was your investment in the Hubble Space telescope worth it?
+34. How much more light can the James Webb Space Telescope (with its 6-m diameter mirror) gather than the
+Hubble Space Telescope (with a diameter of 2.4 m)?
+35. The Palomar telescope’s 5-m mirror weighs 14.5 tons. If a 10-m mirror were constructed of the same
+thickness as Palomar’s (only bigger), how much would it weigh?
+6 • Exercises
+6 • Exercises

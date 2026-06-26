@@ -1,0 +1,278 @@
+Falcon 9 is a partially reusable, two-stage-to-orbit, medium-lift launch vehicle designed and manufactured in the United States by SpaceX. The first Falcon 9 launch was on June 4, 2010, and the first Commercial Resupply mission to the International Space Station (ISS) launched on October 8, 2012. In 2020, it became the first commercial rocket to launch humans to orbit. With 653 successful flights, Falcon 9 has seen the most launches among active launch vehicles; it is noted for its reliability and high launch cadence, with two in-flight failures, one partial failure and one pre-flight destruction.
+The rocket has two stages. The first (booster) stage carries the second stage and payload to a predetermined speed and altitude, after which the second stage accelerates the payload to its target orbit. The booster is capable of landing vertically to facilitate reuse, a feat which was first achieved on flight 20 in December 2015. Additionally, the fairing halves are scooped out of water after a parachute-assisted landing and can be reflown multiple times. As of June 25, 2026, SpaceX has successfully landed Falcon 9 boosters 598 times. Individual boosters have flown as many as 35 flights. Both stages are powered by SpaceX Merlin engines, using cryogenic liquid oxygen and rocket-grade kerosene (RP-1) as propellants.
+The heaviest payloads flown to geostationary transfer orbit (GTO) were Intelsat 35e carrying 6,761 kg (14,905 lb), and Telstar 19V with 7,075 kg (15,598 lb). The former was launched into an advantageous super-synchronous transfer orbit, while the latter went into a lower-energy GTO, with an apogee well below the geostationary altitude. On January 24, 2021, Falcon 9 set a record for the most satellites launched by a single rocket, carrying 143 into orbit.
+Falcon 9 is human-rated for transporting NASA astronauts to the ISS, certified for the National Security Space Launch program and the NASA Launch Services Program lists it as a "Category 3" (Low Risk) launch vehicle allowing it to launch the agency's most expensive, important, and complex missions.
+Several versions of Falcon 9 have been built and flown: v1.0 flew from 2010 to 2013, v1.1 flew from 2013 to 2016, while v1.2 Full Thrust first launched in 2015, encompassing the Block 5 variant, which has been in operation since May 2018.
+
+
+== Development history ==
+
+
+=== Conception and funding ===
+In October 2005, SpaceX announced plans to launch Falcon 9 in the first half of 2007. The initial launch would not occur until 2010.
+SpaceX spent its own capital to develop and fly its previous launcher, Falcon 1, with no pre-arranged sales of launch services. SpaceX developed Falcon 9 with private capital as well, but did have pre-arranged commitments by NASA to purchase several operational flights once specific capabilities were demonstrated. Milestone-specific payments were provided under the Commercial Orbital Transportation Services (COTS) program in 2006. The NASA contract was structured as a Space Act Agreement (SAA) "to develop and demonstrate commercial orbital transportation service", including the purchase of three demonstration flights. The overall contract award was US$278 million to provide three demonstration launches of Falcon 9 with the SpaceX Dragon cargo spacecraft. Additional milestones were added later, raising the total contract value to US$396 million.
+In 2008, SpaceX won a Commercial Resupply Services (CRS) contract in NASA's Commercial Orbital Transportation Services (COTS) program to deliver cargo to ISS using Falcon 9/Dragon. Funds would be disbursed only after the demonstration missions were successfully and thoroughly completed. The contract totaled US$1.6 billion for a minimum of 12 missions to ferry supplies to and from the ISS.
+In 2011, SpaceX estimated that Falcon 9 v1.0 development costs were approximately US$300 million. NASA estimated development costs of US$3.6 billion had a traditional cost-plus contract approach been used. A 2011 NASA report "estimated that it would have cost the agency about US$4 billion to develop a rocket like the Falcon 9 booster based upon NASA's traditional contracting processes" while "a more commercial development" approach might have allowed the agency to pay only US$1.7 billion".
+In 2014, SpaceX released combined development costs for Falcon 9 and Dragon. NASA provided US$396 million, while SpaceX provided over US$450 million.
+Congressional testimony by SpaceX in 2017 suggested that the unusual NASA process of "setting only a high-level requirement for cargo transport to the space station [while] leaving the details to industry" had allowed SpaceX to complete the task at a substantially lower cost. "According to NASA's own independently verified numbers, SpaceX's development costs of both the Falcon 1 and Falcon 9 rockets were estimated at approximately $390 million in total."
+
+
+=== Development ===
+SpaceX originally intended to follow its Falcon 1 launch vehicle with an intermediate capacity vehicle, Falcon 5. The Falcon line of vehicles are named after the Millennium Falcon, a fictional starship from the Star Wars film series. In 2005, SpaceX announced that it was instead proceeding with Falcon 9, a "fully reusable heavy-lift launch vehicle", and had already secured a government customer. Falcon 9 was described as capable of launching approximately 9,500 kilograms (20,900 lb) to low Earth orbit and was projected to be priced at US$27 million per flight with a 3.7 m (12 ft) payload fairing and US$35 million with a 5.2 m (17 ft) fairing. SpaceX also announced a heavy version of Falcon 9 with a payload capacity of approximately 25,000 kilograms (55,000 lb). Falcon 9 was intended to support LEO and GTO missions, as well as crew and cargo missions to the ISS.
+
+
+=== Testing ===
+The original NASA COTS contract called for the first demonstration flight in September 2008, and the completion of all three demonstration missions by September 2009. In February 2008, the date slipped into the first quarter of 2009. According to Musk, complexity and Cape Canaveral regulatory requirements contributed to the delay.
+The first multi-engine test (two engines firing simultaneously, connected to the first stage) was completed in January 2008. Successive tests led to a 178-second (mission length), nine engine test-fire in November 2008. In October 2009, the first flight-ready all-engine test fire was at its test facility in McGregor, Texas. In November, SpaceX conducted the initial second stage test firing, lasting forty seconds. In January 2010, a 329-second (mission length) orbit-insertion firing of the second stage was conducted at McGregor.
+The elements of the stack arrived at the launch site for integration at the beginning of February 2010. The flight stack went vertical at Space Launch Complex 40, Cape Canaveral, and in March, SpaceX performed a static fire test, where the first stage was fired without launch. The test was aborted at T−2 due to a failure in the high-pressure helium pump. All systems up to the abort performed as expected, and no additional issues needed addressing. A subsequent test on March 13 fired the first-stage engines for 3.5 seconds.
+
+
+=== Production ===
+
+In December 2010, the SpaceX production line manufactured a Falcon 9 (and Dragon spacecraft) every three months. By September 2013, SpaceX's total manufacturing space had increased to nearly 93,000 m2 (1,000,000 sq ft), in order to support a production capacity of 40 rocket cores annually. The factory was producing one Falcon 9 per month as of November 2013.
+By February 2016 the production rate for Falcon 9 cores had increased to 18 per year, and the number of first stage cores that could be assembled at one time reached six.
+Since 2018, SpaceX has routinely reused first stages, reducing the demand for new cores. In 2023, SpaceX performed 91 launches of Falcon 9 with only 4 using new boosters and successfully recovered the booster on all flights. The Hawthorne factory continues to produce one (expendable) second stage for each launch.
+
+
+== Launch history ==
+
+
+== Notable flights and payloads ==
+
+Flight 1, Dragon Spacecraft Qualification Unit — 4 June 2010; first Falcon 9 launch and first test of the Dragon spacecraft.
+Flight 3, Dragon C2+ — first cargo delivery to the International Space Station (ISS).
+Flight 4, CRS-1 — first operational ISS cargo mission; demonstrated engine-out capability following a first-stage Merlin engine failure.
+Flight 6, CASSIOPE — first launch of the Falcon 9 v1.1; first launch from Vandenberg Space Force Base; first attempt at a propulsive first-stage return.
+Flight 7, SES-8 — first launch to geosynchronous transfer orbit (GTO).
+Flight 9, CRS-3 — first flight with landing legs; first fully controlled descent and vertical ocean touchdown.
+Flight 15, Deep Space Climate Observatory (DSCOVR) — first mission inserted into the Sun–Earth L1 region.
+Flight 19, CRS-7 — loss of vehicle due to a second-stage structural failure caused by helium overpressure.
+Flight 20, Orbcomm OG-2 — first vertical landing of an orbital-class rocket booster.
+Flight 23, CRS-8 — first successful landing on an autonomous spaceport drone ship.
+AMOS-6 — loss of vehicle and payload during a pre-launch static fire test (would have been Flight 29).
+Flight 30, CRS-10 — first Falcon 9 launch from LC-39A.
+Flight 32, SES-10 — first reflight of a previously flown orbital-class booster (B1021); first recovery of a payload fairing.
+Flight 41, X-37B (OTV-5) — first launch of a spaceplane on Falcon 9.
+Flight 54, Bangladesh Satellite-1 — first launch of the Block 5 variant.
+Flight 69, Crew Dragon Demo-1 — first launch of the Crew Dragon (uncrewed).
+Flight 72, RADARSAT Constellation — high-value commercial payload.
+Flight 85, Crew Dragon Demo-2 — first crewed launch of Crew Dragon.
+Flight 106, Transporter-1 — first dedicated smallsat rideshare arranged by SpaceX; set a record with 143 satellites launched.
+Flight 126, Inspiration4 — first all-private orbital spaceflight.
+Flight 129, DART — first planetary-defense impact mission targeting a near-Earth object.
+Flight 134, CRS-24 — 100th successful booster landing.
+Flight 354, Starlink Group 9–3 — second-stage relight failure resulting in the loss of all 20 satellites.
+
+
+=== Notable payloads ===
+AMOS-17
+Bangabandhu Satellite-1
+Beresheet
+Boeing X-37
+Crew and Cargo Dragon
+DART
+Euclid
+GPS IIIA
+IM-1
+Iridium NEXT
+Orbcomm OG2
+RADARSAT Constellation
+SES-10
+Starlink
+TESS
+WorldView Legion
+Zuma
+
+
+== Design ==
+F9 is a two-stage, LOX/RP-1-powered launch vehicle.
+
+
+=== Specifications ===
+First stage
+
+Second stage
+
+
+=== Engine ===
+
+Both stages are equipped with Merlin 1D rocket engines. Every Merlin engine produces 854 kN (192,000 lbf) of thrust. They use a pyrophoric mixture of triethylaluminum-triethylborane (TEA-TEB) as an engine igniter.
+The booster stage has 9 engines, arranged in a configuration that SpaceX calls Octaweb. The second stage of the Falcon 9 has 1 short or regular nozzle, Merlin 1D Vacuum engine version.
+Falcon 9 is capable of losing up to 2 engines and still complete the mission by burning the remaining engines longer.
+Each Merlin rocket engine is controlled by three voting computers, each having 2 CPUs which constantly check the other 2 in the trio. The Merlin 1D engines can vector thrust to adjust trajectory.
+
+
+=== Tanks ===
+The propellant tank walls and domes are made from an aluminum–lithium alloy. SpaceX uses an all friction-stir welded tank, for its strength and reliability. The second stage tank is a shorter version of the first stage tank. It uses most of the same tooling, material, and manufacturing techniques.
+The F9 interstage, which connects the upper and lower stages, is a carbon-fibre aluminium-core composite structure that holds reusable separation collets and a pneumatic pusher system. The original stage separation system had twelve attachment points, reduced to three for v1.1.
+
+
+=== Fairing ===
+
+Falcon 9 uses a payload fairing (nose cone) to protect (non-Dragon) satellites during launch. The fairing is 13 m (43 ft) long, 5.2 m (17 ft) in diameter, weighs approximately 1900 kg, and is constructed of carbon fiber skin overlaid on an aluminum honeycomb core. SpaceX designed and fabricates fairings in Hawthorne. Testing was completed at NASA's Plum Brook Station facility in spring 2013 where the acoustic shock and mechanical vibration of launch, plus electromagnetic static discharge conditions, were simulated on a full-size test article in a vacuum chamber. Since 2019, fairings are designed to re-enter the Earth's atmosphere and are reused for future missions.
+
+
+=== Control systems ===
+SpaceX uses multiple redundant flight computers in a fault-tolerant design. The software runs on Linux and is written in C++. For flexibility, commercial off-the-shelf parts and system-wide radiation-tolerant design are used instead of rad-hardened parts. Each stage has stage-level flight computers, in addition to the Merlin-specific engine controllers, of the same fault-tolerant triad design to handle stage control functions. Each engine microcontroller CPU runs on a PowerPC architecture.
+
+
+=== Legs/fins ===
+Boosters that will be deliberately expended do not have legs or fins. Recoverable boosters include four extensible landing legs attached around the base.
+To control the core's descent through the atmosphere, SpaceX uses grid fins that deploy from the vehicle moments after stage separation. Initially, the V1.2 Full Thrust version of the Falcon 9 were equipped with grid fins made from aluminum, which were eventually replaced by larger, more aerodynamically efficient, and durable titanium fins. The upgraded titanium grid fins, cast and cut from a single piece of titanium, offer significantly better maneuverability and survivability from the extreme heat of re-entry than aluminum grid fins and can be reused indefinitely with minimal refurbishment.
+
+
+== Versions ==
+
+The Falcon 9 has seen five major revisions: v1.0, v1.1, Full Thrust (also called Block 3 or v1.2), Block 4, and Block 5.
+V1.0 flew five successful orbital launches from 2010 to 2013. The much larger V1.1 made its first flight in September 2013. The demonstration mission carried a small 500 kg (1,100 lb) primary payload, the CASSIOPE satellite. Larger payloads followed, starting with the launch of the SES-8 GEO communications satellite. Both v1.0 and v1.1 used expendable launch vehicles (ELVs). The Falcon 9 Full Thrust made its first flight in December 2015. The first stage of the Full Thrust version was reusable. The current version, known as Falcon 9 Block 5, made its first flight in May 2018.
+
+
+=== V1.0 ===
+
+F9 v1.0 was an expendable launch vehicle developed from 2005 to 2010. It flew for the first time in 2010. V1.0 made five flights, after which it was retired. The first stage was powered by nine Merlin 1C engines arranged in a 3 × 3 grid. Each had a sea-level thrust of 556 kN (125,000 lbf) for a total liftoff thrust of about 5,000 kN (1,100,000 lbf). The second stage was powered by a single Merlin 1C engine modified for vacuum operation, with an expansion ratio of 117:1 and a nominal burn time of 345 seconds. Gaseous N2 thrusters were used on the second-stage as a reaction control system (RCS).
+Early attempts to add a lightweight thermal protection system to the booster stage and parachute recovery were not successful.
+In 2011, SpaceX began a formal development program for a reusable Falcon 9, initially focusing on the first stage.
+
+
+=== V1.1 ===
+
+V1.1 is 60% heavier with 60% more thrust than v1.0. Its nine (more powerful) Merlin 1D engines were rearranged into an "octagonal" pattern that SpaceX called Octaweb. This is designed to simplify and streamline manufacturing. The fuel tanks were 60% longer, making the rocket more susceptible to bending during flight.
+The v1.1 first stage offered a total sea-level thrust at liftoff of 5,885 kN (1,323,000 lbf), with the engines burning for a nominal 180 seconds. The stage's thrust rose to 6,672 kN (1,500,000 lbf) as the booster climbed out of the atmosphere.
+The stage separation system was redesigned to reduce the number of attachment points from twelve to three, and the vehicle had upgraded avionics and software.
+These improvements increased the payload capability from 9,000 kg (20,000 lb) to 13,150 kg (28,990 lb). SpaceX president Gwynne Shotwell stated the v1.1 had about 30% more payload capacity than published on its price list, with the extra margin reserved for returning stages via powered re-entry.
+Development testing of the first stage was completed in July 2013, and it first flew in September 2013.
+The second stage igniter propellant lines were later insulated to better support in-space restart following long coast phases for orbital trajectory maneuvers. Four extensible carbon fiber/aluminum honeycomb landing legs were included on later flights where landings were attempted.
+SpaceX pricing and payload specifications published for v1.1 as of March 2014 included about 30% more performance than the published price list indicated; SpaceX reserved the additional performance to perform reusability testing. Many engineering changes to support reusability and recovery of the first stage were made for v1.1.
+
+
+=== Full Thrust ===
+
+The Full Thrust upgrade (also known as FT, v1.2 or Block 3), made major changes. It added cryogenic propellant cooling to increase density allowing 17% higher thrust, improved the stage separation system, stretched the second stage to hold additional propellant, and strengthened struts for holding helium bottles believed to have been involved with the failure of flight 19. It offered a reusable first stage. Plans to reuse the second-stage were abandoned as the weight of a heat shield and other equipment would reduce payload too much. The reusable booster was developed using systems and software tested on the Falcon 9 prototypes.
+The Autonomous Flight Safety System (AFSS) replaced the ground-based mission flight control personnel and equipment. AFSS offered on-board Positioning, Navigation and Timing sources and decision logic. The benefits of AFSS included increased public safety, reduced reliance on range infrastructure, reduced range spacelift cost, increased schedule predictability and availability, operational flexibility, and launch slot flexibility".
+FT's capacity allowed SpaceX to choose between increasing payload, decreasing launch price, or both.
+Its first successful landing came in December 2015 and the first reflight in March 2017. In February 2017, CRS-10 launch was the first operational launch utilizing AFSS. All SpaceX launches after March 16 used AFSS. A June 25 mission carried the second batch of ten Iridium NEXT satellites, for which the aluminum grid fins were replaced by larger titanium versions, to improve control authority, and heat tolerance during re-entry.
+
+
+=== Block 4 ===
+In 2017, SpaceX started including incremental changes to the Full Thrust, internally dubbed Block 4. Initially, only the second stage was modified to Block 4 standards, flying on top of a Block 3 first stage for three missions: NROL-76 and Inmarsat-5 F5 in May 2017, and Intelsat 35e in July 2017. Block 4 was described as a transition between the Full Thrust v1.2 Block 3 and Block 5. It includes incremental engine thrust upgrades leading to Block 5. The maiden flight of the full Block 4 design (first and second stages) was the SpaceX CRS-12 mission on August 14.
+
+
+=== Block 5 ===
+
+In October 2016, Musk described Block 5 as coming with "a lot of minor refinements that collectively are important, but uprated thrust and improved legs are the most significant". In January 2017, Musk added that Block 5 "significantly improves performance and ease of reusability". The maiden flight took place on May 11, 2018, with the Bangabandhu Satellite-1 satellite.
+
+
+== Capabilities ==
+
+
+=== Performance ===
+
+
+=== Reliability ===
+As of June 25, 2026, Falcon 9 had achieved 653 out of 656 full mission successes (99.6%). SpaceX CRS-1 succeeded in its primary mission, but left a secondary payload in a wrong orbit, while SpaceX CRS-7 was destroyed in flight. In addition, AMOS-6 disintegrated on the launch pad during fueling for an engine test. Block 5 has a success rate of 99.8% (599/600). For comparison, the industry benchmark Soyuz series has performed 1880 launches with a success rate of 95.1% (the latest Soyuz-2's success rate is 94%), the Russian Proton series has performed 425 launches with a success rate of 88.7% (the latest Proton-M's success rate is 90.1%), the European Ariane 5 has performed 117 launches with a success rate of 95.7%, and Chinese Long March 3B has performed 85 launches with a success rate of 95.3%.
+F9's launch sequence includes a hold-down feature that allows full engine ignition and systems check before liftoff. After the first-stage engine starts, the launcher is held down and not released for flight until all propulsion and vehicle systems are confirmed to be operating normally. Similar hold-down systems have been used on launch vehicles such as Saturn V and Space Shuttle. An automatic safe shut-down and unloading of propellant occur if any abnormal conditions are detected. Prior to the launch date, SpaceX sometimes completes a test cycle, culminating in a three-and-a-half second first stage engine static firing. F9 has triple-redundant flight computers and inertial navigation, with a GPS overlay for additional accuracy.
+Since the middle of 2024, the Falcon 9 has been involved in a number of mission anomalies, which have raised reliability concerns about the rocket. In July 2024 the upper stage engine of the Falcon 9 malfunctioned during the launch of the Starlink Group 9-3 mission, resulting in the total loss of the payload and the Federal Aviation Administration grounding the rocket for two weeks. In August 2024 a Falcon 9 booster tipped over and was destroyed during landing after a successful Starlink launch, resulting in the first unsuccessful booster landing in over three years for SpaceX. The rocket was briefly grounded for two days. In September 2024, after the successful launch of the Crew-9 mission, the upper stage engine again malfunctioned during a deorbit burn, causing it to reenter outside its designed zone and resulting in another grounding of the Falcon fleet. This anomaly occurred only ten days before the planned launch date of NASA's flagship Europa Clipper mission, which had a limited launch window and required two burns of the rocket's upper stage, prompting NASA to participate in the investigation and convene its own independent anomaly review board. Europa Clipper eventually launched successfully on October 14. These anomalies were mentioned on NASA's Aerospace Safety Advisory Panel 2024 Annual Report, which warned that SpaceX's fast cadence of launches may "interfere with sound judgment, deliberate analysis, and careful implementation of corrective actions", while also praising the company's "openness with NASA and willingness to address each situation".
+In February 2025, another upper stage malfunction occurred after the launch of the Starlink Group 11-4 mission, which prevented the stage from executing its planned deorbit burn. It remained in orbit for two weeks before eventually falling near the city of Poznań, Poland in an uncontrolled reentry. Similar to the July 2024 failure, this anomaly was also caused by a liquid oxygen leak in the upper stage's engine. In March 2025, a Falcon 9 booster was lost when it caught fire and tipped over after a droneship landing following a Starlink launch. This failure was blamed on a fuel leak that occurred inside one of the first stage engines during ascent. Space journalist Eric Berger has argued that the main factor behind the recent anomalies is SpaceX's "ever-present pressure to accelerate, even while taking on more and more challenging tasks", noting that the company may have reached "the speed limit for commercial spaceflight". He also noted that SpaceX is under intense pressure to develop its super-heavy Starship rocket, with many talented engineers being moved off from the Falcon and Dragon programs onto Starship.
+
+
+=== Engine-out capability ===
+Like the Saturn family of rockets, multiple engines allow for mission completion even if one fails. Detailed descriptions of destructive engine failure modes and designed-in engine-out capabilities were made public.
+SpaceX emphasized that the first stage is designed for "engine-out" capability. CRS-1 in October 2012 was a partial success after engine number 1 lost pressure at 79 seconds, and then shut down. To compensate for the resulting loss of acceleration, the first stage had to burn 28 seconds longer than planned, and the second stage had to burn an extra 15 seconds. That extra burn time reduced fuel reserves so that the likelihood that there was sufficient fuel to execute the mission dropped from 99% to 95%. Because NASA had purchased the launch and therefore contractually controlled several mission decision points, NASA declined SpaceX's request to restart the second stage and attempt to deliver the secondary payload into the correct orbit. As a result, the secondary payload reentered the atmosphere.
+Merlin 1D engines have suffered two premature shutdowns on ascent. Neither has affected the primary mission, but both landing attempts failed. On March 18, 2020, during a Starlink mission, one of the first stage engines failed 3 seconds before cut-off due to the ignition of some isopropyl alcohol that was not properly purged after cleaning. On another Starlink mission on February 15, 2021, hot exhaust gasses entered an engine due to a fatigue-related hole in its cover. SpaceX stated the failed cover had the "highest... number of flights that this particular boot [cover] design had seen."
+
+
+=== Reusability ===
+
+SpaceX planned from the beginning to make both stages reusable. The first stages of early Falcon flights were equipped with parachutes and were covered with a layer of ablative cork to allow them to survive atmospheric re-entry. These were defeated by the accompanying aerodynamic stress and heating. The stages were salt-water corrosion-resistant.
+In late 2011, SpaceX eliminated parachutes in favor of powered descent. The design was complete by February 2012.
+Powered landings were first flight-tested with the suborbital Grasshopper rocket. Between 2012 and 2013, this low-altitude, low-speed demonstration test vehicle made eight vertical landings, including a 79-second round-trip flight to an altitude of 744 m (2,441 ft). In March 2013, SpaceX announced that as of the first v1.1 flight, every booster would be equipped for powered descent.
+
+
+==== Post-mission flight tests and landing attempts ====
+
+For Flight 6 in September 2013, after stage separation, the flight plan called for the first stage to conduct a burn to reduce its reentry velocity, and then a second burn just before reaching the water. Although not a complete success, the stage was able to change direction and make a controlled entry into the atmosphere. During the final landing burn, the RCS thrusters could not overcome an aerodynamically induced spin. The centrifugal force deprived the engine of fuel, leading to early engine shutdown and a hard splashdown.
+After four more ocean landing tests, the CRS-5 booster attempted a landing on the ASDS floating platform in January 2015. The rocket incorporated (for the first time in an orbital mission) grid fin aerodynamic control surfaces, and successfully guided itself to the ship, before running out of hydraulic fluid and crashing into the platform. A second attempt occurred in April 2015, on CRS-6. After the launch, the bipropellant valve became stuck, preventing the control system from reacting rapidly enough for a successful landing.
+The first attempt to land a booster on a ground pad near the launch site occurred on flight 20, in December 2015. The landing was successful and the booster was recovered. This was the first time in history that after launching an orbital mission, a first stage achieved a controlled vertical landing. The first successful booster landing on an ASDS occurred in April 2016 on the drone ship Of Course I Still Love You during CRS-8.
+Sixteen test flights were conducted from 2013 to 2016, six of which achieved a soft landing and booster recovery. Since January 2017, with the exceptions of the centre core from the Falcon Heavy test flight, Falcon Heavy USAF STP-2 mission, the Falcon 9 CRS-16 resupply mission and the Starlink-4, 5, and 19 missions, every landing attempt has been successful. Two boosters have been lost or destroyed at sea after landing: the center core used during the Arabsat-6A mission, and B1058 after completing a Starlink flight.
+
+
+==== Relaunch ====
+
+The first operational relaunch of a previously flown booster was accomplished in March 2017 with B1021 on the SES-10 mission after CRS-8 in April 2016. After landing a second time, it was retired. In June 2017, booster B1029 helped carry BulgariaSat-1 towards GTO after an Iridium NEXT LEO mission in January 2017, again achieving reuse and landing of a recovered booster. The third reuse flight came in November 2018 on the SSO-A mission. The core for the mission, Falcon 9 B1046, was the first Block 5 booster produced, and had flown initially on the Bangabandhu Satellite-1 mission.
+In May 2021 the first booster reached 10 missions. Musk indicated that SpaceX intends to fly boosters until they see a failure in Starlink missions. As of June 25, 2026, the record is 35 flights by the same booster.
+
+
+==== Recovery of fairings ====
+SpaceX developed payload fairings equipped with a steerable parachute as well as RCS thrusters that can be recovered and reused. A payload fairing half was recovered following a soft-landing in the ocean for the first time in March 2017, following SES-10. Subsequently, development began on a ship-based system involving a massive net, in order to catch returning fairings. Two dedicated ships were outfitted for this role, making their first catches in 2019. However, following mixed success, SpaceX returned to water landings and wet recovery.
+
+
+==== Recovery of second stages ====
+Despite public statements that they would endeavor to make the second-stage reusable as well, by late 2014, SpaceX determined that the mass needed for a heat shield, landing engines, and other equipment to support recovery of the second stage was prohibitive, and abandoned second-stage reusability efforts.
+
+
+== Launch sites ==
+
+The Falcon 9 launches from three orbital launch sites: Space Launch Complex 40 (SLC-40) at Cape Canaveral Space Force Station in Florida (operational since 2007), Space Launch Complex 4E (SLC-4E) of Vandenberg Space Force Base in California (operational since 2013), and Launch Complex 39A (LC-39A) of the Kennedy Space Center in Florida (operational since 2017).
+SpaceX has designated specific roles for each launch site based on mission profiles. SLC-40 serves as the company's high-volume launch pad for missions to medium-inclination orbits (28.5–55°). SLC-4E is optimized for launches to highly inclined polar orbits (66–145°). LC-39A is primarily reserved for complex missions, such as Crew Dragon or Falcon Heavy launches. However, in 2024, SLC-40 was upgraded to accommodate Crew Dragon launches as a backup to LC-39A.
+On April 21, 2023, the United States Space Force granted SpaceX permission to lease Vandenberg Space Launch Complex 6 (SLC-6). This will become SpaceX's fourth orbital launch site, providing a second pad for highly inclined polar orbit launches and enabling Falcon Heavy launches from the West Coast.
+
+
+== Pricing ==
+At the time of the Falcon 9's maiden flight in 2010, the advertised price for commercial satellite launches using the v1.0 version was $49.9–56 million. Over the years, the price increased, keeping pace with inflation. By 2012, it rose to $54–59.5 million, followed by $56.5 million for the v1.1 version in 2013, $61.2 million in 2014, $62 million for the Full Thrust version in 2016, and $74 million for the Block 5 version in 2026.
+Government contracts typically involve higher prices, determined through competitive bidding processes. For instance, Dragon cargo missions to the ISS cost $133 million under a fixed-price contract with NASA, which included the spacecraft's use. Similarly, the 2013 DSCOVR mission for NOAA, launched aboard a Falcon 9, cost $97 million. As of 2020, U.S. Air Force launches using the Falcon 9 cost $95 million due to added security requirements. Because of the higher prices charged to government customers, in 2020, Roscosmos administrator Dmitry Rogozin accused SpaceX of price dumping in the commercial marketplace.
+The declining costs of Falcon 9 launches prompted competitors to develop lower-cost launch vehicles. Arianespace introduced the Ariane 6, ULA developed the Vulcan Centaur, and Roscosmos focused on the Proton-M. ULA CEO Tory Bruno stated that in their estimates, each booster would need to fly ten times to break even on the additional costs of designing and operating reusable rockets. Musk countered, asserting that Falcon 9's recovery and refurbishment costs were under 10%, achieving breakeven after just two flights and yielding substantial savings by the third.
+As of 2024, SpaceX's internal costs for a Falcon 9 launch are estimated between $15 million and $28 million, factoring in workforce expenses, refurbishment, assembly, operations, and facility depreciation. These efficiencies are primarily due to the reuse of first-stage boosters and payload fairings. The second stage, which is not reused, is believed to be the largest expense per launch, with the company's COO stating that each costs $12 million to produce.
+
+
+== Rideshare payload programs ==
+
+SpaceX operates two regularly scheduled rideshare programs for small satellite deployment: Transporter and Bandwagon. The Transporter program, introduced in 2021, provides missions to sun-synchronous orbit, an inclination near 90°. Transporter flights primarily serve Earth observation payloads, with launches typically occurring every four months from Vandenberg. The Bandwagon program began in 2024 and provides access to mid-inclination orbits of about 45°, with missions operating roughly every six months from Cape Canaveral.
+
+
+=== Orbital transfer and "last-mile" delivery ===
+Because Transporter missions deploy a large number of satellites into a single "drop-off" orbit, many customers utilize third-party Orbital Transfer Vehicles (OTVs) to achieve custom altitudes or inclinations. These vehicles act as a "last-mile" delivery service, separating from the Falcon 9 upper stage and then using their own propulsion systems to maneuver payloads to their final operational slots. 
+Frequent OTV partners integrated on Falcon 9 rideshare missions include Momentus (utilizing the Vigoride vehicle), D-Orbit (using the ION Satellite Carrier), and Exolaunch. Notably, the Vigoride-7 mission on Transporter-16 demonstrated the use of high-power OTV buses to support complex government payloads for DARPA and NASA, showcasing the transition of rideshare missions from simple deployments to sophisticated in-space infrastructure operations.
+
+
+=== Logistics and pricing ===
+SpaceX operates two regularly scheduled rideshare programs for small satellite deployment: Transporter and Bandwagon. The Transporter program, introduced in 2021, provides missions to sun-synchronous orbit, an inclination near 90°. Transporter flights primarily serve Earth observation payloads, with launches typically occurring every four months from Vandenberg. The Bandwagon program began in 2024 and provides access to mid-inclination orbits of about 45°, with missions operating roughly every six months from Cape Canaveral.
+Unlike traditional rideshare arrangements, these missions are not tied to a primary customer. For larger satellites between 500 and 2,500 kilograms (1,100 and 5,500 lb), SpaceX also offers a “cake topper” option, in which a spacecraft is mounted atop the payload stack, a position typically used by a primary payload in a conventional launch. As of 2025, launch pricing begins at US$300,000 for 50 kg (110 lb) to SSO.
+SpaceX also continues to provide more conventional rideshare opportunities in which small satellites accompany a large primary payload. Payloads can be accommodated using the EELV Secondary Payload Adapter (ESPA) ring, the same interstage adapter used for secondary payloads on U.S. Department of Defense missions flown on EELV-class launchers such as the Atlas V and Delta IV.
+Although the Falcon 9 is a medium-lift launch vehicle, the high launch cadence and comparatively low pricing of its rideshare programs have made SpaceX a leading provider in the small-satellite launch market. This has contributed to a challenging competitive environment for operators of dedicated small-lift launch vehicles.
+
+
+== Public display of Falcon 9 vehicles ==
+
+SpaceX first put the first Falcon 9 booster to successfully land (B1019) on public display at their headquarters in Hawthorne, California, in 2016.
+In 2019, SpaceX donated a Falcon 9 (B1035) to Space Center Houston, in Houston, Texas. It was a booster that flew two missions, "the 11th and 13th supply missions to the International Space Station [and was] the first Falcon 9 rocket NASA agreed to fly a second time".
+In 2021, SpaceX donated a Falcon Heavy side booster (B1023) to the Kennedy Space Center Visitor Complex.
+In 2023, a Falcon 9 (B1021) was put on public display outside Dish Network's headquarters in Littleton, Colorado.
+
+
+== Influence on space industry ==
+The Russian space agency has launched the development of Soyuz-7 which shares many similarities with Falcon 9, including a reusable first stage that will land vertically with the help of legs. The first launch is planned for 2028–2030.
+China's Beijing Tianbing Technology company is developing Tianlong-3, which is benchmarked against Falcon 9. In 2024, China's central government designated commercial space as a key industry for support, with the reusable medium-lift launchers being necessary to deploy China's planned low Earth orbit communications megaconstellations.
+
+
+== See also ==
+
+Comparison of orbital launch systems
+List of Falcon 9 first-stage boosters
+Long March 12B
+SpaceX launch vehicles
+
+
+== Notes ==
+
+
+== References ==
+
+
+== External links ==
+
+Falcon 9 official page
+SAOCOM 1B | Launch and Landing
+Test firing of two Merlin 1C engines connected to Falcon 9 first stage, Movie 1, Movie 2 (January 18, 2008)
+Press release announcing design (September 9, 2005)
+SpaceX hopes to supply ISS with new Falcon 9 heavy launcher (Flight International, September 13, 2005)
+SpaceX launches Falcon 9, With A Customer Archived June 11, 2007, at the Wayback Machine (Defense Industry Daily, September 15, 2005)

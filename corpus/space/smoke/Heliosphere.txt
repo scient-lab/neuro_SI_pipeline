@@ -1,0 +1,171 @@
+The heliosphere is the magnetosphere, astrosphere, and outermost atmospheric layer of the Sun. It takes the shape of a vast, tailed bubble-like region of space. In plasma physics terms, it is the cavity formed by the Sun in the surrounding interstellar medium. The "bubble" of the heliosphere is continuously "inflated" by plasma originating from the Sun, known as the solar wind. Outside the heliosphere, this solar plasma gives way to the interstellar plasma permeating the Milky Way. As part of the interplanetary magnetic field, the heliosphere shields the Solar System from significant amounts of cosmic ionizing radiation; uncharged gamma rays are, however, not affected. Its name was likely coined by Alexander J. Dessler, who is credited with the first use of the word in the scientific literature in 1967. The scientific study of the heliosphere is heliophysics, which includes space weather and space climate.
+Flowing unimpeded through the Solar System for billions of kilometers, the solar wind extends far beyond even the region of Pluto until it encounters the "termination shock", where its motion slows abruptly due to the outside pressure of the interstellar medium. The "heliosheath" is a broad transitional region between the termination shock and the heliosphere's outmost edge, the "heliopause". The overall shape of the heliosphere resembles that of a comet, being roughly spherical on one side to around 100 astronomical units (AU), and on the other side being tail shaped, known as the "heliotail", trailing for several thousands of AUs.
+Two Voyager program spacecraft explored the outer reaches of the heliosphere, passing through the termination shock and the heliosheath. Voyager 1 encountered the heliopause on 25 August 2012, when the spacecraft measured a sudden forty-fold increase in plasma density. Voyager 2 traversed the heliopause on 5 November 2018. Because the heliopause marks the boundary between matter originating from the Sun and matter originating from the rest of the galaxy, spacecraft that depart the heliosphere (such as the two Voyagers) are in interstellar space.
+
+
+== History ==
+The heliosphere is affected by extrasolar effects, such as nearby supernovas or traversing interstellar mediums of different densities, and has significantly changed over the solar system's lifetime. Evidence suggests the heliosphere was shrunk to the Inner Solar System as recently as 3 million years ago, due to a nearby supernova, which exposed Earth to interstellar medium (which may have impacted Earth's climate and ecology).
+
+
+== Structure ==
+
+Despite its name, the heliosphere's shape is not a perfect sphere. Its shape is determined by three factors: the interstellar medium (ISM), the solar wind, and the overall motion of the Sun and heliosphere as it passes through the ISM. Because the solar wind and the ISM are both fluid, the heliosphere's shape and size are also fluid. Changes in the solar wind, however, more strongly alter the fluctuating position of the boundaries on short timescales (hours to a few years). The solar wind's pressure varies far more rapidly than the outside pressure of the ISM at any given location. In particular, the effect of the 11-year solar cycle, which sees a distinct maximum and minimum of solar wind activity, is thought to be significant.
+On a broader scale, the motion of the heliosphere through the fluid medium of the ISM results in an overall comet-like shape. The solar wind plasma which is moving roughly "upstream" (in the same direction as the Sun's motion through the galaxy) is compressed into a nearly-spherical form, whereas the plasma moving "downstream" (opposite the Sun's motion) flows out for a much greater distance before giving way to the ISM, defining the long, trailing shape of the heliotail.
+The limited data available and the unexplored nature of these structures have resulted in many theories as to their form. In 2020, Merav Opher led the team of researchers who determined that the shape of the heliosphere is a crescent that can be described as a deflated croissant.
+
+
+=== Solar wind ===
+
+The solar wind consists of particles (ionized atoms from the solar corona) and fields like the magnetic field that are produced from the Sun and stream out into space. Because the Sun rotates once approximately every 25 days, the heliospheric magnetic field transported by the solar wind gets wrapped into a spiral. The solar wind affects many other systems in the Solar System; for example, variations in the Sun's own magnetic field are carried outward by the solar wind, producing geomagnetic storms in the Earth's magnetosphere.
+
+
+=== Heliospheric current sheet ===
+
+The heliospheric current sheet is a ripple in the heliosphere created by the rotating magnetic field of the Sun. It marks the boundary between heliospheric magnetic field regions of opposite polarity. Extending throughout the heliosphere, the heliospheric current sheet could be considered the largest structure in the Solar System and is said to resemble a "ballerina's skirt".
+
+
+== Edge structure ==
+The outer structure of the heliosphere is determined by the interactions between the solar wind and the winds of interstellar space. The solar wind streams away from the Sun in all directions at speeds of several hundred km/s in the Earth's vicinity. At some distance from the Sun, well beyond the orbit of Neptune, this supersonic wind slows down as it encounters the gases in the interstellar medium. This takes place in several stages:
+
+The solar wind is traveling at supersonic speeds within the Solar System. At the termination shock, a standing shock wave, the solar wind falls below the speed of sound and becomes subsonic.
+It was previously thought that once subsonic, the solar wind would be shaped by the ambient flow of the interstellar medium, forming a blunt nose on one side and comet-like heliotail behind, a region called the heliosheath. However, observations in 2009 showed that this model is incorrect. As of 2011, it is thought to be filled with a magnetic bubble "foam".
+The outer surface of the heliosheath, where the heliosphere meets the interstellar medium, is called heliopause. This is the edge of the entire heliosphere. Observations in 2009 led to changes to this model.
+In theory, heliopause causes turbulence in the interstellar medium as the Sun orbits the Galactic Center. This turbulence results from the pressure of the advancing heliopause against the interstellar medium. However, the velocity of the solar wind relative to the interstellar medium may be too low for a bow shock.
+
+
+=== Termination shock ===
+
+The termination shock is the point in the heliosphere where the solar wind slows down to subsonic speed (relative to the Sun) because of interactions with the local interstellar medium. This causes compression, heating, and a change in the magnetic field. In the Solar System, the termination shock is believed to be 75 to 90 astronomical units from the Sun. In 2004, Voyager 1 crossed the Sun's termination shock, followed by Voyager 2 in 2007.
+The shock arises because solar wind particles are emitted from the Sun at about 400 km/s, while the speed of sound (in the interstellar medium) is about 100 km/s. The exact speed depends on the density, which fluctuates considerably. The interstellar medium, although very low in density, nonetheless has a relatively constant pressure associated with it; the pressure from the solar wind decreases with the square of the distance from the Sun. As one moves far enough away from the Sun, the pressure of the solar wind drops to where it can no longer maintain supersonic flow against the pressure of the interstellar medium, at which point the solar wind slows to below its speed of sound, causing a shock wave. Further from the Sun, the termination shock is followed by heliopause, where the two pressures become equal and solar wind particles are stopped by the interstellar medium.
+Other termination shocks can be seen in terrestrial systems; perhaps the easiest may be seen by simply running a water tap into a sink creating a hydraulic jump. Upon hitting the floor of the sink, the flowing water spreads out at a speed that is higher than the local wave speed, forming a disk of shallow, rapidly diverging flow (analogous to the tenuous, supersonic solar wind). Around the periphery of the disk, a shock front or wall of water forms; outside the shock front, the water moves slower than the local wave speed (analogous to the subsonic interstellar medium).
+Evidence presented at a meeting of the American Geophysical Union in May 2005 by Ed Stone suggests that the Voyager 1 spacecraft passed the termination shock in December 2004, when it was about 94 AU from the Sun, by virtue of the change in magnetic readings taken from the craft. In contrast, Voyager 2 began detecting returning particles when it was only 76 AU from the Sun, in May 2006. This implies that the heliosphere may be irregularly shaped, bulging outwards in the Sun's northern hemisphere and pushed inward in the south.
+
+
+=== Heliosheath ===
+The heliosheath is the region of the heliosphere beyond the termination shock. Here the wind is slowed, compressed, and made turbulent by its interaction with the interstellar medium. At its closest point, the inner edge of the heliosheath lies approximately 80 to 100 AU from the Sun. A proposed model hypothesizes that the heliosheath is shaped like the coma of a comet, and trails several times that distance in the direction opposite to the Sun's path through space. At its windward side, its thickness is estimated to be between 10 and 100 AU. Voyager project scientists have determined that the heliosheath is not "smooth" – it is rather a "foamy zone" filled with magnetic bubbles, each about 1 AU wide. These magnetic bubbles are created by the impact of the solar wind and the interstellar medium. Voyager 1 and Voyager 2 began detecting evidence of the bubbles in 2007 and 2008, respectively. The probably sausage-shaped bubbles are formed by magnetic reconnection between oppositely oriented sectors of the solar magnetic field as the solar wind slows down. They probably represent self-contained structures that have detached from the interplanetary magnetic field.
+At a distance of about 113 AU, Voyager 1 detected a 'stagnation region' within the heliosheath. In this region, the solar wind slowed to zero, the magnetic field intensity doubled and high-energy electrons from the galaxy increased 100-fold. At about 122 AU, the spacecraft entered a new region that Voyager project scientists called the "magnetic highway", an area still under the influence of the Sun but with some dramatic differences.
+
+
+=== Heliopause ===
+The heliopause is the theoretical boundary where the Sun's solar wind is stopped by the interstellar medium—where the solar wind is no longer strong enough to push back the stellar winds of the surrounding stars. This is the boundary where the interstellar medium and solar wind pressures balance. The crossing of the heliopause should be signaled by a sharp drop in the temperature of solar wind-charged particles, a change in the direction of the magnetic field, and an increase in the number of galactic cosmic rays.
+In May 2012, Voyager 1 detected a rapid increase in such cosmic rays (a 9% increase in a month, following a more gradual increase of 25% from January 2009 to January 2012), suggesting it was approaching the heliopause. Between late August and early September 2012, Voyager 1 witnessed a sharp drop in protons from the Sun, from 25 particles per second in late August, to about 2 particles per second by early October. In September 2013, NASA announced that Voyager 1 had crossed the heliopause as of 25 August 2012. This was at a distance of 121 AU (1.81×1010 km) from the Sun. Contrary to predictions, data from Voyager 1 indicates the magnetic field of the galaxy is aligned with the solar magnetic field.
+On November 5, 2018, the Voyager 2 mission detected a sudden decrease in the flux of low-energy ions. At the same time, the level of cosmic rays increased. This demonstrated that the spacecraft crossed the heliopause at a distance of 119 AU (1.78×1010 km) from the Sun. Unlike Voyager 1, the Voyager 2 spacecraft did not detect interstellar flux tubes while crossing the heliosheath.
+NASA also collected data from the heliopause remotely during the suborbital SHIELDS mission in 2021.
+
+
+=== Heliotail ===
+The heliotail is the several thousand astronomical units long tail of the heliosphere, and thus the Solar System's tail. It can be compared to the tail of a comet (however, a comet's tail does not stretch behind it as it moves; it is always pointing away from the Sun). The tail is a region where the Sun's solar wind slows down and ultimately escapes the heliosphere, slowly evaporating because of charge exchange.
+The shape of the heliotail (as found by NASA's Interstellar Boundary Explorer – IBEX) is that of a four-leaf clover. The particles in the tail do not shine, therefore it cannot be seen with conventional optical instruments. IBEX made the first observations of the heliotail by measuring the energy of "energetic neutral atoms", neutral particles created by collisions in the Solar System's boundary zone.
+The tail has been shown to contain fast and slow particles; the slow particles are on the side and the fast particles are encompassed in the center. The shape of the tail can be linked to the Sun sending out fast solar winds near its poles and slow solar winds near its equator more recently. The clover-shaped tail moves further away from the Sun, which makes the charged particles begin to morph into a new orientation.
+Cassini and IBEX data challenged the "heliotail" theory in 2009. In July 2013, IBEX results revealed a 4-lobed tail on the Solar System's heliosphere.
+
+
+== Outside structures ==
+The heliopause is the final known boundary between the heliosphere and the interstellar space that is filled with material, especially plasma, not from the Earth's own star, the Sun, but from other stars. Even so, just outside the heliosphere (i.e. the "solar bubble") there is a transitional region, as detected by Voyager 1. Just as some interstellar pressure was detected as early as 2004, some of the Sun's material seeps into the interstellar medium. The heliosphere is thought to reside in the Local Interstellar Cloud inside the Local Bubble, which is a region in the Orion Arm of the Milky Way Galaxy.
+Outside the heliosphere, there is a forty-fold increase in plasma density. There is also a radical reduction in the detection of certain types of particles from the Sun, and a large increase in galactic cosmic rays.
+The flow of the interstellar medium (ISM) into the heliosphere has been measured by at least 11 different spacecraft as of 2013. By 2013, it was suspected that the direction of the flow had changed over time. The flow, coming from Earth's perspective from the constellation Scorpius, has probably changed direction by several degrees since the 1970s.
+
+
+=== Hydrogen wall ===
+
+Predicted to be a region of hot hydrogen, a structure called the "hydrogen wall" may be between the bow shock and the heliopause. The wall is composed of interstellar material interacting with the edge of the heliosphere. One paper released in 2013 studied the concept of a bow wave and hydrogen wall.
+Another hypothesis suggests that the heliopause could be smaller on the side of the Solar System facing the Sun's orbital motion through the galaxy. It may also vary depending on the current velocity of the solar wind and the local density of the interstellar medium. It is known to lie far outside the orbit of Neptune. The mission of the Voyager 1 and 2 spacecraft is to find and study the termination shock, heliosheath, and heliopause. Meanwhile, the IBEX mission is attempting to image the heliopause from Earth orbit within two years of its 2008 launch. Initial results (October 2009) from IBEX suggest that previous assumptions are insufficiently cognizant of the true complexities of the heliopause.
+In August 2018, long-term studies about the hydrogen wall by the New Horizons spacecraft confirmed results first detected in 1992 by the two Voyager spacecraft. Although the hydrogen is detected by extra ultraviolet light (which may come from another source), the detection by New Horizons corroborates the earlier detections by Voyager at a much higher level of sensitivity.
+
+
+=== Bow shock ===
+
+It was long hypothesized that the Sun produces a "shock wave" in its travels within the interstellar medium. It would occur if the interstellar medium is moving supersonically "toward" the Sun, since its solar wind moves "away" from the Sun supersonically. When the interstellar wind hits the heliosphere it slows and creates a region of turbulence. A bow shock was thought to possibly occur at about 230 AU, but in 2012 it was determined it probably does not exist. This conclusion resulted from new measurements: The velocity of the LISM (local interstellar medium) relative to the Sun's was previously measured to be 26.3 km/s by Ulysses, whereas IBEX measured it at 23.2 km/s.
+This phenomenon has been observed outside the Solar System, around stars other than the Sun, by NASA's now retired orbital GALEX telescope. The red giant star Mira in the constellation Cetus has been shown to have both a debris tail of ejecta from the star and a distinct shock in the direction of its movement through space (at over 130 kilometers per second).
+
+
+== Observational methods ==
+
+
+=== Detection by spacecraft ===
+The precise distance to and shape of the heliopause are still uncertain. Interplanetary/interstellar spacecraft such as Pioneer 10, Pioneer 11 and New Horizons are traveling outward through the Solar System and will eventually pass through the heliopause. Contact to Pioneer 10 and 11 has been lost.
+
+
+==== Cassini results ====
+Rather than a comet-like shape, the heliosphere appears to be bubble-shaped according to data from Cassini's Ion and Neutral Camera (MIMI / INCA). Rather than being dominated by the collisions between the solar wind and the interstellar medium, the INCA (ENA) maps suggest that the interaction is controlled more by particle pressure and magnetic field energy density.
+
+
+==== IBEX results ====
+
+Initial data from Interstellar Boundary Explorer (IBEX), launched in October 2008, revealed a previously unpredicted "very narrow ribbon that is two to three times brighter than anything else in the sky", now known as the IBEX ribbon. Initial interpretations suggest that "the interstellar environment has far more influence on structuring the heliosphere than anyone previously believed"
+"No one knows what is creating the ENA (energetic neutral atoms) ribbon, ..."
+"The IBEX results are truly remarkable! What we are seeing in these maps does not match with any of the previous theoretical models of this region. It will be exciting for scientists to review these (ENA) maps and revise the way we understand our heliosphere and how it interacts with the galaxy." In October 2010, significant changes were detected in the ribbon after 6 months, based on the second set of IBEX observations. IBEX data did not support the existence of a bow shock, but there might be a 'bow wave' according to one study.
+
+
+=== Locally ===
+
+Examples of missions that have or continue to collect data related to the heliosphere include:
+
+Solar Anomalous and Magnetospheric Particle Explorer
+Solar and Heliospheric Observatory
+Solar Dynamics Observatory
+STEREO
+Ulysses spacecraft
+Parker Solar Probe
+Solar Orbiter
+During a total eclipse the high-temperature corona can be more readily observed from Earth solar observatories. During the Apollo program the Solar wind was measured on the Moon via the Solar Wind Composition Experiment. Some examples of Earth surface based Solar observatories include the McMath–Pierce solar telescope or the newer GREGOR Solar Telescope, and the refurbished Big Bear Solar Observatory.
+
+
+== Exploration history ==
+
+The heliosphere is the area under the influence of the Sun; the two major components to determining its edge are the heliospheric magnetic field and the solar wind from the Sun. Three major sections from the beginning of the heliosphere to its edge are the termination shock, the heliosheath, and the heliopause. Five spacecraft have returned much of the data about its furthest reaches, including Pioneer 10 (1972–1997; data to 67 AU), Pioneer 11 (1973–1995; 44 AU), Voyager 1 and Voyager 2 (launched 1977, ongoing), and New Horizons (launched 2006). A type of particle called an energetic neutral atom (ENA) has also been observed to have been produced from its edges.
+Except for regions near obstacles such as planets or comets, the heliosphere is dominated by material emanating from the Sun, although cosmic rays, fast-moving neutral atoms, and cosmic dust can penetrate the heliosphere from the outside. Originating at the extremely hot surface of the corona, solar wind particles reach escape velocity, streaming outwards at 300 to 800 km/s (671 thousand to 1.79 million mph or 1 to 2.9 million km/h). As it begins to interact with the interstellar medium, its velocity slows to a stop. The point where the solar wind becomes slower than the speed of sound is called the termination shock; the solar wind continues to slow as it passes through the heliosheath leading to a boundary called the heliopause, where the interstellar medium and solar wind pressures balance. The termination shock was traversed by Voyager 1 in 2004, and Voyager 2 in 2007.
+It was thought that beyond the heliopause there was a bow shock, but data from Interstellar Boundary Explorer suggested the velocity of the Sun through the interstellar medium is too low for it to form. It may be a more gentle "bow wave".
+Voyager data led to a new theory that the heliosheath has "magnetic bubbles" and a stagnation zone. Also, there were reports of a "stagnation region" within the heliosheath, starting around 113 au (1.69×1010 km; 1.05×1010 mi), detected by Voyager 1 in 2010. There, the solar wind velocity drops to zero, the magnetic field intensity doubles, and high-energy electrons from the galaxy increase 100-fold.
+Starting in May 2012 at 120 au (1.8×1010 km; 1.1×1010 mi), Voyager 1 detected a sudden increase in cosmic rays, an apparent sign of approach to the heliopause. In the summer of 2013, NASA announced that Voyager 1 had reached interstellar space as of 25 August 2012.
+In December 2012, NASA announced that in late August 2012, Voyager 1, at about 122 au (1.83×1010 km; 1.13×1010 mi) from the Sun, entered a new region they called the "magnetic highway", an area still under the influence of the Sun but with some dramatic differences.
+Pioneer 10 was launched in March 1972, and within 10 hours passed by the Moon; over the next 35 years or so the mission would be the first out, laying out many firsts of discoveries about the nature of heliosphere as well as Jupiter's impact on it. Pioneer 10 was the first spacecraft to detect sodium and aluminum ions in the solar wind, as well as helium in the inner Solar System. In November 1972, Pioneer 10 encountered Jupiter's enormous (compared to Earth) magnetosphere and would pass in and out of it and its heliosphere 17 times charting its interaction with the solar wind. Pioneer 10 returned scientific data until March 1997, including data on the solar wind out to about 67 AU. It was also contacted in 2003 when it was a distance of 7.6 billion miles from Earth (82 AU), but no instrument data about the solar wind was returned then.
+Voyager 1 surpassed the radial distance from the Sun of Pioneer 10 at 69.4 AU on 17 February 1998, because it was traveling faster, gaining about 1.02 AU per year.  On July 18, 2023, Voyager 2 overtook Pioneer 10 as the second most distant human-made object from the Sun. Pioneer 11, launched a year after Pioneer 10, took similar data as Pioneer out to 44.7 AU in 1995 when that mission was concluded. Pioneer 11 had a similar instrument suite as 10 but also had a flux-gate magnetometer. Pioneer and Voyager spacecraft were on different trajectories and thus recorded data on the heliosphere in different overall directions away from the Sun. Data obtained from Pioneer and Voyager spacecraft helped corroborate the detection of a hydrogen wall.
+In 2012 Voyager 1 is thought to have passed through heliopause, and Voyager 2 did the same in 2018.
+The twin Voyagers are the only man-made objects to have entered interstellar space. However, while they have left the heliosphere, they have not yet left the boundary of the Solar System which is considered to be the outer edge of the Oort Cloud. Upon passing the heliopause, Voyager 2's Plasma Science Experiment (PLS) observed a sharp decline in the speed of solar wind particles on 5 November and there has been no sign of it since. The three other instruments on board measuring cosmic rays, low-energy charged particles, and magnetic fields also recorded the transition. The observations complement data from NASA's IBEX mission. In 2025, NASA launched Interstellar Mapping and Acceleration Probe (IMAP) to capitalize on Voyager's observations.
+
+
+== Timeline of exploration and detection ==
+1904: Astronomers using the Potsdam Great Refractor with a spectrograph find evidence of the interstellar medium while observing the binary star Mintaka in Orion.
+1958: Eugene Parker published a paper that predicted solar wind; his theory was initially rejected by scientific community.
+January 1959: Luna 1 becomes the first spacecraft to observe the solar wind.
+1962: Mariner 2 detects the solar wind.
+1972–1973: Pioneer 10 becomes the first spacecraft to explore the heliosphere past Mars, flying by Jupiter on 4 December 1973 and continuing to return solar wind data out to a distance of 67 AU.
+February 1992: After flying by Jupiter, the Ulysses spacecraft becomes the first to explore the mid and high latitudes of the heliosphere.
+1992: Pioneer and Voyager probes detected Ly-α radiation resonantly scattered by heliospheric hydrogen.
+2004: Voyager 1 becomes the first spacecraft to reach the termination shock.
+2005: SOHO observations of the solar wind show that the shape of the heliosphere is not axisymmetrical, but distorted, very likely under the effect of the local galactic magnetic field.
+2009: IBEX project scientists discover and map a ribbon-shaped region of intense energetic neutral atom emission. These neutral atoms are thought to be originating from the heliopause.
+October 2009: the heliosphere may be bubble, not comet shaped.
+October 2010: significant changes were detected in the ribbon after six months, based on the second set of IBEX observations.
+May 2012: IBEX data implies there is probably not a bow "shock".
+June 2012: At 119 AU, Voyager 1 detected an increase in cosmic rays.
+25 August 2012: Voyager 1 crosses the heliopause, becoming the first human-made object to depart the heliosphere.
+August 2018: long-term studies about the hydrogen wall by the New Horizons spacecraft confirmed results first detected in 1992 by the two Voyager spacecraft.
+5 November 2018: Voyager 2 crosses the heliopause, departing the heliosphere.
+
+
+== See also ==
+Coronal mass ejection
+Fermi glow
+
+
+== References ==
+ 
+
+
+== Sources ==
+"Heliopause Seems to Be 23 Billion Kilometres". Universe Today. 9 December 2003. Retrieved 8 August 2007.
+"Space probes reveal Solar System's bullet shape". COSMOS magazine. 11 May 2007. Archived from the original on 13 May 2007. Retrieved 12 May 2007.
+
+
+== Further reading ==
+Schwadron, Nathan A.; et al. (September 2011). "Does the space environment affect the ecosphere?". Eos, Transactions American Geophysical Union. 92 (36): 297–298. Bibcode:2011EOSTr..92..297S. doi:10.1029/2011EO360001. ISSN 0096-3941.
+Gough, Evan (7 August 2020). "This is What the Solar System Really Looks Like". Universe Today. Retrieved 8 September 2024.
+
+
+== External links ==
+
+Voyager Interstellar Mission Objectives
+NASA GALEX (Galaxy evolution Explorer) homepage at Caltech
+A Big Surprise from the Edge of the Solar System Archived 17 June 2016 at the Wayback Machine (NASA 06.09.11)

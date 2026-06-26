@@ -1,0 +1,164 @@
+A coronal mass ejection (CME) is a significant ejection of plasma mass from the Sun's corona into the heliosphere. CMEs are often associated with solar flares and other forms of solar activity, but a broadly accepted theoretical understanding of these relationships has not been established.
+If a CME enters interplanetary space, it is sometimes referred to as an interplanetary coronal mass ejection (ICME). ICMEs are capable of reaching and colliding with Earth's magnetosphere, where they can cause geomagnetic storms, aurorae, and in rare cases damage to electrical power grids. The largest recorded geomagnetic perturbation, resulting presumably from a CME, was the solar storm of 1859. Also known as the Carrington Event, it disabled parts of the newly created United States telegraph network, starting fires and electrically shocking some telegraph operators.
+Near the time in the Sun's eleven-year solar cycle known as solar maxima, the Sun produces about three CMEs daily, whereas near solar minima, there is about one CME every five days.
+
+
+== Physical description ==
+CMEs release large quantities of matter from the Sun's atmosphere into the solar wind and interplanetary space. The ejected matter is a plasma consisting primarily of electrons and protons embedded within its magnetic field. This magnetic field is commonly in the form of a flux rope, a helical magnetic field with changing pitch angles.
+The average mass ejected is 1.6×1012 kg (3.5×1012 lb). However, the estimated mass values for CMEs are only lower limits, because coronagraph measurements provide only two-dimensional data.
+CMEs erupt from strongly twisted or sheared, large-scale magnetic structures in the corona that are kept in equilibrium by overlying magnetic fields.
+
+
+=== Origin ===
+
+CMEs erupt from the lower corona, where processes associated with the local magnetic field dominate over other processes. As a result, the coronal magnetic field plays an important role in the formation and eruption of CMEs. Pre-eruption structures originate from magnetic fields that are initially generated in the Sun's interior by the solar dynamo. These magnetic fields rise to the Sun's surface—the photosphere—where they may form localized areas of highly concentrated magnetic flux and expand into the lower solar atmosphere forming active regions. At the photosphere, active region magnetic flux is often distributed in a dipole configuration, that is, with two adjacent areas of opposite magnetic polarity across which the magnetic field arches. Over time, the concentrated magnetic flux cancels and disperses across the Sun's surface, merging with the remnants of past active regions to become a part of the quiet Sun. Pre-eruption CME structures can be present at different stages of the growth and decay of these regions, but they always lie above polarity inversion lines (PIL), or boundaries across which the sign of the vertical component of the magnetic field reverses. PILs may exist in, around, and between active regions or form in the quiet Sun between active region remnants. More complex magnetic flux configurations, such as quadrupolar fields, can also host pre-eruption structures.
+In order for pre-eruption CME structures to develop, large amounts of energy must be stored and be readily available to be released. As a result of the dominance of magnetic field processes in the lower corona, the majority of the energy must be stored as magnetic energy. The magnetic energy that is freely available to be released from a pre-eruption structure, referred to as the magnetic free energy or nonpotential energy of the structure, is the excess magnetic energy stored by the structure's magnetic configuration relative to that stored by the lowest-energy magnetic configuration the underlying photospheric magnetic flux distribution could theoretically take, a potential field state. Emerging magnetic flux and photospheric motions continuously shifting the footpoints of a structure can result in magnetic free energy building up in the coronal magnetic field as twist or shear. Some pre-eruption structures, referred to as sigmoids, take on an S or reverse-S shape as shear accumulates. This has been observed in active region coronal loops and filaments with forward-S sigmoids more common in the southern hemisphere and reverse-S sigmoids more common in the northern hemisphere.
+Magnetic flux ropes—twisted and sheared magnetic flux tubes that can carry electric current and magnetic free energy—are an integral part of the post-eruption CME structure; however, whether flux ropes are always present in the pre-eruption structure or whether they are created during the eruption from a strongly sheared core field (see § Initiation) is subject to ongoing debate.
+Some pre-eruption structures have been observed to support prominences, also known as filaments, composed of cooler material than the surrounding coronal plasma. Prominences are embedded in magnetic field structures referred to as prominence cavities, or filament channels, which may constitute part of a pre-eruption structure (see § Coronal signatures).
+
+
+=== Early evolution ===
+The early evolution of a CME involves its initiation from a pre-eruption structure in the corona and the acceleration that follows. The processes involved in the early evolution of CMEs are poorly understood due to a lack of observational evidence.
+
+
+==== Initiation ====
+CME initiation occurs when a pre-eruption structure in an equilibrium state enters a nonequilibrium or metastable state where energy can be released to drive an eruption. The specific processes involved in CME initiation are debated, and various models have been proposed to explain this phenomenon based on physical speculation. Furthermore, different CMEs may be initiated by different processes.
+It is unknown whether a magnetic flux rope exists prior to initiation, in which case either ideal or non-ideal magnetohydrodynamic (MHD) processes drive the expulsion of this flux rope, or whether a flux rope is created during the eruption by non-ideal process. Under ideal MHD circumstances, initiation may involve ideal instabilities or catastrophic loss of equilibrium along an existing flux rope:
+
+The kink instability occurs when a magnetic flux rope is twisted to a critical point, whereupon the flux rope is unstable to further twisting.
+The torus instability occurs when the magnetic field strength of an arcade overlying a flux rope decreases rapidly with height. When this decrease is sufficiently rapid, the flux rope is unstable to further expansion.
+The catastrophe model involves a catastrophic loss of equilibrium.
+Under non-ideal MHD circumstances, initiations mechanisms may involve resistive instabilities or magnetic reconnection:
+
+Tether-cutting, or flux cancellation, occurs in strongly sheared arcades when nearly antiparallel field lines on opposite sides of the arcade form a current sheet and reconnect with each other. This can form a helical flux rope or cause a flux rope already present to grow and its axis to rise.
+The magnetic breakout model consists of an initial quadrupolar magnetic topology with a null point above a central flux system. As shearing motions cause this central flux system to rise, the null point forms an electrical current sheet and the core flux system reconnects with the overlying magnetic field.
+
+
+==== Initial acceleration ====
+Following initiation, CMEs are subject to different forces that either assist or inhibit their rise through the lower corona. Downward magnetic tension force exerted by the strapping magnetic field as it is stretched and, to a lesser extent, the gravitational pull of the Sun oppose movement of the core CME structure. In order for sufficient acceleration to be provided, past models have involved magnetic reconnection below the core field or an ideal MHD process, such as instability or acceleration from the solar wind.
+In the majority of CME events, acceleration is provided by magnetic reconnection cutting the strapping field's connections to the photosphere from below the core and outflow from this reconnection pushing the core upward. When the initial rise occurs, the opposite sides of the strapping field below the rising core are oriented nearly antiparallel to one another and are brought together to form a current sheet above the PIL. Fast magnetic reconnection can be excited along the current sheet by microscopic instabilities, resulting in the rapid release of stored magnetic energy as kinetic, thermal, and nonthermal energy. The restructuring of the magnetic field cuts the strapping field's connections to the photosphere thereby decreasing the downward magnetic tension force while the upward reconnection outflow pushes the CME structure upwards. A positive feedback loop results as the core is pushed upwards and the sides of the strapping field are brought in closer and closer contact to produce additional magnetic reconnection and rise. While upward reconnection outflow accelerates the core, simultaneous downward outflow is sometimes responsible for other phenomena associated with CMEs (see § Coronal signatures).
+In cases where significant magnetic reconnection does not occur, ideal MHD instabilities or the dragging force from the solar wind can theoretically accelerate a CME. However, if sufficient acceleration is not provided, the CME structure may fall back in what is referred to as a failed or confined eruption.
+
+
+==== Coronal signatures ====
+
+The early evolution of CMEs is frequently associated with other solar phenomena observed in the low corona, such as eruptive prominences and solar flares. CMEs that have no observed signatures are sometimes referred to as stealth CMEs.
+Prominences embedded in some CME pre-eruption structures may erupt with the CME as eruptive prominences. Eruptive prominences are associated with at least 70% of all CMEs and are often embedded within the bases of CME flux ropes. When observed in white-light coronagraphs, the eruptive prominence material, if present, corresponds to the observed bright core of dense material.
+When magnetic reconnection is excited along a current sheet of a rising CME core structure, the downward reconnection outflows can collide with loops below to form a cusp-shaped, two-ribbon solar flare.
+CME eruptions can also produce EUV waves, also known as EIT waves after the Extreme ultraviolet Imaging Telescope or as Moreton waves when observed in the chromosphere, which are fast-mode MHD wave fronts that emanate from the site of the CME.
+A coronal dimming is a localized decrease in extreme ultraviolet and soft X-ray emissions in the lower corona. When associated with a CME, coronal dimmings are thought to occur predominantly due to a decrease in plasma density caused by mass outflows during the expansion of the associated CME. They often occur either in pairs located within regions of opposite magnetic polarity, a core dimming, or in a more widespread area, a secondary dimming. Core dimmings are interpreted as the footpoint locations of the erupting flux rope; secondary dimmings are interpreted as the result of the expansion of the overall CME structure and are generally more diffuse and shallow. Coronal dimming was first reported in 1974, and, due to their appearance resembling that of coronal holes, they were sometimes referred to as transient coronal holes.
+
+
+=== Propagation ===
+
+Observations of CMEs are typically through white-light coronagraphs which measure the Thomson scattering of sunlight off of free electrons within the CME plasma. An observed CME may have any or all of three distinctive features: a bright core, a dark surrounding cavity, and a bright leading edge. The bright core is usually interpreted as a prominence embedded in the CME (see § Origin) with the leading edge as an area of compressed plasma ahead of the CME flux rope. However, some CMEs exhibit more complex geometry.
+From white-light coronagraph observations, CMEs have been measured to reach speeds in the plane-of-sky ranging from 20 to 3,200 km/s (12 to 2,000 mi/s) with an average speed of 489 km/s (304 mi/s). Observations of CME speeds indicate that CMEs tend to accelerate or decelerate until they reach the speed of the solar wind (§ Interactions in the heliosphere).
+When observed in interplanetary space at distances greater than about 50 solar radii (0.23 AU) away from the Sun, CMEs are sometimes referred to as interplanetary CMEs, or ICMEs.
+
+
+==== Interactions in the heliosphere ====
+As CMEs propagate through the heliosphere, they may interact with the surrounding solar wind, the interplanetary magnetic field, and other CMEs and celestial bodies.
+CMEs can experience aerodynamic drag forces that act to bring them to kinematic equilibrium with the solar wind. As a consequence, CMEs faster than the solar wind tend to slow down whereas CMEs slower than the solar wind tend to speed up until their speed matches that of the solar wind.
+How CMEs evolve as they propagate through the heliosphere is poorly understood. Models of their evolution have been proposed that are accurate to some CMEs but not others. Aerodynamic drag and snowplow models assume that ICME evolution is governed by its interactions with the solar wind. Aerodynamic drag alone may be able to account for the evolution of some ICMEs, but not all of them.
+
+CMEs typically reach Earth one to five days after leaving the Sun. The strongest deceleration or acceleration occurs close to the Sun, but it can continue even beyond Earth orbit (1 AU), which was observed using measurements at Mars and by the Ulysses spacecraft. ICMEs faster than about 500 km/s (310 mi/s) eventually drive a shock wave. This happens when the speed of the ICME in the frame of reference moving with the solar wind is faster than the local fast magnetosonic speed. Such shocks have been observed directly by coronagraphs in the corona, and are related to type II radio bursts. They are thought to form sometimes as low as 2 R☉ (solar radii). They are also closely linked with the acceleration of solar energetic particles.
+As ICMEs propagate through the interplanetary medium, they may collide with other ICMEs in what is referred to as CME–CME interaction or CME cannibalism.
+During such CME-CME interactions, the first CME may clear the way for the second one and/or when two CMEs collide it can lead to more severe impacts on Earth. Historical records show that the most extreme space weather events involved multiple successive CMEs. For example, the famous Carrington event in 1859 had several eruptions and caused auroras to be visible at low latitudes for four nights. Similarly, the solar storm of September 1770 lasted for nearly nine days, and caused repeated low-latitude auroras. The interaction between two moderate CMEs between the Sun and Earth can create extreme conditions on Earth. Recent studies have shown that the magnetic structure in particular its chirality/handedness, of a CME can greatly affect how it interacts with Earth's magnetic field. This interaction can result in the conservation or loss of magnetic flux, particularly its southward magnetic field component, through magnetic reconnection with the interplanetary magnetic field.
+
+
+=== Morphology ===
+
+In the solar wind, CMEs manifest as magnetic clouds. They have been defined as regions of enhanced magnetic field strength, smooth rotation of the magnetic field vector, and low proton temperature. The association between CMEs and magnetic clouds was made by Burlaga et al. in 1982 when a magnetic cloud was observed by Helios-1 two days after being observed by the Solar Maximum Mission (SMM). However, because observations near Earth are usually done by a single spacecraft, many CMEs are not seen as being associated with magnetic clouds. The typical structure observed for a fast CME by a satellite such as the Advanced Composition Explorer (ACE) is a fast-mode shock wave followed by a dense (and hot) sheath of plasma (the downstream region of the shock) and a magnetic cloud. CMEs may contain mirror-mode structures which are dominated by magnetic holes.
+Observations of a CME that impacted Earth on April 23, 2024 indicated that the sheath turbulence can noticeably evolve Lagrange Point to Earth. Since magnetic field fluctuations in the sheath are larger than that of the ambient solar wind, it is thought that these can used as a predictor of solar activity.
+Other signatures of magnetic clouds are now used in addition to the one described above: among other, bidirectional superthermal electrons, unusual charge state or abundance of iron, helium, carbon, and/or oxygen.
+The typical time for a magnetic cloud to move past a satellite at the Lagrange Point (L1 point) is 1 day corresponding to a radius of 0.15 AU with a typical speed of 450 km/s (280 mi/s) and magnetic field strength of 20 nT.
+
+
+== Solar cycle ==
+
+The frequency of ejections depends on the phase of the solar cycle: from about 0.2 per day near the solar minimum to 3.5 per day near the solar maximum. However, the peak CME occurrence rate is often 6–12 months after sunspot number reaches its maximum.
+
+
+== Impact on Earth ==
+
+Only a small fraction of CMEs are directed toward, and reach, the Earth. A CME arriving at Earth results in a shock wave causing a geomagnetic storm that may disrupt Earth's magnetosphere, compressing it on the day side and extending the night-side magnetic tail. When the magnetosphere reconnects on the nightside, it releases power on the order of terawatts directed back toward Earth's upper atmosphere. This can result in events such as the March 1989 geomagnetic storm.
+CMEs, along with solar flares, can disrupt radio transmissions and cause damage to satellites and electrical transmission line facilities on Earth, resulting in potentially massive and long-lasting power outages.
+Shocks in the upper corona driven by CMEs can also accelerate solar energetic particles toward the Earth resulting in gradual solar particle events. Interactions between these energetic particles and the Earth can cause an increase in the number of free electrons in the ionosphere, especially in the high-latitude polar regions, enhancing radio wave absorption, especially within the D-region of the ionosphere, leading to polar cap absorption events.
+The interaction of CMEs with the Earth's magnetosphere leads to dramatic changes in the outer radiation belt, with either a decrease or an increase of relativistic particle fluxes by orders of magnitude. The changes in radiation belt particle fluxes are caused by acceleration, scattering and radial diffusion of relativistic electrons, due to the interactions with various plasma waves.
+
+
+=== Halo coronal mass ejections ===
+A halo coronal mass ejection is a CME which appears in white-light coronagraph observations as an expanding ring completely surrounding the occulting disk of the coronagraph. Halo CMEs are interpreted as CMEs directed toward or away from the observing coronagraph. When the expanding ring does not completely surround the occulting disk, but has an angular width of more than 120 degrees around the disk, the CME is referred to as a partial halo coronal mass ejection. Partial and full halo CMEs have been found to make up about 10% of all CMEs with about 4% of all CMEs being full halo CMEs. Frontside, or Earth-direct, halo CMEs are often associated with Earth-impacting CMEs; however, not all frontside halo CMEs impact Earth.
+
+
+=== Future risk ===
+In 2019, researchers used an alternative method (Weibull distribution) and estimated the chance of Earth being hit by a Carrington-class storm between 2018 and 2027 to be between 0.46% and 1.88%.
+
+
+== History ==
+
+
+=== First traces ===
+CMEs have been observed indirectly for thousands of years via aurora. Other indirect observations that predated the discovery of CMEs were through measurements of geomagnetic perturbations, radioheliograph measurements of solar radio bursts, and in-situ measurements of interplanetary shocks.
+Research has looked for signatures of large solar flares and CMEs in carbon-14 in tree rings and beryllium-10 (among other isotopes) in ice cores. The signature of a large solar storm has been found for the years 774–775 and 993–994. Carbon-14 levels stored in 775 suggest an event about 20 times the normal variation of the Sun's activity, and 10 or more times the size of the Carrington Event. An event in 7176 BCE may have exceeded even the 774–775 CE event based on this proxy data.
+Whether the physics of solar flares is similar to that of even larger superflares is still unclear. The Sun may differ in important ways such as size and speed of rotation from the types of stars that are known to produce superflares.
+The largest recorded geomagnetic perturbation, resulting presumably from a CME, coincided with the first-observed solar flare on 1 September 1859. The resulting solar storm of 1859 is referred to as the Carrington Event. The flare and the associated sunspots were visible to the naked eye, and the flare was independently observed by English astronomers R. C. Carrington and R. Hodgson. At around the same time as the flare, a magnetometer at Kew Gardens, London, England, recorded what would become known as a magnetic crochet, a magnetic field detected by ground-based magnetometers induced by a perturbation of Earth's ionosphere by ionizing soft X-rays. This could not easily be understood at the time because it predated the discovery of X-rays in 1895 and the recognition of the ionosphere in 1902.
+About 18 hours after the flare, further geomagnetic perturbations were recorded by multiple magnetometers as a part of a geomagnetic storm. The storm disabled parts of the recently created US telegraph network, starting fires and shocking some telegraph operators.
+In June 2013, a joint venture from researchers at Lloyd's of London and Atmospheric and Environmental Research (AER) in the US used data from the Carrington Event to estimate the cost of a similar event in the present to the US alone at US$600 billion to $2.6 trillion (equivalent to $794 billion to $3.44 trillion in 2024), which, at the time, equated to roughly 3.6 to 15.5 percent of annual GDP. In addition to this effect on the general economy, there is also research that highlights the potential consequences of a large geomagnetic storm on agriculture. The effect here is indirect, meaning via the loss of access to agricultural inputs like fertilizer or pesticides, due to a disrupted industrial production. This has been estimated to potentially reduce yields by 38–48 % globally, with yield losses of up to 75 % in some areas like Central Europe. 
+Another strong solar storm occurred in February 1872. Less severe storms also occurred in 1921 (this was comparable by some measures), 1938, 1941, 1958, 1959 and 1960, when widespread radio disruption was reported.
+
+
+=== First optical observations ===
+The first optical observation of a CME was made on 14 December 1971 using the coronagraph of Orbiting Solar Observatory 7 (OSO-7). It was first described by R. Tousey of the Naval Research Laboratory in a research paper published in 1973. The discovery image (256 × 256 pixels) was collected on a Secondary Electron Conduction (SEC) vidicon tube, transferred to the instrument computer after being digitized to 7 bits. Then it was compressed using a simple run-length encoding scheme and sent down to the ground at 200 bit/s. A full, uncompressed image would take 44 minutes to send down to the ground. The telemetry was sent to ground support equipment (GSE) which built up the image onto Polaroid print. David Roberts, an electronics technician working for NRL who had been responsible for the testing of the SEC-vidicon camera, was in charge of day-to-day operations. He thought that his camera had failed because certain areas of the image were much brighter than normal. But on the next image the bright area had moved away from the Sun and he immediately recognized this as being unusual and took it to his supervisor, Dr. Guenter Brueckner, and then to the solar physics branch head, Dr. Tousey. Earlier observations of coronal transients or even phenomena observed visually during solar eclipses are now understood as essentially the same thing.
+The flares and CMEs of the August 1972 solar storms were similar to the Carrington event in size and magnitude; however, unlike the 1859 storms, they did not cause an extreme geomagnetic storm. 
+
+
+=== Instruments ===
+On 1 November 1994, NASA launched the Wind spacecraft as a solar wind monitor to orbit Earth's L1 Lagrange point as the interplanetary component of the Global Geospace Science (GGS) Program within the International Solar Terrestrial Physics (ISTP) program. The spacecraft is a spin axis-stabilized satellite that carries eight instruments measuring solar wind particles from thermal to greater than MeV energies, electromagnetic radiation from DC to 13 MHz radio waves, and gamma-rays.
+On 25 October 2006, NASA launched STEREO, two near-identical spacecraft which, from widely separated points in their orbits, are able to produce the first stereoscopic images of CMEs and other solar activity measurements. The spacecraft orbit the Sun at distances similar to that of Earth, with one slightly ahead of Earth and the other trailing. Their separation gradually increased so that after four years they were almost diametrically opposite each other in orbit.
+
+
+=== Notable coronal mass ejections ===
+
+On 9 March 1989, a CME occurred, which struck Earth four days later on 13 March. It caused power failures in Quebec, Canada and short-wave radio interference.
+On 23 July 2012, a large, and potentially damaging CME occurred but missed Earth, an event that many scientists consider to be a Carrington-class event.
+On 14 October 2014, an ICME was photographed by the Sun-watching spacecraft PROBA2 (ESA), Solar and Heliospheric Observatory (ESA/NASA), and Solar Dynamics Observatory (NASA) as it left the Sun, and STEREO-A observed its effects directly at 1 astronomical unit (AU). ESA's Venus Express gathered data. The CME reached Mars on 17 October and was observed by the Mars Express, MAVEN, Mars Odyssey, and Mars Science Laboratory missions. On 22 October, at 3.1 AU, it reached comet 67P/Churyumov–Gerasimenko, perfectly aligned with the Sun and Mars, and was observed by Rosetta. On 12 November, at 9.9 AU, it was observed by Cassini at Saturn. The New Horizons spacecraft was at 31.6 AU approaching Pluto when the CME passed three months after the initial eruption, and it may be detectable in the data. Voyager 2 has data that can be interpreted as the passing of the CME, 17 months after. The Curiosity rover's RAD instrument, Mars Odyssey, Rosetta and Cassini showed a sudden decrease in galactic cosmic rays (Forbush decrease) as the CME's protective bubble passed by.
+During the May 2024 solar storms, an aurora borealis was sighted as far south as Puerto Rico.
+
+
+== Stellar coronal mass ejections ==
+There have been a small number of CMEs observed on other stars, all of which as of 2016 have been found on red dwarfs. These have been detected mainly by spectroscopy, most often by studying Balmer lines: the material ejected toward the observer causes asymmetry in the blue wing of the line profiles due to Doppler shift. This enhancement can be seen in absorption when it occurs on the stellar disc (the material is cooler than its surroundings), and in emission when it is outside the disc. The observed projected velocities of CMEs range from ≈84 to 5,800 km/s (52 to 3,600 mi/s). There are few stellar CME candidates in shorter wavelengths in UV or X-ray data. Compared to activity on the Sun, CME activity on other stars seems to be far less common. The low number of stellar CME detections can be caused by lower intrinsic CME rates compared to the models (e.g. due to magnetic suppression), projection effects, or overestimated Balmer signatures because of the unknown plasma parameters of the stellar CMEs.
+
+
+== See also ==
+Forbush decrease
+Health threat from cosmic rays
+K-index
+List of solar storms
+Orbiting Solar Observatory
+Solar and Heliospheric Observatory
+Space weather
+
+
+== References ==
+
+
+== Further reading ==
+
+
+=== Books ===
+Gopalswamy, Natchimuthukonar; Mewaldt, Richard; Torsti, Jarmo (2006). Gopalswamy, Natchimuthukonar; Mewaldt, Richard A.; Torsti, Jarmo (eds.). Solar Eruptions and Energetic Particles. Geophysical Monograph Series. Vol. 165. Washington, DC: American Geophysical Union. Bibcode:2006GMS...165.....G. doi:10.1029/GM165. ISBN 0-87590-430-0.
+
+
+=== Internet articles ===
+Bell, Trudy E.; Phillips, Tony (6 May 2008). "A Super Solar Flare". Science@NASA.
+Lavraud, Benoit; Masson, Arnaud (21 November 2007). "Cluster captures the impact of CMEs". European Space Agency.
+Odenwald, Sten F.; Green, James L. (28 July 2008). "Bracing the Satellite Infrastructure for a Solar Superstorm". Scientific American.
+Phillips, Tony (27 May 2008). "Cartwheel Coronal Mass Ejection". Science@NASA. Archived from the original on 25 February 2021. Retrieved 12 July 2017.
+
+
+== External links ==
+
+NOAA/NWS Space Weather Prediction Center
+Coronal Mass Ejection FAQ
+STEREO and SOHO observed CME rate versus the Sunspot number (PNG plot) / (text version)

@@ -1,0 +1,408 @@
+A variable star is a star whose brightness as seen from Earth (its apparent magnitude) changes systematically with time. This variation may be caused by a change in emitted light or by something partly blocking the light, so variable stars are classified as either:
+
+Intrinsic variables, whose inherent luminosity changes; for example, because the star swells and shrinks.
+Extrinsic variables, whose apparent changes in brightness are due to changes in the amount of their light that can reach Earth; for example, because the star has an orbiting companion that sometimes eclipses it.
+Depending on the type of star system, this variation can include cyclical, irregular, fluctuating, or transient behavior. Changes can occur on time scales that range from under an hour to multiple years. Many, possibly most, stars exhibit at least some oscillation in luminosity: the energy output of the Sun, for example, varies by about 0.1% over an 11-year solar cycle. At the opposite extreme, a supernova event can briefly outshine an entire galaxy. Of the 58,200 variable stars that have been catalogued as of 2023, the most common type are pulsating variables with just under 30,000, followed by eclipsing variables with over 10,000.
+Variable stars have been observed since the dawn of human history. The first documented periodic variable was the eclipsing binary Algol. The periodic variable Omicron Ceti, later named Mira, was discovered in the 17th century, followed by Chi Cygni then R Hydrae. By 1786, ten had been documented. Variable star discovery increased rapidly with the advent of photographic plates. When Cepheid variables were shown to have a period-luminosity relationship in 1912, this allowed them to be used for distance measurement. As a result, it was demonstrated that spiral nebulae are galaxies outside the Milky Way. Variable stars now form several methods for the cosmic distance ladder that is used to determine the scale of the visible universe. The periods of eclipsing binaries allowed for a more precise determination of the mass and radii of their component stars, which proved especially useful for modelling stellar evolution.
+
+
+== Discovery ==
+An ancient Egyptian calendar of lucky and unlucky days composed some 3,200 years ago may be the oldest preserved historical document of the discovery of a variable star, the eclipsing binary Algol, but the validity of this claim has been questioned. Aboriginal Australians are also known to have observed the variability of Betelgeuse and Antares, incorporating these brightness changes into narratives that are passed down through oral tradition. Pre-telescope observations of novae and supernovae events were recorded by Babylonian, Chinese, and Arab astronomers, among others.
+Of the modern astronomers in the telescope era, the first periodic variable star was identified in 1638 when Johannes Holwarda noticed that Omicron Ceti (later named Mira) pulsated in a cycle taking 11 months; the star had previously been described as a nova by David Fabricius in 1596. This discovery, combined with supernovae observed in 1572 and 1604, proved that the starry sky was not eternally invariable as Aristotle and other ancient philosophers had taught. In this way, the discovery of variable stars contributed to the astronomical revolution of the sixteenth and early seventeenth centuries.
+The second variable star to be described was the eclipsing variable Algol, by Geminiano Montanari in 1669; John Goodricke gave the correct explanation of its variability in 1784. Chi Cygni was identified in 1686 by G. Kirch, then R Hydrae in 1704 by G. D. Maraldi. Eta Aquilae, the first Cepheid variable to be discovered, was spotted by Edward Pigott in 1784. By 1786, ten variable stars were known. John Goodricke himself discovered Delta Cephei and Beta Lyrae. Since 1850, the number of known variable stars has increased rapidly, especially when it became possible to identify variable stars by means of photography. In 1885, Harvard College Observatory began a program of repeatedly photographing the entire sky for the purpose of discovering variable stars.
+In 1912 Henrietta Swan Leavitt discovered a relationship between the brightness of Cepheid variables and their periodicity. Edwin Hubble used this result in 1924 when he discovered a Cepheid variable in what was then termed the Andromeda Nebula. The resulting distance estimate demonstrated that this nebula was an "island universe", located well outside the Milky Way galaxy. This ended the Great Debate about the nature of spiral nebulae. In 1930, astrophysicist Cecilia Payne published the book The Stars of High Luminosity, in which she made numerous observations of variable stars, paying particular attention to Cepheid variables. Her analyses and observations of variable stars, carried out with her husband, Sergei Gaposchkin, laid the basis for all subsequent work on the subject.
+The 2008 edition of the General Catalogue of Variable Stars lists more than 46,000 variable stars in the Milky Way, as well as 10,000 in other galaxies, and over 10,000 'suspected' variables. Amateur astronomers have long played a significant role in variable star observation, with perhaps the oldest such organization being the Variable Star Section of the British Astronomical Association, founded in 1890.
+
+
+== Detecting variability ==
+The most common kinds of variability involve changes in brightness, but other types of variability also occur, in particular changes in the spectrum and polarization. By combining light curve data with observed spectral changes, astronomers are often able to explain why a particular star is variable.
+
+
+=== Variable star observations ===
+
+Variable stars are generally analysed using photometry, spectrophotometry, spectroscopy, and polarimetry. Measurements of their changes in brightness can be plotted to produce light curves. For regular variables, the period of variation and its amplitude can be very well established; for many variable stars, though, these quantities may vary slowly over time, or even from one period to the next. Peak brightnesses in the light curve are known as maxima, while troughs are known as minima.
+Amateur astronomers can do useful scientific study of variable stars by visually comparing the star with other stars within the same telescopic field of view of which the magnitudes are known and constant. By estimating the variable's magnitude and noting the time of observation a visual lightcurve can be constructed. Organizations like the American Association of Variable Star Observers and the British Astronomical Association collect such observations from participants around the world and share the data with the scientific community.
+From the light curve the following data are derived:
+
+are the brightness variations periodical, semiperiodical, irregular, or unique?
+what is the period of the brightness fluctuations?
+what is the shape of the light curve (symmetrical or not, angular or smoothly varying, does each cycle have only one or more than one minima, etcetera)?
+From the spectrum the following data are derived:
+
+what kind of star is it: what is its temperature, its luminosity class (dwarf star, giant star, supergiant, etc.)?
+is it a single star, or a binary? (the combined spectrum of a binary star may show elements from the spectra of each of the member stars)
+does the spectrum change with time? (for example, the star may turn hotter and cooler periodically)
+changes in brightness may depend strongly on the part of the spectrum that is observed (for example, large variations in visible light but hardly any changes in the infrared)
+if the wavelengths of spectral lines are shifted this points to movements (for example, a periodical swelling and shrinking of the star, or its rotation, or an expanding gas shell) (Doppler effect)
+strong magnetic fields on the star betray themselves in the spectrum
+abnormal emission or absorption lines may be indication of a hot stellar atmosphere, or gas clouds surrounding the star.
+In very few cases it is possible to make pictures of a stellar disk. These may show darker spots on its surface. One such technique is Doppler imaging, which can use the shift of spectral lines to measure velocity, then use it to determine the location of a spot across the surface of a rapidly rotating star.
+
+
+=== Interpretation of observations ===
+Combining light curves with spectral data often gives a clue as to the changes that occur in a variable star. For example, evidence for a pulsating star is found in its shifting spectrum because its surface periodically moves toward and away from us, with the same frequency as its changing brightness.
+About two-thirds of all variable stars appear to be pulsating. In the 1930s astronomer Arthur Stanley Eddington showed that the mathematical equations that describe the interior of a star may lead to instabilities that cause a star to pulsate. This mechanism was known as the Eddington valve, but is now more commonly called the Kappa–mechanism. The most common type of instability is related to oscillations in the degree of ionization in outer, convective layers of the star. Most stars have two layers where hydrogen and helium ionization occurs, respectively. These are referred to as partial ionization zones. The location of these layers determine the pulsational properties of the star. The pulsation of cepheids is known to be driven by oscillations in the ionization of helium (from He++ to He+ and back to He++).
+When the star is in the swelling phase, the partial ionization zone expands, causing it to cool. Because of the decreasing temperature the degree of ionization also decreases. This makes the plasma more transparent, and thus makes it easier for the star to radiate its energy. This in turn makes the star start to contract. As the gas is thereby compressed, it is heated and the degree of ionization again increases. This makes the gas more opaque, and radiation temporarily becomes captured in the gas. This heats the gas further, leading it to expand once again. Thus a cycle of expansion and compression (swelling and shrinking) is maintained.
+In many cases, a predictive mathematical model can be constructed of the variable behavior. Typically an assumption is made of a constant period of variability. The model can then be used to construct an O-C diagram, which is a plot of the observed (O) behavior minus the computed (C) behavior model over a period of time, or folded over multiple cycles. If the model produces a good fit, this diagram can be used to detect a change in period, apsidal rotation, the effect of the Applegate mechanism, random period changes, or the interaction of a binary system with a third body.
+
+
+== Nomenclature ==
+
+In a given constellation, the first variable stars discovered were designated with letters R through Z, e.g. R Andromedae. This system of nomenclature was developed by Friedrich W. Argelander, who gave the first previously unnamed variable in a constellation the letter R, the first letter not used by Bayer. Letters RR through RZ, SS through SZ, up to ZZ are used for the next discoveries, e.g. RR Lyrae. Later discoveries used letters AA through AZ, BB through BZ, and up to QQ through QZ (with J omitted to avoid confusion with I). Once those 334 combinations are exhausted, variables are numbered in order of discovery, starting with the prefixed V335 onwards.
+
+
+== Classification ==
+Variable stars may be either intrinsic or extrinsic.
+
+Intrinsic variable stars
+The variability is being caused by changes in the physical properties of the stars themselves. This category can be divided into four subgroups:
+Pulsating variables, stars whose radius alternately expands and contracts as part of their natural evolutionary aging processes.
+Eruptive variables, stars who experience eruptions on their surfaces like flares or mass ejections.
+Cataclysmic or explosive variables, stars that undergo a cataclysmic change in their properties like novae and supernovae.
+X-ray variables, close binary systems with a hot mass-accreting compact object.
+
+Extrinsic variable stars
+The variability is caused by external viewing perspectives like rotation or eclipses. There are two subgroups:
+Eclipsing binaries, double stars or planetary systems where, as seen from Earth's vantage point the stars occasionally eclipse one another as they orbit, or the planet eclipses its star.
+Rotating variables, stars whose variability is caused by phenomena related to their rotation. Examples are stars with extreme "sunspots" which affect the apparent brightness or stars that have fast rotation speeds causing them to become ellipsoidal in shape.
+
+These subgroups themselves are further divided into specific types of variable stars that are usually named after their prototype. For example, dwarf novae are designated U Gem stars after the first recognized star in the class, U Geminorum.
+The population of stars in the Milky Way galaxy is divided into two groups based on their age, chemical abundances, and motion through the galaxy. Population I stars are limited to the flat plane of the galactic system, known as thin disk stars. These originate in open clusters and often display high abundances of elements produced by stellar fusion processes – their metallicity. The Population II stars are more often distributed in the thick disk, the galactic halo, globular clusters, and galactic bulge. These are much older stars that show lower abundances of elements more massive than helium. In some cases the classification system of variable stars and their behavior is determined by their population membership.
+With the influx of light curve data originating from CCD large sky surveys, such as the Gaia space telescope, variable star classification has shifted from manual classification to machine learning methods. A popular method is random forest classification. Different parameters intrinsic to the variable star class are input data for classification, such as color, magnitude, and period. A Fourier fit is often applied to the light curve, and additional parameters such as amplitude ratios and phase differences between terms are also used. Other existing methods such as neural networks, which have the advantage of directly being able to inspect the light curve data, and Density-Based Spatial Clustering of Applications with Noise (DBSCAN), have been used to successfully classify variable stars.
+
+
+== Intrinsic variable stars ==
+
+Examples of types within these divisions are given below.
+
+
+=== Pulsating variable stars ===
+
+Pulsating stars swell and shrink, affecting their brightness and spectrum. Pulsations are generally split into: radial, where the entire star expands and shrinks as a whole; and non-radial, where one part of the star expands while another part shrinks.
+Depending on the type of pulsation and its location within the star, there is a natural or fundamental frequency which determines the period of the star. Stars may also pulsate in a harmonic or overtone which is a higher frequency, corresponding to a shorter period. Pulsating variable stars sometimes have a single well-defined period, but often they pulsate simultaneously with multiple frequencies and complex analysis is required to determine the separate interfering periods. In some cases, the pulsations do not have a defined frequency, causing a random variation, referred to as stochastic. The study of stellar interiors using their pulsations is known as asteroseismology.
+The expansion phase of a pulsation is caused by the blocking of the internal energy flow by material with a high opacity, but this must occur at a particular depth of the star to create visible pulsations. If the expansion occurs below a convective zone then no variation will be visible at the surface. If the expansion occurs too close to the surface the restoring force will be too weak to create a pulsation. The restoring force to create the contraction phase of a pulsation can be pressure if the pulsation occurs in a non-degenerate layer deep inside a star, and this is called an acoustic or pressure mode of pulsation, abbreviated to p-mode. In other cases, the restoring force is gravity and this is called a g-mode. Pulsating variable stars typically pulsate in only one of these modes.
+
+
+==== Cepheids and cepheid-like variables ====
+
+The Hertzsprung–Russell diagram is a scatter plot of stars showing the relationship between the absolute magnitude and the spectral class (luminosity vs. effective temperature). Most ordinary stars like the Sun occupy a band called the main sequence that runs from lower right to upper left on this diagram. Several kinds of these pulsating stars occupy a box called the Cepheid instability strip that crosses the main sequence in the region of A- and F-class stars, then proceeds vertically and to the right on the H–R diagram, finally crossing the track for supergiants. These stars swell and shrink very regularly, caused by the star's own mass resonance, generally by the fundamental frequency. The Eddington valve mechanism for pulsating variables is believed to account for cepheid-like pulsations.
+The pulsational instability of Cepheid variables correlates with variations in the spectral class, effective temperature, and surface radial velocity of the star. Each of the subgroups on the instability strip has a fixed relationship between period and absolute magnitude, as well as a relation between period and mean density of the star. The period-luminosity relationship makes these high luminosity Cepheids very useful for determining distances to galaxies within the Local Group and beyond.
+The Cepheids are named only for Delta Cephei, while a completely separate class of variables is named after Beta Cephei.
+
+Classical Cepheid variables
+
+Type I cepheids, also called Classical Cepheids or Delta Cephei variables, are evolved population I (young, massive, and luminous) yellow supergiants which undergo pulsations with very regular periods on the range of 1–100 days. They are relatively rare stars with hydrogen-burning progenitors that had 4 to 20 solar masses and temperatures above a B5 class. Their radial pulsations are driven by the high opacity of ionized helium and hydrogen in their outer layers. Because of their high luminosity, Classical Cepheids can be viewed in nearby galaxies outside the Milky Way. On September 10, 1784, Edward Pigott detected the variability of Eta Aquilae, the first known representative of the class of Cepheid variables. However, the namesake for classical Cepheids is the star Delta Cephei, discovered to be variable by John Goodricke a few months later.
+
+Type II Cepheids
+
+Type II Cepheids (historically termed W Virginis stars) have extremely regular light pulsations and a luminosity relation much like the δ Cephei variables, so initially they were confused with the latter category. Type II Cepheids are  uncommon stars that belong to the older Population II category, compared to the younger type I Cepheids. The Type II have somewhat lower metallicity, much lower mass of around 0.5–0.6 M☉, somewhat lower luminosity, and a slightly offset period versus luminosity relationship, so it is always important to know which type of star is being observed. They can be identified based on the shape of their light curve. Type II Cepheids are further sub-divided based on their pulsation periods as BL Her stars for periods of 1 to 4 days, W Vir stars for 4 to 20 days, and RV Tau stars for longer periods of up to 100 days. These three subtypes correspond to consecutive states of stellar evolution after the star has exhausted the helium at its core.
+
+RV Tauri variables
+
+These are yellow supergiant stars (actually low mass post-AGB stars at the most luminous stage of their lives) which have alternating deep and shallow minima. This double-peaked variation typically has periods of 30–150 days and amplitudes of up to 3 magnitudes. Superimposed on this variation, there may be long-term variations over periods of several years. Their spectra are of type F or G at maximum light and type K or M at minimum brightness. They lie near the instability strip, forming a higher luminosity extension of the type II Cepheids, while being cooler than type I Cepheids. Their pulsations are caused by the same basic mechanisms related to helium opacity, but they are at a very different stage of their lives.
+
+RR Lyrae variables
+
+These relatively common variable stars are somewhat similar to Cepheids, but are not as luminous and have shorter periods. They are older than type I Cepheids, belonging to Population II, but of lower mass than type II Cepheids. Due to their common occurrence in globular clusters, they are occasionally referred to as cluster-type Cepheids. They also have a well established period-luminosity relationship in the infrared K-band, and so are also useful as distance indicators. As standard candles, they can be detected out to 1 Mpc, which lies within the local group of galaxies. These are low mass giants having an A- or F-type spectrum, and are currently on the horizontal branch. They are radially pulsating and vary by about 0.2–2 in visual magnitude (20% to over 500% change in luminosity) over a period of several hours to a day or more. The category is divided into Bailey subtypes 'a', 'b', and 'c', depending on the shape of the light curve.
+
+Delta Scuti variables
+
+Delta Scuti (δ Sct) variables are similar to Cepheids but much fainter and with much shorter periods. They were once known as Dwarf Cepheids. Delta Scuti variables display both radial and non-radial pulsations modes. They often show many superimposed periods, which combine to form a complex light curve. Their spectral type is usually late A- and early F-type stars, and they lie on or near the main sequence on the H-R diagram. When metallicity is solar, they have masses ranging from about 1.6 times the Sun for slower periods up to 2.4 at higher pulsation rates. With rotation rates of 40 to 250 km/s, Delta Scuti stars show small amplitudes of 0.01–0.03 magnitude with multiple pulsation modes, including many non-radial. For slower rotation rates under 30 km/s, the amplitude is 0.20–0.30 magnitude or more, and they are often radial pulsators. Stars with Delta Scuti-like variations and an amplitude greater than 0.3 magnitude are known as AI Vel-type variables, after their prototype, AI Velorum.
+
+SX Phoenicis variables
+
+These stars are metal-poor, population II analogues of δ Scuti variables and are mainly found in globular clusters. They exhibit fluctuations in their brightness in the order of 0.7 magnitude (about 100% change in luminosity) or so with short periods of 1 to 3 hours. They have masses in the range of 1.0–1.3 solar. Within a cluster, they are referred to as pulsating blue stragglers, presumably being formed from the merger of two ordinary stars in a close binary system. SX Phe variables are slow rotators and most pulsation modes are radial.
+
+Rapidly oscillating Ap variables
+
+The roAp variables are rapidly rotating, strongly magnetic, chemically peculiar stars of spectral type A or occasionally F0, known as Ap stars. Their pulsatation behavior is much like those of Delta Scuti or Gamma Doradus variables found on the main sequence. They have extremely rapid variations with periods of a few minutes and amplitudes of a few thousandths of a magnitude. Unlike Delta Scuti stars, roAp stars pulsate with either a single high frequency or with multiple high frequencies that are closely spaced. However, the isolated high frequencies of roAp stars have also been observed in stars that are not chemically peculiar, and some Delta Scuti stars show pulsation in the roAp range. Thus the distinction is unclear.
+
+
+==== Long period variables ====
+
+The long period variables are cool evolved stars that pulsate with periods in the range of weeks to several years. All giant stars cooler than spectral type K5 are variable because of radial pulsations. Many variables of this class show longer period secondary variations that run for several hundred to several thousand days. This may change the brightness by up to several magnitudes although it is often much smaller, with the more rapid primary variations superimposed. The reasons for this type of secondary variation are not clearly understood, being variously ascribed to pulsations, binarity, and stellar rotation.
+
+Mira variables
+
+Mira variables are aging red giant stars nearing the end of their active life on asymptotic giant branch (AGB). They have radial pulsation periods that can range from under 100 to over 2,000 days, although most are in the 200 to 450 day range. They fade and brighten over a range of 8 magnitudes, a thousand fold change in luminosity. Mira itself, also known as Omicron Ceti (ο Cet), varies in brightness from almost 2nd magnitude to as faint as 10th magnitude with a period of roughly 332 days. The very large visual amplitudes are mainly due to the shifting of energy output between visual and infra-red as the temperature of the star changes. In a few cases, Mira variables show dramatic period changes over a period of decades, thought to be related to the thermal pulsing cycle of the most advanced AGB stars.
+
+Semiregular variables
+
+These are long-period variables with shorter periods and smaller amplitudes than Miras, and their light curves are less regular. Types SRa and SRb are red giants, with the latter type displaying a less regular periodicity. The visual amplitude is typically less than 2.5 magnitudes. They are believed to be precursors of Mira variables, but are longer lived and thus more common. The types SRc and SRd consist mostly of red supergiants and yellow supergiants, respectively.
+Semiregular variables may show a definite period on occasion, but more often show less well-defined variations that can sometimes be resolved into multiple periods. A well-known example of a semiregular variable is Betelgeuse, which varies in brightness by half a magnitude with overlapping periods of 1.10 and 5.75 years. At least some of the semi-regular variables are very closely related to Mira variables, possibly the only difference being pulsating in a different harmonic.
+
+Slow irregular variables
+
+These are red giants or supergiants with little or no detectable periodicity. Some are poorly studied semiregular variables, often with multiple periods, but others may simply be chaotic. These variables are classified as type Lb or Lc, depending on whether they are cool giants or cool supergiants, respectively. A prominent example of a slow irregular variable is Antares, which is classified as an Lc type with a brightness that ranges from 0.88 to 1.16 in visual magnitude.
+
+
+==== Beta Cephei variables ====
+
+Beta Cephei (β Cep) variables (sometimes called Beta Canis Majoris variables, especially in Europe) undergo short period pulsations in the order of 0.1–0.6 days with an amplitude of 0.01–0.3 magnitudes (1% to 30% change in luminosity). They are at their brightest during minimum contraction. Many stars of this kind exhibits multiple pulsation periods.
+
+
+==== Slowly pulsating B-type stars ====
+
+Slowly pulsating B (SPB) stars are hot main-sequence stars slightly less luminous than the Beta Cephei stars, with longer periods and larger amplitudes. They have masses in the range of 2.5–7 M☉, and non-radial pulsation periods from 0.5 to 3 days. Many are rapid rotators, which can cause them to appear cooler and, in some cases, lie outside instability strip.
+
+
+==== Very rapidly pulsating hot (subdwarf B) stars ====
+
+The prototype of this rare class is V361 Hydrae, a 15th magnitude subdwarf B star. They pulsate with periods of a few minutes and may simultaneous pulsate with multiple periods. They have amplitudes of a few hundredths of a magnitude and are given the GCVS acronym RPHS. They are p-mode pulsators.
+
+
+==== PV Telescopii variables ====
+
+Stars in this rare class are chemically peculiar type B (Bp) supergiants with a period of 0.1–1 day and an amplitude of 0.1 magnitude on average. Their spectra are peculiar by having weak hydrogen but extra strong carbon and helium lines, making this a type of extreme helium star. The prototype for this category of variable is PV Telescopii, which undergoes small but complex luminosity variations and radial velocity fluctuations.
+
+
+==== Alpha Cygni variables ====
+
+Alpha Cygni (α Cyg) variables are nonradially pulsating supergiants of spectral classes B to A. Their periods range from several days to several weeks, and their amplitudes of variation are typically of the order of 0.1 magnitudes. The light changes, which often seem irregular, may be caused by the superposition of many oscillations with close periods. The progenitors of these stars have at least 14 solar masses. At least for the brighter members, these variables appear to have returned to the blue supergiant region of the H–R diagram after losing considerable mass as red supergiants. Deneb, in the constellation of Cygnus is the prototype of this class.
+
+
+==== Gamma Doradus variables ====
+
+Gamma Doradus (γ Dor) variables are non-radially pulsating main-sequence stars of spectral classes F to late A, with luminosity classes of IV-V or V. Their periods are 0.3 to 3 days and their amplitudes typically of the order of 0.1 magnitudes or less. This variable type occupies a narrow range near the low-luminosity part of the instability strip, which partially overlaps the range of Delta Scuti variables. The physical properties of Gamma Doradus variables are similar to long-period Delta Scuti variables. Their slow period and low amplitudes makes Gamma Doradus variables difficult to discover from the ground; most have been spotted by space missions.
+
+
+==== Solar-like oscillations ====
+
+The Sun oscillates with very low amplitude in a large number of modes having periods around 5 minutes. The study of these oscillations is known as helioseismology. Oscillations in the Sun are driven stochastically by convection in its outer layers. The term solar-like oscillations is used to describe oscillations in other stars that are excited in the same way and the study of these oscillations is one of the main areas of active research in the field of asteroseismology. Stars with surface convection layers that can produce solar-like oscillations are generally cooler than the right edge of the instability strip, which includes the lower main sequence along with subgiants and red giants. However, solar-like oscillations can also be excited by stellar pulsations, such as by Cepheids.
+
+
+==== Fast yellow pulsating supergiants ====
+A fast yellow pulsating supergiant (FYPS) is a luminous yellow supergiant with pulsations shorter than a day.  They are thought to have evolved beyond a red supergiant phase, but the mechanism for the pulsations is unknown.  The class was named in 2020 through analysis of TESS observations.
+
+
+==== Pulsating white dwarfs ====
+
+These non-radially pulsating stars have short periods of hundreds to thousands of seconds with tiny fluctuations of 0.001 to 0.2 magnitudes. Known types of pulsating white dwarf (or pre-white dwarf) include the DAV, or ZZ Ceti, stars, with hydrogen-dominated atmospheres and the spectral type DA; DBV, or V777 Her, stars, with helium-dominated atmospheres and the spectral type DB; and GW Vir stars, with atmospheres dominated by helium, carbon, and oxygen. GW Vir stars may be subdivided into DOV and PNNV stars.
+
+
+==== BLAP variables ====
+
+A Blue Large-Amplitude Pulsator (BLAP) is a very rare class of radially-pulsating star characterized by changes of 0.2 to 0.4 magnitudes with typical periods of 7 to 75 minutes. They are thought to be the small helium core of a red giant that has had the remainder of its atmosphere stripped away by a binary companion. It has been hypothesized that they are the long-sought surviving companions of Type Ia supernovae. Alternatively, they may form from the merger of two low-mass white dwarfs. BLAP are effectively pre-white dwarf bodies with an effective temperature between 20,000 and 35,000 K. Most of these objects are in the medium or late stage of helium fusion.
+
+
+=== Eruptive variable stars ===
+Eruptive variable stars show unpredictable brightness variations caused by material being lost from the star, or in some cases being accreted to it. Despite the name, these are distinguished from cataclysmic variables because the eruptions are due to non-thermonuclear processes.
+
+
+==== Young stellar object ====
+
+Protostars are young objects that have not yet completed the process of contraction from a gas nebula to a veritable star. During this phase, the object is deeply embedded in an optically thick envelope, so that the variability induced by the rapid accretion process is primarily visible in the infrared. Once the object has expelled most of this nascent cocoon of gas and dust, it stabilizes in mass and becomes a pre–main-sequence star that is contracting toward the main sequence. The luminosity of this object is derived from gravitational contraction. These objects often exhibit irregular brightness variations in association with strong magnetic fields.
+
+Orion variables
+
+Orion variables are young, hot pre–main-sequence stars usually embedded in nebulosity. They have irregular periods with amplitudes of several magnitudes. These irregular variables are so-named because many were first located in the Orion Nebula. A well-known subtype of Orion variables are the T Tauri variables. Variability of T Tauri stars is due to spots on the stellar surface and gas-dust clumps, orbiting in the circumstellar disks. This class of variables are subdivided into classical and weak-line T Tauri. The former display a typical emission line spectra, while the latter do not show strong emission lines and lack a strong stellar wind or accretion disk. The third class, Herbig Ae/Be stars, are the more massive form. The fourth are the RW Aurigae irregular variables that have similar properties but lack nearby nebulosity. These last irregular variables do display emission lines, providing evidence for circumstellar shells.
+
+Herbig Ae/Be stars
+
+Variability of more massive (2–8 solar mass) Herbig Ae/Be stars is thought to be due to gas-dust clumps, orbiting in the circumstellar disks. They can also occur due to cold spots on the photosphere or pulsations when crossing the instability strip. The optical variations are typically up to a magnitude in amplitude and occur on time scales of days to weeks. A particularly extreme example is UX Orionis, which is the prototype of "UXORs"; these protostars vary by 2 to 3 magnitudes.
+
+FU Orionis variables
+
+A small fraction of young stellar objects are eruptive. The two primary types are dubbed FUors and EXors, after their prototype stars, FU Orionis and EX Lupi. (There are also intermediate types and Fu Ori-like YSOs.) The two types differ in the amplitude and time scales of their outbursts. FUors reside in reflection nebulae and show sharp increases in their luminosity in the order of 5–6 magnitudes followed by a very slow decline. FU Orionis variables are of spectral type F or G and are possibly an evolutionary phase in the life of T Tauri stars. EXors exhibit flares like a FUor, but their duration is much shorter. They can exhibit brief  flashes up to 5 magnitudes. Its possible these are the next stage in evolution following the FUor phase.
+
+
+==== Giants and supergiants ====
+Large, more luminous stars with lower surface gravity lose their matter relatively easily. Mass loss rates are greater in higher luminosity stars, with the stellar wind being propelled by radiation pressure, and in cool, low mass giants, by radiation pressure on dust grains and by pulsations. For this reason variability due to eruptions and mass loss is more common among giants and supergiants.
+
+Luminous blue variables
+
+Also known as the S Doradus variables, luminous blue variables (LBV) are among the most luminous stars known. Examples include the hypergiants η Carinae and P Cygni. They have permanent high mass loss, but at intervals of years internal pulsations cause the star to exceed its Eddington limit and the mass loss increases significantly. Visual brightness increases although the overall luminosity is largely unchanged. Giant eruptions observed in a few LBVs do increase the luminosity, so much so that they have been tagged supernova impostors, and may be a different type of event.
+This category of variables are sub-divided into two classes. Classical LBVs have evolved from stars with at least 50 times the mass of the Sun. The high mass of these stars prevent them from becoming red supergiants. The second class are less luminous LBVs with initial masses in the range of around 25–40 M☉. These can become red supergiants and many may already have done so. A distinguishing feature of all LBVs is a higher luminosity to mass ratio compared to non-LBVs in the same region of the H-R diagram. They occupy a separate LBV/S Dor instability strip, which is distinct from the Cepheid instability strip.
+
+Yellow hypergiants
+
+These massive evolved stars are unstable due to their high luminosity and position above the instability strip, and they exhibit slow but sometimes large photometric and spectroscopic changes due to high mass loss and occasional larger eruptions, combined with secular variation on an observable timescale. One of the best studied examples is Rho Cassiopeiae.
+
+R Coronae Borealis variables
+
+While classed as eruptive variables, these stars do not undergo periodic increases in brightness. Instead they spend most of their time undergoing small amplitude, semi-regular changes in luminosity, probably due to pulsations. At irregular intervals, they suddenly decline by 1–9 magnitudes (2.5 to 4000 times dimmer) before recovering to their initial brightness over months to years. They are carbon dust-producing stars belonging to a category of carbon-rich, hydrogen deficient supergiants. R Coronae Borealis (R CrB) is the prototype star. This dust production is the cause of the large declines in brightness. Two scenarios have been proposed for the formation of an R CrB star: either the merger of a carbon-oxygen white dwarf with a helium white dwarf, or the central stellar remnant from a planetary nebula undergoes helium flash, becoming a supergiant.
+DY Persei variables are considered a subclass of cool R CrB variables. They are carbon-rich stars on the asymptotic giant branch that display both pulsational and irregular patterns of variability. Their dust declines are shallower and more symmetric than typical R CrB variables. This  may indicate the two types have different dust production methods.
+
+
+==== Wolf–Rayet variables ====
+
+Classic population I Wolf–Rayet (WR) stars are massive hot stars that sometimes show variability, probably due to several different causes including binary interactions and rotating gas clumps around the star. While evolving they underwent intense mass loss, leaving behind a hot helium core with little hydrogen in the outer layers. They exhibit broad emission line spectra with helium, nitrogen, carbon and oxygen lines. Variations in some WR stars appear to be stochastic while others show multiple periods.
+
+
+==== Gamma Cassiopeiae variables ====
+
+Gamma Cassiopeiae (γ Cas) variables are non-supergiant fast-rotating B class emission line-type stars that fluctuate irregularly by up to 1.5 magnitudes (4 fold change in luminosity). This is caused by the ejection of matter at their equatorial regions due to the rapid rotational velocity. Gamma Cas variables are a source of bright X-ray emission, which may be due to gas accretion onto a white dwarf companion.
+
+
+==== Flare stars ====
+
+Flare stars are defined by the observation of a flare event, which is a brief but dramatic increase in stellar luminosity. In main-sequence stars major eruptive variability is uncommon.  Flare activity is more likely among young stars that are spinning rapidly. The frequency of flares is more common and their prominence is more apparent among UV Ceti variables, which are very faint main-sequence stars with stronger magnetic fields. They increase in brightness by several magnitudes in just a few seconds, and then fade back to normal brightness in half an hour or less. Several nearby red dwarfs are flare stars, including Proxima Centauri and Wolf 359.
+A superflare is a class of energetic, short duration flare that has been observed on Sun-like stars. It has a typical energy of at least ~1033 erg,  which is greater than the strongest observed solar flare: the 1859 Carrington Event with an estimated energy of ~5×1032 erg. The Kepler space telescope light curves showed over 2,000 superflares on 250 G-type dwarfs. The occurrence rate is higher on younger, faster rotating stars.
+
+
+==== RS Canum Venaticorum variables ====
+
+These are detached binary systems with at least one of the components having a highly active chromosphere, including huge sunspots and flares, believed to be enhanced by the close companion. The former is usually an evolved star, while the latter is a lower mass star, either main-sequence or a subdwarf. Tidal forces between the stars has locked their rotation period to the orbital period, giving them a high rotation rate of a few days. They display emission lines from the chromosphere and X-ray output from the corona. Variability scales ranges from days, close to the orbital period and sometimes also with eclipses, to years as sunspot activity varies.
+
+
+=== Cataclysmic or explosive variable stars ===
+
+These variables display outbursts from thermonuclear bursts at the surface or near the core. The category also includes nova-like objects that display outbursts like a nova from a rapid release of energy, or because their spectrum resembles that of a nova at minimum light.
+
+
+==== Supernovae ====
+
+Supernovae are the most dramatic type of cataclysmic variable, being some of the most energetic events in the universe. A supernova can briefly emit as much energy as an entire galaxy, brightening by more than 20 magnitudes (over one hundred million times brighter). The supernova explosion is caused by a white dwarf or a star core reaching a certain mass/density limit, the Chandrasekhar limit, causing the object to collapse in a fraction of a second. This collapse "bounces" and causes the star to explode and emit this enormous energy quantity. The outer layers of these stars are blown away at speeds of many thousands of kilometers per second.
+The expelled matter may form nebulae called supernova remnants. A well-known example of such a nebula is the Crab Nebula, left over from a supernova that was observed in China and elsewhere in 1054. The progenitor object may either disintegrate completely in the explosion, or, in the case of a massive star, the core can become a neutron star (generally a pulsar) or a black hole.
+Supernovae can result from the death of an extremely massive star, many times heavier than the Sun. At the end of the life of this massive star, a non-fusible iron core is formed from fusion ashes. The mass of this iron core is pushed towards the Chandrasekhar limit until it is surpassed and therefore collapses. One of the most studied supernovae of this type is SN 1987A in the Large Magellanic Cloud.
+A supernova may also result from mass transfer onto a white dwarf from a star companion in a double star system. The Chandrasekhar limit is surpassed from the infalling matter. The absolute luminosity of this latter type is related to properties of its light curve, so that these supernovae can be used to establish the distance to other galaxies.
+
+
+==== Luminous red nova ====
+
+Luminous red novae are stellar explosions caused by the merger of two stars. They are not related to classical novae. For a brief period prior to the merger event the two components share a common envelope, which is followed by a mass ejection event that expels the envelope. They have a characteristic red appearance and a lengthy plateau phase following the initial outburst. The luminosity of these transient events lies between those of novae and supernovae, and their evolution lasts from several weeks to months. The galactic rate of these events is 0.2 per year.
+
+
+==== Novae ====
+
+Classical novae are the result of dramatic explosions, but unlike supernovae these events do not result in the destruction of the progenitor star. They form in close binary systems, with one component being a white dwarf accreting matter from the other ordinary star component, and may recur over periods of decades to centuries or millennia. Novae ignite from the sudden onset of runaway thermonuclear fusion at the base of the accreted matter, which under certain high pressure conditions (degenerate matter) accelerates explosively. They are categorised by their speed class, which range from very fast to very slow, depending on the time for the nova to decrease by 2 or 3 visual magnitudes from peak brightness. Several naked eye novae have been recorded, V1500 Cygni being the brightest in the recent history, reaching 2nd magnitude in 1975.
+Recurrent novae are defined as having undergone more than one such event in recorded history. These tend to occur on higher mass white dwarfs and have smaller ejecta mass. M31N 2008-12a, a recurrent nova in the Andromeda Galaxy, erupts as often as every 12 months. It has an estimated mass close to the Chandrasekhar limit, and thus is a Type Ia supernova progenitor candidate.
+
+
+==== Dwarf novae ====
+
+Dwarf novae are double stars involving a white dwarf in which matter transfer between the component gives rise to regular outbursts. They are dimmer and repeat more often than "classical" novae. There are three types of dwarf nova:
+
+U Geminorum stars, which have outbursts lasting roughly 5–20 days followed by quiet periods of typically a few hundred days. During an outburst they brighten typically by 2–6 magnitudes. These stars are also known as SS Cygni variables after the variable in Cygnus which produces among the brightest and most frequent displays of this variable type.
+Z Camelopardalis stars, in which occasional plateaux of brightness called standstills are seen, part way between maximum and minimum brightness.
+SU Ursae Majoris stars, which undergo both frequent small outbursts, and rarer but larger superoutbursts. These binary systems usually have orbital periods of under 2.5 hours.
+
+
+==== Z Andromedae variables ====
+
+These symbiotic binary systems are composed of a red giant and a compact star (typically a white dwarf) enveloped in a cloud of gas and dust. They undergo nova-like outbursts with amplitudes of 1–3 magnitudes, and are caused by accretion rates greater than is needed to maintain stable fusion. The prototype for this class is Z Andromedae.
+
+
+==== AM CVn variables ====
+
+AM CVn variables are symbiotic binaries where a white dwarf is accreting helium-rich material from either another white dwarf, a helium star, or an evolved main-sequence star. They can undergo complex variations, or at times no variations, with ultrashort periods. The orbital periods of these systems are in the range of 5–65 minutes, with those between 22–44 minutes showing outburst behavior that increases the brightness by 3–4 magnitudes. The last is due to instabilities in the accretion disk.
+
+
+=== Variable X-ray sources ===
+These optically variable binary systems are sources of intense X-ray emission that do not belong to one of the other variable star categories. One of the components is an accreting compact object: either a white dwarf, neutron star, or stellar mass black hole. A notable example of such a variable X-ray source is Cygnus X-1.
+
+
+==== DQ Herculis variables ====
+
+DQ Herculis systems are interacting binaries in which a low-mass star transfers mass to a highly magnetic white dwarf. The white dwarf spin period is significantly shorter than the binary orbital period and can sometimes be detected as a photometric periodicity. An accretion disk usually forms around the white dwarf, but its innermost regions are magnetically truncated by the white dwarf. Once captured by the white dwarf's magnetic field, the material from the inner disk travels along the magnetic field lines until it accretes. In extreme cases, the white dwarf's magnetism prevents the formation of an accretion disk.
+
+
+==== AM Herculis variables ====
+
+In these cataclysmic variables, the white dwarf's magnetic field is so strong that it synchronizes the white dwarf's spin period with the binary orbital period. Instead of forming an accretion disk, the accretion flow is channeled along the white dwarf's magnetic field lines until it impacts the white dwarf near a magnetic pole. Cyclotron radiation beamed from the accretion region can cause orbital variations of several magnitudes. BY Cam-type systems are known as asynchronous polars due to a slight  (1–2%) difference between the rotation period and the orbital period. This asynchronity is believed to be caused by flare activity on the accreting white dwarf.
+
+
+==== X-ray binaries ====
+
+High mass X-ray binaries consist of a Be star or a supergiant in a relatively close orbit with a neutron star companion. Mass is being transferred to the accreting compact object from the donor star, which results in X-ray emission. In the case of a Be star, a gaseous disk orbiting the star at the equator is responsible for the optical variability, while the interaction of the companion is truncating the disk.
+
+
+== Extrinsic variable stars ==
+There are two main groups of extrinsic variables: rotating stars and eclipsing stars.
+
+
+=== Rotating variable stars ===
+Stars with sizeable sunspots may show significant variations in brightness as they rotate, and brighter areas of the surface are brought into view. Bright spots also occur at the magnetic poles of magnetic stars. Stars with ellipsoidal shapes may also show changes in brightness as they present varying areas of their surfaces to the observer.
+
+
+==== Non-spherical stars ====
+Rotating stars can vary in brightness due to their shape.
+
+Ellipsoidal variables
+
+These are very close binaries, the components of which are non-spherical due to their tidal interaction. As the stars rotate the area of their surface presented towards the observer changes and this in turn affects their brightness as seen from Earth. In 1920, Pi5 Orionis became the first system where this effect was clearly detected. The light curves of these systems are often quasi-sinusoidal in shape. A comparison with the radial velocity curve will often suffice to determine if the system is ellipsoidal. A further clue to an ellipsoidal variable is a rounding of the light curve at maximum. The reflection-effect, where each component illuminates the facing hemisphere of the nearby companion, is a further complication to orbit and shape analysis.
+
+
+==== Stellar spots ====
+
+For a magnetically active star, the surface  is not uniformly bright, but has darker and brighter areas (like the sun's solar spots). The star's chromosphere too may vary in brightness. As the star rotates, brightness variations of a few tenths of magnitudes are observed.
+
+FK Comae Berenices variables
+
+These stars rotate extremely rapidly for an evolved star (~100 km/s at the equator); hence they are ellipsoidal in shape. They are (apparently) single giant stars with spectral types G and K and show strong chromospheric emission lines. Examples of this rare class are FK Com, V1794 Cygni and YY Mensae. A possible explanation for the rapid rotation of FK Comae stars is that they are the result of the merger of a (contact) binary.
+
+BY Draconis variable stars
+
+BY Draconis stars are a common type of variable with spectral class F, G, K or M that vary by less than 0.5 magnitudes (70% change in luminosity) with periods of a few days. The stellar magnetic field creates an inhomogeneous pattern of dark star spots and bright faculae across the surface, which are carried into and out of the line of sight by the star's rotation. These stars are typically young and rapidly rotating; they show strong emission lines in their spectrum. As the star ages, the interaction of the magnetic field with the stellar wind drags down the rotation rate, lowering the activity level.
+Many stars in the spectral range of F to M-class, including the Sun, display various levels of surface activity that is driven by their magnetic dynamo. The activity can be concentrated in latitude ranges and the amplitude can vary over time based on one or more stellar cycles. For example, the Sun has a single activity cycle lasting about 11 years, with the Sun turning slightly more blue during peak activity. A long period of chromospheric inactivity on an otherwise active star is termed a Maunder minimum. This rare event happened to the Sun during the 17th century, but, as of 2012, has not been definitely identified on another star.
+
+
+==== Magnetic fields ====
+These variables have a magnetic field but lack significant chromospheric activity.
+
+Alpha2 Canum Venaticorum variables
+
+Alpha2 Canum Venaticorum (α2 CVn or ACV) variables are magnetic chemically peculiar stars of spectral class B0–F0 that show fluctuations of 0.01 to 0.1 magnitudes (1% to 10%) due to differences of elemental abundances as inhomogeneously distributed across the stellar surface. I.e. they have "chemical spots". They also display spectral and magnetic field variability as they slowly rotate. The cause of the inhomogeneous energy distribution on these stars is thought to be enhanced line blanketing as chemical spectral lines are made more intense by the Zeeman effect. This results in added heating of some layers of the atmosphere as the UV flux is converted to the visual band through backwarming. This class of variable is named after the first Ap star to show rotationally-modulated photometric variability, Alpha2 Canum Venaticorum.
+
+SX Arietis variables
+
+These stars are high temperature analogs of α2 CVn variables, consisting of magnetic chemically peculiar Bp stars with effective temperatures above 10,000 K. They exhibit brightness fluctuations of some 0.1 magnitude caused by chemical spots, with a cyclic period matching the rotation rate.
+
+Optically variable pulsars
+
+Few pulsars have been detected in visible light. These neutron stars change in brightness as they rotate. Because of the rapid rotation, brightness variations are extremely fast, from milliseconds to a few seconds. The first and the best known example is the Crab Pulsar. The exact cause of this pulsed emission is unclear, but it may be related to synchrotron radiation of electrons in the outer magnetosphere.
+
+
+=== Eclipsing binaries ===
+
+Extrinsic variables have variations in their brightness, as seen by terrestrial observers, due to some external source. One of the most common reasons for this is the presence of a binary companion star, so that the two together form a binary star. When seen from certain angles, one star may eclipse the other, causing a reduction in brightness. One of the most famous eclipsing binaries, and the first to be discovered, is Algol, or Beta Persei (β Per).
+Detached, double-lined eclipsing binaries are a useful tool for testing the validity of stellar evolution models. By examining the spectral types of the components and their combined light curve, the masses and radii of both stars can be precisely determined. Under the assumption that both stars formed at the same time, the model can then be used to extrapolate their history and see if it matches the current radii of the components.
+
+
+==== Algol variables ====
+
+Algol variables undergo eclipses with one or two minima separated by periods of nearly constant light. The prototype of this class is Algol in the constellation Perseus. Most systems with Algol-type light curves are detached binaries. However, some definitions of Algol variables apply to semi-detached binary systems, where one of the components has filled its Roche lobe and is transferring mass to the companion star. These are  dubbed classical Algol systems, with Algol itself being one such semi-detached system.
+
+
+==== Double Periodic variables ====
+
+Double periodic variables (DPVs) are Algol-like, consisting of a semidetached binary system where the primary has at least seven times the mass of the Sun and the secondary, now with 1–3 times the mass of the Sun, is overflowing its Roche lobe. The primary component is orbited by a massive, optically-thick accretion disk. The system shows a long period of photometric variation that is about 35 times the orbital period. The smaller donor star is tidally locked to the orbital period, and this rapid rotation may be driving a magnetic dynamo. This in turn may be causing the longer period variation by modulating the mass transfer rate. An example of a DPV is V393 Scorpii.
+
+
+==== Beta Lyrae variables ====
+
+Beta Lyrae (β Lyr) variables are close eclipsing binaries, named after the prototype star Beta Lyrae, or Sheliak. The gravitational interaction of the components causes at least one member to form an ellipsoidal shape, resulting in a light curve that varies continually even outside the eclipse. In the Beta Lyrae system, one of the components is overflowing its Roche lobe, creating a mass exchange. This flow of material is adding features to the light curve. Many Beta Lyrae-type variables are also double periodic variables, including Beta Lyrae itself.
+
+
+==== W Serpentis variables ====
+W Serpentis is the prototype of a class of semi-detached binaries including a giant or supergiant transferring material to a massive more compact star. The latter star has an optically-thick accretion disk, and the mass transfer rate is higher than in Algol variables. They are characterised, and distinguished from the similar β Lyr systems, by strong UV emission from accretions hotspots on a disc of material. The light curve can be noisy and the orbital period is often variable.
+
+
+==== W Ursae Majoris variables ====
+
+The stars in the W UMa group of eclipsing variables show periods of less than a day. The components are so closely situated to each other that their surfaces are almost in contact with each other. They are termed over-contact eclipsing binaries, and they share a common envelope. As a result, the spectral type does not change during an orbit. Their orbit is circular and the components are in synchronous rotation with the orbital period.
+
+
+=== Planetary transits ===
+
+Stars with planets show brightness variations if their planets pass between Earth and the star. For the Sun, this occurs with the planets inferior to the Earth, namely Mercury and Venus. With exoplanets, these variations are much smaller than those seen with stellar companions, but are detectable using photometric observations with a sufficiently high signal-to-noise ratio. Examples include HD 209458, WASP-43, and all of the planets and planet candidates detected by the Kepler and TESS space-based missions.
+
+
+== See also ==
+Guest star
+Irregular variable
+List of transiting exoplanets
+List of variable stars
+
+
+== References ==
+
+
+== Further reading ==
+Eddington, A.S.; Plakidis, S. (1929). "Irregularities of Period of Long Period Variable Stars". Monthly Notices of the Royal Astronomical Society. 90 (1). London, UK: 65–71. doi:10.1093/mnras/90.1.65. Retrieved February 17, 2023.
+
+
+== External links ==
+The American Association of Variable Star Observers
+GCVS Variability Types
+Society for Popular Astronomy – Variable Star Section

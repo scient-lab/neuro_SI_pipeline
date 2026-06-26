@@ -1,0 +1,172 @@
+The observable universe is a spherical region of the universe consisting of all matter that can be observed from Earth; the electromagnetic radiation from these astronomical objects has had time to reach the Solar System and Earth since the beginning of the cosmological expansion. The radius of this region is about 14.26 gigaparsecs (46.5 billion light-years or 4.40×1026 m).
+The word observable in this sense does not refer to the capability of modern technology to detect light or other information from an object, or whether there is anything to be detected. It refers to the physical limit created by the speed of light itself. No signal can travel faster than light and the universe has only existed for about 14 billion years. Objects which emit light but which exist too far away for that light to have reached Earth are beyond the particle horizon, outside the observable universe. Every location in the universe has its own observable universe, which may or may not overlap with the one centered on Earth.
+According to calculations, the current comoving distance to particles from which the cosmic microwave background radiation (CMBR) was emitted, which represents the radius of the visible universe, is about 14.0 billion parsecs (about 45.7 billion light-years). The comoving distance to the edge of the observable universe is about 14.3 billion parsecs (about 46.6 billion light-years), about 2% larger. The radius of the observable universe is therefore estimated to be about 46.5 billion light-years. Using the critical density and the diameter of the observable universe, the total mass of ordinary matter in the universe can be calculated to be about 1.5×1053 kg. In November 2018, astronomers reported that extragalactic background light (EBL) amounted to 4×1084 photons.
+As the universe's expansion is accelerating, all currently observable objects, outside the local supercluster, will eventually appear to freeze in time, while emitting progressively redder and fainter light. For instance, objects with the current redshift z from 5 to 10 will only be observable up to an age of 4–6 billion years. In addition, light emitted by objects currently situated beyond a certain comoving distance (currently about 19 gigaparsecs (62 Gly)) will never reach Earth.
+
+
+== Overview ==
+
+The universe's size is unknown, and it may be infinite in extent. Some parts of the universe are too far away for the light emitted since the Big Bang to have had enough time to reach Earth or space-based instruments, and therefore lie outside the observable universe. In the future, light from distant galaxies will have had more time to travel, so one might expect that additional regions will become observable. Regions distant from observers (such as us) are expanding away faster than the speed of light, at rates estimated by Hubble's law. The expansion rate appears to be accelerating, which dark energy was proposed to explain.
+Assuming dark energy remains constant (an unchanging cosmological constant) so that the expansion rate of the universe continues to accelerate, there is a "future visibility limit" beyond which objects will never enter the observable universe at any time in the future because light emitted by objects outside that limit could never reach the Earth. Note that, because the Hubble parameter is decreasing with time, there can be cases where a galaxy that is receding from Earth only slightly faster than light emits a signal that eventually reaches Earth. This future visibility limit is calculated at a comoving distance of 19 billion parsecs (62 billion light-years), assuming the universe will keep expanding forever, which implies the number of galaxies that can ever be theoretically observed in the infinite future is only larger than the number currently observable by a factor of 2.36 (ignoring redshift effects).
+In principle, more galaxies will become observable in the future; in practice, an increasing number of galaxies will become extremely redshifted due to ongoing expansion, so much so that they will seem to disappear from view and become invisible. A galaxy at a given comoving distance is defined to lie within the "observable universe" if we can receive signals emitted by the galaxy at any age in its history, say, a signal sent from the galaxy only 500 million years after the Big Bang. Because of the universe's expansion, there may be some later age at which a signal sent from the same galaxy can never reach the Earth at any point in the infinite future, so, for example, we might never see what the galaxy looked like 10 billion years after the Big Bang, even though it remains at the same comoving distance less than that of the observable universe.
+This can be used to define a type of cosmic event horizon whose distance from the Earth changes over time. For example, the current distance to this horizon is about 16 billion light-years, meaning that a signal from an event happening at present can eventually reach the Earth if the event is less than 16 billion light-years away, but the signal will never reach the Earth if the event is farther away.
+The space before this cosmic event horizon can be called "reachable universe", that is all galaxies closer than that could be reached if we left for them today, at the speed of light; all galaxies beyond that are unreachable. Simple observation will show the future visibility limit (62 billion light-years) is exactly equal to the reachable limit (16 billion light-years) added to the current visibility limit (46 billion light-years).
+
+
+== "The universe" versus "the observable universe" ==
+Professional research articles in cosmology differentiate between the terms "universe" and "observable universe", although we can never know anything by direct observation about any part of the universe that is causally disconnected from the Earth, however, many credible theories require a total universe much larger than the observable universe. No evidence exists to suggest that the boundary of the observable universe constitutes a boundary on the universe as a whole, nor do any of the mainstream cosmological models propose that the universe has any physical boundary in the first place. However, some models propose it could be finite but unbounded, like a higher-dimensional analogue of the 2D surface of a sphere that is finite in area but has no edge.
+It is plausible that the galaxies within the observable universe represent only a minuscule fraction of the galaxies in the universe. According to the theory of cosmic inflation initially introduced by Alan Guth and D. Kazanas, if it is assumed that inflation began about 10−37 seconds after the Big Bang and that the pre-inflation size of the universe was approximately equal to the speed of light times its age, that would suggest that at present the entire universe's size is at least 1.5×1034 light-years — this is at least 3×1023 times the radius of the observable universe.
+If the universe is finite but unbounded, it is also possible that the universe is smaller than the observable universe. In this case, what we take to be very distant galaxies may actually be duplicate images of nearby galaxies, formed by light that has circumnavigated the universe. It is difficult to test this hypothesis experimentally because different images of a galaxy would show different eras in its history, and consequently might appear quite different. Bielewicz et al. claim to establish a lower bound of 27.9 gigaparsecs (91 billion light-years) on the diameter of the last scattering surface. This value is based on matching-circle analysis of the WMAP 7-year data. This approach has been disputed.
+
+
+== Size ==
+
+The comoving distance from Earth to the edge of the observable universe is about 14.26 gigaparsecs (46.5 billion light-years or 4.40×1026 m) in any direction. The observable universe is thus a sphere with a diameter of about 28.5 gigaparsecs (93 billion light-years or 8.8×1026 m). Assuming that space is roughly flat (in the sense of being a Euclidean space), this size corresponds to a comoving volume of about 1.22×104 Gpc3 (4.22×105 Gly3 or 3.57×1080 m3).
+These are distances now (in cosmological time), not distances at the time the light was emitted. For example, the cosmic microwave background radiation that we see right now was emitted at the time of photon decoupling, estimated to have occurred about 380,000 years after the Big Bang, which occurred around 13.8 billion years ago. This radiation was emitted by matter that has, in the intervening time, mostly condensed into galaxies, and those galaxies are now calculated to be about 46 billion light-years from Earth. To estimate the distance to that matter at the time the light was emitted, we may first note that according to the Friedmann–Lemaître–Robertson–Walker metric, which is used to model the expanding universe, if we receive light with a redshift of z, then the scale factor at the time the light was originally emitted is given by
+
+  
+    
+      
+        a
+        (
+        t
+        )
+        =
+        
+          
+            1
+            
+              1
+              +
+              z
+            
+          
+        
+      
+    
+    {\displaystyle a(t)={\frac {1}{1+z}}}
+  
+.
+WMAP nine-year results combined with other measurements give the redshift of photon decoupling as z = 1091.64±0.47, which implies that the scale factor at the time of photon decoupling would be 1⁄1092.64. So if the matter that originally emitted the oldest CMBR photons has a present distance of 46 billion light-years, then the distance would have been only about 42 million light-years at the time of decoupling.
+The light-travel distance to the edge of the observable universe is the age of the universe times the speed of light, 13.8 billion light years. This is the distance that a photon emitted shortly after the Big Bang, such as one from the cosmic microwave background, has traveled to reach observers on Earth. Because spacetime is curved, corresponding to the expansion of space, this distance does not correspond to the true distance at any moment in time.
+
+
+== Matter and mass ==
+
+
+=== Number of galaxies and stars ===
+The observable universe contains as many as an estimated 2 trillion galaxies and, overall, as many as an estimated 1024 stars – more stars (and, potentially, Earth-like planets) than all the grains of beach sand on planet Earth. Other estimates are in the hundreds of billions rather than trillions. If the model of cosmic inflation is correct and the universe expanded by >60 e-folds, then the universe could contain over 10100 stars.
+
+
+=== Matter content—number of atoms ===
+
+Assuming the mass of ordinary matter is about 1.45×1053 kg as discussed above, and assuming all atoms are hydrogen atoms (which are about 74% of all atoms in the Milky Way by mass), the estimated total number of atoms in the observable universe is obtained by dividing the mass of ordinary matter by the mass of a hydrogen atom. The result is approximately 1080 hydrogen atoms, also known as the Eddington number.
+
+
+=== Mass of ordinary matter ===
+The mass of the observable universe is often quoted as 1053 kg. In this context, mass refers to ordinary (baryonic) matter and includes the interstellar medium (ISM) and the intergalactic medium (IGM). However, it excludes dark matter and dark energy. This quoted value for the mass of ordinary matter in the universe can be estimated based on critical density. The calculations are for the observable universe only as the volume of the whole is unknown and may be infinite.
+
+
+=== Estimates based on critical density ===
+Critical density is the energy density for which the universe is flat. If there is no dark energy, it is also the density for which the expansion of the universe is poised between continued expansion and collapse. From the Friedmann equations, the value for 
+  
+    
+      
+        
+          ρ
+          
+            c
+          
+        
+      
+    
+    {\displaystyle \rho _{\text{c}}}
+  
+ critical density, is:
+
+  
+    
+      
+        
+          ρ
+          
+            c
+          
+        
+        =
+        
+          
+            
+              3
+              
+                H
+                
+                  2
+                
+              
+            
+            
+              8
+              π
+              G
+            
+          
+        
+        ,
+      
+    
+    {\displaystyle \rho _{\text{c}}={\frac {3H^{2}}{8\pi G}},}
+  
+
+where G is the gravitational constant and H = H0 is the present value of the Hubble constant. The value for H0, as given by the European Space Agency's Planck Telescope, is H0 = 67.15 kilometres per second per megaparsec. This gives a critical density of 0.85×10−26 kg/m3, or about 5 hydrogen atoms per cubic metre. This density includes four significant types of energy/mass: ordinary matter (4.8%), neutrinos (0.1%), cold dark matter (26.8%), and dark energy (68.3%).
+Although neutrinos are Standard Model particles, they are listed separately because they are ultra-relativistic and hence behave like radiation rather than like matter. The density of ordinary matter, as measured by Planck, is 4.8% of the total critical density or 4.08×10−28 kg/m3. To convert this density to mass we must multiply by volume, a value based on the radius of the "observable universe". Since the universe has been expanding for 13.8 billion years, the comoving distance (radius) is now about 46.6 billion light-years. Thus, volume (⁠4/3⁠πr3) equals 3.58×1080 m3 and the mass of ordinary matter equals density (4.08×10−28 kg/m3) times volume (3.58×1080 m3) or 1.46×1053 kg.
+
+
+== Large-scale structure ==
+
+The large-scale structure of the universe is the term in cosmology for the character of matter distribution at the scale of the entire observable universe.
+Sky surveys and mappings of the various wavelength bands of electromagnetic radiation (in particular 21-cm emission) have yielded much information on the content and character of the universe's structure. The organization of structure appears to follow a hierarchical model with organization up to the scale of superclusters and filaments. Larger than this (at scales between 30 and 200 megaparsecs), there seems to be no continued structure, a phenomenon that has been referred to as the End of Greatness. The shape of the large scale structure can be summarized by the matter power spectrum.
+
+
+== Most distant objects ==
+
+The most distant astronomical object identified is a galaxy classified as MoM-z14, at a redshift of 14.44. In 2009, a gamma ray burst, GRB 090423, was found to have a redshift of 8.2, which indicates that the collapsing star that caused it exploded when the universe was only 630 million years old. The burst happened approximately 13 billion years ago, so a distance of about 13 billion light-years was widely quoted in the media, or sometimes a more precise figure of 13.035 billion light-years.
+This would be the "light travel distance" (see Distance measures (cosmology)) rather than the "proper distance" used in both Hubble's law and in defining the size of the observable universe. Cosmologist Ned Wright argues against using this measure. The proper distance for a redshift of 8.2 would be about 9.2 Gpc, or about 30 billion light-years.
+
+
+== Horizons ==
+
+The limit of observability in the universe is set by cosmological horizons which limit—based on various physical constraints—the extent to which information can be obtained about various events in the universe. The most famous horizon is the particle horizon which sets a limit on the precise distance that can be seen due to the finite age of the universe. Additional horizons are associated with the possible future extent of observations, larger than the particle horizon owing to the expansion of space, an "optical horizon" at the surface of last scattering, and associated horizons with the surface of last scattering for neutrinos and gravitational waves.
+
+
+== Gallery ==
+
+
+== See also ==
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Further reading ==
+Labini, F. Sylos; Montuori, M.; Pietronero, L. (1998). "Scale-invariance of galaxy clustering". Physics Reports. 293 (1): 61–226. arXiv:astro-ph/9711073. Bibcode:1998PhR...293...61S. doi:10.1016/S0370-1573(97)00044-6.
+Lineweaver, Charles H. (2005). "Inflation and the Cosmic Microwave Background". In Colless, Matthew (ed.). The New Cosmology. Canberra International Physics Summer Schools. Vol. 16. World Scientific. pp. 31–65. arXiv:astro-ph/0305179. doi:10.1142/9789812702357_0002. ISBN 978-981-256-066-7.
+Martinez, Vicent J.; Starck, Jean-Luc; Saar, Enn; Donoho, David L.; Reynolds, Simon C.; de la Cruz, Pablo; Paredes, Silvestre (2005). "Morphology Of The Galaxy Distribution From Wavelet Denoising". The Astrophysical Journal. 634 (2): 744–755. arXiv:astro-ph/0508326. Bibcode:2005ApJ...634..744M. doi:10.1086/497125.
+Mureika, J. R.; Dyer, C. C. (2004). "Review: Multifractal Analysis of Packed Swiss Cheese Cosmologies". General Relativity and Gravitation. 36 (1): 151–184. arXiv:gr-qc/0505083. Bibcode:2004GReGr..36..151M. doi:10.1023/B:GERG.0000006699.45969.49.
+
+
+== External links ==
+"Millennium Simulation" of structure forming – Max Planck Institute of Astrophysics, Garching, Germany
+NASA Astronomy Picture of the Day: The Sloan Great Wall: Largest Known Structure? (7 November 2007)
+Forming Galaxies Captured In The Young Universe By Hubble, VLT & Spitzer
+Animation of the cosmic light horizon
+Logarithmic Maps of the Universe
+List of publications of the 2dF Galaxy Redshift Survey
+The Universe Within 14 Billion Light Years – NASA Atlas of the Universe – Note, this map only gives a rough cosmographical estimate of the expected distribution of superclusters within the observable universe; very little actual mapping has been done beyond a distance of one billion light-years.
+Video: The Known Universe, from the American Museum of Natural History
+NASA/IPAC Extragalactic Database
+Cosmography of the Local Universe at irfu.cea.fr (17:35) (arXiv)
+Limits to knowledge about Universe – Forbes, May 2019

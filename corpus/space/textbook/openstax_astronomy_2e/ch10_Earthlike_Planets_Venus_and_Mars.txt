@@ -1,0 +1,1353 @@
+Figure 10.1 Spirit Rover on Mars. This May 2004 image shows the tracks made by the Mars Exploration Spirit rover on the
+surface of the red planet. Spirit was active on Mars between 2004 and 2010, twenty times longer than its planners had expected. It
+“drove” over 7.73 kilometers in the process of examining the martian landscape. (credit: modification of work by NASA/JPL/Cornell)
+Chapter Outline
+10.1 The Nearest Planets: An Overview
+10.2 The Geology of Venus
+10.3 The Massive Atmosphere of Venus
+10.4 The Geology of Mars
+10.5 Water and Life on Mars
+10.6 Divergent Planetary Evolution
+Thinking Ahead
+The Moon and Mercury are geologically dead. In contrast, the larger terrestrial planets—Earth, Venus, and
+Mars—are more active and interesting worlds. We have already discussed Earth, and we now turn to Venus
+and Mars. These are the nearest planets and the most accessible to spacecraft. Not surprisingly, the greatest
+effort in planetary exploration has been devoted to these fascinating worlds. In the chapter, we discuss some
+of the results of more than four decades of scientific exploration of Mars and Venus. Mars is exceptionally
+interesting, with evidence that points to habitable conditions in the past. Even today, we are discovering things
+about Mars that make it the most likely place where humans might set up a habitat in the future. However, our
+robot explorers have clearly shown that neither Venus nor Mars has conditions similar to Earth. How did it
+happen that these three neighboring terrestrial planets have diverged so dramatically in their evolution?
+10.1
+The Nearest Planets: An Overview
+Learning Objectives
+By the end of this section, you will be able to:
+Explain why it’s difficult to learn about Venus from Earth-based observation alone
+Describe the history of our interest in Mars before the Space Age
+Compare the basic physical properties of Earth, Mars, and Venus, including their orbits
+Earthlike Planets: Venus and Mars
+10 • Thinking Ahead
+As you might expect from close neighbors, Mars and Venus are among the brightest objects in the night sky.
+The average distance of Mars from the Sun is 227 million kilometers (1.52 AU), or about half again as far from
+the Sun as Earth. Venus’ orbit is very nearly circular, at a distance of 108 million kilometers (0.72 AU) from the
+Sun. Like Mercury, Venus sometimes appears as an “evening star” and sometimes as a “morning star.” Venus
+approaches Earth more closely than does any other planet: at its nearest, it is only 40 million kilometers from
+us. The closest Mars ever gets to Earth is about 56 million kilometers.
+Appearance
+Venus appears very bright, and even a small telescope reveals that it goes through phases like the Moon.
+Galileo discovered that Venus displays a full range of phases, and he used this as an argument to show that
+Venus must circle the Sun and not Earth. The planet’s actual surface is not visible because it is shrouded by
+dense clouds that reflect about 70% of the sunlight that falls on them, frustrating efforts to study the
+underlying surface, even with cameras in orbit around the planet (Figure 10.2).
+Figure 10.2 Venus as Photographed by the Pioneer Venus Orbiter. This ultraviolet image shows an upper-atmosphere cloud
+structure that would be invisible at visible wavelengths. Note that there is not even a glimpse of the planet’s surface. (credit:
+modification of work by NASA)
+In contrast, Mars is more tantalizing as seen through a telescope (Figure 10.3). The planet is distinctly red, due
+(as we now know) to the presence of iron oxides in its soil. This color may account for its association with war
+(and blood) in the legends of early cultures. The best resolution obtainable from telescopes on the ground is
+about 100 kilometers, or about the same as what we can see on the Moon with the unaided eye. At this
+resolution, no hint of topographic structure can be detected: no mountains, no valleys, not even impact
+craters. On the other hand, bright polar ice caps can be seen easily, together with dusky surface markings that
+sometimes change in outline and intensity from season to season.
+10 • Earthlike Planets: Venus and Mars
+Figure 10.3 Mars as Seen from Earth’s Surface. These are among the best Earth-based photos of Mars, taken in 1988 when the
+planet was exceptionally close to Earth. The polar caps and dark surface markings are evident, but not topographic features. (credit:
+modification of work by Steve Larson, Lunar and Planetary Laboratory, University of Arizona)
+For a few decades around the turn of the twentieth century, some astronomers believed that they saw
+evidence of an intelligent civilization on Mars. The controversy began in 1877, when Italian astronomer
+Giovanni Schiaparelli (1835–1910) announced that he could see long, faint, straight lines on Mars that he called
+canale, or channels. In English-speaking countries, the term was mistakenly translated as “canals,” implying an
+artificial origin.
+Even before Schiaparelli’s observations, astronomers had watched the bright polar caps change size with the
+seasons and had seen variations in the dark surface features. With a little imagination, it was not difficult to
+picture the canals as long fields of crops bordering irrigation ditches that brought water from the melting
+polar ice to the parched deserts of the red planet. (They assumed the polar caps were composed of water ice,
+which isn’t exactly true, as we will see shortly.)
+Until his death in 1916, the most effective proponent of intelligent life on Mars was Percival Lowell, a self-made
+American astronomer and member of the wealthy Lowell family of Boston (see the feature box on Percival
+Lowell: Dreaming of an Inhabited Mars). A skilled author and speaker, Lowell made what seemed to the public
+to be a convincing case for intelligent Martians, who had constructed the huge canals to preserve their
+civilization in the face of a deteriorating climate (Figure 10.4).
+10.1 • The Nearest Planets: An Overview
+Figure 10.4 Lowell’s Mars Globe. One of the remarkable globes of Mars prepared by Percival Lowell, showing a network of dozens
+of canals, oases, and triangular water reservoirs that he claimed were visible on the red planet.
+The argument for a race of intelligent Martians, however, hinged on the reality of the canals, a matter that
+remained in serious dispute among astronomers. The canal markings were always difficult to study, glimpsed
+only occasionally because atmospheric conditions caused the tiny image of Mars to shimmer in the telescope.
+Lowell saw canals everywhere (even a few on Venus), but many other observers could not see them at all and
+remained unconvinced of their existence. When telescopes larger than Lowell’s failed to confirm the presence
+of canals, the skeptics felt vindicated. Now it is generally accepted that the straight lines were an optical
+illusion, the result of the human mind’s tendency to see order in random features that are glimpsed dimly at
+the limits of the eye’s resolution. When we see small, dim dots of surface markings, our minds tend to connect
+those dots into straight lines.
+Percival Lowell: Dreaming of an Inhabited Mars
+Percival Lowell was born into the well-to-do Massachusetts family about whom John Bossidy made the
+famous toast:
+And this is good old Boston,
+The home of the bean and the cod,
+Where the Lowells talk to the Cabots
+And the Cabots talk only to God.
+Percival’s brother Lawrence became president of Harvard University, and his sister, Amy, became a
+distinguished poet. Percival was already interested in astronomy as a boy: he made observations of Mars at
+age 13. His undergraduate thesis at Harvard dealt with the origin of the solar system, but he did not pursue
+this interest immediately. Instead, he entered the family business and traveled extensively in Asia. In 1892,
+however, he decided to dedicate himself to carrying on Schiaparelli’s work and solving the mysteries of the
+martian canals.
+In 1894, with the help of astronomers at Harvard but using his own funds, Lowell built an observatory on a
+high plateau in Flagstaff, Arizona, where he hoped the seeing would be clear enough to show him Mars in
+unprecedented detail. He and his assistants quickly accumulated a tremendous number of drawings and
+maps, purporting to show a vast network of martian canals (see Figure 10.4). He elaborated his ideas about
+the inhabitants of the red planet in several books, including Mars (1895) and Mars and Its Canals (1906),
+VOYAGERS IN ASTRONOMY
+10 • Earthlike Planets: Venus and Mars
+and in hundreds of articles and speeches.
+As Lowell put it,
+A mind of no mean order would seem to have presided over the system we see—a mind certainly of
+considerably more comprehensiveness than that which presides over the various departments of our own
+public works. Party politics, at all events, have had no part in them; for the system is planet-wide. . . .
+Certainly what we see hints at the existence of beings who are in advance of, not behind us, in the journey
+of life.
+Lowell’s views captured the public imagination and inspired many novels and stories, the most famous of
+which was H. G. Wells’ War of the Worlds (1897). In this famous “invasion” novel, the thirsty inhabitants of a
+dying planet Mars (based entirely on Lowell’s ideas) come to conquer Earth with advanced technology.
+Although the Lowell Observatory first became famous for its work on the martian canals, both Lowell and
+the observatory eventually turned to other projects as well. He became interested in the search for a ninth
+(and then undiscovered) planet in the solar system. In 1930, Pluto was found at the Lowell Observatory, and
+it is not a coincidence that the name selected for the new planet starts with Lowell’s initials. It was also at
+the Lowell Observatory that the first measurements were made of the great speed at which galaxies are
+moving away from us, observations that would ultimately lead to our modern view of an expanding
+universe.
+Lowell (Figure 10.5) continued to live at his observatory, marrying at age 53 and publishing extensively. He
+relished the debate his claims about Mars caused far more than the astronomers on the other side, who
+often complained that Lowell’s work was making planetary astronomy a less respectable field. At the same
+time, the public fascination with the planets fueled by Lowell’s work (and its interpreters) may, several
+generations later, have helped fan support for the space program and the many missions whose results
+grace the pages of our text.
+Figure 10.5 Percival Lowell (1855–1916). This 1914 photograph shows Percival Lowell observing Venus with his 24-inch telescope
+at Flagstaff, Arizona.
+In October 1938, the Mercury Theater of the Air on radio dramatized The War of the Worlds as a series of
+LINK TO LEARNING
+10.1 • The Nearest Planets: An Overview
+radio news reports. This broadcast (https://openstax.org/l/30WarofWorlds) scared many people into
+thinking that Lowell’s Martians were really invading New Jersey, and caused something of a panic. You can
+listen to the original radio broadcast if you scroll down to “War of the Worlds.”
+Rotation of the Planets
+Astronomers have determined the rotation period of Mars with great accuracy by watching the motion of
+permanent surface markings; its sidereal day is 24 hours 37 minutes 23 seconds, just a little longer than the
+rotation period of Earth. This high precision is not obtained by watching Mars for a single rotation, but by
+noting how many turns it makes over a long period of time. Good observations of Mars date back more than
+200 years, a period during which tens of thousands of martian days have passed. As a result, the rotation
+period can be calculated to within a few hundredths of a second.
+The rotational axis of Mars has a tilt of about 25°, similar to the tilt of Earth’s axis. Thus, Mars experiences
+seasons very much like those on Earth. Because of the longer martian year (almost two Earth years), however,
+each season there lasts about six of our months.
+The situation with Venus is different. Since no surface detail can be seen through Venus’ clouds, its rotation
+period can be found only by bouncing radar signals off the planet (as explained for Mercury in the Cratered
+Worlds chapter). The first radar observations of Venus’ rotation were made in the early 1960s. Later,
+topographical surface features were identified on the planet that showed up in the reflected radar signals. The
+rotation period of Venus, precisely determined from the motion of such “radar features” across its disk, is 243
+days. Even more surprising than how long Venus takes to rotate is the fact that it spins in a backward or
+retrograde direction (east to west).
+Stop for a moment and think about how odd this slow rotation makes the calendar on Venus. The planet takes
+225 Earth days to orbit the Sun and 243 Earth days to spin on its axis. So the day on Venus (as defined by its
+spinning once) is longer than the year! As a result, the time the Sun takes to return to the same place in Venus’
+sky—another way we might define the meaning of a day—turns out to be 117 Earth days. (If you say “See you
+tomorrow” on Venus, you’ll have a long time to wait.) Although we do not know the reason for Venus’ slow
+backward rotation, we can guess that it may have suffered one or more extremely powerful collisions during
+the formation process of the solar system.
+Basic Properties of Venus and Mars
+Before discussing each planet individually, let us compare some of their basic properties with each other and
+with Earth (Table 10.1). Venus is in many ways Earth’s twin, with a mass 0.82 times the mass of Earth and an
+almost identical density. The average amount of geological activity has been also relatively high, almost as
+high as on Earth. On the other hand, with a surface pressure nearly 100 times greater than ours, Venus’
+atmosphere is not at all like that of Earth. The surface of Venus is also remarkably hot, with a temperature of
+730 K (over 850 °F), hotter than the self-cleaning cycle of your oven. One of the major challenges presented by
+Venus is to understand why the atmosphere and surface environment of this twin have diverged so sharply
+from those of our own planet.
+Properties of Earth, Venus, and Mars
+Property
+Earth
+Venus
+Mars
+Semimajor axis (AU)
+1.00
+0.72
+1.52
+Table 10.1
+10 • Earthlike Planets: Venus and Mars
+Property
+Earth
+Venus
+Mars
+Period (year)
+1.00
+0.61
+1.88
+Mass (Earth = 1)
+1.00
+0.82
+0.11
+Diameter (km)
+12,756
+12,102
+6,790
+Density (g/cm3)
+5.5
+5.3
+3.9
+Surface gravity (Earth = 1)
+1.00
+0.91
+0.38
+Escape velocity (km/s)
+11.2
+10.4
+5.0
+Rotation period (hours or days)
+23.9 h
+243 d
+24.6 h
+Surface area (Earth = 1)
+1.00
+0.90
+0.28
+Atmospheric pressure (bar)
+1.00
+0.007
+Table 10.1
+Mars, by contrast, is rather small, with a mass only 0.11 times the mass of Earth. It is larger than either the
+Moon or Mercury, however, and, unlike them, it retains a thin atmosphere. Mars is also large enough to have
+supported considerable geological activity in the distant past. But the most fascinating thing about Mars is
+that long ago it probably had a thick atmosphere and seas of liquid water—the conditions we associate with
+development of life. There is even a chance that some form of life persists today in protected environments
+below the martian surface.
+10.2
+The Geology of Venus
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the general features of the surface of Venus
+Explain what the study of craters on Venus tells us about the age of its surface
+Compare tectonic activity and volcanoes on Venus with those of Earth
+Explain why the surface of Venus is inhospitable to human life
+Since Venus has about the same size and composition as Earth, we might expect its geology to be similar. This
+is partly true, but Venus does not exhibit the same kind of plate tectonics as Earth, and we will see that its lack
+of erosion results in a very different surface appearance.
+Spacecraft Exploration of Venus
+Nearly 50 spacecraft have been launched to Venus, but only about half were successful. Although the 1962 US
+Mariner 2 flyby was the first, the Soviet Union launched most of the subsequent missions to Venus. In 1970,
+Venera 7 became the first probe to land and broadcast data from the surface of Venus. It operated for 23
+minutes before succumbing to the high surface temperature. Additional Venera probes and landers followed,
+photographing the surface and analyzing the atmosphere and soil.
+To understand the geology of Venus, however, we needed to make a global study of its surface, a task made
+10.2 • The Geology of Venus
+very difficult by the perpetual cloud layers surrounding the planet. The problem resembles the challenge
+facing air traffic controllers at an airport, when the weather is so cloudy or smoggy that they can’t locate the
+incoming planes visually. The solution is similar in both cases: use a radar instrument to probe through the
+obscuring layer.
+The first global radar map was made by the US Pioneer Venus orbiter in the late 1970s, followed by better
+maps from the twin Soviet Venera 15 and 16 radar orbiters in the early 1980s. However, most of our
+information on the geology of Venus is derived from the US Magellan spacecraft, which mapped Venus with a
+powerful imaging radar. Magellan produced images with a resolution of 100 meters, much better than that of
+previous missions, yielding our first detailed look at the surface of our sister planet (Figure 10.6). (The
+Magellan spacecraft returned more data to Earth than all previous planetary missions combined; each 100
+minutes of data transmission from the spacecraft provided enough information, if translated into characters,
+to fill two 30-volume encyclopedias.)
+Figure 10.6 Radar Map of Venus. This composite image has a resolution of about 3 kilometers. Colors have been added to indicate
+elevation, with blue meaning low and brown and white high. The large continent Aphrodite stretches around the equator, where the
+bright (therefore rough) surface has been deformed by tectonic forces in the crust of Venus. (credit: modification of work by NASA/
+JPL/USGS)
+Consider for a moment how good Magellan’s resolution of 100 meters really is. It means the radar images
+from Venus can show anything on the surface larger than a football field. Suddenly, a whole host of
+topographic features on Venus became accessible to our view. As you look at the radar images throughout this
+chapter, bear in mind that these are constructed from radar reflections, not from visible-light photographs.
+For example, bright features on these radar images are an indication of rough terrain, whereas darker regions
+are smoother.
+Probing Through the Clouds of Venus
+The radar maps of Venus reveal a planet that looks much the way Earth might look if our planet’s surface were
+not constantly being changed by erosion and deposition of sediment. Because there is no water or ice on
+Venus and the surface wind speeds are low, almost nothing obscures or erases the complex geological
+features produced by the movements of Venus’ crust, by volcanic eruptions, and by impact craters. Having
+finally penetrated below the clouds of Venus, we find its surface to be naked, revealing the history of hundreds
+of millions of years of geological activity.
+About 75% of the surface of Venus consists of lowland lava plains. Superficially, these plains resemble the
+10 • Earthlike Planets: Venus and Mars
+basaltic ocean basins of Earth, but they were not produced in quite the same way. There is no evidence of
+subduction zones on Venus, indicating that, unlike Earth, this planet never experienced plate tectonics.
+Although convection (the rising of hot materials) in its mantle generated great stresses in the crust of Venus,
+they did not start large continental plates moving. The formation of the lava plains of Venus more nearly
+resembles that of the lunar maria. Both were the result of widespread lava eruptions without the crustal
+spreading associated with plate tectonics.
+Rising above the lowland lava plains are two full-scale continents of mountainous terrain. The largest
+continent on Venus, called Aphrodite, is about the size of Africa (you can see it stand out in Figure 10.6).
+Aphrodite stretches along the equator for about one-third of the way around the planet. Next in size is the
+northern highland region Ishtar, which is about the size of Australia. Ishtar contains the highest region on the
+planet, the Maxwell Mountains, which rise 11 kilometers above the surrounding lowlands. (The Maxwell
+Mountains are the only feature on Venus named after a man. They commemorate James Clerk Maxwell, whose
+theory of electromagnetism led to the invention of radar. All other features are named for women, either from
+history or mythology.)
+Craters and the Age of the Venus Surface
+One of the first questions astronomers addressed with the high-resolution Magellan images was the age of
+the surface of Venus. Remember that the age of a planetary surface is rarely the age of the world it is on. A
+young age merely implies an active geology in that location. Such ages can be derived from counting impact
+craters. Figure 10.7 is an example of what these craters look like on the Venus radar images. The more densely
+cratered the surface, the greater its age. The largest crater on Venus (called Mead) is 275 kilometers in
+diameter, slightly larger than the largest known terrestrial crater (Chicxulub), but much smaller than the lunar
+impact basins.
+Figure 10.7 Impact Craters on Venus. (a) These large impact craters are in the Lavinia region of Venus. Because they are rough, the
+crater rims and ejecta appear brighter in these radar images than do the smoother surrounding lava plains. The largest of these
+craters has a diameter of 50 kilometers. (b) This small, complex crater is named after writer Gertrude Stein. The triple impact was
+caused by the breaking apart of the incoming asteroid during its passage through the thick atmosphere of Venus. The projectile had
+an initial diameter of between 1 and 2 kilometers. (credit a: modification of work by NASA/JPL; credit b: modification of work by
+NASA/JPL)
+You might think that the thick atmosphere of Venus would protect the surface from impacts, burning up the
+projectiles long before they could reach the surface. But this is the case for only smaller projectiles. Crater
+statistics show very few craters less than 10 kilometers in diameter, indicating that projectiles smaller than
+10.2 • The Geology of Venus
+about 1 kilometer (the size that typically produces a 10-kilometer crater) were stopped by the atmosphere.
+Those craters with diameters from 10 to 30 kilometers are frequently distorted or multiple, apparently because
+the incoming projectile broke apart in the atmosphere before it could strike the ground as shown in the Stein
+crater in Figure 10.7. If we limit ourselves to impacts that produce craters with diameters of 30 kilometers or
+larger, however, then crater counts are as useful on Venus for measuring surface age as they are on airless
+bodies such as the Moon.
+The large craters in the venusian plains indicate an average surface age that is only between 300 and 600
+million years. These results indicate that Venus is indeed a planet with persistent geological activity,
+intermediate between that of Earth’s ocean basins (which are younger and more active) and that of its
+continents (which are older and less active).
+Almost all of the large craters on Venus look fresh, with little degradation or filling in by either lava or
+windblown dust. This is one way we know that the rates of erosion or sediment deposition are very low. We
+have the impression that relatively little has happened since the venusian plains were last resurfaced by largescale volcanic activity. Apparently Venus experienced some sort of planet-wide volcanic convulsion between
+300 and 600 million years ago, a mysterious event that is unlike anything in terrestrial history.
+Volcanoes on Venus
+Like Earth, Venus is a planet that has experienced widespread volcanism. In the lowland plains, volcanic
+eruptions are the principal way the surface is renewed, with large flows of highly fluid lava destroying old
+craters and generating a fresh surface. In addition, numerous younger volcanic mountains and other
+structures are associated with surface hot spots—places where convection in the planet’s mantle transports
+the interior heat to the surface.
+The largest individual volcano on Venus, called Sif Mons, is about 500 kilometers across and 3 kilometers
+high—broader but lower than the Hawaiian volcano Mauna Loa. At its top is a volcanic crater, or caldera, about
+40 kilometers across, and its slopes show individual lava flows up to 500 kilometers long. Thousands of smaller
+volcanoes dot the surface, down to the limit of visibility of the Magellan images, which correspond to cones or
+domes about the size of a shopping mall parking lot. Most of these seem similar to terrestrial volcanoes. Other
+volcanoes have unusual shapes, such as the “pancake domes” illustrated in Figure 10.8.
+Figure 10.8 Pancake-Shaped Volcanoes on Venus. These remarkable circular domes, each about 25 kilometers across and about 2
+kilometers tall, are the result of eruptions of highly viscous (sludgy) lava that spreads out evenly in all directions. (credit: modification
+of work by NASA/JPL)
+All of the volcanism is the result of eruption of lava onto the surface of the planet. But the hot lava rising from
+the interior of a planet does not always make it to the surface. On both Earth and Venus, this upwelling lava
+10 • Earthlike Planets: Venus and Mars
+can collect to produce bulges in the crust. Many of the granite mountain ranges on Earth, such as the Sierra
+Nevada in California, involve such subsurface volcanism. These bulges are common on Venus, where they
+produce large circular or oval features called coronae (singular: corona) (Figure 10.9).
+Figure 10.9 The “Miss Piggy” Corona. Fotla Corona is located in the plains to the south of Aphrodite Terra. Curved fracture patterns
+show where the material beneath has put stress on the surface. A number of pancake and dome volcanoes are also visible. Fotla was
+a Celtic fertility goddess. Some students see a resemblance between this corona and Miss Piggy of the Muppets (her left ear, at the
+top of the picture, is the pancake volcano in the upper center of the image). (credit: NASA/JPL)
+Tectonic Activity
+Convection currents of molten material in the mantle of Venus push and stretch the crust. Such forces are
+called tectonic, and the geological features that result from these forces are called tectonic features. On
+Venus’ lowland plains, tectonic forces have broken the lava surface to create remarkable patterns of ridges
+and cracks (Figure 10.10). In a few places, the crust has even torn apart to generate rift valleys. The circular
+features associated with coronae are tectonic ridges and cracks, and most of the mountains of Venus also owe
+their existence to tectonic forces.
+Figure 10.10 Ridges and Cracks. This region of the Lakshmi Plains on Venus has been fractured by tectonic forces to produce a
+cross-hatched grid of cracks and ridges. Be sure to notice the fainter linear features that run perpendicular to the brighter ones. As
+this is a radar image, the brightness of the ridges indicates their relative height. This image shows a region about 80 kilometers wide
+and 37 kilometers high. Lakshmi is a Hindu goddess of prosperity. (credit: modification of work by Magellan Team, JPL, NASA)
+The Ishtar continent, which has the highest elevations on Venus, is the most dramatic product of these
+tectonic forces. Ishtar and its tall Maxwell Mountains resemble the Tibetan Plateau and Himalayan Mountains
+on Earth. Both are the product of compression of the crust, and both are maintained by the continuing forces
+of mantle convection.
+On Venus’ Surface
+The successful Venera landers of the 1970s found themselves on an extraordinarily inhospitable planet, with a
+10.2 • The Geology of Venus
+surface pressure of 90 bars and a temperature hot enough to melt lead and zinc. Despite these unpleasant
+conditions, the spacecraft were able to photograph their surroundings and collect surface samples for
+chemical analysis before their instruments gave out. The diffuse sunlight striking the surface was tinted red by
+the clouds, and the illumination level was equivalent to a heavy overcast on Earth.
+The probes found that the rock in the landing areas is igneous, primarily basalts. Examples of the Venera
+photographs are shown in Figure 10.11. Each picture shows a flat, desolate landscape with a variety of rocks,
+some of which may be ejecta from impacts. Other areas show flat, layered lava flows. There have been no
+further landings on Venus since the 1970s. However, NASA has plans for a radar orbiter with much higher
+resolution than Magellan, that will focus on the complex structures in the Aphrodite region. Some geologists
+think this area shows evidence of geologic plates, with past activity analogous to the plate tectonics on Earth.
+Figure 10.11 Surface of Venus. These views of the surface of Venus are from the Venera 13 spacecraft. Everything is orange because
+the thick atmosphere of Venus absorbs the bluer colors of light. The horizon is visible in the upper corner of each image. (credit:
+NASA)
+10.3
+The Massive Atmosphere of Venus
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the general composition and structure of the atmosphere on Venus
+Explain how the greenhouse effect has led to high temperatures on Venus
+The thick atmosphere of Venus produces the high surface temperature and shrouds the surface in a perpetual
+red twilight. Sunlight does not penetrate directly through the heavy clouds, but the surface is fairly well lit by
+diffuse light (about the same as the light on Earth under a heavy overcast). The weather at the bottom of this
+deep atmosphere remains perpetually hot and dry, with calm winds. Because of the heavy blanket of clouds
+and atmosphere, one spot on the surface of Venus is similar to any other as far as weather is concerned.
+Composition and Structure of the Atmosphere
+The most abundant gas on Venus is carbon dioxide (CO2), which accounts for 96% of the atmosphere. The
+second most common gas is nitrogen. The predominance of carbon dioxide over nitrogen is not surprising
+when you recall that Earth’s atmosphere would also be mostly carbon dioxide if this gas were not locked up in
+marine sediments (see the discussion of Earth’s atmosphere in Earth as a Planet).
+Table 10.2 compares the compositions of the atmospheres of Venus, Mars, and Earth. Expressed in this way, as
+percentages, the proportions of the major gases are very similar for Venus and Mars, but in total quantity,
+their atmospheres are dramatically different. With its surface pressure of 90 bars, the venusian atmosphere is
+more than 10,000 times more massive than its martian counterpart. Overall, the atmosphere of Venus is very
+dry; the absence of water is one of the important ways that Venus differs from Earth.
+10 • Earthlike Planets: Venus and Mars
+Atmospheric Composition of Earth, Venus, and Mars
+Gas
+Earth
+Venus
+Mars
+Carbon dioxide (CO2)
+0.03%
+96%
+95.3%
+Nitrogen (N2)
+78.1%
+3.5%
+2.7%
+Argon (Ar)
+0.93%
+0.006%
+1.6%
+Oxygen (O2)
+21.0%
+0.003%
+0.15%
+Neon (Ne)
+0.002%
+0.001%
+0.0003%
+Table 10.2
+The atmosphere of Venus has a huge troposphere (region of convection) that extends up to at least 50
+kilometers above the surface (Figure 10.12). Within the troposphere, the gas is heated from below and
+circulates slowly, rising near the equator and descending over the poles. Being at the base of the atmosphere
+of Venus is something like being a kilometer or more below the ocean surface on Earth. There, the mass of
+water evens out temperature variations and results in a uniform environment—the same effect the thick
+atmosphere has on Venus.
+Figure 10.12 Venus’ Atmosphere. The layers of the massive atmosphere of Venus shown here are based on data from the Pioneer
+and Venera entry probes. Height is measured along the left axis, the bottom scale shows temperature, and the red line allows you to
+read off the temperature at each height. Notice how steeply the temperature rises below the clouds, thanks to the planet’s huge
+greenhouse effect.
+In the upper troposphere, between 30 and 60 kilometers above the surface, a thick cloud layer is composed
+primarily of sulfuric acid droplets. Sulfuric acid (H2SO4) is formed from the chemical combination of sulfur
+dioxide (SO2) and water (H2O). In the atmosphere of Earth, sulfur dioxide is one of the primary gases emitted
+by volcanoes, but it is quickly diluted and washed out by rainfall. In the dry atmosphere of Venus, this
+unpleasant substance is apparently stable. Below 30 kilometers, the Venus atmosphere is clear of clouds.
+Surface Temperature on Venus
+The high surface temperature of Venus was discovered by radio astronomers in the late 1950s and confirmed
+10.3 • The Massive Atmosphere of Venus
+by the Mariner and Venera probes. How can our neighbor planet be so hot? Although Venus is somewhat
+closer to the Sun than is Earth, its surface is hundreds of degrees hotter than you would expect from the extra
+sunlight it receives. Scientists wondered what could be heating the surface of Venus to a temperature above
+700 K. The answer turned out to be the greenhouse effect.
+The greenhouse effect works on Venus just as it does on Earth, but since Venus has so much more
+CO2—almost a million times more—the effect is much stronger. The thick CO2 acts as a blanket, making it very
+difficult for the infrared (heat) radiation from the ground to get back into space. As a result, the surface heats
+up. The energy balance is only restored when the planet is radiating as much energy as it receives from the
+Sun, but this can happen only when the temperature of the lower atmosphere is very high. One way of
+thinking of greenhouse heating is that it must raise the surface temperature of Venus until this energy balance
+is achieved.
+Has Venus always had such a massive atmosphere and high surface temperature, or might it have evolved to
+such conditions from a climate that was once more nearly earthlike? The answer to this question is of
+particular interest to us as we look at the increasing levels of CO2 in Earth’s atmosphere. As the greenhouse
+effect becomes stronger on Earth, are we in any danger of transforming our own planet into a hellish place
+like Venus?
+Let us try to reconstruct the possible evolution of Venus from an earthlike beginning to its present state. Venus
+may once have had a climate similar to that of Earth, with moderate temperatures, water oceans, and much of
+its CO2 dissolved in the ocean or chemically combined with the surface rocks. Then we allow for modest
+additional heating—by gradual increase in the energy output of the Sun, for example. When we calculate how
+Venus’ atmosphere would respond to such effects, it turns out that even a small amount of extra heat can lead
+to increased evaporation of water from the oceans and the release of gas from surface rocks.
+This in turn means a further increase in the atmospheric CO2 and H2O, gases that would amplify the
+greenhouse effect in Venus’ atmosphere. That would lead to still more heat near Venus’ surface and the
+release of further CO2 and H2O. Unless some other processes intervene, the temperature thus continues to
+rise. Such a situation is called the runaway greenhouse effect.
+We want to emphasize that the runaway greenhouse effect is not just a large greenhouse effect; it is an
+evolutionary process. The atmosphere evolves from having a small greenhouse effect, such as on Earth, to a
+situation where greenhouse warming is a major factor, as we see today on Venus. Once the large greenhouse
+conditions develop, the planet establishes a new, much hotter equilibrium near its surface.
+Reversing the situation is difficult because of the role water plays. On Earth, most of the CO2 is either
+chemically bound in the rocks of our crust or dissolved by the water in our oceans. As Venus got hotter and
+hotter, its oceans evaporated, eliminating that safety valve. But the water vapor in the planet’s atmosphere
+will not last forever in the presence of ultraviolet light from the Sun. The light element hydrogen can escape
+from the atmosphere, leaving the oxygen behind to combine chemically with surface rock. The loss of water is
+therefore an irreversible process: once the water is gone, it cannot be restored. There is evidence that this is
+just what happened to the water once present on Venus.
+We don’t know if the same runaway greenhouse effect could one day happen on Earth. Although we are
+uncertain about the point at which a stable greenhouse effect breaks down and turns into a runaway
+greenhouse effect, Venus stands as clear testament to the fact that a planet cannot continue heating
+indefinitely without a major change in its oceans and atmosphere. It is a conclusion that we and our
+descendants will surely want to pay close attention to.
+10 • Earthlike Planets: Venus and Mars
+10.4
+The Geology of Mars
+Learning Objectives
+By the end of this section, you will be able to:
+Discuss the main missions that have explored Mars
+Explain what we have learned from examination of meteorites from Mars
+Describe the various features found on the surface of Mars
+Compare the volcanoes and canyons on Mars with those of Earth
+Describe the general conditions on the surface of Mars
+Mars is more interesting to most people than Venus because it is more hospitable. Even from the distance of
+Earth, we can see surface features on Mars and follow the seasonal changes in its polar caps (Figure 10.13).
+Although the surface today is dry and cold, evidence collected by spacecraft suggests that Mars once had blue
+skies and lakes of liquid water. Even today, it is the sort of place we can imagine astronauts visiting and
+perhaps even setting up permanent bases.
+Figure 10.13 Mars Photographed by the Hubble Space Telescope. This is one of the best photos of Mars taken from our planet,
+obtained in June 2001 when Mars was only 68 million kilometers away. The resolution is about 20 kilometers—much better than can
+be obtained with ground-based telescopes but still insufficient to reveal the underlying geology of Mars. (credit: modification of
+work by NASA and the Hubble Heritage Team (STScI/AURA))
+Spacecraft Exploration of Mars
+Mars has been intensively investigated by spacecraft. More than 50 spacecraft have been launched toward
+Mars, but only about half were fully successful. The first visitor was the US Mariner 4, which flew past Mars in
+1965 and transmitted 22 photos to Earth. These pictures showed an apparently bleak planet with abundant
+impact craters. In those days, craters were unexpected; some people who were romantically inclined still
+hoped to see canals or something like them. In any case, newspaper headlines sadly announced that Mars was
+a “dead planet.”
+In 1971, NASA’s Mariner 9 became the first spacecraft to orbit another planet, mapping the entire surface of
+Mars at a resolution of about 1 kilometer and discovering a great variety of geological features, including
+volcanoes, huge canyons, intricate layers on the polar caps, and channels that appeared to have been cut by
+running water. Geologically, Mars didn’t look so dead after all.
+The twin Viking spacecraft of the 1970s were among the most ambitious and successful of all planetary
+10.4 • The Geology of Mars
+missions. Two orbiters surveyed the planet and served to relay communications for two landers on the
+surface. After an exciting and sometimes frustrating search for a safe landing spot, the Viking 1 lander
+touched down on the surface of Chryse Planitia (the Plains of Gold) on July 20, 1976, exactly 7 years after Neil
+Armstrong’s historic first step on the Moon. Two months later, Viking 2 landed with equal success in another
+plain farther north, called Utopia. The landers photographed the surface with high resolution and carried out
+complex experiments searching for evidence of life, while the orbiters provided a global perspective on Mars
+geology.
+Mars languished unvisited for two decades after Viking. Two more spacecraft were launched toward Mars, by
+NASA and the Russian Space Agency, but both failed before reaching the planet.
+The situation changed, beginning in the 1990s, as NASA began a new exploration program using spacecraft
+that were smaller and less expensive than Viking. The first of the new missions, appropriately called
+Pathfinder, landed the first wheeled, solar-powered rover on the martian surface on July 4, 1997 (Figure 10.14).
+An orbiter called Mars Global Surveyor (MGS) arrived a few months later and began high-resolution
+photography of the entire surface over more than one martian year. The most dramatic discovery by this
+spacecraft, which continued to operate until 2006, was evidence of gullies apparently cut by surface water, as
+we will discuss later. These missions were followed in 2003 by the NASA Mars Odyssey orbiter, and the ESA
+Mars Express orbiter, both carrying high-resolution cameras. A gamma-ray spectrometer on Odyssey
+discovered a large amount of subsurface hydrogen (probably in the form of frozen water). Subsequent
+orbiters included the NASA Mars Reconnaissance Orbiter to evaluate future landing sites, MAVEN to study the
+upper atmosphere, and India’s Mangalayaan, also focused on study of Mars’ thin layers of air. Several of these
+orbiters are also equipped to communicate with landers and rovers on the surface and serve as data relays to
+Earth.
+Figure 10.14 Surface View from Mars Pathfinder. The scene from the Pathfinder lander shows a windswept plain, sculpted long
+ago when water flowed out of the martian highlands and into the depression where the spacecraft landed. The Sojourner rover, the
+first wheeled vehicle on Mars, is about the size of a microwave oven. Its flat top contains solar cells that provided electricity to run
+the vehicle. You can see the ramp from the lander and the path the rover took to the larger rock that the mission team nicknamed
+“Yogi.” (credit: NASA/JPL)
+In 2003, NASA began a series of highly successful Mars landers. Twin Mars Exploration Rovers (MER), named
+Spirit and Opportunity, have been successful far beyond their planned lifetimes. The design goal for the rovers
+was 600 meters of travel; in fact, they have traveled jointly more than 50 kilometers. After scouting around its
+rim, Opportunity drove down the steep walls into an impact crater called Victoria, then succeeded with some
+difficulty in climbing back out to resume its route (Figure 10.15). Dust covering the rovers’ solar cells caused a
+drop in power, but when a seasonal dust storm blew away the dust, the rovers resumed full operation. In
+order to survive winter, the rovers were positioned on slopes to maximize solar heating and power generation.
+In 2006, Spirit lost power on one of its wheels, and subsequently became stuck in the sand, where it continued
+operation as a fixed ground station. Meanwhile, in 2008, Phoenix (a spacecraft “reborn” of spare parts from a
+10 • Earthlike Planets: Venus and Mars
+previous Mars mission that had failed) landed near the edge of the north polar cap, at latitude 68°, and directly
+measured water ice in the soil.
+Figure 10.15 Victoria Crater. (a) This crater in Meridiani Planum is 800 meters wide, making it slightly smaller than Meteor crater on
+Earth. Note the dune field in the interior. (b) This image shows the view from the Opportunity rover as it scouted the rim of Victoria
+crater looking for a safe route down into the interior. (credit a: modification of work by NASA/JPL-Caltech/University of Arizona/
+Cornell/Phio State University; credit b: modification of work by NASA/JPL/Cornell)
+In 2011, NASA launched its largest (and most expensive) Mars mission since Viking (see Figure 10.1). The 1-ton
+rover Curiosity, the size of a subcompact car, has plutonium-powered electrical generators, so that it is not
+dependent on sunlight for power. Curiosity made a pinpoint landing on the floor of Gale crater, a site selected
+for its complex geology and evidence that it had been submerged by water in the past. Previously, Mars
+landers had been sent to flat terrains with few hazards, as required by their lower targeting accuracy. The
+scientific goals of Curiosity include investigations of climate and geology, and assessment of the habitability of
+past and present Mars environments. In 2018, NASA’s InSight Lander touched down on Mars, carrying a suite
+of scientific instruments. These include a package (nicknamed “the mole”) that will dig into the surface of
+Mars 1 mm at a time, hoping to reach a depth of 5 meters with heat sensors. Neither of these missions carries
+a specific life detection instrument, however. So far, scientists have not been able to devise a simple
+instrument that could distinguish living from nonliving materials on Mars.
+The focus on the possibility of life returned with the 2020 launch of the large rover Perseverance, the near-twin
+of Curiosity. It landed in a former lakebed, and part of its mission is to drill into ancient sedimentary rocks and
+collect small samples of these rocks to be returned (by a later mission) to Earth for laboratory study. NASA’s
+remarkable helicopter drone, named Ingenuity, has acted like an airborne scout for this mission.
+The Curiosity rover required a remarkably complex landing sequence and NASA made a video
+(https://openstax.org/l/30Curiosityrove) about it called “7 Minutes of Terror” that went viral on the
+Internet.
+A dramatic video summary (https://openstax.org/l/30MarsSurface) of the first two years of Curiosity’s
+exploration of the martian surface can be viewed as well.
+Martian Samples
+Much of what we know of the Moon, including the circumstances of its origin, comes from studies of lunar
+samples, but spacecraft have not yet returned martian samples to Earth for laboratory analysis. It is with great
+interest, therefore, that scientists have discovered that samples of martian material are nevertheless already
+LINK TO LEARNING
+10.4 • The Geology of Mars
+here on Earth, available for study. These are all members of a rare class of meteorites (Figure 10.16)—rocks
+that have fallen from space.
+Figure 10.16 Martian Meteorite. This fragment of basalt, ejected from Mars in a crater-forming impact, eventually arrived on
+Earth’s surface. (credit: NASA)
+How would rocks have escaped from Mars? Many impacts have occurred on the red planet, as shown by its
+heavily cratered surface. Fragments blasted from large impacts can escape from Mars, whose surface gravity
+is only 38% of Earth’s. A long time later (typically a few million years), a very small fraction of these fragments
+collide with Earth and survive their passage through our atmosphere, just like other meteorites. (We’ll discuss
+meteorites in more detail in the chapter on Cosmic Samples and the Origin of the Solar System.) By the way,
+rocks from the Moon have also reached our planet as meteorites, although we were able to demonstrate their
+lunar origin only by comparison with samples returned by the Apollo missions
+Most of the martian meteorites are volcanic basalts; most of them are also relatively young—about 1.3 billion
+years old. We know from details of their composition that they are not from Earth or the Moon. Besides, there
+was no volcanic activity on the Moon to form them as recently as 1.3 billion years ago. It would be very difficult
+for ejecta from impacts on Venus to escape through its thick atmosphere. By the process of elimination, the
+only reasonable origin seems to be Mars, where the Tharsis volcanoes were active at that time.
+The martian origin of these meteorites was confirmed by the analysis of tiny gas bubbles trapped inside
+several of them. These bubbles match the atmospheric properties of Mars as first measured directly by Viking.
+It appears that some atmospheric gas was trapped in the rock by the shock of the impact that ejected it from
+Mars and started it on its way toward Earth.
+One of the most exciting results from analysis of these martian samples has been the discovery of both water
+and organic (carbon-based) compounds in them, which suggests that Mars may once have had oceans and
+perhaps even life on its surface. As we have already hinted, there is other evidence for the presence of flowing
+water on Mars in the remote past, and even extending to the present.
+In this and the following sections, we will summarize the picture of Mars as revealed by all these exploratory
+missions and by about 40 samples from Mars.
+Global Properties of Mars
+Mars has a diameter of 6790 kilometers, just over half the diameter of Earth, giving it a total surface area very
+nearly equal to the continental (land) area of our planet. Its overall density of 3.9 g/cm3 suggests a
+composition consisting primarily of silicates but with a small metal core. The planet has no global magnetic
+field, although there are areas of strong surface magnetization that indicate that there was a global field
+billions of years ago. Apparently, the red planet has no liquid material in its core today that would conduct
+electricity.
+Thanks to the Mars Global Surveyor, we have mapped the entire planet, as shown in Figure 10.17. A laser
+altimeter on board made millions of separate measurements of the surface topography to a precision of a few
+meters—good enough to show even the annual deposition and evaporation of the polar caps. Like Earth, the
+Moon, and Venus, the surface of Mars has continental or highland areas as well as widespread volcanic plains.
+10 • Earthlike Planets: Venus and Mars
+The total range in elevation from the top of the highest mountain (Olympus Mons) to the bottom of the
+deepest basin (Hellas) is 31 kilometers.
+Figure 10.17 Mars Map from Laser Ranging. These globes are highly precise topographic maps, reconstructed from millions of
+individual elevation measurements made with the Mars Global Surveyor. Color is used to indicate elevation. The hemisphere on the
+left includes the Tharsis bulge and Olympus Mons, the highest mountain on Mars; the hemisphere on the right includes the Hellas
+basin, which has the lowest elevation on Mars. (credit: modification of work by NASA/JPL)
+Approximately half the planet consists of heavily cratered highland terrain, found primarily in the southern
+hemisphere. The other half, which is mostly in the north, contains younger, lightly cratered volcanic plains at
+an average elevation about 5 kilometers lower than the highlands. Remember that we saw a similar pattern on
+Earth, the Moon, and Venus. A geological division into older highlands and younger lowland plains seems to
+be characteristic of all the terrestrial planets except Mercury.
+Lying across the north-south division of Mars is an uplifted continent the size of North America. This is the
+10-kilometer-high Tharsis bulge, a volcanic region crowned by four great volcanoes that rise still higher into
+the martian sky.
+Volcanoes on Mars
+The lowland plains of Mars look very much like the lunar maria, and they have about the same density of
+impact craters. Like the lunar maria, they probably formed between 3 and 4 billion years ago. Apparently, Mars
+experienced extensive volcanic activity at about the same time the Moon did, producing similar basaltic lavas.
+The largest volcanic mountains of Mars are found in the Tharsis area (you can see them in Figure 10.17),
+although smaller volcanoes dot much of the surface. The most dramatic volcano on Mars is Olympus Mons
+(Mount Olympus), with a diameter larger than 500 kilometers and a summit that towers more than 20
+kilometers above the surrounding plains—three times higher than the tallest mountain on Earth (Figure
+10.18). The volume of this immense volcano is nearly 100 times greater than that of Mauna Loa in Hawaii.
+Placed on Earth’s surface, Olympus would more than cover the entire state of Missouri.
+10.4 • The Geology of Mars
+Figure 10.18 Olympus Mons. The largest volcano on Mars, and probably the largest in the solar system, is Olympus Mons,
+illustrated in this computer-generated rendering based on data from the Mars Global Surveyor’s laser altimeter. Placed on Earth, the
+base of Olympus Mons would completely cover the state of Missouri; the caldera, the circular opening at the top, is 65 kilometers
+across, about the size of Los Angeles. (credit: NASA/Corbis)
+Images taken from orbit allow scientists to search for impact craters on the slopes of these volcanoes in order
+to estimate their age. Many of the volcanoes show a fair number of such craters, suggesting that they ceased
+activity a billion years or more ago. However, Olympus Mons has very, very few impact craters. Its present
+surface cannot be more than about 100 million years old; it may even be much younger. Some of the freshlooking lava flows might have been formed a hundred years ago, or a thousand, or a million, but geologically
+speaking, they are quite young. This leads geologists to the conclusion that Olympus Mons possibly remains
+intermittently active today—something future Mars land developers may want to keep in mind.
+Martian Cracks and Canyons
+The Tharsis bulge has many interesting geological features in addition to its huge volcanoes. In this part of the
+planet, the surface itself has bulged upward, forced by great pressures from below, resulting in extensive
+tectonic cracking of the crust. Among the most spectacular tectonic features on Mars are the canyons called
+the Valles Marineris (or Mariner Valleys, named after Mariner 9, which first revealed them to us), which are
+shown in Figure 10.19. They extend for about 5000 kilometers (nearly a quarter of the way around Mars) along
+the slopes of the Tharsis bulge. If it were on Earth, this canyon system would stretch all the way from Los
+Angeles to Washington, DC. The main canyon is about 7 kilometers deep and up to 100 kilometers wide, large
+enough for the Grand Canyon of the Colorado River to fit comfortably into one of its side canyons. Viewers of
+the movie “The Martian” can see a recreation of these canyonlands, as the film’s hero takes a long trip
+through a spectacular (and somewhat exaggerated) presentation of this part of Mars.
+Figure 10.19 Heavily Eroded Canyonlands on Mars. This image shows the Valles Marineris canyon complex, which is 3000
+kilometers long and 8 kilometers deep. (credit: NASA/JPL/USGS)
+10 • Earthlike Planets: Venus and Mars
+An excellent 4-minute video tour (https://openstax.org/l/30VallesMariner) of Valles Marineris, narrated by
+planetary scientist Phil Christensen, is available for viewing.
+The term “canyon” is somewhat misleading here because the Valles Marineris canyons have no outlets and
+were not cut by running water. They are basically tectonic cracks, produced by the same crustal tensions that
+caused the Tharsis uplift. However, water has played a later role in shaping the canyons, primarily by seeping
+from deep springs and undercutting the cliffs. This undercutting led to landslides that gradually widened the
+original cracks into the great valleys we see today (Figure 10.20). Today, the primary form of erosion in the
+canyons is probably wind.
+Figure 10.20 Martian Landslides. This Viking orbiter image shows Ophir Chasma, one of the connected valleys of the Valles
+Marineris canyon system. Look carefully and you can see enormous landslides whose debris is piled up underneath the cliff wall,
+which tower up to 10 kilometers above the canyon floor. (credit: modification of work by NASA/JPL/USGS)
+While the Tharsis bulge and Valles Marineris are impressive, in general, we see fewer tectonic structures on
+Mars than on Venus. In part, this may reflect a lower general level of geological activity, as would be expected
+for a smaller planet. But it is also possible that evidence of widespread faulting has been buried by winddeposited sediment over much of Mars. Like Earth, Mars may have hidden part of its geological history under
+a cloak of soil.
+The View on the Martian Surface
+The first spacecraft to land successfully on Mars were Vikings 1 and 2 and Mars Pathfinder. All sent back
+photos that showed a desolate but strangely beautiful landscape, including numerous angular rocks
+interspersed with dune like deposits of fine-grained, reddish soil (Figure 10.21).
+LINK TO LEARNING
+10.4 • The Geology of Mars
+Figure 10.21 Three Martian Landing Sites. The Mars landers Viking 1 in Chryse, Pathfinder in Ares Valley, and Viking 2 in Utopia, all
+photographed their immediate surroundings. It is apparent from the similarity of these three photos that each spacecraft touched
+down on a flat, windswept plain littered with rocks ranging from tiny pebbles up to meter-size boulders. It is probable that most of
+Mars looks like this on the surface. (credit “Viking 1”: modification of work by Van der Hoorn/NASA; credit “Pathfinder”: modification
+of work by NASA; credit “Viking 2”: modification of work by NASA; credit Mars: modification of work by NASA/Goddard Space Flight
+Center)
+All three of these landers were targeted to relatively flat, lowland terrain. Instruments on the landers found
+that the soil consisted of clays and iron oxides, as had long been expected from the red color of the planet. All
+the rocks measured appeared to be of volcanic origin and roughly the same composition. Later landers were
+targeted to touch down in areas that apparently were flooded sometime in the past, where sedimentary rock
+layers, formed in the presence of water, are common. (Although we should note that nearly all the planet is
+blanketed in at least a thin layer of wind-blown dust).
+The Viking landers included weather stations that operated for several years, providing a perspective on
+martian weather. The temperatures they measured varied greatly with the seasons, due to the absence of
+moderating oceans and clouds. Typically, the summer maximum at Viking 1 was 240 K (–33 °C), dropping to
+190 K (–83 °C) at the same location just before dawn. The lowest air temperatures, measured farther north by
+Viking 2, were about 173 K (–100 °C). During the winter, Viking 2 also photographed water frost deposits on the
+ground (Figure 10.22). We make a point of saying “water frost” here because at some locations on Mars, it
+gets cold enough for carbon dioxide (dry ice) to freeze out of the atmosphere as well.
+10 • Earthlike Planets: Venus and Mars
+Figure 10.22 Water Frost in Utopia. This image of surface frost was photographed at the Viking 2 landing site during late winter.
+(credit: NASA/JPL)
+Most of the winds measured on Mars are only a few kilometers per hour. However, Mars is capable of great
+windstorms that can shroud the entire planet with windblown dust. Such high winds can strip the surface of
+some of its loose, fine dust, leaving the rock exposed. The later rovers found that each sunny afternoon the
+atmosphere became turbulent as heat rose off the surface. This turbulence generated dust devils, which play
+an important role in lifting the fine dust into the atmosphere. As the dust devils strip off the top layer of light
+dust and expose darker material underneath, they can produce fantastic patterns on the ground (Figure
+10.23).
+Wind on Mars plays an important role in redistributing surface material. Figure 10.23 shows a beautiful area of
+dark sand dunes on top of lighter material. Much of the material stripped out of the martian canyons has been
+dumped in extensive dune fields like this, mostly at high latitudes.
+Figure 10.23 Dust Devil Tracks and Sand Dunes. (a) This high-resolution photo from the Mars Global Surveyor shows the dark
+tracks of several dust devils that have stripped away a thin coating of light-colored dust. This view is of an area about 3 kilometers
+10.4 • The Geology of Mars
+across. Dust devils are one of the most important ways that dust gets redistributed by the martian winds. They may also help keep
+the solar panels of our rovers free of dust. (b) These windblown sand dunes on Mars overlay a lighter sandy surface. Each dune in
+this high-resolution view is about 1 kilometer across. (credit a: modification of work by NASA/JPL/University of Arizona; credit b:
+modification of work by NASA/JPL-Caltech/University of Arizona)
+10.5
+Water and Life on Mars
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the general composition of the atmosphere on Mars
+Explain what we know about the polar ice caps on Mars and how we know it
+Describe the evidence for the presence of water in the past history of Mars
+Summarize the evidence for and against the possibility of life on Mars
+Of all the planets and moons in the solar system, Mars seems to be the most promising place to look for life,
+both fossil microbes and (we hope) some forms of life deeper underground that still survive today. But where
+(and how) should we look for life? We know that the one requirement shared by all life on Earth is liquid water.
+Therefore, the guiding principle in assessing habitability on Mars and elsewhere has been to “follow the
+water.” That is the perspective we take in this section, to follow the water on the red planet and hope it will
+lead us to life.
+Atmosphere and Clouds on Mars
+The atmosphere of Mars today has an average surface pressure of only 0.007 bar, less than 1% that of Earth.
+(This is how thin the air is about 30 kilometers above Earth’s surface.) Martian air is composed primarily of
+carbon dioxide (95%), with about 3% nitrogen and 2% argon. The proportions of different gases are similar to
+those in the atmosphere of Venus (see Table 10.2), but a lot less of each gas is found in the thin air on Mars.
+While winds on Mars can reach high speeds, they exert much less force than wind of the same velocity would
+on Earth because the atmosphere is so thin. The wind is able, however, to loft very fine dust particles, which
+can sometimes develop planet-wide dust storms. It is this fine dust that coats almost all the surface, giving
+Mars its distinctive red color. In the absence of surface water, wind erosion plays a major role in sculpting the
+martian surface (Figure 10.24).
+Figure 10.24 Wind Erosion on Mars. These long straight ridges, called yardangs, are aligned with the dominant wind direction. This
+is a high-resolution image from the Mars Reconnaissance Orbiter and is about 1 kilometer wide. (credit: NASA/JPL-Caltech/University
+of Arizona)
+The issue of how strong the winds on Mars can be plays a big role in the 2015 hit movie The Martian
+(https://openstax.org/l/30TheMartian) in which the main character is stranded on Mars after being buried
+in the sand in a windstorm so great that his fellow astronauts have to leave the planet so their ship is not
+damaged. Astronomers have noted that the martian winds could not possibly be as forceful as depicted in
+the film because the air pressure is so low. In most ways, however, the depiction of Mars in this movie is
+LINK TO LEARNING
+10 • Earthlike Planets: Venus and Mars
+remarkably accurate.
+Although the atmosphere contains small amounts of water vapor and occasional clouds of water ice, liquid
+water is not stable under present conditions on Mars. Part of the problem is the low temperatures on the
+planet. But even if the temperature on a sunny summer day rises above the freezing point, the low pressure
+means that liquid water still cannot exist on the surface, except at the lowest elevations. At a pressure of less
+than 0.006 bar, the boiling point is as low or lower than the freezing point, and water changes directly from
+solid to vapor without an intermediate liquid state (as does “dry ice,” carbon dioxide, on Earth). However, salts
+dissolved in water lower its freezing point, as we know from the way salt is used to thaw roads after snow and
+ice forms during winter on Earth. Salty water is therefore sometimes able to exist in liquid form on the martian
+surface, under the right conditions.
+Several types of clouds can form in the martian atmosphere. First there are dust clouds, discussed above.
+Second are water-ice clouds similar to those on Earth. These often form around mountains, just as happens on
+our planet. Finally, the CO2 of the atmosphere can itself condense at high altitudes to form hazes of dry ice
+crystals. The CO2 clouds have no counterpart on Earth, since on our planet temperatures never drop low
+enough (down to about 150 K or about –125 °C) for this gas to condense.
+The Polar Caps
+Through a telescope, the most prominent surface features on Mars are the bright polar caps, which change
+with the seasons, similar to the seasonal snow cover on Earth. We do not usually think of the winter snow in
+northern latitudes as a part of our polar caps, but seen from space, the thin winter snow merges with Earth’s
+thick, permanent ice caps to create an impression much like that seen on Mars (Figure 10.25).
+Figure 10.25 Martian North Polar Cap. (a) This is a composite image of the north pole in summer, obtained in October 2006 by the
+Mars Reconnaissance Orbiter. It shows the mostly water-ice residual cap sitting atop light, tan-colored, layered sediments. Note that
+although the border of this photo is circular, it shows only a small part of the planet. (b) Here we see a small section of the layered
+terrain near the martian north pole. There is a mound about 40 meters high that is sticking out of a trough in the center of the
+picture. (credit a: modification of work by NASA/JPL/MSSS; credit b: modification of work by NASA/JPL-Caltech/University of Arizona)
+The seasonal caps on Mars are composed not of ordinary snow but of frozen CO2 (dry ice). These deposits
+condense directly from the atmosphere when the surface temperature drops below about 150 K. The caps
+develop during the cold martian winters and extend down to about 50° latitude by the start of spring.
+Quite distinct from these thin seasonal caps of CO2 are the permanent or residual caps that are always present
+near the poles. The southern permanent cap has a diameter of 350 kilometers and is composed of frozen CO2
+deposits together with a great deal of water ice. Throughout the southern summer, it remains at the freezing
+10.5 • Water and Life on Mars
+point of CO2, 150 K, and this cold reservoir is thick enough to survive the summer heat intact.
+The northern permanent cap is different. It is much larger, never shrinking to a diameter less than 1000
+kilometers, and is composed of water ice. Summer temperatures in the north are too high for the frozen CO2
+to be retained. Measurements from the Mars Global Surveyor have established the exact elevations in the
+north polar region of Mars, showing that it is a large basin about the size of our own Arctic Ocean basin. The
+ice cap itself is about 3 kilometers thick, with a total volume of about 10 million km3 (similar to that of Earth’s
+Mediterranean Sea). If Mars ever had extensive liquid water, this north polar basin would have contained a
+shallow sea. There is some indication of ancient shorelines visible, but better images will be required to verify
+this suggestion.
+Images taken from orbit also show a distinctive type of terrain surrounding the permanent polar caps, as
+shown in Figure 10.25. At latitudes above 80° in both hemispheres, the surface consists of recent layered
+deposits that cover the older cratered ground below. Individual layers are typically ten to a few tens of meters
+thick, marked by alternating light and dark bands of sediment. Probably the material in the polar deposits
+includes dust carried by wind from the equatorial regions of Mars.
+What do these terraced layers tell us about Mars? Some cyclic process is depositing dust and ice over periods
+of time. The time scales represented by the polar layers are tens of thousands of years. Apparently the martian
+climate experiences periodic changes at intervals similar to those between ice ages on Earth. Calculations
+indicate that the causes are probably also similar: the gravitational pull of the other planets produces
+variations in Mars’ orbit and tilt as the great clockwork of the solar system goes through its paces.
+The Phoenix spacecraft landed near the north polar cap in summer (Figure 10.26). Controllers knew that it
+would not be able to survive a polar winter, but directly measuring the characteristics of the polar region was
+deemed important enough to send a dedicated mission. The most exciting discovery came when the
+spacecraft tried to dig a shallow trench under the spacecraft. When the overlying dust was stripped off, they
+saw bright white material, apparently some kind of ice. From the way this ice sublimated over the next few
+days, it was clear that it was frozen water.
+Figure 10.26 Evaporating Ice on Mars. We see a trench dug by the Phoenix lander in the north polar region four martian days apart
+in June 2008. If you look at the shadowed region in the bottom left of the trench, you can see three spots of ice in the left image
+which have sublimated away in the right image. (credit: modification of work by NASA/JPL-Caltech/University of Arizona/Texas A&M
+10 • Earthlike Planets: Venus and Mars
+University)
+E X A M P L E 1 0 . 1
+Comparing the Amount of Water on Mars and Earth
+It is interesting to estimate the amount of water (in the form of ice) on Mars and to compare this with the
+amount of water on Earth. In each case, we can find the total volume of a layer on a sphere by multiplying
+the area of the sphere (4πR2) by the thickness of the layer. For Earth, the ocean water is equivalent to a
+layer 3 km thick spread over the entire planet, and the radius of Earth is 6.378 × 106 m (see Appendix F). For
+Mars, most of the water we are sure of is in the form of ice near the poles. We can calculate the amount of
+ice in one of the residual polar caps if it is (for example) 2 km thick and has a radius of 400 km (the area of a
+circle is πR2).
+Solution
+The volume of Earth’s water is therefore the area 4πR2
+multiplied by the thickness of 3000 m:
+This gives 1.5 × 1018 m3 of water. Since water has a density of 1 ton per cubic meter (1000 kg/m3), we can
+calculate the mass:
+For Mars, the ice doesn’t cover the whole planet, only the caps; the polar cap area is
+(Note that we converted kilometers to meters.)
+The volume = area × height, so we have:
+Therefore, the mass is:
+This is about 0.1% that of Earth’s oceans.
+Check Your Learning
+A better comparison might be to compare the amount of ice in the Mars polar ice caps to the amount of ice
+in the Greenland ice sheet on Earth, which has been estimated as 2.85 × 1015 m3. How does this compare
+with the ice on Mars?
+Answer:
+The Greenland ice sheet has about 2.85 times as much ice as in the polar ice caps on Mars. They are about
+the same to the nearest power of 10.
+Channels and Gullies on Mars
+Although no bodies of liquid water exist on Mars today, evidence has accumulated that rivers flowed on the
+red planet long ago. Two kinds of geological features appear to be remnants of ancient watercourses, while a
+third class—smaller gullies—suggests intermittent outbreaks of liquid water even today. We will examine each
+10.5 • Water and Life on Mars
+of these features in turn.
+In the highland equatorial plains, there are multitudes of small, sinuous (twisting) channels—typically a few
+meters deep, some tens of meters wide, and perhaps 10 or 20 kilometers long (Figure 10.27). They are called
+runoff channels because they look like what geologists would expect from the surface runoff of ancient rain
+storms. These runoff channels seem to be telling us that the planet had a very different climate long ago. To
+estimate the age of these channels, we look at the cratering record. Crater counts show that this part of the
+planet is more cratered than the lunar maria but less cratered than the lunar highlands. Thus, the runoff
+channels are probably older than the lunar maria, presumably about 4 billion years old.
+The second set of water-related features we see are outflow channels (Figure 10.27) are much larger than the
+runoff channels. The largest of these, which drain into the Chryse basin where Pathfinder landed, are 10
+kilometers or more wide and hundreds of kilometers long. Many features of these outflow channels have
+convinced geologists that they were carved by huge volumes of running water, far too great to be produced by
+ordinary rainfall. Where could such floodwater have come from on Mars?
+Figure 10.27 Runoff and Outflow Channels. (a) These runoff channels in the old martian highlands are interpreted as the valleys of
+ancient rivers fed by either rain or underground springs. The width of this image is about 200 kilometers. (b) This intriguing channel,
+called Nanedi Valles, resembles Earth riverbeds in some (but not all) ways. The tight curves and terraces seen in the channel certainly
+suggest the sustained flow of a fluid like water. The channel is about 2.5 kilometers across. (credit a: modification of work by Jim
+Secosky/NASA; credit b: modification of work by Jim Secosky/NASA)
+As far we can tell, the regions where the outflow channels originate contained abundant water frozen in the
+soil as permafrost. Some local source of heating must have released this water, leading to a period of rapid
+and catastrophic flooding. Perhaps this heating was associated with the formation of the volcanic plains on
+Mars, which date back to roughly the same time as the outflow channels.
+Note that neither the runoff channels nor the outflow channels are wide enough to be visible from Earth, nor
+do they follow straight lines. They could not have been the “canals” Percival Lowell imagined seeing on the red
+planet.
+The third type of water feature, the smaller gullies, was discovered by the Mars Global Surveyor (Figure 10.28).
+The Mars Global Surveyor’s camera images achieved a resolution of a few meters, good enough to see
+something as small as a truck or bus on the surface. On the steep walls of valleys and craters at high latitudes,
+10 • Earthlike Planets: Venus and Mars
+there are many erosional features that look like gullies carved by flowing water. These gullies are very young:
+not only are there no superimposed impact craters, but in some instances, the gullies seem to cut across
+recent wind-deposited dunes. Perhaps there is liquid water underground that can occasionally break out to
+produce short-lived surface flows before the water can freeze or evaporate.
+Figure 10.28 Gullies on the Wall of Garni Crater. This high-resolution image is from the Mars Reconnaissance Orbiter. The dark
+streaks, which are each several hundred meters long, change in a seasonal pattern that suggests they are caused by the temporary
+flow of surface water. (credit: NASA/JPL-Caltech/University of Arizona)
+The gullies also have the remarkable property of changing regularly with the martian seasons. Many of the
+dark streaks (visible in Figure 10.28) elongate within a period of a few days, indicating that something is
+flowing downhill—either water or dark sediment. If it is water, it requires a continuing source, either from the
+atmosphere or from springs that tap underground water layers (aquifers.) Underground water would be the
+most exciting possibility, but this explanation seems inconsistent with the fact that many of the dark streaks
+start at high elevations on the walls of craters.
+Additional evidence that the dark streaks (called by the scientists recurring slope lineae) are caused by water
+was found in 2015 when spectra were obtained of the dark streaks (Figure 10.29). These showed the presence
+of hydrated salts produced by the evaporation of salty water. If the water is salty, it could remain liquid long
+enough to flow downstream for distances of a hundred meters or more, before it either evaporates or soaks
+into the ground. However, this discovery still does not identify the ultimate source of the water.
+10.5 • Water and Life on Mars
+Figure 10.29 Evidence for Liquid Water on Mars. The dark streaks in Horowitz crater, which move downslope, have been called
+recurring slope lineae. The streaks in the center of the image go down the wall of the crater for about a distance of 100 meters.
+Spectra taken of this region indicate that these are locations where salty liquid water flows on or just below the surface of Mars. (The
+vertical dimension is exaggerated by a factor of 1.5 compared to horizontal dimensions.) (credit: NASA/JPL-Caltech/University of
+Arizona)
+Ancient Lakes and Glaciers
+The rovers (Spirit, Opportunity, Curiosity, and Perseverance,, that have operated on the surface of Mars have
+been used to hunt for additional evidence of water. They could not reach the most interesting sites, such as
+the gullies, which are located on steep slopes. Instead, they explored sites that might be dried-out lake beds,
+dating back to a time when the climate on Mars was warmer and the atmosphere thicker—allowing water to
+be liquid on the surface.
+Spirit was specifically targeted to explore what looked like an ancient lake-bed in Gusev crater, with an outflow
+channel emptying into it. However, when the spacecraft landed, it found that the former lakebed had been
+covered by thin lava flows, blocking the rover from access to the sedimentary rocks it had hoped to find.
+However, Opportunity had better luck. Peering at the walls of a small crater, it detected layered sedimentary
+rock. These rocks contained chemical evidence of evaporation, suggesting there had been a shallow salty lake
+in that location. In these sedimentary rocks were also small spheres that were rich in the mineral hematite,
+which forms only in watery environments. Apparently this very large basin had once been underwater.
+The small spherical rocks were nicknamed “blueberries” by the science team and the discovery of a whole
+“berry-bowl” of them was announced in this interesting news release (https://openstax.org/l/30berrybowl)
+from NASA.
+The Curiosity rover landed inside Gale crater, where photos taken from orbit also suggested past water
+erosion. It discovered numerous sedimentary rocks, some in the form of mudstones from an ancient lakebed;
+it also found indications of rocks formed by the action of shallow water at the time the sediment formed
+(Figure 10.30).
+LINK TO LEARNING
+10 • Earthlike Planets: Venus and Mars
+Even today there is evidence of large quantities of ice just below the surface of Mars. In the mid-latitudes,
+high-resolution photos from orbit have revealed glaciers covered with dirt and dust. In some cliffs, the ice is
+observed directly (see Figure 10.30). Perseverance is exploring the 45-km-wide crater Jezero, which is a dusty
+former lakebed and river delta with evidence of large rocks deposited by ancient floods. These glaciers are
+thought to have formed during warm periods, when the atmospheric pressure was greater and snow and ice
+could precipitate. They also suggest readily available frozen water that could support future human
+exploration of the planet.
+Figure 10.30 Gale Crater and Underground Ice Deposits. (a) This scene, photographed by the Curiosity rover, shows an ancient
+lakebed of cracked mudstones. (b) Geologists working with the Curiosity rover interpret this image of cross-bedded sandstone in
+Gale crater as evidence of liquid water passing over a loose bed of sediment at the time this rock formed. (c) Ice bands a hundred
+meters tall are visible in blue in a cliff-face on Mars, suggesting large deposits of frozen water buried just a few meters below the
+surface. Note that the blue color has been exaggerated in this photo, taken by the Mars Reconnaissance Orbiter spacecraft. (credit a:
+modification of work by NASA/JPL-Caltech/MSSS; credit b: modification of work by NASA/JPL-Caltech/MSSS; credit c: modification of
+work by NASA/JPL-Caltech/UA/USGS)
+Astronomy and Pseudoscience: The “Face on Mars”
+People like human faces. We humans have developed great skill in recognizing people and interpreting
+facial expressions. We also have a tendency to see faces in many natural formations, from clouds to the
+man in the Moon. One of the curiosities that emerged from the Viking orbiters’ global mapping of Mars
+was the discovery of a strangely shaped mesa in the Cydonia region that resembled a human face. Despite
+later rumors of a cover-up, the “Face on Mars” was, in fact, recognized by Viking scientists and included in
+one of the early mission press releases. At the low resolution and oblique lighting under which the Viking
+image was obtained, the mile-wide mesa had something of a Sphinx-like appearance.
+MAKING CONNECTIONS
+10.5 • Water and Life on Mars
+Unfortunately, a small band of individuals decided that this formation was an artificial, carved sculpture of a
+human face placed on Mars by an ancient civilization that thrived there hundreds of thousands of years
+ago. A band of “true believers” grew around the face and tried to deduce the nature of the “sculptors” who
+made it. This group also linked the face to a variety of other pseudoscientific phenomena such as crop
+circles (patterns in fields of grain, mostly in Britain, now known to be the work of pranksters).
+Members of this group accused NASA of covering up evidence of intelligent life on Mars, and they received
+a great deal of help in publicizing their perspective from tabloid media. Some of the believers picketed the
+Jet Propulsion Laboratory at the time of the failure of the Mars Observer spacecraft, circulating stories that
+the “failure” of the Mars Observer was itself a fake, and that its true (secret) mission was to photograph the
+face.
+The high-resolution Mars Observer camera (MOC) was reflown on the Mars Global Surveyor mission, which
+arrived at Mars in 1997. On April 5, 1998, in Orbit 220, the MOC obtained an oblique image of the face at a
+resolution of 4 meters per pixel, a factor-of-10 improvement in resolution over the Viking image. Another
+image in 2001 had even higher resolution. Immediately released by NASA, the new images showed a low
+mesa-like hill cut crossways by several roughly linear ridges and depressions, which were misidentified in
+the 1976 photo as the eyes and mouth of a face. Only with an enormous dose of imagination can any
+resemblance to a face be seen in the new images, demonstrating how dramatically our interpretation of
+geology can change with large improvements in resolution. The original and the higher resolution images
+can be seen in Figure 10.31.
+Figure 10.31 Face on Mars. The so-called “Face on Mars” is seen (a) in low resolution from Viking (the “face” is in the upper part
+of the picture) and (b) with 20 times better resolution from the Mars Global Surveyor. (credit a: modification of work NASA/JPL;
+credit b: modification of work by NASA/JPL/MSSS)
+After 20 years of promoting pseudoscientific interpretations and various conspiracy theories, can the “Face
+on Mars” believers now accept reality? Unfortunately, it does not seem so. They have accused NASA of
+faking the new picture. They also suggest that the secret mission of the Mars Observer included a nuclear
+bomb used to destroy the face before it could be photographed in greater detail by the Mars Global
+Surveyor.
+Space scientists find these suggestions incredible. NASA is spending increasing sums for research on life in
+the universe, and a major objective of current and upcoming Mars missions is to search for evidence of past
+microbial life on Mars. Conclusive evidence of extraterrestrial life would be one of the great discoveries of
+science and incidentally might well lead to increased funding for NASA. The idea that NASA or other
+10 • Earthlike Planets: Venus and Mars
+government agencies would (or could) mount a conspiracy to suppress such welcome evidence is truly
+bizarre.
+Alas, the “Face on Mars” story is only one example of a whole series of conspiracy theories that are kept
+before the public by dedicated believers, by people out to make a fast buck, and by irresponsible media
+attention. Others include the “urban legend” that the Air Force has the bodies of extraterrestrials at a
+secret base, the widely circulated report that UFOs crashed near Roswell, New Mexico (actually it was a
+balloon carrying scientific instruments to find evidence of Soviet nuclear tests), or the notion that alien
+astronauts helped build the Egyptian pyramids and many other ancient monuments because our ancestors
+were too stupid to do it alone.
+In response to the increase in publicity given to these “fiction science” ideas, a group of scientists,
+educators, scholars, and magicians (who know a good hoax when they see one) have formed the
+Committee for Skeptical Inquiry. Two of the original authors of your book are active on the committee. For
+more information about its work delving into the rational explanations for paranormal claims, see their
+excellent magazine, The Skeptical Inquirer, or check out their website at https://skepticalinquirer.org/
+(https://skepticalinquirer.org/).
+Climate Change on Mars
+The evidence about ancient rivers and lakes of water on Mars discussed so far suggests that, billions of years
+ago, martian temperatures must have been warmer and the atmosphere must have been more substantial
+than it is today. But what could have changed the climate on Mars so dramatically?
+We presume that, like Earth and Venus, Mars probably formed with a higher surface temperature thanks to
+the greenhouse effect. But Mars is a smaller planet, and its lower gravity means that atmospheric gases could
+escape more easily than from Earth and Venus. As more and more of the atmosphere escaped into space, the
+temperature on the surface gradually fell.
+Eventually Mars became so cold that most of the water froze out of the atmosphere, further reducing its ability
+to retain heat. The planet experienced a sort of runaway refrigerator effect, just the opposite of the runaway
+greenhouse effect that occurred on Venus. Probably, this loss of atmosphere took place within less than a
+billion years after Mars formed. The result is the cold, dry Mars we see today.
+Conditions a few meters below the martian surface, however, may be much different. There, liquid water
+(especially salty water) might persist, kept warm by the internal heat of Mars or the insulating layers solid and
+rock. Even on the surface, there may be ways to change the martian atmosphere temporarily.
+Mars is likely to experience long-term climate cycles, which may be caused by the changing orbit and tilt of the
+planet. At times, one or both of the polar caps might melt, releasing a great deal of water vapor into the
+atmosphere. Perhaps an occasional impact by a comet might produce a temporary atmosphere that is thick
+enough to permit liquid water on the surface for a few weeks or months. Some have even suggested that
+future technology might allow us to terraform Mars—that is, to engineer its atmosphere and climate in ways
+that might make the planet more hospitable for long-term human habitation.
+The Search for Life on Mars
+If there was running water on Mars in the past, perhaps there was life as well. Could life, in some form, remain
+in the martian soil today? Testing this possibility, however unlikely, was one of the primary objectives of the
+Viking landers in 1976. These landers carried miniature biological laboratories to test for microorganisms in
+the martian soil. Martian soil was scooped up by the spacecraft’s long arm and placed into the experimental
+chambers, where it was isolated and incubated in contact with a variety of gases, radioactive isotopes, and
+nutrients to see what would happen. The experiments looked for evidence of respiration by living animals,
+10.5 • Water and Life on Mars
+absorption of nutrients offered to organisms that might be present, and an exchange of gases between the
+soil and its surroundings for any reason whatsoever. A fourth instrument pulverized the soil and analyzed it
+carefully to determine what organic (carbon-bearing) material it contained.
+The Viking experiments were so sensitive that, had one of the spacecraft landed anywhere on Earth (with the
+possible exception of Antarctica), it would easily have detected life. But, to the disappointment of many
+scientists and members of the public, no life was detected on Mars. The soil tests for absorption of nutrients
+and gas exchange did show some activity, but this was most likely caused by chemical reactions that began as
+water was added to the soil and had nothing to do with life. In fact, these experiments showed that martian
+soil seems much more chemically active than terrestrial soils because of its exposure to solar ultraviolet
+radiation (since Mars has no ozone layer).
+The organic chemistry experiment showed no trace of organic material, which is apparently destroyed on the
+martian surface by the sterilizing effect of this ultraviolet light. While the possibility of life on the surface has
+not been eliminated, most experts consider it negligible. Although Mars has the most earthlike environment of
+any planet in the solar system, the sad fact is that nobody seems to be home today, at least on the surface.
+However, there is no reason to think that life could not have begun on Mars about 4 billion years ago, at the
+same time it started on Earth. The two planets had very similar surface conditions then. Thus, the attention of
+scientists has shifted to the search for fossil life on Mars. One of the primary questions to be addressed by
+future spacecraft is whether Mars once supported its own life forms and, if so, how this martian life compared
+with that on our own planet. Future missions will include the return of martian samples selected from
+sedimentary rocks at sites that once held water and thus perhaps ancient life. The most powerful searches for
+martian life (past or present) will thus be carried out in our laboratories here on Earth.
+Planetary Protection
+When scientists begin to search for life on another planet, they must make sure that we do not contaminate
+the other world with life carried from Earth. At the very beginning of spacecraft exploration on Mars, an
+international agreement specified that all landers were to be carefully sterilized to avoid accidentally
+transplanting terrestrial microbes to Mars. In the case of Viking, we know the sterilization was successful.
+Viking’s failure to detect martian organisms also implies that these experiments did not detect hitchhiking
+terrestrial microbes.
+As we have learned more about the harsh conditions on the martian surface, the sterilization requirements
+have been somewhat relaxed. It is evident that no terrestrial microbes could grow on the martian surface,
+with its low temperature, absence of water, and intense ultraviolet radiation. Microbes from Earth might
+survive in a dormant, dried state, but they cannot grow and proliferate on Mars.
+The problem of contaminating Mars will become more serious, however, as we begin to search for life
+below the surface, where temperatures are higher and no ultraviolet light penetrates. The situation will be
+even more daunting if we consider human flights to Mars. Any humans will carry with them a multitude of
+terrestrial microbes of all kinds, and it is hard to imagine how we can effectively keep the two biospheres
+isolated from each other if Mars has indigenous life. Perhaps the best situation could be one in which the
+two life-forms are so different that each is effectively invisible to the other—not recognized on a chemical
+level as living or as potential food.
+The most immediate issue of public concern is not with the contamination of Mars but with any dangers
+associated with returning Mars samples to Earth. NASA is committed to the complete biological isolation of
+returned samples until they are demonstrated to be safe. Even though the chances of contamination are
+MAKING CONNECTIONS
+10 • Earthlike Planets: Venus and Mars
+extremely low, it is better to be safe than sorry.
+Most likely there is no danger, even if there is life on Mars and alien microbes hitch a ride to Earth inside
+some of the returned samples. In fact, Mars is sending samples to Earth all the time in the form of the Mars
+meteorites. Since some of these microbes (if they exist) could probably survive the trip to Earth inside their
+rocky home, we may have been exposed many times over to martian microbes. Either they do not interact
+with our terrestrial life, or in effect our planet has already been inoculated against such alien bugs.
+More than any other planet, Mars has inspired science fiction writers over the years. You can find
+scientifically reasonable stories about Mars in a subject index of such stories online. If you click on Mars
+(https://openstax.org/l/30MarsStories) as a topic, you will find stories by a number of space scientists,
+including William Hartmann, Geoffrey Landis, and Ludek Pesek.
+10.6
+Divergent Planetary Evolution
+Learning Objectives
+By the end of this section, you will be able to:
+Compare the planetary evolution of Venus, Earth, and Mars
+Venus, Mars, and our own planet Earth form a remarkably diverse triad of worlds. Although all three orbit in
+roughly the same inner zone around the Sun and all apparently started with about the same chemical mix of
+silicates and metals, their evolutionary paths have diverged. As a result, Venus became hot and dry, Mars
+became cold and dry, and only Earth ended up with what we consider a hospitable climate.
+We have discussed the runaway greenhouse effect on Venus and the runaway refrigerator effect on Mars, but
+we do not understand exactly what started these two planets down these separate evolutionary paths. Was
+Earth ever in danger of a similar fate? Or might it still be diverted onto one of these paths, perhaps due to
+stress on the atmosphere generated by human pollutants? One of the reasons for studying Venus and Mars is
+to seek insight into these questions.
+Some people have even suggested that if we understood the evolution of Mars and Venus better, we could
+possibly reverse their evolution and restore more earthlike environments. While it seems unlikely that humans
+could ever make either Mars or Venus into a replica of Earth, considering such possibilities is a useful part of
+our more general quest to understand the delicate environmental balance that distinguishes our planet from
+its two neighbors. In Cosmic Samples and the Origin of the Solar System, we return to the comparative study
+of the terrestrial planets and their divergent evolutionary histories.
+LINK TO LEARNING
+10.6 • Divergent Planetary Evolution
+Figure 10.32 New Vehicles on Mars. (a) The Ingenuity Helicopter flies above the martian surface. (b) The Chinese Zhurong rover,
+deployed in June 2021, is next to the Tianwen-1 lander; the “group portrait” was taken by a wireless camera placed by the rover.
+(credit a: modification of work by NASA/JPL; credit b: modification of work by the China National Space Administration)
+10 • Earthlike Planets: Venus and Mars
+Key Terms
+runaway greenhouse effect
+the process by which the greenhouse effect, rather than remaining stable or
+being lessened through intervention, continues to grow at an increasing rate
+tectonic
+geological features that result from stresses and pressures in the crust of a planet; tectonic forces
+can lead to earthquakes and motion of the crust
+Summary
+10.1 The Nearest Planets: An Overview
+Venus, the nearest planet, is a great disappointment through the telescope because of its impenetrable cloud
+cover. Mars is more tantalizing, with dark markings and polar caps. Early in the twentieth century, it was widely
+believed that the “canals” of Mars indicated intelligent life there. Mars has only 11% the mass of Earth, but
+Venus is nearly our twin in size and mass. Mars rotates in 24 hours and has seasons like Earth; Venus has a
+retrograde rotation period of 243 days. Both planets have been extensively explored by spacecraft.
+10.2 The Geology of Venus
+Venus has been mapped by radar, especially with the Magellan spacecraft. Its crust consists of 75% lowland
+lava plains, numerous volcanic features, and many large coronae, which are the expression of subsurface
+volcanism. The planet has been modified by widespread tectonics driven by mantle convection, forming
+complex patterns of ridges and cracks and building high continental regions such as Ishtar. The surface is
+extraordinarily inhospitable, with pressure of 90 bars and temperature of 730 K, but several Russian Venera
+landers investigated it successfully.
+10.3 The Massive Atmosphere of Venus
+The atmosphere of Venus is 96% CO2. Thick clouds at altitudes of 30 to 60 kilometers are made of sulfuric acid,
+and a CO2 greenhouse effect maintains the high surface temperature. Venus presumably reached its current
+state from more earthlike initial conditions as a result of a runaway greenhouse effect, which included the loss
+of large quantities of water.
+10.4 The Geology of Mars
+Most of what we know about Mars is derived from spacecraft: highly successful orbiters, landers, and rovers.
+We have also been able to study a few martian rocks that reached Earth as meteorites. Mars has heavily
+cratered highlands in its southern hemisphere, but younger, lower volcanic plains over much of its northern
+half. The Tharsis bulge, as big as North America, includes several huge volcanoes; Olympus Mons is more than
+20 kilometers high and 500 kilometers in diameter. The Valles Marineris canyons are tectonic features widened
+by erosion. Early landers revealed only barren, windswept plains, but later missions have visited places with
+more geological (and scenic) variety. Landing sites have been selected in part to search for evidence of past
+water.
+10.5 Water and Life on Mars
+The martian atmosphere has a surface pressure of less than 0.01 bar and is 95% CO2. It has dust clouds, water
+clouds, and carbon dioxide (dry ice) clouds. Liquid water on the surface is not possible today, but there is
+subsurface permafrost at high latitudes. Seasonal polar caps are made of dry ice; the northern residual cap is
+water ice, whereas the southern permanent ice cap is made predominantly of water ice with a covering of
+carbon dioxide ice. Evidence of a very different climate in the past is found in water erosion features: both
+runoff channels and outflow channels, the latter carved by catastrophic floods. Our rovers, exploring ancient
+lakebeds and places where sedimentary rock has formed, have found evidence for extensive surface water in
+the past. Even more exciting are the gullies that seem to show the presence of flowing salty water on the
+surface today, hinting at near-surface aquifers. The Viking landers searched for martian life in 1976, with
+10 • Key Terms
+negative results, but life might have flourished long ago. We have found evidence of water on Mars, but
+following the water has not yet led us to life on that planet.
+10.6 Divergent Planetary Evolution
+Earth, Venus, and Mars have diverged in their evolution from what may have been similar beginnings. We
+need to understand why if we are to protect the environment of Earth.
+For Further Exploration
+Articles
+Venus
+Dorminey, B. “Cool Science on a Hot World.” Astronomy (February 2006): 46. Five-page overview of Venus and
+the Venus Express mission plans.
+Kargel, J. “Rivers of Venus.” Sky & Telescope (August 1997): 32. On lava channels.
+Robertson, D. “Parched Planet.” Sky & Telescope (April 2008): 26. Overview of our understanding of the planet.
+Robinson, C. “Magellan Reveals Venus.” Astronomy (February 1995): 32.
+Stofan, E. “The New Face of Venus.” Sky & Telescope (August 1993): 22.
+Zimmerman, R. “Taking Venus by Storm.” Astronomy (October 2008): 66. On results from the Venus Express
+mission.
+Mars
+Albee, A. “The Unearthly Landscapes of Mars.” Scientific American (June 2003): 44. Results from the Mars
+Global Surveyor and Mars Odyssey missions and an overview.
+Bell, J. “A Fresh Look at Mars.” Astronomy (August 2015): 28. Nice summary of recent spacecraft results and
+how they are revising our understanding of Mars.
+Bell, J. “Uncovering Mars’ Secret Past.” Sky & Telescope (July 2009): 22. How rovers and orbiters are helping us
+to understand Mars history and the role of water.
+Bell, J. “The Red Planet’s Watery Past.” Scientific American (December 2006): 62. Rovers are furnishing proof
+that ancient Mars was wet.
+Burnham, R. “Red Planet Rendezvous.” Astronomy (May 2006): 68. About Mariner Valley and a flyover film
+constructed from many still images.
+Christensen, P. “The Many Faces of Mars.” Scientific American (July 2005): 32. Results from the Rover mission;
+evidence that Mars was once wet in places.
+Lakdawalla, E. “The History of Water on Mars.” Sky & Telescope (September 2013): 16. Clear review of our
+current understanding of the role of water on Mars in different epochs.
+Malin, M. “Visions of Mars.” Sky & Telescope (April 1999): 42. A geological tour of the red planet, with new Mars
+Global Surveyor images.
+McEwen, A. “Mars in Motion.” Scientific American (May 2013): 58. On gullies and other surface changes.
+McKay, C. & Garcia, V. “How to Search for Life on Mars.” Scientific American (June 2014): 44. Experiments future
+probes could perform.
+Naeye, R. “Europe’s Eye on Mars.” Sky & Telescope (December 2005): 30. On the Mars Express mission and the
+remarkable close-up images it is sending.
+10 • For Further Exploration
+Talcott, R. “Seeking Ground Truth on Mars.” Astronomy (October 2009): 34. How rovers and orbiters are
+helping scientists understand the red planet’s surface.
+Websites
+European Space Agency Mars Express Page: http://www.esa.int/Our_Activities/Space_Science/Mars_Express
+(http://www.esa.int/Our_Activities/Space_Science/Mars_Express).
+European Space Agency Venus Express Page: http://www.esa.int/Our_Activities/Space_Science/Venus_Express
+(http://www.esa.int/Our_Activities/Space_Science/Venus_Express).
+High Resolution Imaging Science Experiment: http://hirise.lpl.arizona.edu/ (http://hirise.lpl.arizona.edu/).
+Jet Propulsion Lab Mars Exploration Page: http://mars.jpl.nasa.gov/ (http://mars.jpl.nasa.gov/).
+Mars Globe HD app: https://itunes.apple.com/us/app/mars-globe-hd/id376020224?mt=8
+(https://itunes.apple.com/us/app/mars-globe-hd/id376020224?mt=8).
+Mars Rover 360° Panorama: http://www.360cities.net/image/curiosity-rover-martian-solarday-2#171.10,26.50,70.0 (http://www.360cities.net/image/curiosity-rover-martian-solarday-2#171.10,26.50,70.0). Interactive.
+NASA Center for Mars Exploration: http://www.nasa.gov/mission_pages/mars/main/index.html
+(http://www.nasa.gov/mission_pages/mars/main/index.html).
+NASA Solar System Exploration Mars Page: http://solarsystem.nasa.gov/planets/mars
+(http://solarsystem.nasa.gov/planets/mars).
+NASA Solar System Exploration Venus Page: http://solarsystem.nasa.gov/planets/venus
+(http://solarsystem.nasa.gov/planets/venus).
+NASA’s Magellan Mission to Venus: http://www2.jpl.nasa.gov/magellan/ (http://www2.jpl.nasa.gov/
+magellan/).
+Russian (Soviet) Venus Missions and Images: http://mentallandscape.com/C_CatalogVenus.htm
+(http://mentallandscape.com/C_CatalogVenus.htm).
+Venus Atlas app: https://itunes.apple.com/us/app/venus-atlas/id317310503?mt=8 (https://itunes.apple.com/
+us/app/venus-atlas/id317310503?mt=8).
+Venus Express Results Article: http://www.mpg.de/798302/F002_Focus_026-033.pdf (http://www.mpg.de/
+798302/F002_Focus_026-033.pdf).
+Videos
+50 Years of Mars Exploration: http://www.jpl.nasa.gov/video/details.php?id=1395 (http://www.jpl.nasa.gov/
+video/details.php?id=1395). NASA’s summary of all missions through MAVEN; good quick overview (4:08).
+Being a Mars Rover: What It’s Like to be an Interplanetary Explorer: https://www.youtube.com/
+watch?v=nRpCOEsPD54 (https://www.youtube.com/watch?v=nRpCOEsPD54). 2013 talk by Dr. Lori Fenton
+about what it’s like on the surface of Mars (1:07:24).
+Magellan Radar Maps of Venus: https://www.youtube.com/watch?v=dK4JnGTCawM
+(https://www.youtube.com/watch?v=dK4JnGTCawM). Fly-overs of six regions on Venus from the Jet Propulsion
+Labs.
+Our Curiosity: https://www.youtube.com/watch?v=XczKXWvokm4 (https://www.youtube.com/
+watch?v=XczKXWvokm4). Mars Curiosity rover 2-year anniversary video narrated by Neil deGrasse Tyson and
+Felicia Day (6:01).
+10 • For Further Exploration
+Planet Venus: The Deadliest Planet, Venus Surface and Atmosphere: https://www.youtube.com/
+watch?v=HqFVxWfVtoo (https://www.youtube.com/watch?v=HqFVxWfVtoo). Quick tour of Venus’ atmosphere
+and surface (2:04).
+Planetary Protection and Hitchhikers in the Solar System: The Danger of Mingling Microbes:
+https://www.youtube.com/watch?v=6iGC3uO7jBI (https://www.youtube.com/watch?v=6iGC3uO7jBI). 2009 talk
+by Dr. Margaret Race on preventing contamination between worlds (1:28:50).
+Collaborative Group Activities
+A.
+Your group has been asked by high NASA officials to start planning the first human colony on Mars. Begin
+by making a list of what sorts of things humans would need to bring along to be able to survive for years
+on the surface of the red planet.
+B.
+As a publicity stunt, the mayor of Venus, Texas (there really is such a town), proposes that NASA fund a
+mission to Venus with humans on board. Clearly, the good mayor neglected to take an astronomy course
+in college. Have your group assemble a list of as many reasons as possible why it is unlikely that humans
+will soon land on the surface of Venus.
+C.
+Even if humans would have trouble surviving on the surface of Venus, this does not mean we could not
+learn a lot more about our veiled sister planet. Have your group brainstorm a series of missions (pretend
+cost is no object) that would provide us with more detailed information about Venus’ atmosphere, surface,
+and interior.
+D.
+Sometime late in the twenty-first century, when travel to Mars has become somewhat routine, a very
+wealthy couple asks you to plan a honeymoon tour of Mars that includes the most spectacular sights on
+the red planet. Constitute your group as the Percival Lowell Memorial Tourist Agency, and come up with a
+list of not-to-be missed tourist stops on Mars.
+E.
+In the popular book and film, called The Martian, the drama really begins when our hero is knocked over
+and loses consciousness as he is half buried by an intense wind storm on Mars. Given what you have
+learned about Mars’ atmosphere in this chapter, have your group discuss how realistic that scenario is.
+(By the way, the author of the book has himself genially acknowledged in interviews and talks that this is a
+reasonable question to ask.)
+F.
+Astronomers have been puzzled and annoyed about the extensive media publicity that was given the
+small group of “true believers” who claimed the “Face on Mars” was not a natural formation (see the
+Astronomy and Pseudoscience: The “Face on Mars” feature box). Have your group make a list of the
+reasons many of the media were so enchanted by this story. What do you think astronomers could or
+should do to get the skeptical, scientific perspective about such issues before the public?
+G.
+Your group is a special committee of scientists set up by the United Nations to specify how any Mars
+samples should be returned to Earth so that possible martian microbes do not harm Earth life. What
+precautions would you recommend, starting at Mars and going all the way to the labs that analyze the
+martian samples back on Earth?
+H.
+Have your group brainstorm about Mars in popular culture. How many movies, songs or other music, and
+products can you think of connected with Mars? What are some reasons that Mars would be a popular
+theme for filmmakers, songwriters, and product designers?
+Exercises
+Review Questions
+1. List several ways that Venus, Earth, and Mars are similar, and several ways they are different.
+10 • Collaborative Group Activities
+2. Compare the current atmospheres of Earth, Venus, and Mars in terms of composition, thickness (and
+pressure at the surface), and the greenhouse effect.
+3. How might Venus’ atmosphere have evolved to its present state through a runaway greenhouse effect?
+4. Describe the current atmosphere on Mars. What evidence suggests that it must have been different in the
+past?
+5. Explain the runaway refrigerator effect and the role it may have played in the evolution of Mars.
+6. What evidence do we have that there was running (liquid) water on Mars in the past? What evidence is
+there for water coming out of the ground even today?
+7. What evidence is there that Venus was volcanically active about 300–600 million years ago?
+8. Why is Mars red?
+9. What is the composition of clouds on Mars?
+10. What is the composition of the polar caps on Mars?
+11. Describe two anomalous features of the rotation of Venus and what might account for them.
+12. How was the Mars Odyssey spacecraft able to detect water on Mars without landing on it?
+Thought Questions
+13. What are the advantages of using radar imaging rather than ordinary cameras to study the topography of
+Venus? What are the relative advantages of these two approaches to mapping Earth or Mars?
+14. Venus and Earth are nearly the same size and distance from the Sun. What are the main differences in the
+geology of the two planets? What might be some of the reasons for these differences?
+15. Why is there so much more carbon dioxide in the atmosphere of Venus than in that of Earth? Why so
+much more carbon dioxide than on Mars?
+16. If the Viking missions were such a rich source of information about Mars, why have we sent the
+Pathfinder, Global Surveyor, and other more recent spacecraft to Mars? Make a list of questions about
+Mars that still puzzle astronomers.
+17. Compare Mars with Mercury and the Moon in terms of overall properties. What are the main similarities
+and differences?
+18. Contrast the mountains on Mars and Venus with those on Earth and the Moon.
+19. We believe that all of the terrestrial planets had similar histories when it comes to impacts from space.
+Explain how this idea can be used to date the formation of the martian highlands, the martian basins, and
+the Tharsis volcanoes. How certain are the ages derived for these features (in other words, how do we
+check the ages we derive from this method)?
+20. Is it likely that life ever existed on either Venus or Mars? Justify your answer in each case.
+21. Suppose that, decades from now, NASA is considering sending astronauts to Mars and Venus. In each
+case, describe what kind of protective gear they would have to carry, and what their chances for survival
+would be if their spacesuits ruptured.
+22. We believe that Venus, Earth, and Mars all started with a significant supply of water. Explain where that
+water is now for each planet.
+10 • Exercises
+23. One source of information about Mars has been the analysis of meteorites from Mars. Since no samples
+from Mars have ever been returned to Earth from any of the missions we sent there, how do we know
+these meteorites are from Mars? What information have they revealed about Mars?
+24. The runaway greenhouse effect and its inverse, the runaway refrigerator effect, have led to harsh,
+uninhabitable conditions on Venus and Mars. Does the greenhouse effect always cause climate changes
+leading to loss of water and life? Give a reason for your answer.
+25. In what way is the high surface temperature of Venus relevant to concerns about global warming on Earth
+today?
+26. What is a dust devil? Would you expect to feel more of a breeze from a dust devil on Mars or on Earth?
+Explain.
+27. Near the martian equator, temperatures at the same spot can vary from an average of –135 °C at night to
+an average of 30 °C during the day. How can you explain such a wide difference in temperature compared
+to that on Earth?
+Figuring for Yourself
+28. Estimate the amount of water there could be in a global (planet-wide) region of subsurface permafrost on
+Mars (do the calculations for two permafrost thicknesses, 1 and 10 km, and a concentration of ice in the
+permafrost of 10% by volume). Compare the two results you get with the amount of water in Earth’s
+oceans calculated in Example 10.1.
+29. At its nearest, Venus comes within about 41 million km of Earth. How distant is it at its farthest?
+30. If you weigh 150 lbs. on the surface of Earth, how much would you weigh on Venus? On Mars?
+31. Calculate the relative land area—that is, the amount of the surface not covered by liquids—of Earth, the
+Moon, Venus, and Mars. (Assume that 70% of Earth is covered with water.)
+32. The closest approach distance between Mars and Earth is about 56 million km. Assume you can travel in a
+spaceship at 58,000 km/h, which is the speed achieved by the New Horizons space probe that went to
+Pluto and is the fastest speed so far of any space vehicle launched from Earth. How long would it take to
+get to Mars at the time of closest approach?
+10 • Exercises

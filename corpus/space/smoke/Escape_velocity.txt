@@ -1,0 +1,1058 @@
+In celestial mechanics, escape velocity or escape speed is the minimum speed needed for an object to escape from contact with or orbit of a primary body, assuming:
+
+Ballistic trajectory – no other forces are acting on the object, such as propulsion and friction
+No other gravity-producing objects exist.
+Although the term escape velocity is common, it is more accurately described as a speed than as a velocity because it is independent of direction. Because gravitational force between two objects depends on their combined mass, the escape speed also depends on mass. For artificial satellites and small natural objects, the mass of the object makes a negligible contribution to the combined mass, and so is often ignored.
+Escape speed varies with distance from the center of the primary body, as does the velocity of an object traveling under the gravitational influence of the primary. If an object is in a circular or elliptical orbit, its speed is always less than the escape speed at its current distance. In contrast if it is on a hyperbolic trajectory its speed will always be higher than the escape speed at its current distance. (It will slow down as it gets to greater distance, but does so asymptotically approaching a positive speed.) An object on a parabolic trajectory will always be traveling exactly the escape speed at its current distance. It has precisely balanced positive kinetic energy and negative gravitational potential energy; it will always be slowing down, asymptotically approaching zero speed, but never quite stop.
+Escape velocity calculations are typically used to determine whether an object will remain in the gravitational sphere of influence of a given body. For example, in solar system exploration it is useful to know whether a probe will continue to orbit the Earth or escape to a heliocentric orbit. It is also useful to know how much a probe will need to slow down in order to be gravitationally captured by its destination body. Rockets do not have to reach escape velocity in a single maneuver, and objects can also use a gravity assist to siphon kinetic energy away from large bodies. 
+Precise trajectory calculations require taking into account small forces like atmospheric drag, radiation pressure, and solar wind. A rocket under continuous or intermittent thrust (or an object climbing a space elevator) can attain escape at any non-zero speed, but the minimum amount of energy required to do so is always the same.
+
+
+== Calculation ==
+Escape speed at a distance d from the center of a spherically symmetric primary body (such as a star or a planet) with mass M is given by the formula
+
+  
+    
+      
+        
+          v
+          
+            e
+          
+        
+        =
+        
+          
+            
+              
+                2
+                G
+                M
+              
+              d
+            
+          
+        
+        =
+        
+          
+            2
+            g
+            d
+             
+          
+        
+      
+    
+    {\displaystyle v_{\text{e}}={\sqrt {\frac {2GM}{d}}}={\sqrt {2gd\ }}}
+  
+
+where:
+
+G is the universal gravitational constant (G ≈ 6.67×10−11 m3⋅kg−1⋅s−2‍)
+g = GM/d2 is the local gravitational acceleration (or the surface gravity, when d = r).
+The value GM is called the standard gravitational parameter, or μ, and is often known more accurately than either G or M separately.
+When given an initial speed V greater than the escape speed ve, the object will asymptotically approach the hyperbolic excess speed v∞, satisfying the equation:
+
+  
+    
+      
+        
+          
+            
+              v
+              
+                ∞
+              
+            
+          
+          
+            2
+          
+        
+        =
+        
+          V
+          
+            2
+          
+        
+        −
+        
+          
+            
+              v
+              
+                e
+              
+            
+          
+          
+            2
+          
+        
+        .
+      
+    
+    {\displaystyle {v_{\infty }}^{2}=V^{2}-{v_{\text{e}}}^{2}.}
+  
+
+For example, with the definitional value for standard gravity of 9.80665 m/s2 (32.1740 ft/s2), the escape velocity from Earth is 11.186 km/s (40,270 km/h; 25,020 mph; 36,700 ft/s). 
+
+
+=== Energy required ===
+For an object of mass 
+  
+    
+      
+        m
+      
+    
+    {\displaystyle m}
+  
+ the energy required to escape a celestial body's gravitational field is GMm / r, a function of the object's mass (where r is the radius of the planet, which for Earth is 6,371 kilometres (3,959 mi), G is the gravitational constant, and M is the mass of the planet, which for Earth is M = 5.9736 × 1024 kg). A related quantity is the specific orbital energy which is essentially the sum of the kinetic and potential energy divided by the mass. An object has reached escape velocity when the specific orbital energy is greater than or equal to zero.
+
+
+=== Conservation of energy ===
+
+The existence of escape velocity can be thought of as a consequence of conservation of energy and an energy field of finite depth. For an object with a given total energy, which is moving subject to conservative forces (such as a static gravity field) it is only possible for the object to reach combinations of locations and speeds which have that total energy; places which have a higher potential energy than this cannot be reached at all. Adding speed (kinetic energy) to an object expands the region of locations it can reach, until, with enough energy, everywhere to infinity becomes accessible.
+The formula for escape velocity can be derived from the principle of conservation of energy. For the sake of simplicity, unless stated otherwise, we assume that an object will escape the gravitational field of a uniform spherical planet by moving away from it and that the only significant force acting on the moving object is the planet's gravity. Imagine that a spaceship of mass m is initially at a distance r from the center of mass of the planet, whose mass is M, and its initial speed is equal to its escape velocity, ve. At its final state, it will be an infinite distance away from the planet, and its speed will be negligibly small. Kinetic energy K and gravitational potential energy Ug are the only types of energy that we will deal with (we will ignore the drag of the atmosphere), so by the conservation of energy,
+
+  
+    
+      
+        (
+        K
+        +
+        
+          U
+          
+            g
+          
+        
+        
+          )
+          
+            initial
+          
+        
+        =
+        (
+        K
+        +
+        
+          U
+          
+            g
+          
+        
+        
+          )
+          
+            final
+          
+        
+      
+    
+    {\displaystyle (K+U_{\text{g}})_{\text{initial}}=(K+U_{\text{g}})_{\text{final}}}
+  
+
+We can set Kfinal = 0 because final velocity is arbitrarily small, and Ug final = 0 because final gravitational potential energy is defined to be zero a long distance away from a planet, so
+
+  
+    
+      
+        
+          
+            
+              
+                ⇒
+                
+
+                
+              
+              
+                
+                  
+                    1
+                    2
+                  
+                
+                m
+                
+                  
+                    
+                      v
+                      
+                        e
+                      
+                    
+                  
+                  
+                    2
+                  
+                
+                +
+                
+                  
+                    
+                      −
+                      G
+                      M
+                      m
+                    
+                    r
+                  
+                
+                =
+                0
+                +
+                0
+              
+            
+            
+              
+                ⇒
+                
+
+                
+              
+              
+                
+                  v
+                  
+                    e
+                  
+                
+                =
+                
+                  
+                    
+                      
+                        2
+                        G
+                        M
+                      
+                      r
+                    
+                  
+                
+              
+            
+          
+        
+      
+    
+    {\displaystyle {\begin{aligned}\Rightarrow {}&{\frac {1}{2}}m{v_{\text{e}}}^{2}+{\frac {-GMm}{r}}=0+0\\[3pt]\Rightarrow {}&v_{\text{e}}={\sqrt {\frac {2GM}{r}}}\end{aligned}}}
+  
+
+
+=== Relativistic ===
+The same result is obtained by a relativistic calculation, in which case the variable r represents the radial coordinate or reduced circumference of the Schwarzschild metric.
+
+
+== Scenarios ==
+
+
+=== From the surface of a body ===
+An alternative expression for the escape velocity ve particularly useful at the surface on the body is:
+
+  
+    
+      
+        
+          v
+          
+            e
+          
+        
+        =
+        
+          
+            2
+            g
+            r
+          
+        
+      
+    
+    {\displaystyle v_{\text{e}}={\sqrt {2gr}}}
+  
+
+where r is the distance between the center of the body and the point at which escape velocity is being calculated and g is the gravitational acceleration at that distance (i.e., the surface gravity).
+For a body with a spherically symmetric distribution of mass, the escape velocity ve from the surface is proportional to the radius assuming constant density, and proportional to the square root of the average density ρ.
+
+  
+    
+      
+        
+          v
+          
+            e
+          
+        
+        =
+        K
+        r
+        
+          
+            ρ
+          
+        
+      
+    
+    {\displaystyle v_{\text{e}}=Kr{\sqrt {\rho }}}
+  
+
+where 
+  
+    
+      
+        K
+        =
+        
+          
+            
+              
+                8
+                3
+              
+            
+            π
+            G
+          
+        
+        ≈
+        
+          2.364
+          ×
+          
+            10
+            
+              −
+              5
+            
+          
+           
+          
+            m
+            
+              1.5
+            
+          
+          
+            ⋅
+          
+          k
+          
+            g
+            
+              −
+              0.5
+            
+          
+          
+            ⋅
+          
+          
+            s
+            
+              −
+              1
+            
+          
+        
+      
+    
+    {\textstyle K={\sqrt {{\frac {8}{3}}\pi G}}\approx \mathrm {2.364\times 10^{-5}~m^{1.5}{\cdot }kg^{-0.5}{\cdot }s^{-1}} }
+  
+.
+This escape velocity is relative to a non-rotating frame of reference, not relative to the moving surface of the planet or moon, as explained below.
+
+
+=== From a rotating body ===
+The escape velocity relative to the surface of a rotating body depends on direction in which the escaping body travels. For example, as the Earth's rotational velocity is 465 m/s at the equator, a rocket launched tangentially from the Earth's equator to the east requires an initial velocity of about 10.735 km/s relative to the moving surface at the point of launch to escape whereas a rocket launched tangentially from the Earth's equator to the west requires an initial velocity of about 11.665 km/s relative to that moving surface. The surface velocity decreases with the cosine of the geographic latitude, so space launch facilities are often located as close to the equator as feasible, e.g. the American Cape Canaveral (latitude 28°28′ N) and the French Guiana Space Centre (latitude 5°14′ N).
+
+
+=== Practical considerations ===
+In most situations it is impractical to achieve escape velocity almost instantly, because of the acceleration implied, and also because if there is an atmosphere, the hypersonic speeds involved (on Earth a speed of 11.2 km/s, or 40,320 km/h) would cause most objects to burn up due to aerodynamic heating or be torn apart by atmospheric drag. For an actual escape orbit, a spacecraft will accelerate steadily out of the atmosphere until it reaches the escape velocity appropriate for its altitude (which will be less than on the surface). In many cases, the spacecraft may be first placed in a parking orbit (e.g. a low Earth orbit at 160–2,000 km) and then accelerated to the escape velocity at that altitude, which will be slightly lower (about 11.0 km/s at a low Earth orbit of 200 km). The required additional change in speed, however, is far less because the spacecraft already has a significant orbital speed (in low Earth orbit speed is approximately 7.8 km/s, or 28,080 km/h).
+
+
+=== For an orbiting body ===
+The escape velocity at a given height is 
+  
+    
+      
+        
+          
+            2
+          
+        
+      
+    
+    {\displaystyle {\sqrt {2}}}
+  
+ times the speed in a circular orbit at the same height, (compare this with the velocity equation in circular orbit). This corresponds to the fact that the potential energy with respect to infinity of an object in such an orbit is minus two times its kinetic energy, while to escape the sum of potential and kinetic energy needs to be at least zero. The velocity corresponding to the circular orbit is sometimes called the first cosmic velocity, whereas in this context the escape velocity is referred to as the second cosmic velocity.
+For a body in an elliptical orbit wishing to accelerate to an escape orbit the required speed will vary, and will be greatest at periapsis when the body is closest to the central body. However, the orbital speed of the body will also be at its highest at this point, and the change in velocity required will be at its lowest, as explained by the Oberth effect.
+
+
+=== Barycentric escape velocity ===
+Escape velocity can either be measured as relative to the other, central body or relative to center of mass or barycenter of the system of bodies. Thus for systems of two bodies, the term escape velocity can be ambiguous, but it is usually intended to mean the barycentric escape velocity of the less massive body. Escape velocity usually refers to the escape velocity of zero mass test particles. For zero mass test particles we have that the 'relative to the other' and the 'barycentric' escape velocities are the same, namely 
+  
+    
+      
+        
+          v
+          
+            e
+          
+        
+        =
+        
+          
+            
+              
+                2
+                G
+                M
+              
+              d
+            
+          
+        
+      
+    
+    {\displaystyle v_{\text{e}}={\sqrt {\frac {2GM}{d}}}}
+  
+.
+But when we can't neglect the smaller mass (say m) we arrive at slightly different formulas.
+Because the system has to obey the law of conservation of momentum we see that both the larger and the smaller mass must be accelerated in the gravitational field. Relative to the center of mass the velocity of the larger mass (vp, for planet) can be expressed in terms of the velocity of the smaller mass (vr, for rocket). We get 
+  
+    
+      
+        
+          v
+          
+            p
+          
+        
+        =
+        −
+        
+          
+            m
+            M
+          
+        
+        
+          v
+          
+            r
+          
+        
+      
+    
+    {\displaystyle v_{p}=-{\frac {m}{M}}v_{r}}
+  
+.
+The 'barycentric' escape velocity now becomes 
+  
+    
+      
+        
+          v
+          
+            r
+          
+        
+        =
+        
+          
+            
+              
+                2
+                G
+                
+                  M
+                  
+                    2
+                  
+                
+              
+              
+                d
+                (
+                M
+                +
+                m
+                )
+              
+            
+          
+        
+        ≈
+        
+          
+            
+              
+                2
+                G
+                M
+              
+              d
+            
+          
+        
+      
+    
+    {\displaystyle v_{r}={\sqrt {\frac {2GM^{2}}{d(M+m)}}}\approx {\sqrt {\frac {2GM}{d}}}}
+  
+, while the 'relative to the other' escape velocity becomes 
+  
+    
+      
+        
+          v
+          
+            r
+          
+        
+        −
+        
+          v
+          
+            p
+          
+        
+        =
+        
+          
+            
+              
+                2
+                G
+                (
+                m
+                +
+                M
+                )
+              
+              d
+            
+          
+        
+        ≈
+        
+          
+            
+              
+                2
+                G
+                M
+              
+              d
+            
+          
+        
+      
+    
+    {\displaystyle v_{r}-v_{p}={\sqrt {\frac {2G(m+M)}{d}}}\approx {\sqrt {\frac {2GM}{d}}}}
+  
+.
+
+
+=== Height of lower-velocity trajectories ===
+Ignoring all factors other than the gravitational force between the body and the object, an object projected vertically at speed v from the surface of a spherical body with escape velocity ve and radius R will attain a maximum height h satisfying the equation
+
+  
+    
+      
+        v
+        =
+        
+          v
+          
+            e
+          
+        
+        
+          
+            
+              h
+              
+                R
+                +
+                h
+              
+            
+          
+        
+         
+        ,
+      
+    
+    {\displaystyle v=v_{\text{e}}{\sqrt {\frac {h}{R+h}}}\ ,}
+  
+
+which, solving for h results in
+
+  
+    
+      
+        h
+        =
+        
+          
+            
+              x
+              
+                2
+              
+            
+            
+              1
+              −
+              
+                x
+                
+                  2
+                
+              
+            
+          
+        
+         
+        R
+         
+        ,
+      
+    
+    {\displaystyle h={\frac {x^{2}}{1-x^{2}}}\ R\ ,}
+  
+
+where x = v/ve is the ratio of the original speed v to the escape velocity ve.
+Unlike escape velocity, the direction (vertically up) is important to achieve maximum height.
+
+
+== Trajectory ==
+If an object attains exactly escape velocity, but is not directed straight away from the planet, then it will follow a curved path or trajectory. Although this trajectory does not form a closed shape, it can be referred to as an orbit. Assuming that gravity is the only significant force in the system, this object's speed at any point in the trajectory will be equal to the escape velocity at that point due to the conservation of energy, its total energy must always be 0, which implies that it always has escape velocity; see the derivation above. The shape of the trajectory will be a parabola whose focus is located at the center of mass of the planet. An actual escape requires a course with a trajectory that does not intersect with the planet, or its atmosphere, since this would cause the object to crash. When moving away from the source, this path is called an escape orbit. Escape orbits are known as C3 = 0 orbits. C3 is the characteristic energy, −GM/2a, where a is the semi-major axis length, which is infinite for parabolic trajectories.
+If the body has a velocity greater than escape velocity then its path will form a hyperbolic trajectory and it will have an excess hyperbolic velocity, equivalent to the extra energy the body has. A relatively small extra delta-v above that needed to accelerate to the escape speed can result in a relatively large speed at infinity. Some orbital manoeuvres make use of this fact. For example, at a place where escape speed is 11.2 km/s, the addition of 0.4 km/s yields a hyperbolic excess speed of 3.02 km/s:
+
+  
+    
+      
+        
+          v
+          
+            ∞
+          
+        
+        =
+        
+          
+            
+              V
+              
+                2
+              
+            
+            −
+            
+              
+                
+                  v
+                  
+                    e
+                  
+                
+              
+              
+                2
+              
+            
+          
+        
+        =
+        
+          
+            (
+            11.6
+            
+               km/s
+            
+            
+              )
+              
+                2
+              
+            
+            −
+            (
+            11.2
+            
+               km/s
+            
+            
+              )
+              
+                2
+              
+            
+          
+        
+        ≈
+        3.02
+        
+           km/s
+        
+        .
+      
+    
+    {\displaystyle v_{\infty }={\sqrt {V^{2}-{v_{\text{e}}}^{2}}}={\sqrt {(11.6{\text{ km/s}})^{2}-(11.2{\text{ km/s}})^{2}}}\approx 3.02{\text{ km/s}}.}
+  
+
+If a body in circular orbit (or at the periapsis of an elliptical orbit) accelerates along its direction of travel to escape velocity, the point of acceleration will form the periapsis of the escape trajectory. The eventual direction of travel will be at 90 degrees to the direction at the point of acceleration. If the body accelerates to beyond escape velocity the eventual direction of travel will be at a smaller angle, and indicated by one of the asymptotes of the hyperbolic trajectory it is now taking. This means the timing of the acceleration is critical if the intention is to escape in a particular direction.
+If the speed at periapsis is v, then the eccentricity of the trajectory is given by:
+
+  
+    
+      
+        e
+        =
+        2
+        (
+        v
+        
+          /
+        
+        
+          v
+          
+            e
+          
+        
+        
+          )
+          
+            2
+          
+        
+        −
+        1
+      
+    
+    {\displaystyle e=2(v/v_{\text{e}})^{2}-1}
+  
+
+This is valid for elliptical, parabolic, and hyperbolic trajectories. If the trajectory is hyperbolic or parabolic, it will asymptotically approach an angle 
+  
+    
+      
+        θ
+      
+    
+    {\displaystyle \theta }
+  
+ from the direction at periapsis, with
+
+  
+    
+      
+        sin
+        ⁡
+        θ
+        =
+        1
+        
+          /
+        
+        e
+        .
+      
+    
+    {\displaystyle \sin \theta =1/e.}
+  
+
+The speed will asymptotically approach
+
+  
+    
+      
+        
+          
+            
+              v
+              
+                2
+              
+            
+            −
+            
+              
+                
+                  v
+                  
+                    e
+                  
+                
+              
+              
+                2
+              
+            
+          
+        
+        .
+      
+    
+    {\displaystyle {\sqrt {v^{2}-{v_{\text{e}}}^{2}}}.}
+  
+
+
+== List of escape velocities ==
+In this table, the left-hand half gives the escape velocity from the visible surface of the planet or moon (which may be gaseous, for example Jupiter) relative to its centre (that is, not relative to its moving surface). In the right-hand half, Ve refers to the speed relative to the central body (for example the sun). Moons are indented below their planet. The values in the last column are variable, depending on precisely where in a body’s orbit escape velocity is reached, as the orbits are elliptical, not circular (particularly those of Mercury and Pluto).
+
+
+== Deriving escape velocity using calculus ==
+Let G be the gravitational constant and let M be the mass of the earth (or other gravitating body) and m be the mass of the escaping body or projectile. At a distance r from the centre of gravitation the body feels an attractive force
+
+  
+    
+      
+        F
+        =
+        G
+        
+          
+            
+              M
+              m
+            
+            
+              r
+              
+                2
+              
+            
+          
+        
+        .
+      
+    
+    {\displaystyle F=G{\frac {Mm}{r^{2}}}.}
+  
+
+The work needed to move the body over a small distance dr against this force is therefore given by
+
+  
+    
+      
+        d
+        W
+        =
+        F
+        
+        d
+        r
+        =
+        G
+        
+          
+            
+              M
+              m
+            
+            
+              r
+              
+                2
+              
+            
+          
+        
+        
+        d
+        r
+        .
+      
+    
+    {\displaystyle dW=F\,dr=G{\frac {Mm}{r^{2}}}\,dr.}
+  
+
+The total work needed to move the body from the surface r0 of the gravitating body to infinity is then
+
+  
+    
+      
+        W
+        =
+        
+          ∫
+          
+            
+              r
+              
+                0
+              
+            
+          
+          
+            ∞
+          
+        
+        G
+        
+          
+            
+              M
+              m
+            
+            
+              r
+              
+                2
+              
+            
+          
+        
+        
+        d
+        r
+        =
+        G
+        
+          
+            
+              M
+              m
+            
+            
+              r
+              
+                0
+              
+            
+          
+        
+        =
+        m
+        g
+        
+          r
+          
+            0
+          
+        
+        .
+      
+    
+    {\displaystyle W=\int _{r_{0}}^{\infty }G{\frac {Mm}{r^{2}}}\,dr=G{\frac {Mm}{r_{0}}}=mgr_{0}.}
+  
+
+In order to do this work to reach infinity, the body's minimal kinetic energy at departure must match this work, so the escape velocity v0 satisfies
+
+  
+    
+      
+        
+          
+            1
+            2
+          
+        
+        m
+        
+          
+            
+              v
+              
+                0
+              
+            
+          
+          
+            2
+          
+        
+        =
+        G
+        
+          
+            
+              M
+              m
+            
+            
+              r
+              
+                0
+              
+            
+          
+        
+        ,
+      
+    
+    {\displaystyle {\frac {1}{2}}m{v_{0}}^{2}=G{\frac {Mm}{r_{0}}},}
+  
+
+which results in
+
+  
+    
+      
+        
+          v
+          
+            0
+          
+        
+        =
+        
+          
+            
+              
+                2
+                G
+                M
+              
+              
+                r
+                
+                  0
+                
+              
+            
+          
+        
+        =
+        
+          
+            2
+            g
+            
+              r
+              
+                0
+              
+            
+          
+        
+        .
+      
+    
+    {\displaystyle v_{0}={\sqrt {\frac {2GM}{r_{0}}}}={\sqrt {2gr_{0}}}.}
+  
+
+
+== See also ==
+
+
+== Notes ==
+
+
+== References ==
+
+
+== External links ==
+Web-based numerical escape velocity calculator

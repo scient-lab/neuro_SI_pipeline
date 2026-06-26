@@ -1,0 +1,1508 @@
+Figure 28.1 Colliding Galaxies. Collisions and mergers of galaxies strongly influence their evolution. On the left is a ground-based
+image of two colliding galaxies (NCG 4038 and 4039), sometimes nicknamed the Antennae galaxies. The long, luminous tails are
+material torn out of the galaxies by tidal forces during the collision. The right image shows the inner regions of these two galaxies,
+as taken by the Hubble Space Telescope. The cores of the twin galaxies are the orange blobs to the lower left and upper right of the
+center of the image. Note the dark lanes of dust crossing in front of the bright regions. The bright pink and blue star clusters are the
+result of a burst of star formation stimulated by the collision. (credit left: modification of work by Bob and Bill Twardy/Adam Block/
+NOAO/AURA/NSF; credit right: modification of work by NASA, ESA, and the Hubble Heritage Team (STScI/AURA)-ESA/Hubble
+Collaboration)
+Chapter Outline
+28.1 Observations of Distant Galaxies
+28.2 Galaxy Mergers and Active Galactic Nuclei
+28.3 The Distribution of Galaxies in Space
+28.4 The Challenge of Dark Matter
+28.5 The Formation and Evolution of Galaxies and Structure in the Universe
+Thinking Ahead
+How and when did galaxies like our Milky Way form? Which formed first: stars or galaxies? Can we see direct
+evidence of the changes galaxies undergo over their lifetimes? If so, what determines whether a galaxy will
+“grow up” to be spiral or elliptical? And what is the role of “nature versus nurture”? That is to say, how much
+of a galaxy’s development is determined by what it looks like when it is born and how much is influenced by its
+environment?
+Astronomers today have the tools needed to explore the universe almost back to the time it began. The huge
+new telescopes and sensitive detectors built in the last decades make it possible to obtain both images and
+spectra of galaxies so distant that their light has traveled to reach us for more than 13 billion years—more
+than 90% of the way back to the Big Bang: we can use the finite speed of light and the vast size of the universe
+as a cosmic time machine to peer back and observe how galaxies formed and evolved over time. Studying
+galaxies so far away in any detail is always a major challenge, largely because their distance makes them
+appear very faint. However, today’s large telescopes on the ground and in space are finally making such a task
+possible.
+The Evolution and Distribution of Galaxies
+28 • Thinking Ahead
+28.1
+Observations of Distant Galaxies
+Learning Objectives
+By the end of this section, you will be able to:
+Explain how astronomers use light to learn about distant galaxies long ago
+Discuss the evidence showing that the first stars formed when the universe was less than 10% of its
+current age
+Describe the major differences observed between galaxies seen in the distant, early universe and galaxies
+seen in the nearby universe today
+Let’s begin by exploring some techniques astronomers use to study how galaxies are born and change over
+cosmic time. Suppose you wanted to understand how adult humans got to be the way they are. If you were
+very dedicated and patient, you could actually observe a sample of babies from birth, following them through
+childhood, adolescence, and into adulthood, and making basic measurements such as their heights, weights,
+and the proportional sizes of different parts of their bodies to understand how they change over time.
+Unfortunately, we have no such possibility for understanding how galaxies grow and change over time: in a
+human lifetime—or even over the entire history of human civilization—individual galaxies change hardly at all.
+We need other tools than just patiently observing single galaxies in order to study and understand those long,
+slow changes.
+We do, however, have one remarkable asset in studying galactic evolution. As we have seen, the universe itself
+is a kind of time machine that permits us to observe remote galaxies as they were long ago. For the closest
+galaxies, like the Andromeda galaxy, the time the light takes to reach us is on the order of a few hundred
+thousand to a few million years. Typically not much changes over times that short—individual stars in the
+galaxy may be born or die, but the overall structure and appearance of the galaxy will remain the same. But
+we have observed galaxies so far away that we are seeing them as they were when the light left them more
+than 10 billion years ago.
+By observing more distant objects, we look further back toward a time when both galaxies and the universe
+were young (Figure 28.2). For something similar on Earth, imagine your college doing a project where families
+of international students around the world are asked to send a daily newspaper from their hometown.
+Because there is a limited budget, the papers are sent via ordinary mail. The farther a town is from the United
+States, the longer it takes for the papers to get to the college, and the older the news is by the time it arrives.
+28 • The Evolution and Distribution of Galaxies
+Figure 28.2 Astronomical Time Travel. This true-color, long-exposure image, made during 70 orbits of Earth with the Hubble Space
+Telescope, shows a small area in the direction of the constellation Sculptor. The massive cluster of galaxies named Abell 2744
+appears in the foreground of this image. It contains several hundred galaxies, and we are seeing them as they looked 3.5 billion
+years ago. The immense gravity in Abell 2744 acts as a gravitational lens (see the Astronomy Basics feature box on Gravitational
+Lensing later in this chapter) to warp space and brighten and magnify images of nearly 3000 distant background galaxies. The more
+distant galaxies (many of them quite blue) appear as they did more than 12 billion years ago, not long after the Big Bang. Blue
+galaxies were much more common in that earlier time than they are today. These galaxies appear blue because they are undergoing
+active star formation and making hot, bright blue stars. (credit: NASA, ESA, STScI)
+If we can’t directly detect the changes over time in individual galaxies because they happen too slowly, how
+then can we ever understand those changes and the origins of galaxies? The solution is to observe many
+galaxies at many different cosmic distances and, therefore, look-back times (how far back in time we are
+seeing the galaxy). If we can study a thousand very distant “baby” galaxies when the universe was 1 billion
+years old, and another thousand slightly closer “toddler” galaxies when it was 2 billion years old, and so on
+until the present 13.8-billion-year-old universe of mature “adult” galaxies near us today, then maybe we can
+piece together a coherent picture of how the whole ensemble of galaxies evolves over time. This allows us to
+reconstruct the “life story” of galaxies since the universe began, even though we can’t follow a single galaxy
+from infancy to old age.
+Fortunately, there is no shortage of galaxies to study. Hold up your pinky at arm’s length: the part of the sky
+blocked by your fingernail contains about one million galaxies, layered farther and farther back in space and
+time. In fact, the sky is filled with galaxies, all of them, except for Andromeda and the Magellanic Clouds, too
+faint to see with the naked eye—more than 2 trillion (2000 billion) galaxies in the observable universe, each
+one with about 100 billion stars.
+This cosmic time machine, then, lets us peer into the past to answer fundamental questions about where
+galaxies come from and how they got to be the way they are today. Astronomers call those galactic changes
+over cosmic time evolution, a word that recalls the work of Darwin and others on the development of life on
+Earth. But note that galaxy evolution refers to the changes in individual galaxies over time, while the kind of
+evolution biologists study is changes in successive generations of living organisms over time.
+Spectra, Colors, and Shapes
+Astronomy is one of the few sciences in which all measurements must be made at a distance. Geologists can
+take samples of the objects they are studying; chemists can conduct experiments in their laboratories to
+28.1 • Observations of Distant Galaxies
+determine what a substance is made of; archeologists can use carbon dating to determine how old something
+is. But astronomers can’t pick up and play with a star or galaxy. As we have seen throughout this book, if they
+want to know what galaxies are made of and how they have changed over the lifetime of the universe, they
+must decode the messages carried by the small number of photons that reach Earth.
+Fortunately (as you have learned) electromagnetic radiation is a rich source of information. The distance to a
+galaxy is derived from its redshift (how much the lines in its spectrum are shifted to the red because of the
+expansion of the universe). The conversion of redshift to a distance depends on certain properties of the
+universe, including the value of the Hubble constant and how much mass it contains. We will describe the
+currently accepted model of the universe in The Big Bang. For the purposes of this chapter, it is enough to
+know that the current best estimate for the age of the universe is 13.8 billion years. In that case, if we see an
+object that emitted its light 6 billion light-years ago, we are seeing it as it was when the universe was almost 8
+billion years old. If we see something that emitted its light 13 billion years ago, we are seeing it as it was when
+the universe was less than a billion years old. So astronomers measure a galaxy’s redshift from its spectrum,
+use the Hubble constant plus a model of the universe to turn the redshift into a distance, and use the distance
+and the constant speed of light to infer how far back in time they are seeing the galaxy—the look-back time.
+In addition to distance and look-back time, studies of the Doppler shifts of a galaxy’s spectral lines can tell us
+how fast the galaxy is rotating and hence how massive it is (as explained in Galaxies). Detailed analysis of such
+lines can also indicate the types of stars that inhabit a galaxy and whether it contains large amounts of
+interstellar matter.
+Unfortunately, many galaxies are so faint that collecting enough light to produce a detailed spectrum is
+currently impossible. Astronomers thus have to use a much rougher guide to estimate what kinds of stars
+inhabit the faintest galaxies—their overall colors. Look again at Figure 28.2 and notice that some of the
+galaxies are very blue and others are reddish-orange. Now remember that hot, luminous blue stars are very
+massive and have lifetimes of only a few million years. If we see a galaxy where blue colors dominate, we know
+that it must have many hot, luminous blue stars, and that star formation must have taken place in the few
+million years before the light left the galaxy. In a yellow or red galaxy, on the other hand, the young, luminous
+blue stars that surely were made in the galaxy’s early bursts of star formation must have died already; it must
+contain mostly old yellow and red stars that last a long time in their main-sequence stages and thus typically
+formed billions of years before the light that we now see was emitted.
+Another important clue to the nature of a galaxy is its shape. Spiral galaxies can be distinguished from
+elliptical galaxies by shape. Observations show that spiral galaxies contain young stars and large amounts of
+interstellar matter, while elliptical galaxies have mostly old stars and very little or no star formation. Elliptical
+galaxies turned most of their interstellar matter into stars many billions of years ago, while star formation has
+continued until the present day in spiral galaxies.
+If we can count the number of galaxies of each type during each epoch of the universe, it will help us
+understand how the pace of star formation changes with time. As we will see later in this chapter, galaxies in
+the distant universe—that is, young galaxies—look very different from the older galaxies that we see nearby in
+the present-day universe.
+The First Generation of Stars
+In addition to looking at the most distant galaxies we can find, astronomers look at the oldest stars (what we
+might call the fossil record) of our own Galaxy to probe what happened in the early universe. Since stars are
+the source of nearly all the light emitted by galaxies, we can learn a lot about the evolution of galaxies by
+studying the stars within them. What we find is that nearly all galaxies contain at least some very old stars. For
+example, our own Galaxy contains globular clusters with stars that are at least 13 billion years old, and some
+may be even older than that. Therefore, if we count the age of the Milky Way as the age of its oldest
+constituents, the Milky Way must have been born at least 13 billion years ago.
+28 • The Evolution and Distribution of Galaxies
+As we will discuss in The Big Bang, astronomers have discovered that the universe is expanding, and have
+traced the expansion backward in time. In this way, they have discovered that the universe itself is only about
+13.8 billion years old. Thus, it appears that at least some of the globular-cluster stars in the Milky Way must
+have formed less than a billion years after the expansion began.
+Several other observations also establish that star formation in the cosmos began very early. Astronomers
+have used spectra to determine the composition of some elliptical galaxies that are so far away that the light
+we see left them when the universe was only half as old as it is now. Yet these ellipticals contain old red stars,
+which must have formed billions of years earlier still.
+When we make computer models of how such galaxies evolve with time, they tell us that star formation in
+elliptical galaxies began less than a billion years or so after the universe started its expansion, and new stars
+continued to form for a few billion years. But then star formation apparently stopped. When we compare
+distant elliptical galaxies with ones nearby, we find that ellipticals have not changed very much since the
+universe reached about half its current age. We’ll return to this idea later in the chapter.
+Observations of the most luminous galaxies take us even further back in time. Recently, as we have already
+noted, astronomers have discovered a few galaxies that are so far away that the light we see now left them
+less than a billion years or so after the beginning (Figure 28.3). Yet the spectra of some of these galaxies
+already contain lines of heavy elements, including carbon, silicon, aluminum, and sulfur. These elements were
+not present when the universe began but had to be manufactured in the interiors of stars. This means that
+when the light from these galaxies was emitted, an entire generation of stars had already been born, lived out
+their lives, and died—spewing out the new elements made in their interiors through supernova
+explosions—even before the universe was a billion years old. And it wasn’t just a few stars in each galaxy that
+got started this way. Enough had to live and die to affect the overall composition of the galaxy, in a way that
+we can still measure in the spectrum from far away.
+Figure 28.3 Very Distant Galaxy. This image was made with the Hubble Space Telescope and shows the field around a luminous
+galaxy at a redshift z = 8.68, which corresponds to 13.2 billion light years. This means that we are seeing this galaxy as it appeared
+about 13.2 billion years ago. The galaxy itself is indicated by the arrow. Long exposures in the far-red and infrared wavelengths were
+combined to make the image, and additional infrared exposures with the Spitzer Space Telescope, which has lower spatial resolution
+than the Hubble (lower inset), show the redshifted light of normal stars. The very distant galaxy was detected because it has a strong
+emission line of hydrogen. This line is produced in regions where the formation of hot, young stars is taking place. (credit:
+modification of work by I. Labbé (Leiden University), NASA/ESA/JPL-Caltech)
+Observations of quasars (galaxies whose centers contain a supermassive black hole) support this conclusion.
+28.1 • Observations of Distant Galaxies
+We can measure the abundances of heavy elements in the gas near quasar black holes (explained in Active
+Galaxies, Quasars, and Supermassive Black Holes). The composition of this gas in quasars that emitted their
+light 12.5 billion light-years ago is very similar to that of the Sun. This means that a large portion of the gas
+surrounding the black holes must have already been cycled through stars during the first 1.3 billion years after
+the expansion of the universe began. If we allow time for this cycling, then their first stars must have formed
+when the universe was only a few hundred million years old.
+A Changing Universe of Galaxies
+Back in the middle decades of the twentieth century, the observation that all galaxies contain some old stars
+led astronomers to the hypothesis that galaxies were born fully formed near the time when the universe
+began its expansion. This hypothesis was similar to suggesting that human beings were born as adults and did
+not have to pass through the various stages of development from infancy through the teens. If this hypothesis
+were correct, the most distant galaxies should have shapes and sizes very much like the galaxies we see
+nearby. According to this old view, galaxies, after they formed, should then change only slowly, as successive
+generations of stars within them formed, evolved, and died. As the interstellar matter was slowly used up and
+fewer new stars formed, the galaxies would gradually become dominated by fainter, older stars and look
+dimmer and dimmer.
+Thanks to the new generation of large ground- and space-based telescopes, we now know that this picture of
+galaxies evolving peacefully and in isolation from one another is completely wrong. As we will see later in this
+chapter, galaxies in the distant universe do not look like the Milky Way and nearby galaxies such as
+Andromeda, and the story of their development is more complex and involves far more interaction with their
+neighbors.
+Why were astronomers so wrong? Up until the early 1990s, the most distant normal galaxy that had been
+observed emitted its light 8 billion years ago. Since that time, many galaxies—and particularly the giant
+ellipticals, which are the most luminous and therefore the easiest to see at large distances—did evolve
+peacefully and slowly. But the Hubble, Spitzer, Herschel, Keck, and other powerful new telescopes that have
+come on line since the 1990s make it possible to pierce the 8-billion-light-year barrier. We now have detailed
+views of many thousands of galaxies that emitted their light much earlier (some more than 13 billion years
+ago—see Figure 28.3).
+Much of the recent work on the evolution of galaxies has progressed by studying a few specific small regions
+of the sky where the Hubble, Spitzer, and ground-based telescopes have taken extremely long exposure
+images. This allowed astronomers to detect very faint, very distant, and therefore very young galaxies (Figure
+28.4). Our deep space telescope images show some galaxies that are 100 times fainter than the faintest
+objects that can be observed spectroscopically with today’s giant ground-based telescopes. This turns out to
+mean that we can obtain the spectra needed to determine redshifts for only the very brightest five percent of
+the galaxies in these images.
+28 • The Evolution and Distribution of Galaxies
+Figure 28.4 Hubble Ultra-Deep Field. This image is the result of an 11-day-long observation with the Hubble Space Telescope of a
+tiny region of sky, located toward the constellation Fornax near the south celestial pole. This is an area that has only a handful of
+Milky Way stars. (Since the Hubble orbits Earth every 96 minutes, the telescope returned to view the same tiny piece of sky over and
+over again until enough light was collected and added together to make this very long exposure.) There are about 10,000 objects in
+this single image, nearly all of them galaxies, each with tens or hundreds of billions of stars. We can see some pinwheel-shaped
+spiral galaxies, which are like the Milky Way. But we also find a large variety of peculiar-shaped galaxies that are in collision with
+companion galaxies. Elliptical galaxies, which contain mostly old stars, appear as reddish blobs. (credit: modification of work by
+NASA, ESA, H. Teplitz and M. Rafelski (IPAC/Caltech), A. Koekemoer (STScI), R. Windhorst (Arizona State University), and Z. Levay
+(STScI))
+Although we do not have spectra for most of the faint galaxies, the Hubble Space Telescope is especially well
+suited to studying their shapes because the images taken in space are not blurred by Earth’s atmosphere. To
+the surprise of astronomers, the distant galaxies did not fit Hubble’s classification scheme at all. Remember
+that Hubble found that nearly all nearby galaxies could be classified into a few categories, depending on
+whether they were ellipticals or spirals. The distant galaxies observed by the Hubble Space Telescope look very
+different from present-day galaxies, without identifiable spiral arms, disks, and bulges (Figure 28.5). They also
+tend to be much clumpier than most galaxies today. In other words, it’s becoming clear that the shapes of
+galaxies have changed significantly over time. In fact, we now know that the Hubble scheme works well for
+only the last half of the age of the universe. Before then, galaxies were much more chaotic.
+28.1 • Observations of Distant Galaxies
+Figure 28.5 Early Galaxies. This Hubble Space Telescope image shows what are probably “galaxies under construction” in the early
+universe. The boxes in this color image show enlargements of 18 groups of stars smaller than galaxies as we know them. All these
+objects emitted their light about 11 billion years ago. They are typically only about 2,000 light-years across, which is much smaller
+than the Milky Way, with its diameter of 100,000 light-years. These 18 objects are found in a region only 2 million light-years across
+and are close enough together that they will probably collide and merge to build one or more normal galaxies. (credit: modification
+of work by Rogier Windhorst (Arizona State University) and NASA)
+It’s not just the shapes that are different. Nearly all the galaxies with red-shifts that correspond to 11 billion
+light-years or more—that is, galaxies that we are seeing when they were less than 3 billion years old—are
+extremely blue, indicating that they contain a lot of young stars and that star formation in them is occurring at
+a higher rate than in nearby galaxies. Observations also show that very distant galaxies are systematically
+smaller on average than nearby galaxies. Relatively few galaxies present before the universe was about 8
+billion years old have masses greater than 1011 MSun. That’s 1/20 the mass of the Milky Way if we include its
+dark matter halo. Eleven billion years ago, there were only a few galaxies with masses greater than 1010 MSun.
+What we see instead seem to be small pieces or fragments of galactic material (Figure 28.6). When we look at
+galaxies that emitted their light 11 to 12 billion years ago, we now believe we are seeing the seeds of elliptical
+galaxies and of the central bulges of spirals. Over time, these smaller galaxies collided and merged to build up
+today’s large galaxies.
+Bear in mind that stars that formed more than 11 billion years ago will be very old stars today. Indeed when
+we look nearby (at galaxies we see closer to our time), we find mostly old stars in the nuclear bulges of nearby
+spirals and in elliptical galaxies.
+28 • The Evolution and Distribution of Galaxies
+Figure 28.6 One of the Farthest, Faintest, and Smallest Galaxies Ever Seen. The small white boxes, labeled a, b, and c, mark the
+positions of three images of the same galaxy. These multiple images were produced by the massive cluster of galaxies known as
+Abell 2744, which is located between us and the galaxy and acts as a gravitational lens. The arrows in the enlarged insets at right
+point to the galaxy. Each magnified image makes the galaxy appear as much as 10 times larger and brighter than it would look
+without the intervening lens. This galaxy emitted the light we observe today when the universe was only about 500 million years old.
+When the light was emitted the galaxy was tiny—only 850 light-years across, or 500 times smaller than the Milky, and its mass was
+only 40 million times the mass of the Sun. Star formation is going on in this galaxy, but it appears red in the image because of its
+large redshift. (credit: modification of work by NASA, ESA, A. Zitrin (California Institute of Technology), and J. Lotz, M. Mountain, A.
+Koekemoer, and the HFF Team (STScI))
+What such observations are showing us is that galaxies have grown in size as the universe has aged. Not only
+were galaxies smaller several billion years ago, but there were more of them; gas-rich galaxies, particularly the
+less luminous ones, were much more numerous then than they are today.
+Those are some of the basic observations we can make of individual galaxies (and their evolution) looking
+back in cosmic time. Now we want to turn to the larger context. If stars are grouped into galaxies, are the
+galaxies also grouped in some way? In the third section of this chapter, we’ll explore the largest structures
+known in the universe.
+28.2
+Galaxy Mergers and Active Galactic Nuclei
+Learning Objectives
+By the end of this section, you will be able to:
+Explain how galaxies grow by merging with other galaxies and by consuming smaller galaxies (for lunch)
+Describe the effects that supermassive black holes in the centers of most galaxies have on the fate of their
+host galaxies
+One of the conclusions astronomers have reached from studying distant galaxies is that collisions and
+mergers of whole galaxies play a crucial role in determining how galaxies acquired the shapes and sizes we
+28.2 • Galaxy Mergers and Active Galactic Nuclei
+see today. Only a few of the nearby galaxies are currently involved in collisions, but detailed studies of those
+tell us what to look for when we seek evidence of mergers in very distant and very faint galaxies. These in turn
+give us important clues about the different evolutionary paths galaxies have taken over cosmic time. Let’s
+examine in more detail what happens when two galaxies collide.
+Mergers and Cannibalism
+Figure 28.1 shows a dynamic view of two galaxies that are colliding. The stars themselves in this pair of
+galaxies will not be affected much by this cataclysmic event. (See the Astronomy Basics feature box Why
+Galaxies Collide but Stars Rarely Do.) Since there is a lot of space between the stars, a direct collision between
+two stars is very unlikely. However, the orbits of many of the stars will be changed as the two galaxies move
+through each other, and the change in orbits can totally alter the appearance of the interacting galaxies. A
+gallery of interesting colliding galaxies is shown in Figure 28.7. Great rings, huge tendrils of stars and gas, and
+other complex structures can form in such cosmic collisions. Indeed, these strange shapes are the signposts
+that astronomers use to identify colliding galaxies.
+Figure 28.7 Gallery of Interacting Galaxies. (a and b) M82 (smaller galaxy at top) and M83 (spiral) are seen (a) in a black-and-white
+visible light image and (b) in radio waves given off by cold hydrogen gas. The hydrogen image shows that the two galaxies are
+wrapped in a common shroud of gas that is being tugged and stretched by the gravity of the two galaxies. (c) This close-up view by
+the Hubble Space Telescope shows some of the effects of this interaction on galaxy M82, including gas streaming outward (red
+tendrils) powered by supernovae explosions of massive stars formed in the burst of star formation that was a result of the collision.
+(d) Galaxy UGC 10214 (“The Tadpole”) is a barred spiral galaxy 420 million light-years from the Milky Way that has been disrupted by
+the passage of a smaller galaxy. The interloper’s gravity pulled out the long tidal tail, which is about 280,000 light-years long, and
+triggered bursts of star formation seen as blue clumps along the tail. (e) Galaxies NGC 4676 A and B are nicknamed “The Mice.” In
+this Hubble Space Telescope image, you can see the long, narrow tails of stars pulled away from the galaxies by the interactions of
+the two spirals. (f) Arp 148 is a pair of galaxies that are caught in the act of merging to become one new galaxy. The two appear to
+have already passed through each other once, causing a shockwave that reformed one into a bright blue ring of star formation, like
+the ripples from a stone tossed into a pond. (credit a, b: modification of work by NRAO/AUI; credit c: modification of work by NASA,
+ESA, and The Hubble Heritage Team (STScI/AURA); credit d, e: modification of work by NASA, H. Ford (JHU), G. Illingworth (UCSC/LO),
+M.Clampin (STScI), G. Hartig (STScI), the ACS Science Team, and ESA; credit f: modification of work by NASA, ESA, the Hubble Heritage
+(STScI/AURA)-ESA/Hubble Collaboration, and A. Evans (University of Virginia, Charlottesville/NRAO/Stony Brook University))
+28 • The Evolution and Distribution of Galaxies
+Why Galaxies Collide but Stars Rarely Do
+Throughout this book we have emphasized the large distances between objects in space. You might
+therefore have been surprised to hear about collisions between galaxies. Yet (except at the very cores of
+galaxies) we have not worried at all about stars inside a galaxy colliding with each other. Let’s see why
+there is a difference.
+The reason is that stars are pitifully small compared to the distances between them. Let’s use our Sun as an
+example. The Sun is about 1.4 million kilometers wide, but is separated from the closest other star by about
+4 light-years, or about 38 trillion kilometers. In other words, the Sun is 27 million of its own diameters from
+its nearest neighbor. If the Sun were a grapefruit in New York City, the nearest star would be another
+grapefruit in San Francisco. This is typical of stars that are not in the nuclear bulge of a galaxy or inside star
+clusters. Let’s contrast this with the separation of galaxies.
+The visible disk of the Milky Way is about 100,000 light-years in diameter. We have three satellite galaxies
+that are just one or two Milky Way diameters away from us (and will probably someday collide with us). The
+closest major spiral is the Andromeda Galaxy (M31), about 2.4 million light-years away. If the Milky Way
+were a pancake at one end of a big breakfast table, M31 would be another pancake at the other end of the
+same table. Our nearest large galaxy neighbor is only 24 of our Galaxy’s diameters from us, and it will begin
+to crash into the Milky Way in about 4.5 billion years.
+Galaxies in rich clusters are even closer together than those in our neighborhood (see The Distribution of
+Galaxies in Space). Thus, the chances of galaxies colliding are far greater than the chances of stars in the
+disk of a galaxy colliding. And we should note that the difference between the separation of galaxies and
+stars also means that when galaxies do collide, their stars almost always pass right by each other like
+smoke passing through a screen door.
+The details of galaxy collisions are complex, and the process can take hundreds of millions of years. Thus,
+collisions are best simulated on a computer (Figure 28.8), where astronomers can calculate the slow
+interactions of stars, and clouds of gas and dust, via gravity. These calculations show that if the collision is
+slow, the colliding galaxies may coalesce to form a single galaxy.
+ASTRONOMY BASICS
+28.2 • Galaxy Mergers and Active Galactic Nuclei
+Figure 28.8 Computer Simulation of a Galaxy Collision. This computer simulation starts with two spiral galaxies merging and ends
+with a single elliptical galaxy. The colors show the colors of stars in the system; note the bursts of blue color as copious star
+formation gets triggered by the interaction. The timescale from start to finish in this sequence is about a billion years. (credit:
+modification of work by P. Jonsson (Harvard-Smithsonian Center for Astrophysics), G. Novak (Princeton University), and T. J. Cox
+(Carnegie Observatories))
+When two galaxies of equal size are involved in a collision, we call such an interaction a merger (the term
+applied in the business world to two equal companies that join forces). But small galaxies can also be
+swallowed by larger ones—a process astronomers have called, with some relish, galactic cannibalism (Figure
+28.9).
+28 • The Evolution and Distribution of Galaxies
+Figure 28.9 Galactic Cannibalism. (a) This Hubble image shows the eerie silhouette of dark dust clouds against the glowing nucleus
+of the elliptical galaxy NGC 1316. Elliptical galaxies normally contain very little dust. These clouds are probably the remnant of a small
+companion galaxy that was cannibalized (eaten) by NGC 1316 about 100 million years ago. (b) The highly disturbed galaxy NGC 6240,
+imaged by Hubble Space Telescope (background image) and Chandra X-ray Telescope (both insets) is apparently the product of a
+merger between two gas-rich spiral galaxies. The X-ray images show that there is not one but two nuclei, both glowing brightly in Xrays and separated by only 4000 light-years. These are likely the locations of two supermassive black holes that inhabited the cores
+of the two galaxies pre-merger; here they are participating in a kind of “death spiral,” in which the two black holes themselves will
+merge to become one. (credit a: modification of work by NASA, ESA, and The Hubble Heritage Team (STScI/AURA); credit b: X-ray:
+NASA/CXC/MPE/S.Komossa et al.; Optical: NASA/STScI/R.P.van der Marel & J.Gerssen)
+The very large elliptical galaxies we discussed in Galaxies probably form by cannibalizing a variety of smaller
+galaxies in their clusters. These “monster” galaxies frequently possess more than one nucleus and have
+probably acquired their unusually high luminosities by swallowing nearby galaxies. The multiple nuclei are the
+remnants of their victims (Figure 28.9). Many of the large, peculiar galaxies that we observe also owe their
+chaotic shapes to past interactions. Slow collisions and mergers can even transform two or more spiral
+galaxies into a single elliptical galaxy.
+A change in shape is not all that happens when galaxies collide. If either galaxy contains interstellar matter,
+the collision can compress the gas and trigger an increase in the rate at which stars are being formed—by as
+much as a factor of 100. Astronomers call this abrupt increase in the number of stars being formed a
+starburst, and the galaxies in which the increase occurs are termed starburst galaxies (Figure 28.10). In some
+interacting galaxies, star formation is so intense that all the available gas is exhausted in only a few million
+years; the burst of star formation is clearly only a temporary phenomenon. While a starburst is going on,
+however, the galaxy where it is taking place becomes much brighter and much easier to detect at large
+distances.
+28.2 • Galaxy Mergers and Active Galactic Nuclei
+Figure 28.10 Starburst Associated with Colliding Galaxies. (a) Three of the galaxies in the small group known as Stephan’s
+Quintet are interacting gravitationally with each other (the galaxy at upper left is actually much closer than the other three and is not
+part of this interaction), resulting in the distorted shapes seen here. Long strings of young, massive blue stars and hundreds of star
+formation regions glowing in the pink light of excited hydrogen gas are also results of the interaction. The ages of the star clusters
+range from 2 million to 1 billion years old, suggesting that there have been several different collisions within this group of galaxies,
+each leading to bursts of star formation. The three interacting members of Stephan’s Quintet are located at a distance of 270 million
+light-years. (b) Most galaxies form new stars at a fairly slow rate, but members of a rare class known as starburst galaxies blaze with
+extremely active star formation. The galaxy II Zw 096 is one such starburst galaxy, and this combined image using both Hubble and
+Spitzer Space Telescope data shows that it is forming bright clusters of new stars at a prodigious rate. The blue colors show the
+merging galaxies in visible light, while the red colors show infrared radiation from the dusty region where star formation is
+happening. This galaxy is at a distance of 500 million light-years and has a diameter of about 50,000 light-years, about half the size of
+the Milky Way. (credit a: modification of work by NASA, ESA, and the Hubble SM4 ERO Team; credit b: modification of work by NASA/
+JPL-Caltech/STScI)
+When astronomers finally had the tools to examine a significant number of galaxies that emitted their light 11
+to 12 billion years ago, they found that these very young galaxies often resemble nearby starburst galaxies
+that are involved in mergers: they also have multiple nuclei and peculiar shapes, they are usually clumpier
+than normal galaxies today, with multiple intense knots and lumps of bright starlight, and they have higher
+rates of star formation than isolated galaxies. They also contain lots of blue, young, type O and B stars, as do
+nearby merging galaxies.
+Galaxy mergers in today’s universe are rare. Only about five percent of nearby galaxies are currently involved
+in interactions. Interactions were much more common billions of years ago (Figure 28.11) and helped build up
+the “more mature” galaxies we see in our time. Clearly, interactions of galaxies have played a crucial role in
+their evolution.
+28 • The Evolution and Distribution of Galaxies
+Figure 28.11 Collisions of Galaxies in a Distant Cluster. The large picture on the left shows the Hubble Space Telescope image of a
+cluster of galaxies at a distance of about 8 billion light-years. Among the 81 galaxies in the cluster that have been examined in some
+detail, 13 are the result of recent collisions of pairs of galaxies. The eight smaller images on the right are close-ups of some of the
+colliding galaxies. The merger process typically takes a billion years or so. (credit: modification of work by Pieter van Dokkum, Marijn
+Franx (University of Groningen/Leiden), ESA and NASA)
+Active Galactic Nuclei and Galaxy Evolution
+While galaxy mergers are huge, splashy events that completely reshape entire galaxies on scales of hundreds
+of thousands of light-years and can spark massive bursts of star formation, accreting black holes inside
+galaxies can also disturb and alter the evolution of their host galaxies. You learned in Active Galaxies, Quasars,
+and Supermassive Black Holes about a family of objects known as active galactic nuclei (AGN), all of them
+powered by supermassive black holes. If the black hole is surrounded by enough gas, some of the gas can fall
+into the black hole, getting swept up on the way into an accretion disk, a compact, swirling maelstrom perhaps
+only 100 AU across (the size of our solar system).
+Within the disk the gas heats up until it shines brilliantly even in X-rays, often outshining the rest of the host
+galaxy with its billions of stars. Supermassive black holes and their accretion disks can be violent and powerful
+places, with some material getting sucked into the black hole but even more getting shot out along huge jets
+perpendicular to the disk. These powerful jets can extend far outside the starry edge of the galaxy.
+AGN were much more common in the early universe, in part because frequent mergers provided a fresh gas
+supply for the black hole accretion disks. Examples of AGN in the nearby universe today include the one in
+galaxy M87 (see Figure 27.7), which sports a jet of material shooting out from its nucleus at speeds close to the
+speed of light, and the one in the bright galaxy NGC 5128, also known as Centaurus A (see Figure 28.12).
+28.2 • Galaxy Mergers and Active Galactic Nuclei
+Figure 28.12 Composite View of the Galaxy Centaurus A. This artificially colored image was made using data from three different
+telescopes: submillimeter radiation with a wavelength of 870 microns is shown in orange; X-rays are seen in blue; and visible light
+from stars is shown in its natural color. Centaurus A has an active galactic nucleus that is powering two jets, seen in blue and orange,
+reaching in opposite directions far outside the galaxy’s stellar disk, and inflating two huge lobes, or clouds, of hot X-ray-emitting gas.
+Centaurus is at a distance of 13 million light-years, making it one of the closest active galaxies we know. (credit: modification of work
+by ESO/WFI (Optical); MPIfR/ESO/APEX/A. Weiss et al. (Submillimeter); NASA/CXC/CfA/R.Kraft et al. (X-ray))
+Many highly accelerated particles move with the jets in such galaxies. Along the way, the particles in the jets
+can plow into gas clouds in the interstellar medium, breaking them apart and scattering them. Since denser
+clouds of gas and dust are required for material to clump together to make stars, the disruption of the clouds
+can halt star formation in the host galaxy or cut it off before it even begins.
+In this way, quasars and other kinds of AGN can play a crucial role in the evolution of their galaxies. For
+example, there is growing evidence that the merger of two gas-rich galaxies not only produces a huge burst of
+star formation, but also triggers AGN activity in the core of the new galaxy. That activity, in turn, could then
+slow down or shut off the burst of star formation—which could have significant implications for the apparent
+shape, brightness, chemical content, and stellar components of the entire galaxy. Astronomers refer to that
+process as AGN feedback, and it is apparently an important factor in the evolution of most galaxies.
+28.3
+The Distribution of Galaxies in Space
+Learning Objectives
+By the end of this section, you will be able to:
+Explain the cosmological principle and summarize the evidence that it applies on the largest scales of the
+known universe
+Describe the contents of the Local Group of galaxies
+Distinguish among groups, clusters, and superclusters of galaxies
+Describe the largest structures seen in the universe, including voids
+In the preceding section, we emphasized the role of mergers in shaping the evolution of galaxies. In order to
+collide, galaxies must be fairly close together. To estimate how often collisions occur and how they affect
+galaxy evolution, astronomers need to know how galaxies are distributed in space and over cosmic time. Are
+most of them isolated from one another or do they congregate in groups? If they congregate, how large are
+the groups and how and when did they form? And how, in general, are galaxies and their groups arranged in
+the cosmos? Are there as many in one direction of the sky as in any other, for example? How did galaxies get
+to be arranged the way we find them today?
+28 • The Evolution and Distribution of Galaxies
+Edwin Hubble found answers to some of these questions only a few years after he first showed that the spiral
+nebulae were galaxies and not part of our Milky Way. As he examined galaxies all over the sky, Hubble made
+two discoveries that turned out to be crucial for studies of the evolution of the universe.
+The Cosmological Principle
+Hubble made his observations with what were then the world’s largest telescopes—the 100-inch and 60-inch
+reflectors on Mount Wilson. These telescopes have small fields of view: they can see only a small part of the
+heavens at a time. To photograph the entire sky with the 100-inch telescope, for example, would have taken
+longer than a human lifetime. So instead, Hubble sampled the sky in many regions, much as Herschel did with
+his star gauging (see The Architecture of the Galaxy). In the 1930s, Hubble photographed 1283 sample areas,
+and on each print, he carefully counted the numbers of galaxy images (Figure 28.13).
+The first discovery Hubble made from his survey was that the number of galaxies visible in each area of the sky
+is about the same. (Strictly speaking, this is true only if the light from distant galaxies is not absorbed by dust
+in our own Galaxy, but Hubble made corrections for this absorption.) He also found that the numbers of
+galaxies increase with faintness, as we would expect if the density of galaxies is about the same at all distances
+from us.
+To understand what we mean, imagine you are taking snapshots in a crowded stadium during a sold-out
+concert. The people sitting near you look big, so only a few of them will fit into a photo. But if you focus on the
+people sitting in seats way on the other side of the stadium, they look so small that many more will fit into
+your picture. If all parts of the stadium have the same seat arrangements, then as you look farther and farther
+away, your photo will get more and more crowded with people. In the same way, as Hubble looked at fainter
+and fainter galaxies, he saw more and more of them.
+Figure 28.13 Hubble at Work. Edwin Hubble at the 100-inch telescope on Mount Wilson. (credit: NASA)
+Hubble’s findings are enormously important, for they indicate that the universe is both isotropic and
+homogeneous—it looks the same in all directions, and a large volume of space at any given redshift or
+distance is much like any other volume at that redshift. If that is so, it does not matter what section of the
+universe we observe (as long as it’s a sizable portion): any section will look the same as any other.
+Hubble’s results—and many more that have followed in the nearly 100 years since then—imply not only that
+the universe is about the same everywhere (apart from changes with time) but also that aside from small-scale
+local differences, the part we can see around us is representative of the whole. The idea that the universe is
+the same everywhere is called the cosmological principle and is the starting assumption for nearly all
+theories that describe the entire universe (see The Big Bang).
+Without the cosmological principle, we could make no progress at all in studying the universe. Suppose our
+own local neighborhood were unusual in some way. Then we could no more understand what the universe is
+like than if we were marooned on a warm south-sea island without outside communication and were trying to
+understand the geography of Earth. From our limited island vantage point, we could not know that some parts
+of the planet are covered with snow and ice, or that large continents exist with a much greater variety of
+28.3 • The Distribution of Galaxies in Space
+terrain than that found on our island.
+Hubble merely counted the numbers of galaxies in various directions without knowing how far away most of
+them were. With modern instruments, astronomers have measured the velocities and distances of hundreds
+of thousands of galaxies, and so built up a meaningful picture of the large-scale structure of the universe. In
+the rest of this section, we describe what we know about the distribution of galaxies, beginning with those that
+are nearby.
+The Local Group
+The region of the universe for which we have the most detailed information is, as you would expect, our own
+local neighborhood. It turns out that the Milky Way Galaxy is a member of a small group of galaxies called, not
+too imaginatively, the Local Group. It is spread over about 3 million light-years and contains 60 or so
+members. There are three large spiral galaxies (our own, the Andromeda galaxy, and M33), two intermediate
+ellipticals, and many dwarf ellipticals and irregular galaxies.
+New members of the Local Group are still being discovered. We mentioned in The Milky Way Galaxy a dwarf
+galaxy only about 80,000 light-years from Earth and about 50,000 light-years from the center of the galaxy that
+was discovered in 1994 in the constellation of Sagittarius. (This dwarf is actually venturing too close to the
+much larger Milky Way and will eventually be consumed by it.)
+Many of the recent discoveries have been made possible by the new generation of automated, sensitive, widefield surveys, such as the Sloan Digital Sky Survey, that map the positions of millions of stars across most of
+the visible sky. By digging into the data with sophisticated computer programs, astronomers have turned up
+numerous tiny, faint dwarf galaxies that are all but invisible to the eye even in those deep telescopic images.
+These new findings may help solve a long-standing problem: the prevailing theories of how galaxies form
+predicted that there should be more dwarf galaxies around big galaxies like the Milky Way than had been
+observed—and only now do we have the tools to find these faint and tiny galaxies and begin to compare the
+numbers of them with theoretical predictions.
+You can read more about the Sloan survey (https://openstax.org/l/30sloansurvey) and its dramatic results.
+And check out this brief animation (https://openstax.org/l/30anifliarrgal) of a flight through the
+arrangement of the galaxies as revealed by the survey.
+Several new dwarf galaxies have also been found near the Andromeda galaxy. Such dwarf galaxies are difficult
+to find because they typically contain relatively few stars, and it is hard to distinguish them from the
+foreground stars in our own Milky Way.
+Figure 28.14 is a rough sketch showing where the brighter members of the Local Group are located. The
+average of the motions of all the galaxies in the Local Group indicates that its total mass is about 4 × 1012 MSun,
+and at least half of this mass is contained in the two giant spirals—the Andromeda galaxy and the Milky Way
+Galaxy. And bear in mind that a substantial amount of the mass in the Local Group is in the form of dark
+matter.
+LINK TO LEARNING
+28 • The Evolution and Distribution of Galaxies
+Figure 28.14 Local Group. This illustration shows some members of the Local Group of galaxies, with our Milky Way at the center.
+The exploded view at the top shows the region closest to the Milky Way and fits into the bigger view at the bottom as shown by the
+dashed lines. The three largest galaxies among the three dozen or so members of the Local Group are all spirals; the others are
+small irregular galaxies and dwarf ellipticals. A number of new members of the group have been found since this map was made.
+Neighboring Groups and Clusters
+Small galaxy groups like ours are hard to notice at larger distances. However, there are much more substantial
+groups called galaxy clusters that are easier to spot even many millions of light-years away. Such clusters are
+described as poor or rich depending on how many galaxies they contain. Rich clusters have thousands or even
+tens of thousands of galaxies, although many of the galaxies are quite faint and hard to detect.
+The nearest moderately rich galaxy cluster is called the Virgo Cluster, after the constellation in which it is seen.
+It is about 50 million light-years away and contains thousands of members, of which a few are shown in Figure
+28.15. The giant elliptical (and very active) galaxy M87, which you came to know and love in the chapter on
+Active Galaxies, Quasars, and Supermassive Black Holes, belongs to the Virgo Cluster.
+28.3 • The Distribution of Galaxies in Space
+Figure 28.15 Central Region of the Virgo Cluster. Virgo is the nearest rich cluster and is at a distance of about 50 million lightyears. It contains hundreds of bright galaxies. In this picture you can see only the central part of the cluster, including the giant
+elliptical galaxy M87, just below center. Other spirals and ellipticals are visible; the two galaxies to the top right are known as “The
+Eyes.” (credit: modification of work by Chris Mihos (Case Western Reserve University)/ESO)
+A good example of a cluster that is much larger than the Virgo complex is the Coma cluster, with a diameter of
+at least 10 million light-years (Figure 28.16). A little over 300 million light-years distant, this cluster is centered
+on two giant ellipticals whose luminosities equal about 400 billion Suns each. Thousands of galaxies have been
+observed in Coma, but the galaxies we see are almost certainly only part of what is really there. Dwarf galaxies
+are too faint to be seen at the distance of Coma, but we expect they are part of this cluster just as they are part
+of nearer ones. If so, then Coma likely contains tens of thousands of galaxies. The total mass of this cluster is
+about 4 × 1015 MSun (enough mass to make 4 million billion stars like the Sun).
+Let’s pause here for a moment of perspective. We are now discussing numbers by which even astronomers
+sometimes feel overwhelmed. The Coma cluster may have 10, 20, or 30 thousand galaxies, and each galaxy has
+billions and billions of stars. If you were traveling at the speed of light, it would still take you more than 10
+million years (longer than the history of the human species) to cross this giant swarm of galaxies. And if you
+lived on a planet on the outskirts of one of these galaxies, many other members of the cluster would be close
+enough to be noteworthy sights in your nighttime sky.
+28 • The Evolution and Distribution of Galaxies
+Figure 28.16 Central Region of the Coma Cluster. This combined visible-light (from the Sloan Digital Sky Survey) and infrared (from
+the Spitzer Space Telescope) image has been color coded so that faint dwarf galaxies are seen as green. Note the number of little
+green smudges on the image. The cluster is roughly 320 million light-years away from us. (credit: modification of work by NASA/JPL-
+Caltech/L. Jenkins (GSFC))
+Really rich clusters such as Coma usually have a high concentration of galaxies near the center. We can see
+giant elliptical galaxies in these central regions but few, if any, spiral galaxies. The spirals that do exist
+generally occur on the outskirts of clusters.
+We might say that ellipticals are highly “social”: they are often found in groups and very much enjoy “hanging
+out” with other ellipticals in crowded situations. It is precisely in such crowds that collisions are most likely
+and, as we discussed earlier, we think that most large ellipticals are built through mergers of smaller galaxies.
+Spirals, on the other hand, are more “shy”: they are more likely to be found in poor clusters or on the edges of
+rich clusters where collisions are less likely to disrupt the spiral arms or strip out the gas needed for continued
+star formation.
+Gravitational Lensing
+As we saw in Black Holes and Curved Spacetime, spacetime is more strongly curved in regions where the
+gravitational field is strong. Light passing very near a concentration of matter appears to follow a curved
+path. In the case of starlight passing close to the Sun, we measure the position of the distant star to be
+slightly different from its true position.
+Now let’s consider the case of light from a distant galaxy or quasar that passes near a concentration of
+matter such as a cluster of galaxies on its journey to our telescopes. According to general relativity, the light
+path may be bent in a variety of ways; as a result we can observe distorted and even multiple images
+(Figure 28.17).
+ASTRONOMY BASICS
+28.3 • The Distribution of Galaxies in Space
+Figure 28.17 Gravitational Lensing. This drawing shows how a gravitational lens can make two images. Two light rays from a
+distant quasar are shown being bent while passing a foreground galaxy; they then arrive together at Earth. Although the two
+beams of light contain the same information, they now appear to come from two different points on the sky. This sketch is
+oversimplified and not to scale, but it gives a rough idea of the lensing phenomenon.
+Gravitational lenses can produce not only double images, as shown in Figure 28.17, but also multiple
+images, arcs, or rings. The first gravitational lens discovered, in 1979, showed two images of the same
+distant object. Eventually, astronomers used the Hubble Space Telescope to capture remarkable images of
+the effects of gravitational lenses. One example is shown in Figure 28.18.
+Figure 28.18 Multiple Images of a Gravitationally Lensed Supernova. Light from a supernova at a distance of 9 billion lightyears passed near a galaxy in a cluster at a distance of about 5 billion light-years. In the enlarged inset view of the galaxy, the
+arrows point to the multiple images of the exploding star. The images are arranged around the galaxy in a cross-shaped pattern
+called an Einstein Cross. The blue streaks wrapping around the galaxy are the stretched images of the supernova’s host spiral
+galaxy, which has been distorted by the warping of space. (credit: modification of work by NASA, ESA, and S. Rodney (JHU) and
+the FrontierSN team; T. Treu (UCLA), P. Kelly (UC Berkeley), and the GLASS team; J. Lotz (STScI) and the Frontier Fields team; M.
+Postman (STScI) and the CLASH team; and Z. Levay (STScI))
+General relativity predicts that the light from a distant object may also be amplified by the lensing effect,
+thereby making otherwise invisible objects bright enough to detect. This is particularly useful for probing
+the earliest stages of galaxy formation, when the universe was young. Figure 28.19 shows an example of a
+very distant faint galaxy that we can study in detail only because its light path passes through a large
+28 • The Evolution and Distribution of Galaxies
+concentration of massive galaxies and we now see a brighter image of it.
+Figure 28.19 Distorted Images of a Distant Galaxy Produced by Gravitational Lensing in a Galaxy Cluster. The rounded
+outlines show the location of distinct, distorted images of the background galaxy resulting from lensing by the mass in the
+cluster. The image in the box at lower left is a reconstruction of what the lensed galaxy would look like in the absence of the
+cluster, based on a model of the cluster’s mass distribution, which can be derived from studying the distorted galaxy images. The
+reconstruction shows far more detail about the galaxy than could have been seen in the absence of lensing. As the image shows,
+this galaxy contains regions of star formation glowing like bright Christmas tree bulbs. These are much brighter than any starformation regions in our Milky Way Galaxy. (credit: modification of work by NASA, ESA, and Z. Levay (STScI))
+We should note that the visible mass in a galaxy is not the only possible gravitational lens. Dark matter can
+also reveal itself by producing this effect. Astronomers are using lensed images from all over the sky to
+learn more about where dark matter is located and how much of it exists.
+You can use the Gravitational Lensing Simulator (https://openstax.org/l/30gravitlensing) to explore how
+the distance and mass of a cluster of galaxies affects the offset of lensed images of a very distant galaxy.
+Instructions are available by clicking on Help.
+LINK TO LEARNING
+28.3 • The Distribution of Galaxies in Space
+Superclusters and Voids
+After astronomers discovered clusters of galaxies, they naturally wondered whether there were still larger
+structures in the universe. Do clusters of galaxies gather together? To answer this question, we must be able
+to map large parts of the universe in three dimensions. We must know not only the position of each galaxy on
+the sky (that’s two dimensions) but also its distance from us (the third dimension).
+This means we must be able to measure the redshift of each galaxy in our map. Taking a spectrum of each
+individual galaxy to do this is a much more time-consuming task than simply counting galaxies seen in
+different directions on the sky, as Hubble did. Today, astronomers have found ways to get the spectra of many
+galaxies in the same field of view (sometimes hundreds or even thousands at a time) to cut down the time it
+takes to finish their three-dimensional maps. Larger telescopes are also able to measure the redshifts—and
+therefore the distances—of much more distant galaxies and (again) to do so much more quickly than
+previously possible.
+Another challenge astronomers faced in deciding how to go about constructing a map of the universe is
+similar to that confronted by the first team of explorers in a huge, uncharted territory on Earth. Since there is
+only one band of explorers and an enormous amount of land, they have to make choices about where to go
+first. One strategy might be to strike out in a straight line in order to get a sense of the terrain. They might, for
+example, cross some mostly empty prairies and then hit a dense forest. As they make their way through the
+forest, they learn how thick it is in the direction they are traveling, but not its width to their left or right. Then a
+river crosses their path; as they wade across, they can measure its width but learn nothing about its length.
+Still, as they go on in their straight line, they begin to get some sense of what the landscape is like and can
+make at least part of a map. Other explorers, striking out in other directions, will someday help fill in the
+remaining parts of that map.
+Astronomers have traditionally had to make the same sort of choices. We cannot explore the universe in every
+direction to infinite “depth” or sensitivity: there are far too many galaxies and far too few telescopes to do the
+job. But we can pick a single direction or a small slice of the sky and start mapping the galaxies. Margaret
+Geller, the late John Huchra, and their students at the Harvard-Smithsonian Center for Astrophysics pioneered
+this technique, and several other groups have extended their work to cover larger volumes of space.
+Margaret Geller: Cosmic Surveyor
+Born in 1947, Margaret Geller is the daughter of a chemist who encouraged her interest in science and
+helped her visualize the three-dimensional structure of molecules as a child. (It was a skill that would later
+come in very handy for visualizing the three-dimensional structure of the universe.) She remembers being
+bored in elementary school, but she was encouraged to read on her own by her parents. Her recollections
+also include subtle messages from teachers that mathematics (her strong early interest) was not a field for
+girls, but she did not allow herself to be deterred.
+Geller obtained a BA in physics from the University of California at Berkeley and became the second woman
+to receive a PhD in physics from Princeton. There, while working with James Peebles, one of the world’s
+leading cosmologists, she became interested in problems relating to the large-scale structure of the
+universe. In 1980, she accepted a research position at the Harvard-Smithsonian Center for Astrophysics,
+one of the nation’s most dynamic institutions for astronomy research. She saw that to make progress in
+understanding how galaxies and clusters are organized, a far more intensive series of surveys was
+required. Although it would not bear fruit for many years, Geller and her collaborators began the long,
+arduous task of mapping the galaxies (Figure 28.20).
+VOYAGERS IN ASTRONOMY
+28 • The Evolution and Distribution of Galaxies
+Figure 28.20 Margaret Geller. Geller’s work mapping and researching galaxies has helped us to better understand the structure
+of the universe. (credit: modification of work by Massimo Ramella)
+Her team was fortunate to be given access to a telescope that could be dedicated to their project, the
+60-inch reflector on Mount Hopkins, near Tucson, Arizona, where they and their assistants took spectra to
+determine galaxy distances. To get a slice of the universe, they pointed their telescope at a predetermined
+position in the sky and then let the rotation of Earth bring new galaxies into their field of view. In this way,
+they measured the positions and redshifts of over 18,000 galaxies and made a wide range of interesting
+maps to display their data. Their surveys now include “slices” in both the Northern and Southern
+Hemispheres.
+As news of her important work spread beyond the community of astronomers, Geller received a MacArthur
+Foundation Fellowship in 1990. These fellowships, popularly called “genius awards,” are designed to
+recognize truly creative work in a wide range of fields. Geller continues to have a strong interest in
+visualization and has (with filmmaker Boyd Estus) made several award-winning videos explaining her work
+to nonscientists (one is titled So Many Galaxies . . . So Little Time). She has appeared on a variety of national
+news and documentary programs, including the MacNeil/Lehrer NewsHour, The Astronomers, and The
+Infinite Voyage. Energetic and outspoken, she has given talks on her work to many audiences around the
+country, and works hard to find ways to explain the significance of her pioneering surveys to the public.
+“It’s exciting to discover something that nobody’s seen before. [To be] one of the first three people to ever
+see that slice of the universe [was] sort of being like Columbus. . . . Nobody expected such a striking
+pattern!”—Margaret Geller
+Find out more about Geller and Huchra’s work (including interviews with Geller) in this 4-minute NOVA
+(https://openstax.org/l/30gellhucwork) video. You can also learn more about their conclusions
+(https://openstax.org/l/30gellhucconc) and additional research it led to.
+The largest universe mapping project to date is the Sloan Digital Sky Survey (see the Making Connections
+feature box Astronomy and Technology: The Sloan Digital Sky Survey at the end of this section). A plot of the
+distribution of galaxies mapped by the Sloan survey is shown in Figure 28.21. To the surprise of astronomers,
+maps like the one in the figure showed that clusters of galaxies are not arranged uniformly throughout the
+universe, but are found in huge filamentary superclusters that look like great arcs of inkblots splattered
+LINK TO LEARNING
+28.3 • The Distribution of Galaxies in Space
+across a page. The Local Group is part of a supercluster we call the Virgo Supercluster because it also includes
+the giant Virgo cluster of galaxies. The superclusters resemble an irregularly torn sheet of paper or a pancake
+in shape—they can extend for hundreds of millions of light-years in two dimensions, but are only 10 to 20
+million light-years thick in the third dimension. Detailed study of some of these structures shows that their
+masses are a few times 1016 MSun, which is 10,000 times more massive than the Milky Way Galaxy.
+Check out this animated visualization (https://openstax.org/l/30anivisslosur) of large-scale structure from
+the Sloan survey.
+Figure 28.21 Sloan Digital Sky Survey Map of the Large-Scale Structure of the Universe. This image shows slices from the SDSS
+map. The point at the center corresponds to the Milky Way and might say “You Are Here!” Points on the map moving outward from
+the center are farther away. The distance to the galaxies is indicated by their redshifts (following Hubble’s law), shown on the
+horizontal line going right from the center. The redshift z = Δλ/λ, where Δλ is the difference between the observed wavelength and
+the wavelength λ emitted by a nonmoving source in the laboratory. Hour angle on the sky is shown around the circumference of the
+circular graph. The colors of the galaxies indicate the ages of their stars, with the redder color showing galaxies that are made of
+older stars. The outer circle is at a distance of two billion light-years from us. Note that red (older stars) galaxies are more strongly
+clustered than blue galaxies (young stars). The unmapped areas are where our view of the universe is obstructed by dust in our own
+Galaxy. (credit: modification of work by M. Blanton and the Sloan Digital Sky Survey)
+Separating the filaments and sheets in a supercluster are voids, which look like huge empty bubbles walled in
+by the great arcs of galaxies. They have typical diameters of 150 million light-years, with the clusters of
+galaxies concentrated along their walls. The whole arrangement of filaments and voids reminds us of a
+sponge, the inside of a honeycomb, or a hunk of Swiss cheese with very large holes. If you take a good slice or
+cross-section through any of these, you will see something that looks roughly like Figure 28.21.
+Before these voids were discovered, most astronomers would probably have predicted that the regions
+between giant clusters of galaxies were filled with many small groups of galaxies, or even with isolated
+individual galaxies. Careful searches within these voids have found few galaxies of any kind. Apparently, 90
+percent of the galaxies occupy less than 10 percent of the volume of space.
+LINK TO LEARNING
+28 • The Evolution and Distribution of Galaxies
+E X A M P L E 2 8 . 1
+Galaxy Distribution
+To determine the distribution of galaxies in three-dimensional space, astronomers have to measure their
+positions and their redshifts. The larger the volume of space surveyed, the more likely the measurement is
+a fair sample of the universe as a whole. However, the work involved increases very rapidly as you increase
+the volume covered by the survey.
+Let’s do a quick calculation to see why this is so.
+Suppose that you have completed a survey of all the galaxies within 30 million light-years and you now
+want to survey to 60 million light-years. What volume of space is covered by your second survey? How
+much larger is this volume than the volume of your first survey? Remember that the volume of a sphere, V,
+is given by the formula V = 4/3πR3, where R is the radius of the sphere.
+Solution
+Since the volume of a sphere depends on R3 and the second survey reaches twice as far in distance, it will
+cover a volume that is 23 = 8 times larger. The total volume covered by the second survey will be (4/3)π × (60
+million light-years)3 = 9 × 1023 light-years3.
+Check Your Learning
+Suppose you now want to expand your survey to 90 million light-years. What volume of space is covered,
+and how much larger is it than the volume of the second survey?
+Answer:
+The total volume covered is (4/3)π × (90 million light-years)3 = 3.05 × 1024 light-years3. The survey reaches 3
+times as far in distance, so it will cover a volume that is 33 = 27 times larger.
+Even larger, more sensitive telescopes and surveys are currently being designed and built to peer farther and
+farther out in space and back in time. The new 50-meter Large Millimeter Telescope in Mexico and the
+Atacama Large Millimeter Array in Chile can detect far-infrared and millimeter-wave radiation from massive
+starbursting galaxies at redshifts and thus distances more than 90% of the way back to the Big Bang. These
+cannot be observed with visible light because their star formation regions are wrapped in clouds of thick dust.
+And in 2021, the 6.5-meter-diameter James Webb Space Telescope is scheduled to launch. It will be the first
+new major visible light and near-infrared telescope in space since Hubble was launched more than 30 years
+earlier. One of the major goals of this telescope is to observe directly the light of the first galaxies and even the
+first stars to shine, less than half a billion years after the Big Bang.
+At this point, if you have been thinking about our discussions of the expanding universe in Galaxies, you may
+be wondering what exactly in Figure 28.21 is expanding. We know that the galaxies and clusters of galaxies are
+held together by their gravity and do not expand as the universe does. However, the voids do grow larger and
+the filaments move farther apart as space stretches (see The Big Bang).
+Astronomy and Technology: The Sloan Digital Sky Survey
+In Edwin Hubble’s day, spectra of galaxies had to be taken one at a time. The faint light of a distant galaxy
+gathered by a large telescope was put through a slit, and then a spectrometer (also called a spectrograph)
+MAKING CONNECTIONS
+28.3 • The Distribution of Galaxies in Space
+was used to separate the colors and record the spectrum. This was a laborious process, ill suited to the
+demands of making large-scale maps that require the redshifts of many thousands of galaxies.
+But new technology has come to the rescue of astronomers who seek three-dimensional maps of the
+universe of galaxies. One ambitious survey of the sky was produced using a special telescope, camera, and
+spectrograph atop the Sacramento Mountains of New Mexico. Called the Sloan Digital Sky Survey (SDSS),
+after the foundation that provided a large part of the funding, the program used a 2.5-meter telescope
+(about the same aperture as the Hubble) as a wide-angle astronomical camera. During a mapping program
+lasting more than ten years, astronomers used the SDSS’s 30 charge-coupled devices (CCDs)—sensitive
+electronic light detectors similar to those used in many digital cameras and cell phones—to take images of
+over 500 million objects and spectra of over 3 million, covering more than one-quarter of the celestial
+sphere. Like many large projects in modern science, the Sloan Survey involved scientists and engineers
+from many different institutions, ranging from universities to national laboratories.
+Every clear night for more than a decade, astronomers used the instrument to make images recording the
+position and brightness of celestial objects in long strips of the sky. The information in each strip was
+digitally recorded and preserved for future generations. When the seeing (recall this term from
+Astronomical Instruments) was only adequate, the telescope was used for taking spectra of galaxies and
+quasars—but it did so for up to 640 objects at a time.
+The key to the success of the project was a series of optical fibers, thin tubes of flexible glass that can
+transmit light from a source to the CCD that then records the spectrum. After taking images of a part of the
+sky and identifying which objects are galaxies, project scientists drilled an aluminum plate with holes for
+attaching fibers at the location of each galaxy. The telescope was then pointed at the right section of the
+sky, and the fibers led the light of each galaxy to the spectrometer for individual recording (Figure 28.22).
+Figure 28.22 Sloan Digital Sky Survey. (a) The Sloan Digital Sky Survey telescope is seen here in front of the Sacramento
+Mountains in New Mexico. (b) Astronomer Richard Kron inserts some of the optical fibers into the pre-drilled plate to enable the
+instruments to make many spectra of galaxies at the same time. (credit a, b: modification of work by the Sloan Digital Sky Survey)
+About an hour was sufficient for each set of spectra, and the pre-drilled aluminum plates could be switched
+quickly. Thus, it was possible to take as many as 5000 spectra in one night (provided the weather was good
+enough).
+The galaxy survey led to a more comprehensive map of the sky than has ever before been possible,
+allowing astronomers to test their ideas about large-scale structure and the evolution of galaxies against an
+impressive array of real data.
+The information recorded by the Sloan Survey staggers the imagination. The data came in at 8 megabytes
+28 • The Evolution and Distribution of Galaxies
+per second (this means 8 million individual numbers or characters every second). Over the course of the
+project, scientists recorded over 15 terabytes, or 15 thousand billion bytes, which they estimate is
+comparable to the information contained in the Library of Congress. Organizing and sorting this volume of
+data and extracting the useful scientific results it contains is a formidable challenge, even in our
+information age. Like many other fields, astronomy has now entered an era of “Big Data,” requiring
+supercomputers and advanced computer algorithms to sift through all those terabytes of data efficiently.
+One very successful solution to the challenge of dealing with such large datasets is to turn to “citizen
+science,” or crowd-sourcing, an approach the SDSS helped pioneer. The human eye is very good at
+recognizing subtle differences among shapes, such as between two different spiral galaxies, while
+computers often fail at such tasks. When Sloan project astronomers wanted to catalog the shapes of some
+of the millions of galaxies in their new images, they launched the “Galaxy Zoo” project: volunteers around
+the world were given a short training course online, then were provided with a few dozen galaxy images to
+classify by eye. The project was wildly successful, resulting in over 40 million galaxy classifications by more
+than 100,000 volunteers and the discovery of whole new types of galaxies.
+Learn more about how you can be part of the project of classifying galaxies (https://openstax.org/l/
+30classgalax) in this citizen science effort. This program is part of a whole series of “citizen science” projects
+(https://openstax.org/l/30citizscien) that enable people in all walks of life to be part of the research that
+professional astronomers (and scholars in a growing number of fields) need help with.
+28.4
+The Challenge of Dark Matter
+Learning Objectives
+By the end of this section, you will be able to:
+Explain how astronomers know that the solar system contains very little dark matter
+Summarize the evidence for dark matter in most galaxies
+Explain how we know that galaxy clusters are dominated by dark matter
+Relate the presence of dark matter to the average mass-to-light ratio of huge volumes of space containing
+many galaxies
+So far this chapter has focused almost entirely on matter that radiates electromagnetic energy—stars, planets,
+gas, and dust. But, as we have pointed out in several earlier chapters (especially The Milky Way Galaxy), it is
+now clear that galaxies contain large amounts of dark matter as well. There is much more dark matter, in fact,
+than matter we can see—which means it would be foolish to ignore the effect of this unseen material in our
+theories about the structure of the universe. (As many a ship captain in the polar seas found out too late, the
+part of the iceberg visible above the ocean’s surface was not necessarily the only part he needed to pay
+attention to.) Dark matter turns out to be extremely important in determining the evolution of galaxies and of
+the universe as a whole.
+The idea that much of the universe is filled with dark matter may seem like a bizarre concept, but we can cite a
+historical example of “dark matter” much closer to home. In the mid-nineteenth century, measurements
+showed that the planet Uranus did not follow exactly the orbit predicted from Newton’s laws if one added up
+the gravitational forces of all the known objects in the solar system. Some people worried that Newton’s laws
+may simply not work so far out in our solar system. But the more straightforward interpretation was to
+LINK TO LEARNING
+28.4 • The Challenge of Dark Matter
+attribute Uranus’ orbital deviations to the gravitational effects of a new planet that had not yet been seen.
+Calculations showed where that planet had to be, and Neptune was discovered just about in the predicted
+location.
+In the same way, astronomers now routinely determine the location and amount of dark matter in galaxies by
+measuring its gravitational effects on objects we can see. And, by measuring the way that galaxies move in
+clusters, scientists have discovered that dark matter is also distributed among the galaxies in the clusters.
+Since the environment surrounding a galaxy is important in its development, dark matter must play a central
+role in galaxy evolution as well. Indeed, it appears that dark matter makes up most of the matter in the
+universe. But what is dark matter? What is it made of? We’ll look next at the search for dark matter and the
+quest to determine its nature.
+Dark Matter in the Local Neighborhood
+Is there dark matter in our own solar system? Astronomers have examined the orbits of the known planets
+and of spacecraft as they journey to the outer planets and beyond. No deviations have been found from the
+orbits predicted on the basis of the masses of objects already discovered in our solar system and the theory of
+gravity. We therefore conclude that there is no evidence that there are large amounts of dark matter nearby.
+Astronomers have also looked for evidence of dark matter in the region of the Milky Way Galaxy that lies
+within a few hundred light-years of the Sun. In this vicinity, most of the stars are restricted to a thin disk. It is
+possible to calculate how much mass the disk must contain in order to keep the stars from wandering far
+above or below it. The total matter that must be in the disk is less than twice the amount of luminous matter.
+This means that no more than half of the mass in the region near the Sun can be dark matter.
+Dark Matter in and around Galaxies
+In contrast to our local neighborhood near the Sun and solar system, there is (as we saw in The Milky Way
+Galaxy) ample evidence strongly suggesting that about 90% of the mass in the entire galaxy is in the form of a
+halo of dark matter. In other words, there is apparently about nine times more dark matter than visible
+matter. Astronomers have found some stars in the outer regions of the Milky Way beyond its bright disk, and
+these stars are revolving very rapidly around its center. The mass contained in all the stars and all the
+interstellar matter we can detect in the galaxy does not exert enough gravitational force to explain how those
+fast-moving stars remain in their orbits and do not fly away. Only by having large amounts of unseen matter
+could the galaxy be holding on to those fast-moving outer stars. The same result is found for other spiral
+galaxies as well.
+Figure 28.23 is an example of the kinds of observations astronomers are making, for the Triangulum galaxy, a
+member of our Local Group. The observed rotation of spiral galaxies like Andromeda is usually seen in plots,
+known as rotation curves, that show velocity versus distance from the galaxy center. Such plots suggest that
+the dark matter is found in a large halo surrounding the luminous parts of each galaxy. The radius of the halos
+around the Milky Way and Andromeda may be as large as 300,000 light-years, much larger than the visible size
+of these galaxies.
+28 • The Evolution and Distribution of Galaxies
+Figure 28.23 Rotation Indicates Dark Matter. We see the Milky Way’s neighbor, the Triangulum galaxy, with a graph that shows
+the velocity at which stars and clouds of gas orbit the galaxy at different distances from the center (red line). As is true of the Milky
+Way, the rotational velocity (or orbital speed) does not decrease with distance from the center, which is what you would expect if an
+assembly of objects rotates around a common center. A calculation (blue line) based on the total mass visible as stars, gas, and dust
+predicts that the velocity should be much lower at larger distances from the center. The discrepancy between the two curves implies
+the presence of a halo of massive dark matter extending outside the boundary of the luminous matter. This dark matter causes
+everything in the galaxy to orbit faster than the observed matter alone could explain. (credit background: modification of work by
+ESO)
+Dark Matter in Clusters of Galaxies
+Galaxies in clusters also move around: they orbit the cluster’s center of mass. It is not possible for us to follow
+a galaxy around its entire orbit because that typically takes about a billion years. It is possible, however, to
+measure the velocities with which galaxies in a cluster are moving, and then estimate what the total mass in
+the cluster must be to keep the individual galaxies from flying out of the cluster. The observations indicate that
+the mass of the galaxies alone cannot keep the cluster together—some other gravity must again be present.
+The total amount of dark matter in clusters exceeds by more than ten times the luminous mass contained
+within the galaxies themselves, indicating that dark matter exists between galaxies as well as inside them.
+There is another approach we can take to measuring the amount of dark matter in clusters of galaxies. As we
+saw, the universe is expanding, but this expansion is not perfectly uniform, thanks to the interfering hand of
+gravity. Suppose, for example, that a galaxy lies outside but relatively close to a rich cluster of galaxies. The
+gravitational force of the cluster will tug on that neighboring galaxy and slow down the rate at which it moves
+away from the cluster due to the expansion of the universe.
+Consider the Local Group of galaxies, lying on the outskirts of the Virgo Supercluster. The mass concentrated
+at the center of the Virgo Cluster exerts a gravitational force on the Local Group. As a result, the Local Group is
+moving away from the center of the Virgo Cluster at a velocity a few hundred kilometers per second slower
+than the Hubble law predicts. By measuring such deviations from a smooth expansion, astronomers can
+estimate the total amount of mass contained in large clusters.
+There are two other very useful methods for measuring the amount of dark matter in galaxy clusters, and
+both of them have produced results in general agreement with the method of measuring galaxy velocities:
+gravitational lensing and X-ray emission. Let’s take a look at both.
+As Albert Einstein showed in his theory of general relativity, the presence of mass bends the surrounding
+fabric of spacetime. Light follows those bends, so very massive objects can bend light significantly. You saw
+28.4 • The Challenge of Dark Matter
+examples of this in the Astronomy Basics feature box Gravitational Lensing in the previous section. Visible
+galaxies are not the only possible gravitational lenses. Dark matter can also reveal its presence by producing
+this effect. Figure 28.24 shows a galaxy cluster that is acting like a gravitational lens; the streaks and arcs you
+see on the picture are lensed images of more distant galaxies. Gravitational lensing is well enough understood
+that astronomers can use the many ovals and arcs seen in this image to calculate detailed maps of how much
+matter there is in the cluster and how that mass is distributed. The result from studies of many such
+gravitational lens clusters shows that, like individual galaxies, galaxy clusters contain more than ten times as
+much dark matter as luminous matter.
+Figure 28.24 Cluster Abell 2218. This view from the Hubble Space Telescope shows the massive galaxy cluster Abell 2218 at a
+distance of about 2 billion light-years. Most of the yellowish objects are galaxies belonging to the cluster. But notice the numerous
+long, thin streaks, many of them blue; those are the distorted and magnified images of even more distant background galaxies,
+gravitationally lensed by the enormous mass of the intervening cluster. By carefully analyzing the lensed images, astronomers can
+construct a map of the dark matter that dominates the mass of the cluster. (credit: modification of work by NASA, ESA, and Johan
+Richard (Caltech))
+The third method astronomers use to detect and measure dark matter in galaxy clusters is to image them in
+the light of X-rays. When the first sensitive X-ray telescopes were launched into orbit around Earth in the 1970s
+and trained on massive galaxy clusters, it was quickly discovered that the clusters emit copious X-ray radiation
+(see Figure 28.25). Most stars do not emit much X-ray radiation, and neither does most of the gas or dust
+between the stars inside galaxies. What could be emitting the X-rays seen from virtually all massive galaxy
+clusters?
+It turns out that just as galaxies have gas distributed between their stars, clusters of galaxies have gas
+distributed between their galaxies. The particles in these huge reservoirs of gas are not just sitting still; rather,
+they are constantly moving, zooming around under the influence of the cluster’s immense gravity like mini
+planets around a giant sun. As they move and bump against each other, the gas heats up hotter and hotter
+until, at temperatures as high as 100 million K, it shines brightly at X-ray wavelengths. The more mass the
+cluster has, the faster the motions, the hotter the gas, and the brighter the X-rays. Astronomers calculate that
+the mass present to induce those motions must be about ten times the mass they can see in the clusters,
+including all the galaxies and all the gas. Once again, this is evidence that the galaxy clusters are seen to be
+dominated by dark matter.
+28 • The Evolution and Distribution of Galaxies
+Figure 28.25 X-Ray Image of a Galaxy Cluster. This composite image shows the galaxy cluster Abell 1689 at a distance of 2.3 billion
+light-years. The finely detailed views of the galaxies, most of them yellow, are in visible and near-infrared light from the Hubble
+Space Telescope, while the diffuse purple haze shows X-rays as seen by Chandra X-ray Observatory. The abundant X-rays, the
+gravitationally lensed images (thin curving arcs) of background galaxies, and the measured velocities of galaxies in the clusters all
+show that the total mass of Abell 1689—most of it dark matter—is about 1015 solar masses. (credit: modification of work by NASA/
+ESA/JPL-Caltech/Yale/CNRS)
+Mass-to-Light Ratio
+We described the use of the mass-to-light ratio to characterize the matter in galaxies or clusters of galaxies in
+Properties of Galaxies. For systems containing mostly old stars, the mass-to-light ratio is typically 10 to 20,
+where mass and light are measured in units of the Sun’s mass and luminosity. A mass-to-light ratio of 100 or
+more is a signal that a substantial amount of dark matter is present. Table 28.1 summarizes the results of
+measurements of mass-to-light ratios for various classes of objects. Very large mass-to-light ratios are found
+for all systems of galaxy size and larger, indicating that dark matter is present in all these types of objects. This
+is why we say that dark matter apparently makes up most of the total mass of the universe.
+Mass-To-Light Ratios
+Type of Object
+Mass-to-Light Ratio
+Sun
+Matter in vicinity of Sun
+Mass in Milky Way within 80,000 light-years of the center
+Small groups of galaxies
+50–150
+Rich clusters of galaxies
+250–300
+Table 28.1
+The clustering of galaxies can be used to derive the total amount of mass in a given region of space, while
+28.4 • The Challenge of Dark Matter
+visible radiation is a good indicator of where the luminous mass is. Studies show that the dark matter and
+luminous matter are very closely associated. The dark matter halos do extend beyond the luminous
+boundaries of the galaxies that they surround. However, where there are large clusters of galaxies, you will
+also find large amounts of dark matter. Voids in the galaxy distribution are also voids in the distribution of
+dark matter.
+What Is the Dark Matter?
+How do we go about figuring out what the dark matter consists of? The technique we might use depends on
+its composition. Let’s consider the possibility that some of the dark matter is made up of normal particles:
+protons, neutrons, and electrons. Suppose these particles were assembled into black holes, brown dwarfs, or
+white dwarfs. If the black holes had no accretion disks, they would be invisible to us. White and brown dwarfs
+do emit some radiation but have such low luminosities that they cannot be seen at distances greater than a
+few thousand light-years.
+We can, however, look for such compact objects because they can act as gravitational lenses. (See the
+Astronomy Basics feature box Gravitational Lensing.) Suppose the dark matter in the halo of the Milky Way
+were made up of black holes, brown dwarfs, and white dwarfs. These objects have been whimsically dubbed
+MACHOs (MAssive Compact Halo Objects). If an invisible MACHO passes directly between a distant star and
+Earth, it acts as a gravitational lens, focusing the light from the distant star. This causes the star to appear to
+brighten over a time interval of a few hours to several days before returning to its normal brightness. Since we
+can’t predict when any given star might brighten this way, we have to monitor huge numbers of stars to catch
+one in the act. There are not enough astronomers to keep monitoring so many stars, but today’s automated
+telescopes and computer systems can do it for us.
+Research teams making observations of millions of stars in the nearby galaxy called the Large Magellanic
+Cloud have reported several examples of the type of brightening expected if MACHOs are present in the halo
+of the Milky Way (Figure 28.26). However, there are not enough MACHOs in the halo of the Milky Way to
+account for the mass of the dark matter in the halo.
+Figure 28.26 Large and Small Magellanic Clouds. Here, the two small galaxies we call the Large Magellanic Cloud and Small
+28 • The Evolution and Distribution of Galaxies
+Magellanic Cloud can be seen above the auxiliary telescopes for the Very Large Telescope Array on Cerro Paranal in Chile. You can
+see from the number of stars that are visible that this is a very dark site for doing astronomy. (credit: ESO/J. Colosimo)
+This result, along with a variety of other experiments, leads us to conclude that the types of matter we are
+familiar with can make up only a tiny portion of the dark matter. Another possibility is that dark matter is
+composed of some new type of particle—one that researchers are now trying to detect in laboratories here on
+Earth (see The Big Bang).
+The kinds of dark matter particles that astronomers and physicists have proposed generally fall into two main
+categories: hot and cold dark matter. The terms hot and cold don’t refer to true temperatures, but rather to
+the average velocities of the particles, analogous to how we might think of particles of air moving in your room
+right now. In a cold room, the air particles move more slowly on average than in a warm room.
+In the early universe, if dark matter particles easily moved fast and far compared to the lumps and bumps of
+ordinary matter that eventually became galaxies and larger structures, we call those particles hot dark
+matter. In that case, smaller lumps and bumps would be smeared out by the particle motions, meaning fewer
+small galaxies would get made.
+On the other hand, if the dark matter particles moved slowly and covered only small distances compared to
+the sizes of the lumps in the early universe, we call that cold dark matter. Their slow speeds and energy
+would mean that even the smaller lumps of ordinary matter would survive to grow into small galaxies. By
+looking at when galaxies formed and how they evolve, we can use observations to distinguish between the
+two kinds of dark matter. So far, observations seem most consistent with models based on cold dark matter.
+Solving the dark matter problem is one of the biggest challenges facing astronomers. After all, we can hardly
+understand the evolution of galaxies and the long-term history of the universe without understanding what its
+most massive component is made of. For example, we need to know just what role dark matter played in
+starting the higher-density “seeds” that led to the formation of galaxies. And since many galaxies have large
+halos made of dark matter, how does this affect their interactions with one another and the shapes and types
+of galaxies that their collisions create?
+Astronomers armed with various theories are working hard to produce models of galaxy structure and
+evolution that take dark matter into account in just the right way. Even though we don’t know what the dark
+matter is, we do have some clues about how it affected the formation of the very first galaxies. As we will see
+in The Big Bang, careful measurements of the microwave radiation left over after the Big Bang have allowed
+astronomers to set very tight limits on the actual sizes of those early seeds that led to the formation of the
+large galaxies that we see in today’s universe. Astronomers have also measured the relative numbers and
+distances between galaxies and clusters of different sizes in the universe today. So far, most of the evidence
+seems to weigh heavily in favor of cold dark matter, and most current models of galaxy and large-scale
+structure formation use cold dark matter as their main ingredient.
+As if the presence of dark matter—a mysterious substance that exerts gravity and outweighs all the known
+stars and galaxies in the universe but does not emit or absorb light—were not enough, there is an even more
+baffling and equally important constituent of the universe that has only recently been discovered: we have
+called it dark energy in parallel with dark matter. We will say more about it and explore its effects on the
+evolution of the universe in The Big Bang. For now, we can complete our inventory of the contents of the
+universe by noting that it appears that the entire universe contains some mysterious energy that pushes
+spacetime apart, taking galaxies and the larger structures made of galaxies along with it. Observations show
+that dark energy becomes more and more important relative to gravity as the universe ages. As a result, the
+expansion of the universe is accelerating, and this acceleration seems to be happening mostly since the
+universe was about half its current age.
+What we see when we peer out into the universe—the light from trillions of stars in hundreds of billions of
+galaxies wrapped in intricate veils of gas and dust—is therefore actually only a sprinkling of icing on top of the
+28.4 • The Challenge of Dark Matter
+cake: as we will see in The Big Bang, when we look outside galaxies and clusters of galaxies at the universe as
+a whole, astronomers find that for every gram of luminous normal matter, such as protons, neutrons,
+electrons, and atoms in the universe, there are about 4 grams of nonluminous normal matter, mainly
+intergalactic hydrogen and helium. There are about 27 grams of dark matter, and the energy equivalent
+(remember Einstein’s famous E = mc2) of about 68 grams of dark energy. Dark matter, and (as we will see)
+even more so dark energy, are dramatic demonstrations of what we have tried to emphasize throughout this
+book: science is always a “progress report,” and we often encounter areas where we have more questions
+than answers.
+Let’s next put together all these clues to trace the life history of galaxies and large-scale structure in the
+universe. What follows is the current consensus, but research in this field is moving rapidly, and some of these
+ideas will probably be modified as new observations are made.
+28.5
+The Formation and Evolution of Galaxies and Structure in the Universe
+Learning Objectives
+By the end of this section, you will be able to:
+Summarize the main theories attempting to explain how individual galaxies formed
+Explain how tiny “seeds” of dark matter in the early universe grew by gravitational attraction over billions
+of years into the largest structures observed in the universe: galaxy clusters and superclusters, filaments, and
+voids
+As with most branches of natural science, astronomers and cosmologists always want to know the answer to
+the question, “How did it get that way?” What made galaxies and galaxy clusters, superclusters, voids, and
+filaments look the way they do? The existence of such large filaments of galaxies and voids is an interesting
+puzzle because we have evidence (to be discussed in The Big Bang) that the universe was extremely smooth
+even a few hundred thousand years after forming. The challenge for theoreticians is to understand how a
+nearly featureless universe changed into the complex and lumpy one that we see today. Armed with our
+observations and current understanding of galaxy evolution over cosmic time, dark matter, and large-scale
+structure, we are now prepared to try to answer that question on some of the largest possible scales in the
+universe. As we will see, the short answer to how the universe got this way is “dark matter + gravity + time.”
+How Galaxies Form and Grow
+We’ve already seen that galaxies were more numerous, but smaller, bluer, and clumpier, in the distant past
+than they are today, and that galaxy mergers play a significant role in their evolution. At the same time, we
+have observed quasars and galaxies that emitted their light when the universe was less than a billion years
+old—so we know that large condensations of matter had begun to form at least that early. We also saw in
+Active Galaxies, Quasars, and Supermassive Black Holes that many quasars are found in the centers of
+elliptical galaxies. This means that some of the first large concentrations of matter must have evolved into the
+elliptical galaxies that we see in today’s universe. It seems likely that the supermassive black holes in the
+centers of galaxies and the spherical distribution of ordinary matter around them formed at the same time
+and through related physical processes.
+Dramatic confirmation of that picture arrived only in the last decade, when astronomers discovered a curious
+empirical relationship: as we saw in Active Galaxies, Quasars, and Supermassive Black Holes, the more massive
+a galaxy is, the more massive its central black hole is. Somehow, the black hole and the galaxy “know” enough
+about each other to match their growth rates.
+There have been two main types of galaxy formation models to explain all those observations. The first asserts
+that massive elliptical galaxies formed in a single, rapid collapse of gas and dark matter, during which virtually
+all the gas was turned quickly into stars. Afterward the galaxies changed only slowly as the stars evolved. This
+is what astronomers call a “top-down” scenario.
+28 • The Evolution and Distribution of Galaxies
+The second model suggests that today’s giant ellipticals were formed mostly through mergers of smaller
+galaxies that had already converted at least some of their gas into stars—a “bottom-up” scenario. In other
+words, astronomers have debated whether giant ellipticals formed most of their stars in the large galaxy that
+we see today or in separate small galaxies that subsequently merged.
+Since we see some luminous quasars from when the universe was less than a billion years old, it is likely that
+at least some giant ellipticals began their evolution very early through the collapse of a single cloud. However,
+the best evidence also seems to show that mature giant elliptical galaxies like the ones we see nearby were
+rare before the universe was about 6 billion years old and that they are much more common today than they
+were when the universe was young. Observations also indicate that most of the gas in elliptical galaxies was
+converted to stars by the time the universe was about 3 billion years old, so it appears that elliptical galaxies
+have not formed many new stars since then. They are often said to be “red and dead”—that is, they mostly
+contain old, cool, red stars, and there is little or no new star formation going on.
+These observations (when considered together) suggest that the giant elliptical galaxies that we see nearby
+formed from a combination of both top-down and bottom-up mechanisms, with the most massive galaxies
+forming in the densest clusters where both processes happened very early and quickly in the history of the
+universe.
+The situation with spiral galaxies is apparently very different. The bulges of these galaxies formed early, like
+the elliptical galaxies (Figure 28.27). However, the disks formed later (remember that the stars in the disk of
+the Milky Way are younger than the stars in the bulge and the halo) and still contain gas and dust. However,
+the rate of star formation in spirals today is about ten times lower than it was 8 billion years ago. The number
+of stars being formed drops as the gas is used up. So spirals seem to form mostly “bottom up” but over a
+longer time than ellipticals and in a more complex way, with at least two distinct phases.
+28.5 • The Formation and Evolution of Galaxies and Structure in the Universe
+Figure 28.27 Growth of Spiral Bulges. The nuclear bulges of some spiral galaxies formed through the collapse of a single
+protogalactic cloud (top row). Others grew over time through mergers with other smaller galaxies (bottom row).
+Hubble originally thought that elliptical galaxies were young and would eventually turn into spirals, an idea we
+now know is not true. In fact, as we saw above, it’s more likely the other way around: two spirals that crash
+together under their mutual gravity can turn into an elliptical.
+Despite these advances in our understanding of how galaxies form and evolve, many questions remain. For
+example, it’s even possible, given current evidence, that spiral galaxies could lose their spiral arms and disks in
+a merger event, making them look more like an elliptical or irregular galaxy, and then regain the disk and
+arms again later if enough gas remains available. The story of how galaxies assume their final shapes is still
+being written as we learn more about galaxies and their environment.
+Forming Galaxy Clusters, Superclusters, Voids, and Filaments
+If individual galaxies seem to grow mostly by assembling smaller pieces together gravitationally over cosmic
+time, what about the clusters of galaxies and larger structures such as those seen in Figure 28.21? How do we
+explain the large-scale maps that show galaxies distributed on the walls of huge sponge- or bubble-like
+structures spanning hundreds of millions of light-years?
+As we saw, observations have found increasing evidence for concentrations, filaments, clusters, and
+superclusters of galaxies when the universe was less than 3 billion years old (Figure 28.28). This means that
+large concentrations of galaxies had already come together when the universe was less than a quarter as old
+28 • The Evolution and Distribution of Galaxies
+as it is now.
+Figure 28.28 Merging Galaxies in a Distant Cluster. This Hubble image shows the core of one of the most distant galaxy clusters
+yet discovered, SpARCS 1049+56; we are seeing it as it was nearly 10 billion years ago. The surprise delivered by the image was the
+“train wreck” of chaotic galaxy shapes and blue tidal tails: apparently there are several galaxies right in the core that are merging
+together, the probable cause of a massive burst of star formation and bright infrared emission from the cluster. (credit: modification
+of work by NASA/STScI/ESA/JPL-Caltech/McGill)
+Almost all the currently favored models of how large-scale structure formed in the universe tell a story similar
+to that for individual galaxies: tiny dark matter “seeds” in the hot cosmic soup after the Big Bang grew by
+gravity into larger and larger structures as cosmic time ticked on (Figure 28.29). The final models we construct
+will need to be able to explain the size, shape, age, number, and spatial distribution of galaxies, clusters, and
+filaments—not only today, but also far back in time. Therefore, astronomers are working hard to measure and
+then to model those features of large-scale structure as accurately as possible. So far, a mixture of 5% normal
+atoms, 27% cold dark matter, and 68% dark energy seems to be the best way to explain all the evidence
+currently available (see The Big Bang).
+28.5 • The Formation and Evolution of Galaxies and Structure in the Universe
+Figure 28.29 Growth of Large-Scale Structure as Calculated by Supercomputers. The boxes show how filaments and
+superclusters of galaxies grow over time, from a relatively smooth distribution of dark matter and gas, with few galaxies formed in
+the first 2 billion years after the Big Bang, to the very clumpy strings of galaxies with large voids today. Compare the last image in
+this sequence with the actual distribution of nearby galaxies shown in Figure 28.21. (credit: modification of work by CXC/MPE/
+V.Springel)
+The box at left is labeled “Big Bang,” the box at center is unlabeled and the box at right is labeled “Present”. A
+white arrow points from left to right representing the direction of time.
+Scientists even have a model to explain how a nearly uniform, hot “soup” of particles and energy at the
+beginning of time acquired the Swiss-cheese-like structure that we now see on the largest scales. As we will
+see in The Big Bang, when the universe was only a few hundred thousand years old, everything was at a
+temperature of a few thousand degrees. Theorists suggest that at that early time, all the hot gas was vibrating,
+much as sound waves vibrate the air of a nightclub with an especially loud band. This vibrating could have
+concentrated matter into high-density peaks and created emptier spaces between them. When the universe
+cooled, the concentrations of matter were “frozen in,” and galaxies ultimately formed from the matter in these
+high-density regions.
+The Big Picture
+To finish this chapter, let’s put all these ideas together to tell a coherent story of how the universe came to
+look the way it does. Initially, as we said, the distribution of matter (both luminous and dark) was nearly, but
+not quite exactly, smooth and uniform. That “not quite” is the key to everything. Here and there were lumps
+where the density of matter (both luminous and dark) was ever so slightly higher than average.
+Initially, each individual lump expanded because the whole universe was expanding. However, as the universe
+continued to expand, the regions of higher density acquired still more mass because they exerted a slightly
+larger than average gravitational force on surrounding material. If the inward pull of gravity was high enough,
+the denser individual regions ultimately stopped expanding. They then began to collapse into irregularly
+shaped blobs (that’s the technical term astronomers use!). In many regions the collapse was more rapid in
+one direction, so the concentrations of matter were not spherical but came to resemble giant clumps,
+pancakes, and rope-like filaments—each much larger than individual galaxies.
+These elongated clumps existed throughout the early universe, oriented in different directions and collapsing
+28 • The Evolution and Distribution of Galaxies
+at different rates. The clumps provided the framework for the large-scale filamentary and bubble-like
+structures that we see preserved in the universe today.
+The universe then proceeded to “build itself” from the bottom up. Within the clumps, smaller structures
+formed first, then merged to build larger ones, like Lego pieces being put together one by one to create a
+giant Lego metropolis. The first dense concentrations of matter that collapsed were the size of small dwarf
+galaxies or globular clusters—which helps explain why globular clusters are the oldest things in the Milky Way
+and most other galaxies. These fragments then gradually assembled to build galaxies, galaxy clusters, and,
+ultimately, superclusters of galaxies.
+According to this picture, small galaxies and large star clusters first formed in the highest density regions of
+all—the filaments and nodes where the pancakes intersect—when the universe was about two percent of its
+current age. Some stars may have formed even before the first star clusters and galaxies came into existence.
+Some galaxy-galaxy collisions triggered massive bursts of star formation, and some of these led to the
+formation of black holes. In that rich, crowded environment, black holes found constant food and grew in
+mass. The development of massive black holes then triggered quasars and other active galactic nuclei whose
+powerful outflows of energy and matter shut off the star formation in their host galaxies. The early universe
+must have been an exciting place!
+Clusters of galaxies then formed as individual galaxies congregated, drawn together by their mutual
+gravitational attraction (Figure 28.30). First, a few galaxies came together to form groups, much like our own
+Local Group. Then the groups began combining to form clusters and, eventually, superclusters. This model
+predicts that clusters and superclusters should still be in the process of gathering together, and observations
+do in fact suggest that clusters are still gathering up their flocks of galaxies and collecting more gas as it flows
+in along filaments. In some instances we even see entire clusters of galaxies merging together.
+Figure 28.30 Formation of Cluster of Galaxies. This schematic diagram shows how galaxies might have formed if small clouds
+formed first and then congregated to form galaxies and then clusters of galaxies.
+Most giant elliptical galaxies formed through the collision and merger of many smaller fragments. Some spiral
+galaxies may have formed in relatively isolated regions from a single cloud of gas that collapsed to make a
+flattened disk, but others acquired additional stars, gas, and dark matter through collisions, and the stars
+acquired through these collisions now populate their halos and bulges. As we have seen, our Milky Way is still
+capturing small galaxies and adding them to its halo, and probably also pulling fresh gas from these galaxies
+28.5 • The Formation and Evolution of Galaxies and Structure in the Universe
+into its disk.
+28 • The Evolution and Distribution of Galaxies
+Key Terms
+cold dark matter
+slow-moving massive particles, not yet identified, that don’t absorb, emit, or reflect light or
+other electromagnetic radiation
+cosmological principle
+the assumption that, on the large scale, the universe at any given time is the same
+everywhere—isotropic and homogeneous
+dark energy
+an energy that is causing the expansion of the universe to accelerate; the source of this energy
+is not yet understood
+evolution (of galaxies)
+changes in individual galaxies over cosmic time, inferred by observing snapshots of
+many different galaxies at different times in their lives
+galactic cannibalism
+a process by which a larger galaxy strips material from or completely swallows a
+smaller one
+homogeneous
+having a consistent and even distribution of matter that is the same everywhere
+hot dark matter
+massive particles, not yet identified, that don’t absorb, emit, or reflect light or other
+electromagnetic radiation; hot dark matter is faster-moving material than cold dark matter
+isotropic
+the same in all directions
+Local Group
+a small cluster of galaxies to which our Galaxy belongs
+merger
+a collision between galaxies (of roughly comparable size) that combine to form a single new
+structure
+starburst
+a galaxy or merger of multiple galaxies that turns gas into stars much faster than usual
+supercluster
+a large region of space (more than 100 million light-years across) where groups and clusters of
+galaxies are more concentrated; a cluster of clusters of galaxies
+void
+a region between clusters and superclusters of galaxies that appears relatively empty of galaxies
+Summary
+28.1 Observations of Distant Galaxies
+When we look at distant galaxies, we are looking back in time. We have now seen galaxies as they were when
+the universe was about 500 million years old—only about four percent as old as it is now. The universe now is
+13.8 billion years old. The color of a galaxy is an indicator of the age of the stars that populate it. Blue galaxies
+must contain a lot of hot, massive, young stars. Galaxies that contain only old stars tend to be yellowish red.
+The first generation of stars formed when the universe was only a few hundred million years old. Galaxies
+observed when the universe was only a few billion years old tend to be smaller than today’s galaxies, to have
+more irregular shapes, and to have more rapid star formation than the galaxies we see nearby in today’s
+universe. This shows that the smaller galaxy fragments assembled themselves into the larger galaxies we see
+today.
+28.2 Galaxy Mergers and Active Galactic Nuclei
+When galaxies of comparable size collide and coalesce we call it a merger, but when a small galaxy is
+swallowed by a much larger one, we use the term galactic cannibalism. Collisions play an important role in the
+evolution of galaxies. If the collision involves at least one galaxy rich in interstellar matter, the resulting
+compression of the gas will result in a burst of star formation, leading to a starburst galaxy. Mergers were
+much more common when the universe was young, and many of the most distant galaxies that we see are
+starburst galaxies that are involved in collisions. Active galactic nuclei powered by supermassive black holes in
+the centers of most galaxies can have major effects on the host galaxy, including shutting off star formation.
+28.3 The Distribution of Galaxies in Space
+Counts of galaxies in various directions establish that the universe on the large scale is homogeneous and
+isotropic (the same everywhere and the same in all directions, apart from evolutionary changes with time). The
+sameness of the universe everywhere is referred to as the cosmological principle. Galaxies are grouped
+28 • Key Terms
+together in clusters. The Milky Way Galaxy is a member of the Local Group, which contains at least 54 member
+galaxies. Rich clusters (such as Virgo and Coma) contain thousands or tens of thousands of galaxies. Galaxy
+clusters often group together with other clusters to form large-scale structures called superclusters, which can
+extend over distances of several hundred million light-years. Clusters and superclusters are found in
+filamentary structures that are huge but fill only a small fraction of space. Most of space consists of large voids
+between superclusters, with nearly all galaxies confined to less than 10% of the total volume.
+28.4 The Challenge of Dark Matter
+Stars move much faster in their orbits around the centers of galaxies, and galaxies around centers of galaxy
+clusters, than they should according to the gravity of all the luminous matter (stars, gas, and dust)
+astronomers can detect. This discrepancy implies that galaxies and galaxy clusters are dominated by dark
+matter rather than normal luminous matter. Gravitational lensing and X-ray radiation from massive galaxy
+clusters confirm the presence of dark matter. Galaxies and clusters of galaxies contain about 10 times more
+dark matter than luminous matter. While some of the dark matter may be made up of ordinary matter
+(protons, neutrons, and electrons), perhaps in the form of very faint stars or black holes, most of it probably
+consists of some totally new type of particle not yet detected on Earth. Observations of gravitational lensing
+effects on distant objects have been used to look in the outer region of our Galaxy for any dark matter in the
+form of compact, dim stars or star remnants, but not enough such objects have been found to account for all
+the dark matter.
+28.5 The Formation and Evolution of Galaxies and Structure in the Universe
+Initially, luminous and dark matter in the universe was distributed almost—but not quite—uniformly. The
+challenge for galaxy formation theories is to show how this “not quite” smooth distribution of matter
+developed the structures—galaxies and galaxy clusters—that we see today. It is likely that the filamentary
+distribution of galaxies and voids was built in near the beginning, before stars and galaxies began to form. The
+first condensations of matter were about the mass of a large star cluster or a small galaxy. These smaller
+structures then merged over cosmic time to form large galaxies, clusters of galaxies, and superclusters of
+galaxies. Superclusters today are still gathering up more galaxies, gas, and dark matter. And spiral galaxies
+like the Milky Way are still acquiring material by capturing small galaxies near them.
+For Further Exploration
+Articles
+Andrews, B. “What Are Galaxies Trying to Tell Us?” Astronomy (February 2011): 24. Introduction to our
+understanding of the shapes and evolution of different types of galaxies.
+Barger, A. “The Midlife Crisis of the Cosmos.” Scientific American (January 2005): 46. On how our time differs
+from the early universe in terms of what galaxies are doing, and what role supermassive black holes play.
+Berman, B. “The Missing Universe.” Astronomy (April 2014): 24. Brief review of dark matter, what it could be,
+and modified theories of gravity that can also explain it.
+Faber, S., et al. “Staring Back to Cosmic Dawn.” Sky & Telescope (June 2014): 18. Program to see the most
+distant and earliest galaxies with the Hubble.
+Geller, M., & Huchra, J. “Mapping the Universe.” Sky & Telescope (August 1991): 134. On their project mapping
+the location of galaxies in three dimensions.
+Hooper, D. “Dark Matter in the Discovery Age.” Sky & Telescope (January 2013): 26. On experiments looking for
+the nature of dark matter.
+James, C. R. “The Hubble Deep Field: The Picture Worth a Trillion Stars.” Astronomy (November 2015): 44.
+Detailed history and results, plus the Hubble Ultra-Deep Field.
+28 • For Further Exploration
+Kaufmann, G., & van den Bosch, F. “The Life Cycle of Galaxies.” Scientific American (June 2002): 46. On the
+evolution of galaxies and how the different shapes of galaxies develop.
+Knapp, G. “Mining the Heavens: The Sloan Digital Sky Survey.” Sky & Telescope (August 1997): 40.
+Kron, R., & Butler, S. “Stars and Strips Forever.” Astronomy (February 1999): 48. On the Sloan Digital Survey.
+Kruesi, L. “What Do We Really Know about Dark Matter?” Astronomy (November 2009): 28. Focuses on what
+dark matter could be and experiments to find out.
+Larson, R., & Bromm, V. “The First Stars in the Universe.” Scientific American (December 2001): 64. On the dark
+ages and the birth of the first stars.
+Nadis, S. “Exploring the Galaxy-Black Hole Connection.” Astronomy (May 2010): 28. About the role of massive
+black holes in the evolution of galaxies.
+Nadis, S. “Astronomers Reveal the Universe’s Hidden Structure.” Astronomy (September 2013): 44. How dark
+matter is the scaffolding on which the visible universe rests.
+Schilling, G. “Hubble Goes the Distance.” Sky & Telescope (January 2015): 20. Using gravitational lensing with
+HST to see the most distant galaxies.
+Strauss, M. “Reading the Blueprints of Creation.” Scientific American (February 2004): 54. On large-scale
+surveys of galaxies and what they tell us about the organization of the early universe.
+Tytell, D. “A Wide Deep Field: Getting the Big Picture.” Sky & Telescope (September 2001): 42. On the NOAO
+survey of deep sky objects.
+Villard, R. “How Gravity’s Grand Illusion Reveals the Universe.” Astronomy (January 2013): 44. On gravitational
+lensing and what it teaches us.
+Websites
+Assembly of Galaxies: http://jwst.nasa.gov/galaxies.html (http://jwst.nasa.gov/galaxies.html). Introductory
+background information about galaxies: what we know and what we want to learn.
+Brief History of Gravitational Lensing: http://www.einstein-online.info/spotlights/grav_lensing_history
+(http://www.einstein-online.info/spotlights/grav_lensing_history). From Einstein OnLine.
+Cosmic Structures: http://skyserver.sdss.org/dr1/en/astro/structures/structures.asp
+(http://skyserver.sdss.org/dr1/en/astro/structures/structures.asp). Brief review page on how galaxies are
+organized, from the Sloan Survey.
+Gravitational Lensing Discoveries from the Hubble Space Telescope: https://esahubble.org/
+news/?search=gravitational+lens (https://esahubble.org/news/?search=gravitational+lens). A chronological
+list of news releases and images.
+Local Group of Galaxies: http://www.atlasoftheuniverse.com/localgr.html
+(http://www.atlasoftheuniverse.com/localgr.html). Clickable map from the Atlas of the Universe project. See
+also their Virgo Cluster page: http://www.atlasoftheuniverse.com/galgrps/vir.html
+(http://www.atlasoftheuniverse.com/galgrps/vir.html).
+Sloan Digital Sky Survey Website: https://www.youtube.com/watch?v=1RXpHiCNsKU
+(https://www.youtube.com/watch?v=1RXpHiCNsKU). Includes nontechnical and technical parts.
+Spyglasses into the Universe: http://www.spacetelescope.org/science/gravitational_lensing/
+(http://www.spacetelescope.org/science/gravitational_lensing/). Hubble page on gravitational lensing;
+includes links to videos.
+Virgo Cluster of Galaxies: http://messier.seds.org/more/virgo.html (http://messier.seds.org/more/virgo.html).
+28 • For Further Exploration
+A page with brief information and links to maps, images, etc.
+Videos
+Cosmic Simulations: http://www.tapir.caltech.edu/~phopkins/Site/Movies_cosmo.html
+(http://www.tapir.caltech.edu/~phopkins/Site/Movies_cosmo.html). Beautiful videos with computer
+simulations of how galaxies form, from the FIRE group.
+Cosmology of the Local Universe: http://irfu.cea.fr/cosmography (http://irfu.cea.fr/cosmography). Narrated
+flythrough of maps of galaxies showing the closer regions of the universe (17:35).
+Gravitational Lensing: https://www.youtube.com/watch?v=4Z71RtwoOas (https://www.youtube.com/
+watch?v=4Z71RtwoOas). Video from Fermilab, with Dr. Don Lincoln (7:14).
+How Galaxies Were Cooked from the Primordial Soup: https://www.youtube.com/watch?v=wqNNCm7SNyw
+(https://www.youtube.com/watch?v=wqNNCm7SNyw). A 2013 public talk by Dr. Sandra Faber of Lick
+Observatory about the evolution of galaxies; part of the Silicon Valley Astronomy Lecture Series (1:19:33).
+Hubble Extreme Deep Field Pushes Back Frontiers of Time and Space: https://www.youtube.com/
+watch?v=gu_VhzhlqGw (https://www.youtube.com/watch?v=gu_VhzhlqGw). Brief 2012 video (2:42).
+Looking Deeply into the Universe in 3-D: https://www.eso.org/public/videos/eso1507a/ (https://www.eso.org/
+public/videos/eso1507a/). 2015 ESOCast video on how the Very Large Telescopes are used to explore the
+Hubble Ultra-Deep Field and learn more about the faintest and most distant galaxies (5:12).
+Millennium Simulation: http://wwwmpa.mpa-garching.mpg.de/galform/virgo/millennium
+(http://wwwmpa.mpa-garching.mpg.de/galform/virgo/millennium). A supercomputer in Germany follows the
+evolution of a representative large box as the universe evolves.
+Movies of flying through the large-scale local structure: http://www.ifa.hawaii.edu/~tully/
+(http://www.ifa.hawaii.edu/~tully/). By Brent Tully.
+Shedding Light on Dark Matter: https://www.youtube.com/watch?v=bZW_B9CC-gI (https://www.youtube.com/
+watch?v=bZW_B9CC-gI). 2008 TED talk on galaxies and dark matter by physicist Patricia Burchat (17:08).
+Sloan Digital Sky Survey overview movies: https://www.youtube.com/watch?v=9vfOqVHyohw
+(https://www.youtube.com/watch?v=9vfOqVHyohw).
+Virtual Universe: https://www.youtube.com/watch?v=SY0bKE10ZDM (https://www.youtube.com/
+watch?v=SY0bKE10ZDM). An MIT model of a section of universe evolving, with dark matter included (4:11).
+When Two Galaxies Collide: http://www.openculture.com/2009/04/when_galaxies_collide.html
+(http://www.openculture.com/2009/04/when_galaxies_collide.html). Computer simulation, which stops at
+various points and shows a Hubble image of just such a system in nature (1:37).
+Collaborative Group Activities
+A.
+Suppose you developed a theory to account for the evolution of New York City. Have your group discuss
+whether it would resemble the development of structure in the universe (as we have described it in this
+chapter). What elements of your model for NYC resemble the astronomers’ model for the growth of
+structure in the universe? Which elements do not match?
+B.
+Most astronomers believe that dark matter exists and is a large fraction of the total matter in the universe.
+At the same time, most astronomers do not believe that UFOs are evidence that we are being visited by
+aliens from another world. Yet astronomers have never actually seen either dark matter or a UFO. Why do
+you think one idea is widely accepted by scientists and the other is not? Which idea do you think is more
+believable? Give your reasoning.
+28 • Collaborative Group Activities
+C.
+Someone in your group describes the redshift surveys of galaxies to a friend, who says he’s never heard of
+a bigger waste of effort. Who cares, he asks, about the large-scale structure of the universe? What is your
+group’s reaction, and what reasons could you come up with for putting money into figuring out how the
+universe is organized?
+D.
+The leader of a small but very wealthy country is obsessed by maps. She has put together a fabulous
+collection of Earth maps, purchased all the maps of other planets that astronomers have assembled, and
+now wants to commission the best possible map of the entire universe. Your group is selected to advise
+her. What sort of instruments and surveys should she invest in to produce a good map of the cosmos? Be
+as specific as you can.
+E.
+Download a high-resolution image of a rich galaxy cluster from the Hubble Space Telescope (see the list of
+gravitational lens news stories in the “For Further Exploration” section). See if your group can work
+together to identify gravitational arcs, the images of distant background galaxies distorted by the mass of
+the cluster. How many can you find? Can you identify any multiple images of the same background
+galaxy? (If anyone in the group gets really interested, there is a Citizen Science project called Spacewarps,
+where you can help astronomers identify gravitational lenses on their images: https://spacewarps.org.)
+F.
+You get so excited about gravitational lensing that you begin to talk about it with an intelligent friend who
+has not yet taken an astronomy course. After hearing you out, this friend starts to worry. He says, “If
+gravitational lenses can distort quasar images, sometimes creating multiple, or ghost, images of the same
+object, then how can we trust any point of light in the sky to be real? Maybe many of the stars we see are
+just ghost images or lensed images too!” Have your group discuss how to respond. (Hint: Think about the
+path that the light of a quasar took on its way to us and the path the light of a typical star takes.)
+G.
+The 8.4-meter Large Synoptic Survey Telescope (LSST), currently under construction atop Cerro Pachón, a
+mountain in northern Chile, will survey the entire sky with its 3.2-gigapixel camera every few days, looking
+for transient, or temporary, objects that make a brief appearance in the sky before fading from view,
+including asteroids and Kuiper belt objects in our solar system, and supernovae and other explosive highenergy events in the distant universe. When it’s fully operating sometime after 2021, the LSST will produce
+up to 30 terabytes of data every night. (A terabyte is 1000 gigabytes, which is the unit you probably use to
+rate your computer or memory stick capacity.) With your group, consider what you think might be some
+challenges of dealing with that quantity of data every night in a scientifically productive but efficient way.
+Can you propose any solutions to those challenges?
+H.
+Quasars are rare now but were much more numerous when the universe was about one-quarter of its
+current age. The total star formation taking place in galaxies across the universe peaked at about the
+same redshift. Does your group think this is a coincidence? Why or why not?
+I.
+One way to see how well the ideas in astronomy (like those in this chapter) have penetrated popular
+culture is to see whether you can find astronomical words in the marketplace. A short web search for the
+term “dark matter” turns up both a brand of coffee and a brand of “muscle growth accelerator” with that
+name. How many other terms used in this chapter can your group find in the world of products? (What’s a
+really popular type of Android cell phone, for example?)
+J.
+What’s your complete address in the universe? Group members should write out their full address, based
+on the information in this chapter (and the rest of the book). After your postal code and country, you may
+want to add continent, planet, planetary system, galaxy, etc. Then each group member should explain this
+address to a family member or student not taking astronomy.
+28 • Collaborative Group Activities
+Exercises
+Review Questions
+1. How are distant (young) galaxies different from the galaxies that we see in the universe today?
+2. What is the evidence that star formation began when the universe was only a few hundred million years
+old?
+3. Describe the evolution of an elliptical galaxy. How does the evolution of a spiral galaxy differ from that of
+an elliptical?
+4. Explain what we mean when we call the universe homogeneous and isotropic. Would you say that the
+distribution of elephants on Earth is homogeneous and isotropic? Why?
+5. Describe the organization of galaxies into groupings, from the Local Group to superclusters.
+6. What is the evidence that a large fraction of the matter in the universe is invisible?
+7. When astronomers make maps of the structure of the universe on the largest scales, how do they find the
+superclusters of galaxies to be arranged?
+8. How does the presence of an active galactic nucleus in a starburst galaxy affect the starburst process?
+Thought Questions
+9. Describe how you might use the color of a galaxy to determine something about what kinds of stars it
+contains.
+10. Suppose a galaxy formed stars for a few million years and then stopped (and no other galaxy merged or
+collided with it). What would be the most massive stars on the main sequence after 500 million years?
+After 10 billion years? How would the color of the galaxy change over this time span? (Refer to Evolution
+from the Main Sequence to Red Giants.)
+11. Given the ideas presented here about how galaxies form, would you expect to find a giant elliptical galaxy
+in the Local Group? Why or why not? Is there in fact a giant elliptical in the Local Group?
+12. Can an elliptical galaxy evolve into a spiral? Explain your answer. Can a spiral turn into an elliptical? How?
+13. If we see a double image of a quasar produced by a gravitational lens and can obtain a spectrum of the
+galaxy that is acting as the gravitational lens, we can then put limits on the distance to the quasar. Explain
+how.
+14. The left panel of Figure 27.1 shows a cluster of yellow galaxies that produces several images of blue
+galaxies through gravitational lensing. Which are more distant—the blue galaxies or the yellow galaxies?
+The light in the galaxies comes from stars. How do the temperatures of the stars that dominate the light
+of the cluster galaxies differ from the temperatures of the stars that dominate the light of the blue-lensed
+galaxy? Which galaxy’s light is dominated by young stars?
+15. Suppose you are standing in the center of a large, densely populated city that is exactly circular,
+surrounded by a ring of suburbs with lower-density population, surrounded in turn by a ring of farmland.
+From this specific location, would you say the population distribution is isotropic? Homogeneous?
+16. Astronomers have been making maps by observing a slice of the universe and seeing where the galaxies
+lie within that slice. If the universe is isotropic and homogeneous, why do they need more than one slice?
+Suppose they now want to make each slice extend farther into the universe. What do they need to do?
+28 • Exercises
+17. Human civilization is about 10,000 years old as measured by the development of agriculture. If your
+telescope collects starlight tonight that has been traveling for 10,000 years, is that star inside or outside
+our Milky Way Galaxy? Is it likely that the star has changed much during that time?
+18. Given that only about 5% of the galaxies visible in the Hubble Deep Field are bright enough for
+astronomers to study spectroscopically, they need to make the most of the other 95%. One technique is to
+use their colors and apparent brightnesses to try to roughly estimate their redshift. How do you think the
+inaccuracy of this redshift estimation technique (compared to actually measuring the redshift from a
+spectrum) might affect our ability to make maps of large-scale structures such as the filaments and voids
+shown in Figure 28.21?
+Figuring for Yourself
+19. Using the information from Example 28.1, how much fainter an object will you have to be able to measure
+in order to include the same kinds of galaxies in your second survey? Remember that the brightness of an
+object varies as the inverse square of the distance.
+20. Using the information from Example 28.1, if galaxies are distributed homogeneously, how many times
+more of them would you expect to count on your second survey?
+21. Using the information from Example 28.1, how much longer will it take you to do your second survey?
+22. Galaxies are found in the “walls” of huge voids; very few galaxies are found in the voids themselves. The
+text says that the structure of filaments and voids has been present in the universe since shortly after the
+expansion began 13.8 billion years ago. In science, we always have to check to see whether some
+conclusion is contradicted by any other information we have. In this case, we can ask whether the voids
+would have filled up with galaxies in roughly 14 billion years. Observations show that in addition to the
+motion associated with the expansion of the universe, the galaxies in the walls of the voids are moving in
+random directions at typical speeds of 300 km/s. At least some of them will be moving into the voids. How
+far into the void will a galaxy move in 14 billion years? Is it a reasonable hypothesis that the voids have
+existed for 14 billion years?
+23. Calculate the velocity, the distance, and the look-back time of the most distant galaxies in Figure 28.21
+using the Hubble constant given in this text and the redshift given in the diagram. Remember the Doppler
+formula for velocity
+and the Hubble law (v = H × d, where d is the distance to a galaxy). For
+these low velocities, you can neglect relativistic effects.
+24. Assume that dark matter is uniformly distributed throughout the Milky Way, not just in the outer halo but
+also throughout the bulge and in the disk, where the solar system lives. How much dark matter would you
+expect there to be inside the solar system? Would you expect that to be easily detectable? Hint: For the
+radius of the Milky Way’s dark matter halo, use R = 300,000 light-years; for the solar system’s radius, use
+100 AU; and start by calculating the ratio of the two volumes.
+25. The simulated box of galaxy filaments and superclusters shown in Figure 28.29 stretches across 1 billion
+light-years. If you were to make a scale model where that box covered the core of a university campus, say
+1 km, then how big would the Milky Way Galaxy be? How far away would the Andromeda galaxy be in the
+scale model?
+26. The first objects to collapse gravitationally after the Big Bang might have been globular cluster-size galaxy
+pieces, with masses around 106 solar masses. Suppose you merge two of those together, then merge two
+larger pieces together, and so on, Lego-style, until you reach a Milky Way mass, about 1012 solar masses.
+How many merger generations would that take, and how many original pieces? (Hint: Think in powers of
+2.)
+28 • Exercises
+28 • Exercises

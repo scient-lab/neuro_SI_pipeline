@@ -1,0 +1,457 @@
+Cosmic rays or astroparticles are high-energy particles or clusters of particles (primarily represented by protons or atomic nuclei) that move through space at nearly the speed of light. They originate from outside the Solar System — from the Milky Way, from distant galaxies, and from the Sun.
+Upon impact with Earth's atmosphere, cosmic rays produce showers of secondary particles, some of which reach the surface, although the bulk are deflected into space by Earth's magnetic field (the magnetosphere) or by the heliosphere.
+Cosmic rays were discovered by Victor Hess in 1912 in balloon experiments, for which he was awarded the 1936 Nobel Prize in Physics.
+Direct measurement of cosmic rays, especially at lower energies, has been possible since the first satellites in the late 1950s. Particle detectors similar to those used in nuclear and high-energy physics are used on satellites and space probes for research into cosmic rays. Data from the Fermi Space Telescope (2013) have been interpreted as evidence that a significant fraction of primary cosmic rays originate from the supernova explosions of stars. Based on observations of neutrinos and gamma rays from blazar TXS 0506+056 in 2018, active galactic nuclei also appear to produce cosmic rays.
+
+
+== Etymology ==
+The term ray (as in optical ray) seems to have arisen from an initial belief, due to their penetrating power, that cosmic rays were mostly electromagnetic radiation. Nevertheless, following wider recognition of cosmic rays as being various high-energy particles with intrinsic mass, the term "rays" is consistent with known particles such as cathode rays, canal rays, alpha rays, and beta rays. Meanwhile "cosmic" ray photons, which are quanta of electromagnetic radiation (and so have no intrinsic mass) are known by their common names, such as gamma rays or X-rays, depending on their photon energy.
+
+
+== Composition ==
+Of primary cosmic rays, which originate outside of Earth's atmosphere, about 99% are the bare nuclei of common atoms (stripped of their electron shells), and about 1% are solitary electrons (that is, one type of beta particle). Of the nuclei, about 90% are simple protons (i.e., hydrogen nuclei); 9% are alpha particles, identical to helium nuclei; and 1% are the nuclei of heavier elements, called HZE ions. These fractions vary highly over the energy range of cosmic rays. A very small fraction are stable particles of antimatter, such as positrons or antiprotons. The precise nature of this remaining fraction is an area of active research. An active search from Earth orbit for anti-alpha particles as of 2019 had found no unequivocal evidence.
+Upon striking the atmosphere, cosmic rays violently burst atoms into other bits of matter, producing large amounts of pions and muons (produced from the decay of charged pions, which have a short half-life) as well as neutrinos. The neutron composition of the particle cascade increases at lower elevations, reaching between 40% and 80% of the radiation at aircraft altitudes.
+Of secondary cosmic rays, the charged pions produced by primary cosmic rays in the atmosphere swiftly decay, emitting muons. Unlike pions, these muons do not interact strongly with matter, and can travel through the atmosphere to penetrate even below ground level. The rate of muons arriving at the surface of the Earth is such that about one per second passes through a volume the size of a person's head. Together with natural local radioactivity, these muons are a significant cause of the ground level atmospheric ionisation that first attracted the attention of scientists, leading to the eventual discovery of the primary cosmic rays arriving from beyond our atmosphere.
+
+
+== Energy ==
+Cosmic rays attract great interest practically, due to the damage they inflict on microelectronics and life outside the protection of an atmosphere and magnetic field, and scientifically, because the energies of the most energetic ultra-high-energy cosmic rays have been observed to approach 3 × 1020 eV (This is slightly greater than 10 million times the design energy of particles accelerated by the Large Hadron Collider, 7 teraelectronvolts [TeV] (7.0×1012 eV).) One can show that such enormous energies might be achieved by means of the centrifugal mechanism of acceleration in active galactic nuclei. At 50 joules [J] (3.1×1011 GeV), the highest-energy ultra-high-energy cosmic rays (such as the OMG particle recorded in 1991) have energies comparable to the kinetic energy of a 90-kilometre-per-hour [km/h] (56 mph) baseball. As a result of these discoveries, there has been interest in investigating cosmic rays of even greater energies. Most cosmic rays, however, do not have such extreme energies; the energy distribution of cosmic rays peaks at 300 megaelectronvolts [MeV] (4.8×10−11 J).
+
+
+== History ==
+After the discovery of radioactivity by Henri Becquerel in 1896, it was generally believed that atmospheric electricity, ionization of the air, was caused only by radiation from radioactive elements in the ground or the radioactive gases or isotopes of radon they produce. Measurements of increasing ionization rates at increasing heights above the ground during the decade from 1900 to 1910 could be explained as due to absorption of the ionizing radiation by the intervening air.
+
+
+=== Discovery ===
+
+In 1909, Theodor Wulf developed an electrometer, a device to measure the rate of ion production inside a hermetically sealed container, and used it to show higher levels of radiation at the top of the Eiffel Tower than at its base. However, his paper published in Physikalische Zeitschrift was not widely accepted. In 1911, Domenico Pacini observed simultaneous variations of the rate of ionization over a lake, over the sea, and at a depth of 3 metres from the surface. Pacini concluded from the decrease of radioactivity underwater that a certain part of the ionization must be due to sources other than the radioactivity of the Earth.
+
+In 1912, Victor Hess carried three enhanced-accuracy Wulf electrometers to an altitude of 5,300 metres in a free balloon flight. He found the ionization rate increased to twice the rate at ground level. Hess ruled out the Sun as the radiation's source by making a balloon ascent during a near-total eclipse. With the moon blocking much of the Sun's visible radiation, Hess still measured rising radiation at rising altitudes. He concluded that "The results of the observations seem most likely to be explained by the assumption that radiation of very high penetrating power enters from above into our atmosphere." In 1913–1914, Werner Kolhörster confirmed Victor Hess's earlier results by measuring the increased ionization enthalpy rate at an altitude of 9 km. Hess received the Nobel Prize in Physics in 1936 for his discovery.
+
+
+=== Identification ===
+Bruno Rossi wrote in 1964:
+
+In the late 1920s and early 1930s the technique of self-recording electroscopes carried by balloons into the highest layers of the atmosphere or sunk to great depths under water was brought to an unprecedented degree of perfection by the German physicist Erich Regener and his group. To these scientists we owe some of the most accurate measurements ever made of cosmic-ray ionization as a function of altitude and depth.
+Ernest Rutherford stated in 1931 that "thanks to the fine experiments of Professor Millikan and the even more far-reaching experiments of Professor Regener, we have now got for the first time, a curve of absorption of these radiations in water which we may safely rely upon".
+In the 1920s, the term cosmic ray was coined by Robert Millikan who made measurements of ionization due to cosmic rays from deep under water to high altitudes and around the globe. Millikan believed that his measurements proved that the primary cosmic rays were gamma rays; i.e., energetic photons. And he proposed a theory that they were produced in interstellar space as by-products of the fusion of hydrogen atoms into the heavier elements, and that secondary electrons were produced in the atmosphere by Compton scattering of gamma rays. In 1927, while sailing from Java to the Netherlands, Jacob Clay found evidence, later confirmed in many experiments, that cosmic ray intensity increases from the tropics to mid-latitudes, which indicated that the primary cosmic rays are deflected by the geomagnetic field and must therefore be charged particles, not photons. In 1929, Bothe and Kolhörster discovered charged cosmic-ray particles that could penetrate 4.1 cm of gold. Charged particles of such high energy could not possibly be produced by photons from Millikan's proposed interstellar fusion process.
+In 1930, Bruno Rossi predicted a difference between the intensities of cosmic rays arriving from the east and the west that depends upon the charge of the primary particles—the so-called "east–west effect". Three independent experiments found that the intensity is, in fact, greater from the west, proving that most primaries are positive. During the years from 1930 to 1945, a wide variety of investigations confirmed that the primary cosmic rays are mostly protons, and the secondary radiation produced in the atmosphere is primarily electrons, photons and muons. In 1948, observations with nuclear emulsions carried by balloons to near the top of the atmosphere showed that approximately 10% of the primaries are helium nuclei (alpha particles) and 1% are nuclei of heavier elements such as carbon, iron, and lead.
+During a test of his equipment for measuring the east–west effect, Rossi observed that the rate of near-simultaneous discharges of two widely separated Geiger counters was larger than the expected accidental rate. In his report on the experiment, Rossi wrote "... it seems that once in a while the recording equipment is struck by very extensive showers of particles, which causes coincidences between the counters, even placed at large distances from one another." In 1937, Pierre Auger, unaware of Rossi's earlier report, detected the same phenomenon and investigated it in some detail. He concluded that high-energy primary cosmic-ray particles interact with air nuclei high in the atmosphere, initiating a cascade of secondary interactions that ultimately yield a shower of electrons, and photons that reach ground level.
+Soviet physicist Sergei Vernov was the first to use radiosondes to perform cosmic ray readings with an instrument carried to high altitude by a balloon. On 1 April 1935, he took measurements at heights up to 13.6 kilometres using a pair of Geiger counters in an anti-coincidence circuit to avoid counting secondary ray showers.
+Homi J. Bhabha derived an expression for the probability of scattering positrons by electrons, a process now known as Bhabha scattering. His classic paper, jointly with Walter Heitler, published in 1937 described how primary cosmic rays from space interact with the upper atmosphere to produce particles observed at the ground level. Bhabha and Heitler explained the cosmic ray shower formation by the cascade production of gamma rays and positive and negative electron pairs.
+
+
+=== Energy distribution ===
+Measurements of the energy and arrival directions of the ultra-high-energy primary cosmic rays by the techniques of density sampling and fast timing of extensive air showers were first carried out in 1954 by members of the Rossi Cosmic Ray Group at the Massachusetts Institute of Technology. The experiment employed eleven scintillation detectors arranged within a circle 460 metres in diameter on the grounds of the Agassiz Station of the Harvard College Observatory. From that work, and from many other experiments carried out all over the world, the energy spectrum of the primary cosmic rays is now known to extend beyond 1020 eV. A huge air shower experiment called the Auger Project is currently operated at a site on the Pampas of Argentina by an international consortium of physicists. The project was first led by James Cronin, winner of the 1980 Nobel Prize in Physics from the University of Chicago, and Alan Watson of the University of Leeds, and later by scientists of the international Pierre Auger Collaboration. Their aim is to explore the properties and arrival directions of the very highest-energy primary cosmic rays. The results are expected to have important implications for particle physics and cosmology, due to a theoretical Greisen–Zatsepin–Kuzmin limit to the energies of cosmic rays from long distances (about 160 million light years) which occurs above 1020 eV because of interactions with the remnant photons from the Big Bang origin of the universe. Currently the Pierre Auger Observatory is undergoing an upgrade to improve its accuracy and find evidence for the yet unconfirmed origin of the most energetic cosmic rays.
+High-energy gamma rays (>50 MeV photons) were finally discovered in the primary cosmic radiation by an MIT experiment carried on the OSO-3 satellite in 1967. Components of both galactic and extra-galactic origins were separately identified at intensities much less than 1% of the primary charged particles. Since then, numerous satellite gamma-ray observatories have mapped the gamma-ray sky. The most recent is the Fermi Observatory, which has produced a map showing a narrow band of gamma ray intensity produced in discrete and diffuse sources in our galaxy, and numerous point-like extra-galactic sources distributed over the celestial sphere.
+
+
+== Solar modulation ==
+Solar modulation theory explains how the intensity of cosmic rays changes as they travel through the heliosphere, influenced by the solar wind and magnetic field. The solar cycle causes variations in the magnetic field of the solar wind through which cosmic rays propagate to Earth. Solar modulation is a quasiperiodical change in cosmic rays intensity caused by 11- and 22-year cycles of solar activity.
+
+
+== Parker transport equation ==
+The Parker transport equation (also called the Parker equation, for Eugene Parker) is a kinetic equation that describes the acceleration and transport of energetic particles in astrophysical plasmas. The equation comprises diffusion terms both in coordinate space and in momentum space. The equation is used for studying energetic particle transport, and the mechanism of cosmic ray acceleration can be derived from it (diffusive shock acceleration). The equation is also used "to study the acceleration of cosmic rays at supernova remnant shocks, the acceleration and transport of solar energetic particles at shocks driven by coronal mass ejections, and the acceleration and transport of energetic particles at the solar wind termination shock".
+The Parker transport equation in one dimension is:
+
+  
+    
+      
+        
+          
+            
+              ∂
+              f
+            
+            
+              ∂
+              t
+            
+          
+        
+        +
+        U
+        
+          
+            
+              ∂
+              f
+            
+            
+              ∂
+              x
+            
+          
+        
+        −
+        
+          
+            ∂
+            
+              ∂
+              x
+            
+          
+        
+        
+          (
+          
+            k
+            
+              
+                
+                  ∂
+                  f
+                
+                
+                  ∂
+                  x
+                
+              
+            
+          
+          )
+        
+        −
+        
+          
+            p
+            3
+          
+        
+        
+          
+            
+              ∂
+              U
+            
+            
+              ∂
+              x
+            
+          
+        
+        
+          
+            
+              ∂
+              f
+            
+            
+              ∂
+              p
+            
+          
+        
+        −
+        
+          
+            1
+            
+              p
+              
+                2
+              
+            
+          
+        
+        
+          
+            ∂
+            
+              ∂
+              p
+            
+          
+        
+        
+          (
+          
+            
+              p
+              
+                2
+              
+            
+            
+              D
+              
+                p
+                p
+              
+            
+            
+              
+                
+                  ∂
+                  f
+                
+                
+                  ∂
+                  p
+                
+              
+            
+          
+          )
+        
+        =
+        Q
+      
+    
+    {\displaystyle {\frac {\partial f}{\partial t}}+U{\frac {\partial f}{\partial x}}-{\frac {\partial }{\partial x}}\left(k{\frac {\partial f}{\partial x}}\right)-{\frac {p}{3}}{\frac {\partial U}{\partial x}}{\frac {\partial f}{\partial p}}-{\frac {1}{p^{2}}}{\frac {\partial }{\partial p}}\left(p^{2}D_{pp}{\frac {\partial f}{\partial p}}\right)=Q}
+  
+
+where:
+
+  
+    
+      
+        f
+        (
+        x
+        ,
+        p
+        ,
+        t
+        )
+      
+    
+    {\displaystyle f(x,p,t)}
+  
+ is the omni-directional distribution function of energetic particles
+
+  
+    
+      
+        U
+      
+    
+    {\displaystyle U}
+  
+ is the plasma (fluid) bulk velocity
+
+  
+    
+      
+        k
+        (
+        x
+        ,
+        p
+        )
+      
+    
+    {\displaystyle k(x,p)}
+  
+ is the spatial diffusion coefficient
+
+  
+    
+      
+        
+          D
+          
+            p
+            p
+          
+        
+      
+    
+    {\displaystyle D_{pp}}
+  
+ is the diffusion coefficient in momentum space
+
+  
+    
+      
+        Q
+      
+    
+    {\displaystyle Q}
+  
+ is the source term
+
+  
+    
+      
+        p
+      
+    
+    {\displaystyle p}
+  
+ is the momentum
+
+  
+    
+      
+        x
+      
+    
+    {\displaystyle x}
+  
+ is the position
+
+  
+    
+      
+        t
+      
+    
+    {\displaystyle t}
+  
+ is the time
+
+
+== Sources ==
+Early speculation on the sources of cosmic rays included a 1934 proposal by Baade and Zwicky suggesting cosmic rays originated from supernovae. A 1948 proposal by Horace W. Babcock suggested that magnetic variable stars could be a source of cosmic rays. Subsequently, Sekido et al. (1951) identified the Crab Nebula as a source of cosmic rays. Since then, a wide variety of potential sources for cosmic rays began to surface, including supernovae, active galactic nuclei, quasars, and gamma-ray bursts.
+
+Later experiments have helped to identify the sources of cosmic rays with greater certainty. In 2009, a paper presented at the International Cosmic Ray Conference by scientists at the Pierre Auger Observatory in Argentina showed ultra-high energy cosmic rays originating from a location in the sky very close to the radio galaxy Centaurus A, although the authors specifically stated that further investigation would be required to confirm Centaurus A as a source of cosmic rays. However, no correlation was found between the incidence of gamma-ray bursts and cosmic rays, causing the authors to set upper limits as low as 3.4 × 10−6 erg·cm−2 on the flux of 1 GeV – 1 TeV cosmic rays from gamma-ray bursts.
+In 2009, supernovae were said to have been "pinned down" as a source of cosmic rays, a discovery made by a group using data from the Very Large Telescope. This analysis, however, was disputed in 2011 with data from PAMELA, which revealed that "spectral shapes of [hydrogen and helium nuclei] are different and cannot be described well by a single power law", suggesting a more complex process of cosmic ray formation. In February 2013, though, research analyzing data from Fermi revealed through an observation of neutral pion decay that supernovae were indeed a source of cosmic rays, with each explosion producing roughly 3 × 1042 – 3 × 1043 J of cosmic rays.
+
+Supernovae do not produce all cosmic rays, however, and the proportion of cosmic rays that they do produce is a question which cannot be answered without deeper investigation. To explain the actual process in supernovae and active galactic nuclei that accelerates the stripped atoms, physicists use shock front acceleration as a plausibility argument (see picture at right).
+In 2017, the Pierre Auger Collaboration published the observation of a weak anisotropy in the arrival directions of the highest energy cosmic rays. Since the Galactic Center is in the deficit region, this anisotropy can be interpreted as evidence for the extragalactic origin of cosmic rays at the highest energies. This implies that there must be a transition energy from galactic to extragalactic sources, and there may be different types of cosmic-ray sources contributing to different energy ranges.
+
+
+== Types ==
+Cosmic rays can be divided into two types:
+
+galactic cosmic rays (GCR) and extragalactic cosmic rays, i.e., high-energy particles originating outside the solar system, and
+solar energetic particles, high-energy particles (predominantly protons) emitted by the sun, primarily in solar eruptions.
+However, the term "cosmic ray" is often used to refer to only the extrasolar flux.
+
+Cosmic rays originate as primary cosmic rays, which are those originally produced in various astrophysical processes. Primary cosmic rays are composed mainly of protons and alpha particles (99%), with a small amount of heavier nuclei (≈1%) and an extremely minute proportion of positrons and antiprotons. Secondary cosmic rays, caused by a decay of primary cosmic rays as they impact an atmosphere, include photons, hadrons, and leptons, such as electrons, positrons, muons, and pions. The latter three of these were first detected in cosmic rays.
+
+
+=== Primary cosmic rays ===
+Primary cosmic rays mostly originate from outside the Solar System and sometimes even outside the Milky Way. When they interact with Earth's atmosphere, they are converted to secondary particles. The mass ratio of helium to hydrogen nuclei, 28%, is similar to the primordial elemental abundance ratio of these elements, 24%. The remaining fraction is made up of the other heavier nuclei that are typical nucleosynthesis end products, primarily lithium, beryllium, and boron. These nuclei appear in cosmic rays in  greater abundance (≈1%) than in the solar atmosphere, where they are only about 10−3 as abundant (by number) as helium. Cosmic rays composed of charged nuclei heavier than helium are called HZE ions. Due to the high charge and heavy nature of HZE ions, their contribution to an astronaut's radiation dose in space is significant even though they are relatively scarce.
+This abundance difference is a result of the way in which secondary cosmic rays are formed. Carbon and oxygen nuclei collide with interstellar matter to form lithium, beryllium, and boron, an example of cosmic ray spallation. Spallation is also responsible for the abundances of scandium, titanium, vanadium, and manganese ions in cosmic rays produced by collisions of iron and nickel nuclei with interstellar matter.
+At high energies the composition changes and heavier nuclei have larger abundances in some energy ranges. Current experiments aim at more accurate measurements of the composition at high energies.
+
+
+==== Primary cosmic ray antimatter ====
+
+Satellite experiments have found evidence of positrons and a few antiprotons in primary cosmic rays, amounting to less than 1% of the particles in primary cosmic rays. These do not appear to be the products of large amounts of antimatter from the Big Bang, or indeed complex antimatter in the universe. Rather, they appear to consist of only these two elementary particles, newly made in energetic processes.
+Preliminary results from the presently operating Alpha Magnetic Spectrometer (AMS-02) on board the International Space Station show that positrons in the cosmic rays arrive with no directionality. In September 2014, new results with almost twice as much data were presented in a talk at CERN and published in Physical Review Letters. A new measurement of positron fraction up to 500 GeV was reported, showing that positron fraction peaks at a maximum of about 16% of total electron+positron events, around an energy of 275 ± 32 GeV. At higher energies, up to 500 GeV, the ratio of positrons to electrons begins to fall again. The absolute flux of positrons also begins to fall before 500 GeV, but peaks at energies far higher than electron energies, which peak about 10 GeV. These results on interpretation have been suggested to be due to positron production in annihilation events of massive dark matter particles.
+Cosmic ray antiprotons also have a much higher average energy than their normal-matter counterparts (protons). They arrive at Earth with a characteristic energy maximum of 2 GeV, indicating their production in a fundamentally different process from cosmic ray protons, which on average have only one-sixth of the energy.
+There is no evidence of complex antimatter atomic nuclei, such as antihelium nuclei (i.e., anti-alpha particles), in cosmic rays. These are actively being searched for. A prototype of the AMS-02 designated AMS-01, was flown into space aboard the Space Shuttle Discovery on STS-91 in June 1998. By not detecting any antihelium at all, the AMS-01 established an upper limit of 1.1 × 10−6 for the antihelium to helium flux ratio.
+
+
+=== Secondary cosmic rays ===
+When cosmic rays enter the Earth's atmosphere, they collide with atoms and molecules, mainly oxygen and nitrogen. The interaction produces a cascade of lighter particles, a so-called air shower secondary radiation that rains down, including x-rays, protons, alpha particles, pions, muons, electrons, neutrinos, and neutrons. All of the secondary particles produced by the collision continue onward on paths within about one degree of the primary particle's original path.
+Typical particles produced in such collisions are neutrons and charged mesons such as positive or negative pions and kaons. Some of these subsequently decay into muons and neutrinos, which are able to reach the surface of the Earth. Some high-energy muons even penetrate for some distance into shallow mines, and most neutrinos traverse the Earth without further interaction. Others decay into photons, subsequently producing electromagnetic cascades. Hence, next to photons, electrons and positrons usually dominate in air showers. These particles as well as muons can be easily detected by many types of particle detectors, such as cloud chambers, bubble chambers, water-Cherenkov, or scintillation detectors. The observation of a secondary shower of particles in multiple detectors at the same time is an indication that all of the particles came from that event.
+Cosmic rays impacting other planetary bodies in the Solar System are detected indirectly by observing high-energy gamma ray emissions by gamma-ray telescope. These are distinguished from radioactive decay processes by their higher energies above about 10 MeV.
+
+
+=== Cosmic-ray flux ===
+
+The flux of incoming cosmic rays at the upper atmosphere is dependent on the solar wind, the Earth's magnetic field, and the energy of the cosmic rays. At distances of ≈94 AU from the Sun, the solar wind undergoes a transition, called the termination shock, from supersonic to subsonic speeds. The region between the termination shock and the heliopause acts as a barrier to cosmic rays, decreasing the flux at lower energies (≤ 1 GeV) by about 90%. However, the strength of the solar wind is not constant, and hence it has been observed that cosmic ray flux is correlated with solar activity.
+In addition, the Earth's magnetic field acts to deflect cosmic rays from its surface, giving rise to the observation that the flux is apparently dependent on latitude, longitude, and azimuth angle.
+The combined effects of all of the factors mentioned contribute to the flux of cosmic rays at Earth's surface. The following table of participial frequencies reach the planet and are inferred from lower-energy radiation reaching the ground.
+
+In the past, it was believed that the cosmic ray flux remained fairly constant over time. However, recent research suggests one-and-a-half- to two-fold millennium-timescale changes in the cosmic ray flux in the past forty thousand years.
+The magnitude of the energy of cosmic ray flux in interstellar space is very comparable to that of other deep space energies: cosmic ray energy density averages about one electron-volt per cubic centimetre of interstellar space, or ≈1 eV/cm3, which is comparable to the energy density of visible starlight at 0.3 eV/cm3, the galactic magnetic field energy density (assumed 3 microgauss) which is ≈0.25 eV/cm3, or the cosmic microwave background (CMB) radiation energy density at ≈0.25 eV/cm3.
+
+
+== Detection methods ==
+
+There are two main classes of detection methods. First, the direct detection of the primary cosmic rays in space or at high altitude by balloon-borne instruments. Second, the indirect detection of secondary particle, i.e., extensive air showers at higher energies. While there have been proposals and prototypes for space and balloon-borne detection of air showers, currently operating experiments for high-energy cosmic rays are ground based. Generally direct detection is more accurate than indirect detection. However the flux of cosmic rays decreases with energy, which hampers direct detection for the energy range above 1 PeV. Both direct and indirect detection are realized by several techniques.
+
+
+=== Direct detection ===
+Direct detection is possible by all kinds of particle detectors at the ISS, on satellites, or high-altitude balloons. However, there are constraints in weight and size limiting the choices of detectors.
+An example for the direct detection technique is a method based on nuclear tracks developed by Robert Fleischer, P. Buford Price, and Robert M. Walker for use in high-altitude balloons. In this method, sheets of clear plastic, like 0.25 mm Lexan polycarbonate, are stacked together and exposed directly to cosmic rays in space or high altitude. The nuclear charge causes chemical bond breaking or ionization in the plastic. At the top of the plastic stack the ionization is less, due to the high cosmic ray speed. As the cosmic ray speed decreases due to deceleration in the stack, the ionization increases along the path. The resulting plastic sheets are "etched" or slowly dissolved in warm caustic sodium hydroxide solution, that removes the surface material at a slow, known rate. The caustic sodium hydroxide dissolves the plastic at a faster rate along the path of the ionized plastic. The net result is a conical etch pit in the plastic. The etch pits are measured under a high-power microscope (typically 1600× oil-immersion), and the etch rate is plotted as a function of the depth in the stacked plastic.
+This technique yields a unique curve for each atomic nucleus from 1 to 92, allowing identification of both the charge and energy of the cosmic ray that traverses the plastic stack. The more extensive the ionization along the path, the higher the charge. In addition to its uses for cosmic-ray detection, the technique is also used to detect nuclei created as products of nuclear fission.
+
+
+=== Indirect detection ===
+There are several ground-based methods of detecting cosmic rays currently in use, which can be divided in two main categories: the detection of secondary particles forming extensive air showers (EAS) by various types of particle detectors, and the detection of electromagnetic radiation emitted by EAS in the atmosphere.
+Extensive air shower arrays made of particle detectors measure the charged particles which pass through them. EAS arrays can observe a broad area of the sky and can be active more than 90% of the time. However, they are less able to segregate background effects from cosmic rays than can air Cherenkov telescopes. Most state-of-the-art EAS arrays employ plastic scintillators. Also water (liquid or frozen) is used as a detection medium through which particles pass and produce Cherenkov radiation to make them detectable. Therefore, several arrays use water/ice-Cherenkov detectors as alternative or in addition to scintillators.
+By the combination of several detectors, some EAS arrays have the capability to distinguish muons from lighter secondary particles (photons, electrons, positrons). The fraction of muons among the secondary particles is one traditional way to estimate the mass composition of the primary cosmic rays.
+An historic method of secondary particle detection still used for demonstration purposes involves the use of cloud chambers to detect the secondary muons created when a pion decays. Cloud chambers in particular can be built from widely available materials and can be constructed even in a high-school laboratory. A fifth method, involving bubble chambers, can be used to detect cosmic ray particles.
+More recently, the CMOS devices in pervasive smartphone cameras have been proposed as a practical distributed network to detect air showers from ultra-high-energy cosmic rays. The first app to exploit this proposition was the CRAYFIS (Cosmic RAYs Found in Smartphones) experiment. In 2017, the CREDO (Cosmic-Ray Extremely Distributed Observatory) Collaboration released the first version of its completely open source app for Android devices. Since then the collaboration has attracted the interest and support of many scientific institutions, educational institutions, and members of the public around the world. Future research has to show in what aspects this new technique can compete with dedicated EAS arrays.
+The first detection method in the second category is called the air Cherenkov telescope, designed to detect low-energy (<200 GeV) cosmic rays by means of analyzing their Cherenkov radiation, which for cosmic rays are gamma rays emitted as they travel faster than the speed of light in their medium, the atmosphere. While these telescopes are extremely good at distinguishing between background radiation and that of cosmic-ray origin, they can only function well on clear nights without the Moon shining, have very small fields of view, and are only active for a few percent of the time.
+A second method detects the light from nitrogen fluorescence caused by the excitation of nitrogen in the atmosphere by particles moving through the atmosphere. This method is the most accurate for cosmic rays at highest energies, in particular when combined with EAS arrays of particle detectors. Similar to the detection of Cherenkov-light, this method is restricted to clear nights.
+Another method detects radio waves emitted by air showers. This technique has a high duty cycle similar to that of particle detectors. The accuracy of this technique was improved in the last years as shown by various prototype experiments, and may become an alternative to the detection of atmospheric Cherenkov-light and fluorescence light, at least at high energies.
+
+
+== Effects ==
+
+
+=== Changes in atmospheric chemistry ===
+Cosmic rays ionize nitrogen and oxygen molecules in the atmosphere, which leads to a number of chemical reactions. Cosmic rays are also responsible for the continuous production of a number of unstable isotopes, such as carbon-14, in the Earth's atmosphere through the reaction:
+
+Cosmic rays kept the level of carbon-14 in the atmosphere roughly constant (70 tons) for at least the past 100,000 years, until the beginning of above-ground nuclear weapons testing in the early 1950s. This fact is used in radiocarbon dating.
+
+
+==== Reaction products of primary cosmic rays, radioisotope half-lifetime, and production reaction ====
+
+
+=== Role in ambient radiation ===
+Cosmic rays constitute a fraction of the annual radiation exposure of human beings on the Earth, averaging 0.39 mSv out of a total of 3 mSv per year (13% of total background) for the Earth's population. However, the background radiation from cosmic rays increases with altitude, from 0.3 mSv per year for sea-level areas to 1.0 mSv per year for higher-altitude cities, raising cosmic radiation exposure to a quarter of total background radiation exposure for populations of said cities. Airline crews flying long-distance high-altitude routes can be exposed to 2.2 mSv of extra radiation each year due to cosmic rays, nearly doubling their total exposure to ionizing radiation.
+
+Figures are for the time before the Fukushima Daiichi nuclear disaster. Human-made values by UNSCEAR are from the Japanese National Institute of Radiological Sciences, which summarized the UNSCEAR data.
+
+
+=== Effect on electronics ===
+Cosmic rays have sufficient energy to alter the states of circuit components in electronic integrated circuits, causing transient errors to occur (such as corrupted data in electronic memory devices or incorrect performance of CPUs) often referred to as "soft errors". This has been a problem in electronics at extremely high-altitude, such as in satellites, but with transistors becoming smaller and smaller, this is becoming an increasing concern in ground-level electronics as well. Studies by IBM in the 1990s suggest that computers typically experience about one cosmic-ray-induced error per 256 megabytes of RAM per month. To alleviate this problem, the Intel Corporation has proposed a cosmic ray detector that could be integrated into future high-density microprocessors, allowing the processor to repeat the last command following a cosmic-ray event. ECC memory is used to protect data against data corruption caused by cosmic rays.
+In 2008, data corruption in a flight control system caused an Airbus A330 airliner to twice plunge hundreds of feet, resulting in injuries to multiple passengers and crew members. Cosmic rays were investigated among other possible causes of the data corruption, but were ultimately ruled out as being very unlikely.
+In August 2020, scientists reported that ionizing radiation from environmental radioactive materials and cosmic rays may substantially limit the coherence times of qubits if they are not shielded adequately which may be critical for realizing fault-tolerant superconducting quantum computers in the future.
+
+
+=== Significance to aerospace travel ===
+
+Galactic cosmic rays are one of the most important barriers standing in the way of plans for interplanetary travel by crewed spacecraft. Cosmic rays also pose a threat to electronics placed aboard outgoing probes. In 2010, a malfunction aboard the Voyager 2 space probe was credited to a single flipped bit, probably caused by a cosmic ray. Strategies such as physical or magnetic shielding for spacecraft have been considered in order to minimize the damage to electronics and human beings caused by cosmic rays.
+On 31 May 2013, NASA scientists reported that a possible crewed mission to Mars may involve a greater radiation risk than previously believed, based on the amount of energetic particle radiation detected by the RAD on the Mars Science Laboratory while traveling from the Earth to Mars in 2011–2012.
+
+Flying 12 kilometres (39,000 ft) high, passengers and crews of jet airliners are exposed to at least 10 times the cosmic ray dose that people at sea level receive. Aircraft flying polar routes near the geomagnetic poles are at particular risk.
+
+
+=== Role in lightning ===
+Cosmic rays have been implicated in the triggering of electrical breakdown in lightning. It has been proposed that essentially all lightning is triggered through a relativistic process, or "runaway breakdown", seeded by cosmic ray secondaries. Subsequent development of the lightning discharge then occurs through "conventional breakdown" mechanisms.
+
+
+=== Postulated role in climate change ===
+A role for cosmic rays in climate was suggested by Edward P. Ney in 1959 and by Robert E. Dickinson in 1975. It has been postulated that cosmic rays may have been responsible for major climatic change and mass extinction in the past. According to Adrian Mellott and Mikhail Medvedev, 62-million-year cycles in biological marine populations correlate with the motion of the Earth relative to the galactic plane and increases in exposure to cosmic rays. The researchers suggest that this and gamma ray bombardments deriving from local supernovae could have affected cancer and mutation rates, and might be linked to decisive alterations in the Earth's climate, and to the mass extinctions of the Ordovician.
+Danish physicist Henrik Svensmark has controversially argued that because solar variation modulates the cosmic ray flux on Earth, it would consequently affect the rate of cloud formation and hence be an indirect cause of global warming. Svensmark is one of several scientists outspokenly opposed to the mainstream scientific assessment of global warming, leading to concerns that the proposition that cosmic rays are connected to global warming could be ideologically biased rather than scientifically based. Other scientists have vigorously criticized Svensmark for sloppy and inconsistent work: one example is adjustment of cloud data that understates error in lower cloud data, but not in high cloud data; another example is "incorrect handling of the physical data" resulting in graphs that do not show the correlations they claim to show. Despite Svensmark's assertions, galactic cosmic rays have shown no statistically significant influence on changes in cloud cover, and have been demonstrated in studies to have no causal relationship to changes in global temperature.
+
+
+=== Possible mass extinction factor ===
+
+A handful of studies have identified chronological overlap between nearby supernova activity and the end‑Pliocene marine megafaunal extinction epoch. Some researchers have hypothesised that the associated increase in radiation exposure could have acted as an extinction driver for marine life, although the idea remains tentative and contested.
+
+
+=== Potential role in biological evolution ===
+Cosmic rays, as a form of ionizing radiation, can, in principle, interact with biomolecules. A minority of researchers have speculated that long‑term or episodic variations in cosmic‑ray flux — for example following nearby supernovae or changes in heliospheric or geomagnetic shielding — could have influenced evolutionary processes on Earth. 
+High‑energy primary particles and their secondary cascades can produce ionisation and chemical damage that increases background mutation rates in exposed organisms. Cosmic‑ray–driven changes in atmospheric chemistry (for example, ozone depletion with consequent increases in surface ultraviolet flux) could alter selection pressures and ecological conditions. A small body of theoretical work has also proposed that magnetically influenced or spin-polarized radiation might bias the formation or destruction rates of chiral molecules; this idea is usually discussed in origin‑of‑life or homochirality contexts rather than as a primary driver of later macroevolution. 
+Direct empirical evidence linking variations in cosmic‑ray flux to macroevolutionary patterns is limited. Laboratory and modelling studies show that ionizing radiation can cause molecular damage and mutations, and astrophysical and geochemical work documents episodes of enhanced cosmic radiation, but robust, multidisciplinary demonstrations (e.g., temporally correlated geochemical markers and biological signals with clear causal chains) are lacking. Most recent reviews treat cosmic‑ray‑driven evolution as a plausible but unproven set of hypotheses.
+
+
+== Research and experiments ==
+
+There are a number of cosmic-ray research initiatives, listed below.
+
+
+=== Ground-based ===
+
+
+=== Satellite ===
+
+
+=== Balloon-borne ===
+
+
+== See also ==
+
+
+== References ==
+
+
+== Further references ==
+
+
+== External links ==
+
+Aspera European network portal
+BBC news, Cosmic rays find uranium, 2003.
+Introduction to Cosmic Ray Showers by Konrad Bernlöhr.

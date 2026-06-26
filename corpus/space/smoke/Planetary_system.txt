@@ -1,0 +1,163 @@
+A planetary system consists of a set of non-stellar bodies which are gravitationally bound to and in orbit of a star or star system. Generally speaking, such systems will include planets, and may include other objects such as dwarf planets, asteroids, natural satellites, meteoroids, comets, planetesimals, and circumstellar disks. The Solar System is an example of a planetary system, in which Earth, seven other planets, and other celestial objects are bound to and revolve around the Sun. The term exoplanetary system is sometimes used in reference to planetary systems other than the Solar System. By convention planetary systems are named after their host, or parent, star, as is the case with the Solar System being named after "Sol" (Latin for sun).
+As of 23 April 2026, there are 6,416 confirmed exoplanets in 4,809 planetary systems, with 1,061 systems having more than one planet. Debris disks are known to be common while other objects are more difficult to observe.
+Of particular interest to astrobiology is the habitable zone of planetary systems where planets could have surface liquid water, and thus, the capacity to support Earth-like life.
+
+
+== Definition ==
+The International Astronomical Union (IAU) has described a planetary system as the system of planets orbiting one or more stars, brown dwarfs or stellar remnants. The IAU and NASA consider the Solar System a planetary system.
+Other definitions of planetary system explicitly include all bodies gravitationally bound to one or more stars.
+
+
+== History ==
+
+
+=== Heliocentrism ===
+Heliocentrism is a planetary model that places the Sun is at the center of the universe, as opposed to geocentrism (placing Earth at the center of the universe).
+The idea was first proposed in Western philosophy and Greek astronomy as early as the 3rd century BC by Aristarchus of Samos, but received no support from most other ancient astronomers.
+Some also interpret Aryabhatta's writings in Āryabhaṭīya as implicitly heliocentric, although this has also been rebutted.
+
+
+=== Discovery of the Solar System ===
+
+De revolutionibus orbium coelestium by Nicolaus Copernicus, published in 1543, presented the first mathematically predictive heliocentric model of a planetary system. 17th-century successors Galileo Galilei, Johannes Kepler, and Sir Isaac Newton developed an understanding of physics which led to the gradual acceptance of the idea that the Earth moves around the Sun and that the planets are governed by the same physical laws that governed Earth.
+
+
+=== Speculation on extrasolar planetary systems ===
+In the 16th century the Italian philosopher Giordano Bruno, an early supporter of the Copernican theory that Earth and other planets orbit the Sun, put forward the view that the fixed stars are similar to the Sun and are likewise accompanied by planets.
+In the 18th century, the same possibility was mentioned by Sir Isaac Newton in the "General Scholium" that concludes his Principia. Making a comparison to the Sun's planets, he wrote "And if the fixed stars are the centres of similar systems, they will all be constructed according to a similar design and subject to the dominion of One."
+His theories gained popularity through the 19th and 20th centuries despite a lack of supporting evidence. Long before their confirmation by astronomers, conjecture on the nature of planetary systems had been a focus of the search for extraterrestrial intelligence and has been a prevalent theme in fiction, particularly science fiction.
+
+
+=== Detection of exoplanets ===
+The first confirmed detection of an exoplanet was in 1992, with the discovery of several terrestrial-mass planets orbiting the pulsar PSR B1257+12. The first confirmed detection of exoplanets of a main-sequence star was made in 1995, when a giant planet, 51 Pegasi b, was found in a four-day orbit around the nearby G-type star 51 Pegasi. The frequency of detections has increased since then, particularly through advancements in methods of detecting extrasolar planets and dedicated planet-finding programs such as the Kepler mission.
+
+
+== Origin and evolution ==
+
+Planetary systems come from protoplanetary disks that form around stars as part of the process of star formation.
+During formation of a system, much material is gravitationally-scattered into distant orbits, and some planets are ejected completely from the system, becoming rogue planets.
+
+
+=== Evolved systems ===
+
+
+==== High-mass stars ====
+Planets orbiting pulsars have been discovered. Pulsars are the remnants of the supernova explosions of high-mass stars, but a planetary system that existed before the supernova would likely be mostly destroyed. Planets would either evaporate, be pushed off of their orbits by the masses of gas from the exploding star, or the sudden loss of most of the mass of the central star would see them escape the gravitational hold of the star, or in some cases the supernova would kick the pulsar itself out of the system at high velocity so any planets that had survived the explosion would be left behind as free-floating objects. Planets found around pulsars may have formed as a result of pre-existing stellar companions that were almost entirely evaporated by the supernova blast, leaving behind planet-sized bodies. Alternatively, planets may form in an accretion disk of fallback matter surrounding a pulsar. Fallback disks of matter that failed to escape orbit during a supernova may also form planets around black holes.
+
+
+==== Lower-mass stars ====
+Many low-mass stars are expected to have rocky planets, with their planetary systems primarily consisting of rock- and ice-based bodies. This is because low-mass stars have less material in their planetary disks, making it unlikely that the planetesimals within will reach the critical mass necessary to form gas giants. The planetary systems of low-mass stars also tend to be compact, as such stars tend to have lower temperatures, resulting in the formation of protoplanets closer to the star. 
+As stars evolve and turn into red giants, asymptotic giant branch stars, and eventually planetary nebulae, they engulf the inner planets, evaporating or partially evaporating them depending on how massive they are. As the star loses mass, planets that are not engulfed move further out from the star.
+If an evolved star is in a binary or multiple system, then the mass it loses can transfer to another star, forming new protoplanetary disks and second- and third-generation planets which may differ in composition from the original planets, which may also be affected by the mass transfer.
+
+
+=== Planet capture ===
+Free-floating planets in open clusters have similar velocities to the stars and so can be recaptured. They are typically captured into wide orbits between 100 and 105 AU. The capture efficiency decreases with increasing cluster size, and for a given cluster size it increases with the host/primary mass. It is almost independent of the planetary mass. Single and multiple planets could be captured into arbitrary unaligned orbits, non-coplanar with each other or with the stellar host spin, or pre-existing planetary system. Some planet–host metallicity correlation may still exist due to the common origin of the stars from the same cluster. Planets would be unlikely to be captured around neutron stars because these are likely to be ejected from the cluster by a pulsar kick when they form. Planets could even be captured around other planets to form free-floating planet binaries. After the cluster has dispersed some of the captured planets with orbits larger than 106 AU would be slowly disrupted by the galactic tide and likely become free-floating again through encounters with other field stars or giant molecular clouds.
+
+
+== System architectures ==
+The Solar System consists of an inner region of small rocky planets and outer region of large giant planets. However, other planetary systems can have quite different architectures. At present, few systems have been found to be analogous to the Solar System with small terrestrial planets in the inner region, as well as a gas giant with a relatively circular orbit, which suggests that this configuration is uncommon. More commonly, systems consisting of multiple Super-Earths have been detected. These super-Earths are usually very close to their star, with orbits smaller than that of Mercury. Other systems have been found to have a hot Jupiter gas giant very close to the star. Theories such as planetary migration or scattering have been proposed to explain the formation of large planets close to their parent stars. Overall, studies suggest that architectures of planetary systems are dependent on the conditions of their initial formation.
+
+
+=== Classification ===
+Planetary system architectures may be partitioned into four classes based on how the mass of the planets is distributed around the host star:
+In Similar systems, the masses of all the planets are similar to each other. This architecture class is the most commonly-observed in our galaxy. TRAPPIST-1 is an example of a Similar system. Planets in Similar systems are said to be like 'peas in a pod', and the phrase now refers to a set of specific configuration characteristics.
+A 'peas in a pod' system will have planets that are similar or ordered in size, similar and ordered in mass, and tend to display "packing". Packing refers to the tendency of smaller planets to be closer together, and of larger planets to have larger orbital spacing. Lastly, 'peas in a pod' systems tend to display similar spacing between a pair of adjacent planets and the next pair of adjacent planets.
+Mixed systems are planetary systems in which the masses of the planets show larger increasing or decreasing variations.  Gliese 876 and Kepler-89 are examples of mixed systems.
+Anti-Ordered systems have their massive planets close to the host star and the smaller planets further away. There are currently no known examples of this architecture class.
+Ordered systems have their planets ordered such that the less massive ones are closer to the star and the more massive planets are further from the star, with the mass of each planet increasing with distance from the star.  The Solar System, with small rocky planets in the inner part and giant planets in the outer part, is a type of Ordered system.
+
+
+=== Components ===
+
+
+==== Planets and stars ====
+
+Most known exoplanets orbit stars roughly similar to the Sun: that is, main-sequence stars of spectral categories F, G, or K. One reason is that planet-search programs have tended to concentrate on such stars. In addition, statistical analyses indicate that lower-mass stars (red dwarfs, of spectral category M) are less likely to have planets massive enough to be detected by the radial-velocity method. Nevertheless, several tens of planets around red dwarfs have been discovered by the Kepler space telescope by the transit method, which can detect smaller planets.
+Exoplanetary systems may also feature planets extremely different from those in the Solar System, such as Hot Jupiters, Hot Neptunes, and Super-Earths. Hot Jupiters and Hot Neptunes are gas giants, like their namesakes, but orbit close to their stars and have orbital periods on the order of a few days. Super-Earths are planets that have a mass between that of Earth and planets like Neptune and Uranus, and can be made of rock and gas. There is a lot of variety among Super-Earths, with planets ranging from water worlds to mini-Neptunes.
+
+
+==== Circumstellar disks and dust structures ====
+
+After planets, circumstellar disks are one of the most commonly-observed properties of planetary systems, particularly of young stars. The Solar System possesses at least four major circumstellar disks (the asteroid belt, Kuiper belt, scattered disc, and Oort cloud) and clearly-observable disks have been detected around nearby solar analogs including Epsilon Eridani and Tau Ceti. Based on observations of numerous similar disks, they are assumed to be quite common attributes of stars on the main sequence.
+Interplanetary dust clouds have been studied in the Solar System and analogs are believed to be present in other planetary systems. Exozodiacal dust, an exoplanetary analog of zodiacal dust, the 1–100 micrometre-sized grains of amorphous carbon and silicate dust that fill the plane of the Solar System has been detected around the 51 Ophiuchi, Fomalhaut, Tau Ceti, and Vega systems.
+
+
+==== Comets ====
+
+As of November 2014 there are 5,253 known Solar System comets and they are thought to be common components of planetary systems. The first exocomets were detected in 1987 around Beta Pictoris, a very young A-type main-sequence star. There are now a total of 11 stars around which the presence of exocomets have been observed or suspected. All discovered exocometary systems (Beta Pictoris, HR 10, 51 Ophiuchi, HR 2174, 49 Ceti, 5 Vulpeculae, 2 Andromedae, HD 21620, HD 42111, HD 110411, and more recently HD 172555) are around very young A-type stars.
+
+
+==== Other components ====
+
+Computer modelling of an impact in 2013 detected around the star NGC 2547-ID8 by the Spitzer Space Telescope, and confirmed by ground observations, suggests the involvement of large asteroids or protoplanets similar to the events believed to have led to the formation of terrestrial planets like the Earth.
+Based on observations of the Solar System's large collection of natural satellites, they are believed common components of planetary systems; however, the existence of exomoons has not yet been confirmed. The star 1SWASP J140747.93-394542.6, in the constellation Centaurus, is a strong candidate for a natural satellite. Indications suggest that the confirmed extrasolar planet WASP-12b also has at least one satellite.
+
+
+=== Orbital configurations ===
+Unlike the Solar System, which has orbits that are nearly circular, many of the known planetary systems display much higher orbital eccentricity. An example of such a system is 16 Cygni.
+
+
+==== Mutual inclination ====
+The mutual inclination between two planets is the angle between their orbital planes. Many compact systems with multiple close-in planets interior to the equivalent orbit of Venus are expected to have very low mutual inclinations, so the system (at least the close-in part) would be even flatter than the Solar System. Captured planets could be captured into any arbitrary angle to the rest of the system. As of 2016 there are only a few systems where mutual inclinations have actually been measured One example is the Upsilon Andromedae system: the planets c and d have a mutual inclination of about 30 degrees.
+
+
+==== Orbital dynamics ====
+Planetary systems can be categorized according to their orbital dynamics as resonant, non-resonant-interacting, hierarchical, or some combination of these. In resonant systems the orbital periods of the planets are in integer ratios. The Kepler-223 system contains four planets in an 8:6:4:3 orbital resonance.
+Giant planets are found in mean-motion resonances more often than smaller planets.
+In interacting systems, the planets' orbits are close enough together that they perturb the orbital parameters. The Solar System could be described as weakly interacting, as opposed to strongly interacting systems, in which Kepler's laws do not hold.
+In hierarchical systems the planets are arranged so that the system can be gravitationally considered as a nested system of two-bodies, e.g. in a star with a close-in hot Jupiter with another gas giant much further out, the star and hot Jupiter form a pair that appears as a single object to another planet that is far enough out.
+Other, as yet unobserved, orbital possibilities include: double planets, various co-orbital planets such as quasi-satellites, trojans, and exchange orbits, and interlocking orbits maintained by precessing orbital planes.
+
+
+==== Number of planets, relative parameters and spacings ====
+
+On The Relative Sizes of Planets Within Kepler Multiple Candidate Systems, David R. Ciardi et al. December 9, 2012
+The Kepler Dichotomy among the M Dwarfs: Half of Systems Contain Five or More Coplanar Planets, Sarah Ballard, John Asher Johnson, October 15, 2014
+Exoplanet Predictions Based on the Generalised Titius-Bode Relation, Timothy Bovaird, Charles H. Lineweaver, August 1, 2013
+The Solar System and the Exoplanet Orbital Eccentricity - Multiplicity Relation, Mary Anne Limbach, Edwin L. Turner, April 9, 2014
+The period ratio distribution of Kepler's candidate multiplanet systems, Jason H. Steffen, Jason A. Hwang, September 11, 2014
+Are Planetary Systems Filled to Capacity? A Study Based on Kepler Results, Julia Fang, Jean-Luc Margot, February 28, 2013
+
+
+== Zones ==
+
+
+=== Habitable zone ===
+
+The habitable zone around a star is the region where the temperature range allows for liquid water to exist on a planet; that is, not too close to the star for the water to evaporate and not too far away from the star for the water to freeze. The heat produced by stars varies depending on the size and age of the star; this means the habitable zone will also vary accordingly. Also, the atmospheric conditions on the planet influence the planet's ability to retain heat so that the location of the habitable zone is also specific to each type of planet.
+Habitable zones have usually been defined in terms of surface temperature; however, over half of Earth's biomass is from subsurface microbes, and temperature increases as depth underground increases, so the subsurface can be conducive for life when the surface is frozen; if this is considered, the habitable zone extends much further from the star.
+Studies in 2013 indicate that an estimated 22±8% of Sun-like stars have an Earth-sized planet in the habitable zone.
+
+
+=== Venus zone ===
+The Venus zone is the region around a star where a terrestrial planet would have runaway greenhouse conditions like Venus, but not so near the star that the atmosphere completely escapes. As with the habitable zone, the location of the Venus zone depends on several factors, including the type of star and properties of the planets such as mass, rotation rate, and atmospheric clouds. Studies of the Kepler spacecraft data indicate that 32% of red dwarfs have potentially Venus-like planets based on planet size and distance from star, increasing to 45% for K-type and G-type stars. Several candidates have been identified, but spectroscopic follow-up studies of their atmospheres are required to determine whether they are like Venus.
+
+
+== Galactic distribution of planets ==
+
+The Milky Way is 100,000 light-years across, but 90% of planets with known distances are within about 2000 light years of Earth, as of July 2014. One method that can detect planets much further away is microlensing. The upcoming Nancy Grace Roman Space Telescope could use microlensing to measure the relative frequency of planets in the galactic bulge versus the galactic disk. So far, the indications are that planets are more common in the disk than the bulge. Estimates of the distance of microlensing events is difficult: the first planet considered with high probability of being in the bulge is MOA-2011-BLG-293Lb at a distance of 7.7 kiloparsecs (about 25,000 light years).
+Population I, or metal-rich stars, are those young stars whose metallicity is highest. The high metallicity of population I stars makes them more likely to possess planetary systems than older populations, because planets form by the accretion of metals. The Sun is an example of a metal-rich star. These are common in the disks of galaxies. Generally, the youngest stars, the extreme population I, are found farther in and intermediate population I stars are farther out, etc. The Sun is considered an intermediate population I star. Population I stars have regular elliptical orbits around the Galactic Center, with a low relative velocity.
+Population II, or metal-poor stars, are those with relatively low metallicity which can have hundreds (e.g. BD +17° 3248) or thousands (e.g. Sneden's Star) times less metallicity than the Sun. These objects formed during an earlier time of the universe. Intermediate population II stars are common in the bulge near the center of the Milky Way, whereas Population II stars found in the galactic halo are older and thus more metal-poor. Globular clusters also contain high numbers of population II stars.
+In 2014, the first planets around a halo star were announced around Kapteyn's star, the nearest halo star to Earth, around 13 light years away. However, later research suggests that Kapteyn b is just an artefact of stellar activity and that Kapteyn c needs more study to be confirmed. The metallicity of Kapteyn's star is estimated to be about 8 times less than the Sun.
+Different types of galaxies have different histories of star formation and hence planet formation. Planet formation is affected by the ages, metallicities, and orbits of stellar populations within a galaxy. Distribution of stellar populations within a galaxy varies between the different types of galaxies.
+Stars in elliptical galaxies are much older than stars in spiral galaxies. Most elliptical galaxies contain mainly low-mass stars, with minimal star-formation activity. The distribution of the different types of galaxies in the universe depends on their location within galaxy clusters, with elliptical galaxies found mostly close to their centers.
+
+
+== See also ==
+Comparison between the Solar System and extrasolar systems
+Protoplanetary disk
+List of exoplanets
+List of multiplanetary systems
+
+
+== Notes ==
+
+
+== References ==
+
+
+== Further reading ==
+
+Kóspál, Ágnes; Ardila, David R.; Moór, Attila; Ábrahám, Péter (2009). "On the Relationship Between Debris Disks and Planets". The Astrophysical Journal. 700 (2): L73–L77. arXiv:astro-ph/0007014. Bibcode:2000ApJ...537L.147O. doi:10.1088/0004-637X/700/2/L73. S2CID 16636256.
+Ozernoy, Leonid M.; Gorkavyi, Nick N.; Mather, John C.; Taidakova, Tanya A. (2000). "Signatures of Exosolar Planets in Dust Debris Disks". The Astrophysical Journal. 537 (2): L147–L151. arXiv:0907.0028. Bibcode:2009ApJ...700L..73K. doi:10.1086/312779. S2CID 1149097.

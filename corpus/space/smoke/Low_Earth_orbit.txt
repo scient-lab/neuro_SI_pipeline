@@ -1,0 +1,63 @@
+A low Earth orbit (LEO) is an orbit around Earth with a period of 128 minutes or less (making at least 11.25 orbits per day) and an eccentricity less than 0.25. Most of the artificial objects in outer space are in LEO, peaking in number at an altitude around 800 km (500 mi), while the farthest in LEO, before medium Earth orbit (MEO), have an altitude of 2,000 kilometers, about one-third of the radius of Earth and near the beginning of the inner Van Allen radiation belt.
+The term LEO region is used for the area of space below an altitude of 2,000 km (1,200 mi) (about one-third of Earth's radius). Objects in orbits that pass through this zone, even if they have an apogee further out or are sub-orbital, are carefully tracked since they present a collision risk to the many LEO satellites.
+The only human spaceflights to go beyond LEO are the lunar missions of the Apollo program from 1968 to 1972 and the Artemis II lunar flyby in 2026. All space stations as of 2026 have operated in geocentric orbits within LEO.
+
+
+== Defining characteristics ==
+A wide variety of sources define LEO in terms of altitude. The altitude of an object in an elliptic orbit can vary significantly along the orbit. Even for circular orbits, the altitude above ground can vary by as much as 30 km (19 mi) (especially for polar orbits) due to the oblateness of Earth's spheroid figure and local topography.  While definitions based on altitude are inherently ambiguous, most of them fall within the range specified by an orbit period of 128 minutes because, according to Kepler's third law, this corresponds to a semi-major axis of 8,413 km (5,228 mi). For circular orbits, this in turn corresponds to an altitude of 2,042 km (1,269 mi) above the mean radius of Earth, which is consistent with some of the upper altitude limits in some LEO definitions.
+The LEO region is defined by some sources as a region in space that LEO orbits occupy. Some highly elliptical orbits may pass through the LEO region near their lowest altitude (or perigee) but are not in a LEO orbit because their highest altitude (or apogee) exceeds 2,000 km (1,243 mi). Sub-orbital objects can also reach the LEO region but are not in a LEO orbit because they re-enter the atmosphere. The distinction between LEO orbits and the LEO region is especially important for analysis of possible collisions between objects which may not themselves be in LEO but could collide with satellites or debris in LEO orbits.
+
+
+== Orbital characteristics ==
+The mean orbital velocity needed to maintain a stable low Earth orbit is about 7.8 km/s (4.8 mi/s), which translates to 28,000 km/h (17,000 mph). However, this depends on the exact altitude of the orbit. Calculated for a circular orbit of 200 km (120 mi) the orbital velocity is 7.79 km/s (4.84 mi/s), but for a higher 1,500 km (930 mi) orbit the velocity is reduced to 7.12 km/s (4.42 mi/s). The launch vehicle's delta-v needed to achieve low Earth orbit starts around 9.4 km/s (5.8 mi/s).
+The pull of gravity in LEO is only slightly less than on the Earth's surface. This is because the distance to LEO from the Earth's surface is much less than the Earth's radius. However, an object in orbit is in a permanent free fall around Earth, because in orbit the gravitational force and the centrifugal force balance each other out. As a result, spacecraft in orbit continue to stay in orbit, and people inside or outside such craft continuously experience weightlessness.
+Objects in LEO orbit Earth between the denser part of the atmosphere and below the inner Van Allen radiation belt.  They encounter atmospheric drag from gases in the thermosphere (approximately 80–600 km above the surface) or exosphere (approximately 600 km or 400 mi and higher), depending on orbit height.  Satellites in orbits involving altitudes below 300 km (190 mi) are subject to quick orbital decay due to atmospheric drag. 
+Equatorial low Earth orbits (ELEO) are a subset of LEO. These orbits, with low orbital inclination, allow rapid revisit times over low-latitude locations on Earth.  Prograde equatorial LEOs also have lower delta-v launch requirements because they take advantage of the Earth's rotation. Other useful LEO orbits, including polar orbits and Sun-synchronous orbits, have higher inclinations to the equator and provide coverage for higher latitudes on Earth. Some of the first generation of Starlink satellites used polar orbits which provide coverage everywhere on Earth.  Later Starlink constellations orbit at a lower inclination and provide more coverage for populated areas.
+Higher orbits include medium Earth orbit (MEO), sometimes called intermediate circular orbit (ICO), and further above, geostationary orbit (GEO). Orbits higher than low orbit can lead to early failure of electronic components due to intense radiation and charge accumulation.
+In 2017, "very low Earth orbits" (VLEO) began to be seen in regulatory filings. These orbits, below about 450 km (280 mi), require the use of novel technologies for orbit raising because they operate in orbits that would ordinarily decay too soon to be economically useful.
+
+
+== Use ==
+
+A low Earth orbit requires the lowest amount of energy for satellite placement. It provides high bandwidth and low communication latency. Satellites and space stations in LEO are more accessible for crew and servicing.
+Since it requires less energy to place a satellite into a LEO, and a satellite there needs less powerful amplifiers for successful transmission, LEO is used for many communication applications, such as the Iridium phone system. Some communication satellites use much higher geostationary orbits and move at the same angular velocity as the Earth as to appear stationary above one location on the planet.
+
+
+=== Disadvantages ===
+Unlike geosynchronous satellites, satellites in low orbit have a small field of view and can only observe and communicate with a fraction of the Earth at a given time. This means that a large network (or constellation) of satellites is required to provide continuous coverage.
+Satellites at lower altitudes of orbit are in the atmosphere and suffer from rapid orbital decay, requiring either periodic re-boosting to maintain stable orbits, or the launching of replacements for those that re-enter the atmosphere. The effects of adding such quantities of vaporized metals to Earth's stratosphere are potentially of concern but currently unknown.
+
+
+=== Examples ===
+The International Space Station is in LEO about 400 to 420 kilometres (250 to 260 mi) above the Earth's surface. The station's orbit decays by about 2 km/month (1.2 mi/month) and consequently needs re-boosting a few times a year.
+The Iridium telecom satellites orbit at about 780 km (480 mi).
+Earth observation satellites, also known as remote sensing satellites, including spy satellites and other Earth imaging satellites, use LEO as they are able to see the surface of the Earth more clearly by being closer to it. A majority of artificial satellites are placed in LEO. Satellites can also take advantage of consistent lighting of the surface below via Sun-synchronous LEO orbits at an altitude of about 800 km (500 mi) and near polar inclination. Envisat (2002–2012) is one example.
+The Hubble Space Telescope orbits at about 540 km (340 mi) above Earth.
+Satellite internet constellations such as Starlink.
+The Chinese Tiangong space station was launched in April 2021 and currently orbits between 340 and 450 km (210 and 280 mi) above the Earth's surface.
+The gravimetry mission GRACE-FO orbits at about 500 km (310 mi) as did its predecessor, GRACE.
+
+
+==== Former ====
+GOCE (2009–2013), an ESA gravimetry mission, orbited at about 255 km (158 mi).
+Super Low Altitude Test Satellite (2017–2019), nicknamed Tsubame, orbited at 167.4 km (104.0 mi), the lowest altitude ever among Earth observation satellites.
+
+
+==== In fiction ====
+In the film 2001: A Space Odyssey, Earth's transit station ("Space Station V") "orbited 300 km above Earth".
+
+
+== Space debris ==
+The LEO environment is becoming congested with space debris because of the frequency of object launches. This has caused growing concern in recent years, since collisions at orbital velocities can be dangerous or deadly. Collisions can produce additional space debris, creating a domino effect known as the Kessler syndrome. NASA's Orbital Debris Program tracks over 25,000 objects larger than 10 cm diameter in LEO, while the estimated number between 1 and 10 cm is 500,000, and the number of particles bigger than 1 mm exceeds 100 million. The particles travel at speeds up to 7.8 km/s (28,000 km/h; 17,500 mph), so even a small impact can severely damage a spacecraft.
+The lifespan of space debris can vary wildly depending on their respective ballistic coefficient, and most importantly their initial orbit altitude. At lower orbit altitudes such as 400 km small spacecraft can decay within 5 years. However at altitudes above 500 km some spacecraft will take more than 25 years to deorbit. The oldest piece of space debris that can be found in LEO is the Vanguard 1 satellite and its third-stage booster. The satellite was launched in 1958 and currently has a perigee of 651 km and an apogee of 4,226 km, placing part of its orbit within the higher region of Low Earth Orbit and extending into medium Earth orbit. It is currently expected to remain in orbit for 240 years.
+
+
+== See also ==
+
+
+== Notes ==
+
+
+== References ==
+
+ This article incorporates public domain material from websites or documents of the National Aeronautics and Space Administration.

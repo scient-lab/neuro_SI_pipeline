@@ -1,0 +1,432 @@
+The Schwarzschild radius is a parameter in the Schwarzschild solution to Einstein's field equations that corresponds to the radius of a sphere in flat space that has the same surface area as that of the event horizon of a Schwarzschild black hole of a given mass. It is a characteristic quantity that may be associated with any quantity of mass. The Schwarzschild radius was named after the German astronomer Karl Schwarzschild, who calculated this solution for the theory of general relativity in 1916.
+The Schwarzschild radius is given as
+
+  
+    
+      
+        
+          r
+          
+            s
+          
+        
+        =
+        
+          
+            
+              2
+              G
+              M
+            
+            
+              c
+              
+                2
+              
+            
+          
+        
+        ,
+      
+    
+    {\displaystyle r_{\text{s}}={\frac {2GM}{c^{2}}},}
+  
+
+where G is the Newtonian constant of gravitation, M is the mass of the object, and c is the speed of light.
+
+
+== History ==
+In 1916, Karl Schwarzschild obtained an exact solution to the Einstein field equations for the gravitational field outside a non-rotating, spherically symmetric body with mass 
+  
+    
+      
+        M
+      
+    
+    {\displaystyle M}
+  
+ (see Schwarzschild metric). The solution contained terms of the form 
+
+  
+    
+      
+        
+          
+            1
+            
+              1
+              −
+              
+                
+                  
+                    r
+                    
+                      
+                        s
+                      
+                    
+                  
+                  r
+                
+              
+            
+          
+        
+        ,
+      
+    
+    {\displaystyle {\frac {1}{1-{\frac {r_{\mathrm {s} }}{r}}}},}
+  
+ 
+which have singularities at 
+  
+    
+      
+        r
+        =
+        0
+      
+    
+    {\displaystyle r=0}
+  
+ and 
+  
+    
+      
+        r
+        =
+        
+          r
+          
+            s
+          
+        
+      
+    
+    {\displaystyle r=r_{\text{s}}}
+  
+. The parameter 
+  
+    
+      
+        
+          r
+          
+            s
+          
+        
+      
+    
+    {\displaystyle r_{\text{s}}}
+  
+ has come to be known as the Schwarzschild radius. The physical significance of these singularities was debated for decades. It was found that the one at 
+  
+    
+      
+        r
+        =
+        
+          r
+          
+            s
+          
+        
+      
+    
+    {\displaystyle r=r_{\text{s}}}
+  
+ is a coordinate singularity, meaning that it is an artifact of the particular system of coordinates that was used; while the one at 
+  
+    
+      
+        r
+        =
+        0
+      
+    
+    {\displaystyle r=0}
+  
+ is a spacetime singularity and cannot be removed. The Schwarzschild radius is nonetheless a physically relevant quantity, as noted above and below.
+
+
+== Parameters ==
+The Schwarzschild radius of an object is proportional to its mass. Accordingly, the Sun has a Schwarzschild radius of approximately 3.0 km (1.9 mi), whereas Earth's is approximately 9 mm (0.35 in) and the Moon's is approximately 0.1 mm (0.004 in).
+
+
+== Derivation ==
+
+
+== Black hole classification by Schwarzschild radius ==
+
+Any object whose radius is smaller than its Schwarzschild radius is called a black hole. The surface at the Schwarzschild radius acts as an event horizon in a non-rotating body (a rotating black hole operates slightly differently). Neither light nor particles can escape through this surface from the region inside, hence the name "black hole".
+Black holes can be classified based on their Schwarzschild radius, or equivalently, by their density, where density is defined as mass of a black hole divided by the volume of its Schwarzschild sphere. As the Schwarzschild radius is linearly related to mass, while the enclosed volume corresponds to the third power of the radius, small black holes are therefore much more dense than large ones. The volume enclosed in the event horizon of the most massive black holes has an average density lower than main sequence stars.
+
+
+=== Supermassive black hole ===
+
+A supermassive black hole (SMBH) is the largest type of black hole, though there are few official criteria on how such an object is considered so, on the order of hundreds of thousands to billions of solar masses. (Supermassive black holes up to 21 billion (2.1 × 1010) M☉ have been detected, such as NGC 4889.) Unlike stellar mass black holes, supermassive black holes have comparatively low average densities.  (Note that a (non-rotating) black hole is a spherical region in space that surrounds the singularity at its center; it is not the singularity itself.)  With that in mind, the average density of a supermassive black hole can be less than the density of water.
+The Schwarzschild radius of a body is proportional to its mass and therefore to its volume, assuming that the body has a constant mass-density. In contrast, the physical radius of the body is proportional to the cube root of its volume.  Therefore, as the body accumulates matter at a given fixed density (in this example, 997 kg/m3, the density of water), its Schwarzschild radius will increase more quickly than its physical radius. When a body of this density has grown to around 136 million solar masses (1.36 × 108 M☉), its physical radius would be overtaken by its Schwarzschild radius, and thus it would form a supermassive black hole.
+It is thought that supermassive black holes like these do not form immediately from the singular collapse of a cluster of stars. Instead they may begin life as smaller, stellar-sized black holes and grow larger by the accretion of matter, or even of other black holes.
+The Schwarzschild radius of the supermassive black hole at the Galactic Center of the Milky Way is approximately 12 million kilometres. Its mass is about 4.1 million M☉.
+
+
+=== Stellar black hole ===
+
+Stellar black holes have much greater average densities than supermassive black holes. If one accumulates matter at nuclear density (the density of the nucleus of an atom, about 1018 kg/m3; neutron stars also reach this density), such an accumulation would fall within its own Schwarzschild radius at about 3 M☉ and thus would be a stellar black hole.
+
+
+=== Micro black hole ===
+
+A small mass has an extremely small Schwarzschild radius. A black hole of mass similar to that of Mount Everest, 6.3715×1014 kg, would have a Schwarzschild radius much smaller than a nanometre. The Schwarzschild radius would be 2 × 6.6738×10−11 m3⋅kg−1⋅s−2 × 6.3715×1014 kg / (299792458 m⋅s−1)2 = 9.46×10−13 m = 9.46×10−4 nm. Its average density at that size would be so high that no known mechanism could form such extremely compact objects. Such black holes might possibly have been formed in an early stage of the evolution of the universe, just after the Big Bang, when densities of matter were extremely high. Therefore, these hypothetical miniature black holes are called primordial black holes.
+
+
+== Other uses ==
+
+
+=== In gravitational time dilation ===
+Gravitational time dilation near a large, slowly rotating, nearly spherical body, such as the Earth or Sun can be reasonably approximated as follows:
+
+  
+    
+      
+        
+          
+            
+              t
+              
+                r
+              
+            
+            t
+          
+        
+        =
+        
+          
+            1
+            −
+            
+              
+                
+                  r
+                  
+                    
+                      s
+                    
+                  
+                
+                r
+              
+            
+          
+        
+      
+    
+    {\displaystyle {\frac {t_{r}}{t}}={\sqrt {1-{\frac {r_{\mathrm {s} }}{r}}}}}
+  
+
+where:
+
+tr is the elapsed time for an observer at radial coordinate r within the gravitational field;
+t is the elapsed time for an observer distant from the massive object (and therefore outside of the gravitational field);
+r is the radial coordinate of the observer (which is analogous to the classical distance from the center of the object);
+rs is the Schwarzschild radius.
+
+
+=== Compton wavelength intersection ===
+The reduced Compton wavelength, ⁠
+  
+    
+      
+        ℏ
+        
+          /
+        
+        M
+        c
+      
+    
+    {\displaystyle \hbar /Mc}
+  
+⁠, is a characteristic length dividing regimes where classical theories are effective from ones where quantum effects evident.  
+The Schwarzschild radius (⁠
+  
+    
+      
+        2
+        G
+        M
+        
+          /
+        
+        
+          c
+          
+            2
+          
+        
+      
+    
+    {\displaystyle 2GM/c^{2}}
+  
+⁠) of a given mass ⁠
+  
+    
+      
+        M
+      
+    
+    {\displaystyle M}
+  
+⁠ equals twice its reduced Compton wavelength
+when ⁠
+  
+    
+      
+        M
+      
+    
+    {\displaystyle M}
+  
+⁠ equals one Planck mass (
+  
+    
+      
+        M
+        =
+        
+          
+            ℏ
+            c
+            
+              /
+            
+            G
+          
+        
+      
+    
+    {\textstyle M={\sqrt {\hbar c/G}}}
+  
+); both are then equal to the Planck length (
+  
+    
+      
+        
+          
+            ℏ
+            G
+            
+              /
+            
+            
+              c
+              
+                3
+              
+            
+          
+        
+      
+    
+    {\textstyle {\sqrt {\hbar G/c^{3}}}}
+  
+). Extrapolating the Compton and Schwarzschild relations to their intersection is likely to require corrections due to quantum gravity.
+
+
+=== Calculating the maximum volume and radius possible given a density before a black hole forms ===
+The Schwarzschild radius equation can be manipulated to yield an expression that gives the largest possible radius from an input density that doesn't form a black hole. Taking the input density as ρ,
+
+  
+    
+      
+        
+          r
+          
+            s
+          
+        
+        =
+        
+          
+            
+              
+                3
+                
+                  c
+                  
+                    2
+                  
+                
+              
+              
+                8
+                π
+                G
+                ρ
+              
+            
+          
+        
+        .
+      
+    
+    {\displaystyle r_{\text{s}}={\sqrt {\frac {3c^{2}}{8\pi G\rho }}}.}
+  
+
+For example, the density of water is 1000 kg/m3. This means the largest amount of water you can have without forming a black hole would have a radius of 400920754 km (about 2.67 AU).
+
+
+== Gravitational radius ==
+The term gravitational radius is sometimes used a synonym for the Schwarzschild radius and sometimes it names a constant half as large, 
+  
+    
+      
+        
+          R
+          
+            
+              G
+            
+          
+        
+        =
+        G
+        M
+        
+          /
+        
+        
+          c
+          
+            2
+          
+        
+      
+    
+    {\displaystyle R_{\textrm {G}}=GM/c^{2}}
+  
+. This term is therefore avoided in educational settings.
+
+
+== See also ==
+Black hole, a general survey
+Chandrasekhar limit, a second requirement for black hole formation
+John Michell
+Classification of black holes by type:
+
+Static or Schwarzschild black hole
+Rotating or Kerr black hole
+Charged black hole or Newman black hole and Kerr–Newman black hole
+A classification of black holes by mass:
+
+Micro black hole and extra-dimensional black hole
+Planck length
+Primordial black hole, a hypothetical leftover of the Big Bang
+Stellar black hole, which could either be a static black hole or a rotating black hole
+Supermassive black hole, which could also either be a static black hole or a rotating black hole
+Visible universe, if its density is the critical density, as a hypothetical black hole
+Virtual black hole
+
+
+== References ==

@@ -1,0 +1,1051 @@
+In astrophysics, stellar nucleosynthesis is the creation of chemical elements by nuclear fusion reactions within stars. Stellar nucleosynthesis has occurred since the original creation of hydrogen, helium and lithium during the Big Bang. As a predictive theory, it yields accurate estimates of the observed abundances of the elements. It explains why the observed abundances of elements change over time and why some elements and their isotopes are much more abundant than others. The theory was initially proposed by Fred Hoyle in 1946, who later refined it in 1954. Further advances were made, especially to nucleosynthesis by neutron capture of the elements heavier than iron, by Margaret and Geoffrey Burbidge, William Alfred Fowler and Fred Hoyle in their famous 1957 B2FH paper, which became one of the most heavily cited papers in astrophysics history.
+Stars evolve because of changes in their composition (the abundance of their constituent elements) over their lifespans, first by burning hydrogen (main sequence star), then helium (horizontal branch star), and progressively burning higher elements. However, this does not by itself significantly alter the abundances of elements in the universe as the elements are contained within the star. Later in its life, a low-mass star will slowly eject its atmosphere via stellar wind, forming a planetary nebula, while a higher–mass star will eject mass via a sudden catastrophic event called a supernova. The term supernova nucleosynthesis is used to describe the creation of elements during the explosion of a massive star or white dwarf.
+The advanced sequence of burning fuels is driven by gravitational collapse and its associated heating, resulting in the subsequent burning of carbon, oxygen and silicon. However, most of the nucleosynthesis in the mass range A = 28–56 (from silicon to nickel) is actually caused by the upper layers of the star collapsing onto the core, creating a compressional shock wave rebounding outward. The shock front briefly raises temperatures by roughly 50%, thereby causing furious burning for about a second. This final burning in massive stars, called explosive nucleosynthesis or supernova nucleosynthesis, is the final epoch of stellar nucleosynthesis.
+A stimulus to the development of the theory of nucleosynthesis was the discovery early in the 20th century of regular variations in the abundances of elements found in the universe according to the Oddo–Harkins rule. The need for a physical description was already inspired by the relative abundances of the chemical elements in the Solar System. Those abundances, when plotted on a graph as a function of the atomic number of the element, have a jagged sawtooth shape that varies by factors of tens of millions (see history of nucleosynthesis theory). This suggested a natural process that is not random. A second stimulus to understanding the processes of stellar nucleosynthesis occurred later in the same century, when it was realized by Arthur Eddington and expanded on by George Gamow and then Hans Bethe that the energy released from nuclear fusion reactions accounted for the longevity of the Sun as a source of heat and light.
+
+
+== History ==
+
+In 1920, Arthur Eddington, on the basis of the precise measurements of atomic masses by F.W. Aston and a preliminary suggestion by Jean Perrin, proposed that stars obtained their energy from nuclear fusion of hydrogen to form helium and raised the possibility that the heavier elements are produced in stars. This was a preliminary step toward the idea of stellar nucleosynthesis. In 1928 George Gamow derived what is now called the Gamow factor, a quantum-mechanical formula yielding the probability for two contiguous nuclei to overcome the electrostatic Coulomb barrier between them and approach each other closely enough to undergo nuclear reaction due to the strong nuclear force which is effective only at very short distances. In the following decade the Gamow factor was used by Robert d'Escourt Atkinson and Fritz Houtermans and later by Edward Teller and Gamow himself to derive the rate at which nuclear reactions would occur at the high temperatures believed to exist in stellar interiors.
+In a 1939 paper entitled "Energy Production in Stars", Hans Bethe analyzed the different possibilities for reactions by which hydrogen is fused into helium. He defined two processes that he believed to be the sources of energy in stars. The first one, the proton–proton chain reaction, is the dominant energy source in stars with masses up to about the mass of the Sun. The second process, the carbon–nitrogen–oxygen cycle, which was also considered by Carl Friedrich von Weizsäcker in 1938, is more important in more massive main-sequence stars. These works concerned the energy generation capable of keeping stars hot. Bethe's two papers did not address the creation of heavier nuclei, however. That theory was begun by Fred Hoyle in 1946 with his argument that a collection of very hot nuclei would assemble thermodynamically into iron. Hoyle followed that in 1954 with a paper describing how advanced fusion stages within massive stars would synthesize the elements from carbon to iron in mass.
+Hoyle's theory was extended to other processes, beginning with the publication of the 1957 review paper "Synthesis of the Elements in Stars" by Margaret Burbidge, Geoffrey Burbidge, William Alfred Fowler and Fred Hoyle, more commonly referred to as the B2FH paper. This review paper synthesized information from across fields of nuclear physics, stellar evolution and abundance of the elements to create the foundation of a theory of stellar nucleosynthesis. In 1957 Alastair G. W. Cameron, working independently showed the Oddo–Harkins even-odd abundance rule would follow from processes outlined by the B2FH paper. Clayton calculated the first time-dependent models of the s-process in 1961 and of the r-process in 1965, as well as of the burning of silicon into the abundant alpha-particle nuclei and iron-group elements in 1968, and discovered radiogenic chronologies for determining the age of the elements.
+
+
+== Key reactions ==
+
+The most important reactions in stellar nucleosynthesis:
+
+Hydrogen fusion:
+Deuterium fusion
+The proton–proton chain
+The carbon–nitrogen–oxygen cycle
+Helium fusion:
+The triple-alpha process
+The alpha process
+Fusion of heavier elements:
+Lithium burning: a process found most commonly in brown dwarfs
+Carbon-burning process
+Neon-burning process
+Oxygen-burning process
+Silicon-burning process
+Production of elements heavier than iron:
+Neutron capture:
+The r-process
+The s-process
+Proton capture:
+The rp-process
+The p-process
+Photodisintegration
+
+
+=== Hydrogen fusion ===
+
+Hydrogen fusion (nuclear fusion of four protons to form a helium-4 nucleus) is the dominant process that generates energy in the cores of main-sequence stars. It is also called "hydrogen burning", which should not be confused with the chemical combustion of hydrogen in an oxidizing atmosphere. There are two predominant processes by which stellar hydrogen fusion occurs: the proton–proton chain and the carbon–nitrogen–oxygen (CNO) cycle. Ninety percent of all stars, with the exception of white dwarfs, are fusing hydrogen by these two processes.
+In the cores of lower-mass main-sequence stars such as the Sun, the dominant energy production process is the proton–proton chain reaction. This creates a helium-4 nucleus through a sequence of reactions that begin with the fusion of two protons to form a deuterium nucleus (one proton plus one neutron) along with an ejected positron and neutrino. In each complete fusion cycle, the proton–proton chain reaction releases about 26.2 MeV. Proton-proton chain with a dependence of approximately T4, meaning the reaction cycle is highly sensitive to temperature; a 10% rise of temperature would increase energy production by this method by 46%, hence, this hydrogen fusion process can occur in up to a third of the star's radius and occupy half the star's mass. For stars above 35% of the Sun's mass, the energy flux toward the surface is sufficiently low and energy transfer from the core region remains by radiative heat transfer, rather than by convective heat transfer. As a result, there is little mixing of fresh hydrogen into the core or fusion products outward.
+In higher-mass stars, the dominant energy production process is the CNO cycle, which is a catalytic cycle that uses nuclei of carbon, nitrogen and oxygen as intermediaries and in the end produces a helium nucleus as with the proton–proton chain. During a complete CNO cycle, 25.0 MeV of energy is released. The difference in energy production of this cycle, compared to the proton–proton chain reaction, is accounted for by the energy lost through neutrino emission. CNO cycle is highly sensitive to temperature, with rates proportional to the 16th to 20th power of the temperature; a 10% increase in temperature would result in a 350% increase in energy production. About 90% of the CNO cycle energy generation occurs within the inner 15% of the star's mass, hence it is strongly concentrated at the core. This results in such an intense outward energy flux that convective energy transfer becomes more important than does radiative transfer. As a result, the core region becomes a convection zone, which stirs the hydrogen fusion region and keeps it well mixed with the surrounding proton-rich region. This core convection occurs in stars where the CNO cycle contributes more than 20% of the total energy. As the star ages and the core temperature increases, the region occupied by the convection zone slowly shrinks from 20% of the mass down to the inner 8% of the mass. The Sun produces on the order of 1% of its energy from the CNO cycle.
+The type of hydrogen fusion process that dominates in a star is determined by the temperature dependency differences between the two reactions. The proton–proton chain reaction starts at temperatures about 4×106 K, making it the dominant fusion mechanism in smaller stars. A self-maintaining CNO chain requires a higher temperature of approximately 1.6×107 K, but thereafter it increases more rapidly in efficiency as the temperature rises, than does the proton–proton reaction. Above approximately 1.7×107 K, the CNO cycle becomes the dominant source of energy. This temperature is achieved in the cores of main-sequence stars with at least 1.3 times the mass of the Sun. The Sun itself has a core temperature of about 1.57×107 K. As a main-sequence star ages, the core temperature will rise, resulting in a steadily increasing contribution from its CNO cycle.
+
+
+=== Helium fusion ===
+
+Main sequence stars accumulate helium in their cores as a result of hydrogen fusion, but the core does not become hot enough to initiate helium fusion.  Helium fusion first begins when a star leaves the red giant branch after accumulating sufficient helium in its core to ignite it. In stars around the mass of the Sun, this begins at the tip of the red giant branch with a helium flash from a degenerate helium core, and the star moves to the horizontal branch where it burns helium in its core. More massive stars ignite helium in their core without a flash and execute a blue loop before reaching the asymptotic giant branch. Such a star initially moves away from the AGB toward bluer colours, then loops back again to what is called the Hayashi track. An important consequence of blue loops is that they give rise to classical Cepheid variables, of central importance in determining distances in the Milky Way and to nearby galaxies. Despite the name, stars on a blue loop from the red giant branch are typically not blue in colour but are rather yellow giants, possibly Cepheid variables. They fuse helium until the core is largely carbon and oxygen. The most massive stars become supergiants when they leave the main sequence and quickly start helium fusion as they become red supergiants. After the helium is exhausted in the core of a star, helium fusion will continue in a shell around the carbon–oxygen core.
+In all cases, helium is fused to carbon via the triple-alpha process, i.e., three helium nuclei are transformed into carbon via 8Be. This can then form oxygen, neon, and heavier elements via the alpha process. In this way, the alpha process preferentially produces elements with even numbers of protons by the capture of helium nuclei. Elements with odd numbers of protons are formed by other fusion pathways.
+
+
+== Reaction rate ==
+The reaction rate density between species A and B, having number densities nA,B, is given by:
+  
+    
+      
+        r
+        =
+        
+          n
+          
+            A
+          
+        
+        
+        
+          n
+          
+            B
+          
+        
+        
+        
+          k
+          
+            r
+          
+        
+      
+    
+    {\displaystyle r=n_{A}\,n_{B}\,k_{r}}
+  
+where kr is the reaction rate constant of each single elementary binary reaction composing the nuclear fusion process;
+  
+    
+      
+        
+          k
+          
+            r
+          
+        
+        =
+        ⟨
+        σ
+        (
+        v
+        )
+        
+        v
+        ⟩
+      
+    
+    {\displaystyle k_{r}=\langle \sigma (v)\,v\rangle }
+  
+where σ(v) is the cross-section at relative velocity v, and averaging is performed over all velocities.
+Semi-classically, the cross section is proportional to 
+  
+    
+      
+        π
+        
+        
+          λ
+          
+            2
+          
+        
+      
+    
+    {\textstyle \pi \,\lambda ^{2}}
+  
+, where 
+  
+    
+      
+        λ
+        =
+        h
+        
+          /
+        
+        p
+      
+    
+    {\textstyle \lambda =h/p}
+  
+ is the de Broglie wavelength. Thus semi-classically the cross section is proportional to 
+  
+    
+      
+        
+          
+            E
+            m
+          
+        
+        =
+        
+          c
+          
+            2
+          
+        
+      
+    
+    {\textstyle {\frac {E}{m}}=c^{2}}
+  
+.
+However, since the reaction involves quantum tunneling, there is an exponential damping at low energies that depends on Gamow factor EG, given by an Arrhenius-type equation:
+  
+    
+      
+        σ
+        (
+        E
+        )
+        =
+        
+          
+            
+              S
+              (
+              E
+              )
+            
+            E
+          
+        
+        
+          e
+          
+            −
+            
+              
+                
+                  
+                    E
+                    
+                      G
+                    
+                  
+                  E
+                
+              
+            
+          
+        
+        .
+      
+    
+    {\displaystyle \sigma (E)={\frac {S(E)}{E}}e^{-{\sqrt {\frac {E_{\text{G}}}{E}}}}.}
+  
+Here astrophysical S-factor S(E) depends on the details of the nuclear interaction, and has the dimension of an energy multiplied by a cross section.
+One then integrates over all energies to get the total reaction rate, using the Maxwell–Boltzmann distribution and the relation:
+  
+    
+      
+        
+          
+            r
+            V
+          
+        
+        =
+        
+          n
+          
+            A
+          
+        
+        
+          n
+          
+            B
+          
+        
+        
+          ∫
+          
+            0
+          
+          
+            ∞
+          
+        
+        
+          
+            (
+          
+        
+        
+          
+            
+              S
+              (
+              E
+              )
+            
+            E
+          
+        
+        
+        
+          e
+          
+            −
+            
+              
+                
+                  
+                    E
+                    
+                      G
+                    
+                  
+                  E
+                
+              
+            
+          
+        
+        ⋅
+        2
+        
+          
+            
+              E
+              
+                π
+                (
+                k
+                T
+                
+                  )
+                  
+                    3
+                  
+                
+              
+            
+          
+        
+        
+        
+          e
+          
+            −
+            
+              
+                E
+                
+                  k
+                  T
+                
+              
+            
+          
+        
+        
+        ⋅
+        
+          
+            
+              
+                2
+                E
+              
+              
+                m
+                
+                  R
+                
+              
+            
+          
+        
+        
+          
+            )
+          
+        
+        d
+        E
+      
+    
+    {\displaystyle {\frac {r}{V}}=n_{A}n_{B}\int _{0}^{\infty }{\Bigl (}{\frac {S(E)}{E}}\,e^{-{\sqrt {\frac {E_{\text{G}}}{E}}}}\cdot 2{\sqrt {\frac {E}{\pi (kT)^{3}}}}\,e^{-{\frac {E}{kT}}}\,\cdot {\sqrt {\frac {2E}{m_{\text{R}}}}}{\Bigr )}dE}
+  
+where k = 86,17 μeV/K, 
+  
+    
+      
+        
+          m
+          
+            R
+          
+        
+        =
+        
+          
+            
+              
+                m
+                
+                  A
+                
+              
+              
+                m
+                
+                  B
+                
+              
+            
+            
+              
+                m
+                
+                  A
+                
+              
+              +
+              
+                m
+                
+                  B
+                
+              
+            
+          
+        
+      
+    
+    {\displaystyle m_{\text{R}}={\frac {m_{A}m_{B}}{m_{A}+m_{B}}}}
+  
+ is the reduced mass. The integrand equals
+
+  
+    
+      
+        S
+        (
+        E
+        )
+        
+        
+          e
+          
+            −
+            
+              
+                
+                  
+                    E
+                    
+                      G
+                    
+                  
+                  E
+                
+              
+            
+          
+        
+        ⋅
+        2
+        
+          
+            2
+            
+              /
+            
+            π
+          
+        
+        (
+        k
+        T
+        
+          )
+          
+            −
+            3
+            
+              /
+            
+            2
+          
+        
+        
+        
+          e
+          
+            −
+            
+              
+                E
+                
+                  k
+                  T
+                
+              
+            
+          
+        
+        
+        
+          /
+        
+        
+          
+            
+              m
+              
+                R
+              
+            
+          
+        
+        .
+      
+    
+    {\displaystyle S(E)\,e^{-{\sqrt {\frac {E_{\text{G}}}{E}}}}\cdot 2{\sqrt {2/\pi }}(kT)^{-3/2}\,e^{-{\frac {E}{kT}}}\,/{\sqrt {m_{\text{R}}}}.}
+  
+
+Since this integration of f(E, constant T) has an exponential damping at high energies of the form 
+  
+    
+      
+        ∼
+        
+          e
+          
+            −
+            
+              
+                E
+                
+                  k
+                  T
+                
+              
+            
+          
+        
+      
+    
+    {\textstyle \sim e^{-{\frac {E}{kT}}}}
+  
+ and at low energies from the Gamow factor, the integral almost vanishes everywhere except around the peak at E0, called Gamow peak. There:
+  
+    
+      
+        −
+        
+          
+            ∂
+            
+              ∂
+              E
+            
+          
+        
+        
+          (
+          
+            
+              
+                
+                  
+                    E
+                    
+                      G
+                    
+                  
+                  E
+                
+              
+            
+            +
+            
+              
+                E
+                
+                  k
+                  T
+                
+              
+            
+          
+          )
+        
+        
+        =
+        
+        0
+      
+    
+    {\displaystyle -{\frac {\partial }{\partial E}}\left({\sqrt {\frac {E_{\text{G}}}{E}}}+{\frac {E}{kT}}\right)\,=\,0}
+  
+
+Thus:
+
+  
+    
+      
+        
+          E
+          
+            0
+          
+        
+        =
+        
+          
+            (
+            
+              
+                
+                  1
+                  2
+                
+              
+              k
+              T
+              
+                
+                  
+                    E
+                    
+                      G
+                    
+                  
+                
+              
+            
+            )
+          
+          
+            
+              2
+              3
+            
+          
+        
+      
+    
+    {\displaystyle E_{0}=\left({\frac {1}{2}}kT{\sqrt {E_{\text{G}}}}\right)^{\frac {2}{3}}}
+  
+ and 
+  
+    
+      
+        
+          
+            
+              E
+              
+                G
+              
+            
+          
+        
+        =
+        
+          E
+          
+            0
+          
+          
+            
+              3
+              2
+            
+          
+        
+        
+          /
+        
+        
+          
+            1
+            2
+          
+        
+        k
+        T
+      
+    
+    {\displaystyle {\sqrt {E_{\text{G}}}}=E_{0}^{\frac {3}{2}}/{\frac {1}{2}}kT}
+  
+
+The exponent can then be approximated around E0 as:
+  
+    
+      
+        
+          e
+          
+            −
+            (
+            
+              
+                E
+                
+                  k
+                  T
+                
+              
+            
+            +
+            
+              
+                
+                  
+                    E
+                    
+                      G
+                    
+                  
+                  E
+                
+              
+            
+            )
+          
+        
+        ≈
+        
+          e
+          
+            −
+            
+              
+                
+                  3
+                  
+                    E
+                    
+                      0
+                    
+                  
+                
+                
+                  k
+                  T
+                
+              
+            
+          
+        
+        
+          e
+          
+            
+              
+                (
+              
+            
+            −
+            
+              
+                
+                  3
+                  (
+                  E
+                  −
+                  
+                    E
+                    
+                      0
+                    
+                  
+                  
+                    )
+                    
+                      2
+                    
+                  
+                
+                
+                  4
+                  
+                    E
+                    
+                      0
+                    
+                  
+                  k
+                  T
+                
+              
+            
+            
+              
+                )
+              
+            
+          
+        
+        =
+        
+          e
+          
+            −
+            
+              
+                
+                  3
+                  
+                    E
+                    
+                      0
+                    
+                  
+                
+                
+                  k
+                  T
+                
+              
+            
+            
+              
+                (
+              
+            
+            1
+            +
+            (
+            
+              
+                
+                  E
+                  −
+                  
+                    E
+                    
+                      0
+                    
+                  
+                
+                
+                  2
+                  
+                    E
+                    
+                      0
+                    
+                  
+                
+              
+            
+            
+              )
+              
+                2
+              
+            
+            
+              
+                )
+              
+            
+          
+        
+        =
+        
+          e
+          
+            −
+            
+              
+                
+                  3
+                  
+                    E
+                    
+                      0
+                    
+                  
+                
+                
+                  k
+                  T
+                
+              
+            
+            
+              
+                (
+              
+            
+            1
+            +
+            (
+            E
+            
+              /
+            
+            
+              E
+              
+                0
+              
+            
+            −
+            1
+            
+              )
+              
+                2
+              
+            
+            
+              /
+            
+            4
+            
+              
+                )
+              
+            
+          
+        
+      
+    
+    {\displaystyle e^{-({\frac {E}{kT}}+{\sqrt {\frac {E_{\text{G}}}{E}}})}\approx e^{-{\frac {3E_{0}}{kT}}}e^{{\bigl (}-{\frac {3(E-E_{0})^{2}}{4E_{0}kT}}{\bigr )}}=e^{-{\frac {3E_{0}}{kT}}{\bigl (}1+({\frac {E-E_{0}}{2E_{0}}})^{2}{\bigr )}}=e^{-{\frac {3E_{0}}{kT}}{\bigl (}1+(E/E_{0}-1)^{2}/4{\bigr )}}}
+  
+
+And the reaction rate is approximated as:
+  
+    
+      
+        
+          
+            r
+            V
+          
+        
+        ≈
+        
+          n
+          
+            A
+          
+        
+        
+        
+          n
+          
+            B
+          
+        
+        
+        
+          
+            
+              4
+              
+                
+                  (
+                
+              
+              2
+              
+                /
+              
+              3
+              )
+            
+            
+              
+                m
+                
+                  R
+                
+              
+            
+          
+        
+        
+        
+          
+            
+              E
+              
+                0
+              
+            
+          
+        
+        
+          
+            
+              S
+              (
+              
+                E
+                
+                  0
+                
+              
+              )
+            
+            
+              k
+              T
+            
+          
+        
+        
+        
+          e
+          
+            −
+            
+              
+                
+                  3
+                  
+                    E
+                    
+                      0
+                    
+                  
+                
+                
+                  k
+                  T
+                
+              
+            
+          
+        
+      
+    
+    {\displaystyle {\frac {r}{V}}\approx n_{A}\,n_{B}\,{\frac {4{\sqrt {(}}2/3)}{\sqrt {m_{\text{R}}}}}\,{\sqrt {E_{0}}}{\frac {S(E_{0})}{kT}}\,e^{-{\frac {3E_{0}}{kT}}}}
+  
+
+Values of S(E0) are typically 10−3 – 103 keV·b, but are damped by a huge factor when involving a beta decay, due to the relation between the intermediate bound state (e.g. diproton) half-life and the beta decay half-life, as in the proton–proton chain reaction. Note that typical core temperatures in main-sequence stars (the Sun) give kT of the order of 1 keV: 
+  
+    
+      
+        
+          log
+          
+            10
+          
+        
+        ⁡
+        k
+        T
+        =
+        −
+        16
+        +
+        
+          log
+          
+            10
+          
+        
+        ⁡
+        2.17
+      
+    
+    {\textstyle \log _{10}kT=-16+\log _{10}2.17}
+  
+.
+Thus, the limiting reaction in the CNO cycle, proton capture by 147N, has S(E0) ~ S(0) = 3.5 keV·b, while the limiting reaction in the proton–proton chain reaction, the creation of deuterium from two protons, has a much lower S(E0) ~ S(0) = 4×10−22 keV·b. Incidentally, since the former reaction has a much higher Gamow factor, and due to the relative abundance of elements in typical stars, the two reaction rates are equal at a temperature value that is within the core temperature ranges of main-sequence stars.
+
+
+== References ==
+
+
+=== Notes ===
+
+
+=== Citations ===
+
+
+== Further reading ==
+Bethe, H. A. (January 1939). "Energy Production in Stars". Physical Review. 55 (1): 541–547. Bibcode:1939PhRv...55..103B. doi:10.1103/PhysRev.55.103.
+Bethe, H. A. (March 1939). "Energy Production in Stars". Physical Review. 55 (5): 434–456. Bibcode:1939PhRv...55..434B. doi:10.1103/PhysRev.55.434.
+Clayton, Donald D. (1968). Principles of Stellar Evolution and Nucleosynthesis. New York: McGraw-Hill. Bibcode:1968psen.book.....C. LCCN 68-012263. OCLC 299102. A clear physical description of the proton–proton chain and of the CNO cycle.
+Clayton, Donald D. (2003). Handbook of Isotopes in the Cosmos: Hydrogen to Gallium. Cambridge: Cambridge University Press. ISBN 978-0-521-82381-4. OCLC 249420462.
+Hoyle, F. (1954). "On Nuclear Reactions Occurring in Very Hot Stars: Synthesis of Elements from Carbon to Nickel". Astrophysical Journal Supplement. 1: 121–146. Bibcode:1954ApJS....1..121H. doi:10.1086/190005.
+Iliadis, Christian (2015). Nuclear Physics of Stars (2nd ed.). Weinheim, Germany: Wiley-VCH. Bibcode:2015nps..book.....I. doi:10.1002/9783527692668. ISBN 9783527692668. OCLC 933608179.
+Ray, A. (2004). "Stars as Thermonuclear Reactors: Their Fuels and Ashes". arXiv:astro-ph/0405568.
+Wallerstein, G.; I. Iben, Jr.; P. Parker; A. M. Boesgaard; G. M. Hale; A. E. Champagne; et al. (1997). "Synthesis of the Elements in Stars: Forty Years of Progress" (PDF). Reviews of Modern Physics. 69 (4): 995–1084. Bibcode:1997RvMP...69..995W. doi:10.1103/RevModPhys.69.995. hdl:2152/61093. Archived from the original (PDF) on 2009-03-26. Retrieved 2006-08-04.
+Woosley, S. E.; A. Heger; T. A. Weaver (October–December 2002). "The Evolution and Explosion of Massive Stars" (PDF). Reviews of Modern Physics. 74 (4): 1015–1071. Bibcode:2002RvMP...74.1015W. doi:10.1103/RevModPhys.74.1015. S2CID 55932331.
+
+
+== External links ==
+"How the Sun Shines", by John N. Bahcall (Nobel Prize site, accessed 6 January 2020)
+Nucleosynthesis in NASA's Cosmicopia. Archived on 1999-01-29.

@@ -1,0 +1,84 @@
+An ice giant is a giant planet composed mainly of elements heavier than hydrogen and helium, such as oxygen, carbon, nitrogen, and sulfur. There are two ice giants in the Solar System: Uranus and Neptune.
+In astrophysics and planetary science, the term "ice" refers to volatile chemical compounds with freezing points above about 100 K, such as water, ammonia, or methane, with freezing points of 273 K (0 °C), 195 K (−78 °C), and 91 K (−182 °C), respectively. In the 1990s, it was determined (primarily by Voyager 2) that Uranus and Neptune were a distinct class of giant planet, separate from the other giant planets, Jupiter and Saturn, which are gas giants predominantly composed of hydrogen and helium.
+Neptune and Uranus are now referred to as ice giants. Lacking well-defined solid surfaces, they are primarily composed of gases and liquids. Their constituent compounds were solids when they were primarily incorporated into the planets during their formation, either directly in the form of ice or trapped in water ice. Today, very little of the water in Uranus and Neptune remains in the form of ice. Instead, water primarily exists as supercritical fluid at the temperatures and pressures within these planets. Uranus and Neptune consist of only about 20% hydrogen and helium by mass, compared to the Solar System's gas giants, Jupiter and Saturn, which are more than 90% hydrogen and helium by mass.
+
+
+== Terminology ==
+In 1952, science fiction writer James Blish coined the term gas giant and it was used to refer to the large non-terrestrial planets of the Solar System. However, since the late 1940s the compositions of Uranus and Neptune have been understood to be significantly different from those of Jupiter and Saturn. They are primarily composed of elements heavier than hydrogen and helium, forming a separate type of giant planet altogether. Because during their formation Uranus and Neptune incorporated their material as either ice or gas trapped in water ice, the term ice giant came into use. Karan Molaverdikhani said that, "In the early 1970s, the terminology became popular in the science fiction community, e.g., Bova (1971), but the earliest scientific usage of the terminology was likely by Dunne & Burgess (1978) in a NASA report."
+
+
+== Formation ==
+The terrestrial planets of the Solar System are widely understood to have formed through collisional accumulation of planetesimals within the protoplanetary disk. The gas giants—Jupiter, Saturn, and their extrasolar counterpart planets—are thought to have formed solid cores of around 10 Earth masses (M🜨) through the same process, while accreting gaseous envelopes from the surrounding solar nebula over the course of a few to several million years (Ma), although alternative models of core formation based on pebble accretion have recently been proposed. Some extrasolar giant planets may instead have formed via gravitational disk instabilities.
+The formation of Uranus and Neptune through a similar process of core accretion is far more problematic. The escape velocity for the small protoplanets about 20 astronomical units (AU) from the center of the Solar System would have been comparable to their relative velocities. Such bodies crossing the orbits of Saturn or Jupiter would have been liable to be sent on hyperbolic trajectories ejecting them from the system. Such bodies, being swept up by the gas giants, would also have been likely to just be accreted into larger planets or thrown into cometary orbits.
+Despite the trouble modelling their formation, many ice giant candidates have been observed orbiting other stars since 2004. This indicates that they may be common in the Milky Way.
+
+
+=== Migration ===
+Considering the orbital challenges protoplanets 20 AU or more from the centre of the Solar System would experience, a simple solution is that the ice giants formed between the orbits of Jupiter and Saturn before being gravitationally scattered outward to their now more distant orbits.
+
+
+=== Disk instability ===
+Gravitational instability of the protoplanetary disk could also produce several gas giant protoplanets out to distances of up to 30 AU. Regions of slightly higher density in the disk could lead to the formation of clumps that eventually collapse to planetary densities. A disk with even marginal gravitational instability could yield protoplanets between 10 and 30 AU in over one thousand years (ka). This is much shorter than the 100,000 to 1,000,000 years required to produce protoplanets through core accretion of the cloud and could make it viable in even the shortest-lived disks, which exist for only a few million years.
+A problem with this model is determining what kept the disk stable before the instability. There are several possible mechanisms allowing gravitational instability to occur during disk evolution. A close encounter with another protostar could provide a gravitational kick to an otherwise stable disk. A disk evolving magnetically is likely to have magnetic dead zones, due to varying degrees of ionization, where mass moved by magnetic forces could pile up, eventually becoming marginally gravitationally unstable. A protoplanetary disk may simply accrete matter slowly, causing relatively short periods of marginal gravitational instability and bursts of mass collection, followed by periods where the surface density drops below what is required to sustain the instability.
+
+
+==== Photoevaporation ====
+Observations of photoevaporation of protoplanetary disks in the Orion Trapezium Cluster by extreme ultraviolet (EUV) radiation emitted by θ1 Orionis C suggests another possible mechanism for the formation of ice giants. Multiple-Jupiter-mass gas-giant protoplanets could have rapidly formed due to disk instability before having most of their hydrogen envelopes stripped off by intense EUV radiation from a nearby massive star.
+In the Carina Nebula, EUV fluxes are approximately 100 times higher than in Trapezium's Orion Nebula. Protoplanetary disks are present in both nebulae. Higher EUV fluxes make this an even more likely possibility for ice-giant formation. The stronger EUV would increase the removal of the gas envelopes from protoplanets before they could collapse sufficiently to resist further loss.
+
+
+== Characteristics ==
+
+The ice giants represent one of two fundamentally different categories of giant planets present in the Solar System, the other group being the more-familiar gas giants, which are composed of more than 90% hydrogen and helium (by mass). The hydrogen in gas giants is thought to extend all the way down to their rocky cores, where hydrogen molecular ion transitions to metallic hydrogen under extreme pressures of hundreds of gigapascals (GPa).
+The ice giants are primarily composed of heavier elements. Based on the abundance of elements in the universe, oxygen, carbon, nitrogen, and sulfur are most likely. Although the ice giants also have hydrogen envelopes, these are much smaller. They account for less than 20% of their mass. Their hydrogen also never reaches the depths necessary for the pressure to create metallic hydrogen. These envelopes nevertheless limit observation of the ice giants' interiors, and thereby the information on their composition and evolution.
+Although Uranus and Neptune are referred to as ice giant planets, it is thought that there is a supercritical water-ammonia ocean beneath their clouds, which accounts for about two-thirds of their total mass.
+
+
+=== Atmosphere and weather ===
+The gaseous outer layers of the ice giants have several similarities to those of the gas giants. These include long-lived, high-speed equatorial winds, polar vortices, large-scale circulation patterns, and complex chemical processes driven by ultraviolet radiation from above and mixing with the lower atmosphere.
+Studying the ice giants' atmospheric patterns also gives insights into atmospheric physics. Their compositions promote different chemical processes and they receive far less sunlight in their distant orbits than any other planets in the Solar System (increasing the relevance of internal heating on weather patterns).
+The largest visible feature on Neptune is the recurring Great Dark Spot. It forms and dissipates every few years, as opposed to the similarly sized Great Red Spot of Jupiter, which has persisted for centuries. Of all known giant planets in the Solar System, Neptune emits the most internal heat per unit of absorbed sunlight, a ratio of approximately 2.6. Saturn, the next-highest emitter, only has a ratio of about 1.8. Uranus emits the least heat, one-tenth as much as Neptune. It is suspected that this may be related to its extreme 98˚ axial tilt. This causes its seasonal patterns to be very different from those of any other planet in the Solar System.
+There are still no complete models explaining the atmospheric features observed in the ice giants. Understanding these features will help elucidate how the atmospheres of giant planets in general function. Consequently, such insights could help scientists better predict the atmospheric structure and behaviour of giant exoplanets discovered to be very close to their host stars (pegasean planets) and exoplanets with masses and radii between that of the giant and terrestrial planets found in the Solar System.
+
+
+=== Interior ===
+Because of their large sizes and low thermal conductivities, the planetary interior pressures range up to several hundred GPa and temperatures of several thousand kelvins (K).
+In March 2012, it was found that the compressibility of water used in ice-giant models could be off by one-third. This value is important for modeling ice giants, and has a ripple effect on understanding them.
+
+
+=== Magnetic fields ===
+The magnetic fields of Uranus and Neptune are both unusually displaced and tilted. Their field strengths are intermediate between those of the gas giants and those of the terrestrial planets, being 50 and 25 times that of Earth's, respectively. The equatorial magnetic field strengths of Uranus and Neptune are respectively 75 percent and 45 percent of Earth's 0.305 gauss. Their magnetic fields are believed to originate in an ionized convecting fluid-ice mantle.
+
+
+== Exploration ==
+
+
+=== Past ===
+Voyager 2 (Uranus and Neptune)
+
+
+=== Proposals ===
+MUSE (proposed in 2012; considered by NASA in 2014 and ESA in 2016)
+NASA Uranus orbiter and probe (proposed in 2011; considered by NASA in 2017)
+OCEANUS (proposed in 2017)
+ODINUS (proposed in 2013)
+Outer Solar System (proposed in 2012)
+Triton Hopper (proposed in 2015; under consideration by NASA as of 2018)
+Uranus Pathfinder (proposed in 2010)
+Neptune Odyssey (proposed in 2022)
+
+
+== See also ==
+List of gravitationally rounded objects of the Solar System
+Lists of astronomical objects
+Neptunian exoplanet
+Mini-Neptune
+Planet Nine
+
+
+== References ==
+
+
+== External links ==
+
+Sandia experiments may force revision of astrophysical models of the universe - Sandia Labs Archived 2013-11-06 at the Wayback Machine

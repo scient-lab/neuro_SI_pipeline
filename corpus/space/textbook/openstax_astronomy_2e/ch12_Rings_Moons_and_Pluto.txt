@@ -1,0 +1,1193 @@
+Figure 12.1 Jupiter Family. This montage, assembled from individual Galileo and Voyager images, shows a “family portrait” of
+Jupiter (with its giant red spot) and its four large moons. From top to bottom, we see Io, Europa, Ganymede, and Callisto. The colors
+are exaggerated by image processing to emphasize contrasts. (credit: modification of work by NASA)
+Chapter Outline
+12.1 Ring and Moon Systems Introduced
+12.2 The Galilean Moons of Jupiter
+12.3 Titan and Triton
+12.4 Pluto and Charon
+12.5 Planetary Rings (and Enceladus)
+Thinking Ahead
+Our imaginations always fall short of anticipating the beauty we find in nature.
+—Geologist Laurence Soderblom, discussing the 1989 Voyager encounter with Neptune’s moons
+All four giant planets are accompanied by moons that orbit about them like planets in a miniature solar
+system. Nearly 200 moons are known in the outer solar system—too many to name individually or discuss in
+any detail. Astronomers anticipate that additional small moons await future discovery. We have also
+discovered a fascinating variety of rings around each of the jovian planets.
+Before the Voyager missions, even the largest of the outer-planet moons were mere points of light in our
+telescopes. Then, in less than a decade, we had close-up images, and these moons became individual worlds
+for us, each with unique features and peculiarities. The Galileo mission added greatly to our knowledge of the
+moons of Jupiter, and the Cassini mission has done the same for the Saturn system. In 2015, the NASA New
+Horizons spacecraft completed the initial exploration of the “classical” planets in the solar system with its flyby
+of Pluto and its moons. We include Pluto here because in some ways it resembles some of the larger moons in
+the outer solar system. Each new spacecraft mission has revealed many surprises, as the objects in the outer
+solar system are much more varied and geologically active than scientists had anticipated.
+Rings, Moons, and Pluto
+12 • Thinking Ahead
+12.1
+Ring and Moon Systems Introduced
+Learning Objectives
+By the end of this section, you will be able to:
+Briefly describe the system of moons around each of the jovian planets
+Describe the basic composition of each jovian planet’s ring system
+The rings and moons (see the moons in Figure 12.2) of the outer solar system are not composed of the same
+materials as the mostly rocky objects in the inner solar system. We should expect this, since they formed in
+regions of lower temperature, cool enough so that large quantities of water ice were available as building
+materials. Most of these objects also contain dark, organic compounds mixed with their ice and rock. Don’t be
+surprised, therefore, to find that many objects in the ring and moon systems are both icy and dark.
+Roughly a third of the moons in the outer solar system are in direct or regular orbits; that is, they revolve
+about their parent planet in a west-to-east direction and in the plane of the planet’s equator. The majority are
+irregular moons that orbit in a retrograde (east-to-west) direction or else have orbits of high eccentricity (more
+elliptical than circular) or high inclination (moving in and out of the planet’s equatorial plane). These irregular
+moons are mostly located relatively far from their planet; they were probably formed elsewhere and
+subsequently captured by the planet they now orbit.
+Figure 12.2 Moons of the Solar System. This image shows some selected moons of our solar system and their comparison to the
+size of Earth’s Moon and Earth itself. (credit: modification of work by NASA)
+The Jupiter System
+Jupiter has 79 known moons (that’s the number as we write) and a faint ring. These include four large
+moons—Callisto, Ganymede, Europa, and Io (see Figure 12.1)—discovered in 1610 by Galileo and therefore
+often called the Galilean moons. The smaller of these, Europa and Io, are about the size of our Moon, while the
+larger, Ganymede and Callisto, are about the same size as the planet Mercury. Most of Jupiter’s moons are
+much smaller. The majority are in retrograde orbits more than 20 million kilometers from Jupiter; these are
+12 • Rings, Moons, and Pluto
+very likely small captured asteroids.
+The Saturn System
+Saturn has at least 82 known moons in addition to a magnificent set of rings. The largest of the moons, Titan,
+is almost as big as Ganymede in Jupiter’s system, and it is the only moon with a substantial atmosphere and
+lakes or seas of liquid hydrocarbons (such as methane and ethane) on the surface. Saturn has six other large
+regular moons with diameters between 400 and 1600 kilometers, a collection of small moons orbiting in or
+near the rings, and many captured strays similar to those of Jupiter. Mysteriously, one of Saturn’s smaller
+moons, Enceladus, has active geysers of water being expelled into space.
+The rings of Saturn, one of the most impressive sights in the solar system, are broad and flat, with a few major
+and many minor gaps. They are not solid, but rather a huge collection of icy fragments, all orbiting the equator
+of Saturn in a traffic pattern that makes rush hour in a big city look simple by comparison. Individual ring
+particles are composed primarily of water ice and are typically the size of ping-pong balls, tennis balls, and
+basketballs.
+The Uranus System
+The ring and moon system of Uranus is tilted at 98°, just like the planet itself. It consists of 11 rings and 27
+currently known moons. The five largest moons are similar in size to the six regular moons of Saturn, with
+diameters of 500 to 1600 kilometers. Discovered in 1977, the rings of Uranus are narrow ribbons of dark
+material with broad gaps in between. Astronomers suppose that the ring particles are confined to these
+narrow paths by the gravitational effects of numerous small moons, many of which we have not yet glimpsed.
+The Neptune System
+Neptune has 14 known moons. The most interesting of these is Triton, a relatively large moon in a retrograde
+orbit—which is unusual. Triton has a very thin atmosphere, and active eruptions were discovered there by
+Voyager in its 1989 flyby. To explain its unusual characteristics, astronomers have suggested that Triton may
+have originated beyond the Neptune system, as a dwarf planet like Pluto. The rings of Neptune are narrow
+and faint. Like those of Uranus, they are composed of dark materials and are thus not easy to see.
+12.2
+The Galilean Moons of Jupiter
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the major features we can observe about Callisto and what we can deduce from them
+Explain the evidence for tectonic and volcanic activity on Ganymede
+Explain what may be responsible for the unusual features on the icy surface of Europa
+Describe the major distinguishing characteristic of Io
+Explain how tidal forces generate the geological activity we see on Europa and Io
+From 1996 to 1999, the Galileo spacecraft careered through the jovian system on a complex but carefully
+planned trajectory that provided repeated close encounters with the large Galilean moons. More recently, the
+Juno spacecraft, also a Jupiter orbiter, has provided a few close looks at Ganymede and Europa. (Beginning in
+2004, we received an even greater bonanza of information about Titan, obtained from the Cassini spacecraft
+and its Huygens probe, which landed on its surface. We include Titan, Saturn’s one big moon, here for
+comparison.) Table 12.1 summarizes some basic facts about these large moons (plus our own Moon for
+comparison).
+12.2 • The Galilean Moons of Jupiter
+The Largest Moons
+Name
+Diameter
+(km)
+Mass
+(Earth’s Moon = 1)
+Density
+(g/cm3)
+Reflectivity
+(%)
+Moon
+1.0
+3.3
+Callisto
+1.5
+1.8
+Ganymede
+2.0
+1.9
+Europa
+0.7
+3.0
+Io
+1.2
+3.5
+Titan
+1.9
+1.9
+Table 12.1
+Callisto: An Ancient, Primitive World
+We begin our discussion of the Galilean moons with the outermost one, Callisto, not because it is remarkable
+but because it is not. This makes it a convenient object with which other, more active, worlds can be compared.
+Its distance from Jupiter is about 2 million kilometers, and it orbits the planet in 17 days. Like our own Moon,
+Callisto rotates in the same period as it revolves, so it always keeps the same face toward Jupiter. Callisto’s day
+thus equals its month: 17 days. Its noontime surface temperature is only 130 K (about 140 °C below freezing),
+so that water ice is stable (it never evaporates) on its surface year round.
+Callisto has a diameter of 4820 kilometers, almost the same as the planet Mercury (Figure 12.3). Yet its mass is
+only one-third as great, which means its density (the mass divided by the volume) must be only one-third as
+great as well. This tells us that Callisto has far less of the rocky and metallic materials found in the inner
+planets and must instead be an icy body through much of its interior. Callisto can show us how the geology of
+an icy object compares with those made primarily of rock.
+Unlike the worlds we have studied so far, Callisto has not fully differentiated (separated into layers of different
+density materials). We can tell that it lacks a dense core from the details of its gravitational pull on the Galileo
+spacecraft. This surprised scientists, who expected that all the big icy moons would be differentiated. It should
+be easier for an icy body to differentiate than for a rocky one because the melting temperature of ice is so low.
+Only a little heating will soften the ice and get the process started, allowing the rock and metal to sink to the
+center while the slushy ice floats to the surface. Yet Callisto seems to have frozen solid before the process of
+differentiation was complete.
+The surface of Callisto is covered with impact craters, like the lunar highlands. The survival of these craters
+tells us that an icy object can retain impact craters on its surface. Callisto is unique among the planet-sized
+objects of the solar system in the apparent absence of interior forces to drive geological change. You might
+say that this moon was stillborn, and it has remained geologically dead for more than 4 billion years (Figure
+12.3).
+12 • Rings, Moons, and Pluto
+Figure 12.3 Callisto. (a) Jupiter’s outermost large moon shows a heavily cratered surface. Astronomers believe that the bright areas
+are mostly ice, while the darker areas are more eroded, ice-poor material. (b) These high-resolution images, taken by NASA’s Galileo
+spacecraft in May 2001, show the icy spires (top) on Callisto’s surface, with darker dust that has slid down as the ice erodes,
+collecting in the low-lying areas. The spires are about 80 to 100 meters tall. As the surface erodes even further, the icy spires
+eventually disappear, leaving impact craters exposed, as shown in the lower image. (credit a: modification of work by NASA/JPL/DLR;
+credit b: modification of work by NASA/JPL/Arizona State University, Academic Research Lab)
+In thinking about ice so far from the Sun, we must take care not to judge its behavior from the much warmer
+ice we know and love on Earth. At the temperatures of the outer solar system, ice on the surface is nearly as
+hard as rock, and it behaves similarly. Ice on Callisto does not deform or flow like ice in glaciers on Earth.
+Ganymede, the Largest Moon
+Ganymede, the largest moon in the solar system, also shows a great deal of cratering (Figure 12.4). Recall from
+Other Worlds: An Introduction to the Solar System that we can use crater counts on solid worlds to estimate
+the age of the surface. The more craters, the longer the surface has been exposed to battering from space,
+and the older it must therefore be. About one-quarter of Ganymede’s surface seems to be as old and heavily
+cratered as that of Callisto; the rest formed more recently, as we can tell by the sparse covering of impact
+craters as well as the relative freshness of those craters. If we judge from crater counts, this fresher terrain on
+Ganymede is somewhat younger than the lunar maria or the martian volcanic plains, perhaps 2 to 3 billion
+years old.
+The differences between Ganymede and Callisto are more than skin deep. Ganymede is a differentiated world,
+like the terrestrial planets. Measurements of its gravity field tell us that the rock sank to form a core about the
+size of our Moon, with a mantle and crust of ice “floating” above it. In addition, the Galileo spacecraft
+discovered that Ganymede has a magnetic field, the sure signature of a partially molten interior. There is very
+likely liquid water trapped within the interior. Thus, Ganymede is not a dead world but rather a place of
+intermittent geological activity powered by an internal heat source. Some surface features could be as young
+as the surface of Venus (a few hundred million years).
+The younger terrain was formed by tectonic and volcanic forces (Figure 12.4). In some places, the crust
+apparently cracked, flooding many of the craters with water from the interior. Extensive mountain ranges
+were formed from compression of the crust, forming long ridges with parallel valleys spaced a few kilometers
+apart. In some areas, older impact craters were split and pulled apart. There are even indications of large-scale
+crustal movements that are similar to the plate tectonics of Earth.
+12.2 • The Galilean Moons of Jupiter
+Figure 12.4 Ganymede. (a) This global view of Ganymede, the largest moon in the solar system, was taken by Voyager 2. The colors
+are enhanced to make spotting differences easier. Darker places are older, more heavily cratered regions; the lighter areas are
+younger (the reverse of our Moon). The brightest spots are sites of geologically recent impacts. (b) This close-up of Nicholson Regio
+on Ganymede shows an old impact crater (on the lower left-hand side) that has been split and pulled apart by tectonic forces.
+Against Ganymede’s dark terrain, a line of grooves and ridges appears to cut through the crater, deforming its circular shape. (credit
+a: modification of work by NASA/JPL/DLR; credit b: modification of work by NASA/JPL/Brown University)
+Why is Ganymede so different from Callisto? Possibly the small difference in size and internal heating between
+the two led to this divergence in their evolution. But more likely the gravity of Jupiter is to blame for
+Ganymede’s continuing geological activity. Ganymede is close enough to Jupiter that tidal forces from the
+giant planet may have episodically heated its interior and triggered major convulsions on its crust.
+A tidal force results from the unequal gravitational pull on two sides of a body. In a complex kind of modern
+dance, the large moons of Jupiter are caught in the varying gravity grip of both the giant planet and each
+other. This leads to gravitational flexing or kneading in their centers, which can heat them—an effect called
+tidal heating. (A fuller explanation is given in the section on Io.) We will see as we move inward to Europa and
+Io that the role of jovian tides becomes more important for moons close to the planet.
+Europa, a Moon with an Ocean
+Europa and Io, the inner two Galilean moons, are not icy worlds like most of the moons of the outer planets.
+With densities and sizes similar to our Moon, they appear to be predominantly rocky objects. How did they fail
+to acquire a majority share of the ice that must have been plentiful in the outer solar system at the time of
+their formation?
+The most probable cause is Jupiter itself, which was hot enough to radiate a great deal of infrared energy
+during the first few million years after its formation. This infrared radiation would have heated the disk of
+material near the planet that would eventually coalesce into the closer moons. Thus, any ice near Jupiter was
+vaporized, leaving Europa and Io with compositions similar to planets in the inner solar system.
+Despite its mainly rocky composition, Europa has an ice-covered surface, as astronomers have long known
+from examining spectra of sunlight reflected from it. In this it resembles Earth, which has a layer of water on
+its surface, but in Europa’s case the water is capped by a thick crust of ice. There are very few impact craters in
+this ice, indicating that the surface of Europa is in a continual state of geological self-renewal. Judging from
+crater counts, the surface must be no more than a few million years old, and perhaps substantially less. In
+terms of its ability to erase impact craters, Europa is more geologically active than Earth.
+When we look at close-up photos of Europa, we see a strange, complicated surface (Figure 12.5). For the most
+part, the icy crust is extremely smooth, but it is crisscrossed with cracks and low ridges that often stretch for
+12 • Rings, Moons, and Pluto
+thousands of kilometers. Some of these long lines are single, but most are double or multiple, looking rather
+like the remnants of a colossal freeway system.
+Figure 12.5 Evidence for an Ocean on Europa. (a) A close-up of an area called Conamara Chaos is shown here with enhanced color.
+This view is 70 kilometers wide in its long dimension. It appears that Conamara is a region where Europa’s icy crust is (or recently
+was) relatively thin and there is easier access to the possible liquid or slushy ocean beneath. Not anchored to solid crust underneath,
+many of the ice blocks here seem to have slid or rotated from their original positions. In fact, the formations seen here look similar
+to views of floating sea-ice and icebergs in Earth’s Arctic Ocean. (b) In this high-resolution view, the ice is wrinkled and crisscrossed
+by long ridges. Where these ridges intersect, we can see which ones are older and which younger; the younger ones cross over the
+older ones. While superficially this system of ridges resembles a giant freeway system on Europa, the ridges are much wider than
+our freeways and are a natural result of the flexing of the moon. (credit a: modification of work by NASA/JPL/University of Arizona;
+credit b: modification of work by NASA/JPL)
+It is very difficult to make straight lines on a planetary surface. In discussing Mars, we explained that when
+Percival Lowell saw what appeared to him to be straight lines (the so-called martian “canals”), he attributed
+them to the engineering efforts of intelligent beings. We now know the lines on Mars were optical illusions,
+but the lines on Europa are real. These long cracks can form in the icy crust if it is floating without much
+friction on an ocean of liquid water (Figure 12.6).
+Figure 12.6 Very High-Resolution Galileo Image of One Young Double Ridge on Europa. The area in this picture is only 15
+kilometers across. It appears to have formed when viscous icy material was forced up through a long, straight crack in the crust.
+Note how the young ridge going from top left toward bottom right lies on top of older features, which are themselves on top of even
+older ones. (credit: modification of work by NASA/JPL)
+The close-up Galileo images appear to confirm the existence of a global ocean. In many places, the surface of
+Europa looks just as we would expect for a thick layer of ice that was broken up into giant icebergs and ice
+floes and then refrozen in place. When the ice breaks, water or slush from below may be able to seep up
+through the cracks and make the ridges and multiple-line features we observe. Many episodes of ice cracking,
+shifting, rotating, and refreezing are required to explain the complexity we see. The icy crust might vary in
+thickness from a kilometer or so up to 20 kilometers. Further confirmation that a liquid ocean exists below the
+12.2 • The Galilean Moons of Jupiter
+ice comes from measurements of the small magnetic field induced by Europa’s interactions with the
+magnetosphere of Jupiter. The “magnetic signature” of Europa is that of a liquid water ocean, not one of ice or
+rock.
+If Europa really has a large ocean of liquid water under its ice, then it may be the only place in the solar
+system, other than Earth, with really large amounts of liquid water.1 To remain liquid, this ocean must be
+warmed by heat escaping from the interior of Europa. Hot (or at least warm) springs might be active there,
+analogous to those we have discovered in the deep oceans of Earth. The necessary internal heat is generated
+by tidal heating (see the discussion later in this chapter).
+A short film (https://openstax.org/l/30Europa) with planetary scientist Kevin Hand explains why Europa is
+so interesting for future exploration. Or listen to this more in-depth talk (https://openstax.org/l/30Europa2)
+on Europa.
+What makes the idea of an ocean with warm springs exciting is the discovery in Earth’s oceans of large
+ecosystems clustered around deep ocean hot springs. Such life derives all its energy from the mineral-laden
+water and thrives independent of the sunlight shining on Earth’s surface. Is it possible that similar ecosystems
+could exist today under the ice of Europa?
+Many scientists now think that Europa is the most likely place beyond Earth to find life in the solar system. In
+response, NASA is designing a Europa mission to characterize its liquid ocean and its ice crust, and to identify
+locations where material from inside has risen to the surface. Such interior material might reveal direct
+evidence for microbial life. This “Europa Clipper” mission will not orbit Europa, where the intense energetic
+particles from Jupiter’s magnetosphere would quickly destroy its electronics, but instead will swoop in for brief
+close flybys. It is planned for launch in 2024.
+lo, a Volcanic Moon
+Io, the innermost of Jupiter’s Galilean moons, is in many ways a close twin of our Moon, with nearly the same
+size and density. We might therefore expect it to have experienced a similar history. Its appearance, as
+photographed from space, tells us another story, however (Figure 12.7). Instead of being a dead cratered
+world, Io turns out to have the highest level of volcanism in the solar system, greatly exceeding that of Earth.
+LINK TO LEARNING
+Ganymede and Saturn’s moon Enceladus may have smaller amounts of liquid water under their surfaces.
+12 • Rings, Moons, and Pluto
+Figure 12.7 Two Sides of Io. This composite image shows both sides of the volcanically active moon Io. The orange deposits are
+sulfur snow; the white is sulfur dioxide. (Carl Sagan once quipped that Io looks as if it desperately needs a shot of penicillin.) (credit:
+modification of work by NASA/JPL/USGS)
+Io’s active volcanism was discovered by the Voyager spacecraft. Eight volcanoes were seen erupting when
+Voyager 1 passed in March 1979, and six of these were still active four months later when Voyager 2 passed.
+With the improved instruments carried by the Galileo spacecraft, more than 50 eruptions were found during
+1997 alone. Many of the eruptions produce graceful plumes that extend hundreds of kilometers out into space
+(Figure 12.8).
+Figure 12.8 Volcanic Eruptions on Io. This composite image from NASA’s Galileo spacecraft shows close-ups (the two inset photos)
+of two separate volcanic eruptions on Jupiter’s volcanic moon, Io. In the upper inset image, you can see a close up of a bluish plume
+rising about 140 kilometers above the surface of the volcano. In the lower inset image is the Prometheus plume, rising about 75
+kilometers from Io’s surface. The Prometheus plume is named for the Greek god of fire. (credit: modification of work by NASA/JPL)
+12.2 • The Galilean Moons of Jupiter
+Watch a brief movie (https://openstax.org/l/30IoSurf) made from Voyager and Galileo data, showing a
+rotating Io with its dramatic surface features.
+The Galileo data show that most of the volcanism on Io consists of hot silicate lava, like the volcanoes on Earth.
+Sometimes the hot lava encounters frozen deposits of sulfur and sulfur dioxide. When these icy deposits are
+suddenly heated, the result is great eruptive plumes far larger than any ejected from terrestrial volcanoes. As
+the rising plumes cool, the sulfur and sulfur dioxide recondense as solid particles that fall back to the surface
+in colorful “snowfalls” that extend as much as a thousand kilometers from the vent. Major new surface
+features were even seen to appear between Galileo orbits, as shown in Figure 12.9.
+Figure 12.9 Volcanic Changes on Io. These three images were taken of the same 1700-kilometer-square region of Io in April 1997,
+September 1997, and July 1999. The dark volcanic center called Pillan Patera experienced a huge eruption, producing a dark deposit
+some 400 kilometers across (seen as the grey area in the upper center of the middle image). In the right image, however, some of
+the new dark deposit is already being covered by reddish material from the volcano Pele. Also, a small unnamed volcano to the right
+of Pillan has erupted since 1997, and some of its dark deposit and a yellow ring around it are visible on the right image (to the right
+of the grey spot). The color range is exaggerated in these images. (credit: modification of work by NASA/JPL/University of Arizona)
+As the Galileo mission drew to a close, controllers were willing to take risks in getting close to Io. Approaching
+this moon is a dangerous maneuver because the belts of atomic particles trapped in Jupiter’s magnetic
+environment are at their most intense near Io’s orbit. Indeed, in its very first pass by Io, the spacecraft
+absorbed damaging radiation beyond its design levels. To keep the system working at all, controllers had to
+modify or disable various fault-protection software routines in the onboard computers. In spite of these
+difficulties, the spacecraft achieved four successful Io flybys, obtaining photos and spectra of the surface with
+unprecedented resolution.
+Maps of Io reveal more than 100 recently active volcanoes. Huge flows spread out from many of these vents,
+covering about 25% of the moon’s total surface with still-warm lava. From these measurements, it seems clear
+that the bright surface colors that first attracted attention to Io are the result of a thin veneer of sulfur
+compounds. The underlying volcanism is driven by eruptions of molten silicates, just like on Earth (Figure
+12.10).
+LINK TO LEARNING
+12 • Rings, Moons, and Pluto
+Figure 12.10 Lava Fountains on Io. Galileo captured a number of eruptions along the chain of huge volcanic calderas (or pits) on Io
+called Tvashtar Catena in this false-color image combining infrared and visible light. The bright orange-yellow areas at left are places
+where fresh, hot lava is erupting from below ground. (credit: modification of work by NASA/JPL)
+Tidal Heating
+How can Io remain volcanically active in spite of its small size? The answer, as we hinted earlier, lies in the
+effect of gravity, through tidal heating. Io is about the same distance from Jupiter as our Moon is from Earth.
+Yet Jupiter is more than 300 times more massive than Earth, causing forces that pull Io into an elongated
+shape, with a several-kilometer-high bulge extending toward Jupiter.
+If Io always kept exactly the same face turned toward Jupiter, this bulge would not generate heat. However,
+Io’s orbit is not exactly circular due to gravitational perturbations (tugs) from Europa and Ganymede. In its
+slightly eccentric orbit, Io twists back and forth with respect to Jupiter, at the same time moving nearer and
+farther from the planet on each revolution. The twisting and flexing heat Io, much as repeated flexing of a wire
+coat hanger heats the wire.
+After billions of years, this constant flexing and heating have taken their toll on Io, driving away water and
+carbon dioxide and other gases, so that now sulfur and sulfur compounds are the most volatile materials
+remaining. Its interior is entirely melted, and the crust itself is constantly recycled by volcanic activity.
+In moving inward toward Jupiter from Callisto to Io, we have encountered more and more evidence of
+geological activity and internal heating, culminating in the violent volcanism on Io. Three of these surfaces are
+compared in Figure 12.11. Just as the character of the planets in our solar system depends in large measure on
+their distance from the Sun (and on the amount of heat they receive), so it appears that distance from a giant
+planet like Jupiter can play a large role in the composition and evolution of its moons (at least partly due to
+differences in internal heating of each moon by Jupiter’s unrelenting tidal forces).
+12.2 • The Galilean Moons of Jupiter
+Figure 12.11 Three Icy Moons. These Galileo images compare the surfaces of Europa, Ganymede, and Callisto at the same
+resolution. Note that the number of craters (and thus the age of the surface we see) increases as we go from Europa to Ganymede
+to Callisto. The Europa image is one of those where the system of cracks and ridges resembles a freeway system. (credit:
+modification of work by NASA/JPL/DLR)
+12.3
+Titan and Triton
+Learning Objectives
+By the end of this section, you will be able to:
+Explain how the thick atmosphere of Titan makes bodies of liquid on its surface possible
+Describe what we learned from the landing on Titan with the Huygens probe
+Discuss the features we observed on the surface of Triton when Voyager 2 flew by
+We shift our attention now to small worlds in the more distant parts of the solar system. Saturn’s large moon
+Titan turns out to be a weird cousin of Earth, with many similarities in spite of frigid temperatures. The Cassini
+observations of Titan have provided some of the most exciting recent discoveries in planetary science.
+Neptune’s moon Triton also has unusual characteristics and resembles Pluto, which we will discuss in the
+following section.
+Titan, a Moon with Atmosphere and Hydrocarbon Lakes
+Titan, first seen in 1655 by the Dutch astronomer Christiaan Huygens, was the first moon discovered after
+Galileo saw the four large moons of Jupiter. Titan has roughly the same diameter, mass, and density as Callisto
+or Ganymede. Presumably it also has a similar composition—about half ice and half rock. However, Titan is
+unique among moons, with a thick atmosphere and lakes and rivers and falling rain (although these are not
+composed of water but of hydrocarbons such as ethane and methane, which can stay liquid at the frigid
+temperatures on Titan). Titan is the only moon or planet other than Earth where we have found evidence of
+bodies of surface liquids.
+The 1980 Voyager flyby of Titan determined that the surface density of its atmosphere is four times greater
+than that on Earth. The atmospheric pressure on this moon is 1.6 bars, higher than that on any other moon
+and, remarkably, even higher than that of the terrestrial planets Mars and Earth. The atmospheric composition
+is primarily nitrogen, an important way in which Titan’s atmosphere resembles Earth’s.
+Also detected in Titan’s atmosphere were carbon monoxide (CO), hydrocarbons (compounds of hydrogen and
+carbon) such as methane (CH4), ethane (C2H6), and propane (C3H8), and nitrogen compounds such as
+hydrogen cyanide (HCN), cyanogen (C2N2), and cyanoacetylene (HC3N). Their presence indicates an active
+chemistry in which sunlight interacts with atmospheric nitrogen and methane to create a rich mix of organic
+molecules. There are also multiple layers of hydrocarbon haze and clouds in the atmosphere, as illustrated in
+12 • Rings, Moons, and Pluto
+Figure 12.12.
+Figure 12.12 Structure of Titan’s Atmosphere. Some characteristics of Titan’s atmosphere resemble those of Earth’s atmosphere,
+although it is much colder than our planet. The red line indicates the temperature of Titan’s atmosphere at different altitudes.
+These Voyager discoveries motivated a much more ambitious exploration program using the NASA Cassini
+Saturn orbiter and a probe to land on Titan called Huygens, built by the European Space Agency. The orbiter,
+which included several cameras, spectrometers, and a radar imaging system, made dozens of close flybys of
+Titan between 2004 and 2015, each yielding radar and infrared images of portions of the surface (see
+Exploring the Outer Planets). The Huygens probe successfully descended by parachute through the
+atmosphere, photographing the surface from below the clouds, and landing on January 14, 2005. This was the
+first (and so far the only) spacecraft landing on a moon in the outer solar system.
+At the end of its parachute descent, the 319-kilogram Huygens probe safely touched down, slid a short
+distance, and began sending data back to Earth, including photos and analyses of the atmosphere. It
+appeared to have landed on a flat, boulder-strewn plain, but both the surface and the boulders were
+composed of water ice, which is as hard as rock at the temperature of Titan (see Figure 12.13).
+The photos taken during descent showed a variety of features, including drainage channels, suggesting that
+Huygens had landed on the shore of an ancient hydrocarbon lake. The sky was deep orange, and the
+brightness of the Sun was a thousand times less than sunlight on Earth (but still more than a hundred times
+brighter than under the full moon on Earth). Titan’s surface temperature was 94 K (−179 °C). The warmer
+spacecraft heated enough of the ice where it landed for its instruments to measure released hydrocarbon gas.
+Measurements on the surface continued for more than an hour before the probe succumbed to the frigid
+temperature.
+12.3 • Titan and Triton
+Figure 12.13 Views of the Surface of Titan. The left image shows the views of Titan from the descent camera, in a flattened
+projection, at different altitudes. The right image, taken after landing, shows a boulder-strewn surface illuminated by faint reddish
+sunlight. The boulders are composed of water ice. (credit left: modification of work by ESA/NASA/JPL/University of Arizona; credit
+right: modification of work by ESA/NASA/JPL/University of Arizona; processed by Andrey Pivovarov)
+Radar and infrared imaging of Titan from the Cassini orbiter gradually built up a picture of a remarkably active
+surface on this moon, complex and geologically young (Figure 12.14). There are large methane lakes near the
+polar regions that interact with the methane in the atmosphere, much as Earth’s water oceans interact with
+the water vapor in our atmosphere. The presence of many erosional features indicates that atmospheric
+methane can condense and fall as rain, then flow down valleys to the big lakes. Thus, Titan has a lowtemperature equivalent of the water cycle on Earth, with liquid on the surface that evaporates, forms clouds,
+and then condenses to fall as rain—but on Titan the liquid is a combination of methane, ethane, and a trace of
+other hydrocarbons. It is a weirdly familiar and yet utterly alien landscape.
+12 • Rings, Moons, and Pluto
+Figure 12.14 Titan’s Lakes. (a) This Cassini image from a September 2006 flyby shows the liquid lakes on Titan. Their composition is
+most likely a combination of methane and ethane. (Since this is a radar image, the colors are artificially added. The dark blue areas
+are the smooth surfaces of the liquid lakes, and yellow is the rougher solid terrain around them.) (b) This mosaic of Titan’s surface
+from the Cassini-Huygens mission shows in detail a high ridge area and many narrow, sinuous erosion channels that appear to be
+part of a widespread network of “rivers” carved by flowing hydrocarbons. (credit a: modification of work by NASA/JPL-Caltech/USGS;
+credit b; modification of work by NASA/JPL/ESA/University of Arizona)
+These discoveries raise the question of whether there could be life on Titan. Hydrocarbons are fundamental
+for the formation of the large carbon molecules that are essential to life on our planet. However, the
+temperature on Titan is far too low for liquid water or for many of the chemical processes that are essential to
+life as we know it. There remains, though, an intriguing possibility that Titan might have developed a different
+form of low-temperature carbon-based life that could operate with liquid hydrocarbons playing the role of
+water. The discovery of such “life as we don’t know it” could be even more exciting than finding life like ours
+on Mars. If such a truly alien life is present on Titan, its existence would greatly expand our understanding of
+the nature of life and of habitable environments.
+NASA has selected a new mission to Titan for launch in 2027. Called Dragonfly, this mission is a drone that will
+fly in Titan’s atmosphere, with emphasis on study of pre-biotic chemistry. Other future proposed missions
+include a balloon operating in the atmosphere and a “boat” floating in one of the Titan lakes.
+The Cassini mission scientists and the visual presentation specialists at NASA’s Jet Propulsion Laboratory
+have put together some nice films from the images taken by Cassini and Huygens. See, for example, the
+Titan approach (https://openstax.org/l/30Titan) and the flyover (https://openstax.org/l/30Titan2) of the
+Northern lakes district.
+Triton and Its Volcanoes
+Neptune’s largest moon Triton (don’t get its name confused with Titan) has a diameter of 2720 kilometers and
+a density of 2.1 g/cm3, indicating that it’s probably composed of about 75% rock mixed with 25% water ice.
+Measurements indicate that Triton’s surface has the coldest temperature of any of the worlds our robot
+representatives have visited. Because its reflectivity is so high (about 80%), Triton reflects most of the solar
+LINK TO LEARNING
+12.3 • Titan and Triton
+energy that falls on it, resulting in a surface temperature between 35 and 40 K.
+The surface material of Triton is made of frozen water, nitrogen, methane, and carbon monoxide. Methane
+and nitrogen exist as gas in most of the solar system, but they are frozen at Triton’s temperatures. Only a
+small quantity of nitrogen vapor persists to form an atmosphere. Although the surface pressure of this
+atmosphere is only 16 millionths of a bar, this is sufficient to support thin haze or cloud layers.
+Triton’s surface, like that of many other moons in the outer solar system, reveals a long history of geological
+evolution (Figure 12.15). Although some impact craters are found, many regions have been flooded fairly
+recently by the local version of “lava” (perhaps water or water-ammonia mixtures). There are also mysterious
+regions of jumbled or mountainous terrain.
+Figure 12.15 Neptune’s Moon Triton. This mosaic of Voyager 2 images of Triton shows a wide range of surface features. The
+pinkish area at the bottom is Triton’s large southern polar cap. The south pole of Triton faces the Sun here, and the slight heating
+effect is driving some of the material northward, where it is colder. (credit: modification of work by NASA/JPL/USGS)
+The Voyager flyby of Triton took place at a time when the moon’s southern pole was tipped toward the Sun,
+allowing this part of the surface to enjoy a period of relative warmth. (Remember that “warm” on Triton is still
+outrageously colder than anything we experience on Earth.) A polar cap covers much of Triton’s southern
+hemisphere, apparently evaporating along the northern edge. This polar cap may consist of frozen nitrogen
+that was deposited during the previous winter.
+Remarkably, the Voyager images showed that the evaporation of Triton’s polar cap generates geysers or
+volcanic plumes of nitrogen gas (see Figure 12.16). (Fountains of such gas rose about 10 kilometers high,
+visible in the thin atmosphere because dust from the surface rose with them and colored them dark.) These
+plumes differ from the volcanic plumes of Io in their composition and also in that they derive their energy
+from sunlight warming the surface rather than from internal heat.
+12 • Rings, Moons, and Pluto
+Figure 12.16 Triton’s Geysers. This close-up view shows some of the geysers on Neptune’s moon Triton, with the long trains of dust
+pointing to the lower right in this picture. (credit: modification of work by NASA/JPL)
+12.4
+Pluto and Charon
+Learning Objectives
+By the end of this section, you will be able to:
+Compare the orbital characteristics of Pluto with those of the planets
+Describe information about Pluto’s surface deduced from the New Horizons images
+Note some distinguishing characteristics of Pluto’s large moon Charon
+Pluto is not a moon, but we discuss it here because its size and composition are similar to many moons in the
+outer solar system. Our understanding of Pluto (and its large moon Charon) have changed dramatically as a
+result of the New Horizons flyby in 2015.
+Is Pluto a Planet?
+Pluto was discovered through a careful, systematic search, unlike Neptune, whose position was calculated
+from gravitational theory. Nevertheless, the history of the search for Pluto began with indications that Uranus
+had slight departures from its predicted orbit, departures that could be due to the gravitation of an
+undiscovered “Planet X.” Early in the twentieth century, several astronomers, most notably Percival Lowell,
+then at the peak of his fame as an advocate of intelligent life on Mars, became interested in searching for this
+ninth planet.
+Lowell and his contemporaries based their calculations primarily on tiny unexplained irregularities in the
+motion of Uranus. Lowell’s computations indicated two possible locations for a perturbing Planet X; the more
+likely of the two was in the constellation Gemini. He predicted a mass for the planet intermediate between the
+masses of Earth and Neptune (his calculations gave about 6 Earth masses). Other astronomers, however,
+obtained other solutions from the tiny orbital irregularities, even including one model that indicated two
+planets beyond Neptune.
+At his Arizona observatory, Lowell searched without success for the unknown planet from 1906 until his death
+in 1916, and the search was not renewed until 1929. In February 1930, a young observing assistant named
+Clyde Tombaugh (see the Clyde Tombaugh: From the Farm to Fame feature box), comparing photographs he
+made on January 23 and 29 of that year, found a faint object whose motion appeared to be about right for a
+12.4 • Pluto and Charon
+planet far beyond the orbit of Neptune (Figure 12.17). The new planet was named for Pluto, the Roman god of
+the underworld, who dwelt in remote darkness, just like the new planet. The choice of this name, among
+hundreds suggested, was helped by the fact that the first two letters were Percival Lowell’s initials.
+Figure 12.17 Pluto’s Motion. Portions of the two photographs by which Clyde Tombaugh discovered Pluto in 1930. The left one was
+taken on January 23 and the right on January 29. Note that Pluto, indicated by an arrow, has moved among the stars during those six
+nights. If we hadn’t put an arrow next to it, though, you probably would never have spotted the dot that moved. (credit: modification
+of work by the Lowell Observatory Archives)
+Although the discovery of Pluto appeared initially to be a vindication of gravitational theory similar to the
+earlier triumph of Adams and Le Verrier in predicting the position of Neptune, we now know that Lowell’s
+calculations were wrong. When its mass and size were finally measured, it was found that Pluto could not
+possibly have exerted any measurable pull on either Uranus or Neptune. Astronomers are now convinced that
+the reported small anomalies in the motions of Uranus are not, and never were, real.
+From the time of its discovery, it was clear that Pluto was not a giant like the other four outer solar system
+planets. For a long time, it was thought that the mass of Pluto was similar to that of Earth, so that it was
+classed as a fifth terrestrial planet, somehow misplaced in the far outer reaches of the solar system. There
+were other anomalies, however, as Pluto’s orbit was more eccentric and inclined to the plane of our solar
+system than that of any other planet. Only after the discovery of its moon Charon in 1978 could the mass of
+Pluto be measured, and it turned out to be far less than the mass of Earth.
+In addition to Charon, Pluto has four much smaller moons. Subsequent observations of Charon showed that
+this moon is in a retrograde orbit and has a diameter of about 1200 kilometers, more than half the size of
+Pluto itself (Figure 12.18). This makes Charon the moon whose size is the largest fraction of its parent planet.
+We could even think of Pluto and Charon as a double world. Seen from Pluto, Charon would be as large as
+eight full moons on Earth.
+12 • Rings, Moons, and Pluto
+Figure 12.18 Comparison of the Sizes of Pluto and Its Moon Charon with Earth. This graphic vividly shows how tiny Pluto is
+relative to a terrestrial planet like Earth. That is the primary justification for putting Pluto in the class of dwarf planets rather than
+terrestrial planets. (credit: modification of work by NASA)
+To many astronomers, Pluto seemed like the odd cousin that everyone hopes will not show up at the next
+family reunion. Neither its path around the Sun nor its size resembles either the giant planets or the terrestrial
+planets. In the 1990s, astronomers began to discover additional small objects in the far outer solar system,
+showing that Pluto was not unique. We will discuss these trans-neptunian objects later with other small
+bodies, in the chapter on Comets and Asteroids: Debris of the Solar System. One of them (called Eris) is nearly
+the same size as Pluto, and another (Makemake) is substantially smaller. It became clear to astronomers that
+Pluto was so different from the other planets that it needed a new classification. Therefore, it was called a
+dwarf planet, meaning a planet much smaller than the terrestrial planets. We now know of many small objects
+in the vicinity of Pluto and we have classified several as dwarf planets.
+A similar history was associated with the discovery of the asteroids. When the first asteroid (Ceres) was
+discovered at the beginning of the nineteenth century, it was hailed as a new planet. In the following years,
+however, other objects were found with similar orbits to Ceres. Astronomers decided that these should not all
+be considered planets, so they invented a new class of objects, called minor planets or asteroids. Today, Ceres
+is also called a dwarf planet. Both minor planets and dwarf planets are part of a whole belt or zones of similar
+objects (as we will discuss in Comets and Asteroids: Debris of the Solar System).
+So, is Pluto a planet? Our answer is yes, but it is a dwarf planet, clearly not in the same league with the eight
+major planets (four giants and four terrestrials). While some people were upset when Pluto was reclassified,
+we might point out that a dwarf tree is still a type of tree and (as we shall see) a dwarf galaxy is still a type of
+galaxy.
+Clyde Tombaugh: From the Farm to Fame
+Clyde Tombaugh discovered Pluto when he was 24 years old, and his position as staff assistant at the Lowell
+Observatory was his first paying job. Tombaugh had been born on a farm in Illinois, but when he was 16, his
+family moved to Kansas. There, with his uncle’s encouragement, he observed the sky through a telescope
+VOYAGERS IN ASTRONOMY
+12.4 • Pluto and Charon
+the family had ordered from the Sears catalog. Tombaugh later constructed a larger telescope on his own
+and devoted his nights (when he wasn’t too tired from farm work) to making detailed sketches of the
+planets (Figure 12.19).
+Figure 12.19 Clyde Tombaugh (1906–1997). (a) Tombaugh is pictured on his family farm in 1928 with a 9-inch telescope he built.
+(b) Here Tombaugh is looking through an eyepiece at the Lowell Observatory. (credit b: modification of work by NASA)
+In 1928, after a hailstorm ruined the crop, Tombaugh decided he needed a job to help support his family.
+Although he had only a high school education, he thought of becoming a telescope builder. He sent his
+planet sketches to the Lowell Observatory, seeking advice about whether such a career choice was realistic.
+By a wonderful twist of fate, his query arrived just when the Lowell astronomers realized that a renewed
+search for a ninth planet would require a very patient and dedicated observer.
+The large photographic plates (pieces of glass with photographic emulsion on them) that Tombaugh was
+hired to take at night and search during the day contained an average of about 160,000 star images each.
+How to find Pluto among them? The technique involved taking two photographs about a week apart.
+During that week, a planet would move a tiny bit, while the stars remained in the same place relative to
+each other. A new instrument called a “blink comparator” could quickly alternate the two images in an
+eyepiece. The stars, being in the same position on the two plates, would not appear to change as the two
+images were “blinked.” But a moving object would appear to wiggle back and forth as the plates were
+alternated.
+After examining more than 2 million stars (and many false alarms), Tombaugh found his planet on February
+18, 1930. The astronomers at the observatory checked his results carefully, and the find was announced on
+March 13, the 149th anniversary of the discovery of Uranus. Congratulations and requests for interviews
+poured in from around the world. Visitors descended on the observatory in scores, wanting to see the place
+where the first new planet in almost a century had been discovered, as well as the person who had
+discovered it.
+In 1932, Tombaugh took leave from Lowell, where he had continued to search and blink, to get a college
+degree. Eventually, he received a master’s degree in astronomy and taught navigation for the Navy during
+World War II. In 1955, after working to develop a rocket-tracking telescope, he became a professor at New
+Mexico State University, where he helped found the astronomy department. He died in 1997; some of his
+ashes were placed inside the New Horizons spacecraft to Pluto.
+12 • Rings, Moons, and Pluto
+Here is a touching video (https://openstax.org/l/30Tbaugh) about Tombaugh’s life as described by his
+children.
+The Nature of Pluto
+Almost everything we know about Pluto and its moons comes from the New Horizons spacecraft, which flew
+by in 2015 before traveling on into the outermost parts of the planetary system. Using data from the New
+Horizons probe, astronomers have measured the diameter of Pluto as 2370 kilometers, only 60 percent as
+large as our Moon. From the diameter and mass, we find a density of 1.9 g/cm3, suggesting that Pluto is a
+mixture of rocky materials and water ice in about the same proportions as many outer-planet moons.
+Parts of Pluto’s surface are highly reflective, and its spectrum demonstrates the presence on its surface of
+frozen methane, carbon monoxide, and nitrogen. The maximum surface temperature ranges from about 50 K
+when Pluto is farthest from the Sun to 60 K when it is closest. Even this small difference is enough to cause a
+partial sublimation (going from solid to gas) of the methane and nitrogen ice. This generates an atmosphere
+when Pluto is close to the Sun, and it freezes out when Pluto is farther away. Observations of distant stars seen
+through this thin atmosphere indicate that the surface pressure is about a ten-thousandth of Earth’s. Because
+Pluto is a few degrees warmer than Triton, its atmospheric pressure is about ten times greater. This
+atmosphere contains several distinct haze layers, presumably caused by photochemical reactions, like those in
+Titan’s atmosphere (Figure 12.20).
+Figure 12.20 Haze Layers in the Atmosphere of Pluto. This is one of the highest-resolution photos of Pluto, taken by the New
+Horizons spacecraft 15 minutes after its closest approach. It shows 12 layers of haze. Note also the range of mountains with heights
+up to 3500 meters. (credit: modification of work by NASA/Johns Hopkins University Applied Physics Laboratory/Southwest Research
+Institute)
+Reaching Pluto with a spacecraft was a major challenge, especially in an era when reduced NASA budgets
+could not support large, expensive missions like Galileo and Cassini. Yet like Galileo and Cassini, a Pluto
+mission would require a nuclear electric system that used the heat from plutonium to generate the energy to
+power the instruments and keep them operating far from the warmth of the Sun. NASA made available one of
+the last of its nuclear generators for such a mission. Assuming an affordable but highly capable spacecraft
+could be built, there was still the problem of getting to Pluto, nearly 5 billion kilometers from Earth, without
+waiting decades. The answer was to use Jupiter’s gravity to slingshot the spacecraft toward Pluto.
+The 2006 launch of New Horizons started the mission with a high speed, and the Jupiter flyby just a year later
+gave it the required additional boost. The New Horizons spacecraft arrived at Pluto in July 2015, traveling at a
+relative speed of 14 kilometers per second (or about 50,000 kilometers per hour). With this high speed, the
+entire flyby sequence was compressed into just one day. Most of the data recorded near closest approach
+LINK TO LEARNING
+12.4 • Pluto and Charon
+could not be transmitted to Earth until many months later, but when it finally arrived, astronomers were
+rewarded with a treasure trove of images and data.
+Geology of Pluto
+Pluto is not the geologically dead world that many anticipated for such a small object—far from it. The division
+of the surface into areas with different composition and surface texture is apparent in the global color photo
+shown in Figure 12.21. The reddish color is enhanced in this image to bring out differences in color more
+clearly. The darker parts of the surface are cratered, but adjacent to them is a nearly featureless light area in
+the lower right quadrant of this image. This is a huge ice-filled depression called the Sputnik Plains, named for
+the first artificial Earth satellite. The absence of impact craters suggests a surface no more than 10 million
+years old. The dark areas show the colors of photochemical haze or smog similar to that in the atmosphere of
+Titan. The dark material that is staining these old surfaces could come from Pluto’s atmospheric haze or from
+chemical reactions taking place at the surface due to the action of sunlight.
+Figure 12.21 Global Color Image of Pluto. This New Horizons image clearly shows the variety of terrains on Pluto. The dark area in
+the lower left is covered with impact craters, while the large light area in the center and lower right is a flat basin devoid of craters.
+The colors you see are somewhat enhanced to bring out subtle differences. (credit: modification of work by NASA/Johns Hopkins
+University Applied Physics Laboratory/Southwest Research Institute)
+Figure 12.22 shows some of the remarkable variety of surface features New Horizons revealed. we are finding
+on Pluto. Toward the right on this image, we see the shoreline of the Sputnik Plains, showing evidence of
+relatively recent geological activity. The nitrogen and carbon monoxide ice that fills the Sputnik depression
+shows cells or polygons with an average width of more than 30 kilometers, caused by slow convection in the
+ice.2
+In the process of convection, warmer material rises and colder material sinks, transferring energy. You are probably more familiar
+with convection in warm fluids, like the cells you see when you are heating some kinds of soup, but it can also happen (very slowly)
+in colder substances.
+12 • Rings, Moons, and Pluto
+Figure 12.22 Diversity of Terrain on Pluto. This enhanced color view of a strip of Pluto’s surface about 80 kilometers long shows a
+variety of different surface features. From left to right, we first cross a region of “badlands” with some craters showing, and then
+move across a wide range of mountains made of water ice and coated with the redder material we saw in the previous image. Then,
+at right, we arrive at the “shoreline” of the great sea of frozen nitrogen that the mission scientists have named the “Sputnik Plains.”
+This nitrogen sea is divided into mysterious cells or segments that are many kilometers across. (credit: modification of work by
+NASA/Johns Hopkins University Applied Physics Laboratory/Southwest Research Institute)
+Figure 12.23 shows another view of the boundary between different types of geology. The width of this image
+is 250 kilometers, and it shows dark, ancient, heavily cratered terrain; dark, uncratered terrain with a hilly
+surface; smooth, geologically young terrain; and a small cluster of mountains more than 3000 meters high. In
+the best images, the light areas of nitrogen ice seem to have flowed much like glaciers on Earth, covering
+some of the older terrain underneath them.
+The isolated mountains in the midst of the smooth nitrogen plains are probably also made of water ice, which
+is very hard at the temperatures on Pluto and can float on frozen nitrogen. Additional mountains, and some
+hilly terrain that reminded the mission scientists of snakeskin, are visible in part (b) of Figure 12.23.
+Figure 12.23 Diversity of Terrains on Pluto. (a) In this photo, about 250 kilometers across, we can see many different kinds of
+terrain. At the bottom are older, cratered highlands; a V-shaped region of hills without cratering points toward the bottom of the
+image. Surrounding the V-shaped dark region is the smooth, brighter frozen nitrogen plain, acting as glaciers on Earth do. Some
+isolated mountains, made of frozen water ice, are floating in the nitrogen near the top of the picture. (b) This scene is about 390
+kilometers across. The rounded mountains, quite different from those we know on Earth, are named Tartarus Dorsa. The patterns,
+made of repeating ridges with the more reddish terrain between them, are not yet understood. (credit a, b: modification of work by
+NASA/Johns Hopkins University Applied Physics Laboratory/Southwest Research Institute)
+A Quick Look at Charon
+To add to the mysteries of Pluto, we show in Figure 12.24 one of the best New Horizons images of Pluto’s large
+moon Charon. Recall from earlier that Charon is roughly half Pluto’s size (its diameter is about the size of
+Texas). Charon keeps the same side toward Pluto, just as our Moon keeps the same side toward Earth. What is
+unique about the Pluto-Charon system, however, is that Pluto also keeps its same face toward Charon. Like
+two dancers embracing, these two constantly face each other as they spin across the celestial dance floor.
+Astronomers call this a double tidal lock.
+12.4 • Pluto and Charon
+Figure 12.24 Pluto’s Large Moon Charon. (a) In this New Horizons image, the color has been enhanced to bring out the color of the
+moon’s strange red polar cap. Charon has a diameter of 1214 kilometers, and the resolution of this image is 3 kilometers. (b) Here
+we see the moon from a slightly different angle, in true color. The inset shows an area about 390 kilometers from top to bottom.
+Near the top left is an intriguing feature—what appears to be a mountain in the middle of a depression or moat. (credit a, b:
+modification of work by NASA/JHUAPL/SwRI)
+What New Horizons showed was another complex world. There are scattered craters in the lower part of the
+image, but much of the rest of the surface appears smooth. Crossing the center of the image is a belt of rough
+terrain, including what appear to be tectonic valleys, as if some forces had tried to split Charon apart. Topping
+off this strange image is a distinctly red polar cap, of unknown composition. Many features on Charon are not
+yet understood, including what appears to be a mountain in the midst of a low-elevation region.
+12.5
+Planetary Rings (and Enceladus)
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the two theories of planetary ring formation
+Compare the major rings of Saturn and explain the role of the moon Enceladus in the formation of the E
+ring
+Explain how the rings of Uranus and Neptune differ in composition and appearance from the rings of
+Saturn
+Describe how ring structure is affected by the presence of moons
+In addition to their moons, all four of the giant planets have rings, with each ring system consisting of billions
+of small particles or “moonlets” orbiting close to their planet. Each of these rings displays a complicated
+structure that is related to interactions between the ring particles and the larger moons. However, the four
+ring systems are very different from each other in mass, structure, and composition, as outlined in Table 12.2.
+Properties of the Ring Systems
+Planet
+Outer Radius
+(km)
+Outer Radius
+(Rplanet)
+Mass
+(kg)
+Reflectivity
+(%)
+Jupiter
+128,000
+1.8
+1010(?)
+?
+Saturn
+140,000
+2.3
+Table 12.2
+12 • Rings, Moons, and Pluto
+Planet
+Outer Radius
+(km)
+Outer Radius
+(Rplanet)
+Mass
+(kg)
+Reflectivity
+(%)
+Uranus
+51,000
+2.2
+Neptune
+63,000
+2.5
+Table 12.2
+Saturn’s large ring system is made up of icy particles spread out into several vast, flat rings containing a great
+deal of fine structure. The Uranus and Neptune ring systems, on the other hand, are nearly the reverse of
+Saturn’s: they consist of dark particles confined to a few narrow rings with broad empty gaps in between.
+Jupiter’s ring and at least one of Saturn’s are merely transient dust bands, constantly renewed by dust grains
+eroded from small moons. In this section, we focus on the two most massive ring systems, those of Saturn and
+Uranus.
+What Causes Rings?
+A ring is a collection of vast numbers of particles, each like a tiny moon obeying Kepler’s laws as it follows its
+own orbit around the planet. Thus, the inner particles revolve faster than those farther out, and the ring as a
+whole does not rotate as a solid body. In fact, it is better not to think of a ring rotating at all, but rather to
+consider the revolution (or motion in orbit) of its individual moonlets.
+If the ring particles were widely spaced, they would move independently, like separate moonlets. However, in
+the main rings of Saturn and Uranus the particles are close enough to exert mutual gravitational influence,
+and occasionally even to rub together or bounce off each other in low-speed collisions. Because of these
+interactions, we see phenomena such as waves that move across the rings—just the way water waves move
+over the surface of the ocean.
+There are two basic ideas of how such rings come to be. First is the breakup hypothesis, which suggests that
+the rings are the remains of a shattered moon. A passing comet or asteroid might have collided with the
+moon, breaking it into pieces. Tidal forces then pulled the fragments apart, and they dispersed into a disk. The
+second hypothesis, which takes the reverse perspective, suggests that the rings are made of particles that
+were unable to come together to form a moon in the first place.
+In either theory, the gravity of the planet plays an important role. Close to the planet (see Figure 12.25), tidal
+forces can tear bodies apart or inhibit loose particles from coming together. We do not know which
+explanation holds for any given ring, although many scientists have concluded that at least a few of the rings
+are relatively young and must therefore be the result of breakup.
+12.5 • Planetary Rings (and Enceladus)
+Figure 12.25 Four Ring Systems. This diagram shows the locations of the ring systems of the four giant planets. The left axis
+represents the planet’s surface. The dotted vertical line is the limit inside which gravitational forces can break up moons (each
+planet’s system is drawn to a different scale, so that this stability limit lines up for all four of them). The black dots are the inner
+moons of each planet on the same scale as its rings. Notice that only really small moons survive inside the stability limit.
+Rings of Saturn
+Saturn’s rings are one of the most beautiful sights in the solar system (Figure 12.26). From outer to inner, the
+three brightest rings are labeled with the extremely unromantic names of A, B, and C Rings. Table 12.3 gives
+the dimensions of the rings in both kilometers and units of the radius of Saturn, RSaturn. The B Ring is the
+brightest and has the most closely packed particles, whereas the A and C Rings are translucent.
+The total mass of the B Ring, which is probably close to the mass of the entire ring system, is about equal to
+that of an icy moon 250 kilometers in diameter (suggesting that the ring could have originated in the breakup
+of such a moon). Between the A and B Rings is a wide gap named the Cassini Division after Gian Domenico
+Cassini, who first glimpsed it through a telescope in 1675 and whose name planetary scientists also gave to the
+Cassini spacecraft that explored the Saturn system.
+12 • Rings, Moons, and Pluto
+Figure 12.26 Saturn’s Rings as Seen from Above and Below. (a) The view from above is illuminated by direct sunlight. (b) The
+illumination seen from below is sunlight that has diffused through gaps in the rings. (credit a, b: modification of work by NASA/JPL-
+Caltech/Space Science Institute)
+Selected Features in the Rings of Saturn
+Ring Name3
+Outer Edge
+(RSaturn)
+Outer Edge
+(km)
+Width
+(km)
+F
+2.324
+140,180
+A
+2.267
+136,780
+14,600
+Cassini Division
+2.025
+122,170
+B
+1.949
+117,580
+25,580
+C
+1.525
+92,000
+17,490
+Table 12.3
+Saturn’s rings are very broad and very thin. The width of the main rings is 70,000 kilometers, yet their average
+thickness is only 20 meters. If we made a scale model of the rings out of paper, we would have to make them 1
+kilometer across. On this scale, Saturn itself would loom as high as an 80-story building. The ring particles are
+composed primarily of water ice, and they range from grains the size of sand up to house-sized boulders. An
+insider’s view of the rings would probably resemble a bright cloud of floating snowflakes and hailstones, with
+a few snowballs and larger objects, many of them loose aggregates of smaller particles (Figure 12.27).
+The ring letters are assigned in the order of their discovery.
+12.5 • Planetary Rings (and Enceladus)
+Figure 12.27 Artist’s Idealized Impression of the Rings of Saturn as Seen from the Inside. Note that the rings are mostly made
+of pieces of water ice of different sizes. Toward the end of its mission, the Cassini spacecraft got nearer to the rings of Saturn, but it
+never got this close. (credit: modification of work by NASA/JPL/University of Colorado)
+In addition to the broad A, B, and C Rings, Saturn has a handful of very narrow rings no more than 100
+kilometers wide. The most substantial of these, which lies just outside the A Ring, is called the F Ring; its
+surprising appearance is discussed below. In general, Saturn’s narrow rings resemble the rings of Uranus and
+Neptune.
+There is also a very faint, tenuous ring, called the E Ring, associated with Saturn’s small icy moon Enceladus.
+The particles in the E Ring are very small and composed of water ice. Since such a tenuous cloud of ice crystals
+will tend to dissipate, the ongoing existence of the E Ring strongly suggests that it is being continually
+replenished by a source at Enceladus. This icy moon is very small—only 500 kilometers in diameter—but the
+Voyager images showed that the craters on about half of its surface have been erased, indicating geological
+activity sometime in the past few million years. It was with great anticipation that the Cassini scientists
+maneuvered the spacecraft orbit to allow multiple close flybys of Enceladus starting in 2005.
+Those awaiting the Cassini flyby results were not disappointed. High-resolution images showed long, dark
+stripes of smooth ground near its south pole, which were soon nicknamed “tiger stripes” (Figure 12.28).
+Infrared measurements revealed that these tiger stripes are warmer than their surroundings. Best of all,
+dozens of cryovolcanic vents on the tiger stripes were seen to be erupting geysers of salty water and ice
+(Figure 12.29). Estimates suggested that 200 kilograms of material were shooting into space each second—not
+a lot, but enough for the spacecraft to sample.
+12 • Rings, Moons, and Pluto
+Figure 12.28 Enceladus. (a) This image shows both smooth and cratered terrain on Saturn’s moon, and also “tiger stripes” in the
+south polar region (lower part of image). These dark stripes (shown here in exaggerated color) have elevated temperatures and are
+the source of the many geysers discovered on Enceladus. They are about 130 kilometers long and 40 kilometers apart. (b) Here
+Enceladus is shown to scale with Great Britain and the coast of Western Europe, to emphasize that it is a small moon, only about 500
+kilometers in diameter. (credit a, b: modification of work by NASA/JPL/Space Science Institute)
+When Cassini was directed to fly into the plumes, it measured their composition and found them to be similar
+to material we see liberated from comets (see Comets and Asteroids: Debris of the Solar System). The vapor
+and ice plumes consisted mostly of water, but with trace amounts of nitrogen, ammonia, methane, and other
+hydrocarbons. Minerals found in the geysers in trace amounts included ordinary salt, meaning that the geyser
+plumes were high-pressure sprays of salt water.
+Based on the continuing study of Enceladus’ bulk properties and the ongoing geysers, in 2015 the Cassini
+mission scientists tentatively identified a subsurface ocean of water feeding the geysers. These discoveries
+suggested that in spite of its small size, Enceladus should be added to the list of worlds that we would like to
+explore for possible life. Since its subsurface ocean is conveniently escaping into space, it might be much
+easier to sample than the ocean of Europa, which is deeply buried below its thick crust of ice.
+12.5 • Planetary Rings (and Enceladus)
+Figure 12.29 Geysers on Enceladus. This Cassini image shows a number of water geysers on Saturn’s small moon Enceladus,
+apparently salty water from a subsurface source escaping through cracks in the surface. You can see curved lines of geysers along
+the four “tiger stripes” on the surface. (credit: modification of work by NASA/JPL/Space Science Institute)
+Rings of Uranus and Neptune
+Uranus’ rings are narrow and black, making them almost invisible from Earth. The nine main rings were
+discovered in 1977 from observations made of a star as Uranus passed in front of it. We call such a passage of
+one astronomical object in front of another an occultation. During the 1977 occultation, astronomers expected
+the star’s light to disappear as the planet moved across it. But in addition, the star dimmed briefly several
+times before Uranus reached it, as each narrow ring passed between the star and the telescope. Thus, the
+rings were mapped out in detail even though they could not be seen or photographed directly, like counting
+the number of cars in a train at night by watching the blinking of a light as the cars successively pass in front
+of it. When Voyager approached Uranus in 1986, it was able to study the rings at close range; the spacecraft
+also photographed two new rings (Figure 12.30).
+Figure 12.30 Rings of Uranus. The Voyager team had to expose this image for a long time to get a glimpse of Uranus’ narrow dark
+rings. You can see the grainy structure of “noise” in the electronics of the camera in the picture background. (credit: modification of
+work by NASA/JPL)
+12 • Rings, Moons, and Pluto
+The outermost and most massive of Uranus’ rings is called the Epsilon Ring. It is only about 100 kilometers
+wide and probably no more than 100 meters thick (similar to the F Ring of Saturn). The Epsilon Ring encircles
+Uranus at a distance of 51,000 kilometers, about twice the radius of Uranus. This ring probably contains as
+much mass as all of Uranus’ other ten rings combined; most of them are narrow ribbons less than 10
+kilometers wide, just the reverse of the broad rings of Saturn.
+The individual particles in the uranian rings are nearly as black as lumps of coal. While astronomers do not
+understand the composition of this material in detail, it seems to consist in large part of carbon and
+hydrocarbon compounds. Organic material of this sort is rather common in the outer solar system. Many of
+the asteroids and comets are also composed of dark, tarlike materials. In the case of Uranus, its ten small
+inner moons have a similar composition, suggesting that one or more moons might have broken up to make
+the rings.
+Neptune’s rings are generally similar to those of Uranus but even more tenuous (Figure 12.31). There are only
+four of them, and the particles are not uniformly distributed along their lengths. Because these rings are so
+difficult to investigate from Earth, it will probably be a long time before we understand them very well.
+Figure 12.31 Rings of Neptune. This long exposure of Neptune’s rings was photographed by Voyager 2. Note the two denser
+regions of the outer ring. (credit: modification of work by NASA/JPL)
+Mark Showalter (of the SETI Institute) and his colleagues maintain the NASA’s Planetary Ring Node
+(https://openstax.org/l/30NASArings) website. It is full of information about the rings and their interactions
+with moons; check out their press-release images of the Saturn ring system, for example. And Showalter
+gives an entertaining illustrated talk (https://openstax.org/l/30StrnRngs) about Saturn’s ring and moon
+system.
+E X A M P L E 1 2 . 1
+Resolution of Planetary Rings
+Using the occultations of stars by the rings of Saturn, astronomers have been able to measure details in the
+ring structure to a resolution of 10 km. This is a much higher resolution than can be obtained in a
+conventional photo of the rings. Let’s figure out what angular resolution (in arcsec) a space telescope in
+LINK TO LEARNING
+12.5 • Planetary Rings (and Enceladus)
+Earth orbit would have to achieve to obtain equal resolution.
+Solution
+To solve this problem, we use the “small-angle formula” to relate angular and linear diameters in the sky.
+For angles in the sky that are small, the formula is usually written as
+where angular diameter is expressed in arcsec. The distance of Saturn near opposition is about
+9 AU = 1.4 × 109 km. Substituting in the above formula and solving for the angular resolution, we get
+which is about 10−3 arcsec, or a milliarcsec. This is not possible for our telescopes to achieve. For
+comparison, the best resolution from either the Hubble Space Telescope or ground-based telescopes is
+about 0.1 arcsec, or 100 times worse than what we would need. This is why such occultation measurements
+are so useful for astronomers.
+Check Your Learning
+How close to Saturn would a spacecraft have to be to make out detail in its rings as small as 20 km, if its
+camera has an angular resolution of 5 arcsec?
+Answer:
+Using our formula,
+we get
+So, the distance is about 825,000 km.
+Interactions between Rings and Moons
+Much of our fascination with planetary rings is a result of their intricate structures, most of which owe their
+existence to the gravitational effect of moons, without which the rings would be flat and featureless. Indeed, it
+is becoming clear that without moons there would probably be no rings at all because, left to themselves, thin
+disks of small particles gradually spread and dissipate.
+Most of the gaps in Saturn’s rings, and also the location of the outer edge of the A Ring, result from
+gravitational resonances with small inner moons. A resonance takes place when two objects have orbital
+periods that are exact ratios of each other, such as 1:2 or 2:3. For example, any particle in the gap at the inner
+side of the Cassini Division of Saturn’s rings would have a period equal to one-half that of Saturn’s moon
+Mimas. Such a particle would be nearest Mimas in the same part of its orbit every second revolution. The
+repeated gravitational tugs of Mimas, acting always in the same direction, would perturb it, forcing it into a
+new orbit outside the gap. In this way, the Cassini Division became depleted of ring material over long periods
+of time.
+The Cassini mission revealed a great deal of fine structure in Saturn’s rings. Unlike the earlier Voyager flybys,
+Cassini was able to observe the rings for more than a decade, revealing a remarkable range of changes, on
+time scales from a few minutes to several years. Many of the features newly seen in Cassini data indicated the
+presence of condensations or small moons only a few tens of meters across imbedded in the rings. As each
+small moon moves, it produces waves in the surrounding ring material like the wake left by a moving ship.
+Even when the moon is too small to be resolved, its characteristic waves could be photographed by Cassini.
+12 • Rings, Moons, and Pluto
+One of the most interesting rings of Saturn is the narrow F Ring, which contains several apparent ringlets
+within its 90-kilometer width. In places, the F Ring breaks up into two or three parallel strands that sometimes
+show bends or kinks. Most of the rings of Uranus and Neptune are also narrow ribbons like the F Ring of
+Saturn. Clearly, the gravity of some objects must be keeping the particles in these thin rings from spreading
+out.
+As we have seen, the largest features in the rings of Saturn are produced by gravitational resonances with the
+inner moons, while much of the fine structure is caused by smaller embedded moons. In the case of Saturn’s F
+Ring, close-up images revealed that it is bounded by the orbits of two moons, called Pandora and Prometheus
+(Figure 12.32). These two small moons (each about 100 kilometers in diameter) are referred to as shepherd
+moons, since their gravitation serves to “shepherd” the ring particles and keep them confined to a narrow
+ribbon. A similar situation applies to the Epsilon Ring of Uranus, which is shepherded by the moons Cordelia
+and Ophelia. These two shepherds, each about 50 kilometers in diameter, orbit about 2000 kilometers inside
+and outside the ring.
+Figure 12.32 Saturn’s F Ring and Its Shepherd Moons. (a) This Cassini image shows the narrow, complex F Ring of Saturn, with its
+two small shepherd moons Pandora (left) and Prometheus (right). (b) In this closer view, the shepherd moon Pandora (84 kilometers
+across) is seen next to the F ring, in which the moon is perturbing the main (brightest) strand of ring particles as it passes. You can
+see the dark side of Pandora on this image because it is being illuminated by the light reflected from Saturn. (credit a, b:
+modification of work by NASA/JPL/Space Science Institute)
+You can download a movie (https://openstax.org/l/30ShprdMns) showing the two shepherd moons on
+either side of Saturn’s F ring.
+Theoretical calculations suggest that the other narrow rings in the uranian and neptunian systems should also
+be controlled by shepherd moons, but none has been located. The calculated diameter for such shepherds
+(about 10 kilometers) was just at the limit of detectability for the Voyager cameras, so it is impossible to say
+whether they are present or not. (Given all the narrow rings we see, some scientists still hope to find another
+more satisfactory mechanism for keeping them confined.)
+LINK TO LEARNING
+12.5 • Planetary Rings (and Enceladus)
+One of the outstanding problems with understanding the rings is determining their ages. Have the giant
+planets always had the ring systems we see today, or might these be a recent or transient addition to the solar
+system? In the case of the main rings of Saturn, their mass is about the same as that of the inner moon
+Mimas. Thus, they could have been formed by the break-up of a Mimas-sized moon, perhaps very early in solar
+system history, when there were many interplanetary projectiles left over from planet formation. It is harder to
+understand how such a catastrophic event could have taken place recently, when the solar system had
+become a more stable place.
+12 • Rings, Moons, and Pluto
+Key Terms
+resonance
+an orbital condition in which one object is subject to periodic gravitational perturbations by
+another, most commonly arising when two objects orbiting a third have periods of revolution that are
+simple multiples or fractions of each other
+tidal heating
+the heating of a planet or moon’s interior by variable tidal forces caused by changing
+gravitational pull from a nearby planet or moon
+Summary
+12.1 Ring and Moon Systems Introduced
+The four jovian planets are accompanied by impressive systems of moons and rings. Nearly 200 moons have
+been discovered in the outer solar system. Of the four ring systems, Saturn’s is the largest and is composed
+primarily of water ice; in contrast, Uranus and Neptune have narrow rings of dark material, and Jupiter has a
+tenuous ring of dust.
+12.2 The Galilean Moons of Jupiter
+Jupiter’s largest moons are Ganymede and Callisto, both low-density objects that are composed of more than
+half water ice. Callisto has an ancient cratered surface, while Ganymede shows evidence of extensive tectonic
+and volcanic activity, persisting until perhaps a billion years ago. Io and Europa are denser and smaller, each
+about the size of our Moon. Io is the most volcanically active object in the solar system. Various lines of
+evidence indicate that Europa has a global ocean of liquid water under a thick ice crust. Many scientists think
+that Europa may offer the most favorable environment in the solar system to search for life.
+12.3 Titan and Triton
+Saturn’s moon Titan has an atmosphere that is thicker than that of Earth. There are lakes and rivers of liquid
+hydrocarbons, and evidence of a cycle of evaporation, condensation, and return to the surface that is similar to
+the water cycle on Earth (but with liquid methane and ethane). The Cassini-Huygens lander set down on Titan
+and showed a scene with boulders, made of water ice, frozen harder than rock. Neptune’s cold moon Triton
+has a very thin atmosphere and nitrogen gas geysers.
+12.4 Pluto and Charon
+Pluto and Charon have been revealed by the New Horizons spacecraft to be two of the most fascinating
+objects in the outer solar system. Pluto is small (a dwarf planet) but also surprisingly active, with contrasting
+areas of dark cratered terrain, light-colored basins of nitrogen ice, and mountains of frozen water that may be
+floating in the nitrogen ice. Even Pluto’s largest moon Charon shows evidence of geological activity. Both Pluto
+and Charon turn out to be far more dynamic and interesting than could have been imagined before the New
+Horizons mission.
+12.5 Planetary Rings (and Enceladus)
+Rings are composed of vast numbers of individual particles orbiting so close to a planet that its gravitational
+forces could have broken larger pieces apart or kept small pieces from gathering together. Saturn’s rings are
+broad, flat, and nearly continuous, except for a handful of gaps. The particles are mostly water ice, with typical
+dimensions of a few centimeters. One Saturn moon, Enceladus, is today erupting geysers of water to maintain
+the tenuous E Ring, which is composed of very small ice crystals. The rings of Uranus are narrow ribbons
+separated by wide gaps and contain much less mass. Neptune’s rings are similar but contain even less
+material. Much of the complex structure of the rings is due to waves and resonances induced by moons within
+the rings or orbiting outside them. The origin and age of each of these ring systems is still a mystery.
+12 • Key Terms
+For Further Exploration
+Articles
+Moons
+Carroll, M. “Titan: What We’ve Learned about a Strange New World.” Astronomy (March 2010): 30. Nice review
+of Cassini mission results.
+Elliot, J. “The Warming Wisps of Triton.” Sky & Telescope (February 1999): 42. About Neptune’s intriguing
+moon.
+Hayes, A., “Secrets from Titan’s Seas.” Astronomy (October 2015): 24. Good review of what we now know and
+what puzzles us about the hydrocarbon lakes of Titan.
+Jewitt, D., et al. “The Strangest Satellites in the Solar System.” Scientific American (August 2006): 40. Small
+irregular moons in the outer solar system.
+Lakdawalla, E. “Ice Worlds of the Ringed Planet.” Sky & Telescope (June 2009): 27. On the Cassini mission
+exploration of Enceladus, Iapetus, and other moons.
+Mackenzie, D. “Is There Life under the Ice?” Astronomy (August 2001): 32. On future exploration of Europa.
+Robertson, D. “Where Goes the Rain?” Sky & Telescope (March 2013): 26. About the methane weather cycle on
+Titan and what Cassini experiments are telling us.
+Scharf, C. “A Universe of Dark Oceans.” Sky & Telescope (December 2014): 20. Subsurface oceans on Europa,
+Ganymede, Enceladus, and Titan.
+Showalter, M. “How to Catch a Moon (or Two) of Pluto.” Astronomy Beat (December 2012):
+http://www.astrosociety.org/wp-content/uploads/2013/02/ab2012-106.pdf. On the discovery of small
+moons around Pluto, written by the person who discovered two of them.
+Spencer, J. “Galileo’s Closest Look at Io.” Sky & Telescope (May 2001): 40.
+Talcott, R. “Cassini Flies through Enceladus’ Geysers.” Astronomy (March 2009): 32.
+Zimmerman, R. “Does Methane Flow on Titan?” Astronomy (February 2014): 22. Ideas about lakes, channels,
+and rain.
+Pluto
+Stern, A. “Pluto: Up Close and Personal.” Astronomy (July 2015): 22. Good summary of the history of
+understanding Pluto and our current knowledge on the eve of the New Horizons encounter.
+Stern, A. “The Pluto System Explored.” Astronomy (November 2015): 24. Fine review of what the team learned
+from the first few data downloads from New Horizons.
+Tombaugh, C. “How I Found Pluto” Astronomy Beat (May 2009): http://astrosociety.org/wp-content/uploads/
+2013/02/ab2009-23.pdf.
+Rings
+Beatty, J. “Saturn’s Amazing Rings.” Sky & Telescope (May 2013): 18. Good 7-page summary of what we know.
+Burns, J., et al. “Bejeweled Worlds.” Scientific American (February 2002): 64. On rings throughout the solar
+system.
+Elliot, J., et al. “Discovering the Rings of Uranus.” Sky & Telescope (June 1977): 412.
+Esposito, L. “The Changing Shape of Planetary Rings.” Astronomy (September 1987): 6.
+12 • For Further Exploration
+Sobel, D. “Secrets of the Rings.” Discover (April 1994): 86. Discusses the outer planet ring systems.
+Tiscareno, M. “Ringworld Revelations.” Sky & Telescope (February 2007): 32. Cassini results about the rings of
+Saturn.
+Websites
+Note: Many of the sites about planets and planetary missions listed for Other Worlds: An Introduction to the
+Solar System and The Giant Planets also include good information about the moons of the planets.
+Cassini Mission to Saturn: http://saturn.jpl.nasa.gov/ (http://saturn.jpl.nasa.gov/) and http://www.esa.int/
+SPECIALS/Cassini-Huygens/index.html (http://www.esa.int/SPECIALS/Cassini-Huygens/index.html) and
+http://ciclops.org (http://ciclops.org)
+Jupiter’s Moons, at JPL: http://solarsystem.nasa.gov/planets/jupiter/moons (http://solarsystem.nasa.gov/
+planets/jupiter/moons)
+Neptune’s Moons, at JPL: http://solarsystem.nasa.gov/planets/neptune/moons (http://solarsystem.nasa.gov/
+planets/neptune/moons)
+New Horizons Mission: http://pluto.jhuapl.edu. (http://pluto.jhuapl.edu) Provides information and images
+from the Pluto encounter, plus lots of background information.
+Pluto, at JPL: http://solarsystem.nasa.gov/planets/pluto (http://solarsystem.nasa.gov/planets/pluto)
+Saturn’s Moons, at JPL: http://solarsystem.nasa.gov/planets/saturn/moons (http://solarsystem.nasa.gov/
+planets/saturn/moons)
+Uranus’ Moons, at JPL: http://solarsystem.nasa.gov/planets/uranus/moons (http://solarsystem.nasa.gov/
+planets/uranus/moons)
+Apps
+Two apps you can buy for iPhones or iPads can show you the positions and features of the moons of Jupiter
+and Saturn for any selected date:
+•
+Jupiter Atlas: https://apps.apple.com/us/app/jupiter-atlas/id352033947 (https://apps.apple.com/us/app/
+jupiter-atlas/id352033947)
+•
+Saturn Atlas: https://apps.apple.com/us/app/saturn-atlas/id352038051 (https://apps.apple.com/us/app/
+saturn-atlas/id352038051)
+Videos
+Amazing Moons: https://www.youtube.com/watch?v=CQjZf2bW9XQ (https://www.youtube.com/
+watch?v=CQjZf2bW9XQ). 2016 NASA video on intriguing moons in our solar system (4:16).
+Briny Breath of Enceladus: http://www.jpl.nasa.gov/video/details.php?id=846 (http://www.jpl.nasa.gov/video/
+details.php?id=846). Brief 2009 JPL film on the geysers of Enceladus (2:36).
+Dr. Carolyn Porco’s TED Talk on Enceladus: https://www.youtube.com/watch?v=TRQdHrGuVgI
+(https://www.youtube.com/watch?v=TRQdHrGuVgI) (3:26).
+Titan: http://www.youtube.com/watch?v=iTrOFefYxFg (http://www.youtube.com/watch?v=iTrOFefYxFg). Video
+from Open University, with interviews, animations, and images (8:11).
+Europa Mission: http://www.jpl.nasa.gov/events/lectures_archive.php?year=2016&month=2
+(http://www.jpl.nasa.gov/events/lectures_archive.php?year=2016&month=2). 2016 talk by two JPL scientists on
+NASA’s plans for a mission to Jupiter’s moon, which may have an underground liquid ocean (1:26:22).
+Great Planet Debate: http://gpd.jhuapl.edu/debate/debateStream.php (http://gpd.jhuapl.edu/debate/
+12 • For Further Exploration
+debateStream.php). Neil deGrasse Tyson debates Mark Sykes about how to characterize Pluto, in 2008
+(1:14:11).
+How I Killed Pluto and Why It Had It Coming: http://www.youtube.com/watch?v=7pbj_llmiMg
+(http://www.youtube.com/watch?v=7pbj_llmiMg). 2011 Silicon Valley Astronomy Lecture by Michael Brown on
+the “demotion” of Pluto to a dwarf planet (1:27:13).
+Seeking Pluto’s Frigid Heart: https://www.youtube.com/watch?v=jIxQXGTl_mo (https://www.youtube.com/
+watch?v=jIxQXGTl_mo). Dramatic 2016 New York Times production, narrated by Dennis Overbye (7:43).
+Saturn’s Restless Rings: https://www.youtube.com/watch?v=X5zcrEze8L4 (https://www.youtube.com/
+watch?v=X5zcrEze8L4). 2013 talk by Mark Showalter in the Silicon Valley Astronomy Lecture Series (1:30:59).
+Collaborative Group Activities
+A.
+Imagine it’s the distant future and humans can now travel easily among the planets. Your group is a travel
+agency, with the task of designing a really challenging tour of the Galilean moons for a group of sports
+enthusiasts. What kinds of activities are possible on each world? How would rock climbing on Ganymede,
+for example, differ from rock climbing on Earth? (If you design an activity for Io, you had better bring
+along very strong radiation shielding. Why?)
+B.
+In the same spirit as Activity A, have your agency design a tour that includes the seven most spectacular
+sights of any kind on all the moons or rings covered in this chapter. What are the not-to-be-missed
+destinations that future tourists will want to visit and why? Which of the sights you pick are going to be
+spectacular if you are on the moon’s surface or inside the ring, and which would look interesting only
+from far away in space?
+C.
+In this chapter we could cover only a few of the dozens of moons in the outer solar system. Using the
+Internet or your college library, organize your group into a research team and find out more about one of
+the moons we did not cover in detail. Our favorites include Uranus’ Miranda, with its jigsaw puzzle surface;
+Saturn’s Mimas, with a “knockout” crater called Herschel; and Saturn’s Iapetus, whose two hemispheres
+differ significantly. Prepare a report to attract tourists to the world you selected.
+D.
+In a novel entitled 2010, science fiction writer Arthur C. Clarke, inspired by the information coming back
+from the Voyager spacecraft, had fun proposing a life form under the ice of Europa that was evolving
+toward intelligence. Suppose future missions do indeed find some sort of life (not necessarily intelligent
+but definitely alive) under the ice of Europa—life that evolved completely independently from life on Earth.
+Have your group discuss what effect such a discovery would have on humanity’s view of itself. What
+should be our attitude toward such a life form? Do we have an obligation to guard it against
+contamination by our microbes and viruses? Or, to take an extreme position, should we wipe it out before
+it becomes competitive with Earth life or contaminates our explorers with microorganisms we are not
+prepared to deal with? Who should be in charge of making such decisions?
+E.
+In the same spirit as Activity D, your group may want to watch the 2013 science fiction film Europa Report.
+The producers tried to include good science in depicting what it would be like for astronauts to visit that
+jovian moon. How well does your group think they did?
+F.
+A number of modern science fiction writers (especially those with training in science) have written short
+stories that take place on the moons of Jupiter and Saturn. There is a topical listing of science fiction
+stories with good astronomy at http://bit.ly/astroscifi. Members of your group can look under “Jupiter” or
+“Saturn” and find a story that interests you and then report on it to the whole class.
+G.
+Work together to make a list of all the reasons it is hard to send a mission to Pluto. What compromises
+had to be made so that the New Horizons mission was affordable? How would you design a second
+mission to learn more about the Pluto system?
+12 • Collaborative Group Activities
+H.
+Your group has been asked by NASA to come up with one or more missions to learn about Europa. Review
+what we know about this moon so far and then design a robotic mission that would answer some of the
+questions we have. You can assume that budget is not a factor, but your instruments have to be realistic.
+(Bear in mind that Europa is cold and far from the Sun.)
+I.
+Imagine your group is the first landing party on Pluto (let’s hope you remembered to bring long
+underwear!). You land in a place where Charon is visible in the sky and you observe Charon for one Earth
+week. Describe what Charon will look like during that week. Now you move your camp to the opposite
+hemisphere of Pluto. What will Charon look like there during the course of a week?
+J.
+When, in 2006, the International Astronomical Union (IAU) decided that Pluto should be called a dwarf
+planet and not a planet, they set up three criteria that a world must meet to be called a planet. Your group
+should use the Internet to find these criteria. Which of them did Pluto not meet? Read a little bit about the
+reaction to the IAU’s decision among astronomers and the public. How do members of your group feel
+about Pluto’s new classification? (After you have discussed it within the group, you may want to watch The
+Great Planet Debate video recommended in “For Further Exploration.”)
+Exercises
+Review Questions
+1. What are the moons of the outer planets made of, and how is their composition different from that of our
+Moon?
+2. Compare the geology of Callisto, Ganymede, and Titan.
+3. What is the evidence for a liquid water ocean on Europa, and why is this interesting to scientists searching
+for extraterrestrial life?
+4. Explain the energy source that powers the volcanoes of Io.
+5. Compare the properties of Titan’s atmosphere with those of Earth’s atmosphere.
+6. How was Pluto discovered? Why did it take so long to find it?
+7. How are Triton and Pluto similar?
+8. Describe and compare the rings of Saturn and Uranus, including their possible origins.
+9. Why were the rings of Uranus not observed directly from telescopes on the ground on Earth? How were
+they discovered?
+10. List at least three major differences between Pluto and the terrestrial planets.
+11. The Hubble Space Telescope images of Pluto in 2002 showed a bright spot and some darker areas around
+it. Now that we have the close-up New Horizons images, what did the large bright region on Pluto turn out
+to be?
+12. Saturn’s E ring is broad and thin, and far from Saturn. It requires fresh particles to sustain itself. What is
+the source of new E-ring particles?
+Thought Questions
+13. Why do you think the outer planets have such extensive systems of rings and moons, while the inner
+planets do not?
+14. Ganymede and Callisto were the first icy objects to be studied from a geological point of view. Summarize
+the main differences between their geology and that of the rocky terrestrial planets.
+12 • Exercises
+15. Compare the properties of the volcanoes on Io with those of terrestrial volcanoes. Give at least two
+similarities and two differences.
+16. Would you expect to find more impact craters on Io or Callisto? Why?
+17. Why is it unlikely that humans will be traveling to Io? (Hint: Review the information about Jupiter’s
+magnetosphere in The Giant Planets.)
+18. Why do you suppose the rings of Saturn are made of bright particles, whereas the particles in the rings of
+Uranus and Neptune are black?
+19. Suppose you miraculously removed all of Saturn’s moons. What would happen to its rings?
+20. We have a lot of good images of the large moons of Jupiter and Saturn from the Galileo and Cassini
+spacecraft missions (check out NASA’s Planetary Photojournal site, at http://photojournal.jpl.nasa.gov, to
+see the variety). Now that the New Horizons mission has gone to Pluto, why don’t we have as many good
+images of all sides of Pluto and Charon?
+21. In the Star Wars movie Star Wars Episode VI: Return of the Jedi, a key battle takes place on the inhabited
+“forest moon” Endor, which supposedly orbits around a gas giant planet. From what you have learned
+about planets and moons of the solar system, why would this be an unusual situation?
+Figuring for Yourself
+22. Which would have the longer orbital period: a moon 1 million km from the center of Jupiter, or a moon 1
+million km from the center of Earth? Why?
+23. How close to Uranus would a spacecraft have to get to obtain the same resolution as in Example 12.1 with
+a camera that has an angular resolution of 2 arcsec?
+24. Saturn’s A, B, and C Rings extend 75,000 to 137,000 km from the center of the planet. Use Kepler’s third
+law to calculate the difference between how long a particle at the inner edge and a particle at the outer
+edge of the three-ring system would take to revolve about the planet.
+25. Use the information in Appendix G to calculate what you would weigh on Titan, Io, and Uranus’ moon
+Miranda.
+26. The average distance of Enceladus from Saturn is 238,000 km; the average distance of Titan from Saturn is
+1,222,000 km. How much longer does it take Titan to orbit Saturn compared to Enceladus?
+12 • Exercises

@@ -1,0 +1,370 @@
+Astronomical spectroscopy is the study of astronomy using the techniques of spectroscopy to measure the spectrum of electromagnetic radiation, including visible light, ultraviolet, X-ray, infrared and radio waves that radiate from stars and other celestial objects. A stellar spectrum can reveal many properties of stars, such as their chemical composition, temperature, density, mass, distance and luminosity. Spectroscopy can show the velocity of motion towards or away from the observer by measuring the Doppler shift. Spectroscopy is also used to study the physical properties of many other types of celestial objects such as planets, nebulae, galaxies, and active galactic nuclei.
+
+
+== Background ==
+ Astronomical spectroscopy is used to measure three major bands of radiation in the electromagnetic spectrum: visible light, radio waves, and X-rays. While all spectroscopy looks at specific bands of the spectrum, different methods are required to acquire the signal depending on the frequency. Ozone (O3) and molecular oxygen (O2) absorb light with wavelengths under 300 nm, meaning that X-ray and ultraviolet spectroscopy require the use of a satellite telescope or rocket mounted detectors. Radio signals have much longer wavelengths than optical signals, and require the use of antennas or radio dishes. Infrared light is absorbed by atmospheric water and carbon dioxide, so while the equipment is similar to that used in optical spectroscopy, satellites are required to record much of the infrared spectrum.
+
+
+=== Optical spectroscopy ===
+
+Physicists have been looking at the solar spectrum since Isaac Newton first used a simple prism to observe the refractive properties of light. In the early 1800s Joseph von Fraunhofer used his skills as a glassmaker to create very pure prisms, which allowed him to observe 574 dark lines in a seemingly continuous spectrum. Soon after this, he combined telescope and prism to observe the spectrum of Venus, the Moon, Mars, and various stars such as Betelgeuse; his company continued to manufacture and sell high-quality refracting telescopes based on his original designs until its closure in 1884.
+The resolution of a prism is limited by its size; a larger prism will provide a more detailed spectrum, but the increase in mass makes it unsuitable for highly detailed work. This issue was resolved in the early 1900s with the development of high-quality reflection gratings by J.S. Plaskett at the Dominion Observatory in Ottawa, Canada. Light striking a mirror will reflect at the same angle, however a small portion of the light will be refracted at a different angle; this is dependent upon the indices of refraction of the materials and the wavelength of the light. By creating a "blazed" grating which utilizes a large number of parallel mirrors, the small portion of light can be focused and visualized. These new spectroscopes were more detailed than a prism, required less light, and could be focused on a specific region of the spectrum by tilting the grating.
+The limitation to a blazed grating is the width of the mirrors, which can only be ground a finite amount before focus is lost; the maximum is around 1000 lines/mm. In order to overcome this limitation holographic gratings were developed. Volume phase holographic gratings use a thin film of dichromated gelatin on a glass surface, which is subsequently exposed to a wave pattern created by an interferometer. This wave pattern sets up a reflection pattern similar to the blazed gratings but utilizing Bragg diffraction, a process where the angle of reflection is dependent on the arrangement of the atoms in the gelatin. The holographic gratings can have up to 6000 lines/mm and can be up to twice as efficient in collecting light as blazed gratings. Because they are sealed between two sheets of glass, the holographic gratings are very versatile, potentially lasting decades before needing replacement.
+Light dispersed by the grating or prism in a spectrograph can be recorded by a detector. Historically, photographic plates were widely used to record spectra until electronic detectors were developed, and today optical spectrographs most often employ charge-coupled devices (CCDs). The wavelength scale of a spectrum can be calibrated by observing the spectrum of emission lines of known wavelength from a gas-discharge lamp. The flux scale of a spectrum can be calibrated as a function of wavelength by comparison with an observation of a standard star with corrections for atmospheric absorption of light; this is known as spectrophotometry.
+
+
+=== Radio spectroscopy ===
+Radio astronomy was founded with the work of Karl Jansky in the early 1930s, while working for Bell Labs. He built a radio antenna to look at potential sources of interference for transatlantic radio transmissions. One of the sources of noise discovered came not from Earth, but from the center of the Milky Way, in the constellation Sagittarius. In 1942, JS Hey captured the Sun's radio frequency using military radar receivers. Radio spectroscopy started with the discovery of the 21-centimeter H I line in 1951.
+
+
+==== Radio interferometry ====
+Radio interferometry was pioneered in 1946, when Joseph Lade Pawsey, Ruby Payne-Scott and Lindsay McCready used a single antenna atop a sea cliff to observe 200 MHz solar radiation. Two incident beams, one directly from the sun and the other reflected from the sea surface, generated the necessary interference. The first multi-receiver interferometer was built in the same year by Martin Ryle and Vonberg. In 1960, Ryle and Antony Hewish published the technique of aperture synthesis to analyze interferometer data. The aperture synthesis process, which involves autocorrelating and discrete Fourier transforming the incoming signal, recovers both the spatial and frequency variation in flux. The result is a 3D image whose third axis is frequency. For this work, Ryle and Hewish were jointly awarded the 1974 Nobel Prize in Physics.
+
+
+=== X-ray spectroscopy ===
+
+
+== Stars and their properties ==
+
+
+=== Chemical properties ===
+Newton used a prism to split white light into a spectrum of color, and Fraunhofer's high-quality prisms allowed scientists to see dark lines of an unknown origin. In the 1850s, Gustav Kirchhoff and Robert Bunsen described the phenomena behind these dark lines. Hot solid objects produce light with a continuous spectrum, hot gases emit light at specific wavelengths, and hot solid objects surrounded by cooler gases show a near-continuous spectrum with dark lines corresponding to the emission lines of the gases. By comparing the absorption lines of the Sun with emission spectra of known gases, the chemical composition of stars can be determined.
+The major Fraunhofer lines, and the elements with which they are associated, appear in the following table. Designations from the early Balmer Series are shown in parentheses.
+
+Not all of the elements in the Sun were immediately identified. Two examples are listed below:
+
+In 1868 Norman Lockyer and Pierre Janssen independently observed a line next to the sodium doublet (D1 and D2) which Lockyer determined to be a new element. He named it Helium, but it wasn't until 1895 the element was found on Earth.
+In 1869 the astronomers Charles Augustus Young and William Harkness independently observed a novel green emission line in the Sun's corona during an eclipse. This "new" element was incorrectly named coronium, as it was only found in the corona. It was not until the 1930s that Walter Grotrian and Bengt Edlén discovered that the spectral line at 530.3 nm was due to highly ionized iron (Fe13+). Other unusual lines in the coronal spectrum are also caused by highly charged ions, such as nickel and calcium, the high ionization being due to the extreme temperature of the solar corona.
+To date more than 20 000 absorption lines have been listed for the Sun between 293.5 and 877.0 nm, yet only approximately 75% of these lines have been linked to elemental absorption.
+By analyzing the equivalent width of each spectral line in an emission spectrum, both the elements present in a star and their relative abundances can be determined. Using this information stars can be categorized into stellar populations; Population I stars are the youngest stars and have the highest metal content (the Sun is a Pop I star), while Population III stars are the oldest stars with a very low metal content.
+
+
+=== Temperature and size ===
+
+In 1860 Gustav Kirchhoff proposed the idea of a black body, a material that emits electromagnetic radiation at all wavelengths. In 1894 Wilhelm Wien derived an expression relating the temperature (T) of a black body to its peak emission wavelength (λmax):
+
+  
+    
+      
+        
+          λ
+          
+            max
+          
+        
+        T
+        =
+        b
+      
+    
+    {\displaystyle \lambda _{\text{max}}T=b}
+  
+
+b is a constant of proportionality called Wien's displacement constant, equal to 2.897771955...×10−3 m⋅K. This equation is called Wien's Law. By measuring the peak wavelength of a star, the surface temperature can be determined. For example, if the peak wavelength of a star is 502 nm the corresponding temperature will be 5772 kelvins.
+The luminosity of a star is a measure of the electromagnetic energy output in a given amount of time. Luminosity (L) can be related to the temperature (T) of a star by:
+
+  
+    
+      
+        L
+        =
+        4
+        π
+        
+          R
+          
+            2
+          
+        
+        σ
+        
+          T
+          
+            4
+          
+        
+      
+    
+    {\displaystyle L=4\pi R^{2}\sigma T^{4}}
+  
+ ,
+where R is the radius of the star and σ is the Stefan–Boltzmann constant, with a value of 5.670374419...×10−8 W⋅m−2⋅K−4. Thus, when both luminosity and temperature are known (via direct measurement and calculation) the radius of a star can be determined.
+
+
+== Galaxies ==
+The spectra of galaxies look similar to stellar spectra, as they consist of the combined light of billions of stars.
+Doppler shift studies of galaxy clusters by Fritz Zwicky in 1937 found that the galaxies in a cluster were moving much faster than seemed to be possible from the mass of the cluster inferred from the visible light. Zwicky hypothesized that there must be a great deal of non-luminous matter in the galaxy clusters, which became known as dark matter. Since his discovery, astronomers have determined that a large portion of galaxies (and most of the universe) is made up of dark matter. In 2003, however, four galaxies (NGC 821, NGC 3379, NGC 4494, and NGC 4697) were found to have little to no dark matter influencing the motion of the stars contained within them; the reason behind the lack of dark matter is unknown.
+In the 1950s, strong radio sources were found to be associated with very dim, very red objects. When the first spectrum of one of these objects was taken there were absorption lines at wavelengths where none were expected. It was soon realised that what was observed was a normal galactic spectrum, but highly red shifted. These were named quasi-stellar radio sources, or quasars, by Hong-Yee Chiu in 1964. Quasars are now thought to be galaxies formed in the early years of our universe, with their extreme energy output powered by super-massive black holes.
+The properties of a galaxy can also be determined by analyzing the stars found within them. NGC 4550, a galaxy in the Virgo Cluster, has a large portion of its stars rotating in the opposite direction as the other portion. It is believed that the galaxy is the combination of two smaller galaxies that were rotating in opposite directions to each other. Bright stars in galaxies can also help determine the distance to a galaxy, which may be a more accurate method than parallax or standard candles.
+
+
+== Interstellar medium ==
+
+The interstellar medium is matter that occupies the space between star systems in a galaxy. 99% of this matter is gaseous – hydrogen, helium, and smaller quantities of other ionized elements such as oxygen. The other 1% is dust particles, thought to be mainly graphite, silicates, and ices. Clouds of the dust and gas are referred to as nebulae.
+There are three main types of nebula: absorption, reflection, and emission nebulae. Absorption (or dark) nebulae are made of dust and gas in such quantities that they obscure the starlight behind them, making photometry difficult. Reflection nebulae, as their name suggest, reflect the light of nearby stars. Their spectra are the same as the stars surrounding them, though the light is bluer; shorter wavelengths scatter better than longer wavelengths. Emission nebulae emit light at specific wavelengths depending on their chemical composition.
+
+
+=== Gaseous emission nebulae ===
+In the early years of astronomical spectroscopy, scientists were puzzled by the spectrum of gaseous nebulae. In 1864 William Huggins noticed that many nebulae showed only emission lines rather than a full spectrum like stars. From the work of Kirchhoff, he concluded that nebulae must contain "enormous masses of luminous gas or vapour." However, there were several emission lines that could not be linked to any terrestrial element, brightest among them lines at 495.9 nm and 500.7 nm. These lines were attributed to a new element, nebulium, until Ira Bowen determined in 1927 that the emission lines were from highly ionised oxygen (O+2). These emission lines could not be replicated in a laboratory because they are forbidden lines; the low density of a nebula (one atom per cubic centimetre) allows for metastable ions to decay via forbidden line emission rather than collisions with other atoms.
+Not all emission nebulae are found around or near stars where solar heating causes ionisation. The majority of gaseous emission nebulae are formed of neutral hydrogen. In the ground state neutral hydrogen has two possible spin states: the electron has either the same spin or the opposite spin of the proton. When the atom transitions between these two states, it releases an emission or absorption line of 21 cm. This line is within the radio range and allows for very precise measurements:
+
+Velocity of the cloud can be measured via Doppler shift
+The intensity of the 21 cm line gives the density and number of atoms in the cloud
+The temperature of the cloud can be calculated
+Using this information, the shape of the Milky Way has been determined to be a spiral galaxy, though the exact number and position of the spiral arms is the subject of ongoing research.
+
+
+=== Complex molecules ===
+
+Dust and molecules in the interstellar medium not only obscures photometry, but also causes absorption lines in spectroscopy. Their spectral features are generated by transitions of component electrons between different energy levels, or by rotational or vibrational spectra. Detection usually occurs in radio, microwave, or infrared portions of the spectrum. The chemical reactions that form these molecules can happen in cold, diffuse clouds or in dense regions illuminated with ultraviolet light. Most known compounds in space are organic, ranging from small molecules e.g. acetylene C2H2 and acetone (CH3)2CO; to entire classes of large molecule e.g. fullerenes and polycyclic aromatic hydrocarbons; to solids, such as graphite or other sooty material.
+
+
+== Motion in the universe ==
+
+Stars and interstellar gas are bound by gravity to form galaxies, and groups of galaxies can be bound by gravity in galaxy clusters. With the exception of stars in the Milky Way and the galaxies in the Local Group, almost all galaxies are moving away from Earth due to the expansion of the universe.
+
+
+=== Doppler effect and redshift ===
+The motion of stellar objects can be determined by looking at their spectrum. Because of the Doppler effect, objects moving towards someone are blueshifted, and objects moving away are redshifted. The wavelength of redshifted light is longer, appearing redder than the source. Conversely, the wavelength of blueshifted light is shorter, appearing bluer than the source light:
+
+  
+    
+      
+        
+          
+            
+              λ
+              −
+              
+                λ
+                
+                  0
+                
+              
+            
+            
+              λ
+              
+                0
+              
+            
+          
+        
+        =
+        
+          
+            
+              v
+              
+                0
+              
+            
+            c
+          
+        
+      
+    
+    {\displaystyle {\frac {\lambda -\lambda _{0}}{\lambda _{0}}}={\frac {v_{0}}{c}}}
+  
+
+where 
+  
+    
+      
+        
+          λ
+          
+            0
+          
+        
+      
+    
+    {\displaystyle \lambda _{0}}
+  
+ is the emitted wavelength, 
+  
+    
+      
+        
+          v
+          
+            0
+          
+        
+      
+    
+    {\displaystyle v_{0}}
+  
+ is the velocity of the object, and 
+  
+    
+      
+        λ
+      
+    
+    {\displaystyle \lambda }
+  
+ is the observed wavelength. Note that v<0 corresponds to λ<λ0, a blueshifted wavelength. A redshifted absorption or emission line will appear more towards the red end of the spectrum than a stationary line. In 1913 Vesto Slipher determined the Andromeda Galaxy was blueshifted, meaning it was moving towards the Milky Way. He recorded the spectra of 20 other galaxies — all but four of which were redshifted — and was able to calculate their velocities relative to the Earth. Edwin Hubble would later use this information, as well as his own observations, to define Hubble's law: The further a galaxy is from the Earth, the faster it is moving away. Hubble's law can be generalised to:
+
+  
+    
+      
+        v
+        =
+        
+          H
+          
+            0
+          
+        
+        d
+      
+    
+    {\displaystyle v=H_{0}d}
+  
+
+where 
+  
+    
+      
+        v
+      
+    
+    {\displaystyle v}
+  
+ is the velocity (or Hubble Flow), 
+  
+    
+      
+        
+          H
+          
+            0
+          
+        
+      
+    
+    {\displaystyle H_{0}}
+  
+ is the Hubble Constant, and 
+  
+    
+      
+        d
+      
+    
+    {\displaystyle d}
+  
+ is the distance from Earth.
+Redshift (z) can be expressed by the following equations:
+
+In these equations, frequency is denoted by 
+  
+    
+      
+        f
+      
+    
+    {\displaystyle f}
+  
+ and wavelength by 
+  
+    
+      
+        λ
+      
+    
+    {\displaystyle \lambda }
+  
+. The larger the value of z, the more redshifted the light and the farther away the object is from the Earth. As of January 2013, the largest galaxy redshift of z~12 was found using the Hubble Ultra-Deep Field, corresponding to an age of over 13 billion years (the universe is approximately 13.82 billion years old).
+The Doppler effect and Hubble's law can be combined to form the equation 
+  
+    
+      
+        z
+        =
+        
+          
+            
+              v
+              
+                Hubble
+              
+            
+            c
+          
+        
+      
+    
+    {\displaystyle z={\frac {v_{\text{Hubble}}}{c}}}
+  
+,
+where c is the speed of light.
+
+
+=== Peculiar motion ===
+Objects that are gravitationally bound will rotate around a common center of mass. For stellar bodies, this motion is known as peculiar velocity and can alter the Hubble Flow. Thus, an extra term for the peculiar motion needs to be added to Hubble's law:
+
+  
+    
+      
+        
+          v
+          
+            total
+          
+        
+        =
+        
+          H
+          
+            0
+          
+        
+        d
+        +
+        
+          v
+          
+            
+              p
+              e
+              c
+            
+          
+        
+      
+    
+    {\displaystyle v_{\text{total}}=H_{0}d+v_{\mathrm {pec} }}
+  
+
+This motion can cause confusion when looking at a solar or galactic spectrum, because the expected redshift based on the simple Hubble law will be obscured by the peculiar motion. For example, the shape and size of the Virgo Cluster has been a matter of great scientific scrutiny due to the very large peculiar velocities of the galaxies in the cluster.
+
+
+=== Binary stars ===
+
+Just as planets can be gravitationally bound to stars, pairs of stars can orbit each other. Some binary stars are visual binaries, meaning they can be observed orbiting each other through a telescope. Some binary stars, however, are too close together to be resolved. These two stars, when viewed through a spectrometer, will show a composite spectrum: the spectrum of each star will be added together. This composite spectrum becomes easier to detect when the stars are of similar luminosity and of different spectral class.
+Spectroscopic binaries can be also detected due to their radial velocity; as they orbit around each other one star may be moving towards the Earth whilst the other moves away, causing a Doppler shift in the composite spectrum. The orbital plane of the system determines the magnitude of the observed shift: if the observer is looking perpendicular to the orbital plane there will be no observed radial velocity. For example, a person looking at a carousel from the side will see the animals moving toward and away from them, whereas if they look from directly above they will only be moving in the horizontal plane.
+
+
+== Planets, asteroids, and comets ==
+Planets, asteroids, and comets all reflect light from their parent stars and emit their own light. For cooler objects, including Solar System planets and asteroids, most of the emission is at infrared wavelengths we cannot see, but that are routinely measured with spectrometers. For objects surrounded by gas, such as comets and planets with atmospheres, further emission and absorption happens at specific wavelengths in the gas, imprinting the spectrum of the gas on that of the solid object. In the case of worlds with thick atmospheres or complete cloud or haze cover (such as the four giant planets, Venus, and Saturn's satellite Titan), the spectrum is mostly or completely due to the atmosphere alone.
+
+
+=== Planets ===
+The reflected light of a planet contains absorption bands due to minerals in the rocks present for rocky bodies, or due to the elements and molecules present in the atmosphere. To date over 3,500 exoplanets have been discovered. These include so-called Hot Jupiters, as well as Earth-like planets. Using spectroscopy, compounds such as alkali metals, water vapor, carbon monoxide, carbon dioxide, and methane have all been discovered.
+
+
+=== Asteroids ===
+Asteroids can be classified into three major types according to their spectra. The original categories were created by Clark R. Chapman, David Morrison, and Ben Zellner in 1975, and further expanded by David J. Tholen in 1984. In what is now known as the Tholen classification, the C-types are made of carbonaceous material, S-types consist mainly of silicates, and X-types are 'metallic'. There are other classifications for unusual asteroids. C- and S-type asteroids are the most common asteroids. In 2002 the Tholen classification was further "evolved" into the SMASS classification, expanding the number of categories from 14 to 26 to account for more precise spectroscopic analysis of the asteroids.
+
+
+=== Comets ===
+
+The spectra of comets consist of a reflected solar spectrum from the dusty clouds surrounding the comet, as well as emission lines from gaseous atoms and molecules excited to fluorescence by sunlight and/or chemical reactions. For example, the chemical composition of Comet ISON was determined by spectroscopy due to the prominent emission lines of cyanogen (CN), as well as two- and three-carbon atoms (C2 and C3). Nearby comets can even be seen in X-ray as solar wind ions flying to the coma are neutralized. The cometary X-ray spectra therefore reflect the state of the solar wind rather than that of the comet.
+
+
+== See also ==
+
+
+== References ==

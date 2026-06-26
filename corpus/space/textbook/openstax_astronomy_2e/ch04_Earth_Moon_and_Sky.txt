@@ -1,0 +1,1264 @@
+Figure 4.1 Southern Summer. As captured with a fish-eye lens aboard the Atlantis Space Shuttle on December 9, 1993, Earth
+hangs above the Hubble Space Telescope as it is repaired. The reddish continent is Australia, its size and shape distorted by the
+special lens. Because the seasons in the Southern Hemisphere are opposite those in the Northern Hemisphere, it is summer in
+Australia on this December day. (credit: modification of work by NASA)
+Chapter Outline
+4.1 Earth and Sky
+4.2 The Seasons
+4.3 Keeping Time
+4.4 The Calendar
+4.5 Phases and Motions of the Moon
+4.6 Ocean Tides and the Moon
+4.7 Eclipses of the Sun and Moon
+Thinking Ahead
+If Earth’s orbit is nearly a perfect circle (as we saw in earlier chapters), why is it hotter in summer and colder in
+winter in many places around the globe? And why are the seasons in Australia or Peru the opposite of those in
+the United States or Europe?
+The story is told that Galileo, as he left the Hall of the Inquisition following his retraction of the doctrine that
+Earth rotates and revolves about the Sun, said under his breath, “But nevertheless it moves.” Historians are
+not sure whether the story is true, but certainly Galileo knew that Earth was in motion, whatever church
+authorities said.
+It is the motions of Earth that produce the seasons and give us our measures of time and date. The Moon’s
+motions around us provide the concept of the month and the cycle of lunar phases. In this chapter we
+examine some of the basic phenomena of our everyday world in their astronomical context.
+Earth, Moon, and Sky
+4 • Thinking Ahead
+4.1
+Earth and Sky
+Learning Objectives
+By the end of this section, you will be able to:
+Describe how latitude and longitude are used to map Earth
+Explain how right ascension and declination are used to map the sky
+In order to create an accurate map, a mapmaker needs a way to uniquely and simply identify the location of all
+the major features on the map, such as cities or natural landmarks. Similarly, astronomical mapmakers need a
+way to uniquely and simply identify the location of stars, galaxies, and other celestial objects. On Earth maps,
+we divide the surface of Earth into a grid, and each location on that grid can easily be found using its latitude
+and longitude coordinate. Astronomers have a similar system for objects on the sky. Learning about these can
+help us understand the apparent motion of objects in the sky from various places on Earth.
+Locating Places on Earth
+Let’s begin by fixing our position on the surface of planet Earth. As we discussed in Observing the Sky: The
+Birth of Astronomy, Earth’s axis of rotation defines the locations of its North and South Poles and of its
+equator, halfway between. Two other directions are also defined by Earth’s motions: east is the direction
+toward which Earth rotates, and west is its opposite. At almost any point on Earth, the four directions—north,
+south, east, and west—are well defined, despite the fact that our planet is round rather than flat. The only
+exceptions are exactly at the North and South Poles, where the directions east and west are ambiguous
+(because points exactly at the poles do not turn).
+We can use these ideas to define a system of coordinates attached to our planet. Such a system, like the layout
+of streets and avenues in Manhattan or Salt Lake City, helps us find where we are or want to go. Coordinates
+on a sphere, however, are a little more complicated than those on a flat surface. We must define circles on the
+sphere that play the same role as the rectangular grid that you see on city maps.
+A great circle is any circle on the surface of a sphere whose center is at the center of the sphere. For example,
+Earth’s equator is a great circle on Earth’s surface, halfway between the North and South Poles. We can also
+imagine a series of great circles that pass through both the North and South Poles. Each of the circles is called
+a meridian; they are each perpendicular to the equator, crossing it at right angles.
+Any point on the surface of Earth will have a meridian passing through it (Figure 4.2). The meridian specifies
+the east-west location, or longitude, of the place. By international agreement (and it took many meetings for
+the world’s countries to agree), longitude is defined as the number of degrees of arc along the equator
+between your meridian and the one passing through Greenwich, England, which has been designated as the
+Prime Meridian. The longitude of the Prime Meridian is defined as 0°.
+4 • Earth, Moon, and Sky
+Figure 4.2 Latitude and Longitude of Washington, DC. We use latitude and longitude to find cities like Washington, DC, on a globe.
+Latitude is the number of degrees north or south of the equator, and longitude is the number of degrees east or west of the Prime
+Meridian. Washington, DC’s coordinates are 38° N and 77° W.
+Why Greenwich, you might ask? Every country wanted 0° longitude to pass through its own capital. Greenwich,
+the site of the old Royal Observatory (Figure 4.3), was selected because it was between continental Europe and
+the United States, and because it was the site for much of the development of the method to measure
+longitude at sea. Longitudes are measured either to the east or to the west of the Greenwich meridian from 0°
+to 180°. As an example, the longitude of the clock-house benchmark of the U.S. Naval Observatory in
+Washington, DC, is 77.066° W.
+Figure 4.3 Royal Observatory in Greenwich, England. At the internationally agreed-upon zero point of longitude at the Royal
+Observatory Greenwich, tourists can stand and straddle the exact line where longitude “begins.”(credit left: modification of work by
+“pdbreen”/Flickr; credit right: modification of work by Ben Sutherland)
+Your latitude (or north-south location) is the number of degrees of arc you are away from the equator along
+your meridian. Latitudes are measured either north or south of the equator from 0° to 90°. (The latitude of the
+equator is 0°.) As an example, the latitude of the previously mentioned Naval Observatory benchmark is
+38.921° N. The latitude of the South Pole is 90° S, and the latitude of the North Pole is 90° N.
+Locating Places in the Sky
+Positions in the sky are measured in a way that is very similar to the way we measure positions on the surface
+of Earth. Instead of latitude and longitude, however, astronomers use coordinates called declination and
+right ascension. To denote positions of objects in the sky, it is often convenient to make use of the fictitious
+celestial sphere. We saw in Observing the Sky: The Birth of Astronomy that the sky appears to rotate about
+4.1 • Earth and Sky
+points above the North and South Poles of Earth—points in the sky called the north celestial pole and the
+south celestial pole. Halfway between the celestial poles, and thus 90° from each pole, is the celestial equator,
+a great circle on the celestial sphere that is in the same plane as Earth’s equator. We can use these markers in
+the sky to set up a system of celestial coordinates.
+Declination on the celestial sphere is measured the same way that latitude is measured on the sphere of Earth:
+from the celestial equator toward the north (positive) or south (negative). So Polaris, the star near the north
+celestial pole, has a declination of almost +90°.
+Right ascension (RA) is like longitude, except that instead of Greenwich, the arbitrarily chosen point where we
+start counting is the vernal equinox, a point in the sky where the ecliptic (the Sun’s path) crosses the celestial
+equator. RA can be expressed either in units of angle (degrees) or in units of time. This is because the celestial
+sphere appears to turn around Earth once a day as our planet turns on its axis. Thus the 360° of RA that it
+takes to go once around the celestial sphere can just as well be set equal to 24 hours. Then each 15° of arc is
+equal to 1 hour of time. For example, the approximate celestial coordinates of the bright star Capella are RA 5h
+= 75° and declination +50°.
+One way to visualize these circles in the sky is to imagine Earth as a transparent sphere with the terrestrial
+coordinates (latitude and longitude) painted on it with dark paint. Imagine the celestial sphere around us as a
+giant ball, painted white on the inside. Then imagine yourself at the center of Earth, with a bright light bulb in
+the middle, looking out through its transparent surface to the sky. The terrestrial poles, equator, and
+meridians will be projected as dark shadows on the celestial sphere, giving us the system of coordinates in the
+sky.
+The Turning Earth
+Why do many stars rise and set each night? Why, in other words, does the night sky seem to turn? We have
+seen that the apparent rotation of the celestial sphere could be accounted for either by a daily rotation of the
+sky around a stationary Earth or by the rotation of Earth itself. Since the seventeenth century, it has been
+generally accepted that it is Earth that turns, but not until the nineteenth century did the French physicist Jean
+Foucault provide an unambiguous demonstration of this rotation. In 1851, he suspended a 60-meter
+pendulum with a mass of about 25 kilograms from the dome of the Pantheon in Paris and started the
+pendulum swinging evenly. If Earth had not been turning, there would have been no alteration of the
+pendulum’s plane of oscillation, and so it would have continued tracing the same path. Yet after a few minutes
+Foucault could see that the pendulum’s plane of motion was turning. Foucault explained that it was not the
+pendulum that was shifting, but rather Earth that was turning beneath it (Figure 4.4). You can now find such
+pendulums in many science centers and planetariums around the world.
+4 • Earth, Moon, and Sky
+Figure 4.4 Foucault’s Pendulum. As Earth turns, the plane of oscillation of the Foucault pendulum shifts gradually so that over the
+course of 12 hours, all the targets in the circle at the edge of the wooden platform are knocked over in sequence. (credit: Manuel M.
+Vicente)
+Can you think of other pieces of evidence that indicate that it is Earth and not the sky that is turning? (See
+Collaborative Group Activity A at the end of this chapter.)
+4.2
+The Seasons
+Learning Objectives
+By the end of this section, you will be able to:
+Describe how the tilt of Earth’s axis causes the seasons
+Explain how seasonal differences on Earth vary with latitude
+One of the fundamental facts of life at Earth’s midlatitudes, where most of this book’s readers live, is that
+there are significant variations in the heat we receive from the Sun during the course of the year. We thus
+divide the year into seasons, each with its different amount of sunlight. The difference between seasons gets
+more pronounced the farther north or south from the equator we travel, and the seasons in the Southern
+Hemisphere are the opposite of what we find on the northern half of Earth. With these observed facts in mind,
+let us ask what causes the seasons.
+Many people have believed that the seasons were the result of the changing distance between Earth and the
+Sun. This sounds reasonable at first: it should be colder when Earth is farther from the Sun. But the facts don’t
+bear out this hypothesis. Although Earth’s orbit around the Sun is an ellipse, its distance from the Sun varies
+by only about 3%. That’s not enough to cause significant variations in the Sun’s heating. To make matters
+worse for people in North America who hold this hypothesis, Earth is actually closest to the Sun in January,
+when the Northern Hemisphere is in the middle of winter. And if distance were the governing factor, why
+would the two hemispheres have opposite seasons? As we shall show, the seasons are actually caused by the
+23.5° tilt of Earth’s axis.
+The Seasons and Sunshine
+Figure 4.5 shows Earth’s annual path around the Sun, with Earth’s axis tilted by 23.5°. Note that our axis
+continues to point the same direction in the sky throughout the year. As Earth travels around the Sun, in June
+the Northern Hemisphere “leans into” the Sun and is more directly illuminated. In December, the situation is
+reversed: the Southern Hemisphere leans into the Sun, and the Northern Hemisphere leans away. In
+4.2 • The Seasons
+September and March, Earth leans “sideways”—neither into the Sun nor away from it—so the two
+hemispheres are equally favored with sunshine.
+Figure 4.5 Seasons. We see Earth at different seasons as it circles the Sun. In June, the Northern Hemisphere “leans into” the Sun,
+and those in the North experience summer and have longer days. In December, during winter in the Northern Hemisphere, the
+Southern Hemisphere “leans into” the Sun and is illuminated more directly. In spring and autumn, the two hemispheres receive
+more equal shares of sunlight.1
+How does the Sun’s favoring one hemisphere translate into making it warmer for us down on the surface of
+Earth? There are two effects we need to consider. When we lean into the Sun, sunlight hits us at a more direct
+angle and is more effective at heating Earth’s surface (Figure 4.6). You can get a similar effect by shining a
+flashlight onto a wall. If you shine the flashlight straight on, you get an intense spot of light on the wall. But if
+you hold the flashlight at an angle (if the wall “leans out” of the beam), then the spot of light is more spread
+out. Like the straight-on light, the sunlight in June is more direct and intense in the Northern Hemisphere, and
+hence more effective at heating.
+Figure 4.6 The Sun’s Rays in Summer and Winter. (a) In summer, the Sun appears high in the sky and its rays hit Earth more
+directly, spreading out less. (b) In winter, the Sun is low in the sky and its rays spread out over a much wider area, becoming less
+effective at heating the ground.
+The second effect has to do with the length of time the Sun spends above the horizon (Figure 4.7). Even if
+you’ve never thought about astronomy before, we’re sure you have observed that the hours of daylight
+increase in summer and decrease in winter. Let’s see why this happens.
+Note that the dates indicated for the solstices and equinoxes are approximate; depending on the year, they may occur a day or
+two earlier or later.
+4 • Earth, Moon, and Sky
+Figure 4.7 The Sun’s Path in the Sky for Different Seasons. On June 21, the Sun rises north of east and sets north of west. For
+observers in the Northern Hemisphere of Earth, the Sun spends about 15 hours above the horizon in the United States, meaning
+more hours of daylight. On December 21, the Sun rises south of east and sets south of west. It spends 9 hours above the horizon in
+the United States, which means fewer hours of daylight and more hours of night in northern lands (and a strong need for people to
+hold celebrations to cheer themselves up). On March 21 and September 21, the Sun spends equal amounts of time above and below
+the horizon in both hemispheres.
+As we saw in Observing the Sky: The Birth of Astronomy, an equivalent way to look at our path around the Sun
+each year is to pretend that the Sun moves around Earth (on a circle called the ecliptic). Because Earth’s axis is
+tilted, the ecliptic is tilted by about 23.5° relative to the celestial equator (review Figure 2.7). As a result, where
+we see the Sun in the sky changes as the year wears on.
+In June, the Sun is north of the celestial equator and spends more time with those who live in the Northern
+Hemisphere. It rises high in the sky and is above the horizon in the United States for as long as 15 hours. Thus,
+the Sun not only heats us with more direct rays, but it also has more time to do it each day. (Notice in Figure
+4.7 that the Northern Hemisphere’s gain is the Southern Hemisphere’s loss. There the June Sun is low in the
+sky, meaning fewer daylight hours. In Chile, for example, June is a colder, darker time of year.) In December,
+when the Sun is south of the celestial equator, the situation is reversed.
+The Motions of the Sun Simulator (https://openstax.org/l/30motionsunsim) from Columbia University's
+Center for Teaching and Learning provides a demonstration of the Sun's apparent motion in the sky as the
+Earth rotates each day, and its changing altitude with latitude and time of year.
+Let’s look at what the Sun’s illumination on Earth looks like at some specific dates of the year, when these
+effects are at their maximum. On or about June 21 (the date we who live in the Northern Hemisphere call the
+summer solstice or sometimes the first day of summer), the Sun shines down most directly upon the Northern
+Hemisphere of Earth. It appears about 23° north of the equator, and thus, on that date, it passes through the
+zenith of places on Earth that are at 23° N latitude. The situation is shown in detail in Figure 4.8. To a person at
+23° N (near Hawaii, for example), the Sun is directly overhead at noon. This latitude, where the Sun can appear
+at the zenith at noon on the first day of summer, is called the Tropic of Cancer.
+We also see in Figure 4.8 that the Sun’s rays shine down all around the North Pole at the solstice. As Earth
+turns on its axis, the North Pole is continuously illuminated by the Sun; all places within 23° of the pole have
+sunshine for 24 hours. The Sun is as far north on this date as it can get; thus, 90° – 23° (or 67° N) is the
+LINK TO LEARNING
+4.2 • The Seasons
+southernmost latitude where the Sun can be seen for a full 24-hour period (sometimes called the “land of the
+midnight Sun”). That circle of latitude is called the Arctic Circle.
+Figure 4.8 Earth on June 21. This is the date of the summer solstice in the Northern Hemisphere. Note that as Earth turns on its axis
+(the line connecting the North and South Poles), the North Pole is in constant sunlight while the South Pole is veiled in 24 hours of
+darkness. The Sun is at the zenith for observers on the Tropic of Cancer.
+Many early cultures scheduled special events around the summer solstice to celebrate the longest days and
+thank their gods for making the weather warm. This required people to keep track of the lengths of the days
+and the northward trek of the Sun in order to know the right day for the “party.” (You can do the same thing
+by watching for several weeks, from the same observation point, where the Sun rises or sets relative to a fixed
+landmark. In spring, the Sun will rise farther and farther north of east, and set farther and farther north of
+west, reaching the maximum around the summer solstice.)
+Now look at the South Pole in Figure 4.8. On June 21, all places within 23° of the South Pole—that is, south of
+what we call the Antarctic Circle—do not see the Sun at all for 24 hours.
+The situation is reversed 6 months later, about December 21 (the date of the winter solstice, or the first day of
+winter in the Northern Hemisphere), as shown in Figure 4.9. Now it is the Arctic Circle that has the 24-hour
+night and the Antarctic Circle that has the midnight Sun. At latitude 23° S, called the Tropic of Capricorn, the
+Sun passes through the zenith at noon. Days are longer in the Southern Hemisphere and shorter in the north.
+In the United States and Southern Europe, there may be only 9 or 10 hours of sunshine during the day. It is
+winter in the Northern Hemisphere and summer in the Southern Hemisphere.
+Figure 4.9 Earth on December 21. This is the date of the winter solstice in the Northern Hemisphere. Now the North Pole is in
+darkness for 24 hours and the South Pole is illuminated. The Sun is at the zenith for observers on the Tropic of Capricorn and thus is
+low in the sky for the residents of the Northern Hemisphere.
+4 • Earth, Moon, and Sky
+E X A M P L E 4 . 1
+Seasonal Variations
+As you can see in Figure 4.8, the Tropic of Cancer is the latitude for which the Sun is directly overhead on
+the summer solstice. At this time, the Sun is at a declination of 23° N of the celestial equator, and the
+corresponding latitude on Earth is 23° N of the equator. If Earth were tilted a bit less, then the Tropic of
+Cancer would be at a lower latitude, closer to the equator.
+The Arctic Circle marks the southernmost latitude for which the day length is 24 hours on the day of the
+summer solstice. This is located at 90° – 23° = 67° N of Earth’s equator. If Earth were tilted a bit less, then
+the Arctic Circle would move farther North. In the limit at which Earth is not tilted at all (its axis is
+perpendicular to the ecliptic), the Tropic of Cancer would be right on Earth’s equator, and the Arctic Circle
+would simply be the North Pole. Suppose the tilt of Earth’s axis were tilted only 5°. What would be the effect
+on the seasons and the locations of the Tropic of Cancer and Arctic Circle?
+Solution
+If Earth were tilted less, the seasons would be less extreme. The variation in day length and direct sunlight
+would be very small over the course of a year, and the Sun’s daily path in the sky would not vary much. If
+Earth were tilted by 5°, the Sun’s position on the day of the summer solstice would be 5° N of the celestial
+equator, so the Tropic of Cancer would be at the corresponding latitude on Earth of 5° N of the Equator. The
+Arctic Circle would be located at 90° – 5° = 85° N of the equator.
+Check Your Learning
+Suppose the tilt of Earth’s axis were 16°. What, then, would be the difference in latitude between the Arctic
+Circle and the Tropic of Cancer? What would be the effect on the seasons compared with that produced by
+the actual tilt of 23°?
+Answer:
+The Tropic of Cancer is at a latitude equal to Earth’s tilt, so in this case, it would be at 16° N latitude. The
+Arctic Circle is at a latitude equal to 90° minus Earth’s tilt, or 90° – 16° = 74°. The difference between these
+two latitudes is 74° – 16° = 58°. Since the tilt of Earth is less, there would be less variation in the tilt of Earth
+and less variation in the Sun’s paths throughout the year, so there would be milder seasonal changes.
+The Columbia University’s Center for Teaching and Learning’s Motions of the Sun Simulator
+(https://openstax.org/l/30motionsunsim) allows you to see how the Sun’s changing altitude over the
+course of the year changes the intensity of lighting experienced on Earth. Select the “Step by day” option
+before running the animation to illustrate this effect.
+Many cultures that developed some distance north of the equator have a celebration around December 21 to
+help people deal with the depressing lack of sunlight and the often dangerously cold temperatures. Originally,
+this was often a time for huddling with family and friends, for sharing the reserves of food and drink, and for
+rituals asking the gods to return the light and heat and turn the cycle of the seasons around. Many cultures
+constructed elaborate devices for anticipating when the shortest day of the year was coming. Stonehenge in
+England, built long before the invention of writing, is probably one such device. In our own time, we continue
+the winter solstice tradition with various holiday celebrations around that December date.
+LINK TO LEARNING
+4.2 • The Seasons
+Halfway between the solstices, on about March 21 and September 21, the Sun is on the celestial equator. From
+Earth, it appears above our planet’s equator and favors neither hemisphere. Every place on Earth then
+receives roughly 12 hours of sunshine and 12 hours of night. The points where the Sun crosses the celestial
+equator are called the vernal (spring) and autumnal (fall) equinoxes.
+The Seasons at Different Latitudes
+The seasonal effects are different at different latitudes on Earth. Near the equator, for instance, all seasons are
+much the same. Every day of the year, the Sun is up half the time, so there are approximately 12 hours of
+sunshine and 12 hours of night. Local residents define the seasons by the amount of rain (wet season and dry
+season) rather than by the amount of sunlight. As we travel north or south, the seasons become more
+pronounced, until we reach extreme cases in the Arctic and Antarctic.
+At the North Pole, all celestial objects that are north of the celestial equator are always above the horizon and,
+as Earth turns, circle around parallel to it. The Sun is north of the celestial equator from about March 21 to
+September 21, so at the North Pole, the Sun rises when it reaches the vernal equinox and sets when it reaches
+the autumnal equinox. Each year there are 6 months of sunshine at each pole, followed by 6 months of
+darkness.
+E X A M P L E 4 . 2
+The Position of the Sun in the Sky
+The Sun’s coordinates on the celestial sphere range from a declination of 23° N of the celestial equator (or
++23°) to a declination 23° S of the celestial equator (or –23°). So, the Sun’s altitude at noon, when it crosses
+the meridian, varies by a total of 46°. What is the altitude of the Sun at noon on March 21, as seen from a
+place on Earth’s equator? What is its altitude on June 21, as seen from a place on Earth’s equator?
+Solution
+On Earth’s equator, the celestial equator passes through the zenith. On March 21, the Sun is crossing the
+celestial equator, so it should be found at the zenith (90°) at noon. On June 21, the Sun is 23° N of the
+celestial equator, so it will be 23° away from the zenith at noon. The altitude above the horizon will be 23°
+less than the altitude of the zenith (90°), so it is 90° – 23° = 67° above the horizon.
+Check Your Learning
+What is the altitude of the Sun at noon on December 21, as seen from a place on the Tropic of Cancer?
+Answer:
+On the day of the winter solstice, the Sun is located about 23° S of the celestial equator. From the Tropic of
+Cancer, a latitude of 23° N, the zenith would be a declination of 23° N. The difference in declination between
+zenith and the position of the Sun is 46°, so the Sun would be 46° away from the zenith. That means it
+would be at an altitude of 90° – 46° = 44°.
+Clarifications about the Real World
+In our discussions so far, we have been describing the rising and setting of the Sun and stars as they would
+appear if Earth had little or no atmosphere. In reality, however, the atmosphere has the curious effect of
+allowing us to see a little way “over the horizon.” This effect is a result of refraction, the bending of light
+passing through air or water, something we will discuss in Astronomical Instruments. Because of this
+atmospheric refraction (and the fact that the Sun is not a point of light but a disk), the Sun appears to rise
+earlier and to set later than it would if no atmosphere were present.
+In addition, the atmosphere scatters light and provides some twilight illumination even when the Sun is below
+4 • Earth, Moon, and Sky
+the horizon. Astronomers define morning twilight as beginning when the Sun is 18° below the horizon, and
+evening twilight extends until the Sun sinks more than 18° below the horizon.
+These atmospheric effects require small corrections in many of our statements about the seasons. At the
+equinoxes, for example, the Sun appears to be above the horizon for a few minutes longer than 12 hours, and
+below the horizon for fewer than 12 hours. These effects are most dramatic at Earth’s poles, where the Sun
+actually can be seen more than a week before it reaches the celestial equator.
+You probably know that the summer solstice (June 21) is not the warmest day of the year, even if it is the
+longest. The hottest months in the Northern Hemisphere are July and August. This is because our weather
+involves the air and water covering Earth’s surface, and these large reservoirs do not heat up instantaneously.
+You have probably observed this effect for yourself; for example, a pond does not get warm the moment the
+Sun rises but is warmest late in the afternoon, after it has had time to absorb the Sun’s heat. In the same way,
+Earth gets warmer after it has had a chance to absorb the extra sunlight that is the Sun’s summer gift to us.
+And the coldest times of winter are a month or more after the winter solstice.
+4.3
+Keeping Time
+Learning Objectives
+By the end of this section, you will be able to:
+Explain the difference between the solar day and the sidereal day
+Explain mean solar time and the reason for time zones
+The measurement of time is based on the rotation of Earth. Throughout most of human history, time has been
+reckoned by positions of the Sun and stars in the sky. Only recently have mechanical and electronic clocks
+taken over this function in regulating our lives.
+The Length of the Day
+The most fundamental astronomical unit of time is the day, measured in terms of the rotation of Earth. There
+is, however, more than one way to define the day. Usually, we think of it as the rotation period of Earth with
+respect to the Sun, called the solar day. After all, for most people sunrise is more important than the rising
+time of Arcturus or some other star, so we set our clocks to some version of Sun-time. However, astronomers
+also use a sidereal day, which is defined in terms of the rotation period of Earth with respect to the stars.
+A solar day is slightly longer than a sidereal day because (as you can see from Figure 4.10) Earth not only turns
+but also moves along its path around the Sun in a day. Suppose we start when Earth’s orbital position is at day
+1, with both the Sun and some distant star (located in the direction indicated by the long white arrow pointing
+left), directly in line with the zenith for the observer on Earth. When Earth has completed one rotation with
+respect to the distant star and is at day 2, the long arrow again points to the same distant star. However,
+notice that because of the movement of Earth along its orbit from day 1 to 2, the Sun has not yet reached a
+position above the observer. To complete a solar day, Earth must rotate an additional amount, equal to 1/365
+of a full turn. The time required for this extra rotation is 1/365 of a day, or about 4 minutes. So the solar day is
+about 4 minutes longer than the sidereal day.
+4.3 • Keeping Time
+Figure 4.10 Difference Between a Sidereal Day and a Solar Day. This is a top view, looking down as Earth orbits the Sun. Because
+Earth moves around the Sun (roughly 1° per day), after one complete rotation of Earth relative to the stars, we do not see the Sun in
+the same position.
+Because our ordinary clocks are set to solar time, stars rise 4 minutes earlier each day. Astronomers prefer
+sidereal time for planning their observations because in that system, a star rises at the same time every day.
+E X A M P L E 4 . 3
+Sidereal Time and Solar Time
+The Sun makes a complete circle in the sky approximately every 24 hours, while the stars make a complete
+circle in the sky in 4 minutes less time, or 23 hours and 56 minutes. This causes the positions of the stars at
+a given time of day or night to change slightly each day. Since stars rise 4 minutes earlier each day, that
+works out to about 2 hours per month (4 minutes × 30 = 120 minutes or 2 hours). So, if a particular
+constellation rises at sunset during the winter, you can be sure that by the summer, it will rise about 12
+hours earlier, with the sunrise, and it will not be so easily visible in the night sky. Let’s say that tonight the
+bright star Sirius rises at 7:00 p.m. from a given location so that by midnight, it is very high in the sky. At
+what time will Sirius rise in three months?
+Solution
+In three months’ time, Sirius will be rising earlier by:
+It will rise at about 1:00 p.m. and be high in the sky at around sunset instead of midnight. Sirius is the
+brightest star in the constellation of Canis Major (the big dog). So, some other constellation will be
+prominently visible high in the sky at this later date.
+Check Your Learning
+If a star rises at 8:30 p.m. tonight, approximately what time will it rise two months from now?
+Answer:
+In two months, the star will rise:
+This means it will rise at 4:30 p.m.
+Apparent Solar Time
+We can define apparent solar time as time reckoned by the actual position of the Sun in the sky (or, during
+the night, its position below the horizon). This is the kind of time indicated by sundials, and it probably
+represents the earliest measure of time used by ancient civilizations. Today, we adopt the middle of the night
+as the starting point of the day and measure time in hours elapsed since midnight.
+4 • Earth, Moon, and Sky
+During the first half of the day, the Sun has not yet reached the meridian (the great circle in the sky that
+passes through our zenith). We designate those hours as before midday (ante meridiem, or a.m.), before the
+Sun reaches the local meridian. We customarily start numbering the hours after noon over again and
+designate them by p.m. (post meridiem), after the Sun reaches the local meridian.
+Although apparent solar time seems simple, it is not really very convenient to use. The exact length of an
+apparent solar day varies slightly during the year. The eastward progress of the Sun in its annual journey
+around the sky is not uniform because the speed of Earth varies slightly in its elliptical orbit. Another
+complication is that Earth’s axis of rotation is not perpendicular to the plane of its revolution. Thus, apparent
+solar time does not advance at a uniform rate. After the invention of mechanical clocks that run at a uniform
+rate, it became necessary to abandon the apparent solar day as the fundamental unit of time.
+Mean Solar Time and Standard Time
+Instead, we can consider the mean solar time, which is based on the average value of the solar day over the
+course of the year. A mean solar day contains exactly 24 hours and is what we use in our everyday
+timekeeping. Although mean solar time has the advantage of progressing at a uniform rate, it is still
+inconvenient for practical use because it is determined by the position of the Sun. For example, noon occurs
+when the Sun is highest in the sky on the meridian (but not necessarily at the zenith). But because we live on a
+round Earth, the exact time of noon is different as you change your longitude by moving east or west.
+If mean solar time were strictly observed, people traveling east or west would have to reset their watches
+continually as the longitude changed, just to read the local mean time correctly. For instance, a commuter
+traveling from Oyster Bay on Long Island to New York City would have to adjust the time on the trip through
+the East River tunnel because Oyster Bay time is actually about 1.6 minutes more advanced than that of
+Manhattan. (Imagine an airplane trip in which an obnoxious flight attendant gets on the intercom every
+minute, saying, “Please reset your watch for local mean time.”)
+Until near the end of the nineteenth century, every city and town in the United States kept its own local mean
+time. With the development of railroads and the telegraph, however, the need for some kind of
+standardization became evident. In 1883, the United States was divided into four standard time zones (now six,
+including Hawaii and Alaska), each with one system of time within that zone.
+By 1900, most of the world was using the system of 24 standardized global time zones. Within each zone, all
+places keep the same standard time, with the local mean solar time of a standard line of longitude running
+more or less through the middle of each zone. Now travelers reset their watches only when the time change
+has amounted to a full hour. Pacific standard time is 3 hours earlier than eastern standard time, a fact that
+becomes painfully obvious in California when someone on the East Coast forgets and calls you at 5:00 a.m.
+Globally, almost all countries have adopted one or more standard time zones, although one of the largest
+nations, India, has settled on a half-zone, being 5.5 hours from Greenwich standard. Also, China officially uses
+only one time zone, so all the clocks in that country keep the same time. In Tibet, for example, the Sun rises
+while the clocks (which keep Beijing time) say it is midmorning already.
+Daylight saving time is simply the local standard time of the place plus 1 hour. It has been adopted for spring
+and summer use in most states in the United States, as well as in many countries, to prolong the sunlight into
+evening hours, on the apparent theory that it is easier to change the time by government action than it would
+be for individuals or businesses to adjust their own schedules to produce the same effect. It does not, of
+course, “save” any daylight at all—because the amount of sunlight is not determined by what we do with our
+clocks—and its observance is a point of legislative debate in some states.
+The International Date Line
+The fact that time is always advancing as you move toward the east presents a problem. Suppose you travel
+eastward around the world. You pass into a new time zone, on the average, about every 15° of longitude you
+4.3 • Keeping Time
+travel, and each time you dutifully set your watch ahead an hour. By the time you have completed your trip,
+you have set your watch ahead a full 24 hours and thus gained a day over those who stayed at home.
+The solution to this dilemma is the International Date Line, set by international agreement to run
+approximately along the 180° meridian of longitude. The date line runs down the middle of the Pacific Ocean,
+although it jogs a bit in a few places to avoid cutting through groups of islands and through Alaska (Figure
+4.11). By convention, at the date line, the date of the calendar is changed by one day. Crossing the date line
+from west to east, thus advancing your time, you compensate by decreasing the date; crossing from east to
+west, you increase the date by one day. To maintain our planet on a rational system of timekeeping, we simply
+must accept that the date will differ in different cities at the same time. A good example is the date when the
+Imperial Japanese Navy bombed Pearl Harbor in Hawaii, known in the United States as Sunday, December 7,
+1941, but taught to Japanese students as Monday, December 8.
+Figure 4.11 Where the Date Changes. The International Date Line is an arbitrarily drawn line on Earth where the date changes. So
+that neighbors do not have different days, the line is located where Earth’s surface is mostly water.
+4.4
+The Calendar
+Learning Objectives
+By the end of this section, you will be able to:
+Understand how calendars varied among different cultures
+Explain the origins of our modern calendar
+“What’s today’s date?” is one of the most common questions you can ask (usually when signing a document
+or worrying about whether you should have started studying for your next astronomy exam). Long before the
+era of digital watches, smartphones, and fitness bands that tell the date, people used calendars to help
+measure the passage of time.
+The Challenge of the Calendar
+There are two traditional functions of any calendar. First, it must keep track of time over the course of long
+spans, allowing people to anticipate the cycle of the seasons and to honor special religious or personal
+anniversaries. Second, to be useful to a large number of people, a calendar must use natural time intervals
+that everyone can agree on—those defined by the motions of Earth, the Moon, and sometimes even the
+planets. The natural units of our calendar are the day, based on the period of rotation of Earth; the month,
+based on the cycle of the Moon’s phases (see later in this chapter) about Earth; and the year, based on the
+period of revolution of Earth about the Sun. Difficulties have resulted from the fact that these three periods
+are not commensurable; that’s a fancy way of saying that one does not divide evenly into any of the others.
+The rotation period of Earth is, by definition, 1.0000 day (and here the solar day is used, since that is the basis
+4 • Earth, Moon, and Sky
+of human experience). The period required by the Moon to complete its cycle of phases, called the month, is
+29.5306 days. The basic period of revolution of Earth, called the tropical year, is 365.2422 days. The ratios of
+these numbers are not convenient for calculations. This is the historic challenge of the calendar, dealt with in
+various ways by different cultures.
+Early Calendars
+Even the earliest cultures were concerned with the keeping of time and the calendar. Some interesting
+examples include monuments left by Bronze Age people in northwestern Europe, especially the British Isles.
+The best preserved of the monuments is Stonehenge, about 13 kilometers from Salisbury in southwest
+England (Figure 4.12). It is a complex array of stones, ditches, and holes arranged in concentric circles. Carbon
+dating and other studies show that Stonehenge was built during three periods ranging from about 2800 to
+1500 BCE. Some of the stones are aligned with the directions of the Sun and Moon during their risings and
+settings at critical times of the year (such as the summer and winter solstices), and it is generally believed that
+at least one function of the monument was connected with the keeping of a calendar.
+Figure 4.12 Stonehenge. The ancient monument known as Stonehenge was used to keep track of the motions of the Sun and Moon.
+(credit: modification of work by Adriano Aurelio Araujo)
+The Maya in Central America, who thrived more than a thousand years ago, were also concerned with the
+keeping of time. Their calendar was as sophisticated as, and perhaps more complex than, contemporary
+calendars in Europe. The Maya did not attempt to correlate their calendar accurately with the length of the
+year or lunar month. Rather, their calendar was a system for keeping track of the passage of days and for
+counting time far into the past or future. Among other purposes, it was useful for predicting astronomical
+events, such as the position of Venus in the sky (Figure 4.13).
+Figure 4.13 El Caracol. This Mayan observatory at Chichen Itza in the Yucatan, Mexico, dates from around the year 1000. (credit:
+“wiredtourist.com”/Flickr)
+4.4 • The Calendar
+The ancient Chinese developed an especially complex calendar, largely limited to a few privileged hereditary
+court astronomer-astrologers. In addition to the motions of Earth and the Moon, they were able to fit in the
+approximately 12-year cycle of Jupiter, which was central to their system of astrology. The Chinese still
+preserve some aspects of this system in their cycle of 12 “years”—the Year of the Dragon, the Year of the Pig,
+and so on—that are defined by the position of Jupiter in the zodiac.
+Our Western calendar derives from a long history of timekeeping beginning with the Sumerians, dating back
+to at least the second millennium BCE, and continuing with the Egyptians and the Greeks around the eighth
+century BCE. These calendars led, eventually, to the Julian calendar, introduced by Julius Caesar, which
+approximated the year at 365.25 days, fairly close to the actual value of 365.2422. The Romans achieved this
+approximation by declaring years to have 365 days each, with the exception of every fourth year. The leap year
+was to have one extra day, bringing its length to 366 days, and thus making the average length of the year in
+the Julian calendar 365.25 days.
+In this calendar, the Romans had dropped the almost impossible task of trying to base their calendar on the
+Moon as well as the Sun, although a vestige of older lunar systems can be seen in the fact that our months
+have an average length of about 30 days. However, lunar calendars remained in use in other cultures, and
+Islamic calendars, for example, are still primarily lunar rather than solar.
+The Gregorian Calendar
+Although the Julian calendar (which was adopted by the early Christian Church) represented a great advance,
+its average year still differed from the true year by about 11 minutes, an amount that accumulates over the
+centuries to an appreciable error. By 1582, that 11 minutes per year had added up to the point where the first
+day of spring was occurring on March 11, instead of March 21. If the trend were allowed to continue,
+eventually the Christian celebration of Easter would be occurring in early winter. Pope Gregory XIII, a
+contemporary of Galileo, felt it necessary to institute further calendar reform.
+The Gregorian calendar reform consisted of two steps. First, 10 days had to be dropped out of the calendar to
+bring the vernal equinox back to March 21; by proclamation, the day following October 4, 1582, became
+October 15. The second feature of the new Gregorian calendar was a change in the rule for leap year, making
+the average length of the year more closely approximate the tropical year. Gregory decreed that three of every
+four century years—all leap years under the Julian calendar—would be common years henceforth. The rule
+was that only century years divisible by 400 would be leap years. Thus, 1700, 1800, and 1900—all divisible by 4
+but not by 400—were not leap years in the Gregorian calendar. On the other hand, the years 1600 and 2000,
+both divisible by 400, were leap years. The average length of this Gregorian year, 365.2425 mean solar days, is
+correct to about 1 day in 3300 years.
+The Catholic countries immediately put the Gregorian reform into effect, but countries of the Eastern Church
+and most Protestant countries did not adopt it until much later. It was 1752 when England and the American
+colonies finally made the change. By parliamentary decree, September 2, 1752, was followed by September 14.
+Although special laws were passed to prevent such abuses as landlords collecting a full month’s rent for
+September, there were still riots, and people demanded their 12 days back. Russia did not abandon the Julian
+calendar until the time of the Bolshevik revolution. The Russians then had to omit 13 days to come into step
+with the rest of the world. The anniversary of the October Revolution (old calendar) of 1917, bringing the
+communists to power, thus ended up being celebrated in November (new calendar), a difference that is
+perhaps not so important since the fall of communism.
+4 • Earth, Moon, and Sky
+4.5
+Phases and Motions of the Moon
+Learning Objectives
+By the end of this section, you will be able to:
+Explain the cause of the lunar phases
+Understand how the Moon rotates and revolves around Earth
+After the Sun, the Moon is the brightest and most obvious object in the sky. Unlike the Sun, it does not shine
+under its own power, but merely glows with reflected sunlight. If you were to follow its progress in the sky for
+a month, you would observe a cycle of phases (different appearances), with the Moon starting dark and
+getting more and more illuminated by sunlight over the course of about two weeks. After the Moon’s disk
+becomes fully bright, it begins to fade, returning to dark about two weeks later.
+These changes fascinated and mystified many early cultures, which came up with marvelous stories and
+legends to explain the cycle of the Moon. Even in the modern world, many people don’t understand what
+causes the phases, thinking that they are somehow related to the shadow of Earth. Let us see how the phases
+can be explained by the motion of the Moon relative to the bright light source in the solar system, the Sun.
+Lunar Phases
+Although we know that the Sun moves 1/12 of its path around the sky each month, for purposes of explaining
+the phases, we can assume that the Sun’s light comes from roughly the same direction during the course of a
+four-week lunar cycle. The Moon, on the other hand, moves completely around Earth in that time. As we watch
+the Moon from our vantage point on Earth, how much of its face we see illuminated by sunlight depends on
+the angle the Sun makes with the Moon.
+Here is a simple experiment to show you what we mean: stand about 6 feet in front of a bright electric light in
+a completely dark room (or outdoors at night) and hold in your hand a small round object such as a tennis ball
+or an orange. Your head can then represent Earth, the light represents the Sun, and the ball the Moon. Move
+the ball around your head (making sure you don’t cause an eclipse by blocking the light with your head). You
+will see phases just like those of the Moon on the ball. (Another good way to get acquainted with the phases
+and motions of the Moon is to follow our satellite in the sky for a month or two, recording its shape, its
+direction from the Sun, and when it rises and sets.)
+Let’s examine the Moon’s cycle of phases using Figure 4.14, which depicts the Moon’s behavior for the entire
+month. The trick to this figure is that you must imagine yourself standing on Earth, facing the Moon in each of
+its phases. So, for the position labeled “New,” you are on the right side of Earth and it’s the middle of the day;
+for the position “Full,” you are on the left side of Earth in the middle of the night. Note that in every position
+on Figure 4.14, the Moon is half illuminated and half dark (as a ball in sunlight should be). The difference at
+each position has to do with what part of the Moon faces Earth.
+4.5 • Phases and Motions of the Moon
+Figure 4.14 Phases of the Moon. The appearance of the Moon changes over the course of a complete monthly cycle. The pictures of
+the Moon on the white circle show the perspective from space, with the Sun off to the right in a fixed position. The outer images
+show how the Moon appears to you in the sky from each point in the orbit. Imagine yourself standing on Earth, facing the Moon at
+each stage. In the position “New,” for example, you are facing the Moon from the right side of Earth in the middle of the day. (Note
+that the distance of the Moon from Earth is not to scale in this diagram: the Moon is roughly 30 Earth-diameters away from us.)
+(credit: modification of work by NASA)
+The Moon is said to be new when it is in the same general direction in the sky as the Sun (position A). Here, its
+illuminated (bright) side is turned away from us and its dark side is turned toward us. You might say that the
+Sun is shining on the “wrong ” side of the Moon from our perspective. In this phase the Moon is invisible to us;
+its dark, rocky surface does not give off any light of its own. Because the new moon is in the same part of the
+sky as the Sun, it rises at sunrise and sets at sunset.
+But the Moon does not remain in this phase long because it moves eastward each day in its monthly path
+around us. Since it takes about 30 days to orbit Earth and there are 360° in a circle, the Moon will move about
+12° in the sky each day (or about 24 times its own diameter). A day or two after the new phase, the thin
+crescent first appears, as we begin to see a small part of the Moon’s illuminated hemisphere. It has moved
+into a position where it now reflects a little sunlight toward us along one side. The bright crescent increases in
+size on successive days as the Moon moves farther and farther around the sky away from the direction of the
+Sun (position B). Because the Moon is moving eastward away from the Sun, it rises later and later each day
+(like a student during summer vacation).
+After about one week, the Moon is one-quarter of the way around its orbit (position C) and so we say it is at
+the first quarter phase. Half of the Moon’s illuminated side is visible to Earth observers. Because of its
+eastward motion, the Moon now lags about one-quarter of the day behind the Sun, rising around noon and
+setting around midnight.
+During the week after the first quarter phase, we see more and more of the Moon’s illuminated hemisphere
+(position D), a phase that is called waxing (or growing) gibbous (from the Latin gibbus, meaning hump).
+Eventually, the Moon arrives at position E in our figure, where it and the Sun are opposite each other in the
+sky. The side of the Moon turned toward the Sun is also turned toward Earth, and we have the full phase.
+When the Moon is full, it is opposite the Sun in the sky. The Moon does the opposite of what the Sun does,
+rising at sunset and setting at sunrise. Note what that means in practice: the completely illuminated (and thus
+very noticeable) Moon rises just as it gets dark, remains in the sky all night long, and sets as the Sun’s first rays
+are seen at dawn. Its illumination throughout the night helps lovers on a romantic stroll and students finding
+their way back to their dorms after a long night in the library or an off-campus party.
+4 • Earth, Moon, and Sky
+And when is the full moon highest in the sky and most noticeable? At midnight, a time made famous in
+generations of horror novels and films. (Note how the behavior of a vampire like Dracula parallels the behavior
+of the full Moon: Dracula rises at sunset, does his worst mischief at midnight, and must be back down in his
+coffin by sunrise. The old legends were a way of personifying the behavior of the Moon, which was a much
+more dramatic part of people’s lives in the days before electric lights and television.)
+Folklore has it that more crazy behavior is seen during the time of the full moon (the Moon even gives a name
+to crazy behavior—“lunacy”). But, in fact, statistical tests of this “hypothesis” involving thousands of records
+from hospital emergency rooms and police files do not reveal any correlation of human behavior with the
+phases of the Moon. For example, homicides occur at the same rate during the new moon or the crescent
+moon as during the full moon. Most investigators believe that the real story is not that more crazy behavior
+happens on nights with a full moon, but rather that we are more likely to notice or remember such behavior
+with the aid of a bright celestial light that is up all night long.
+During the two weeks following the full moon, the Moon goes through the same phases again in reverse order
+(points F, G, and H in Figure 4.14), returning to new phase after about 29.5 days. About a week after the full
+moon, for example, the Moon is at third quarter, meaning that it is three-quarters of the way around (not that
+it is three-quarters illuminated—in fact, half of the visible side of the Moon is again dark). At this phase, the
+Moon is now rising around midnight and setting around noon.
+Note that there is one thing quite misleading about Figure 4.14. If you look at the Moon in position E, although
+it is full in theory, it appears as if its illumination would in fact be blocked by a big fat Earth, and hence we
+would not see anything on the Moon except Earth’s shadow. In reality, the Moon is nowhere near as close to
+Earth (nor is its path so identical with the Sun’s in the sky) as this diagram (and the diagrams in most
+textbooks) might lead you to believe.
+The Moon is actually 30 Earth-diameters away from us; Science and the Universe: A Brief Tour contains a
+diagram that shows the two objects to scale. And, since the Moon’s orbit is tilted relative to the path of the Sun
+in the sky, Earth’s shadow misses the Moon most months. That’s why we regularly get treated to a full moon.
+The times when Earth’s shadow does fall on the Moon are called lunar eclipses and are discussed in Eclipses of
+the Sun and Moon.
+Astronomy and the Days of the Week
+The week seems independent of celestial motions, although its length may have been based on the time
+between quarter phases of the Moon. In Western culture, the seven days of the week are named after the
+seven “wanderers” that the ancients saw in the sky: the Sun, the Moon, and the five planets visible to the
+unaided eye (Mercury, Venus, Mars, Jupiter, and Saturn).
+In English, we can easily recognize the names Sun-day (Sunday), Moon-day (Monday), and Saturn-day
+(Saturday), but the other days are named after the Norse equivalents of the Roman gods that gave their
+names to the planets. In languages more directly related to Latin, the correspondences are clearer.
+Wednesday, Mercury’s day, for example, is mercoledi in Italian, mercredi in French, and miércoles in
+Spanish. Mars gives its name to Tuesday (martes in Spanish), Jupiter or Jove to Thursday (giovedi in Italian),
+and Venus to Friday (vendredi in French).
+There is no reason that the week has to have seven days rather than five or eight. It is interesting to
+speculate that if we had lived in a planetary system where more planets were visible without a telescope,
+the Beatles could have been right and we might well have had “Eight Days a Week.”
+MAKING CONNECTIONS
+4.5 • Phases and Motions of the Moon
+This simulation of the Moon orbiting the Earth (https://openstax.org/l/30moonorbit) shows both a “topdown” view and the view from Earth’s surface.
+The Moon’s Revolution and Rotation
+The Moon’s sidereal period—that is, the period of its revolution about Earth measured with respect to the
+stars—is a little over 27 days: the sidereal month is 27.3217 days to be exact. The time interval in which the
+phases repeat—say, from full to full—is the solar month, 29.5306 days. The difference results from Earth’s
+motion around the Sun. The Moon must make more than a complete turn around the moving Earth to get
+back to the same phase with respect to the Sun. As we saw, the Moon changes its position on the celestial
+sphere rather rapidly: even during a single evening, the Moon creeps visibly eastward among the stars,
+traveling its own width in a little less than 1 hour. The delay in moonrise from one day to the next caused by
+this eastward motion averages about 50 minutes.
+The Moon rotates on its axis in exactly the same time that it takes to revolve about Earth. As a consequence,
+the Moon always keeps the same face turned toward Earth (Figure 4.15). You can simulate this yourself by
+“orbiting” your roommate or another volunteer. Start by facing your roommate. If you make one rotation
+(spin) with your shoulders in the exact same time that you revolve around him or her, you will continue to face
+your roommate during the whole “orbit.” As we will see in coming chapters, our Moon is not the only world
+that exhibits this behavior, which scientists call synchronous rotation.
+LINK TO LEARNING
+4 • Earth, Moon, and Sky
+Figure 4.15 The Moon without and with Rotation. In this figure, we stuck a white arrow into a fixed point on the Moon to keep
+track of its sides. (a) If the Moon did not rotate as it orbited Earth, it would present all of its sides to our view; hence the white arrow
+would point directly toward Earth only in the bottom position on the diagram. (b) Actually, the Moon rotates in the same period that
+it revolves, so we always see the same side (the white arrow keeps pointing to Earth).
+The differences in the Moon’s appearance from one night to the next are due to changing illumination by the
+Sun, not to its own rotation. You sometimes hear the back side of the Moon (the side we never see) called the
+“dark side.” This is a misunderstanding of the real situation: which side is light and which is dark changes as
+the Moon moves around Earth. The back side is dark no more frequently than the front side. Since the Moon
+rotates, the Sun rises and sets on all sides of the Moon. With apologies to Pink Floyd, there is simply no regular
+“Dark Side of the Moon.”
+4.5 • Phases and Motions of the Moon
+4.6
+Ocean Tides and the Moon
+Learning Objectives
+By the end of this section, you will be able to:
+Describe what causes tides on Earth
+Explain why the amplitude of tides changes during the course of a month
+Anyone living near the sea is familiar with the twice-daily rising and falling of the tides. Early in history, it was
+clear that tides must be related to the Moon because the daily delay in high tide is the same as the daily delay
+in the Moon’s rising. A satisfactory explanation of the tides, however, awaited the theory of gravity, supplied
+by Newton.
+The Pull of the Moon on Earth
+The gravitational forces exerted by the Moon at several points on Earth are illustrated in Figure 4.16. These
+forces differ slightly from one another because Earth is not a point, but has a certain size: all parts are not
+equally distant from the Moon, nor are they all in exactly the same direction from the Moon. Moreover, Earth is
+not perfectly rigid. As a result, the differences among the forces of the Moon’s attraction on different parts of
+Earth (called differential forces) cause Earth to distort slightly. The side of Earth nearest the Moon is attracted
+toward the Moon more strongly than is the center of Earth, which in turn is attracted more strongly than is the
+side opposite the Moon. Thus, the differential forces tend to stretch Earth slightly into an oblate spheroid
+(which is something like an American football shape), with its long diameter pointed toward the Moon.
+Figure 4.16 Pull of the Moon. The Moon’s differential attraction is shown on different parts of Earth. (Note that the differences have
+been exaggerated for educational purposes.)
+If Earth were made of water, it would distort until the Moon’s differential forces over different parts of its
+surface came into balance with Earth’s own gravitational forces pulling it together. Calculations show that in
+this case, Earth would distort from a sphere by amounts ranging up to nearly 1 meter. Measurements of the
+actual deformation of Earth show that the solid Earth does distort, but only about one-third as much as water
+would, because of the greater rigidity of Earth’s interior.
+Because the tidal distortion of the solid Earth amounts—at its greatest—to only about 20 centimeters, Earth
+does not distort enough to balance the Moon’s differential forces with its own gravity. Hence, objects at
+Earth’s surface experience tiny horizontal tugs, tending to make them slide about. These tide-raising forces
+are too insignificant to affect solid objects like astronomy students or rocks in Earth’s crust, but they do affect
+the waters in the oceans.
+The Formation of Tides
+The tide-raising forces, acting over a number of hours, produce motions of the water that result in measurable
+tidal bulges in the oceans. Water on the side of Earth facing the Moon flows toward it, with the greatest depths
+4 • Earth, Moon, and Sky
+roughly at the point below the Moon. On the side of Earth opposite the Moon, water also flows to produce a
+tidal bulge (Figure 4.17).
+Figure 4.17 Tidal Bulges in an “Ideal” Ocean. Differences in gravity cause tidal forces that push water in the direction of tidal
+bulges on Earth.
+You can run this animation (https://openstax.org/l/30visdemotidal) for a visual demonstration of the tidal
+bulge.
+Note that the tidal bulges in the oceans do not result from the Moon’s compressing or expanding the water,
+nor from the Moon’s lifting the water “away from Earth.” Rather, they result from an actual flow of water over
+Earth’s surface toward the two regions below and opposite the Moon, causing the water to pile up to greater
+depths at those places (Figure 4.18).
+Figure 4.18 High and Low Tides. This is a side-by-side comparison of the Bay of Fundy in Canada at high and low tides. (credit a, b:
+modification of work by Dylan Kereluk)
+In the idealized (and, as we shall see, oversimplified) model just described, the height of the tides would be
+only a few feet. The rotation of Earth would carry an observer at any given place alternately into regions of
+deeper and shallower water. An observer being carried toward the regions under or opposite the Moon, where
+the water was deepest, would say, “The tide is coming in”; when carried away from those regions, the
+observer would say, “The tide is going out.” During a day, the observer would be carried through two tidal
+bulges (one on each side of Earth) and so would experience two high tides and two low tides.
+The Sun also produces tides on Earth, although it is less than half as effective as the Moon at tide raising. The
+actual tides we experience are a combination of the larger effect of the Moon and the smaller effect of the
+Sun. When the Sun and Moon are lined up (at new moon or full moon), the tides produced reinforce each
+LINK TO LEARNING
+4.6 • Ocean Tides and the Moon
+other and so are greater than normal (Figure 4.19). These are called spring tides (the name is connected not to
+the season but to the idea that higher tides “spring up”). Spring tides are approximately the same, whether
+the Sun and Moon are on the same or opposite sides of Earth, because tidal bulges occur on both sides. When
+the Moon is at first quarter or last quarter (at right angles to the Sun’s direction), the tides produced by the
+Sun partially cancel the tides of the Moon, making them lower than usual. These are called neap tides.
+Figure 4.19 Tides Caused by Different Alignments of the Sun and Moon. (a) In spring tides, the Sun’s and Moon’s pulls reinforce
+each other. (b) In neap tides, the Sun and the Moon pull at right angles to each other and the resulting tides are lower than usual.
+The “simple” theory of tides, described in the preceding paragraphs, would be sufficient if Earth rotated very
+slowly and were completely surrounded by very deep oceans. However, the presence of land masses stopping
+the flow of water, the friction in the oceans and between oceans and the ocean floors, the rotation of Earth,
+the wind, the variable depth of the ocean, and other factors all complicate the picture. This is why, in the real
+world, some places have very small tides while in other places huge tides become tourist attractions. If you
+have been in such places, you may know that “tide tables” need to be computed and published for each
+location; one set of tide predictions doesn’t work for the whole planet. In this introductory chapter, we won’t
+delve further into these complexities.
+George Darwin and the Slowing of Earth
+The rubbing of water over the face of Earth involves an enormous amount of energy. Over long periods of
+time, the friction of the tides is slowing down the rotation of Earth. Our day gets longer by about 0.002
+second each century. That seems very small, but such tiny changes can add up over millions and billions of
+years.
+Although Earth’s spin is slowing down, the angular momentum (see Orbits and Gravity) in a system such as
+the Earth-Moon system cannot change. Thus, some other spin motion must speed up to take the extra
+angular momentum. The details of what happens were worked out over a century ago by George Darwin,
+the son of naturalist Charles Darwin. George Darwin (see Figure 4.20) had a strong interest in science but
+studied law for six years and was admitted to the bar. However, he never practiced law, returning to science
+instead and eventually becoming a professor at Cambridge University. He was a protégé of Lord Kelvin, one
+of the great physicists of the nineteenth century, and he became interested in the long-term evolution of
+the solar system. He specialized in making detailed (and difficult) mathematical calculations of how orbits
+and motions change over geologic time.
+VOYAGERS IN ASTRONOMY
+4 • Earth, Moon, and Sky
+Figure 4.20 George Darwin (1845–1912). George Darwin is best known for studying Earth’s spin in relation to angular
+momentum.
+What Darwin calculated for the Earth-Moon system was that the Moon will slowly spiral outward, away from
+Earth. As it moves farther away, it will orbit less quickly (just as planets farther from the Sun move more
+slowly in their orbits). Thus, the month will get longer. Also, because the Moon will be more distant, total
+eclipses of the Sun will no longer be visible from Earth.
+Both the day and the month will continue to get longer, although bear in mind that the effects are very
+gradual. Darwin’s calculations were confirmed by mirrors placed on the Moon by Apollo 11 astronauts.
+These show that the Moon is moving away by 3.8 centimeters per year, and that ultimately—billions of
+years in the future—the day and the month will be the same length (about 47 of our present days). At this
+point the Moon will be stationary in the sky over the same spot on Earth, meaning some parts of Earth will
+see the Moon and its phases and other parts will never see them. This kind of alignment is already true for
+Pluto’s moon Charon (among others). Its rotation and orbital period are the same length as a day on Pluto.
+4.7
+Eclipses of the Sun and Moon
+Learning Objectives
+By the end of this section, you will be able to:
+Describe what causes lunar and solar eclipses
+Differentiate between a total and partial solar eclipse
+Explain why lunar eclipses are much more common than solar eclipses
+One of the coincidences of living on Earth at the present time is that the two most prominent astronomical
+objects, the Sun and the Moon, have nearly the same apparent size in the sky. Although the Sun is about 400
+times larger in diameter than the Moon, it is also about 400 times farther away, so both the Sun and the Moon
+have the same angular size—about 1/2°. As a result, the Moon, as seen from Earth, can appear to cover the
+Sun, producing one of the most impressive events in nature.
+Any solid object in the solar system casts a shadow by blocking the light of the Sun from a region behind it.
+This shadow in space becomes apparent whenever another object moves into it. In general, an eclipse occurs
+whenever any part of either Earth or the Moon enters the shadow of the other. When the Moon’s shadow
+strikes Earth, people within that shadow see the Sun at least partially covered by the Moon; that is, they
+witness a solar eclipse. When the Moon passes into the shadow of Earth, people on the night side of Earth see
+the Moon darken in what is called a lunar eclipse. Let’s look at how these happen in more detail.
+4.7 • Eclipses of the Sun and Moon
+The shadows of Earth and the Moon consist of two parts: a cone where the shadow is darkest, called the
+umbra, and a lighter, more diffuse region of darkness called the penumbra. As you can imagine, the most
+spectacular eclipses occur when an object enters the umbra. Figure 4.21 illustrates the appearance of the
+Moon’s shadow and what the Sun and Moon would look like from different points within the shadow.
+Figure 4.21 Solar Eclipse. (a) The shadow cast by a spherical body (the Moon, for example) is shown. Notice the dark umbra and the
+lighter penumbra. Four points in the shadow are labeled with numbers. In (b) you see what the Sun and Moon would look like in the
+sky at the four labeled points. At position 1, you see a total eclipse. At positions 2 and 3, the eclipse is partial. At position 4, the Moon
+is farther away and thus cannot cover the Sun completely; a ring of light thus shows around the Sun, creating what is called an
+“annular” eclipse.
+If the path of the Moon in the sky were identical to the path of the Sun (the ecliptic), we might expect to see an
+eclipse of the Sun and the Moon each month—whenever the Moon got in front of the Sun or into the shadow
+of Earth. However, as we mentioned, the Moon’s orbit is tilted relative to the plane of Earth’s orbit about the
+Sun by about 5° (imagine two hula hoops with a common center, but tilted a bit). As a result, during most
+months, the Moon is sufficiently above or below the ecliptic plane to avoid an eclipse. But when the two paths
+cross (twice a year), it is then “eclipse season” and eclipses are possible.
+Eclipses of the Sun
+The apparent or angular sizes of both the Sun and Moon vary slightly from time to time as their distances from
+Earth vary. (Figure 4.21 shows the distance of the observer varying at points 1–4, but the idea is the same.)
+Much of the time, the Moon looks slightly smaller than the Sun and cannot cover it completely, even if the two
+are perfectly aligned. In this type of “annular eclipse,” there is a ring of light around the dark sphere of the
+Moon.
+4 • Earth, Moon, and Sky
+However, if an eclipse of the Sun occurs when the Moon is somewhat nearer than its average distance, the
+Moon can completely hide the Sun, producing a total solar eclipse. Another way to say it is that a total eclipse
+of the Sun occurs at those times when the umbra of the Moon’s shadow reaches the surface of Earth.
+The geometry of a total solar eclipse is illustrated in Figure 4.22. If the Sun and Moon are properly aligned,
+then the Moon’s darkest shadow intersects the ground at a small point on Earth’s surface. Anyone on Earth
+within the small area covered by the tip of the Moon’s shadow will, for a few minutes, be unable to see the Sun
+and will witness a total eclipse. At the same time, observers on a larger area of Earth’s surface who are in the
+penumbra will see only a part of the Sun eclipsed by the Moon: we call this a partial solar eclipse.
+Between Earth’s rotation and the motion of the Moon in its orbit, the tip of the Moon’s shadow sweeps
+eastward at about 1500 kilometers per hour along a thin band across the surface of Earth. The thin zone
+across Earth within which a total solar eclipse is visible (weather permitting) is called the eclipse path. Within a
+region about 3000 kilometers on either side of the eclipse path, a partial solar eclipse is visible. It does not take
+long for the Moon’s shadow to sweep past a given point on Earth. The duration of totality may be only a brief
+instant; it can never exceed about 7 minutes.
+Figure 4.22 Geometry of a Total Solar Eclipse. Note that our diagram is not to scale. The Moon blocks the Sun during new moon
+phase as seen from some parts of Earth and casts a shadow on our planet.
+Because a total eclipse of the Sun is so spectacular, it is well worth trying to see one if you can. There are some
+people whose hobby is “eclipse chasing” and who brag about how many they have seen in their lifetimes.
+Because much of Earth’s surface is water, eclipse chasing can involve lengthy boat trips (and often requires air
+travel as well). As a result, eclipse chasing is rarely within the budget of a typical college student. Nevertheless,
+a list of future eclipses is given for your reference in Appendix H, just in case you strike it rich early. (And, as
+you can see in the Appendix, there will be total eclipses visible in the United States in 2017 and 2024, to which
+even college students may be able to afford travel.)
+Appearance of a Total Eclipse
+What can you see if you are lucky enough to catch a total eclipse? A solar eclipse starts when the Moon just
+begins to silhouette itself against the edge of the Sun’s disk. A partial phase follows, during which more and
+more of the Sun is covered by the Moon. About an hour after the eclipse begins, the Sun becomes completely
+hidden behind the Moon. In the few minutes immediately before this period of totality begins, the sky
+noticeably darkens, some flowers close up, and chickens may go to roost. As an eerie twilight suddenly
+descends during the day, other animals (and people) may get disoriented. During totality, the sky is dark
+enough that planets become visible in the sky, and usually the brighter stars do as well.
+4.7 • Eclipses of the Sun and Moon
+As the bright disk of the Sun becomes entirely hidden behind the Moon, the Sun’s remarkable corona flashes
+into view (Figure 4.23). The corona is the Sun’s outer atmosphere, consisting of sparse gases that extend for
+millions of miles in all directions from the apparent surface of the Sun. It is ordinarily not visible because the
+light of the corona is feeble compared with the light from the underlying layers of the Sun. Only when the
+brilliant glare from the Sun’s visible disk is blotted out by the Moon during a total eclipse is the pearly white
+corona visible. (We’ll talk more about the corona in the chapter on The Sun: A Garden-Variety Star.)
+Figure 4.23 The Sun’s Corona. The corona (thin outer atmosphere) of the Sun is visible during a total solar eclipse. (It looks more
+extensive in photographs than it would to the unaided eye.) (credit: modification of work by Lutfar Rahman Nirjhar)
+The total phase of the eclipse ends, as abruptly as it began, when the Moon begins to uncover the Sun.
+Gradually, the partial phases of the eclipse repeat themselves, in reverse order, until the Moon has completely
+uncovered the Sun. We should make one important safety point here: while the few minutes of the total
+eclipse are safe to look at, if any part of the Sun is uncovered, you must protect your eyes with safe eclipse
+glasses2 or by projecting an image of the Sun (instead of looking at it directly). For more, read the How to
+Observe Solar Eclipses box in this chapter.
+Eclipses of the Moon
+A lunar eclipse occurs when the Moon enters the shadow of Earth. The geometry of a lunar eclipse is shown in
+Figure 4.24. Earth’s dark shadow is about 1.4 million kilometers long, so at the Moon’s distance (an average of
+384,000 kilometers), it could cover about four full moons. Unlike a solar eclipse, which is visible only in certain
+local areas on Earth, a lunar eclipse is visible to everyone who can see the Moon. Because a lunar eclipse can
+be seen (weather permitting) from the entire night side of Earth, lunar eclipses are observed far more
+frequently from a given place on Earth than are solar eclipses.
+Eclipse glasses are available in many planetarium and observatory gift stores, and also from the two main U.S. manufacturers:
+American Paper Optics and Rainbow Symphony.
+4 • Earth, Moon, and Sky
+Figure 4.24 Geometry of a Lunar Eclipse. The Moon is shown moving through the different parts of Earth’s shadow during a total
+lunar eclipse. Note that the distance the Moon moves in its orbit during the eclipse has been exaggerated here for clarity.
+An eclipse of the Moon is total only if the Moon’s path carries it though Earth’s umbra. If the Moon does not
+enter the umbra completely, we have a partial eclipse of the Moon. But because Earth is larger than the Moon,
+its umbra is larger, so that lunar eclipses last longer than solar eclipses, as we will discuss below.
+A lunar eclipse can take place only when the Sun, Earth, and Moon are in a line. The Moon is opposite the Sun,
+which means the Moon will be in full phase before the eclipse, making the darkening even more dramatic.
+About 20 minutes before the Moon reaches the dark shadow, it dims somewhat as Earth partly blocks the
+sunlight. As the Moon begins to dip into the shadow, the curved shape of Earth’s shadow upon it soon
+becomes apparent.
+Even when totally eclipsed, the Moon is still faintly visible, usually appearing a dull coppery red. The
+illumination on the eclipsed Moon is sunlight that has been bent into Earth’s shadow by passing through
+Earth’s atmosphere.
+After totality, the Moon moves out of the shadow and the sequence of events is reversed. The total duration of
+the eclipse depends on how closely the Moon’s path approaches the axis of the shadow. For an eclipse where
+the Moon goes through the center of Earth’s shadow, each partial phase consumes at least 1 hour, and totality
+can last as long as 1 hour and 40 minutes. Eclipses of the Moon are much more “democratic” than solar
+eclipses. Since the full moon is visible on the entire night side of Earth, the lunar eclipse is visible for all those
+who live in that hemisphere. (Recall that a total eclipse of the Sun is visible only in a narrow path where the
+shadow of the umbra falls.) Total eclipses of the Moon occur, on average, about once every two or three years.
+A list of future total eclipses of the Moon is in Appendix H. In addition, since the lunar eclipse happens to a full
+moon, and a full moon is not dangerous to look at, everyone can look at the Moon during all the parts of the
+eclipse without worrying about safety.
+Thanks to our understanding of gravity and motion (see Orbits and Gravity), eclipses can now be predicted
+centuries in advance. We’ve come a long way since humanity stood frightened by the darkening of the Sun or
+the Moon, fearing the displeasure of the gods. Today, we enjoy the sky show with a healthy appreciation of the
+majestic forces that keep our solar system running.
+Use the Solar and Lunar Eclipse simulation (https://openstax.org/l/30solueclips) to explore the conditions of
+solar and lunar eclipses yourself.
+4.7 • Eclipses of the Sun and Moon
+How to Observe Solar Eclipses
+A total eclipse of the Sun is a spectacular sight and should not be missed. However, it is extremely
+dangerous to look directly at the Sun: even a brief exposure can damage your eyes. Normally, few rational
+people are tempted to do this because it is painful (and something your mother told you never to do!). But
+during the partial phases of a solar eclipse, the temptation to take a look is strong. Think before you give in.
+The fact that the Moon is covering part of the Sun doesn’t make the uncovered part any less dangerous to
+look at. Still, there are perfectly safe ways to follow the course of a solar eclipse, if you are lucky enough to
+be in the path of the shadow.
+The easiest technique is to make a pinhole projector. Take a piece of cardboard with a small (1 millimeter)
+hole punched in it, and hold it several feet above a light surface, such as a concrete sidewalk or a white
+sheet of paper, so that the hole is “aimed” at the Sun. The hole produces a fuzzy but adequate image of the
+eclipsed Sun. Alternatively, if it’s the right time of year, you can let the tiny spaces between a tree’s leaves
+form multiple pinhole images against a wall or sidewalk. Watching hundreds of little crescent Suns dancing
+in the breeze can be captivating. A kitchen colander also makes an excellent pinhole projector.
+Although there are safe filters for looking at the Sun directly, people have suffered eye damage by looking
+through improper filters, or no filter at all. For example, neutral density photographic filters are not safe
+because they transmit infrared radiation that can cause severe damage to the retina. Also unsafe are
+smoked glass, completely exposed color film, sunglasses, and many other homemade filters. Safe filters
+include welders’ goggles and specially designed eclipse glasses.
+You should certainly look at the Sun directly when it is totally eclipsed, even through binoculars or
+telescopes. Unfortunately, the total phase, as we discussed, is all too brief. But if you know when it is
+coming and going, be sure you look, for it’s an unforgettably beautiful sight. And, despite the ancient
+folklore that presents eclipses as dangerous times to be outdoors, the partial phases of eclipses—as long as
+you are not looking directly at the Sun—are not any more dangerous than being out in sunlight.
+During past eclipses, unnecessary panic has been created by uninformed public officials acting with the
+best intentions. There were two marvelous total eclipses in Australia in the twentieth century during which
+townspeople held newspapers over their heads for protection and schoolchildren cowered indoors with
+their heads under their desks. What a pity that all those people missed what would have been one of the
+most memorable experiences of their lifetimes.
+On August 21, 2017, a total eclipse of the Sun was visible across a large swath of the continental United
+States, and was seen by millions of people from around the country and the world (a).
+SEEING FOR YOURSELF
+4 • Earth, Moon, and Sky
+Figure 4.25 2017 Total Solar and Lunar Eclipse (a) The eclipsed Sun August 21, 2017, showing remarkable detail in the Sun’s
+outer atmosphere. This is a composite of short, medium, and long exposures, as no single exposure can capture the huge range
+of brightness the Sun exhibits. (b) A total eclipse of the Moon seen over California on January 31, 2018. The Moon moves slowly
+into the Earth’s shadow, looks red when the eclipse is total and red sunlight refracts through the Earth’s atmosphere, and then
+slowly moves out of the shadow. (credit a: modification of work by Rick Fienberg, American Astronomical Socity/TravelQuest
+International; credit b: modification of work by Brian Day.)
+For the August 2017 eclipse, the United States postal service issued a special commemorative stamp
+(https://openstax.org/l/302017ecliboo) — the first ever with “thermochromic ink” which changes when you
+touch it.
+LINK TO LEARNING
+4.7 • Eclipses of the Sun and Moon
+Key Terms
+apparent solar time
+time as measured by the position of the Sun in the sky (the time that would be
+indicated by a sundial)
+declination
+the angular distance north or south of the celestial equator
+great circle
+a circle on the surface of a sphere that is the curve of intersection of the sphere with a plane
+passing through its center
+International Date Line
+an arbitrary line on the surface of Earth near longitude 180° across which the date
+changes by one day
+lunar eclipse
+an eclipse of the Moon, in which the Moon moves into the shadow of Earth; lunar eclipses can
+occur only at the time of full moon
+mean solar time
+time based on the rotation of Earth; mean solar time passes at a constant rate, unlike
+apparent solar time
+meridian
+a great circle on the terrestrial or celestial sphere that passes through the poles
+phases of the Moon
+the different appearance of light and dark on the Moon as seen from Earth during its
+monthly cycle, from new moon to full moon and back to new moon
+right ascension
+the coordinate for measuring the east-west positions of celestial bodies; the angle
+measured eastward along the celestial equator from the vernal equinox to the hour circle passing through
+a body
+sidereal day
+Earth’s rotation period as defined by the positions of the stars in the sky; the time between
+successive passages of the same star through the meridian
+sidereal month
+the period of the Moon’s revolution about Earth measured with respect to the stars
+solar day
+Earth’s rotation period as defined by the position of the Sun in the sky; the time between
+successive passages of the Sun through the meridian
+solar eclipse
+an eclipse of the Sun by the Moon, caused by the passage of the Moon in front of the Sun; solar
+eclipses can occur only at the time of the new moon
+solar month
+the time interval in which the phases repeat—say, from full to full phase
+synchronous rotation
+when a body (for example, the Moon) rotates at the same rate that it revolves around
+another body
+tides
+alternate rising and falling of sea level caused by the difference in the strength of the Moon’s
+gravitational pull on different parts of Earth
+Summary
+4.1 Earth and Sky
+The terrestrial system of latitude and longitude makes use of the great circles called meridians. Longitude is
+arbitrarily set to 0° at the Royal Observatory at Greenwich, England. An analogous celestial coordinate system
+is called right ascension (RA) and declination, with 0° of declination starting at the vernal equinox. These
+coordinate systems help us locate any object on the celestial sphere. The Foucault pendulum is a way to
+demonstrate that Earth is turning.
+4.2 The Seasons
+The familiar cycle of the seasons results from the 23.5° tilt of Earth’s axis of rotation. At the summer solstice,
+the Sun is higher in the sky and its rays strike Earth more directly. The Sun is in the sky for more than half of
+the day and can heat Earth longer. At the winter solstice, the Sun is low in the sky and its rays come in at more
+of an angle; in addition, it is up for fewer than 12 hours, so those rays have less time to heat. At the vernal and
+autumnal equinoxes, the Sun is on the celestial equator and we get about 12 hours of day and night. The
+seasons are different at different latitudes.
+4 • Key Terms
+4.3 Keeping Time
+The basic unit of astronomical time is the day—either the solar day (reckoned by the Sun) or the sidereal day
+(reckoned by the stars). Apparent solar time is based on the position of the Sun in the sky, and mean solar
+time is based on the average value of a solar day during the year. By international agreement, we define 24
+time zones around the world, each with its own standard time. The convention of the International Date Line is
+necessary to reconcile times on different parts of Earth.
+4.4 The Calendar
+The fundamental problem of the calendar is to reconcile the incommensurable lengths of the day, month, and
+year. Most modern calendars, beginning with the Roman (Julian) calendar of the first century BCE, neglect the
+problem of the month and concentrate on achieving the correct number of days in a year by using such
+conventions as the leap year. Today, most of the world has adopted the Gregorian calendar established in
+1582 while finding ways to coexist with the older lunar calendars’ system of months.
+4.5 Phases and Motions of the Moon
+The Moon’s monthly cycle of phases results from the changing angle of its illumination by the Sun. The full
+moon is visible in the sky only during the night; other phases are visible during the day as well. Because its
+period of revolution is the same as its period of rotation, the Moon always keeps the same face toward Earth.
+4.6 Ocean Tides and the Moon
+The twice-daily ocean tides are primarily the result of the Moon’s differential force on the material of Earth’s
+crust and ocean. These tidal forces cause ocean water to flow into two tidal bulges on opposite sides of Earth;
+each day, Earth rotates through these bulges. Actual ocean tides are complicated by the additional effects of
+the Sun and by the shape of the coasts and ocean basins.
+4.7 Eclipses of the Sun and Moon
+The Sun and Moon have nearly the same angular size (about 1/2°). A solar eclipse occurs when the Moon
+moves between the Sun and Earth, casting its shadow on a part of Earth’s surface. If the eclipse is total, the
+light from the bright disk of the Sun is completely blocked, and the solar atmosphere (the corona) comes into
+view. Solar eclipses take place rarely in any one location, but they are among the most spectacular sights in
+nature. A lunar eclipse takes place when the Moon moves into Earth’s shadow; it is visible (weather
+permitting) from the entire night hemisphere of Earth.
+For Further Exploration
+Articles
+Bakich, M. “Your Twenty-Year Solar Eclipse Planner.” Astronomy (October 2008): 74. Describes the
+circumstances of upcoming total eclipses of the Sun.
+Coco, M. “Not Just Another Pretty Phase.” Astronomy (July 1994): 76. Moon phases explained.
+Espenak, F., & Anderson, J. “Get Ready for America’s Coast to Coast Experience.” Sky & Telescope (February
+2016): 22.
+Gingerich, O. “Notes on the Gregorian Calendar Reform.” Sky & Telescope (December 1982): 530.
+Kluepfel, C. “How Accurate Is the Gregorian Calendar?” Sky & Telescope (November 1982): 417.
+Krupp, E. “Calendar Worlds.” Sky & Telescope (January 2001): 103. On how the days of the week got their
+names.
+Krupp, E. “Behind the Curve.” Sky & Telescope (September 2002): 68. On the reform of the calendar by Pope
+Gregory XIII.
+4 • For Further Exploration
+MacRobert, A., & Sinnott, R. “Young Moon Hunting.” Sky & Telescope (February 2005): 75. Hints for finding the
+Moon as soon after its new phase as possible.
+Pasachoff, J. “Solar Eclipse Science: Still Going Strong.” Sky & Telescope (February 2001): 40. On what we have
+learned and are still learning from eclipses.
+Regas, D. “The Quest for Totality.” Sky & Telescope (July 2012): 36. On eclipse chasing as a hobby.
+Schaefer, B. “Lunar Eclipses That Changed the World.” Sky & Telescope (December 1992): 639.
+Schaefer, B. “Solar Eclipses That Changed the World.” Sky & Telescope (May 1994): 36.
+Websites
+Ancient Observatories, Timeless Knowledge (Stanford Solar Center): http://solar-center.stanford.edu/AO/
+(http://solar-center.stanford.edu/AO/). An introduction to ancient sites where the movements of celestial
+objects were tracked over the years (with a special focus on tracking the Sun).
+Astronomical Data Services: https://www.usno.navy.mil/USNO/astronomical-applications/data-services
+(https://www.usno.navy.mil/USNO/astronomical-applications/data-services). This rich site from the U.S. Naval
+Observatory has information about Earth, the Moon, and the sky, with tables and online calculators.
+Calendars through the Ages: http://www.webexhibits.org/calendars/index.html (http://www.webexhibits.org/
+calendars/index.html). Like a good museum exhibit on the Web.
+Calendar Zone: http://www.calendarzone.com/ (http://www.calendarzone.com/). Everything you wanted to
+ask or know about calendars and timekeeping, with links from around the world.
+Eclipse Maps: http://www.eclipse-maps.com/Eclipse-Maps/Welcome.html (http://www.eclipse-maps.com/
+Eclipse-Maps/Welcome.html). Michael Zeiler specializes in presenting helpful and interactive maps of where
+solar eclipses will be visible
+Eclipse Predictions: EclipseWise: http://www.eclipsewise.com/intro.html (http://www.eclipsewise.com/
+intro.html). An introductory site on future eclipses and eclipse observing by NASA’s Fred Espenak.
+History of the International Date Line: http://www.staff.science.uu.nl/~gent0113/idl/idl.htm
+(http://www.staff.science.uu.nl/~gent0113/idl/idl.htm). From R. H. van Gent at Utrecht University in the
+Netherlands.
+Lunacy and the Full Moon: http://www.scientificamerican.com/article/lunacy-and-the-full-moon/
+(http://www.scientificamerican.com/article/lunacy-and-the-full-moon/). This Scientific American article
+explores whether the Moon’s phase is related to strange behavior.
+Moon Phase Calculator: https://stardate.org/nightsky/moon (https://stardate.org/nightsky/moon). Keep track
+of the phases of the Moon with this calendar.
+NASA Eclipse Website: http://eclipse.gsfc.nasa.gov/eclipse.html (http://eclipse.gsfc.nasa.gov/eclipse.html).
+This site, by NASA’s eclipse expert Fred Espenak, contains a wealth of information on lunar and solar eclipses,
+past and future, as well as observing and photography links.
+Phases of the Moon Gallery and Information: http://astropixels.com/moon/phases/phasesgallery.html
+(http://astropixels.com/moon/phases/phasesgallery.html). Photographs and descriptions presented by
+NASA’s Fred Espenak.
+Time and Date Website: http://www.timeanddate.com/ (http://www.timeanddate.com/). Comprehensive
+resource about how we keep time on Earth; has time zone converters and many other historical and
+mathematical tools.
+Walk through Time: The Evolution of Time Measurement through the Ages (National Institute of Standards
+4 • For Further Exploration
+and Technology): http://www.nist.gov/pml/general/time/ (http://www.nist.gov/pml/general/time/).
+Videos
+Bill Nye, the Science Guy, Explains the Seasons: https://www.youtube.com/watch?v=KUU7IyfR34o
+(https://www.youtube.com/watch?v=KUU7IyfR34o). For kids, but college students can enjoy the bad jokes, too
+(4:45).
+Geography Lesson Idea: Time Zones: https://www.youtube.com/watch?v=-j-SWKtWEcU
+(https://www.youtube.com/watch?v=-j-SWKtWEcU). (3:11).
+How to View a Solar Eclipse: http://www.exploratorium.edu/eclipse/how-to-view-eclipse
+(http://www.exploratorium.edu/eclipse/how-to-view-eclipse). (1:35).
+Shadow of the Moon: https://www.youtube.com/watch?v=XNcfKUJwnjM (https://www.youtube.com/
+watch?v=XNcfKUJwnjM). This NASA video explains eclipses of the Sun, with discussion and animation, focusing
+on a 2015 eclipse, and shows what an eclipse looks like from space (1:54).
+Strangest Time Zones in the World: https://www.youtube.com/watch?v=uW6QqcmCfm8
+(https://www.youtube.com/watch?v=uW6QqcmCfm8). (8:38).
+Understanding Lunar Eclipses: https://www.youtube.com/watch?v=lNi5UFpales (https://www.youtube.com/
+watch?v=lNi5UFpales). This NASA video explains why there isn’t an eclipse every month, with good animation
+(1:58).
+Collaborative Group Activities
+A.
+Have your group brainstorm about other ways (besides the Foucault pendulum) you could prove that it is
+our Earth that is turning once a day, and not the sky turning around us. (Hint: How does the spinning of
+Earth affect the oceans and the atmosphere?)
+B.
+What would the seasons on Earth be like if Earth’s axis were not tilted? Discuss with your group how many
+things about life on Earth you think would be different.
+C.
+After college and graduate training, members of your U.S. student group are asked to set up a school in
+New Zealand. Describe some ways your yearly school schedule in the Southern Hemisphere would differ
+from what students are used to in the Northern Hemisphere.
+D.
+During the traditional U.S. Christmas vacation weeks, you are sent to the vicinity of the South Pole on a
+research expedition (depending on how well you did on your astronomy midterm, either as a research
+assistant or as a short-order cook!). Have your group discuss how the days and nights will be different
+there and how these differences might affect you during your stay.
+E.
+Discuss with your group all the stories you have heard about the full moon and crazy behavior. Why do
+members of your group think people associate crazy behavior with the full moon? What other legends
+besides vampire stories are connected with the phases of the Moon? (Hint: Think Professor Lupin in the
+Harry Potter stories, for example.)
+F.
+Your college town becomes the founding site for a strange new cult that worships the Moon. These true
+believers gather regularly around sunset and do a dance in which they must extend their arms in the
+direction of the Moon. Have your group discuss which way their arms will be pointing at sunset when the
+Moon is new, first quarter, full, and third quarter.
+G.
+Changes of the seasons play a large part in our yearly plans and concerns. The seasons have inspired
+music, stories, poetry, art, and much groaning from students during snowstorms. Search online to come
+up with some examples of the seasons being celebrated or overcome in fields other than science.
+4 • Collaborative Group Activities
+H.
+Use the information in Appendix H and online to figure out when the next eclipse of the Sun or eclipse of
+the Moon will be visible from where your group is going to college or from where your group members
+live. What time of day will the eclipse be visible? Will it be a total or partial eclipse? What preparations can
+you make to have an enjoyable and safe eclipse experience? How do these preparations differ between a
+solar and lunar eclipse?
+I.
+On Mars, a day (often called a sol) is 24 hours and 40 minutes. Since Mars takes longer to go around the
+Sun, a year is 668.6 sols. Mars has two tiny moons, Phobos and Deimos. Phobos, the inner moon, rises in
+the west and sets in the east, taking 11 hours from moonrise to the next moonrise. Using your calculators
+and imaginations, have your group members come up with a calendar for Mars. (After you do your own,
+and only after, you can search online for the many suggestions that have been made for a martian
+calendar over the years.)
+Exercises
+Review Questions
+1. Discuss how latitude and longitude on Earth are similar to declination and right ascension in the sky.
+2. What is the latitude of the North Pole? The South Pole? Why does longitude have no meaning at the North
+and South Poles?
+3. Make a list of each main phase of the Moon, describing roughly when the Moon rises and sets for each
+phase. During which phase can you see the Moon in the middle of the morning? In the middle of the
+afternoon?
+4. What are advantages and disadvantages of apparent solar time? How is the situation improved by
+introducing mean solar time and standard time?
+5. What are the two ways that the tilt of Earth’s axis causes the summers in the United States to be warmer
+than the winters?
+6. Why is it difficult to construct a practical calendar based on the Moon’s cycle of phases?
+7. Explain why there are two high tides and two low tides each day. Strictly speaking, should the period during
+which there are two high tides be 24 hours? If not, what should the interval be?
+8. What is the phase of the Moon during a total solar eclipse? During a total lunar eclipse?
+9. On a globe or world map, find the nearest marked latitude line to your location. Is this an example of a
+great circle? Explain.
+10. Explain three lines of evidence that indicate that the seasons in North America are not caused by the
+changing Earth-Sun distance as a result of Earth’s elliptical orbit around the Sun.
+11. What is the origin of the terms “a.m.” and “p.m.” in our timekeeping?
+12. Explain the origin of the leap year. Why is it necessary?
+13. Explain why the year 1800 was not a leap year, even though years divisible by four are normally
+considered to be leap years.
+14. What fraction of the Moon’s visible face is illuminated during first quarter phase? Why is this phase called
+first quarter?
+15. Why don’t lunar eclipses happen during every full moon?
+16. Why does the Moon create tidal bulges on both sides of Earth instead of only on the side of Earth closest
+to the Moon?
+4 • Exercises
+17. Why do the heights of the tides change over the course of a month?
+18. Explain how tidal forces are causing Earth to slow down.
+19. Explain how tidal forces are causing the Moon to slowly recede from Earth.
+20. Explain why the Gregorian calendar modified the nature of the leap year from its original definition in the
+Julian calendar.
+21. The term equinox translates as “equal night.” Explain why this translation makes sense from an
+astronomical point of view.
+22. The term solstice translates as “Sun stop.” Explain why this translation makes sense from an astronomical
+point of view.
+23. Why is the warmest day of the year in the United States (or in the Northern Hemisphere temperate zone)
+usually in August rather than on the day of the summer solstice, in late June?
+Thought Questions
+24. When Earth’s Northern Hemisphere is tilted toward the Sun during June, some would argue that the cause
+of our seasons is that the Northern Hemisphere is physically closer to the Sun than the Southern
+Hemisphere, and this is the primary reason the Northern Hemisphere is warmer. What argument or line
+of evidence could contradict this idea?
+25. Where are you on Earth if you experience each of the following? (Refer to the discussion in Observing the
+Sky: The Birth of Astronomy as well as this chapter.)
+A.
+The stars rise and set perpendicular to the horizon.
+B.
+The stars circle the sky parallel to the horizon.
+C.
+The celestial equator passes through the zenith.
+D.
+In the course of a year, all stars are visible.
+E.
+The Sun rises on March 21 and does not set until September 21 (ideally).
+26. In countries at far northern latitudes, the winter months tend to be so cloudy that astronomical
+observations are nearly impossible. Why can’t good observations of the stars be made at those places
+during the summer months?
+27. What is the phase of the Moon if it . . .
+A.
+rises at 3:00 p.m.?
+B.
+is highest in the sky at sunrise?
+C.
+sets at 10:00 a.m.?
+28. A car accident occurs around midnight on the night of a full moon. The driver at fault claims he was
+blinded momentarily by the Moon rising on the eastern horizon. Should the police believe him?
+29. The secret recipe to the ever-popular veggie burgers in the college cafeteria is hidden in a drawer in the
+director’s office. Two students decide to break in to get their hands on it, but they want to do it a few
+hours before dawn on a night when there is no Moon, so they are less likely to be caught. What phases of
+the Moon would suit their plans?
+30. Your great-great-grandfather, who often exaggerated events in his own life, once told your relatives about
+a terrific adventure he had on February 29, 1900. Why would this story make you suspicious?
+31. One year in the future, when money is no object, you enjoy your birthday so much that you want to have
+another one right away. You get into your supersonic jet. Where should you and the people celebrating
+with you travel? From what direction should you approach? Explain.
+4 • Exercises
+32. Suppose you lived in the crater Copernicus on the side of the Moon facing Earth.
+A.
+How often would the Sun rise?
+B.
+How often would Earth set?
+C.
+During what fraction of the time would you be able to see the stars?
+33. In a lunar eclipse, does the Moon enter the shadow of Earth from the east or west side? Explain.
+34. Describe what an observer at the crater Copernicus would see while the Moon is eclipsed on Earth. What
+would the same observer see during what would be a total solar eclipse as viewed from Earth?
+35. The day on Mars is 1.026 Earth-days long. The martian year lasts 686.98 Earth-days. The two moons of
+Mars take 0.32 Earth-day (for Phobos) and 1.26 Earth-days (for Deimos) to circle the planet. You are given
+the task of coming up with a martian calendar for a new Mars colony. Would a solar or lunar calendar be
+better for tracking the seasons?
+36. What is the right ascension and declination of the vernal equinox?
+37. What is the right ascension and declination of the autumnal equinox?
+38. What is the right ascension and declination of the Sun at noon on the summer solstice in the Northern
+Hemisphere?
+39. During summer in the Northern Hemisphere, the North Pole is illuminated by the Sun 24 hours per day.
+During this time, the temperature often does not rise above the freezing point of water. Explain why.
+40. On the day of the vernal equinox, the day length for all places on Earth is actually slightly longer than 12
+hours. Explain why.
+41. Regions north of the Arctic Circle are known as the “land of the midnight Sun.” Explain what this means
+from an astronomical perspective.
+42. In a part of Earth’s orbit where Earth is moving faster than usual around the Sun, would the length of the
+sidereal day change? If so, how? Explain.
+43. In a part of Earth’s orbit where Earth is moving faster than usual around the Sun, would the length of the
+solar day change? If so, how? Explain.
+44. If Sirius rises at 8:00 p.m. tonight, at what time will it rise tomorrow night, to the nearest minute? Explain.
+45. What are three lines of evidence you could use to indicate that the phases of the Moon are not caused by
+the shadow of Earth falling on the Moon?
+46. If the Moon rises at a given location at 6:00 p.m. today, about what time will it rise tomorrow night?
+47. Explain why some solar eclipses are total and some are annular.
+48. Why do lunar eclipses typically last much longer than solar eclipses?
+Figuring for Yourself
+49. Suppose Earth took exactly 300.0 days to go around the Sun, and everything else (the day, the month) was
+the same. What kind of calendar would we have? How would this affect the seasons?
+50. Consider a calendar based entirely on the day and the month (the Moon’s period from full phase to full
+phase). How many days are there in a month? Can you figure out a scheme analogous to leap year to
+make this calendar work?
+51. If a star rises at 8:30 p.m. tonight, approximately what time will it rise two months from now?
+52. What is the altitude of the Sun at noon on December 22, as seen from a place on the Tropic of Cancer?
+4 • Exercises
+53. Show that the Gregorian calendar will be in error by 1 day in about 3300 years.
+4 • Exercises
+4 • Exercises

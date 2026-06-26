@@ -1,0 +1,924 @@
+Figure 11.1 Giant Planets. The four giant planets in our solar system all have hydrogen atmospheres, but the warm gas giants,
+Jupiter and Saturn, have tan, beige, red, and white clouds that are thought to be composed of ammonia ice particles with various
+colorants called “chromophores.” The blue-tinted ice giants, Uranus and Neptune, are much colder and covered in methane ice
+clouds. (credit: modification of work by Lunar and Planetary Institute, NASA)
+Chapter Outline
+11.1 Exploring the Outer Planets
+11.2 The Giant Planets
+11.3 Atmospheres of the Giant Planets
+Thinking Ahead
+What do we learn about the Earth by studying the planets? Humility.
+—Andrew Ingersoll discussing the results of the Voyager mission in 1986.
+Beyond Mars and the asteroid belt, we encounter a new region of the solar system: the realm of the giants.
+Temperatures here are lower, permitting water and other volatiles to condense as ice. The planets are much
+larger, distances between them are much greater, and each giant world is accompanied by an extensive
+system of moons and rings.
+From many perspectives, the outer solar system is where the action is, and the giant planets are the most
+important members of the Sun’s family. When compared to these outer giants, the little cinders of rock and
+metal that orbit closer to the Sun can seem insignificant. These four giant worlds—Jupiter, Saturn, Uranus,
+Neptune—are the subjects of this chapter. Their rings, moons, and the dwarf planet Pluto are discussed in a
+later chapter.
+The Giant Planets
+11 • Thinking Ahead
+11.1
+Exploring the Outer Planets
+Learning Objectives
+By the end of this section, you will be able to:
+Provide an overview of the composition of the giant planets
+Chronicle the robotic exploration of the outer solar system
+Summarize the missions sent to orbit the gas giants
+The giant planets hold most of the mass in our planetary system. Jupiter alone exceeds the mass of all the
+other planets combined (Figure 11.2). The material available to build these planets can be divided into three
+classes by what they are made of: “gases,” “ices,” and “rocks” (see Table 11.1). The “gases” are primarily
+hydrogen and helium, the most abundant elements in the universe. The way it is used here, the term “ices”
+refers to composition only and not whether a substance is actually in a solid state. “Ices” means compounds
+that form from the next most abundant elements: oxygen, carbon, and nitrogen. Common ices are water,
+methane, and ammonia, but ices may also include carbon monoxide, carbon dioxide, and others. “Rocks” are
+even less abundant than ices, and include everything else: magnesium, silicon, iron, and so on.
+Figure 11.2 Jupiter. The Cassini spacecraft imaged Jupiter on its way to Saturn in 2012. The giant storm system called the Great Red
+Spot is visible to the lower right. The dark spot to the lower left is the shadow of Jupiter’s moon Europa. (credit: modification of work
+by NASA/JPL)
+Abundances in the Outer Solar System
+Type of Material
+Name
+Approximate % (by Mass)
+Gas
+Hydrogen (H2)
+Gas
+Helium (He)
+Ice
+Water (H2O)
+0.6
+Ice
+Methane (CH4)
+0.4
+Table 11.1
+11 • The Giant Planets
+Type of Material
+Name
+Approximate % (by Mass)
+Ice
+Ammonia (NH3)
+0.1
+Rock
+Magnesium (Mg), iron (Fe), silicon (Si)
+0.3
+Table 11.1
+In the outer solar system, gases dominate the two largest planets, Jupiter and Saturn, hence their nickname
+“gas giants.” Uranus and Neptune are sometimes called “ice giants” because their interiors contain far more
+of the “ice” component than their larger cousins. The chemistry for all four giant planet atmospheres is
+dominated by hydrogen. This hydrogen caused the chemistry of the outer solar system to become reducing,
+meaning that other elements tend to combine with hydrogen first. In the early solar system, most of the
+oxygen combined with hydrogen to make H2O and was thus unavailable to form the kinds of oxidized
+compounds with other elements that are more familiar to us in the inner solar system (such as CO2). As a
+result, the compounds detected in the atmosphere of the giant planets are mostly hydrogen-based gases such
+as methane (CH4) and ammonia (NH3), or more complex hydrocarbons (combinations of hydrogen and
+carbon) such as ethane (C2H6) and acetylene (C2H2).
+Exploration of the Outer Solar System So Far
+Eight spacecraft, seven from the United States and one from Europe, have penetrated beyond the asteroid belt
+into the realm of the giants. Table 11.2 summarizes the spacecraft missions to the outer solar system.
+Missions to the Giant Planets
+Planet
+Spacecraft1
+Encounter Date
+Type
+Jupiter
+Pioneer 10
+December 1973
+Flyby
+Pioneer 11
+December 1974
+Flyby
+Voyager 1
+March 1979
+Flyby
+Voyager 2
+July 1979
+Flyby
+Ulysses
+February 1992
+Flyby during gravity assist
+Galileo
+December 1995
+Orbiter and probe
+Cassini
+December 2002
+Flyby
+New Horizons
+February 2007
+Flyby during gravity assist
+Juno
+July 2016
+Orbiter
+Saturn
+Pioneer 11
+September 1979
+Flyby
+Table 11.2
+Both the Ulysses and the New Horizons spacecraft (designed to study the Sun and Pluto, respectively) flew past Jupiter for a
+11.1 • Exploring the Outer Planets
+Planet
+Spacecraft1
+Encounter Date
+Type
+Voyager 1
+November 1980
+Flyby
+Voyager 2
+August 1981
+Flyby
+Cassini
+July 2004
+Orbiter
+Uranus
+Voyager 2
+January 1986
+Flyby
+Neptune
+Voyager 2
+August 1989
+Flyby
+Table 11.2
+The challenges of exploring so far away from Earth are considerable. Flight times to the giant planets are
+measured in years to decades, rather than the months required to reach Venus or Mars. Even at the speed of
+light, messages take hours to pass between Earth and the spacecraft. If a problem develops near Saturn, for
+example, a wait of hours for the alarm to reach Earth and for instructions to be routed back to the spacecraft
+could spell disaster. Spacecraft to the outer solar system must therefore be highly reliable and capable of a
+greater degree of independence and autonomy. Outer solar system missions also must carry their own power
+sources since the Sun is too far away to provide enough energy, or else they must have very large arrays of
+solar cells. Heaters are required to keep instruments at proper operating temperatures, and spacecraft must
+have radio transmitters powerful enough to send their data to receivers on distant Earth.
+The first spacecraft to investigate the regions past Mars were the NASA Pioneers 10 and 11, launched in 1972
+and 1973 as pathfinders to Jupiter. One of their main objectives was simply to determine whether a spacecraft
+could actually navigate through the belt of asteroids that lies beyond Mars without getting destroyed by
+collisions with asteroidal dust. Another objective was to measure the radiation hazards in the magnetosphere
+(or zone of magnetic influence) of Jupiter. Both spacecraft passed through the asteroid belt without incident,
+but the energetic particles in Jupiter’s magnetic field nearly wiped out their electronics, providing information
+necessary for the safe design of subsequent missions.
+Pioneer 10 flew past Jupiter in 1973, after which it sped outward toward the limits of the solar system. Pioneer
+11 undertook a more ambitious program, using the gravity of Jupiter to aim for Saturn, which it reached in
+1979. The twin Voyager spacecraft launched the next wave of outer planet exploration in 1977. Voyagers 1 and
+2 each carried 11 scientific instruments, including cameras and spectrometers, as well as devices to measure
+the characteristics of planetary magnetospheres. Since they kept going outward after their planetary
+encounters, these are now the most distant spacecraft ever launched by humanity.
+Voyager 1 reached Jupiter in 1979 and used a gravity assist from that planet to take it on to Saturn in 1980.
+Voyager 2 arrived at Jupiter four months later, but then followed a different path to visit all the outer planets,
+reaching Saturn in 1981, Uranus in 1986, and Neptune in 1989. This trajectory was made possible by the
+approximate alignment of the four giant planets on the same side of the Sun. About once every 175 years,
+these planets are in such a position, and it allows a single spacecraft to visit them all by using gravity-assisted
+flybys to adjust course for each subsequent encounter; such a maneuver has been nicknamed a “Grand Tour”
+by astronomers.
+gravity boost (gaining energy by “stealing” a little bit from the giant planet’s rotation).
+11 • The Giant Planets
+The Jet Propulsion Laboratory has a nice video called Voyager: The Grand Tour (https://openstax.org/l/
+30JPLGrandT) that describes the Voyager mission and what it found.
+Engineering and Space Science: Teaching an Old Spacecraft New Tricks
+By the time Voyager 2 arrived at Neptune in 1989, 12 years after its launch, the spacecraft was beginning to
+show signs of old age. The arm on which the camera and other instruments were located was “arthritic”: it
+could no longer move easily in all directions. The communications system was “hard of hearing”: part of its
+radio receiver had stopped working. The “brains” had significant “memory loss”: some of the onboard
+computer memory had failed. And the whole spacecraft was beginning to run out of energy: its generators
+had begun showing serious signs of wear.
+To make things even more of a challenge, Voyager’s mission at Neptune was in many ways the most
+difficult of all four flybys. For example, since sunlight at Neptune is 900 times weaker than at Earth, the
+onboard camera had to take much longer exposures in this light-starved environment. This was a nontrivial
+requirement, given that the spacecraft was hurtling by Neptune at ten times the speed of a rifle bullet.
+The solution was to swivel the camera backward at exactly the rate that would compensate for the forward
+motion of the spacecraft. Engineers had to preprogram the ship’s computer to execute an incredibly
+complex series of maneuvers for each image. The beautiful Voyager images of Neptune are a testament to
+the ingenuity of spacecraft engineers.
+The sheer distance of the craft from its controllers on Earth was yet another challenge. Voyager 2 received
+instructions and sent back its data via on-board radio transmitter. The distance from Earth to Neptune is
+about 4.8 billion kilometers. Over this vast distance, the power that reached us from Voyager 2 at Neptune
+was approximately10–16 watts, or 20 billion times less power than it takes to operate a digital watch. Thirtyeight different antennas on four continents were used by NASA to collect the faint signals from the
+spacecraft and decode the precious information about Neptune that they contained.
+Enter the Orbiters: Galileo, Cassini, and Juno
+The Pioneer and Voyager missions were flybys of the giant planets: they each produced only quick looks
+before the spacecraft sped onward. For more detailed studies of these worlds, we require spacecraft that can
+go into orbit around a planet. For Jupiter and Saturn, these orbiters were the Galileo, Cassini, and Juno
+spacecraft. To date, no orbiter missions have been started for Uranus and Neptune, although planetary
+scientists have expressed keen interest.
+The Galileo spacecraft was launched toward Jupiter in 1989 and arrived in 1995. Galileo began its investigations
+by deploying an entry probe into Jupiter, for the first direct studies of the planet’s outer atmospheric layers.
+The probe plunged at a shallow angle into Jupiter’s atmosphere, traveling at a speed of 50 kilometers per
+second—that’s fast enough to fly from New York to San Francisco in 100 seconds! This was the highest speed
+at which any probe has so far entered the atmosphere of a planet, and it put great demands on the heat shield
+protecting it. The high entry speed was a result of acceleration by the strong gravitational attraction of Jupiter.
+Atmospheric friction slowed the probe within 2 minutes, producing temperatures at the front of its heat shield
+LINK TO LEARNING
+MAKING CONNECTIONS
+11.1 • Exploring the Outer Planets
+as high as 15,000 °C. As the probe’s speed dropped to 2500 kilometers per hour, the remains of the glowing
+heat shield were jettisoned, and a parachute was deployed to lower the instrumented probe spacecraft more
+gently into the atmosphere (Figure 11.3). The data from the probe instruments were relayed to Earth via the
+main Galileo spacecraft.
+Figure 11.3 Galileo Probe Falling into Jupiter and Juno Image of Jupiter's South Pole. (a) This artist’s depiction shows the Galileo
+probe descending into the clouds via parachute just after the protective heat shield separated. The probe made its measurements of
+Jupiter’s atmosphere on December 7, 1995. (b) This Juno image, taken in 2017 from about 100,000 kilometers above the cloudtops,
+shows the south polar region of Jupiter with its dramatic complex of storms and clouds. The enhanced-color image was processed
+for NASA/JPL by citizen scientist John Landino. (credit a: modification of work by NASA/Ames Research Center; credit b: modification
+of work by NASA/JPL-Caltech/SwRI/MSSS/John Landino)
+The probe continued to operate for an hour, descending 200 kilometers into the atmosphere. A few minutes
+later the polyester parachute melted, and within a few hours the main aluminum and titanium structure of the
+probe vaporized to become a part of Jupiter itself. About 2 hours after receipt of the final probe data, the main
+spacecraft fired its retro-rockets so it could be captured into orbit around the planet, where its primary
+objectives were to study Jupiter’s large and often puzzling moons.
+The Cassini mission to Saturn (Figure 11.4), a cooperative venture between NASA and the European Space
+Agency, was similar to Galileo in its two-fold approach. Launched in 1997, Cassini arrived in 2004 and went into
+orbit around Saturn, beginning extensive studies of its rings and moons, as well as the planet itself. In January
+2005, Cassini deployed an entry probe into the atmosphere of Saturn’s large moon, Titan, where it successfully
+landed on the surface. (We’ll discuss the probe and what it found in the chapter on Rings, Moons, and Pluto.)
+The Voyager and Galileo missions to Jupiter were primarily designed to study the moons and the atmosphere
+of the planet. The next NASA mission, an orbiter called Juno, arrived at Jupiter in July 2016. In order to meet its
+objectives of studying the jovian magnetosphere, it has a very elongated (eccentric) 55-day orbit, that takes it
+from 4 thousand kilometers above the cloud tops out to 76 thousand kilometers. The orbit takes the craft over
+Jupiter’s poles, giving us remarkable close-ups of the polar regions (previous spacecraft viewed the planet
+from lower latitudes).
+Juno was originally designed without a camera, but fortunately scientists rectified this omission, adding a
+simple downward-looking color camera to use during close passes by Jupiter. Recognizing the value of such
+images, both scientific and artistic, it was decided to post the raw images and encourage “citizen scientists” to
+process them. The product has been many dramatic, brightly colored views of Jupiter, such as Figure 11.3.
+11 • The Giant Planets
+Figure 11.4 Earth as Seen from Saturn. This popular Cassini image shows Earth as a tiny dot (marked with an arrow) seen below
+Saturn’s rings. It was taken in July 2013, when Saturn was 1.4 billion kilometers from Earth. (credit: modification of work by NASA/JPL-
+Caltech/Space Science Institute)
+11.2
+The Giant Planets
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the basic physical characteristics, general appearance, and rotation of the giant planets
+Describe the composition and structure of Jupiter, Saturn, Uranus, and Neptune
+Compare and contrast the internal heat sources of the giant planets
+Describe the discovery and characteristics of the giant planets’ magnetic fields
+Let us now examine the four giant (or jovian) planets in more detail. Our approach is not just to catalog their
+characteristics, but to compare them with each other, noting their similarities and differences and attempting
+to relate their properties to their differing masses and distances from the Sun.
+Basic Characteristics
+The giant planets are very far from the Sun. Jupiter is more than five times farther from the Sun than Earth’s
+distance (5 AU), and takes just under 12 years to circle the Sun. Saturn is about twice as far away as Jupiter
+(almost 10 AU) and takes nearly 30 years to complete one orbit. Uranus orbits at 19 AU with a period of 84
+years, while Neptune, at 30 AU, requires 165 years for each circuit of the Sun. These long timescales make it
+difficult for us short-lived humans to study seasonal change on the outer planets.
+Jupiter and Saturn have many similarities in composition and internal structure, although Jupiter is nearly four
+times more massive. Uranus and Neptune are smaller and differ in composition and internal structure from
+their large siblings. Some of the main properties of these four planets are summarized in Table 11.3.
+11.2 • The Giant Planets
+Basic Properties of the Jovian Planets
+Planet
+Distance
+(AU)
+Period
+(years)
+Diameter
+(km)
+Mass
+(Earth = 1)
+Density
+(g/cm3)
+Rotation
+(hours)
+Jupiter
+5.2
+11.9
+142,800
+1.3
+9.9
+Saturn
+9.5
+29.5
+120,540
+0.7
+10.7
+Uranus
+19.2
+84.1
+51,200
+1.3
+17.2
+Neptune
+30.0
+164.8
+49,500
+1.6
+16.1
+Table 11.3
+Jupiter, the giant among giants, has enough mass to make 318 Earths. Its diameter is about 11 times that of
+Earth (and about one tenth that of the Sun). Jupiter’s average density is 1.3 g/cm3, much lower than that of any
+of the terrestrial planets. (Recall that water has a density of 1 g/cm3.) Jupiter’s material is spread out over a
+volume so large that about 1,300 Earths could fit within it.
+Saturn’s mass is 95 times that of Earth, and its average density is only 0.7 g/cm3—the lowest of any planet.
+Since this is less than the density of water, Saturn would be light enough to float.
+Uranus and Neptune each have a mass about 15 times that of Earth and, hence, are only 5% as massive as
+Jupiter. Their densities of 1.3 g/cm3 and 1.6 g/cm3, respectively, are much higher than that of Saturn. This is
+one piece of evidence that tells us that their composition must differ fundamentally from the gas giants. When
+astronomers began to discover other planetary systems (exoplanets), we found that planets the size of Uranus
+and Neptune are common, and that there are even more exoplanets intermediate in size between Earth and
+these ice giants, a type of planet not found in our solar system.
+Appearance and Rotation
+When we look at the planets, we see only their atmospheres, composed primarily of hydrogen and helium gas
+(see Figure 11.1). The uppermost clouds of Jupiter and Saturn, the part we see when looking down at these
+planets from above, are composed of ammonia crystals. On Neptune, the upper clouds are made of methane.
+On Uranus, we see no obvious cloud layer at all, but only a deep and featureless haze.
+Seen through a telescope, Jupiter is a colorful and dynamic planet. Distinct details in its cloud patterns allow us
+to determine the rotation rate of its atmosphere at the cloud level, although such atmosphere rotation may
+have little to do with the spin of the underlying planet. Much more fundamental is the rotation of the mantle
+and core; these can be determined by periodic variations in radio waves coming from Jupiter, which are
+controlled by its magnetic field. Since the magnetic field (which we will discuss below) originates deep inside
+the planet, it shares the rotation of the interior. The rotation period we measure in this way is 9 hours 56
+minutes, which gives Jupiter the shortest “day” of any planet. In the same way, we can measure that the
+underlying rotation period of Saturn is 10 hours 40 minutes. Uranus and Neptune have slightly longer rotation
+periods of about 17 hours, also determined from the rotation of their magnetic fields.
+A brief video made from Hubble Space Telescope photos shows the rotation of Jupiter
+LINK TO LEARNING
+11 • The Giant Planets
+(https://openstax.org/l/30HSTJupRot) with its many atmospheric features.
+Remember that Earth and Mars have seasons because their spin axes, instead of “standing up straight,” are
+tilted relative to the orbital plane of the solar system. This means that as Earth revolves around the Sun,
+sometimes one hemisphere and sometimes the other “leans into” the Sun.
+What are the seasons like for the giant planets? The spin axis of Jupiter is tilted by only 3°, so there are no
+seasons to speak of. Saturn, however, does have seasons, since its spin axis is inclined at 27° to the
+perpendicular to its orbit. Neptune has about the same tilt as Saturn (29°); therefore, it experiences similar
+seasons (only more slowly). The strangest seasons of all are on Uranus, which has a spin axis tilted by 98° with
+respect to the north direction. Practically speaking, we can say that Uranus orbits on its side, and its ring and
+moon system follow along, orbiting about Uranus’ equator (Figure 11.5).
+Figure 11.5 Infrared Image of Uranus. The infrared camera on the Hubble Space Telescope took these false-color images of the
+planet Uranus, its ring system, and moons in 1997. The south pole of the planet (marked with a “+” on the right image) faces the
+Sun; its green color shows a strong local haze. The two images were taken 90 minutes apart, and during that time the five reddish
+clouds can be seen to rotate around the parallel to the equator. The rings (which are very faint in the visible light, but prominent in
+infrared) and eight moons can be seen around the equator. This was the “bull’s eye” arrangement that Voyager saw as it
+approached Uranus in 1986. (credit: modification of work by Erich Karkoschka (University of Arizona), and NASA/ESA)
+We don’t know what caused Uranus to be tipped over like this, but one possibility is a collision with a large
+planetary body when our system was first forming. Whatever the cause, this unusual tilt creates dramatic
+seasons. When Voyager 2 arrived at Uranus, its south pole was facing directly into the Sun. The southern
+hemisphere was experiencing a 21-year sunlit summer, while during that same period the northern
+hemisphere was plunged into darkness. For the next 21-year season, the Sun shines on Uranus’ equator, and
+both hemispheres go through cycles of light and dark as the planet rotates (Figure 11.6). Then there are 21
+years of an illuminated northern hemisphere and a dark southern hemisphere. After that the pattern of
+alternating day and night repeats.
+Just as on Earth, the seasons are even more extreme at the poles. If you were to install a floating platform at
+the south pole of Uranus, for example, it would experience 42 years of light and 42 years of darkness. Any
+future astronauts crazy enough to set up camp there could spend most of their lives without ever seeing the
+Sun.
+11.2 • The Giant Planets
+Figure 11.6 Strange Seasons on Uranus. (a) This diagram shows the orbit of Uranus as seen from above. At the time Voyager 2
+arrived (position 1), the South Pole was facing the Sun. As we move counterclockwise in the diagram, we see the planet 21 years later
+at each step. (b) This graph compares the amount of sunlight seen at the poles and the equator of Uranus over the course of its
+84-year revolution around the Sun.
+Composition and Structure
+Although we cannot see into these planets, astronomers are confident that the interiors of Jupiter and Saturn
+are composed primarily of hydrogen and helium. Of course, these gases have been measured only in their
+atmosphere, but calculations first carried out more than 50 years ago showed that these two light gases are
+the only possible materials out of which a planet with the observed masses and densities of Jupiter and Saturn
+could be constructed.
+The deep internal structures of these two planets are difficult to predict. This is mainly because these planets
+are so big that the hydrogen and helium in their centers become tremendously compressed and behave in
+ways that these gases can never behave on Earth. The best theoretical models we have of Jupiter’s structure
+predict a central pressure greater than 100 million bars and a central density of about 31 g/cm3. (By contrast,
+Earth’s core has a central pressure of 4 million bars and a central density of 17 g/cm3.)
+At the pressures inside the giant planets, familiar materials can take on strange forms. A few thousand
+kilometers below the visible clouds of Jupiter and Saturn, pressures become so great that hydrogen changes
+from a gaseous to a liquid state. Still deeper, this liquid hydrogen is further compressed and begins to act like
+a metal, something it never does on Earth. (In a metal, electrons are not firmly attached to their parent nuclei
+but can wander around. This is why metals are such good conductors of electricity.) On Jupiter, the greater
+part of the interior is liquid metallic hydrogen.
+Because Saturn is less massive, it has only a small volume of metallic hydrogen, but most of its interior is
+liquid. Uranus and Neptune are too small to reach internal pressures sufficient to liquefy hydrogen. We will
+return to the discussion of the metallic hydrogen layers when we examine the magnetic fields of the giant
+planets.
+Each of these planets has a core composed of heavier materials, as demonstrated by detailed analyses of their
+gravitational fields. Presumably these cores are the original rock-and-ice bodies that formed before the
+capture of gas from the surrounding nebula. The cores exist at pressures of tens of millions of bars. While
+scientists speak of the giant planet cores being composed of rock and ice, we can be sure that neither rock nor
+ice assumes any familiar forms at such pressures and temperatures. Remember that what is really meant by
+“rock” is any material made up primarily of iron, silicon, and oxygen, while the term “ice” in this chapter
+denotes materials composed primarily of the elements carbon, nitrogen, and oxygen in combination with
+hydrogen.
+11 • The Giant Planets
+Figure 11.7 illustrates the likely interior structures of the four jovian planets. It appears that all four have
+similar cores of rock and ice. On Jupiter and Saturn, the cores constitute only a few percent of the total mass,
+consistent with the initial composition of raw materials shown in Table 11.1. However, most of the mass of
+Uranus and Neptune resides in these cores, demonstrating that the two outer planets were unable to attract
+massive quantities of hydrogen and helium when they were first forming.
+Figure 11.7 Internal Structures of the Jovian Planets. Jupiter and Saturn are composed primarily of hydrogen and helium (but
+hydrogen dominates), but Uranus and Neptune consist in large part of compounds of carbon, nitrogen, and oxygen. (The diagrams
+are drawn to scale; numbers show radii in thousands of kilometers.)
+Internal Heat Sources
+Because of their large sizes, all the giant planets were strongly heated during their formation by the collapse
+of surrounding material onto their cores. Jupiter, being the largest, was the hottest. Some of this primordial
+heat can still remain inside such large planets. In addition, it is possible for giant, largely gaseous planets to
+generate heat after formation by slowly contracting. (With so large a mass, even a minuscule amount of
+shrinking can generate significant heat.) The effect of these internal energy sources is to raise the
+temperatures in the interiors and atmospheres of the planets higher than we would expect from the heating
+effect of the Sun alone.
+Jupiter has the largest internal energy source, amounting to 4 × 1017 watts; that is, it is heated from inside with
+energy equivalent to 4 million billion 100-watt lightbulbs. This energy is about the same as the total solar
+energy absorbed by Jupiter. The atmosphere of Jupiter is therefore something of a cross between a normal
+planetary atmosphere (like Earth’s), which obtains most of its energy from the Sun, and the atmosphere of a
+star, which is entirely heated by an internal energy source. Most of the internal energy of Jupiter is primordial
+heat, left over from the formation of the planet 4.5 billion years ago.
+Saturn has an internal energy source about half as large as that of Jupiter, which means (since its mass is only
+about one quarter as great) that it is producing twice as much energy per kilogram of material as does Jupiter.
+Since Saturn is expected to have much less primordial heat, there must be another source at work generating
+most of this 2 × 1017 watts of power. This source is the separation of helium from hydrogen in Saturn’s interior.
+In the liquid hydrogen mantle, the heavier helium forms droplets that sink toward the core, releasing
+gravitational energy. In effect, Saturn is still differentiating—letting lighter material rise and heavier material
+fall.
+Uranus and Neptune are different. Neptune has a small internal energy source, while Uranus does not emit a
+measurable amount of internal heat. As a result, these two planets have almost the same atmospheric
+11.2 • The Giant Planets
+temperature, in spite of Neptune’s greater distance from the Sun. No one knows why these two planets differ
+in their internal heat, but all this shows how nature can contrive to make each world a little bit different from
+its neighbors.
+Magnetic Fields
+Each of the giant planets has a strong magnetic field, generated by electric currents in its rapidly spinning
+interior. Associated with the magnetic fields are the planets’ magnetospheres, which are regions around the
+planet within which the planet’s own magnetic field dominates over the general interplanetary magnetic field.
+The magnetospheres of these planets are their largest features, extending millions of kilometers into space.
+In the late 1950s, astronomers discovered that Jupiter was a source of radio waves that got more intense at
+longer rather than at shorter wavelengths—just the reverse of what is expected from thermal radiation
+(radiation caused by the normal vibrations of particles within all matter). Such behavior is typical, however, of
+the radiation emitted when high-speed electrons are accelerated by a magnetic field. We call this synchrotron
+radiation because it was first observed on Earth in particle accelerators, called synchrotrons. This was our first
+hint that Jupiter must have a strong magnetic field.
+Later observations showed that the radio waves are coming from a region surrounding Jupiter with a diameter
+several times that of the planet itself (Figure 11.8). The evidence suggested that a vast number of charged
+atomic particles must be circulating around Jupiter, spiraling around the lines of force of a magnetic field
+associated with the planet. This is just what we observe happening, but on a smaller scale, in the Van Allen belt
+around Earth. The magnetic fields of Saturn, Uranus, and Neptune, discovered by the spacecraft that first
+passed close to these planets, work in a similar way, but are not as strong.
+Figure 11.8 Jupiter in Radio Waves. This false-color image of Jupiter was made with the Very Large Array (of radio telescopes) in
+New Mexico. We see part of the magnetosphere, brightest in the middle because the largest number of charged particles are in the
+equatorial zone of Jupiter. The planet itself is slightly smaller than the green oval in the center. Different colors are used to indicate
+different intensities of synchrotron radiation. (credit: modification of work by I. de Pater (UC Berkeley) NRAO, AUI, NSF)
+Learn more about the magnetosphere of Jupiter (https://openstax.org/l/30NASAJupMag) and why we
+continue to be interested in it from this brief NASA video.
+Inside each magnetosphere, charged particles spiral around in the magnetic field; as a result, they can be
+accelerated to high energies. These charged particles can come from the Sun or from the neighborhood of the
+planet itself. In Jupiter’s case, Io, one of its moons, turns out to have volcanic eruptions that blast charged
+LINK TO LEARNING
+11 • The Giant Planets
+particles into space and right into the jovian magnetosphere.
+The axis of Jupiter’s magnetic field (the line that connects the magnetic north pole with the magnetic south
+pole) is not aligned exactly with the axis of rotation of the planet; rather, it is tipped by about 10°. Uranus and
+Neptune have even greater magnetic tilts, of 60° and 55°, respectively. Saturn’s field, on the other hand, is
+perfectly aligned with its rotation axis. Why different planets have such different magnetic tilts is not well
+understood.
+The physical processes around the jovian planets turn out to be milder versions of what astronomers find in
+many distant objects, from the remnants of dead stars to the puzzling distant powerhouses we call quasars.
+One reason to study the magnetospheres of the giant planets and Earth is that they provide nearby accessible
+analogues of more energetic and challenging cosmic processes.
+11.3
+Atmospheres of the Giant Planets
+Learning Objectives
+By the end of this section, you will be able to:
+Discuss the atmospheric composition of the giant planets
+Describe the cloud formation and atmospheric structure of the gas giants
+Characterize the giant planets’ wind and weather patterns
+Understand the scale and longevity of storms on the giant planets
+The atmospheres of the jovian planets are the parts we can observe or measure directly. Since these planets
+have no solid surfaces, their atmospheres are more representative of their general compositions than is the
+case with the terrestrial planets. These atmospheres also present us with some of the most dramatic examples
+of weather patterns in the solar system. As we will see, storms on these planets can grow bigger than the
+entire planet Earth.
+Atmospheric Composition
+When sunlight reflects from the atmospheres of the giant planets, the atmospheric gases leave their
+“fingerprints” in the spectrum of light. Spectroscopic observations of the jovian planets began in the
+nineteenth century, but for a long time, astronomers were not able to interpret the spectra they observed. As
+late as the 1930s, the most prominent features photographed in these spectra remained unidentified. Then
+better spectra revealed the presence of molecules of methane (CH4) and ammonia (NH3) in the atmospheres
+of Jupiter and Saturn.
+At first astronomers thought that methane and ammonia might be the main constituents of these
+atmospheres, but now we know that hydrogen and helium are actually the dominant gases. The confusion
+arose because neither hydrogen nor helium possesses easily detected spectral features in the visible
+spectrum. It was not until the Voyager spacecraft measured the far-infrared spectra of Jupiter and Saturn that
+a reliable abundance for the elusive helium could be found.
+The compositions of the two atmospheres are generally similar, except that on Saturn there is less helium as
+the result of the precipitation of helium that contributes to Saturn’s internal energy source. The most precise
+measurements of composition were made on Jupiter by the Galileo entry probe in 1995; as a result, we know
+the abundances of some elements in the jovian atmosphere even better than we know those in the Sun.
+11.3 • Atmospheres of the Giant Planets
+James Van Allen: Several Planets under His Belt
+The career of physicist James Van Allen spanned the birth and growth of the space age, and he played a
+major role in its development. Born in Iowa in 1914, Van Allen received his PhD from the University of Iowa.
+He then worked for several research institutions and served in the Navy during World War II.
+After the war, Van Allen (Figure 11.9) was appointed Professor of Physics at the University of Iowa. He and
+his collaborators began using rockets to explore cosmic radiation in Earth’s outer atmosphere. To reach
+extremely high altitudes, Van Allen designed a technique in which a balloon lifts and then launches a small
+rocket (the rocket is nicknamed “the rockoon”).
+Figure 11.9 James Van Allen (1914–2006). In this 1950s photograph, Van Allen holds a “rockoon.” (credit: modification of work
+by Frederick W. Kent Collection, University of Iowa Archives)
+Over dinner one night in 1950, Van Allen and several colleagues came up with the idea of the International
+Geophysical Year (IGY), an opportunity for scientists around the world to coordinate their investigations of
+the physics of Earth, especially research done at high altitudes. In 1955, the United States and the Soviet
+Union each committed themselves to launching an Earth-orbiting satellite during IGY, a competition that
+began what came to be known as the space race. The IGY (stretched to 18 months) took place between July
+1957 and December 1958.
+The Soviet Union won the first lap of the race by launching Sputnik 1 in October 1957. The US government
+spurred its scientists and engineers to even greater efforts to get something into space to maintain the
+country’s prestige. However, the primary US satellite program, Vanguard, ran into difficulties: each of its
+early launches crashed or exploded. Simultaneously, a second team of rocket engineers and scientists had
+quietly been working on a military launch vehicle called Jupiter-C. Van Allen spearheaded the design of the
+instruments aboard a small satellite that this vehicle would carry. On January 31, 1958, Van Allen’s Explorer
+1 became the first US satellite in space.
+Unlike Sputnik, Explorer 1 was equipped to make scientific measurements of high-energy charged particles
+above the atmosphere. Van Allen and his team discovered a belt of highly charged particles surrounding
+Earth, and these belts now bear his name. This first scientific discovery of the space program made Van
+Allen’s name known around the world.
+Van Allen and his colleagues continued to measure the magnetic and particle environment around planets
+VOYAGERS IN ASTRONOMY
+11 • The Giant Planets
+with increasingly sophisticated spacecraft, including Pioneers 10 and 11, which made exploratory surveys of
+the environments of Jupiter and Saturn. Some scientists refer to the charged-particle zones around those
+planets as Van Allen belts as well. (Once, when Van Allen was giving a lecture at the University of Arizona,
+the graduate students in planetary science asked him if he would leave his belt at the school. It is now
+proudly displayed as the university’s “Van Allen belt.”)
+Van Allen was a strong supporter of space science and an eloquent senior spokesperson for the American
+scientific community, warning NASA not to put all its efforts into human spaceflight, but to also use robotic
+spacecraft as productive tools for space exploration.
+Clouds and Atmospheric Structure
+The clouds of Jupiter (Figure 11.10) are among the most spectacular sights in the solar system, much beloved
+by makers of science-fiction films. They range in color from white to orange to red to brown, swirling and
+twisting in a constantly changing kaleidoscope of patterns. Saturn shows similar but much more subdued
+cloud activity; instead of vivid colors, its clouds have a nearly uniform butterscotch hue (Figure 11.11).
+Figure 11.10 Jupiter’s Colorful Clouds. The vibrant colors of the clouds on Jupiter present a puzzle to astronomers: given the cool
+temperatures and the composition of nearly 90% hydrogen, the atmosphere should be colorless. One hypothesis suggests that
+perhaps colorful hydrogen compounds rise from warm areas. The actual colors are a bit more muted, as shown in Figure 11.2.
+(credit: modification of work by Voyager Project, JPL, and NASA)
+Different gases freeze at different temperatures. At the temperatures and pressures of the upper atmospheres
+of Jupiter and Saturn, methane remains a gas, but ammonia can condense and freeze. (Similarly, water vapor
+condenses high in Earth’s atmosphere to produce clouds of ice crystals.) The primary clouds that we see
+around these planets, whether from a spacecraft or through a telescope, are composed of frozen ammonia
+crystals. The ammonia clouds mark the upper edge of the planets’ tropospheres; above that is the
+stratosphere, the coldest part of the atmosphere. (These layers were initially defined in Earth as a Planet.)
+11.3 • Atmospheres of the Giant Planets
+Figure 11.11 Saturn over Five Years. These beautiful images of Saturn were recorded by the Hubble Space Telescope between 1996
+and 2000. Since Saturn is tilted by 27°, we see the orientation of Saturn’s rings around its equator change as the planet moves along
+its orbit. Note the horizontal bands in the atmosphere. (credit: modification of work by NASA and The Hubble Heritage Team (STScI/
+AURA))
+The diagrams in Figure 11.12 show the structure and clouds in the atmospheres of all four jovian planets. On
+both Jupiter and Saturn, the temperature near the cloud tops is about 140 K (only a little cooler than the polar
+caps of Mars). On Jupiter, this cloud level is at a pressure of about 0.1 bar (one tenth the atmospheric pressure
+at the surface of Earth), but on Saturn it occurs lower in the atmosphere, at about 1 bar. Because the ammonia
+clouds lie so much deeper on Saturn, they are more difficult to see, and the overall appearance of the planet is
+much blander than is Jupiter’s appearance.
+Figure 11.12 Atmospheric Structure of the Jovian Planets. In each diagram, the yellow line shows how the temperature (see the
+scale on the bottom) changes with altitude (see the scale at the left). The location of the main layers on each planet is also shown.
+Within the tropospheres of these planets, the temperature and pressure both increase with depth. Through
+breaks in the ammonia clouds, we can see tantalizing glimpses of other cloud layers that can form in these
+deeper regions of the atmosphere—regions that were sampled directly for Jupiter by the Galileo probe that fell
+into the planet.
+As it descended to a pressure of 5 bars, the probe should have passed into a region of frozen water clouds,
+then below that into clouds of liquid water droplets, perhaps similar to the common clouds of the terrestrial
+troposphere. At least this is what scientists expected. But the probe saw no water clouds, and it measured a
+surprisingly low abundance of water vapor in the atmosphere. It soon became clear to the Galileo scientists
+that the probe happened to descend through an unusually dry, cloud-free region of the atmosphere—a giant
+11 • The Giant Planets
+downdraft of cool, dry gas. Andrew Ingersoll of Caltech, a member of the Galileo team, called this entry site the
+“desert” of Jupiter. It’s a pity that the probe did not enter a more representative region, but that’s the luck of
+the cosmic draw. The probe continued to make measurements to a pressure of 22 bars but found no other
+cloud layers before its instruments stopped working. It also detected lightning storms, but only at great
+distances, further suggesting that the probe itself was in a region of clear weather.
+Above the visible ammonia clouds in Jupiter’s atmosphere, we find the clear stratosphere, which reaches a
+minimum temperature near 120 K. At still higher altitudes, temperatures rise again, just as they do in the
+upper atmosphere of Earth, because here the molecules absorb ultraviolet light from the Sun. The cloud colors
+are due to impurities, the product of chemical reactions among the atmospheric gases in a process we call
+photochemistry. In Jupiter’s upper atmosphere, photochemical reactions create a variety of fairly complex
+compounds of hydrogen and carbon that form a thin layer of smog far above the visible clouds. We show this
+smog as a fuzzy orange region in Figure 11.12; however, this thin layer does not block our view of the clouds
+beneath it.
+The visible atmosphere of Saturn is composed of approximately 75% hydrogen and 25% helium, with trace
+amounts of methane, ethane, propane, and other hydrocarbons. The overall structure is similar to that of
+Jupiter. Temperatures are somewhat colder, however, and the atmosphere is more extended due to Saturn’s
+lower surface gravity. Thus, the layers are stretched out over a longer distance, as you can see in Figure 11.12.
+Overall, though, the same atmospheric regions, condensation cloud, and photochemical reactions that we see
+on Jupiter should be present on Saturn (Figure 11.13).
+Figure 11.13 Cloud Structure on Saturn. In this Cassini image, colors have been intensified, so we can see the bands and zones and
+storms in the atmosphere. The dark band is the shadow of the rings on the planet. (credit: NASA/JPL-Caltech/Space Science Institute)
+Saturn has one anomalous cloud structure that has mystified scientists: a hexagonal wave pattern around the
+north pole, shown in Figure 11.14. The six sides of the hexagon are each longer than the diameter of Earth.
+Winds are also extremely high on Saturn, with speeds of up to 1800 kilometers per hour measured near the
+equator.
+11.3 • Atmospheres of the Giant Planets
+Figure 11.14 Hexagon Pattern on Saturn’s North Pole. In this infrared nighttime image from the Cassini mission, the path of
+Saturn’s hexagonal jet stream is visible as the planet’s north pole emerges from the darkness of winter. (credit: NASA/JPL/University
+of Arizona)
+See images of Saturn’s hexagon (https://openstax.org/l/30Hexagon) with exaggerated color in this brief
+NASA video.
+Unlike Jupiter and Saturn, Uranus is almost entirely featureless as seen at wavelengths that range from the
+ultraviolet to the infrared (see its rather boring image in Figure 11.1). Calculations indicate that the basic
+atmospheric structure of Uranus should resemble that of Jupiter and Saturn, although its upper clouds (at the
+1-bar pressure level) are composed of methane rather than ammonia. However, the absence of an internal
+heat source suppresses up-and-down movement and leads to a very stable atmosphere with little visible
+structure.
+Neptune differs from Uranus in its appearance, although their basic atmospheric temperatures are similar.
+The upper clouds are composed of methane, which forms a thin cloud layer near the top of the troposphere at
+a temperature of 70 K and a pressure of 1.5 bars. Most the atmosphere above this level is clear and
+transparent, with less haze than is found on Uranus. The scattering of sunlight by gas molecules lends
+Neptune a pale blue color similar to that of Earth’s atmosphere (Figure 11.15). Another cloud layer, perhaps
+composed of hydrogen sulfide ice particles, exists below the methane clouds at a pressure of 3 bars.
+LINK TO LEARNING
+11 • The Giant Planets
+Figure 11.15 Neptune. The planet Neptune is seen here as photographed by Voyager in 1989. The blue color, exaggerated with
+computer processing, is caused by the scattering of sunlight in the planet’s upper atmosphere. (credit: modification of work by
+NASA)
+Unlike Uranus, Neptune has an atmosphere in which convection currents—vertical drafts of gas—emanate
+from the interior, powered by the planet’s internal heat source. These currents carry warm gas above the
+1.5-bar cloud level, forming additional clouds at elevations about 75 kilometers higher. These high-altitude
+clouds form bright white patterns against the blue planet beneath. Voyager photographed distinct shadows
+on the methane cloud tops, permitting the altitudes of the high clouds to be calculated. Figure 11.16 is a
+remarkable close-up of Neptune’s outer layers that could never have been obtained from Earth.
+Figure 11.16 High Clouds in the Atmosphere of Neptune. These bright, narrow cirrus clouds are made of methane ice crystals.
+From the shadows they cast on the thicker cloud layer below, we can measure that they are about 75 kilometers higher than the
+main clouds. (credit: modification of work by NASA/JPL)
+Winds and Weather
+The atmospheres of the jovian planets have many regions of high pressure (where there is more air) and low
+pressure (where there is less). Just as it does on Earth, air flows between these regions, setting up wind
+patterns that are then distorted by the rotation of the planet. By observing the changing cloud patterns on the
+jovian planets, we can measure wind speeds and track the circulation of their atmospheres.
+11.3 • Atmospheres of the Giant Planets
+The atmospheric motions we see on these planets are fundamentally different from those on the terrestrial
+planets. The giants spin faster, and their rapid rotation tends to smear out of the circulation into horizontal
+(east-west) patterns parallel to the equator. In addition, there is no solid surface below the atmosphere
+against which the circulation patterns can rub and lose energy (which is how tropical storms on Earth
+ultimately die out when they come over land).
+As we have seen, on all the giants except Uranus, heat from the inside contributes about as much energy to
+the atmosphere as sunlight from the outside. This means that deep convection currents of rising hot air and
+falling cooler air circulate throughout the atmospheres of the planets in the vertical direction.
+The main features of Jupiter’s visible clouds (see Figure 11.2 and Figure 11.10, for example) are alternating
+dark and light bands that stretch around the planet parallel to the equator. These bands are semi-permanent
+features, although they shift in intensity and position from year to year. Consistent with the small tilt of
+Jupiter’s axis, the pattern does not change with the seasons.
+More fundamental than these bands are underlying east-west wind patterns in the atmosphere, which do not
+appear to change at all, even over many decades. These are illustrated in Figure 11.17, which indicates how
+strong the winds are at each latitude for the giant planets. At Jupiter’s equator, a jet stream flows eastward
+with a speed of about 90 meters per second (300 kilometers per hour), similar to the speed of jet streams in
+Earth’s upper atmosphere. At higher latitudes there are alternating east- and west-moving streams, with each
+hemisphere an almost perfect mirror image of the other. Saturn shows a similar pattern, but with a much
+stronger equatorial jet stream, as we noted earlier.
+Figure 11.17 Winds on the Giant Planets. This image compares the winds of the giant planets, illustrating that wind speed (shown
+on the horizontal axis) and wind direction vary with latitude (shown on the vertical axis). Winds are measured relative to a planet’s
+internal rotation speed. A positive velocity means that the winds are blowing in the same direction as, but faster than, the planet’s
+internal rotation. A negative velocity means that the winds are blowing more slowly than the planet’s internal rotation.
+The light zones on Jupiter are regions of upwelling air capped by white ammonia cirrus clouds. They
+apparently represent the tops of upward-moving convection currents.2 The darker belts are regions where the
+cooler atmosphere moves downward, completing the convection cycle; they are darker because fewer
+ammonia clouds mean we can see deeper into the atmosphere, perhaps down to a region of ammonium
+hydrosulfide (NH4SH) clouds. The Galileo probe sampled one of the clearest of these dry downdrafts.
+In spite of the strange seasons induced by the 98° tilt of its axis, Uranus’ basic circulation is parallel with its
+equator, as is the case on Jupiter and Saturn. The mass of the atmosphere and its capacity to store heat are so
+great that the alternating 42-year periods of sunlight and darkness have little effect. In fact, Voyager
+measurements show that the atmospheric temperature is even a few degrees higher on the dark winter side
+than on the hemisphere facing the Sun. This is another indication that the behavior of such giant planet
+atmospheres is a complex problem that we do not fully understand.
+Recall from earlier chapters that convection is a process in which liquids, heated from underneath, have regions where hot
+material rises and cooler material descends. You can see convection at work if you heat oatmeal on a stovetop or watch miso soup
+boil.
+11 • The Giant Planets
+Neptune’s weather is characterized by strong east-west winds generally similar to those observed on Jupiter
+and Saturn. The highest wind speeds near its equator reach 2100 kilometers per hour, even higher than the
+peak winds on Saturn. The Neptune equatorial jet stream actually approaches supersonic speeds (faster than
+the speed of sound in Neptune’s air).
+Giant Storms on Giant Planets
+Superimposed on the regular atmospheric circulation patterns we have just described are many local
+disturbances—weather systems or storms, to borrow the term we use on Earth. The most prominent of these
+are large, oval-shaped, high-pressure regions on both Jupiter (Figure 11.18) and Neptune.
+Figure 11.18 Storms on Jupiter. Two examples of storms on Jupiter illustrate the use of enhanced color and contrast to bring out
+faint features. (a) The three oval-shaped white storms below and to the left of Jupiter’s Great Red Spot are highly active, and moved
+closer together over the course of seven months between 1994 and 1995. (b) The clouds of Jupiter are turbulent and ever-changing,
+as shown in this Hubble Space Telescope image from 2007. (credit a: modification of work by Reta Beebe, Amy Simon (New Mexico
+State Univ.), and NASA; credit b: modification of work by NASA, ESA, and A. Simon-Miller (NASA Goddard Space Flight Center))
+The largest and most famous of Jupiter’s storms is the Great Red Spot, a reddish oval in the southern
+hemisphere that changes slowly; it was 25,000 kilometers long when Voyager arrived in 1979, but it had shrunk
+to 20,000 kilometers by the end of the Galileo mission in 2000 (Figure 11.19). The giant storm has persisted in
+Jupiter’s atmosphere ever since astronomers were first able to observe it after the invention of the telescope,
+more than 300 years ago. However, it has continued to shrink and has become more nearly circular, raising
+speculation that we may see its end within a few decades. Measurements from the Juno spacecraft of
+variations in Jupiter’s gravity field indicate that the depth of the Red Spot storm system is only a few hundred
+kilometers—a finding that challenges some of the models astronomers have made of this long-lasting
+weather system.
+Figure 11.19 Jupiter’s Great Red Spot. This is the largest storm system on Jupiter, as seen during the Voyager spacecraft flyby.
+Below and to the right of the Red Spot is one of the white ovals, which are similar but smaller high-pressure features. The white oval
+11.3 • Atmospheres of the Giant Planets
+is roughly the size of planet Earth, to give you a sense of the huge scale of the weather patterns we are seeing. The colors on the
+Jupiter image have been somewhat exaggerated here so astronomers (and astronomy students) can study their differences more
+effectively. See Figure 11.2 to get a better sense of the colors your eye would actually see near Jupiter. (credit: NASA/JPL)
+In addition to its longevity, the Red Spot differs from terrestrial storms in being a high-pressure region; on our
+planet, such storms are regions of lower pressure. The Red Spot’s counterclockwise rotation has a period of six
+days. Three similar but smaller disturbances (about as big as Earth) formed on Jupiter in the 1930s. They look
+like white ovals, and one can be seen clearly below and to the right of the Great Red Spot in Figure 11.19. In
+1998, the Galileo spacecraft watched as two of these ovals collided and merged into one.
+We don’t know what causes the Great Red Spot or the white ovals, but we do have an idea how they can last so
+long once they form. On Earth, the lifetime of a large oceanic hurricane or typhoon is typically a few weeks, or
+even less when it moves over the continents and encounters friction with the land. Jupiter has no solid surface
+to slow down an atmospheric disturbance; furthermore, the sheer size of the disturbances lends them
+stability. We can calculate that on a planet with no solid surface, the lifetime of anything as large as the Red
+Spot should be measured in centuries, while lifetimes for the white ovals should be measured in decades,
+which is pretty much what we have observed.
+Despite Neptune’s smaller size and different cloud composition, Voyager showed that it had an atmospheric
+feature surprisingly similar to Jupiter’s Great Red Spot. Neptune’s Great Dark Spot was nearly 10,000
+kilometers long (Figure 11.15). On both planets, the giant storms formed at latitude 20° S, had the same shape,
+and took up about the same fraction of the planet’s diameter. The Great Dark Spot rotated with a period of 17
+days, versus about 6 days for the Great Red Spot. When the Hubble Space Telescope examined Neptune in the
+mid-1990s, however, astronomers could find no trace of the Great Dark Spot on their images.
+Although many of the details of the weather on the jovian planets are not yet understood, it is clear that if you
+are a fan of dramatic weather, these worlds are the place to look. We study the features in these atmospheres
+not only for what they have to teach us about conditions in the jovian planets, but also because we hope they
+can help us understand the weather on Earth just a bit better.
+E X A M P L E 1 1 . 1
+Storms and Winds
+The wind speeds in circular storm systems can be formidable on both Earth and the giant planets. Think
+about our big terrestrial hurricanes. If you watch their behavior in satellite images shown on weather
+outlets, you will see that they require about one day to rotate. If a storm has a diameter of 400 km and
+rotates once in 24 h, what is the wind speed?
+Solution
+Speed equals distance divided by time. The distance in this case is the circumference (2πR or πd), or
+approximately 1250 km, and the time is 24 h, so the speed at the edge of the storm would be about 52 km/
+h. Toward the center of the storm, the wind speeds can be much higher.
+Check Your Learning
+Jupiter’s Great Red Spot rotates in 6 d and has a circumference equivalent to a circle with radius 10,000 km.
+Calculate the wind speed at the outer edge of the spot.
+Answer:
+For the Great Red Spot of Jupiter, the circumference (2πR) is about 63,000 km. Six d equals 144 h,
+suggesting a speed of about 436 km/h. This is much faster than wind speeds on Earth.
+11 • The Giant Planets
+Key Terms
+photochemistry
+chemical changes caused by electromagnetic radiation
+synchrotron radiation
+the radiation emitted by charged particles being accelerated in magnetic fields and
+moving at speeds near that of light
+Summary
+11.1 Exploring the Outer Planets
+The outer solar system contains the four giant planets: Jupiter, Saturn, Uranus, and Neptune. The gas giants
+Jupiter and Saturn have overall compositions similar to that of the Sun. These planets have been explored by
+the Pioneer, Voyager, Galileo, and Cassini spacecraft. Voyager 2, perhaps the most successful of all spacescience missions, explored Jupiter (1979), Saturn (1981), Uranus (1986), and Neptune (1989)—a grand tour of
+the giant planets—and these flybys have been the only explorations to date of the ice giants Uranus and
+Neptune. The Galileo and Cassini missions were long-lived orbiters, and each also deployed an entry probe,
+one into Jupiter and one into Saturn’s moon Titan.
+11.2 The Giant Planets
+Jupiter is 318 times more massive than Earth. Saturn is about 25% as massive as Jupiter, and Uranus and
+Neptune are only 5% as massive. All four have deep atmospheres and opaque clouds, and all rotate quickly
+with periods from 10 to 17 hours. Jupiter and Saturn have extensive mantles of liquid hydrogen. Uranus and
+Neptune are depleted in hydrogen and helium relative to Jupiter and Saturn (and the Sun). Each giant planet
+has a core of “ice” and “rock” of about 10 Earth masses. Jupiter, Saturn, and Neptune have major internal heat
+sources, obtaining as much (or more) energy from their interiors as by radiation from the Sun. Uranus has no
+measurable internal heat. Jupiter has the strongest magnetic field and largest magnetosphere of any planet,
+first discovered by radio astronomers from observations of synchrotron radiation.
+11.3 Atmospheres of the Giant Planets
+The four giant planets have generally similar atmospheres, composed mostly of hydrogen and helium. Their
+atmospheres contain small quantities of methane and ammonia gas, both of which also condense to form
+clouds. Deeper (invisible) cloud layers consist of water and possibly ammonium hydrosulfide (Jupiter and
+Saturn) and hydrogen sulfide (Neptune). In the upper atmospheres, hydrocarbons and other trace compounds
+are produced by photochemistry. We do not know exactly what causes the colors in the clouds of Jupiter.
+Atmospheric motions on the giant planets are dominated by east-west circulation. Jupiter displays the most
+active cloud patterns, with Neptune second. Saturn is generally bland, in spite of its extremely high wind
+speeds, and Uranus is featureless (perhaps due to its lack of an internal heat source). Large storms (ovalshaped high-pressure systems such as the Great Red Spot on Jupiter and the Great Dark Spot on Neptune) can
+be found in some of the planet atmospheres.
+For Further Exploration
+Articles
+Jupiter
+Aguirre, Edwin. “Hubble Zooms in on Jupiter’s New Red Spot.” Sky & Telescope (August 2006): 26.
+Beatty, J. “Into the Giant.” Sky & Telescope (April 1996): 20. On the Galileo probe.
+Beebe, R. “Queen of the Giant Storms.” Sky & Telescope (October 1990): 359. Excellent review of the Red Spot.
+Johnson, T. “The Galileo Mission to Jupiter and Its Moons.” Scientific American (February 2000): 40. Results
+about Jupiter, Io, Ganymede, and Callisto.
+11 • Key Terms
+Simon, A. “The Not-So-Great Red Spot.” Sky & Telescope (March 2016): 18. On how the huge storm on Jupiter is
+evolving with time.
+Smith, B. “Voyage of the Century.” National Geographic (August 1990): 48. Beautiful summary of the Voyager
+mission to all four outer planets.
+Stern, S. “Jupiter Up Close and Personal.” Astronomy (August 2007): 28. On the New Horizons mission flyby in
+February 2007.
+Saturn
+Gore, R. “The Riddle of the Rings.” National Geographic (July 1981): 3. Colorful report on the Voyager mission.
+McEwen, A. “Cassini Unveils Saturn.” Astronomy (July 2006): 30. A report on the first two years of discoveries in
+the Saturn system.
+Spilker, L. “Saturn Revolution.” Astronomy (October 2008): 34. On results from the Cassini mission.
+Talcott, R. “Saturn’s Sweet Surprises.” Astronomy (June 2007): 52. On Cassini mission results.
+Uranus and Neptune
+Cowling, T. “Big Blue: The Twin Worlds of Uranus and Neptune.” Astronomy (October 1990): 42. Nice, long
+review of the two planets.
+Gore, R. “Neptune: Voyager’s Last Picture Show.” National Geographic (August 1990): 35.
+Lunine, J. “Neptune at 150.” Sky & Telescope (September 1996): 38. Nice review.
+Websites
+Jupiter
+NASA Solar System Exploration: http://Solarsystem.nasa.gov/planets/jupiter (http://Solarsystem.nasa.gov/
+planets/jupiter)
+Nine Planets Site: http://nineplanets.org/jupiter.html (http://nineplanets.org/jupiter.html)
+Planetary Sciences Site: http://nssdc.gsfc.nasa.gov/planetary/planets/jupiterpage.html
+(http://nssdc.gsfc.nasa.gov/planetary/planets/jupiterpage.html)
+Saturn
+NASA Solar System Exploration: http://Solarsystem.nasa.gov/planets/saturn (http://Solarsystem.nasa.gov/
+planets/saturn)
+Nine Planets Site: http://nineplanets.org/saturn.html (http://nineplanets.org/saturn.html)
+Planetary Sciences Site: http://nssdc.gsfc.nasa.gov/planetary/planets/saturnpage.html
+(http://nssdc.gsfc.nasa.gov/planetary/planets/saturnpage.html)
+Uranus
+NASA Solar System Exploration: http://Solarsystem.nasa.gov/planets/uranus (http://Solarsystem.nasa.gov/
+planets/uranus)
+Nine Planets Site: http://nineplanets.org/uranus.html (http://nineplanets.org/uranus.html)
+Planetary Sciences Site: http://nssdc.gsfc.nasa.gov/planetary/planets/uranuspage.html
+(http://nssdc.gsfc.nasa.gov/planetary/planets/uranuspage.html)
+Neptune
+NASA Solar System Exploration: http://Solarsystem.nasa.gov/planets/neptune (http://Solarsystem.nasa.gov/
+11 • For Further Exploration
+planets/neptune)
+Nine Planets Site: http://nineplanets.org/neptune.html (http://nineplanets.org/neptune.html)
+Planetary Sciences Site: http://nssdc.gsfc.nasa.gov/planetary/planets/neptunepage.html
+(http://nssdc.gsfc.nasa.gov/planetary/planets/neptunepage.html)
+Missions
+Cassini Mission Site at the Jet Propulsion Lab: http://saturn.jpl.nasa.gov/index.cfm (http://saturn.jpl.nasa.gov/
+index.cfm)
+Cassini-Huygens Mission Site at European Space Agency: http://sci.esa.int/cassini-huygens/ (http://sci.esa.int/
+cassini-huygens/)
+NASA Galileo Mission Site: http://Solarsystem.nasa.gov/galileo/ (http://Solarsystem.nasa.gov/galileo/)
+NASA’s Juno Mission to Jupiter: http://www.nasa.gov/mission_pages/juno/main/index.html
+(http://www.nasa.gov/mission_pages/juno/main/index.html)
+Voyager Mission Site at the Jet Propulsion Lab: http://voyager.jpl.nasa.gov/ (http://voyager.jpl.nasa.gov/)
+Videos
+Cassini: 15 Years of Exploration: https://www.youtube.com/watch?v=2z8fzz_MBAw
+(https://www.youtube.com/watch?v=2z8fzz_MBAw). Quick visual summary of mission highlights (2:29).
+In the Land of Enchantment: The Epic Story of the Cassini Mission to Saturn: https://www.youtube.com/
+watch?v=Vx135n8VFxY (https://www.youtube.com/watch?v=Vx135n8VFxY). An inspiring illustrated lecture by
+Cassini Mission Imagining Lead Scientist Carolyn Porco (1:37:52).
+Jupiter: The Largest Planet: https://www.youtube.com/watch?v=MNt79d7deoA (https://www.youtube.com/
+watch?v=MNt79d7deoA). Produced by NASA’s Goddard Space Flight Center and Science on a Sphere (7:29).
+Collaborative Group Activities
+A.
+A new member of Congress has asked your group to investigate why the Galileo probe launched into the
+Jupiter atmosphere in 1995 survived only 57 minutes and whether this was an example of a terrible
+scandal. Make a list of all the reasons the probe did not last longer, and why it was not made more
+durable. (Remember that the probe had to hitch a ride to Jupiter!)
+B.
+Select one of the jovian planets and organize your group to write a script for an evening news weather
+report for the planet you chose. Be sure you specify roughly how high in the atmosphere the region lies
+for which you are giving the report.
+C.
+What does your group think should be the next step to learn more about the giant planets? Put cost
+considerations aside for a moment: What kind of mission would you recommend to NASA to learn more
+about these giant worlds? Which world or worlds should get the highest priority and why?
+D.
+Suppose that an extremely dedicated (and slightly crazy) astronomer volunteers to become a human
+probe into Jupiter (and somehow manages to survive the trip through Jupiter’s magnetosphere alive). As
+she enters the upper atmosphere of Jupiter, would she fall faster or slower than she would fall doing the
+same suicidal jump into the atmosphere of solid Earth? Groups that have some algebra background could
+even calculate the force she would feel compared to the force on Earth. (Bonus question: If she were in a
+capsule, falling into Jupiter feet first, and the floor of the capsule had a scale, what would the scale show
+as her weight compared to her weight on Earth?)
+E.
+Would you or anyone in your group volunteer for a one-way, life-long mission to a space station orbiting
+11 • Collaborative Group Activities
+any of the gas giants without ever being able to return to Earth? What are the challenges of such a
+mission? Should we leave all exploration of the outer solar system to unmanned space probes?
+Exercises
+Review Questions
+1. What are the main challenges involved in sending probes to the giant planets?
+2. Why is it difficult to drop a probe like Galileo? How did engineers solve this problem?
+3. Explain why visual observation of the gas giants is not sufficient to determine their rotation periods, and
+what evidence was used to deduce the correct periods.
+4. What are the seasons like on Jupiter?
+5. What is the consequence of Uranus’ spin axis being 98° away from perpendicular to its orbital plane?
+6. Describe the seasons on the planet Uranus.
+7. At the pressures in Jupiter’s interior, describe the physical state of the hydrogen found there.
+8. Which of the gas giants has the largest icy/rocky core compared to its overall size?
+9. In the context of the giant planets and the conditions in their interiors, what is meant by “rock” and “ice”?
+10. What is the primary source of Jupiter’s internal heat?
+11. Describe the interior heat source of Saturn.
+12. Which planet has the strongest magnetic field, and hence the largest magnetosphere? What is its source?
+13. What are the visible clouds on the four giant planets composed of, and why are they different from each
+other?
+14. Compare the atmospheric circulation (weather) of the four giant planets.
+15. What are the main atmospheric heat sources of each of the giant planets?
+16. Why do the upper levels of Neptune’s atmosphere appear blue?
+17. How do storms on Jupiter differ from storm systems on Earth?
+Thought Questions
+18. Describe the differences in the chemical makeup of the inner and outer parts of the solar system. What is
+the relationship between what the planets are made of and the temperature where they formed?
+19. How did the giant planets grow to be so large?
+20. Jupiter is denser than water, yet composed for the most part of two light gases, hydrogen and helium.
+What makes Jupiter as dense as it is?
+21. Would you expect to find free oxygen gas in the atmospheres of the giant planets? Why or why not?
+22. Why would a tourist brochure (of the future) describing the most dramatic natural sights of the giant
+planets have to be revised more often than one for the terrestrial planets?
+23. The water clouds believed to be present on Jupiter and Saturn exist at temperatures and pressures similar
+to those in the clouds of the terrestrial atmosphere. What would it be like to visit such a location on Jupiter
+or Saturn? In what ways would the environment differ from that in the clouds of Earth?
+11 • Exercises
+24. Describe the different processes that lead to substantial internal heat sources for Jupiter and Saturn. Since
+these two objects generate much of their energy internally, should they be called stars instead of planets?
+Justify your answer.
+25. Research the Galileo mission. What technical problems occurred between the mission launch and the
+arrival of the craft in Jupiter’s system, and how did the mission engineers deal with them? (Good sources
+of information include Astronomy and Sky & Telescope articles, plus the mission website.)
+Figuring for Yourself
+26. How many times more pressure exists in the interior of Jupiter compared to that of Earth?
+27. Calculate the wind speed at the edge of Neptune’s Great Dark Spot, which was 10,000 km in diameter and
+rotated in 17 d.
+28. Calculate how many Earths would fit into the volumes of Saturn, Uranus, and Neptune.
+29. As the Voyager spacecraft penetrated into the outer solar system, the illumination from the Sun declined.
+Relative to the situation at Earth, how bright is the sunlight at each of the jovian planets?
+30. The ions in the inner parts of Jupiter’s magnetosphere rotate with the same period as Jupiter. Calculate
+how fast they are moving at the orbit of Jupiter’s moon Io (see Appendix G). Will these ions strike Io from
+behind or in front as it moves about Jupiter?
+11 • Exercises
+11 • Exercises

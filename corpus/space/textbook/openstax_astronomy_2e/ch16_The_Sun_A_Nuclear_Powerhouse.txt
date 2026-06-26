@@ -1,0 +1,994 @@
+Figure 16.1 The Sun. It takes an incredible amount of energy for the Sun to shine, as it has and will continue to do for billions of
+years. (credit: modification of work by Ed Dunens)
+Chapter Outline
+16.1 Sources of Sunshine: Thermal and Gravitational Energy
+16.2 Mass, Energy, and the Theory of Relativity
+16.3 The Solar Interior: Theory
+16.4 The Solar Interior: Observations
+Thinking Ahead
+The Sun puts out an incomprehensible amount of energy—so much that its ultraviolet radiation can cause
+sunburns from 93 million miles away. It is also very old. As you learned earlier, evidence shows that the Sun
+formed about 4.5 billion years ago and has been shining ever since. How can the Sun produce so much energy
+for so long?
+The Sun’s energy output is about 4 × 1026 watts. This is unimaginably bright: brighter than a trillion cities
+together each with a trillion 100-watt light bulbs. Most known methods of generating energy fall far short of
+the capacity of the Sun. The total amount of energy produced over the entire life of the Sun is staggering,
+since the Sun has been shining for billions of years. Scientists were unable to explain the seemingly unlimited
+energy of stars like the Sun prior to the twentieth century.
+16.1
+Sources of Sunshine: Thermal and Gravitational Energy
+Learning Objectives
+By the end of this section, you will be able to:
+Identify different forms of energy
+Understand the law of conservation of energy
+Explain ways that energy can be transformed
+Energy is a challenging concept to grasp because it exists in so many different forms that it defies any single
+simple explanation. In many ways, comprehending energy is like comprehending wealth: There are very
+The Sun: A Nuclear Powerhouse
+16 • Thinking Ahead
+different forms of wealth and they follow different rules, depending on if they are the stock market, real estate,
+a collection of old comic books, great piles of cash, or one of the many other ways to make and lose money. It
+is easier to discuss one or two forms of wealth—or energy—than to discuss that concept in general.
+When striving to understand how the Sun can put out so much energy for so long, scientists considered many
+different types of energy. Nineteenth-century scientists knew of two possible sources for the Sun’s energy:
+chemical and gravitational energy. The source of chemical energy most familiar to them was the burning (the
+chemical term is oxidation) of wood, coal, gasoline, or other fuel. We know exactly how much energy the
+burning of these materials can produce. We can thus calculate that even if the immense mass of the Sun
+consisted of a burnable material like coal or wood, our star could not produce energy at its present rate for
+more than few thousand years. However, we know from geologic evidence that water was present on Earth’s
+surface nearly 4 billion years ago, so the Sun must have been shining brightly (and making Earth warm) at
+least as long as that. Today, we also know that at the temperatures found in the Sun, nothing like solid wood
+or coal could survive.
+What’s Watt?
+Just a word about the units we are using. A watt (W) is a unit of power, which is energy used or given off per
+unit time. It is measured in joules per second (J/s). You know from your everyday experience that it is not
+just how much energy you expend, but how long you take to do it. (Burning 10 Calories in 10 minutes
+requires a very different kind of exercise than burning those 10 Calories in an hour.) Watts tell you the rate
+at which energy is being used; for example, a 100-watt bulb uses 100 joules (J) of energy every second.
+And how big is a joule? A 73-kilogram (160-pound) astronomy instructor running at about 4.4 meters per
+second (10 miles per hour) because he is late for class has a motion energy of about 700 joules.
+Conservation of Energy
+Other nineteenth-century attempts to determine what makes the Sun shine used the law of conservation of
+energy. Simply stated, this law says that energy cannot be created or destroyed, but can be transformed from
+one type to another, such as from heat to mechanical energy. The steam engine, which was key to the
+Industrial Revolution, provides a good example. In this type of engine, the hot steam from a boiler drives the
+movement of a piston, converting heat energy into motion energy.
+Conversely, motion can be transformed into heat. If you clap your hands vigorously at the end of an especially
+good astronomy lecture, your palms become hotter. If you rub ice on the surface of a table, the heat produced
+by friction melts the ice. The brakes on cars use friction to reduce speed, and in the process, transform motion
+energy into heat energy. That is why after bringing a car to a stop, the brakes can be very hot; this also
+explains why brakes can overheat when used carelessly while descending long mountain roads.
+In the nineteenth century, scientists thought that the source of the Sun’s heat might be the mechanical motion
+of meteorites falling into it. Their calculations showed, however, that in order to produce the total amount of
+energy emitted by the Sun, the mass in meteorites that would have to fall into the Sun every 100 years would
+equal the mass of Earth. The resulting increase in the Sun’s mass would, according to Kepler’s third law,
+change the period of Earth’s orbit by 2 seconds per year. Such a change would be easily measurable and was
+not, in fact, occurring. Scientists could then disprove this as the source of the Sun’s energy.
+Gravitational Contraction as a Source of Energy
+Proposing an alternative explanation, British physicist Lord Kelvin and German scientist Hermann von
+ASTRONOMY BASICS
+16 • The Sun: A Nuclear Powerhouse
+Helmholtz (Figure 16.2), in about the middle of the nineteenth century, proposed that the Sun might produce
+energy by the conversion of gravitational energy into heat. They suggested that the outer layers of the Sun
+might be “falling” inward because of the force of gravity. In other words, they proposed that the Sun could be
+shrinking in size, staying hot and bright as a result.
+Figure 16.2 Kelvin (1824–1907) and Helmholtz (1821–1894). (a) British physicist William Thomson (Lord Kelvin) and (b) German
+scientist Hermann von Helmholtz proposed that the contraction of the Sun under its own gravity might account for its energy. (credit
+a: modification of work by Wellcome Library, London; credit b: modification of work by Wellcome Library, London)
+To imagine what would happen if this hypothesis were true, picture the outer layer of the Sun starting to fall
+inward. This outer layer is a gas made up of individual atoms, all moving about in random directions. If a layer
+falls inward, the atoms acquire an additional speed because of falling motion. As the outer layer falls inward, it
+also contracts, moving the atoms closer together. Collisions become more likely, and some of them transfer
+the extra speed associated with the falling motion to other atoms. This, in turn, increases the speeds of those
+atoms. The temperature of a gas is a measure of the kinetic energy (motion) of the atoms within it; hence, the
+temperature of this layer of the Sun increases. Collisions also excite electrons within the atoms to higherenergy orbits. When these electrons return to their normal orbits, they emit photons, which can then escape
+from the Sun (see Radiation and Spectra).
+Kelvin and Helmholtz calculated that a contraction of the Sun at a rate of only about 40 meters per year would
+be enough to produce the amount of energy that it is now radiating. Over the span of human history, the
+decrease in the Sun’s size from such a slow contraction would be undetectable.
+If we assume that the Sun began its life as a large, diffuse cloud of gas, then we can calculate how much
+energy has been radiated by the Sun during its entire lifetime as it has contracted from a very large diameter
+to its present size. The amount of energy is on the order of 1042 joules. Since the solar luminosity is 4 × 1026
+watts (joules/second) or about 1034 joules per year, contraction could keep the Sun shining at its present rate
+for roughly 100 million years.
+In the nineteenth century, 100 million years at first seemed plenty long enough, since Earth was then widely
+thought to be much younger than this. But toward the end of that century and into the twentieth, geologists
+and physicists showed that Earth (and, hence, the Sun) is actually much older. Contraction therefore cannot be
+the primary source of solar energy (although, as we shall see in The Birth of Stars and the Discovery of Planets
+Outside the Solar System, contraction is an important source of energy for a while in stars that are just being
+born). Scientists were thus confronted with a puzzle of enormous proportions. Either an unknown type of
+energy was responsible for the most important energy source known to humanity, or estimates of the age of
+16.1 • Sources of Sunshine: Thermal and Gravitational Energy
+the solar system (and life on Earth) had to be seriously modified. Charles Darwin, whose theory of evolution
+required a longer time span than the theories of the Sun seemed to permit, was discouraged by these results
+and continued to worry about them until his death in 1882.
+It was only in the twentieth century that the true source of the Sun’s energy was identified. The two key pieces
+of information required to solve the puzzle were the structure of the nucleus of the atom and the fact that
+mass can be converted into energy.
+16.2
+Mass, Energy, and the Theory of Relativity
+Learning Objectives
+By the end of this section, you will be able to:
+Explain how matter can be converted into energy
+Describe the particles that make up atoms
+Describe the nucleus of an atom
+Understand the nuclear forces that hold atoms together
+Trace the nuclear reactions in the solar interior
+As we have seen, energy cannot be created or destroyed, but only converted from one form to another. One of
+the remarkable conclusions derived by Albert Einstein (see Albert Einstein) when he developed his theory of
+relativity is that matter can be considered a form of energy too and can be converted into energy.
+Furthermore, energy can also be converted into matter. This seemed to contradict what humans had learned
+over thousands of years by studying nature. Matter is something we can see and touch, whereas energy is
+something objects have when they do things like move or heat up. The idea that matter or energy can be
+converted into each other seemed as outrageous as saying you could accelerate a car by turning the bumper
+into more speed, or that you could create a bigger front seat by slowing down your car. That would be pretty
+difficult to believe; yet, the universe actually works somewhat like that.
+Converting Matter into Energy
+The remarkable equivalence between matter and energy is given in one of the most famous equations:
+In this equation, E stands for energy, m stands for mass, and c, the constant that relates the two, is the speed
+of light (3 × 108 meters per second). Note that mass is a measure of the quantity of matter, so the significance
+of this equation is that matter can be converted into energy and energy can be converted into matter. Let’s
+compare this equation of converting matter and energy to some common conversion equations that have the
+same form:
+Just as each conversion formula allows you to calculate the conversion of one thing into another, when we
+convert matter into energy, we consider how much mass the matter has. The conversion factor in this case
+turns out not to be either 12 or 100, as in our examples, but another constant quantity: the speed of light
+squared. Note that matter does not have to travel at the speed of light (or the speed of light squared) for this
+conversion to occur. The factor of c2 is just the number that Einstein showed must be used to relate mass and
+energy.
+Notice that this formula does not tell us how to convert mass into energy, just as the formula for cents does
+not tell us where to exchange coins for a dollar bill. The formulas merely tell us what the equivalent values are
+if we succeed in making the conversion. When Einstein first derived his formula in 1905, no one had the
+faintest idea how to convert mass into energy in any practical way. Einstein himself tried to discourage
+speculation that the large-scale conversion of atomic mass into energy would be feasible in the near future.
+Today, as a result of developments in nuclear physics, we regularly convert mass into energy in power plants,
+16 • The Sun: A Nuclear Powerhouse
+nuclear weapons, and high-energy physics experiments in particle accelerators.
+Because the speed of light squared (c2) is a very large quantity, the conversion of even a small amount of mass
+results in a very large amount of energy. For example, the complete conversion of 1 gram of matter (about 1/
+28 ounce, or approximately 1 paperclip) would produce as much energy as the burning of 15,000 barrels of oil.
+Scientists soon realized that the conversion of mass into energy is the source of the Sun’s heat and light. With
+Einstein’s equation of E = mc2, we can calculate that the amount of energy radiated by the Sun could be
+produced by the complete conversion of about 4 million tons of matter into energy inside the Sun each
+second. Destroying 4 million tons per second sounds like a lot when compared to earthly things, but bear in
+mind that the Sun is a very big reservoir of matter. In fact, we will see that the Sun contains more than enough
+mass to destroy such huge amounts of matter and still continue shining at its present rate for billions of years.
+But knowing all that still does not tell us how mass can be converted into energy. To understand the process
+that actually occurs in the Sun, we need to explore the structure of the atom a bit further.
+Albert Einstein
+For a large part of his life, Albert Einstein (Figure 16.3) was one of the most recognized celebrities of his day.
+Strangers stopped him on the street, and people all over the world asked him for endorsements, advice,
+and assistance. In fact, when Einstein and the great film star Charlie Chaplin met in California, they found
+they shared similar feelings about the loss of privacy that came with fame. Einstein’s name was a
+household word despite the fact that most people did not understand the ideas that had made him
+famous.
+Einstein was born in 1879 in Ulm, Germany. Legend has it that he did not do well in school (even in
+arithmetic), and thousands of students have since attempted to justify a bad grade by referring to this
+story. Alas, like many legends, this one is not true. Records indicate that although he tended to rebel
+against the authoritarian teaching style in vogue in Germany at that time, Einstein was a good student.
+After graduating from the Federal Polytechnic Institute in Zurich, Switzerland, Einstein at first had trouble
+getting a job (even as a high school teacher), but he eventually became an examiner in the Swiss Patent
+Office. Working in his spare time, without the benefit of a university environment but using his superb
+physical intuition, he wrote four papers in 1905 that would ultimately transform the way physicists looked at
+the world.
+One of these, which earned Einstein the Nobel Prize in 1921, set part of the foundation of quantum
+mechanics—the rich, puzzling, and remarkable theory of the subatomic realm. But his most important
+paper presented the special theory of relativity, a reexamination of space, time, and motion that added a
+whole new level of sophistication to our understanding of those concepts. The famed equation E = mc2 was
+actually a relatively minor part of this theory, added in a later paper.
+In 1916, Einstein published his general theory of relativity, which was, among other things, a fundamentally
+new description of gravity (see Black Holes and Curved Spacetime). When this theory was confirmed by
+measurements of the “bending of starlight” during a 1919 eclipse (The New York Times headline read,
+“Lights All Askew in the Heavens”), Einstein became world famous.
+In 1933, to escape Nazi persecution, Einstein left his professorship in Berlin and settled in the United States
+at the newly created Institute for Advanced Studies at Princeton. He remained there until his death in 1955,
+writing, lecturing, and espousing a variety of intellectual and political causes. For example, he agreed to
+sign a letter written by Leo Szilard and other scientists in 1939, alerting President Roosevelt to the dangers
+VOYAGERS IN ASTRONOMY
+16.2 • Mass, Energy, and the Theory of Relativity
+of allowing Nazi Germany to develop the atomic bomb first. And in 1952, Einstein was offered the second
+presidency of Israel. In declining the position, he said, “I know a little about nature and hardly anything
+about men.”
+Figure 16.3 Albert Einstein (1879–1955). This portrait of Einstein was taken in 1912. (credit: modification of work by J. F.
+Langhans)
+Elementary Particles
+The fundamental components of atoms are the proton, neutron, and electron (see The Structure of the Atom).
+Protons, neutrons, and electrons are by no means all the particles that exist. First, for each kind of particle,
+there is a corresponding but opposite antiparticle. If the particle carries a charge, its antiparticle has the
+opposite charge. The antielectron is the positron, which has the same mass as the electron but is positively
+charged. Similarly, the antiproton has a negative charge. The remarkable thing about such antimatter is that
+when a particle comes into contact with its antiparticle, the original particles are annihilated, and substantial
+amounts of energy in the form of photons are produced.
+Since our world is made exclusively of ordinary particles of matter, antimatter cannot survive for very long. But
+individual antiparticles are found in cosmic rays (particles that arrive at the top of Earth’s atmosphere from
+space) and can be created in particle accelerators. And, as we will see in a moment, antimatter is created in the
+core of the Sun and other stars.
+Science fiction fans may be familiar with antimatter from the Star Trek television series and films. The Starship
+Enterprise is propelled by the careful combining of matter and antimatter in the ship’s engine room. According
+to E = mc2, the annihilation of matter and antimatter can produce a huge amount of energy, but keeping the
+antimatter fuel from touching the ship before it is needed must be a big problem. No wonder Scotty, the chief
+engineer in the original TV show, always looked worried!
+In 1933, physicist Wolfgang Pauli (Figure 16.4) suggested that there might be another type of elementary
+particle. Energy seemed to disappear when certain types of nuclear reactions took place, violating the law of
+conservation of energy. Pauli was reluctant to accept the idea that one of the basic laws of physics was wrong,
+and he suggested a “desperate remedy.” Perhaps a so-far-undetected particle, which was given the name
+neutrino (“little neutral one”), carried away the “missing” energy. He suggested that neutrinos were particles
+with zero mass, and that like photons, they moved with the speed of light.
+16 • The Sun: A Nuclear Powerhouse
+Figure 16.4 Wolfgang Pauli in 1945. Pauli is considered the “father” of the neutrino, having conceived of it in 1933.
+The elusive neutrino was not detected until 1956. The reason it was so hard to find is that neutrinos interact
+very weakly with other matter and therefore are very difficult to detect. Earth is more transparent to a
+neutrino than the thinnest and cleanest pane of glass is to a photon of light. In fact, most neutrinos can pass
+completely through a star or planet without being absorbed. As we shall see, this behavior of neutrinos makes
+them a very important tool for studying the Sun. Since Pauli’s prediction, scientists have learned a lot more
+about the neutrino. We now know that there are three different types of neutrinos, and in 1998, neutrinos
+were discovered to have a tiny amount of mass. Indeed, it is so tiny that electrons are at least 500,000 times
+more massive. Ongoing research is focused on determining the mass of neutrinos more precisely, and it may
+still turn out that one of the three types is massless. We will return to the subject of neutrinos later in this
+chapter.
+Some of the properties of the proton, electron, neutron, and neutrino are summarized in Table 16.1. (Other
+subatomic particles have been produced by experiments with particle accelerators, but they do not play a role
+in the generation of solar energy.)
+Properties of Some Common Particles
+Particle
+Mass (kg)
+Charge
+Proton
+1.67265 × 10−27
++1
+Neutron
+1.67495 × 10−27
+Electron
+9.11 × 10−31
+−1
+Neutrino
+<2 × 10−36 (uncertain)
+Table 16.1
+The Atomic Nucleus
+The nucleus of an atom is not just a loose collection of elementary particles. Inside the nucleus, particles are
+held together by a very powerful force called the strong nuclear force. This is short-range force, only capable
+16.2 • Mass, Energy, and the Theory of Relativity
+of acting over distances about the size of the atomic nucleus. A quick thought experiment shows how
+important this force is. Take a look at your finger and consider the atoms composing it. Among them is carbon,
+one of the basic elements of life. Focus your imagination on the nucleus of one of your carbon atoms. It
+contains six protons, which have a positive charge, and six neutrons, which are neutral. Thus, the nucleus has
+a net charge of six positives. If only the electrical force were acting, the protons in this and every carbon atom
+would find each other very repulsive and fly apart.
+The strong nuclear force is an attractive force, stronger than the electrical force, and it keeps the particles of
+the nucleus tightly bound together. We saw earlier that if under the force of gravity a star “shrinks”—bringing
+its atoms closer together—gravitational energy is released. In the same way, if particles come together under
+the strong nuclear force and unite to form an atomic nucleus, some of the nuclear energy is released. The
+energy given up in such a process is called the binding energy of the nucleus.
+When such binding energy is released, the resulting nucleus has slightly less mass than the sum of the masses
+of the particles that came together to form it. In other words, the energy comes from the loss of mass. This
+slight deficit in mass is only a small fraction of the mass of one proton. But because each bit of lost mass can
+provide a lot of energy (remember, E = mc2), this nuclear energy release can be quite substantial.
+Measurements show that the binding energy is greatest for atoms with a mass near that of the iron nucleus
+(with a combined number of protons and neutrons equal to 56) and less for both the lighter and the heavier
+nuclei. Iron, therefore, is the most stable element: since it gives up the most energy when it forms, it would
+require the most energy to break it back down into its component particles.
+What this means is that, in general, when light atomic nuclei come together to form a heavier one (up to iron),
+mass is lost and energy is released. This joining together of atomic nuclei is called nuclear fusion.
+Energy can also be produced by breaking up heavy atomic nuclei into lighter ones (down to iron); this process
+is called nuclear fission. Nuclear fission was the process we learned to use first—in atomic bombs and in
+nuclear reactors used to generate electrical power—and it may therefore be more familiar to you. Fission also
+sometimes occurs spontaneously in some unstable nuclei through the process of natural radioactivity. But
+fission requires big, complex nuclei, whereas we know that the stars are made up predominantly of small,
+simple nuclei. So we must look to fusion first to explain the energy of the Sun and the stars (Figure 16.5).
+Figure 16.5 Fusion and Fission. (a) In fusion, light atomic nuclei join together to form a heavier nuclei, releasing energy in the
+process. (b) In fission, energy is produced by the breaking up of heavy, complex nuclei into lighter ones.
+Nuclear Attraction versus Electrical Repulsion
+So far, we seem to have a very attractive prescription for producing the energy emitted by the Sun: “roll” some
+nuclei together and join them via nuclear fusion. This will cause them to lose some of their mass, which then
+turns into energy. However, every nucleus beyond simple hydrogen has two or more protons—and protons all
+have positive charges. Since like charges repel via the electrical force, the closer we get two nuclei to each
+other, the more they repel. It’s true that if we can get them within “striking distance” of the nuclear force, they
+will then come together with a much stronger attraction. But that striking distance is very tiny, about the size
+16 • The Sun: A Nuclear Powerhouse
+of a nucleus. How can we get nuclei close enough to participate in fusion?
+The answer turns out to be heat—tremendous heat—which speeds the protons up enough to overcome the
+electrical forces that try to keep protons apart. Inside the Sun, as we saw, the most common element is
+hydrogen, whose nucleus contains only a single proton. Two protons can fuse only in regions where the
+temperature is greater than about 12 million K, and the speed of the protons average around 1000 kilometers
+per second or more. (In old-fashioned units, that’s over 2 million miles per hour!)
+In our Sun, such extreme temperatures are reached only in the regions near its center, which has a
+temperature of 15 million K. Calculations show that nearly all of the Sun’s energy is generated within about
+150,000 kilometers of its core, or within less than 10% of its total volume.
+Even at these high temperatures, it is exceedingly difficult to force two protons to combine. On average, a
+proton will rebound from other protons in the Sun’s crowded core for about 14 billion years, at the rate of 100
+million collisions per second, before it fuses with a second proton. This is, however, only the average waiting
+time. Some of the enormous numbers of protons in the Sun’s inner region are “lucky” and take only a few
+collisions to achieve a fusion reaction: they are the protons responsible for producing the energy radiated by
+the Sun. Since the Sun is about 4.5 billion years old, most of its protons have not yet been involved in fusion
+reactions.
+Nuclear Reactions in the Sun’s Interior
+The Sun, then, taps the energy contained in the nuclei of atoms through nuclear fusion. Let’s look at what
+happens in more detail. Deep inside the Sun, a three-step process takes four hydrogen nuclei and fuses them
+together to form a single helium nucleus. The helium nucleus is slightly less massive than the four hydrogen
+nuclei that combine to form it, and that mass is converted into energy.
+The initial step required to form one helium nucleus from four hydrogen nuclei is shown in Figure 16.6. At the
+high temperatures inside the Sun’s core, two protons combine to make a deuterium nucleus, which is an
+isotope (or version) of hydrogen that contains one proton and one neutron. In effect, one of the original
+protons has been converted into a neutron in the fusion reaction. Electric charge has to be conserved in
+nuclear reactions, and it is conserved in this one. A positron (antimatter electron) emerges from the reaction
+and carries away the positive charge originally associated with one of the protons.
+Figure 16.6 Proton-Proton Chain, Step 1. This is the first step in the process of fusing hydrogen into helium in the Sun. High
+temperatures are required because this reaction starts with two hydrogen nuclei, which are protons (shown in blue at left) that must
+overcome electrical repulsion to combine, forming a hydrogen nucleus with a proton and a neutron (shown in red). Note that
+hydrogen containing one proton and one neutron is given its own name: deuterium. Also produced in this reaction are a positron,
+which is an antielectron, and an elusive particle named the neutrino.
+Since it is antimatter, this positron will instantly collide with a nearby electron, and both will be annihilated,
+producing electromagnetic energy in the form of gamma-ray photons. This gamma ray, which has been
+created in the center of the Sun, finds itself in a world crammed full of fast-moving nuclei and electrons. The
+gamma ray collides with particles of matter and transfers its energy to one of them. The particle later emits
+another gamma-ray photon, but often the emitted photon has a bit less energy than the one that was
+absorbed.
+Such interactions happen to gamma rays again and again and again as they make their way slowly toward the
+outer layers of the Sun, until their energy becomes so reduced that they are no longer gamma rays but X-rays
+(recall what you learned in The Electromagnetic Spectrum). Later, as the photons lose still more energy
+16.2 • Mass, Energy, and the Theory of Relativity
+through collisions in the crowded center of the Sun, they become ultraviolet photons.
+By the time they reach the Sun’s surface, most of the photons have given up enough energy to be ordinary
+light—and they are the sunlight we see coming from our star. (To be precise, each gamma-ray photon is
+ultimately converted into many separate lower-energy photons of sunlight.) So, the sunlight given off by the
+Sun today had its origin as a gamma ray produced by nuclear reactions deep in the Sun’s core. The length of
+time that photons require to reach the surface depends on how far a photon on average travels between
+collisions, and the travel time depends on what model of the complicated solar interior we accept. Estimates
+are somewhat uncertain but indicate that the emission of energy from the surface of the Sun can lag its
+production in the interior by 100,000 years to as much as 1,000,000 years.
+In addition to the positron, the fusion of two hydrogen atoms to form deuterium results in the emission of a
+neutrino. Because neutrinos interact so little with ordinary matter, those produced by fusion reactions near
+the center of the Sun travel directly to the Sun’s surface and then out into space, in all directions. Neutrinos
+move at nearly the speed of light, and they escape the Sun about two seconds after they are created.
+Figure 16.7 Proton-Proton Chain, Step 2. This is the second step of the proton-proton chain, the fusion reaction that converts
+hydrogen into helium in the Sun. This step combines one hydrogen nucleus, which is a proton (shown in blue), with the deuterium
+nucleus from the previous step (shown as a red and blue particle). The product of this is an isotope of helium with two protons (blue)
+and one neutron (red) and energy in the form of gamma-ray radiation.
+The second step in forming helium from hydrogen is to add another proton to the deuterium nucleus to create
+a helium nucleus that contains two protons and one neutron (Figure 16.7). In the process, some mass is again
+lost and more gamma radiation is emitted. Such a nucleus is helium because an element is defined by its
+number of protons; any nucleus with two protons is called helium. But this form of helium, which we call
+helium-3 (and write in shorthand as 3He) is not the isotope we see in the Sun’s atmosphere or on Earth. That
+helium has two neutrons and two protons and hence is called helium-4 (4He).
+To get to helium-4 in the Sun, helium-3 must combine with another helium-3 in the third step of fusion
+(illustrated in Figure 16.8). Note that two energetic protons are left over from this step; each of them comes
+out of the reaction ready to collide with other protons and to start step 1 in the chain of reactions all over
+again.
+Figure 16.8 Proton-Proton Chain, Step 3. This is the third step in the fusion of hydrogen into helium in the Sun. Note that the two
+helium-3 nuclei from the second step (see Figure 16.7) must combine before the third step becomes possible. The two protons that
+come out of this step have the energy to collide with other protons in the Sun and start step one again.
+Visit the Tokamak Fusion Reactor (https://openstax.org/l/30tokamakfusrea) at the General Atomics Lab in
+San Diego, CA, for an 8-minute tour.
+LINK TO LEARNING
+16 • The Sun: A Nuclear Powerhouse
+The Proton-Proton Chain
+The nuclear reactions in the Sun that we have been discussing can be described succinctly through the
+following nuclear formulas:
+Here, the superscripts indicate the total number of neutrons plus protons in the nucleus, e+ is the positron, v is
+the neutrino, and γ indicates that gamma rays are emitted. Note that the third step requires two helium-3
+nuclei to start; the first two steps must happen twice before the third step can occur.
+Although, as we discussed, the first step in this chain of reactions is very difficult and generally takes a long
+time, the other steps happen more quickly. After the deuterium nucleus is formed, it survives an average of
+only about 6 seconds before being converted into 3He. About a million years after that (on average), the 3He
+nucleus will combine with another to form 4He.
+We can compute the amount of energy these reactions generate by calculating the difference in the initial and
+final masses. The masses of hydrogen and helium atoms in the units normally used by scientists are 1.007825
+u and 4.00268 u, respectively. (The unit of mass, u, is defined to be 1/12 the mass of an atom of carbon, or
+approximately the mass of a proton.) Here, we include the mass of the entire atom, not just the nucleus,
+because electrons are involved as well. When hydrogen is converted into helium, two positrons are created
+(remember, the first step happens twice), and these are annihilated with two free electrons, adding to the
+energy produced.
+The mass lost, 0.02862 u, is 0.71% of the mass of the initial hydrogen. Thus, if 1 kilogram of hydrogen is
+converted into helium, then the mass of the helium is only 0.9929 kilogram, and 0.0071 kilogram of material is
+converted into energy. The speed of light (c) is 3 × 108 meters per second, so the energy released by the
+conversion of just 1 kilogram of hydrogen into helium is:
+This amount, the energy released when a single kilogram (2.2 pounds) of hydrogen undergoes fusion, would
+supply all the electricity used by the typical U.S. household for roughly 17,000 years.
+To produce the Sun’s luminosity of 4 × 1026 watts, some 600 million tons of hydrogen must be converted into
+helium each second, of which about 4 million tons are converted from matter into energy. As large as these
+numbers are, the store of hydrogen (and thus of nuclear energy) in the Sun is still more enormous, and can
+last a long time—billions of years, in fact.
+At the temperatures inside the stars with masses smaller than about 1.2 times the mass of our Sun (a category
+that includes the Sun itself), most of the energy is produced by the reactions we have just described, and this
+set of reactions is called the proton-proton chain (or sometimes, the p-p chain). In the proton-proton chain,
+protons collide directly with other protons to form helium nuclei.
+In hotter stars, another set of reactions, called the carbon-nitrogen-oxygen (CNO) cycle, accomplishes the
+same net result. In the CNO cycle, carbon and hydrogen nuclei collide to initiate a series of reactions that form
+16.2 • Mass, Energy, and the Theory of Relativity
+nitrogen, oxygen, and ultimately, helium. The nitrogen and oxygen nuclei do not survive but interact to form
+carbon again. Therefore, the outcome is the same as in the proton-proton chain: four hydrogen atoms
+disappear, and in their place, a single helium atom is created. The CNO cycle plays only a minor role in the Sun
+but is the main source of energy for stars with masses greater than about the mass of the Sun.
+So you can see that we have solved the puzzle that so worried scientists at the end of the nineteenth century.
+The Sun can maintain its high temperature and energy output for billions of years through the fusion of the
+simplest element in the universe, hydrogen. Because most of the Sun (and the other stars) is made of
+hydrogen, it is an ideal “fuel” for powering a star. As will be discussed in the following chapters, we can define
+a star as a ball of gas capable of getting its core hot enough to initiate the fusion of hydrogen. There are balls
+of gas that lack the mass required to do this (Jupiter is a local example); like so many hopefuls in Hollywood,
+they will never be stars.
+Fusion on Earth
+Wouldn’t it be wonderful if we could duplicate the Sun’s energy mechanism in a controlled way on Earth?
+(We have already duplicated it in an uncontrolled way in hydrogen bombs, but we hope our storehouses of
+these will never be used.) Fusion energy would have many advantages: it would use hydrogen (or
+deuterium, which is heavy hydrogen) as fuel, and there is abundant hydrogen in Earth’s lakes and oceans.
+Water is much more evenly distributed around the world than oil or uranium, meaning that a few countries
+would no longer hold an energy advantage over the others. And unlike fission, which leaves dangerous
+byproducts, the nuclei that result from fusion are perfectly safe.
+The problem is that, as we saw, it takes extremely high temperatures for nuclei to overcome their electrical
+repulsion and undergo fusion. When the first hydrogen bombs were exploded in tests in the 1950s, the
+“fuses” to get them hot enough were fission bombs. Interactions at such temperatures are difficult to
+sustain and control. To make fusion power on Earth, after all, we have to do what the Sun does: produce
+temperatures and pressures high enough to get hydrogen nuclei on intimate terms with one another.
+The European Union, the United States, South Korea, Japan, China, Russia, Switzerland, and India are
+collaborating on the International Thermonuclear Experimental Reactor (ITER), a project to demonstrate
+the feasibility of controlled fusion (Figure 16.9). The facility is being built in France. Construction will require
+over 10,000,000 components and 2000 workers for assembly. The date for the start of operations is yet to
+be determined.
+ITER is based on the Tokamak design, in which a large doughnut-shaped container is surrounded by
+superconducting magnets to confine and control the hydrogen nuclei in a strong magnetic field. Previous
+fusion experiments have produced about 15 million watts of energy, but only for a second or two, and they
+have required 100 million watts to produce the conditions necessary to achieve fusion. The goal of ITER is to
+build the first fusion device capable of producing 500 million watts of fusion energy for up to 1000 seconds.
+The challenge is keeping the deuterium and tritium—which will participate in fusion reactions—hot enough
+and dense enough, for a long enough time to produce energy.
+MAKING CONNECTIONS
+16 • The Sun: A Nuclear Powerhouse
+Figure 16.9 ITER Design. The bright yellow areas in this model show where the superconducting magnets will circle the chamber
+within which fusion will take place. A huge magnet will keep the charged nuclei of heavy hydrogen confined. The goal is to
+produce 500 megawatts of energy. (credit: modification of work by Stephan Mosel)
+16.3
+The Solar Interior: Theory
+Learning Objectives
+By the end of this section, you will be able to:
+Describe the state of equilibrium of the Sun
+Understand the energy balance of the Sun
+Explain how energy moves outward through the Sun
+Describe the structure of the solar interior
+Fusion of protons can occur in the center of the Sun only if the temperature exceeds 12 million K. How do we
+know that the Sun is actually this hot? To determine what the interior of the Sun might be like, it is necessary
+to resort to complex calculations. Since we can’t see the interior of the Sun, we have to use our understanding
+of physics, combined with what we see at the surface, to construct a mathematical model of what must be
+happening in the interior. Astronomers use observations to build a computer program containing everything
+they think they know about the physical processes going on in the Sun’s interior. The computer then calculates
+the temperature and pressure at every point inside the Sun and determines what nuclear reactions, if any, are
+taking place. For some calculations, we can use observations to determine whether the computer program is
+producing results that match what we see. In this way, the program evolves with ever-improving observations.
+The computer program can also calculate how the Sun will change with time. After all, the Sun must change. In
+its center, the Sun is slowly depleting its supply of hydrogen and creating helium instead. Will the Sun get
+hotter? Cooler? Larger? Smaller? Brighter? Fainter? Ultimately, the changes in the center could be
+catastrophic, since eventually all the hydrogen fuel hot enough for fusion will be exhausted. Either a new
+source of energy must be found, or the Sun will cease to shine. We will describe the ultimate fate of the Sun in
+later chapters. For now, let’s look at some of the things we must teach the computer about the Sun in order to
+carry out such calculations.
+16.3 • The Solar Interior: Theory
+The Sun Is a Plasma
+The Sun is so hot that all of the material in it is in the form of an ionized gas, called a plasma. Plasma acts
+much like a hot gas, which is easier to describe mathematically than either liquids or solids. The particles that
+constitute a gas are in rapid motion, frequently colliding with one another. This constant bombardment is the
+pressure of the gas (Figure 16.10).
+Figure 16.10 Gas Pressure. The particles in a gas are in rapid motion and produce pressure through collisions with the surrounding
+material. Here, particles are shown bombarding the sides of an imaginary container.
+More particles within a given volume of gas produce more pressure because the combined impact of the
+moving particles increases with their number. The pressure is also greater when the molecules or atoms are
+moving faster. Since the molecules move faster when the temperature is hotter, higher temperatures produce
+higher pressure.
+The Sun Is Stable
+The Sun, like the majority of other stars, is stable; it is neither expanding nor contracting. Such a star is said to
+be in a condition of equilibrium. All the forces within it are balanced, so that at each point within the star, the
+temperature, pressure, density, and so on are maintained at constant values. We will see in later chapters that
+even these stable stars, including the Sun, are changing as they evolve, but such evolutionary changes are so
+gradual that, for all intents and purposes, the stars are still in a state of equilibrium at any given time.
+The mutual gravitational attraction between the masses of various regions within the Sun produces
+tremendous forces that tend to collapse the Sun toward its center. Yet we know from the history of Earth that
+the Sun has been emitting roughly the same amount of energy for billions of years, so clearly it has managed
+to resist collapse for a very long time. The gravitational forces must therefore be counterbalanced by some
+other force. That force is due to the pressure of gases within the Sun (Figure 16.11). Calculations show that, in
+order to exert enough pressure to prevent the Sun from collapsing due to the force of gravity, the gases at its
+center must be maintained at a temperature of 15 million K. Think about what this tells us. Just from the fact
+that the Sun is not contracting, we can conclude that its temperature must indeed be high enough at the
+center for protons to undergo fusion.
+16 • The Sun: A Nuclear Powerhouse
+Figure 16.11 Hydrostatic Equilibrium. In the interior of a star, the inward force of gravity is exactly balanced at each point by the
+outward force of gas pressure.
+The Sun maintains its stability in the following way. If the internal pressure in such a star were not great
+enough to balance the weight of its outer parts, the star would collapse somewhat, contracting and building
+up the pressure inside. On the other hand, if the pressure were greater than the weight of the overlying layers,
+the star would expand, thus decreasing the internal pressure. Expansion would stop, and equilibrium would
+again be reached when the pressure at every internal point equaled the weight of the stellar layers above that
+point. An analogy is an inflated balloon, which will expand or contract until an equilibrium is reached between
+the pressure of the air inside and outside. The technical term for this condition is hydrostatic equilibrium.
+Stable stars are all in hydrostatic equilibrium; so are the oceans of Earth as well as Earth’s atmosphere. The
+air’s own pressure keeps it from falling to the ground.
+The Sun Is Not Cooling Down
+As everyone who has ever left a window open on a cold winter night knows, heat always flows from hotter to
+cooler regions. As energy filters outward toward the surface of a star, it must be flowing from inner, hotter
+regions. The temperature cannot ordinarily get cooler as we go inward in a star, or energy would flow in and
+heat up those regions until they were at least as hot as the outer ones. Scientists conclude that the
+temperature is highest at the center of a star, dropping to lower and lower values toward the stellar surface.
+(The high temperature of the Sun’s chromosphere and corona may therefore appear to be a paradox. But
+remember from The Sun: A Garden-Variety Star that these high temperatures are maintained by magnetic
+effects, which occur in the Sun’s atmosphere.)
+The outward flow of energy through a star robs it of its internal heat, and the star would cool down if that
+energy were not replaced. Similarly, a hot iron begins to cool as soon as it is unplugged from its source of
+electric energy. Therefore, a source of fresh energy must exist within each star. In the Sun’s case, we have
+seen that this energy source is the ongoing fusion of hydrogen to form helium.
+Heat Transfer in a Star
+Since the nuclear reactions that generate the Sun’s energy occur deep within it, the energy must be
+transported from the center of the Sun to its surface—where we see it in the form of both heat and light.
+There are three ways in which energy can be transferred from one place to another. In conduction, atoms or
+molecules pass on their energy by colliding with others nearby. This happens, for example, when the handle of
+a metal spoon heats up as you stir a cup of hot coffee. In convection, currents of warm material rise, carrying
+their energy with them to cooler layers. A good example is hot air rising from a fireplace. In radiation,
+energetic photons move away from hot material and are absorbed by some material to which they convey
+16.3 • The Solar Interior: Theory
+some or all of their energy. You can feel this when you put your hand close to the coils of an electric heater,
+allowing infrared photons to heat up your hand. Conduction and convection are both important in the
+interiors of planets. In stars, which are much more transparent, radiation and convection are important,
+whereas conduction can usually be ignored.
+Stellar convection occurs as currents of hot gas flow up and down through the star (Figure 16.12). Such
+currents travel at moderate speeds and do not upset the overall stability of the star. They don’t even result in a
+net transfer of mass either inward or outward because, as hot material rises, cool material falls and replaces it.
+This results in a convective circulation of rising and falling cells as seen in Figure 16.12. In much the same way,
+heat from a fireplace can stir up air currents in a room, some rising and some falling, without driving any air
+into or out the room. Convection currents carry heat very efficiently outward through a star. In the Sun,
+convection turns out to be important in the central regions and near the surface.
+Figure 16.12 Convection. Rising convection currents carry heat from the Sun’s interior to its surface, whereas cooler material sinks
+downward. Of course, nothing in a real star is as simple as diagrams in textbooks suggest.
+Unless convection occurs, the only significant mode of energy transport through a star is by electromagnetic
+radiation. Radiation is not an efficient means of energy transport in stars because gases in stellar interiors are
+very opaque, that is, a photon does not go far (in the Sun, typically about 0.01 meter) before it is absorbed.
+(The processes by which atoms and ions can interrupt the outward flow of photons—such as becoming
+ionized—were discussed in the section on the Formation of Spectral Lines.) The absorbed energy is always
+reemitted, but it can be reemitted in any direction. A photon absorbed when traveling outward in a star has
+almost as good a chance of being radiated back toward the center of the star as toward its surface.
+A particular quantity of energy, therefore, zigzags around in an almost random manner and takes a long time
+to work its way from the center of a star to its surface (Figure 16.13). Estimates are somewhat uncertain, but in
+the Sun, as we saw, the time required is probably between 100,000 and 1,000,000 years. If the photons were
+not absorbed and reemitted along the way, they would travel at the speed of light and could reach the surface
+in a little over 2 seconds, just as neutrinos do (Figure 16.14).
+16 • The Sun: A Nuclear Powerhouse
+Figure 16.13 Photons Deep in the Sun. A photon moving through the dense gases in the solar interior travels only a short distance
+before it interacts with one of the surrounding atoms. The resulting photon usually has a lower energy after each interaction and
+may then travel in any random direction.
+Figure 16.14 Photon and Neutrino Paths in the Sun. (a) Because photons generated by fusion reactions in the solar interior travel
+only a short distance before being absorbed or scattered by atoms and sent off in random directions, estimates are that it takes
+between 100,000 and 1,000,000 years for energy to make its way from the center of the Sun to its surface. (b) In contrast, neutrinos
+do not interact with matter but traverse straight through the Sun at the speed of light, reaching the surface in only a little more than
+2 seconds.
+Heat Transfer and Cooking
+The three ways that heat energy moves from higher-temperature regions to cooler regions are all used in
+cooking, and this is important to all of us who enjoy making or eating food.
+Conduction is heat transfer by physical contact during which the energetic motion of particles in one region
+spread to other regions and even to adjacent objects in close contact. A tasty example of this is cooking a
+steak on a hot iron skillet. When a flame makes the bottom of a skillet hot, the particles in it vibrate actively
+and collide with neighboring particles, spreading the heat energy throughout the skillet (the ability to
+spread heat uniformly is a key criterion for selecting materials for cookware). A steak sitting on the surface
+of the skillet picks up heat energy by the particles in the surface of the skillet colliding with particles on the
+surface of the steak. Many cooks will put a little oil on the pan, and this layer of oil, besides preventing
+sticking, increases heat transfer by filling in gaps and increasing the contact surface area.
+MAKING CONNECTIONS
+16.3 • The Solar Interior: Theory
+Convection is heat transfer by the motion of matter that rises because it is hot and less dense. Heating a
+fluid makes it expand, which makes it less dense, so it rises. An oven is a great example of this: the fire is at
+the bottom of the oven and heats the air down there, causing it to expand (becoming less dense), so it rises
+up to where the food is. The rising hot air carries the heat from the fire to the food by convection. This is
+how conventional ovens work. You may also be familiar with convection ovens that use a fan to circulate
+hot air for more even cooking. A scientist would object to that name because normal non-fan ovens that
+rely on hot air rising to circulate the heat are convection ovens; technically, the ovens that use fans to help
+move heat are “advection” ovens. (You may not have heard about this because the scientists who complain
+loudly about misusing the terms convection and advection don’t get out much.)
+Radiation is the transfer of heat energy by electromagnetic radiation. Although microwave ovens are an
+obvious example of using radiation to heat food, a simpler example is a toy oven. Toy ovens are powered by
+a very bright light bulb. The child-chefs prepare a mix for brownies or cookies, put it into a tray, and place it
+in the toy oven under the bright light bulb. The light and heat from the bulb hit the brownie mix and cook it.
+If you have ever put your hand near a bright light, you have undoubtedly noticed your hand getting
+warmed by the light.
+Model Stars
+Scientists use the principles we have just described to calculate what the Sun’s interior is like. These physical
+ideas are expressed as mathematical equations that are solved to determine the values of temperature,
+pressure, density, the efficiency with which photons are absorbed, and other physical quantities throughout
+the Sun. The solutions obtained, based on a specific set of physical assumptions, provide a theoretical model
+for the interior of the Sun.
+Figure 16.15 schematically illustrates the predictions of a theoretical model for the Sun’s interior. Energy is
+generated through fusion in the core of the Sun, which extends only about one-quarter of the way to the
+surface but contains about one-third of the total mass of the Sun. At the center, the temperature reaches a
+maximum of approximately 15 million K, and the density is nearly 150 times that of water. The energy
+generated in the core is transported toward the surface by radiation until it reaches a point about 70% of the
+distance from the center to the surface. At this point, convection begins, and energy is transported the rest of
+the way, primarily by rising columns of hot gas.
+16 • The Sun: A Nuclear Powerhouse
+Figure 16.15 Interior Structure of the Sun. Energy is generated in the core by the fusion of hydrogen to form helium. This energy is
+transmitted outward by radiation—that is, by the absorption and reemission of photons. In the outermost layers, energy is
+transported mainly by convection. (credit: modification of work by NASA/Goddard)
+Figure 16.16 shows how the temperature, density, rate of energy generation, and composition vary from the
+center of the Sun to its surface.
+Figure 16.16 Interior of the Sun. Diagrams showing how temperature, density, rate of energy generation, and the percentage (by
+mass) abundance of hydrogen vary inside the Sun. The horizontal scale shows the fraction of the Sun’s radius: the left edge is the
+very center, and the right edge is the visible surface of the Sun, which is called the photosphere.
+16.4
+The Solar Interior: Observations
+Learning Objectives
+By the end of this section, you will be able to:
+Explain how the Sun pulsates
+Explain what helioseismology is and what it can tell us about the solar interior
+Discuss how studying neutrinos from the Sun has helped understand neutrinos
+16.4 • The Solar Interior: Observations
+Recall that when we observe the Sun’s photosphere (the surface layer we see from the outside), we are not
+seeing very deeply into our star, certainly not into the regions where energy is generated. That’s why the title
+of this section—observations of the solar interior—should seem very surprising. However, astronomers have
+indeed devised two types of measurements that can be used to obtain information about the inner parts of
+the Sun. One technique involves the analysis of tiny changes in the motion of small regions at the Sun’s
+surface. The other relies on the measurement of the neutrinos emitted by the Sun.
+Solar Pulsations
+Astronomers discovered that the Sun pulsates—that is, it alternately expands and contracts—just as your
+chest expands and contracts as you breathe. This pulsation is very slight, but it can be detected by measuring
+the radial velocity of the solar surface—the speed with which it moves toward or away from us. The velocities
+of small regions on the Sun are observed to change in a regular way, first toward Earth, then away, then
+toward, and so on. It is as if the Sun were “breathing” through thousands of individual lungs, each having a
+size in the range of 4000 to 15,000 kilometers, each fluctuating back and forth (Figure 16.17).
+Figure 16.17 Oscillations in the Sun. New observational techniques permit astronomers to measure small differences in velocity at
+the Sun’s surface to infer what the deep solar interior is like. In this computer simulation, red shows surface regions that are moving
+away from the observer (inward motion); blue marks regions moving toward the observer (outward motion). Note that the velocity
+changes penetrate deep into the Sun’s interior. (credit: modification of work by GONG, NOAO)
+The typical velocity of one of the oscillating regions on the Sun is only a few hundred meters per second, and it
+takes about 5 minutes to complete a full cycle from maximum to minimum velocity and back again. The
+change in the size of the Sun measured at any given point is no more than a few kilometers.
+The remarkable thing is that these small velocity variations can be used to determine what the interior of the
+Sun is like. The motion of the Sun’s surface is caused by waves that reach it from deep in the interior. Study of
+the amplitude and cycle length of velocity changes provides information about the temperature, density, and
+composition of the layers through which the waves passed before they reached the surface. The situation is
+somewhat analogous to the use of seismic waves generated by earthquakes to infer the properties of Earth’s
+interior. For this reason, studies of solar oscillations (back-and-forth motions) are referred to as
+helioseismology.
+It takes a little over an hour for waves to traverse the Sun from center to surface, so the waves, like neutrinos,
+provide information about what the solar interior is like at the present time. In contrast, remember that the
+sunlight we see today emerging from the Sun was actually generated in the core several hundred thousand
+years ago.
+16 • The Sun: A Nuclear Powerhouse
+Helioseismology has shown that convection extends inward from the surface 30% of the way toward the
+center; we have used this information in drawing Figure 16.15. Pulsation measurements also show that the
+differential rotation that we see at the Sun’s surface, with the fastest rotation occurring at the equator,
+persists down through the convection zone. Below the convection zone, however, the Sun, even though it is
+gaseous throughout, rotates as if it were a solid body like a bowling ball. Another finding from helioseismology
+is that the abundance of helium inside the Sun, except in the center where nuclear reactions have converted
+hydrogen into helium, is about the same as at its surface. That result is important to astronomers because it
+means we are correct when we use the abundance of the elements measured in the solar atmosphere to
+construct models of the solar interior.
+Helioseismology also allows scientists to look beneath a sunspot and see how it works. In The Sun: A Garden-
+Variety Star, we said that sunspots are cool because strong magnetic fields block the outward flow of energy.
+Figure 16.18 shows how gas moves around underneath a sunspot. Cool material from the sunspot flows
+downward, and material surrounding the sunspot is pulled inward, carrying magnetic field with it and thus
+maintaining the strong field that is necessary to form a sunspot. As the new material enters the sunspot
+region, it too cools, becomes denser, and sinks, thus setting up a self-perpetuating cycle that can last for
+weeks.
+Figure 16.18 Sunspot Structure. This drawing shows our new understanding, from helioseismology, of what lies beneath a sunspot.
+The black arrows show the direction of the flow of material. The intense magnetic field associated with the sunspot stops the upward
+flow of hot material and creates a kind of plug that blocks the hot gas. As the material above the plug cools (shown in blue), it
+becomes denser and plunges inward, drawing more gas and more magnetic field behind it into the spot. The concentrated magnetic
+field causes more cooling, thereby setting up a self-perpetuating cycle that allows a spot to survive for several weeks. Since the plug
+keeps hot material from flowing up into the sunspot, the region below the plug, represented by red in this picture, becomes hotter.
+This material flows sideways and then upward, eventually reaching the solar surface in the area surrounding the sunspot. (credit:
+modification of work by NASA, SDO)
+The downward-flowing cool material acts as a kind of plug that block the upward flow of hot material, which is
+then diverted sideways and eventually reaches the solar surface in the region around the sunspot. This
+outward flow of hot material accounts for the paradox that we described in The Sun: A Garden-Variety
+Star—namely, that the Sun emits slightly more energy when more of its surface is covered by cool sunspots.
+Helioseismology has become an important tool for predicting solar storms that might impact Earth. Active
+regions can appear and grow large in only a few days. The solar rotation period is about 28 days. Therefore,
+regions capable of producing solar flares and coronal mass ejections can develop on the far side of the Sun,
+where, for a long time, we couldn’t see them directly.
+Fortunately, we now have space telescopes monitoring the Sun from all angles, so we know if there are
+16.4 • The Solar Interior: Observations
+sunspots forming on the opposite side of the Sun. Moreover, sound waves travel slightly faster in regions of
+high magnetic field, and waves generated in active regions traverse the Sun about 6 seconds faster than
+waves generated in quiet regions. By detecting this subtle difference, scientists can provide warnings of a
+week or more to operators of electric utilities and satellites about when a potentially dangerous active region
+might rotate into view. With this warning, it is possible to plan for disruptions, put key instruments into safe
+mode, or reschedule spacewalks in order to protect astronauts.
+Solar Neutrinos
+The second technique for obtaining information about the Sun’s interior involves the detection of a few of
+those elusive neutrinos created during nuclear fusion. Recall from our earlier discussion that neutrinos
+created in the center of the Sun make their way directly out of the Sun and travel to Earth at nearly the speed
+of light. As far as neutrinos are concerned, the Sun is transparent.
+About 3% of the total energy generated by nuclear fusion in the Sun is carried away by neutrinos. So many
+protons react and form neutrinos inside the Sun’s core that, scientists calculate, 35 million billion (3.5 × 1016)
+solar neutrinos pass through each square meter of Earth’s surface every second. If we can devise a way to
+detect even a few of these solar neutrinos, then we can obtain information directly about what is going on in
+the center of the Sun. Unfortunately for those trying to “catch” some neutrinos, Earth and everything on it are
+also nearly transparent to passing neutrinos, just like the Sun.
+On very, very rare occasions, however, one of the billions and billions of solar neutrinos will interact with
+another atom. The first successful detection of solar neutrinos made use of cleaning fluid (C2Cl4), which is the
+least expensive way to get a lot of chlorine atoms together. The nucleus of a chlorine (Cl) atom in the cleaning
+fluid can be turned into a radioactive argon nucleus by an interaction with a neutrino. Because the argon is
+radioactive, its presence can be detected. However, since the interaction of a neutrino with chlorine happens
+so rarely, a huge amount of chlorine is needed.
+Raymond Davis, Jr. (Figure 16.19) and his colleagues at Brookhaven National Laboratory, placed a tank
+containing nearly 400,000 liters of cleaning fluid 1.5 kilometers beneath Earth’s surface in a gold mine at Lead,
+South Dakota. A mine was chosen so that the surrounding material of Earth would keep cosmic rays (highenergy particles from space) from reaching the cleaning fluid and creating false signals. (Cosmic-ray particles
+are stopped by thick layers of Earth, but neutrinos find them of no significance.) Calculations show that solar
+neutrinos should produce about one atom of radioactive argon in the tank each day.
+Figure 16.19 Davis Experiment. (a) Raymond Davis received the Nobel Prize in physics in 2002. (b) Davis’ experiment at the bottom
+of an abandoned gold mine first revealed problems with our understanding of neutrinos. (credit a: modification of work by
+Brookhaven National Laboratory; credit b: modification of work by the United States Department of Energy)
+This was an amazing project: they counted argon atoms about once per month—and remember, they were
+looking for a tiny handful of argon atoms in a massive tank of chlorine atoms. When all was said and done,
+16 • The Sun: A Nuclear Powerhouse
+Davis’ experiment, begun in 1970, detected only about one-third as many neutrinos as predicted by solar
+models! This was a shocking result because astronomers thought they had a pretty good understanding of
+both neutrinos and the Sun’s interior. For many years, astronomers and physicists wrestled with Davis’ results,
+trying to find a way out of the dilemma of the “missing” neutrinos.
+Eventually Davis’ result was explained by the surprising discovery that there are actually three types of
+neutrinos. Solar fusion produces only one type of neutrino, the so-called electron neutrino, and the initial
+experiments to detect solar neutrinos were designed to detect this one type. Subsequent experiments showed
+that these neutrinos change to a different type during their journey from the center of the Sun through space
+to Earth in a process called neutrino oscillation.
+An experiment, conducted at the Sudbury Neutrino Observatory in Canada, was the first one designed to
+capture all three types of neutrinos (Figure 16.20). The experiment was located in a mine 2 kilometers
+underground. The neutrino detector consisted of a 12-meter-diameter transparent acrylic plastic sphere,
+which contained 1000 metric tons of heavy water. Remember that an ordinary water nucleus contains two
+hydrogen atoms and one oxygen atom. Heavy water instead contains two deuterium atoms and one oxygen
+atom, and incoming neutrinos can occasionally break up the loosely bound proton and neutron that make up
+the deuterium nucleus. The sphere of heavy water was surrounded by a shield of 1700 metric tons of very pure
+water, which in turn was surrounded by 9600 photomultipliers, devices that detect flashes of light produced
+after neutrinos interact with the heavy water.
+Figure 16.20 Sudbury Neutrino Detector. The 12-meter sphere of the Sudbury Neutrino Detector lies more than 2 kilometers
+underground and holds 1000 metric tons of heavy water. (credit: A.B. McDonald (Queen’s University) et al., The Sudbury Neutrino
+Observatory Institute)
+To the enormous relief of astronomers who make models of the Sun, the Sudbury experiment detected about
+1 neutrino per hour and has shown that the total number of neutrinos reaching the heavy water is just what
+solar models predict. Only one-third of these, however, are electron neutrinos. It appears that two-thirds of
+the electron neutrinos produced by the Sun transform themselves into one of the other types of neutrinos as
+they make their way from the core of the Sun to Earth. This is why the earlier experiments saw only one-third
+the number of neutrinos expected.
+Although it is not intuitively obvious, such neutrino oscillations can happen only if the mass of the electron
+neutrino is not zero. Other experiments indicate that its mass is tiny (even compared to the electron). The 2015
+Nobel Prize in physics was awarded to researchers Takaaki Kajita and Arthur B. McDonald for their work
+establishing the changeable nature of neutrinos. (Raymond Davis shared the 2002 Nobel Prize with Japan’s
+Masatoshi Koshiba for the experiments that led to our understanding of the neutrino problem in the first
+16.4 • The Solar Interior: Observations
+place.) But the fact that the neutrino has mass at all has deep implications for both physics and astronomy. For
+example, we will look at the role that neutrinos play in the inventory of the mass of the universe in The Big
+Bang.
+The Borexino experiment, an international experiment conducted in Italy, detected neutrinos coming from the
+Sun that were identified as coming from different reactions. Whereas the p-p chain is the reaction producing
+most of the Sun’s energy, it is not the only nuclear reaction occurring in the Sun’s core. There are side
+reactions involving nuclei of such elements as beryllium and boron. By probing the number of neutrinos that
+come from each reaction, the Borexino experiment has helped us confirm in detail our understanding of
+nuclear fusion in the Sun. In 2014, the Borexino experiment also identified neutrinos that were produced by
+the first step in the p-p chain, confirming the models of solar astronomers.
+In 2020, scientists with the Borexino experiment were also able to identify neutrinos coming specifically from
+the CNO cycle of nuclear fusion. As discussed toward the end of Telescopes Today, CNO fusion plays a very
+minor role in the Sun, but becomes important in stars that are more massive and hotter than the Sun.
+It’s amazing that a series of experiments that began with enough cleaning fluid to fill a swimming pool
+brought down the shafts of an old gold mine is now teaching us about the energy source of the Sun and the
+properties of matter! This is a good example of how experiments in astronomy and physics, coupled with the
+best theoretical models we can devise, continue to lead to fundamental changes in our understanding of
+nature.
+16 • The Sun: A Nuclear Powerhouse
+Key Terms
+conduction
+process by which heat is directly transmitted through a substance when there is a difference of
+temperature between adjoining regions caused by atomic or molecular collisions
+convection
+movement caused within a gas or liquid by the tendency of hotter, and therefore less dense
+material, to rise and colder, denser material to sink under the influence of gravity, which consequently
+results in transfer of heat
+fission
+breaking up of heavier atomic nuclei into lighter ones
+fusion
+building up of heavier atomic nuclei from lighter ones
+helioseismology
+study of pulsations or oscillations of the Sun in order to determine the characteristics of the
+solar interior
+hydrostatic equilibrium
+balance between the weights of various layers, as in a star or Earth’s atmosphere,
+and the pressures that support them
+neutrino
+fundamental particle that has no charge and a mass that is tiny relative to an electron; it rarely
+interacts with ordinary matter and comes in three different types
+positron
+particle with the same mass as an electron, but positively charged
+proton-proton chain
+series of thermonuclear reactions by which nuclei of hydrogen are built up into nuclei
+of helium
+radiation
+emission of energy as electromagnetic waves or photons also the transmitted energy itself
+Summary
+16.1 Sources of Sunshine: Thermal and Gravitational Energy
+The Sun produces an enormous amount of energy every second. Since Earth and the solar system are roughly
+4.5 billion years old, this means that the Sun has been producing vast amounts for energy for a very, very long
+time. Neither chemical burning nor gravitational contraction can account for the total amount of energy
+radiated by the Sun during all this time.
+16.2 Mass, Energy, and the Theory of Relativity
+Solar energy is produced by interactions of particles—that is, protons, neutrons, electrons, positrons, and
+neutrinos. Specifically, the source of the Sun’s energy is the fusion of hydrogen to form helium. The series of
+reactions required to convert hydrogen to helium is called the proton-proton chain. A helium atom is about
+0.71% less massive than the four hydrogen atoms that combine to form it, and that lost mass is converted to
+energy (with the amount of energy given by the formula E = mc2).
+16.3 The Solar Interior: Theory
+Even though we cannot see inside the Sun, it is possible to calculate what its interior must be like. As input for
+these calculations, we use what we know about the Sun. It is made entirely of hot gas. Apart from some very
+tiny changes, the Sun is neither expanding nor contracting (it is in hydrostatic equilibrium) and puts out
+energy at a constant rate. Fusion of hydrogen occurs in the center of the Sun, and the energy generated is
+carried to the surface by radiation and then convection. A solar model describes the structure of the Sun’s
+interior. Specifically, it describes how pressure, temperature, mass, and luminosity depend on the distance
+from the center of the Sun.
+16.4 The Solar Interior: Observations
+Studies of solar oscillations (helioseismology) and neutrinos can provide observational data about the Sun’s
+interior. The technique of helioseismology has so far shown that the composition of the interior is much like
+that of the surface (except in the core, where some of the original hydrogen has been converted into helium),
+and that the convection zone extends about 30% of the way from the Sun’s surface to its center.
+Helioseismology can also detect active regions on the far side of the Sun and provide better predictions of
+16 • Key Terms
+solar storms that may affect Earth. Neutrinos from the Sun call tell us about what is happening in the solar
+interior. A recent experiment has shown that solar models do predict accurately the number of electron
+neutrinos produced by nuclear reactions in the core of the Sun. However, two-thirds of these neutrinos are
+converted into different types of neutrinos during their long journey from the Sun to Earth, a result that also
+indicates that neutrinos are not massless particles.
+For Further Exploration
+Articles
+Harvey, J. et al. “GONG: To See Inside Our Sun.” Sky & Telescope (November 1987): 470.
+Hathaway, D. “Journey to the Heart of the Sun.” Astronomy (January 1995): 38.
+Kennedy, J. “GONG: Probing the Sun’s Hidden Heart.” Sky & Telescope (October 1996): 20. A discussion on
+hydroseismology.
+LoPresto, J. “Looking Inside the Sun.” Astronomy (March 1989): 20. A discussion on hydroseismology.
+McDonald, A. et al. “Solving the Solar Neutrino Problem.” Scientific American (April 2003): 40. A discussion on
+how underground experiments with neutrino detectors helped explain the seeming absence of neutrinos from
+the Sun.
+Trefil, J. “How Stars Shine.” Astronomy (January 1998): 56.
+Websites
+Albert Einstein Online: http://www.westegg.com/einstein/ (http://www.westegg.com/einstein/).
+Ghost Particle (Neutrinos): http://www.pbs.org/wgbh/nova/neutrino/ (http://www.pbs.org/wgbh/nova/
+neutrino/).
+GONG Project Site: http://gong.nso.edu/ (http://gong.nso.edu/).
+Helioseismology: http://solar-center.stanford.edu/about/helioseismology.html (http://solarcenter.stanford.edu/about/helioseismology.html).
+Princeton Plasma Physics Lab: http://www.pppl.gov/ (http://www.pppl.gov/).
+Solving the Mystery of the Solar Neutrinos: http://www.nobelprize.org/nobel_prizes/themes/physics/bahcall/
+(http://www.nobelprize.org/nobel_prizes/themes/physics/bahcall/).
+Super Kamiokande Neutrino Mass Page: http://www.ps.uci.edu/~superk/ (http://www.ps.uci.edu/~superk/).
+Videos
+Deep Secrets of the Neutrino: Physics Underground: https://www.youtube.com/watch?v=Ar9ydagYkYg
+(https://www.youtube.com/watch?v=Ar9ydagYkYg). 2010 Public Lecture by Peter Rowson at the Stanford
+Linear Accelerator Center (1:22:00).
+The Elusive Neutrino and the Nature of Physics: https://www.youtube.com/watch?v=CBfUHzkcaHQ
+(https://www.youtube.com/watch?v=CBfUHzkcaHQ). Panel at the 2014 World Science Festival (1:30:00).
+Collaborative Group Activities
+A.
+In this chapter, we learned that meteorites falling into the Sun could not be the source of the Sun’s energy
+because the necessary increase in the mass of the Sun would lengthen Earth’s orbital period by 2 seconds
+per year. Have your group discuss what effects this would cause for our planet and for us as the centuries
+went on.
+16 • For Further Exploration
+B.
+Solar astronomers can learn more about the Sun’s interior if they can observe the Sun’s oscillations 24
+hours each day. This means that they cannot have their observations interrupted by the day/night cycle.
+Such an experiment, called the GONG (Global Oscillation Network Group) project, was first set up in the
+1990s. To save money, this experiment was designed to make use of the minimum possible number of
+telescopes. It turns out that if the sites are selected carefully, the Sun can be observed all but about 10% of
+the time with only six observing stations. What factors do you think have to be taken into consideration in
+selecting the observing sites? Can your group suggest six general geographic locations that would
+optimize the amount of time that the Sun can be observed? Check your answer by looking at the GONG
+website.
+C.
+What would it be like if we actually manage to get controlled fusion on Earth to be economically feasible?
+If the hydrogen in water becomes the fuel for releasing enormous amounts of energy (instead of fossil
+fuels), have your group discuss how this affects the world economy and international politics. (Think of the
+role that oil and natural gas deposits now play on the world scene and in international politics.)
+D.
+Your group is a delegation sent to the city council of a small mining town to explain why the government
+is putting a swimming-pool-sized vat of commercial cleaning fluid down one of the shafts of an old gold
+mine. How would you approach this meeting? Assuming that the members of the city council do not have
+much science background, how would you explain the importance of the project to them? Suggest some
+visual aids you could use.
+E.
+When Raymond Davis first suggested his experiment in the underground gold mine, which had significant
+costs associated with it, some people said it wasn’t worth the expense since we already understood the
+conditions and reactions in the core of the Sun. Yet his experiment led to a major change in our
+understanding of neutrinos and the physics of subatomic particles. Can your group think of other
+“expensive” experiments in astronomy that led to fundamental improvements in our understanding of
+nature?
+Exercises
+Review Questions
+1. How do we know the age of the Sun?
+2. Explain how we know that the Sun’s energy is not supplied either by chemical burning, as in fires here on
+Earth, or by gravitational contraction (shrinking).
+3. What is the ultimate source of energy that makes the Sun shine?
+4. What are the formulas for the three steps in the proton-proton chain?
+5. How is a neutrino different from a neutron? List all the ways you can think of.
+6. Describe in your own words what is meant by the statement that the Sun is in hydrostatic equilibrium.
+7. Two astronomy students travel to South Dakota. One stands on Earth’s surface and enjoys some sunshine.
+At the same time, the other descends into a gold mine where neutrinos are detected, arriving in time to
+detect the creation of a new radioactive argon nucleus. Although the photon at the surface and the
+neutrinos in the mine arrive at the same time, they have had very different histories. Describe the
+differences.
+8. What do measurements of the number of neutrinos emitted by the Sun tell us about conditions deep in the
+solar interior?
+9. Do neutrinos have mass? Describe how the answer to this question has changed over time and why.
+16 • Exercises
+10. Neutrinos produced in the core of the Sun carry energy to its exterior. Is the mechanism for this energy
+transport conduction, convection, or radiation?
+11. What conditions are required before proton-proton chain fusion can start in the Sun?
+12. Describe the two main ways that energy travels through the Sun.
+Thought Questions
+13. Someone suggests that astronomers build a special gamma-ray detector to detect gamma rays produced
+during the proton-proton chain in the core of the Sun, just like they built a neutrino detector. Explain why
+this would be a fruitless effort.
+14. Earth contains radioactive elements whose decay produces neutrinos. How might we use neutrinos to
+determine how these elements are distributed in Earth’s interior?
+15. The Sun is much larger and more massive than Earth. Do you think the average density of the Sun is larger
+or smaller than that of Earth? Write down your answer before you look up the densities. Now find the
+values of the densities elsewhere in this text. Were you right? Explain clearly the meanings of density and
+mass.
+16. A friend who has not had the benefit of an astronomy course suggests that the Sun must be full of
+burning coal to shine as brightly as it does. List as many arguments as you can against this hypothesis.
+17. Which of the following transformations is (are) fusion and which is (are) fission: helium to carbon, carbon
+to iron, uranium to lead, boron to carbon, oxygen to neon? (See Appendix K for a list of the elements.)
+18. Why is a higher temperature required to fuse hydrogen to helium by means of the CNO cycle than is
+required by the process that occurs in the Sun, which involves only isotopes of hydrogen and helium?
+19. Earth’s atmosphere is in hydrostatic equilibrium. What this means is that the pressure at any point in the
+atmosphere must be high enough to support the weight of air above it. How would you expect the
+pressure on Mt. Everest to differ from the pressure in your classroom? Explain why.
+20. Explain what it means when we say that Earth’s oceans are in hydrostatic equilibrium. Now suppose you
+are a scuba diver. Would you expect the pressure to increase or decrease as you dive below the surface to
+a depth of 200 feet? Why?
+21. What mechanism transfers heat away from the surface of the Moon? If the Moon is losing energy in this
+way, why does it not simply become colder and colder?
+22. Suppose you are standing a few feet away from a bonfire on a cold fall evening. Your face begins to feel
+hot. What is the mechanism that transfers heat from the fire to your face? (Hint: Is the air between you
+and the fire hotter or cooler than your face?)
+23. Give some everyday examples of the transport of heat by convection and by radiation.
+24. Suppose the proton-proton cycle in the Sun were to slow down suddenly and generate energy at only 95%
+of its current rate. Would an observer on Earth see an immediate decrease in the Sun’s brightness? Would
+she immediately see a decrease in the number of neutrinos emitted by the Sun?
+25. Do you think that nuclear fusion takes place in the atmospheres of stars? Why or why not?
+26. Why is fission not an important energy source in the Sun?
+27. Why do you suppose so great a fraction of the Sun’s energy comes from its central regions? Within what
+fraction of the Sun’s radius does practically all of the Sun’s luminosity originate (see Figure 16.16)? Within
+what radius of the Sun has its original hydrogen been partially used up? Discuss what relationship the
+answers to these questions bear to one another.
+16 • Exercises
+28. Explain how mathematical computer models allow us to understand what is going on inside of the Sun.
+Figuring for Yourself
+29. Estimate the amount of mass that is converted to energy when a proton combines with a deuterium
+nucleus to form 3He.
+30. How much energy is released when a proton combines with a deuterium nucleus to produce 3He?
+31. The Sun converts 4 × 109 kg of mass to energy every second. How many years would it take the Sun to
+convert a mass equal to the mass of Earth to energy?
+32. Assume that the mass of the Sun is 75% hydrogen and that all of this mass could be converted to energy
+according to Einstein’s equation E = mc2. How much total energy could the Sun generate? If m is in kg and
+c is in m/s, then E will be expressed in J. (The mass of the Sun is given in Appendix E.)
+33. In fact, the conversion of mass to energy in the Sun is not 100% efficient. As we have seen in the text, the
+conversion of four hydrogen atoms to one helium atom results in the conversion of about 0.02862 times
+the mass of a proton to energy. How much energy in joules does one such reaction produce? (See
+Appendix E for the mass of the hydrogen atom, which, for all practical purposes, is the mass of a proton.)
+34. Now suppose that all of the hydrogen atoms in the Sun were converted into helium. How much total
+energy would be produced? (To calculate the answer, you will have to estimate how many hydrogen
+atoms are in the Sun. This will give you good practice with scientific notation, since the numbers involved
+are very large! See Appendix C for a review of scientific notation.)
+35. Models of the Sun indicate that only about 10% of the total hydrogen in the Sun will participate in nuclear
+reactions, since it is only the hydrogen in the central regions that is at a high enough temperature. Use the
+total energy radiated per second by the Sun, 3.8 × 1026 watts, alongside the exercises and information
+given here to estimate the lifetime of the Sun. (Hint: Make sure you keep track of the units: if the
+luminosity is the energy radiated per second, your answer will also be in seconds. You should convert the
+answer to something more meaningful, such as years.)
+36. Show that the statement in the text is correct: namely, that roughly 600 million tons of hydrogen must be
+converted to helium in the Sun each second to explain its energy output. (Hint: Recall Einstein’s most
+famous formula, and remember that for each kg of hydrogen, 0.0071 kg of mass is converted into energy.)
+How long will it be before 10% of the hydrogen is converted into helium? Does this answer agree with the
+lifetime you calculated in Exercise 16.35?
+37. Every second, the Sun converts 4 million tons of matter to energy. How long will it take the Sun to reduce
+its mass by 1% (the mass of the Sun is 2 × 1030 kg)? Compare your answer with the lifetime of the Sun so
+far.
+38. Raymond Davis Jr.’s neutrino detector contained approximately 1030 chlorine atoms. During his
+experiment, he found that one neutrino reacted with a chlorine atom to produce one argon atom each
+day.
+A.
+How many days would he have to run the experiment for 1% of his tank to be filled with argon atoms?
+B.
+Convert your answer from A. into years.
+C.
+Compare this answer to the age of the universe, which is approximately 14 billion years (1.4 × 1010 y).
+D.
+What does this tell you about how frequently neutrinos interact with matter?
+16 • Exercises
+16 • Exercises

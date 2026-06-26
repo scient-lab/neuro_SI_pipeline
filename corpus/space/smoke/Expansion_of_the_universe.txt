@@ -1,0 +1,726 @@
+The expansion of the universe is the increase in distance between gravitationally unbound parts of the observable universe with time. It is an intrinsic expansion, so it does not mean that the universe expands into anything or that space exists outside it. To any observer in the universe, it appears that all but the nearest galaxies (which are bound to each other by gravity) move away at speeds that are proportional to their distance from the observer, on average. While objects cannot move faster than light, this limitation applies only with respect to local reference frames and does not limit the recession rates of cosmologically distant objects.
+The expansion of the universe was discovered by separate theoretical and observational work in the 1920s. Since then, the expansion has become a core aspect of the astrophysical field of cosmology. Many major scientific projects have sought to characterize the expansion and understand its effects.
+Cosmic expansion is a key feature of Big Bang cosmology. Within the theory of general relativity, it is modeled mathematically with the Friedmann–Lemaître–Robertson–Walker (FLRW) metric. The consensus or "standard" model of cosmology, the Lambda-CDM model, hypothesizes different expansion rates during different times, depending on the physical properties of the contents of spacetime. The very earliest expansion, called inflation, saw the universe suddenly expand by a factor of at least 1026 in every direction about 10−32 of a second after the Big Bang. Cosmic expansion subsequently decelerated to much slower rates, until around 9.8 billion years after the Big Bang (4 billion years ago) it began to gradually expand more quickly, and is still doing so. Physicists have postulated the existence of dark energy, appearing as a cosmological constant in the simplest gravitational models, as a way to explain this late-time acceleration which is predicted to be dominant in the future.
+The concept of the expansion of the universe is difficult to explain, leading to several misconceptions about its nature, origin, and effects.
+
+
+== History of the concept ==
+In 1912–1914, Vesto Slipher discovered that light from remote galaxies was redshifted, a phenomenon later interpreted as galaxies receding from the Earth. In 1922, Alexander Friedmann used the Einstein field equations to provide theoretical evidence that the universe is expanding.
+The key astronomical demonstration of the expansion of the universe is known as Hubble's law or sometimes as the Hubble–Lemaître law. The name and thus the honor of the discovery has been debated. In 1924, Swedish astronomer Knut Lundmark found observational evidence for expansion. While his results were reasonably accurate even by today's standards, they relied upon galaxy diameter measurements and  the distance to the Andromeda Galaxy which were unproven at the time.
+In 1927, Georges Lemaître derived solutions for Einstein's equations of general relativity and applied them to data published by Slipher and Hubble to propose a linear relationship between distance to galaxies and their recessional velocity. The linear relationship was firmly established by Edwin Hubble in 1929 using multiple methods and cross-checked with proven techniques.
+Hubble himself did not associate the relationship now called Hubble's law to the expansion of the universe and his estimate of the proportionality constant was too large by a factor of 7, but his publications sparked interest in the earlier theoretical work and initiated increasingly sophisticated efforts to measure the constant.  Astronomer Walter Baade recalculated the size of the known universe in the 1940s, doubling the previous value. For most of the second half of the 20th century, the value of the Hubble constant was estimated to be between 50 and 90 km⋅s−1⋅Mpc−1.
+On 13 January 1994, NASA formally announced a completion of its repairs related to the main mirror of the Hubble Space Telescope, allowing for sharper images and, consequently, more accurate analyses of its observations. Shortly after the repairs were made, Wendy Freedman's 1994 Key Project analyzed the recession velocity of M100 from the core of the Virgo Cluster, offering a Hubble constant measurement of 80±17 km⋅s−1⋅Mpc−1. Later the same year, Adam Riess et al. used an empirical method of visual-band light-curve shapes to more finely estimate the luminosity of Type Ia supernovae. This further minimized the systematic measurement errors of the Hubble constant, to 67±7 km⋅s−1⋅Mpc−1. Reiss's measurements on the recession velocity of the nearby Virgo Cluster more closely agree with subsequent and independent analyses of Cepheid variable calibrations of Type Ia supernovae, which estimates a Hubble constant of 73±7 km⋅s−1⋅Mpc−1. In 2003, David Spergel's analysis of the cosmic microwave background during the first year observations of the Wilkinson Microwave Anisotropy Probe satellite (WMAP) further agreed with the estimated expansion rates for local galaxies, 72±5 km⋅s−1⋅Mpc−1.
+
+
+== Structure of cosmic expansion ==
+Distant galaxies in all directions are observed to move away from Earth and their velocity is proportional to their distance from Earth. This observation, known as Hubble's law, combined with the observation that the universe at the largest scales is homogeneous (the same everywhere) and isotropic (the same in all directions), means that the universe is expanding uniformly at the present time. This means the distance between any two galaxies increases over time by the same factor. Uniform expansion is equivalent to the observed linear relationship between the recession velocities 
+  
+    
+      
+        
+          
+            
+              v
+              →
+            
+          
+        
+      
+    
+    {\displaystyle {\vec {v}}}
+  
+ of a galaxy and its positions 
+  
+    
+      
+        
+          
+            
+              x
+              →
+            
+          
+        
+      
+    
+    {\displaystyle {\vec {x}}}
+  
+: 
+
+  
+    
+      
+        
+          
+            
+              v
+              →
+            
+          
+        
+        =
+        
+          H
+          
+            0
+          
+        
+        
+          
+            
+              x
+              →
+            
+          
+        
+        ,
+      
+    
+    {\displaystyle {\vec {v}}=H_{0}{\vec {x}},}
+  
+
+where the Hubble constant 
+  
+    
+      
+        
+          H
+          
+            0
+          
+        
+      
+    
+    {\displaystyle H_{0}}
+  
+ quantifies the rate of expansion today.
+While the expansion in space is uniform, it is not uniform across long time intervals: the rate of expansion varies with time and this variation is a central object of study in cosmology. Using cosmic time with 
+  
+    
+      
+        
+          t
+          
+            0
+          
+        
+      
+    
+    {\displaystyle t_{0}}
+  
+ indicating the present,  the Hubble constant,
+  
+    
+      
+        
+          H
+          
+            0
+          
+        
+        =
+        H
+        (
+        t
+        =
+        
+          t
+          
+            0
+          
+        
+        )
+      
+    
+    {\displaystyle H_{0}=H(t=t_{0})}
+  
+, is the present day value of the Hubble parameter, 
+  
+    
+      
+        H
+        (
+        t
+        )
+      
+    
+    {\displaystyle H(t)}
+  
+, describing the dynamics of expansion.
+
+
+== Dynamics of cosmic expansion ==
+
+The expansion of the universe can be understood as resulting from an initial condition in which the contents of the universe are flying apart. The mutual gravitational attraction of the matter and radiation within the universe gradually slows this expansion over time, but their density is too low to prevent continued expansion. In addition, recent observational evidence suggests that dark energy is now accelerating the expansion.
+Mathematically, the expansion of the universe is quantified by the scale factor, 
+  
+    
+      
+        a
+      
+    
+    {\displaystyle a}
+  
+, which is proportional to the average separation between objects, such as galaxies. The scale factor is a function of time and is conventionally set to be 
+  
+    
+      
+        a
+        =
+        1
+      
+    
+    {\displaystyle a=1}
+  
+ at the present time. Because the universe is expanding, 
+  
+    
+      
+        a
+      
+    
+    {\displaystyle a}
+  
+ is smaller in the past and larger in the future. Extrapolating back in time with certain cosmological models will yield a moment when the scale factor was zero; our current understanding of cosmology sets this time at 13.787 ± 0.020 billion years ago. If the universe continues to expand forever, the scale factor will approach infinity in the future. It is also possible in principle for the universe to stop expanding and begin to contract, which corresponds to the scale factor decreasing in time.
+The scale factor 
+  
+    
+      
+        a
+      
+    
+    {\displaystyle a}
+  
+ is a parameter of the FLRW metric, and its time evolution is governed by the Friedmann equations. The second Friedmann equation,
+
+  
+    
+      
+        
+          
+            
+              
+                a
+                ¨
+              
+            
+            a
+          
+        
+        =
+        −
+        
+          
+            
+              4
+              π
+              G
+            
+            3
+          
+        
+        
+          (
+          
+            ρ
+            +
+            
+              
+                
+                  3
+                  p
+                
+                
+                  c
+                  
+                    2
+                  
+                
+              
+            
+          
+          )
+        
+        +
+        
+          
+            
+              Λ
+              
+                c
+                
+                  2
+                
+              
+            
+            3
+          
+        
+        ,
+      
+    
+    {\displaystyle {\frac {\ddot {a}}{a}}=-{\frac {4\pi G}{3}}\left(\rho +{\frac {3p}{c^{2}}}\right)+{\frac {\Lambda c^{2}}{3}},}
+  
+
+shows how the contents of the universe influence its expansion rate. Here, 
+  
+    
+      
+        G
+      
+    
+    {\displaystyle G}
+  
+ is the gravitational constant, 
+  
+    
+      
+        ρ
+      
+    
+    {\displaystyle \rho }
+  
+ is the energy density within the universe, 
+  
+    
+      
+        p
+      
+    
+    {\displaystyle p}
+  
+ is the pressure, 
+  
+    
+      
+        c
+      
+    
+    {\displaystyle c}
+  
+ is the speed of light, and 
+  
+    
+      
+        Λ
+      
+    
+    {\displaystyle \Lambda }
+  
+ is the cosmological constant. A positive energy density leads to deceleration of the expansion, 
+  
+    
+      
+        
+          
+            
+              a
+              ¨
+            
+          
+        
+        <
+        0
+      
+    
+    {\displaystyle {\ddot {a}}<0}
+  
+, and a positive pressure further decelerates expansion. On the other hand, sufficiently negative pressure with 
+  
+    
+      
+        p
+        <
+        −
+        ρ
+        
+          c
+          
+            2
+          
+        
+        
+          /
+        
+        3
+      
+    
+    {\displaystyle p<-\rho c^{2}/3}
+  
+ leads to accelerated expansion, and the cosmological constant also accelerates expansion. Nonrelativistic matter is essentially pressureless, with 
+  
+    
+      
+        
+          |
+        
+        p
+        
+          |
+        
+        ≪
+        ρ
+        
+          c
+          
+            2
+          
+        
+      
+    
+    {\displaystyle |p|\ll \rho c^{2}}
+  
+, while a gas of ultrarelativistic particles (such as a photon gas) has positive pressure 
+  
+    
+      
+        p
+        =
+        ρ
+        
+          c
+          
+            2
+          
+        
+        
+          /
+        
+        3
+      
+    
+    {\displaystyle p=\rho c^{2}/3}
+  
+. Negative-pressure fluids, like dark energy, are not experimentally confirmed, but the existence of dark energy is inferred from astronomical observations.
+
+
+== Distances in the expanding universe ==
+
+
+=== Comoving coordinates ===
+
+In an expanding universe, it is often useful to study the evolution of structure with the expansion of the universe factored out. This motivates the use of comoving coordinates, which are defined to grow proportionally with the scale factor. If an object is moving only with the Hubble flow of the expanding universe, with no other motion, then it remains stationary in comoving coordinates. The comoving coordinates are the spatial coordinates in the FLRW metric.
+
+
+=== Shape of the universe ===
+
+The universe is a four-dimensional spacetime, but within a universe that obeys the cosmological principle, there is a natural choice of three-dimensional spatial surface. These are the surfaces on which observers who are stationary in comoving coordinates agree on the age of the universe. In a universe governed by special relativity, such surfaces would be hyperboloids, because relativistic time dilation means that rapidly receding distant observers' clocks are slowed, so that spatial surfaces must bend "into the future" over long distances.  However, within general relativity, the shape of these comoving synchronous spatial surfaces is affected by gravity. Current observations are consistent with these spatial surfaces being geometrically flat (so that, for example, the angles of a triangle add up to 180 degrees).
+
+
+=== Cosmological horizons ===
+
+An expanding universe typically has a finite age. Light, and other particles, can have propagated only a finite distance. The comoving distance that such particles can have covered over the age of the universe is known as the particle horizon, and the region of the universe that lies within our particle horizon is known as the observable universe.
+If the dark energy that is inferred to dominate the universe today is a cosmological constant, then the particle horizon converges to a finite value in the infinite future. This implies that the amount of the universe that we will ever be able to observe is limited. Many systems exist whose light can never reach us, because there is a cosmic event horizon induced by the repulsive gravity of the dark energy.
+Within the study of the evolution of structure within the universe, a natural scale emerges, known as the Hubble horizon. Cosmological perturbations much larger than the Hubble horizon are not dynamical, because gravitational influences do not have time to propagate across them, while perturbations much smaller than the Hubble horizon are straightforwardly governed by Newtonian gravitational dynamics.
+
+
+== Consequences of cosmic expansion ==
+
+
+=== Redshifts ===
+For photons, expansion leads to the cosmological redshift. While the cosmological redshift is often explained as the stretching of photon wavelengths due to "expansion of space", it is more naturally viewed as a consequence of the Doppler effect.
+
+
+=== Peculiar velocities ===
+An object's peculiar velocity is its velocity with respect to the comoving coordinate grid, i.e., with respect to the average expansion-associated motion of the surrounding material. It is a measure of how a particle's motion deviates from the Hubble flow of the expanding universe. The peculiar velocities of nonrelativistic particles decay as the universe expands, in inverse proportion with the cosmic scale factor. This can be understood as a self-sorting effect. A particle that is moving in some direction gradually overtakes the Hubble flow of cosmic expansion in that direction, asymptotically approaching material with the same velocity as its own. More generally, the peculiar momenta of both relativistic and nonrelativistic particles decay in inverse proportion with the scale factor.
+
+
+=== Temperature ===
+The universe cools as it expands. This follows from the decay of particles' peculiar momenta, as discussed above. It can also be understood as adiabatic cooling. The temperature of ultrarelativistic fluids, often called "radiation" and including the cosmic microwave background, scales inversely with the scale factor (i.e. 
+  
+    
+      
+        T
+        ∝
+        
+          a
+          
+            −
+            1
+          
+        
+      
+    
+    {\displaystyle T\propto a^{-1}}
+  
+). The temperature of nonrelativistic matter drops more sharply, scaling as the inverse square of the scale factor (i.e. 
+  
+    
+      
+        T
+        ∝
+        
+          a
+          
+            −
+            2
+          
+        
+      
+    
+    {\displaystyle T\propto a^{-2}}
+  
+).
+
+
+=== Density ===
+The contents of the universe dilute as it expands. The number of particles within a comoving volume remains fixed (on average), while the volume expands. For nonrelativistic matter, this implies that the energy density drops as 
+  
+    
+      
+        ρ
+        ∝
+        
+          a
+          
+            −
+            3
+          
+        
+      
+    
+    {\displaystyle \rho \propto a^{-3}}
+  
+, where 
+  
+    
+      
+        a
+      
+    
+    {\displaystyle a}
+  
+ is the scale factor.
+For ultrarelativistic particles ("radiation"), the energy density drops more sharply, as 
+  
+    
+      
+        ρ
+        ∝
+        
+          a
+          
+            −
+            4
+          
+        
+      
+    
+    {\displaystyle \rho \propto a^{-4}}
+  
+. This is because the energy of an ultrarelativistic particle is dominated by its momentum, rather than its rest mass energy (see energy-momentum relation). Consequently, in addition to the volume dilution of the particle count, the energy of each particle also drops in proportion with 
+  
+    
+      
+        
+          a
+          
+            −
+            1
+          
+        
+      
+    
+    {\displaystyle a^{-1}}
+  
+ as its peculiar momentum decays.
+In general, we can consider a perfect fluid with pressure 
+  
+    
+      
+        p
+        =
+        w
+        ρ
+      
+    
+    {\displaystyle p=w\rho }
+  
+, where 
+  
+    
+      
+        ρ
+      
+    
+    {\displaystyle \rho }
+  
+ is the energy density. The parameter 
+  
+    
+      
+        w
+      
+    
+    {\displaystyle w}
+  
+ is the equation of state parameter. The energy density of such a fluid drops as
+
+  
+    
+      
+        ρ
+        ∝
+        
+          a
+          
+            −
+            3
+            (
+            1
+            +
+            w
+            )
+          
+        
+        .
+      
+    
+    {\displaystyle \rho \propto a^{-3(1+w)}.}
+  
+
+Nonrelativistic matter has 
+  
+    
+      
+        w
+        =
+        0
+      
+    
+    {\displaystyle w=0}
+  
+ while radiation has 
+  
+    
+      
+        w
+        =
+        1
+        
+          /
+        
+        3
+      
+    
+    {\displaystyle w=1/3}
+  
+. For an exotic fluid with negative pressure, like dark energy, the energy density drops more slowly; if 
+  
+    
+      
+        w
+        =
+        −
+        1
+      
+    
+    {\displaystyle w=-1}
+  
+ it remains constant in time. If 
+  
+    
+      
+        w
+        <
+        −
+        1
+      
+    
+    {\displaystyle w<-1}
+  
+, corresponding to phantom energy, the energy density grows as the universe expands.
+
+
+== Expansion history ==
+
+
+=== Cosmic inflation ===
+
+Inflation is a period of accelerated expansion hypothesized to have occurred at a time of around 10−32 seconds. It would have been driven by the inflaton, a field that has a positive-energy false vacuum state. Inflation was originally proposed to explain the absence of exotic relics predicted by grand unified theories, such as magnetic monopoles, because the rapid expansion would have diluted such relics. It was subsequently realized that the accelerated expansion would also solve the horizon problem and the flatness problem. Additionally, quantum fluctuations during inflation would have created initial variations in the density of the universe, which gravity later amplified to yield the observed spectrum of matter density variations.
+During inflation, the cosmic scale factor grew exponentially in time. In order to solve the horizon and flatness problems, inflation must have lasted long enough that the scale factor grew by at least a factor of e60 (about 1026).
+
+
+=== Radiation epoch ===
+The history of the universe after inflation but before a time of about 1 second is largely unknown. However, the universe is known to have been dominated by ultrarelativistic Standard Model particles, conventionally called radiation, by the time of neutrino decoupling at about 1 second. During radiation domination, cosmic expansion decelerated, with the scale factor growing proportionally with the square root of the time.
+
+
+=== Matter epoch ===
+Since radiation redshifts as the universe expands, eventually nonrelativistic matter came to dominate the energy density of the universe. In the standard model, the transition happened about 50,000 years after the Big Bang. During the matter-dominated epoch, cosmic expansion also decelerated, with the scale factor growing as the 2/3 power of the time (
+  
+    
+      
+        a
+        ∝
+        
+          t
+          
+            2
+            
+              /
+            
+            3
+          
+        
+      
+    
+    {\displaystyle a\propto t^{2/3}}
+  
+). Also, gravitational structure formation is most efficient when nonrelativistic matter dominates, and this epoch is responsible for the formation of galaxies and the large-scale structure of the universe.
+
+
+=== Dark energy ===
+
+Around 3 billion years ago, at a time of about 11 billion years, dark energy is believed to have begun to dominate the energy density of the universe. This transition came about because dark energy does not dilute as the universe expands, instead maintaining a constant energy density. Similarly to inflation, dark energy drives accelerated expansion, such that the scale factor grows exponentially in time.
+
+
+== Measuring the expansion rate ==
+
+The most direct way to measure the expansion rate is to independently measure the recession velocities and the distances of distant objects, such as galaxies. The ratio between these quantities gives the Hubble rate, in accordance with Hubble's law. Typically, the distance is measured using a standard candle, which is an object or event for which the intrinsic brightness is known. The object's distance can then be inferred from the observed apparent brightness. Meanwhile, the recession speed is measured through the redshift. Hubble used this approach for his original measurement of the expansion rate, by measuring the brightness of Cepheid variable stars and the redshifts of their host galaxies. More recently, using Type Ia supernovae, the expansion rate was measured to be H0 = 73.24±1.74 (km/s)/Mpc. This means that for every million parsecs of distance from the observer, recessional velocity of objects at that distance increases by about 73 kilometres per second (160,000 mph).
+Supernovae are observable at such great distances that the light travel time therefrom can approach the age of the universe. Consequently, they can be used to measure not only the present-day expansion rate but also the expansion history. In work that was awarded the 2011 Nobel Prize in Physics, supernova observations were used to determine that cosmic expansion is accelerating in the present epoch.
+By assuming a cosmological model, e.g. the Lambda-CDM model, another possibility is to infer the present-day expansion rate from the sizes of the largest fluctuations seen in the cosmic microwave background. A higher expansion rate would imply a smaller characteristic size of CMB fluctuations, and vice versa. The Planck collaboration measured the expansion rate this way and determined H0 = 67.4±0.5 (km/s)/Mpc. There is a disagreement between this measurement and the supernova-based measurements, known as the Hubble tension.
+Another independent measurement technique relies on time-delay cosmography via strong gravitational lensing. When a massive foreground object, such as a galaxy, lies directly between the observer and a distant, variable light source (such as a quasar) or a transient (such as a supernova), its gravity bends the incoming light to create multiple images of the background object. Because the light forming each image travels along paths of different lengths and through different gravitational potentials, fluctuations in the quasar's brightness arrive at Earth at slightly different times. These time delays are inversely proportional to the Hubble constant. Initial measurements using lensed quasars by the H0LiCOW collaboration calculated an expansion rate of  H0 = 73.3+1.7−1.8 (km/s)/Mpc.  This work has been extended by the TDCOSMO collaboration, yielding a 2025  measurement of H0 = 71.6+3.9−3.3 (km/s)/Mpc.  Time-delay measurements have also expanded to include strongly lensed supernovae; observations of SN Refsdal yielded H0 = 64.8+4.4−4.3 (km/s)/Mpc while measurements of SN H0pe arrived at  H0 = 75.7+8.1−5.5 (km/s)/Mpc Furthermore, recent modelling of the MACS J0138-2155 cluster, unique for strongly lensing both the SN Encore and SN Requiem, yields a preliminary measurement of H0 = 66.9+11.2−8.1 (km/s)/Mpc, with the anticipated reappearance of SN Requiem expected to reduce this uncertainty to 2–3%, with its exact arrival date depending heavily on the true H0 value (ranging from roughly April–December 2026 if H0 = 73 (km/s)/Mpc, to March–November 2027 if H0 = 67 (km/s)/Mpc).
+A fourth option proposed recently is to use information from gravitational wave events (especially those involving the merger of neutron stars, like GW170817), to measure the expansion rate. Such measurements do not yet have the precision to resolve the Hubble tension.
+In principle, the cosmic expansion history can also be measured by studying redshift drift: how redshifts, distances, fluxes, angular positions, and angular sizes of astronomical objects change over the course of the time that they are being observed. These effects are too small to detect with current equipment. However, changes in redshift or flux could be observed by the Square Kilometre Array or Extremely Large Telescope in the mid-2030s.
+
+
+== Confusions about cosmic expansion ==
+Due to the non-intuitive nature of the subject and what has been described by some as "careless" choices of wording, certain descriptions of the expansion of the universe and the misconceptions to which such descriptions can lead are an ongoing subject of discussion within the fields of education and communication of scientific concepts. Some of these misconceptions are detailed in the following sections.
+
+
+=== Expansion of space ===
+It is often erroneously argued that cosmic expansion must be interpreted as the expansion of space itself, such that galaxies are stationary as the space between them stretches. This description suggests the existence of a preferred rest frame, in violation of the principle of relativity. On the contrary, the expansion of the universe is naturally interpreted as galaxies moving apart.
+
+
+=== Superluminal expansion ===
+Hubble's law predicts that objects farther than the Hubble horizon are receding faster than light. This outcome is not in violation of special relativity. Since special relativity treats flat spacetimes, it is only valid over small distances within the context of the curved spacetime of the universe. Cosmic expansion respects special relativity in that nearby objects have relative velocities well below the speed of light. Analyses on cosmological scales require summation or integration over successive small distances. 
+The relative velocities of cosmologically distant objects are not even well defined. The relative velocity between two objects corresponds to the angle in spacetime between their worldlines, and there is not a well defined angle between two lines at different points on a curved sheet.
+
+
+=== Effects of expansion on small scales ===
+Cosmic expansion is sometimes erroneously described as a force that acts to push objects apart. On the contrary, cosmic expansion does not give rise to any tendency of objects to separate. Rather, it is only a description of how objects in the universe are already separating due to their inertial motion.
+The cosmological constant, on the other hand, does give rise to a force that pushes objects apart. This force accelerates cosmic expansion, but expansion can also proceed without it, so the two phenomena should not be conflated.
+
+
+=== Newtonian gravity ===
+Although cosmic expansion is often framed as a consequence of general relativity, the expansion is also predicted by Newtonian gravity formulated in the geometrical language of Cartan. This avoids fundamental problems of Newtonian gravity in an infinite Euclidean universe.  Another approach works with a finite number of particles rather than an infinite continuous fluid.
+
+
+== References ==
+
+
+== Printed references ==
+Eddington, Arthur. The Expanding Universe: Astronomy's 'Great Debate', 1900–1931. Press Syndicate of the University of Cambridge, 1933.
+Liddle, Andrew R. and Lyth, David H. Cosmological Inflation and Large-Scale Structure. Cambridge University Press, 2000.
+Lineweaver, Charles H. and Davis, Tamara M. "Misconceptions about the Big Bang", Scientific American, March 2005 (non-free content).
+Mook, Delo E. and Thomas Vargish. Inside Relativity. Princeton University Press, 1991.
+
+
+== External links ==
+
+Swenson, Jim, Answer to a question about the expanding universe Archived 11 January 2009 at the Wayback Machine
+Felder, Gary, "The Expanding universe".
+NASA's WMAP team offers an "Explanation of the universal expansion" at an elementary level.
+Hubble Tutorial from the University of Wisconsin Physics Department Archived 9 June 2014 at the Wayback Machine
+Expanding raisin bread from the University of Winnipeg: an illustration, but no explanation
+"Ant on a balloon" analogy to explain the expanding universe at "Ask an Astronomer" (the astronomer who provides this explanation is not specified).

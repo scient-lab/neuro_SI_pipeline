@@ -1,0 +1,30 @@
+The photosphere is a star's outer shell from which light is radiated. It extends into a star's surface until the plasma becomes opaque, equivalent to an optical depth of approximately 2⁄3, or equivalently, a depth from which 50% of light will escape without being scattered.
+Stars, except perhaps neutron stars, have no solid or liquid surface. Therefore, the photosphere is typically used to describe the Sun's or another star's visual surface.
+
+
+== Etymology ==
+The term photosphere is derived from Ancient Greek roots, φῶς, φωτός/phos, photos meaning "light" and σφαῖρα/sphaira meaning "sphere", in reference to it being a spherical surface that is perceived to emit light.
+
+
+== Sun's photosphere ==
+
+The Sun's photosphere has a temperature between 4,400 and 6,600 K (4,130 and 6,330 °C) (with an effective temperature of 5,772 K (5,499 °C)) meaning human eyes perceive it as an overwhelmingly bright surface, and with a sufficiently strong neutral density filter, as a hueless, gray surface. It has a density of about 3×10−4 kg/m3; increasing with increasing depth. The Sun's photosphere is 100–400 kilometers thick.
+
+
+== Photospheric phenomena ==
+
+In the Sun's photosphere, the most ubiquitous phenomenon are granules—convection cells of plasma each approximately 1,000 km (620 mi) in diameter with hot rising plasma in the center and cooler plasma falling in the spaces between them, flowing at velocities of 7 km/s (4.3 mi/s). Each granule has a lifespan of only about twenty minutes, resulting in a continually shifting "boiling" pattern. Grouping the typical granules are supergranules up to 30,000 km (19,000 mi) in diameter with lifespans of up to 24 hours and flow speeds of about 500 m/s (1,600 ft/s), carrying magnetic field bundles to the edges of the cells. Other magnetically related phenomena in the Sun's photosphere include sunspots and solar faculae dispersed between granules. These features are too fine to be directly observed on other stars; however, stellar spatial structures have been indirectly observed, and can behave like sunspots.
+We can refer to these as starspots, although clearly non-analogous features also may be present as well.
+
+
+== Notes ==
+
+
+== References ==
+
+
+== External links ==
+ Media related to Photosphere at Wikimedia Commons
+Animated explanation of the Photosphere  Archived 2015-11-16 at the Wayback Machine (University of South Wales).
+Animated explanation of the temperature of the Photosphere Archived 2015-11-16 at the Wayback Machine (University of South Wales).
+Solar Lower Atmosphere and Magnetism (MPS)
