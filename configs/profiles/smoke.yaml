@@ -119,6 +119,10 @@ rl:
   # required to fit GRPO on a single 12-24 GB GPU.
   use_deepspeed: false
   use_lora: true
+  # MUST be false on LoRA runs (see default.yaml::rl.gradient_checkpointing):
+  # PEFT breaks TRL's per-rollout grad-ckpt-disable → garbage rollouts → flat
+  # -1 reward → no learning. 8B + LoRA + batch 1 fits fine without checkpointing.
+  gradient_checkpointing: false
 
 # RunPod hardware defaults for this scale (read by scripts/runpod/launch.sh).
 # 32-48 GB band (L40S/L40/A6000/A40). 48 GB is enough to load Qwen3-14B (~28 GB)

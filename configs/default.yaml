@@ -295,6 +295,17 @@ rl:
   gradient_accumulation_steps: 16
   num_train_epochs: 10                # was train_epochs: 3 (in sft section)
   max_grad_norm: 1.0
+  # Activation checkpointing for the GRPO backward (memory down, compute up).
+  # Was hardcoded True in rl_training.py. Default True = paper-grade full-FT.
+  # CRITICAL: LoRA profiles (smoke/pilot, use_lora=true) MUST override to false.
+  # With a PEFT-wrapped policy, TRL's per-rollout gradient_checkpointing_disable()
+  # does NOT propagate through the adapter, so the rollout generates with
+  # checkpointing active in train() mode → corrupted logits → garbage completions
+  # → correctness_reward = -1.0 flat → zero gradient → RL never learns. Root-caused
+  # 2026-06-26 via scripts/analysis/probe_model_generate.py (bisect: train+grad_ckpt
+  # = garbage; either alone = clean). Full-FT has no PEFT wrapper, so TRL's disable
+  # works there and True is safe.
+  gradient_checkpointing: true
   eval_size: 100
   eval_steps: 50
   save_steps: 100

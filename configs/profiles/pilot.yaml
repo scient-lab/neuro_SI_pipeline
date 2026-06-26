@@ -70,6 +70,13 @@ rl:
   # ~28 GB base instead of holding policy+reference separately. Full-FT (no LoRA)
   # is the paper MULTI-GPU ZeRO-3 path only. See default.yaml::rl.use_lora.
   use_lora: true
+  # MUST be false on LoRA runs (see default.yaml::rl.gradient_checkpointing):
+  # PEFT breaks TRL's per-rollout grad-ckpt-disable → garbage rollouts. MEMORY
+  # CAVEAT: 14B without checkpointing raises activation memory; if it OOMs on the
+  # 80-96 GB tier, do NOT just re-enable it (that brings the garbage back) —
+  # instead trim num_generations / max_completion_length, or fix TRL's PEFT
+  # grad-ckpt-disable so checkpointing can stay on safely.
+  gradient_checkpointing: false
 
 # RunPod hardware defaults for this scale (read by scripts/runpod/launch.sh).
 #

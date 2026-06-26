@@ -697,7 +697,14 @@ def train():
         per_device_train_batch_size=config.per_device_train_batch_size,
         num_train_epochs=config.num_train_epochs,
 
-        gradient_checkpointing=True,
+        # Config-driven (was hardcoded True). MUST be False for LoRA runs: TRL's
+        # unwrap_model_for_generation tries to disable grad-checkpointing for the
+        # rollout, but the disable does NOT propagate through the PEFT wrapper, so
+        # the rollout generates with checkpointing active in train() mode →
+        # garbage completions → flat -1 reward → no learning. Root-caused
+        # 2026-06-26 (scripts/analysis/probe_model_generate.py bisect). Paper
+        # full-FT (no PEFT) keeps True; smoke/pilot (use_lora) set False.
+        gradient_checkpointing=get_phase_param('rl', 'gradient_checkpointing', True),
         gradient_checkpointing_kwargs={"use_reentrant": False},
 
         save_strategy="steps",
