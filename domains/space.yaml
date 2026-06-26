@@ -1,95 +1,200 @@
-# domains/space.yaml - Space / astronomy SLM domain.
+# domains/space.yaml - space science / astronomy / astrophysics / aerospace SLM domain.
 #
-# Broad space-science domain (astronomy, astrophysics, spaceflight) — NOT
-# any single mission or company. Mirrors the paper's textbook→SLM methodology;
-# corpus is astronomy/spaceflight prose (Wikipedia; upgradeable to the free
-# CC-BY OpenStax Astronomy 2e textbook).
+# CANONICAL merged domain (space.yaml). Combines:
+#   - the broad, internally-consistent structure + 10-category ontology +
+#     relation_sets from the ChatGPT draft (engineering + observational depth), and
+#   - the astrophysics relations the draft lacked (composed_of, fuses_into,
+#     has_satellite, exerts_gravity_on, collapses_into, undergoes, governed_by,
+#     described_by, discovered_by, explored_by, located_at, measured_in, has_phase,
+#     predicted_by, proposed_by, studies) + a stellar-evolution worked example,
+#     so the same domain serves BOTH an astronomy textbook (OpenStax Astronomy 2e)
+#     AND a broad spaceflight/Wikipedia corpus.
 #
 # Consumed by pipeline_config.py via SI_DOMAIN=space.
 #   CORPUS_PATH=corpus/space/source_txt ./scripts/pipeline.sh --profile pilot --domain space
+#
+# Invariant: relations_allowed_block lists EXACTLY the ids in `relations`, and every
+# predicate used in any example/block is a member of `relations`. Verified by
+# scripts (cmp_domains-style). relation_sets are curated subsets for experiments
+# (NOTE: not yet read by the pipeline — the full `relations` set is what is active).
 
+# --- Required scalar fields ----------------------------------------------
 domain: space
-description: Specialized SLM for space science — astronomy, astrophysics, and spaceflight
+description: Specialized SLM for space science — astronomy, astrophysics, planetary science, orbital mechanics, and space engineering
 
 # --- Entity categories ---------------------------------------------------
-# 8 main types. Subcategories in `description` are extractor guidance only.
+# 10 main types emitted by the extractor as entity_type values. Subcategories in
+# descriptions are extractor guidance only.
 entity_categories:
-  - id: CELESTIAL_BODY
+  - id: CELESTIAL_OBJECT
     description: |
-      Star; Planet; Moon; Dwarf Planet; Asteroid; Comet; Galaxy; Black Hole;
-      Neutron Star; White Dwarf; Red Giant; Nebula; Quasar; Pulsar
-  - id: ASTRONOMICAL_PROCESS
+      Star; Main-Sequence Star; Red Giant; Planet; Dwarf Planet; Moon; Asteroid;
+      Comet; Meteoroid; Exoplanet; Galaxy; Galaxy Cluster; Nebula; Pulsar; Quasar;
+      Black Hole; Neutron Star; White Dwarf; Brown Dwarf; Supernova Remnant; Star Cluster
+
+  - id: ASTRONOMICAL_STRUCTURE
     description: |
-      Nuclear Fusion; Stellar Evolution; Star Formation; Supernova; Accretion;
-      Gravitational Collapse; Expansion of the Universe; Nucleosynthesis;
-      Solar Flare; Eclipse
-  - id: PHYSICAL_CONCEPT
+      Solar System; Planetary System; Asteroid Belt; Kuiper Belt; Oort Cloud;
+      Accretion Disk; Ring System; Magnetosphere; Atmosphere; Corona;
+      Photosphere; Chromosphere; Interstellar Medium; Cosmic Web
+
+  - id: SPACECRAFT_SYSTEM
     description: |
-      Mass; Luminosity; Temperature; Redshift; Velocity; Distance; Gravity;
-      Radiation; Light; Element (Hydrogen, Helium); Energy; Spectrum; Wavelength
-  - id: COSMIC_STRUCTURE
+      Spacecraft; Satellite; Space Probe; Orbiter; Lander; Rover; Space Station;
+      Launch Vehicle; Crew Vehicle; Telescope; Payload; CubeSat; Habitat Module;
+      Reentry Vehicle; Space Tug
+
+  - id: ENGINEERING_COMPONENT
     description: |
-      Solar System; Galaxy Cluster; Orbit; Ring System; Interstellar Medium;
-      Habitable Zone; Asteroid Belt; Kuiper Belt; Universe; Spacetime
-  - id: SPACECRAFT
+      Rocket Engine; Thruster; Propellant Tank; Solar Panel; Battery; Antenna;
+      Reaction Wheel; Gyroscope; Star Tracker; Heat Shield; Radiator; Sensor;
+      Camera; Spectrometer; Radar; Communication System; Guidance System
+
+  - id: PHYSICAL_ENTITY
     description: |
-      Probe; Satellite; Rover; Space Telescope; Rocket; Launch Vehicle;
-      Space Station; Lander; Orbiter
-  - id: MISSION
+      Photon; Particle; Plasma; Cosmic Ray; Solar Wind; Magnetic Field;
+      Gravitational Field; Radiation; Dust; Gas; Ice; Regolith; Atmosphere;
+      Ion; Molecule; Element (Hydrogen, Helium); Isotope
+
+  - id: PROCESS
     description: |
-      Space Mission; Program; Crewed Mission; Flyby; Sample Return;
-      Exploration Program
-  - id: PHYSICAL_LAW
+      Nuclear Fusion; Nucleosynthesis; Gravitational Collapse; Accretion;
+      Stellar Evolution; Star Formation; Planet Formation; Orbital Insertion;
+      Launch; Docking; Reentry; Atmospheric Entry; Tidal Heating; Erosion;
+      Outgassing; Space Weather; Redshift; Gravitational Lensing
+
+  - id: EVENT
     description: |
-      Physical Law; Theory; Model; Principle; Equation (Kepler's Laws,
-      General Relativity, Newton's Gravitation, Hubble's Law)
-  - id: ORGANIZATION
+      Eclipse; Transit; Occultation; Meteor Shower; Solar Flare;
+      Coronal Mass Ejection; Supernova; Gamma-Ray Burst; Collision;
+      Launch Event; Flyby; Landing; Docking Event; Reentry Event
+
+  - id: MEASUREMENT
     description: |
-      Space Agency; Company; Observatory; Institution (NASA, ESA, SpaceX)
+      Mass; Radius; Diameter; Luminosity; Temperature; Density; Distance;
+      Velocity; Acceleration; Orbital Period; Semi-Major Axis; Inclination;
+      Eccentricity; Redshift; Magnitude; Albedo; Spectral Line; Frequency;
+      Wavelength; Thrust; Specific Impulse; Delta-V
+
+  - id: CONCEPTUAL_ENTITY
+    description: |
+      Orbit; Trajectory; Habitable Zone; Event Horizon; Roche Limit;
+      Lagrange Point; Escape Velocity; Kepler's Laws; General Relativity;
+      Newton's Law of Gravitation; Hubble's Law; Dark Matter; Dark Energy;
+      Cosmological Constant; Reference Frame; Hohmann Transfer; Gravity Assist;
+      Mission Objective
+
+  - id: ORGANIZATION_OR_MISSION
+    description: |
+      Space Agency; Observatory; Mission; Program; Launch Provider;
+      Research Institution; NASA; ESA; ISRO; JAXA; Roscosmos; SpaceX;
+      Artemis; Apollo; Voyager; Cassini; Hubble; James Webb Space Telescope
 
 # --- Relations -----------------------------------------------------------
-# Closed set (40) — the only allowed predicates in extracted triples.
+# Active closed vocabulary (67). These are the ONLY allowed predicates in
+# extracted triples. relations_allowed_block below MUST list exactly these ids.
 relations:
-  - { id: part_of,           description: "X is a structural component or member of Y." }
-  - { id: contains,          description: "Y contains X as a constituent." }
-  - { id: located_in,        description: "X is located within region/structure Y." }
-  - { id: orbits,            description: "Body X orbits body Y." }
-  - { id: orbited_by,        description: "Body X is orbited by Y (inverse of orbits)." }
-  - { id: has_satellite,     description: "Body X has a natural or artificial satellite Y." }
-  - { id: composed_of,       description: "X is composed of material/element Y." }
-  - { id: emits,             description: "X emits radiation, light, or particles Y." }
-  - { id: powered_by,        description: "Process or object X is powered by energy source Y." }
-  - { id: forms_from,        description: "Body or structure X forms from precursor Y." }
-  - { id: evolves_into,      description: "X evolves into a later stage Y." }
-  - { id: collapses_into,    description: "X gravitationally collapses into Y." }
-  - { id: fuses_into,        description: "Element X fuses into heavier element Y." }
+  # Structure / containment / location
+  - { id: part_of, description: "Component-to-whole relation; X is structurally or organizationally part of Y." }
+  - { id: contains, description: "Whole-to-component relation; X contains Y as a constituent, subsystem, or region." }
+  - { id: located_in, description: "X is spatially located in or within Y." }
+  - { id: located_at, description: "X is located at distance or position Y." }
+  - { id: surrounds, description: "X spatially surrounds or envelops Y." }
+  - { id: boundary_of, description: "X is a boundary, limit, or interface of Y." }
+
+  # Orbital / dynamical relations
+  - { id: orbits, description: "X gravitationally orbits Y." }
+  - { id: orbited_by, description: "Inverse of orbits; X is orbited by Y." }
+  - { id: has_satellite, description: "Body X has a natural or artificial satellite Y." }
+  - { id: rotates_about, description: "X rotates about an axis or reference frame Y." }
+  - { id: gravitationally_bound_to, description: "X is gravitationally bound to Y." }
+  - { id: perturbs_orbit_of, description: "X gravitationally or dynamically perturbs the orbit of Y." }
   - { id: exerts_gravity_on, description: "X exerts gravitational force on Y." }
-  - { id: attracts,          description: "X gravitationally attracts Y." }
-  - { id: causes,            description: "X causes Y." }
-  - { id: results_in,        description: "X results in outcome Y." }
-  - { id: undergoes,         description: "Body X undergoes process Y." }
-  - { id: type_of,           description: "X is a type or class of Y." }
-  - { id: characterized_by,  description: "X is characterized by feature/property Y." }
-  - { id: has_property,      description: "X has physical quantity or value Y." }
-  - { id: measured_in,       description: "Quantity X is measured in unit Y." }
-  - { id: discovered_by,     description: "X was discovered by person or instrument Y." }
-  - { id: observed_by,       description: "X is observed by telescope or mission Y." }
-  - { id: studies,           description: "Mission or instrument X studies target Y." }
-  - { id: explored_by,       description: "Body X was explored by mission or spacecraft Y." }
-  - { id: landed_on,         description: "Spacecraft X landed on body Y." }
-  - { id: flew_by,           description: "Spacecraft X flew by body Y." }
-  - { id: launched_by,       description: "Spacecraft or mission X was launched by organization Y." }
-  - { id: operated_by,       description: "Spacecraft or mission X is operated by organization Y." }
-  - { id: carries,           description: "Spacecraft X carries instrument or payload Y." }
-  - { id: propelled_by,      description: "Spacecraft X is propelled by propulsion system Y." }
-  - { id: governed_by,       description: "Phenomenon X is governed by physical law Y." }
-  - { id: described_by,      description: "X is described or modeled by theory Y." }
-  - { id: predicted_by,      description: "X was predicted by theory Y." }
-  - { id: proposed_by,       description: "Theory or model X was proposed by person Y." }
-  - { id: associated_with,   description: "X is contextually associated with Y without a stated mechanism." }
-  - { id: has_phase,         description: "Process X has a stage or phase Y." }
-  - { id: located_at,        description: "X is located at distance or position Y." }
-  - { id: rotates_around,    description: "X rotates or revolves around axis/point Y." }
+  - { id: transfers_to, description: "Trajectory, spacecraft, or object moves from X to Y via a transfer path." }
+  - { id: flies_by, description: "Spacecraft or object performs a flyby of Y." }
+  - { id: lands_on, description: "Spacecraft, lander, rover, or object lands on Y." }
+  - { id: docks_with, description: "Spacecraft or module docks with Y." }
+
+  # Observation / measurement / detection
+  - { id: observes, description: "Instrument, spacecraft, telescope, or mission observes Y." }
+  - { id: measures, description: "Instrument, spacecraft, mission, or method measures Y." }
+  - { id: measured_in, description: "Quantity X is measured in unit Y." }
+  - { id: detects, description: "Instrument, detector, or observation detects Y." }
+  - { id: images, description: "Camera, telescope, or mission captures images of Y." }
+  - { id: maps, description: "Mission, instrument, or method maps the surface, field, or distribution of Y." }
+  - { id: samples, description: "Mission or instrument collects physical samples from Y." }
+  - { id: communicates_with, description: "Spacecraft, station, or antenna communicates with Y." }
+  - { id: discovered_by, description: "X was discovered by person, instrument, or mission Y." }
+  - { id: studies, description: "Mission or instrument X studies target Y." }
+  - { id: explored_by, description: "Body X was explored by mission or spacecraft Y." }
+
+  # Physical interactions / composition / emission
+  - { id: emits, description: "X emits radiation, particles, fields, or matter Y." }
+  - { id: absorbs, description: "X absorbs radiation, particles, or matter Y." }
+  - { id: reflects, description: "X reflects radiation or particles Y." }
+  - { id: scatters, description: "X scatters radiation or particles Y." }
+  - { id: ionizes, description: "X ionizes Y or causes ionization in Y." }
+  - { id: heats, description: "X increases the temperature or thermal energy of Y." }
+  - { id: accelerates, description: "X accelerates Y or increases Y's velocity/energy." }
+  - { id: composed_of, description: "X is composed of material or element Y." }
+  - { id: fuses_into, description: "Element X fuses into heavier element Y." }
+  - { id: powered_by, description: "Spacecraft, component, or process X is powered by Y." }
+  - { id: interacts_with, description: "X physically interacts with Y without stronger causal specificity." }
+
+  # Formation / evolution / causality
+  - { id: formed_from, description: "X formed from source material or precursor Y." }
+  - { id: evolves_into, description: "X evolves into Y over time." }
+  - { id: collapses_into, description: "X gravitationally collapses into remnant Y." }
+  - { id: undergoes, description: "Body or system X undergoes process Y." }
+  - { id: has_phase, description: "Process X has a stage or phase Y." }
+  - { id: causes, description: "X directly causes Y." }
+  - { id: results_in, description: "X results in downstream consequence Y." }
+  - { id: triggers, description: "X initiates or triggers event/process Y." }
+  - { id: associated_with, description: "X is correlated or contextually associated with Y without direct causal commitment." }
+  - { id: evidence_for, description: "X provides evidence for hypothesis, object, condition, or process Y." }
+
+  # Engineering / mission / operations
+  - { id: launched_by, description: "Mission, spacecraft, or launch vehicle X was launched by organization/provider Y." }
+  - { id: launched_from, description: "Mission, spacecraft, or launch vehicle X was launched from site Y." }
+  - { id: operated_by, description: "Mission, spacecraft, or instrument X is operated by organization Y." }
+  - { id: built_by, description: "Spacecraft, component, or instrument X was built by organization Y." }
+  - { id: carries, description: "Spacecraft or mission X carries payload, instrument, or component Y." }
+  - { id: propelled_by, description: "Spacecraft X is propelled by propulsion system Y." }
+  - { id: uses, description: "System, mission, or process X uses method, component, resource, or concept Y." }
+  - { id: controls, description: "System, component, or algorithm X controls Y." }
+  - { id: required_for, description: "X is necessary for Y to occur or function." }
+  - { id: enables, description: "X enables Y by making it possible or feasible." }
+  - { id: fails_due_to, description: "System, mission, or process X fails due to cause Y." }
+
+  # Laws / theory / classification / properties
+  - { id: governed_by, description: "Phenomenon X is governed by physical law Y." }
+  - { id: described_by, description: "X is described or modeled by theory Y." }
+  - { id: predicted_by, description: "X was predicted by theory or model Y." }
+  - { id: proposed_by, description: "Theory or model X was proposed by person Y." }
+  - { id: type_of, description: "X is a type, subtype, or instance category of Y." }
+  - { id: has_property, description: "X has property, parameter, or attribute Y." }
+  - { id: characterized_by, description: "X is characterized by measurement, feature, behavior, or signature Y." }
+
+# Alternative relation subsets for experiments (curated views over `relations`).
+# NOTE: not yet read by the pipeline — the full `relations` set above is active.
+relation_sets:
+  core_30:
+    [part_of, contains, located_in, orbits, orbited_by, gravitationally_bound_to,
+     observes, measures, detects, images, emits, absorbs, reflects, interacts_with,
+     formed_from, evolves_into, causes, results_in, associated_with, launched_by,
+     launched_from, operated_by, carries, powered_by, uses, required_for, enables,
+     type_of, has_property, characterized_by]
+  engineering_25:
+    [part_of, contains, located_in, launched_by, launched_from, operated_by,
+     built_by, carries, powered_by, propelled_by, uses, controls, required_for,
+     enables, fails_due_to, measures, detects, communicates_with, transfers_to,
+     flies_by, lands_on, docks_with, has_property, characterized_by, results_in]
+  astrophysics_25:
+    [part_of, contains, located_in, located_at, orbits, orbited_by, has_satellite,
+     exerts_gravity_on, gravitationally_bound_to, composed_of, fuses_into, emits,
+     absorbs, powered_by, formed_from, evolves_into, collapses_into, undergoes,
+     causes, results_in, governed_by, described_by, type_of, characterized_by,
+     has_property]
 
 # --- Few-shot examples ---------------------------------------------------
 few_shot_examples:
@@ -117,88 +222,156 @@ few_shot_examples:
       - [supernova, results_in, neutron star]
       - [supernova, results_in, black hole]
 
+  - text: |
+      The James Webb Space Telescope was launched by an Ariane 5 rocket from
+      the Guiana Space Centre. JWST carries a segmented primary mirror and
+      infrared instruments that observe distant galaxies and measure their
+      redshifts. The telescope operates near the Sun-Earth L2 Lagrange point.
+    triples:
+      - [james webb space telescope, launched_by, ariane 5 rocket]
+      - [james webb space telescope, launched_from, guiana space centre]
+      - [james webb space telescope, carries, segmented primary mirror]
+      - [james webb space telescope, carries, infrared instruments]
+      - [infrared instruments, observes, distant galaxies]
+      - [infrared instruments, measures, redshift]
+      - [james webb space telescope, located_in, sun-earth l2 lagrange point]
+      - [sun-earth l2 lagrange point, type_of, lagrange point]
+
+  - text: |
+      A Hohmann transfer uses two engine burns to move a spacecraft from one
+      circular orbit to another. The first burn places the spacecraft onto an
+      elliptical transfer orbit, and the second burn circularizes the spacecraft
+      at the target orbit. The maneuver requires delta-v and is commonly used
+      for efficient orbital transfers.
+    triples:
+      - [hohmann transfer, uses, two engine burns]
+      - [first burn, transfers_to, elliptical transfer orbit]
+      - [second burn, results_in, target circular orbit]
+      - [hohmann transfer, required_for, efficient orbital transfer]
+      - [hohmann transfer, has_property, delta-v]
+      - [spacecraft, transfers_to, target orbit]
+
 # --- Focus instructions --------------------------------------------------
 focus_instructions: |
-  Extract structured knowledge from space-science content about celestial
-  bodies, astrophysical processes, spaceflight, and the laws that govern them.
-
-  - Extract ONLY information directly stated in the source text. Do not infer,
-    generalize, or use outside astronomy knowledge.
-  - Maximize coverage: extract every entity and every explicitly stated
-    relationship.
-  - Use lowercase, canonical names (e.g. "the sun" -> "sun", "milky way",
-    "black hole", "nuclear fusion").
-  - Resolve abbreviations to their expanded form when the text gives it
-    (e.g. "ISS" -> "international space station", "JWST" -> "james webb space
-    telescope", "CMB" -> "cosmic microwave background").
-  - Treat synonyms like "revolves around" and "orbits" as the same relation;
-    pick the relation id whose meaning the text expresses.
-  - Output exactly ONE relation per triple (no compound relations).
+  Extract structured knowledge from space science, astronomy, astrophysics,
+  planetary science, orbital mechanics, and space engineering content.
+  Extract ONLY information directly stated in the source text; do not infer,
+  generalize, or use external scientific knowledge. Use lowercase canonical
+  entity names, expand abbreviations when the expansion appears in the text
+  (e.g., JWST → james webb space telescope), and output exactly one allowed
+  relation per triple. Prefer physically specific relations such as orbits,
+  composed_of, fuses_into, evolves_into, emits, measures, launched_by, or
+  required_for over generic associated_with whenever the text explicitly
+  supports them.
 
 # --- Expert role ---------------------------------------------------------
-domain_expert_role: "expert astrophysicist"
+domain_expert_role: "expert space scientist"
+
+# --- Overrides -----------------------------------------------------------
+# overrides:
+#   validate:
+#     consensus_threshold: 0.7
 
 # =============================================================================
-# Per-phase prompt content slots (see docs/PROMPT_MIGRATION.md)
+# Per-phase prompt content slots
 # =============================================================================
 
-# --- relation_meanings (combine_tails-style; add_llm_relations + combine_tails)
+# --- relation_meanings -------------------------------------------------------
 relation_meanings: |
-  Relation meanings (space-science KG). Use the direction exactly as written.
+  Relation meanings (space KG). Use the direction exactly as written.
 
   Structure / location
-  * part_of - component -> whole: "earth" part_of "solar system"
-  * contains - whole -> component: "solar system" contains "asteroid belt"
-  * located_in - entity -> region: "sun" located_in "milky way"
-  * orbits - body -> central body: "moon" orbits "earth"
-  * has_satellite - body -> satellite: "jupiter" has_satellite "europa"
-  * located_at - entity -> distance/position: "proxima centauri" located_at "4.2 light-years"
+  * part_of - component → whole: "primary mirror" part_of "james webb space telescope"
+  * contains - whole → component: "solar system" contains "earth"
+  * located_in - entity → location: "james webb space telescope" located_in "sun-earth l2 lagrange point"
+  * located_at - entity → distance/position: "proxima centauri" located_at "4.2 light-years"
+  * surrounds - envelope or shell surrounds target: "magnetosphere" surrounds "earth"
+  * boundary_of - boundary or limit of a region: "event horizon" boundary_of "black hole"
 
-  Composition / emission
-  * composed_of - body -> material: "sun" composed_of "hydrogen"
-  * emits - source -> radiation: "black hole" emits "x-rays"
-  * powered_by - process/object -> energy source: "star" powered_by "nuclear fusion"
-  * fuses_into - element -> heavier element: "hydrogen" fuses_into "helium"
+  Orbital mechanics and motion
+  * orbits - smaller object or spacecraft orbits larger body: "earth" orbits "sun"
+  * orbited_by - inverse of orbits: "earth" orbited_by "moon"
+  * has_satellite - body has a natural/artificial satellite: "jupiter" has_satellite "europa"
+  * rotates_about - object rotates around axis/frame: "earth" rotates_about "rotation axis"
+  * gravitationally_bound_to - bodies are held in a gravitational system: "moon" gravitationally_bound_to "earth"
+  * perturbs_orbit_of - one body changes another orbit: "jupiter" perturbs_orbit_of "asteroid"
+  * exerts_gravity_on - body exerts gravitational force on another: "sun" exerts_gravity_on "planets"
+  * transfers_to - trajectory moves from source orbit/body to target: "spacecraft" transfers_to "mars transfer orbit"
+  * flies_by - spacecraft passes near a target: "voyager 2" flies_by "neptune"
+  * lands_on - spacecraft or lander touches down on target: "perseverance rover" lands_on "mars"
+  * docks_with - spacecraft connects with target: "crew dragon" docks_with "international space station"
 
-  Dynamics / gravity
-  * exerts_gravity_on - X -> Y: "sun" exerts_gravity_on "planets"
-  * attracts - X gravitationally attracts Y: "earth" attracts "moon"
-  * governed_by - phenomenon -> law: "planetary orbits" governed_by "kepler's laws"
+  Observation and measurement
+  * observes - telescope/instrument observes target: "hubble space telescope" observes "galaxy"
+  * measures - instrument measures quantity: "spectrometer" measures "redshift"
+  * measured_in - quantity is measured in a unit: "orbital period" measured_in "years"
+  * detects - detector identifies signal/object: "radio telescope" detects "pulsar"
+  * images - camera or telescope images target: "mars reconnaissance orbiter" images "mars surface"
+  * maps - mission or instrument maps field/surface: "lunar orbiter" maps "moon gravity field"
+  * samples - mission collects material: "osiris-rex" samples "asteroid bennu"
+  * communicates_with - spacecraft exchanges signal: "mars rover" communicates_with "deep space network"
+  * discovered_by - object discovered by person/instrument: "neptune" discovered_by "johann galle"
+  * studies - mission/instrument studies a target: "cassini" studies "saturn"
+  * explored_by - body explored by mission/spacecraft: "mars" explored_by "perseverance"
 
-  Evolution / process
-  * forms_from - body -> precursor: "star" forms_from "molecular cloud"
-  * evolves_into - X -> later stage: "red giant" evolves_into "white dwarf"
-  * collapses_into - X -> remnant: "massive star core" collapses_into "black hole"
-  * undergoes - body -> process: "massive star" undergoes "supernova"
-  * causes - direct cause: "stellar collapse" causes "supernova"
-  * results_in - outcome: "supernova" results_in "neutron star"
+  Physical interactions, composition, emission
+  * emits - source emits radiation, particles, or matter: "sun" emits "solar wind"
+  * absorbs - object absorbs incoming radiation or particles: "atmosphere" absorbs "ultraviolet radiation"
+  * reflects - object reflects radiation: "moon" reflects "sunlight"
+  * scatters - medium scatters radiation/particles: "atmosphere" scatters "blue light"
+  * ionizes - radiation or particles ionize material: "solar ultraviolet radiation" ionizes "upper atmosphere"
+  * heats - source increases thermal state: "tidal forces" heats "io interior"
+  * accelerates - force/engine accelerates object: "rocket engine" accelerates "launch vehicle"
+  * composed_of - body is made of material/element: "sun" composed_of "hydrogen"
+  * fuses_into - element fuses into a heavier element: "hydrogen" fuses_into "helium"
+  * powered_by - system/process powered by energy source: "mars rover" powered_by "radioisotope thermoelectric generator"
+  * interacts_with - physical interaction without a more specific relation: "solar wind" interacts_with "magnetosphere"
 
-  Observation / spaceflight
-  * discovered_by - object -> discoverer: "neptune" discovered_by "johann galle"
-  * observed_by - object -> instrument: "deep field galaxies" observed_by "hubble space telescope"
-  * studies - mission/instrument -> target: "cassini" studies "saturn"
-  * explored_by - body -> mission: "mars" explored_by "perseverance"
-  * landed_on - spacecraft -> body: "apollo 11" landed_on "moon"
-  * flew_by - spacecraft -> body: "voyager 2" flew_by "neptune"
-  * launched_by - craft/mission -> org: "james webb space telescope" launched_by "nasa"
-  * carries - spacecraft -> payload: "hubble space telescope" carries "wide field camera"
+  Formation, evolution, and causality
+  * formed_from - object/process formed from precursor material: "planet" formed_from "protoplanetary disk"
+  * evolves_into - source object evolves into later stage: "red giant" evolves_into "white dwarf"
+  * collapses_into - object gravitationally collapses into remnant: "massive star core" collapses_into "black hole"
+  * undergoes - body/system undergoes a process: "massive star" undergoes "supernova"
+  * has_phase - process has a stage/phase: "stellar evolution" has_phase "red giant phase"
+  * causes - direct causal relation: "gravitational collapse" causes "star formation"
+  * results_in - downstream consequence: "coronal mass ejection" results_in "geomagnetic storm"
+  * triggers - event initiates event/process: "solar flare" triggers "radio blackout"
+  * associated_with - contextual association without direct causality: "dark matter" associated_with "galaxy rotation curves"
+  * evidence_for - observation supports hypothesis: "cosmic microwave background" evidence_for "big bang model"
 
-  Type / property
-  * type_of - X is a kind of Y: "red giant" type_of "star"
-  * characterized_by - X -> defining feature: "black hole" characterized_by "event horizon"
-  * has_property - X -> quantity: "sun" has_property "surface temperature"
-  * described_by - X -> theory: "spacetime curvature" described_by "general relativity"
+  Engineering and operations
+  * launched_by - mission/spacecraft launched by rocket/provider: "jwst" launched_by "ariane 5"
+  * launched_from - mission/spacecraft launched from site: "apollo 11" launched_from "kennedy space center"
+  * operated_by - mission/system operated by organization: "jwst" operated_by "nasa"
+  * built_by - component/system built by organization: "mars rover" built_by "jet propulsion laboratory"
+  * carries - spacecraft carries instrument/payload: "cassini" carries "huygens probe"
+  * propelled_by - spacecraft propelled by propulsion system: "falcon 9" propelled_by "merlin engines"
+  * uses - system/process uses method/component: "hohmann transfer" uses "two engine burns"
+  * controls - subsystem controls state/behavior: "reaction wheel" controls "spacecraft attitude"
+  * required_for - necessary condition: "delta-v" required_for "orbital maneuver"
+  * enables - enabling relationship: "gravity assist" enables "outer planet mission"
+  * fails_due_to - failure cause: "mission" fails_due_to "communication loss"
 
-# --- predict_tails_examples (predict_tails prompt few-shot)
+  Laws, theory, classification, properties
+  * governed_by - phenomenon governed by physical law: "planetary orbits" governed_by "kepler's laws"
+  * described_by - phenomenon described/modeled by theory: "spacetime curvature" described_by "general relativity"
+  * predicted_by - object/effect predicted by theory: "neptune" predicted_by "newtonian mechanics"
+  * proposed_by - theory/model proposed by person: "general relativity" proposed_by "albert einstein"
+  * type_of - X is a type of Y: "mars" type_of "terrestrial planet"
+  * has_property - X has property Y: "venus" has_property "dense atmosphere"
+  * characterized_by - X is characterized by feature/signature: "black hole" characterized_by "event horizon"
+
+# --- predict_tails_examples --------------------------------------------------
 predict_tails_examples:
-  - text: "The Moon orbits the Earth and is its only natural satellite."
-    head: "moon"
+  - text: "Earth orbits the Sun."
+    head: "earth"
     relation: "orbits"
     json:
-      head: "moon"
+      head: "earth"
       relation: "orbits"
-      tails: ["earth"]
+      tails: ["sun"]
       reason_if_none: ""
+
   - text: "The Sun is composed mainly of hydrogen and helium."
     head: "sun"
     relation: "composed_of"
@@ -207,154 +380,306 @@ predict_tails_examples:
       relation: "composed_of"
       tails: ["hydrogen", "helium"]
       reason_if_none: ""
-  - text: "A supernova can leave behind a neutron star or a black hole."
-    head: "supernova"
-    relation: "results_in"
+
+  - text: "The Sun emits solar wind and electromagnetic radiation."
+    head: "sun"
+    relation: "emits"
     json:
-      head: "supernova"
-      relation: "results_in"
-      tails: ["neutron star", "black hole"]
+      head: "sun"
+      relation: "emits"
+      tails: ["solar wind", "electromagnetic radiation"]
       reason_if_none: ""
 
-# --- fact_score_scope (fact-score validity prompt)
-fact_score_scope: "celestial bodies, astrophysical processes, cosmic structures, spacecraft, missions, and the physical laws of astronomy"
+  - text: "The James Webb Space Telescope carries infrared instruments."
+    head: "james webb space telescope"
+    relation: "carries"
+    json:
+      head: "james webb space telescope"
+      relation: "carries"
+      tails: ["infrared instruments"]
+      reason_if_none: ""
 
-# --- relation_examples_block (add_llm_relations: {{relation_examples_block}})
+fact_score_scope: "celestial objects, astrophysical processes (stellar evolution, fusion, formation), spacecraft systems, engineering components, physical entities, measurements, missions, and the orbital-mechanics and physical-law concepts of space science"
+
+# --- relation_examples_block -------------------------------------------------
 relation_examples_block: |2+
 
   earth | orbits | sun
-  earth | part_of | solar system
-  sun | composed_of | hydrogen
-  sun | powered_by | nuclear fusion
-  hydrogen | fuses_into | helium
   moon | orbits | earth
+  earth | orbited_by | moon
   jupiter | has_satellite | europa
-  red giant | evolves_into | white dwarf
+  proxima centauri | located_at | 4.2 light-years
+  sun | exerts_gravity_on | planets
+  event horizon | boundary_of | black hole
+  sun | emits | solar wind
+  sun | composed_of | hydrogen
+  hydrogen | fuses_into | helium
+  atmosphere | absorbs | ultraviolet radiation
+  moon | reflects | sunlight
+  solar wind | interacts_with | earth magnetosphere
+  gravitational collapse | causes | star formation
+  protoplanetary disk | formed_from | interstellar gas and dust
+  red giant | collapses_into | white dwarf
+  massive star | evolves_into | supernova
   massive star | undergoes | supernova
-  supernova | results_in | neutron star
-  black hole | characterized_by | event horizon
-  black hole | emits | x-rays
+  stellar evolution | has_phase | red giant phase
+  cosmic microwave background | evidence_for | big bang model
+  james webb space telescope | launched_by | ariane 5 rocket
+  apollo 11 | launched_from | kennedy space center
+  james webb space telescope | operated_by | nasa
+  mars rover perseverance | built_by | jet propulsion laboratory
+  cassini spacecraft | carries | huygens probe
+  falcon 9 | propelled_by | merlin engines
+  curiosity rover | powered_by | radioisotope thermoelectric generator
+  hohmann transfer | uses | two engine burns
+  reaction wheel | controls | spacecraft attitude
+  delta-v | required_for | orbital maneuver
+  gravity assist | enables | outer planet mission
+  voyager 2 | flies_by | neptune
+  perseverance rover | lands_on | mars
+  crew dragon | docks_with | international space station
+  spectrometer | measures | redshift
+  orbital period | measured_in | years
+  radio telescope | detects | pulsar
+  hubble space telescope | images | galaxy
+  lunar orbiter | maps | moon gravity field
+  osiris-rex | samples | asteroid bennu
+  mars rover | communicates_with | deep space network
+  neptune | discovered_by | johann galle
+  cassini | studies | saturn
+  mars | explored_by | perseverance
   planetary orbits | governed_by | kepler's laws
   spacetime curvature | described_by | general relativity
-  apollo 11 | landed_on | moon
-  voyager 2 | flew_by | neptune
-  cassini | studies | saturn
-  perseverance | explored_by | mars
-  james webb space telescope | launched_by | nasa
-  hubble space telescope | observed_by | distant galaxies
-  neptune | discovered_by | johann galle
-  milky way | contains | solar system
-  expansion of the universe | described_by | hubble's law
-  star | forms_from | molecular cloud
-  sun | exerts_gravity_on | planets
-  saturn | characterized_by | ring system
+  neptune | predicted_by | newtonian mechanics
+  general relativity | proposed_by | albert einstein
+  mars | type_of | terrestrial planet
+  venus | has_property | dense atmosphere
+  black hole | characterized_by | event horizon
 
-# --- relations_allowed_block (add_llm_relations allowed-relation list)
+# --- relations_allowed_block -------------------------------------------------
 relations_allowed_block: |2
 
       "part_of",
       "contains",
       "located_in",
+      "located_at",
+      "surrounds",
+      "boundary_of",
       "orbits",
+      "orbited_by",
       "has_satellite",
-      "composed_of",
-      "emits",
-      "powered_by",
-      "forms_from",
-      "evolves_into",
-      "collapses_into",
-      "fuses_into",
+      "rotates_about",
+      "gravitationally_bound_to",
+      "perturbs_orbit_of",
       "exerts_gravity_on",
-      "causes",
-      "results_in",
-      "undergoes",
-      "type_of",
-      "characterized_by",
+      "transfers_to",
+      "flies_by",
+      "lands_on",
+      "docks_with",
+      "observes",
+      "measures",
+      "measured_in",
+      "detects",
+      "images",
+      "maps",
+      "samples",
+      "communicates_with",
       "discovered_by",
-      "observed_by",
       "studies",
       "explored_by",
-      "landed_on",
-      "flew_by",
+      "emits",
+      "absorbs",
+      "reflects",
+      "scatters",
+      "ionizes",
+      "heats",
+      "accelerates",
+      "composed_of",
+      "fuses_into",
+      "powered_by",
+      "interacts_with",
+      "formed_from",
+      "evolves_into",
+      "collapses_into",
+      "undergoes",
+      "has_phase",
+      "causes",
+      "results_in",
+      "triggers",
+      "associated_with",
+      "evidence_for",
       "launched_by",
+      "launched_from",
+      "operated_by",
+      "built_by",
       "carries",
+      "propelled_by",
+      "uses",
+      "controls",
+      "required_for",
+      "enables",
+      "fails_due_to",
       "governed_by",
       "described_by",
-      "associated_with",
+      "predicted_by",
+      "proposed_by",
+      "type_of",
+      "has_property",
+      "characterized_by",
 
-# --- relation_meanings_detailed (add_llm_relations: longer didactic block)
+# --- relation_meanings_detailed ----------------------------------------------
 relation_meanings_detailed: |
-  These relations are space-science KG relations.
+  These relations are space KG relations.
 
-  Structure / location:
-  * part_of - X is a component or member of Y.
-    Example: earth part_of solar system.
-  * contains - Y contains X as a constituent.
-    Example: milky way contains solar system.
-  * located_in - X is located within Y.
-    Example: sun located_in milky way.
-  * orbits - body X orbits central body Y.
-    Example: moon orbits earth.
-  * has_satellite - body X has satellite Y.
+  Structural and spatial relations:
+  * part_of - X is a component, subsystem, region, or phase of Y.
+    Example: primary mirror part_of james webb space telescope.
+  * contains - X contains Y as a component, object, population, or region.
+    Example: solar system contains earth.
+  * located_in - X is spatially located in, at, or near Y.
+    Example: jwst located_in sun-earth l2 lagrange point.
+  * located_at - X is located at a distance or position Y.
+    Example: proxima centauri located_at 4.2 light-years.
+  * surrounds - X surrounds or envelops Y.
+    Example: earth magnetosphere surrounds earth.
+  * boundary_of - X marks the boundary, limit, or interface of Y.
+    Example: event horizon boundary_of black hole.
+
+  Orbital and dynamical relations:
+  * orbits - X orbits Y gravitationally.
+    Example: earth orbits sun.
+  * orbited_by - X is orbited by Y.
+    Example: earth orbited_by moon.
+  * has_satellite - X has natural/artificial satellite Y.
     Example: jupiter has_satellite europa.
-
-  Composition / emission:
-  * composed_of - X is made of material Y.
-    Example: sun composed_of hydrogen.
-  * emits - X emits radiation Y.
-    Example: black hole emits x-rays.
-  * powered_by - X is powered by energy source Y.
-    Example: star powered_by nuclear fusion.
-  * fuses_into - element X fuses into Y.
-    Example: hydrogen fuses_into helium.
-
-  Dynamics / gravity:
-  * exerts_gravity_on - X exerts gravity on Y.
+  * rotates_about - X rotates about Y.
+    Example: earth rotates_about rotation axis.
+  * gravitationally_bound_to - X and Y are in a gravitationally bound system.
+    Example: moon gravitationally_bound_to earth.
+  * perturbs_orbit_of - X changes or perturbs Y's orbit.
+    Example: jupiter perturbs_orbit_of asteroid.
+  * exerts_gravity_on - X exerts gravitational force on Y.
     Example: sun exerts_gravity_on planets.
-  * governed_by - phenomenon X is governed by law Y.
-    Example: planetary orbits governed_by kepler's laws.
+  * transfers_to - X transfers to destination orbit/body/state Y.
+    Example: spacecraft transfers_to mars transfer orbit.
+  * flies_by - X performs a flyby of Y.
+    Example: voyager 2 flies_by neptune.
+  * lands_on - X lands on Y.
+    Example: perseverance rover lands_on mars.
+  * docks_with - X docks with Y.
+    Example: crew dragon docks_with international space station.
 
-  Evolution / process:
-  * forms_from - X forms from precursor Y.
-    Example: star forms_from molecular cloud.
+  Observation and measurement relations:
+  * observes - X observes Y as a scientific target.
+    Example: hubble space telescope observes galaxy.
+  * measures - X measures quantity or property Y.
+    Example: spectrometer measures redshift.
+  * measured_in - quantity X is measured in unit Y.
+    Example: orbital period measured_in years.
+  * detects - X detects object, signal, or event Y.
+    Example: radio telescope detects pulsar.
+  * images - X captures images of Y.
+    Example: mars reconnaissance orbiter images mars surface.
+  * maps - X maps surface, field, or distribution Y.
+    Example: lunar orbiter maps moon gravity field.
+  * samples - X collects physical sample from Y.
+    Example: osiris-rex samples asteroid bennu.
+  * communicates_with - X sends/receives communication with Y.
+    Example: mars rover communicates_with deep space network.
+  * discovered_by - X was discovered by Y.
+    Example: neptune discovered_by johann galle.
+  * studies - X studies target Y.
+    Example: cassini studies saturn.
+  * explored_by - X was explored by mission/spacecraft Y.
+    Example: mars explored_by perseverance.
+
+  Physical interaction, composition, and emission relations:
+  * emits - X emits Y.
+    Example: sun emits solar wind.
+  * absorbs - X absorbs Y.
+    Example: atmosphere absorbs ultraviolet radiation.
+  * reflects - X reflects Y.
+    Example: moon reflects sunlight.
+  * scatters - X scatters Y.
+    Example: atmosphere scatters blue light.
+  * ionizes - X ionizes Y.
+    Example: solar ultraviolet radiation ionizes upper atmosphere.
+  * heats - X heats Y.
+    Example: tidal forces heats io interior.
+  * accelerates - X accelerates Y.
+    Example: rocket engine accelerates launch vehicle.
+  * composed_of - X is composed of material/element Y.
+    Example: sun composed_of hydrogen.
+  * fuses_into - element X fuses into heavier element Y.
+    Example: hydrogen fuses_into helium.
+  * powered_by - X is powered by energy source Y.
+    Example: curiosity rover powered_by radioisotope thermoelectric generator.
+  * interacts_with - X physically interacts with Y when no more specific relation is stated.
+    Example: solar wind interacts_with magnetosphere.
+
+  Causal, evolutionary, and evidential relations:
+  * formed_from - X formed from Y.
+    Example: planet formed_from protoplanetary disk.
   * evolves_into - X evolves into Y.
     Example: red giant evolves_into white dwarf.
-  * collapses_into - X collapses into remnant Y.
+  * collapses_into - X gravitationally collapses into remnant Y.
     Example: massive star core collapses_into black hole.
-  * undergoes - body X undergoes process Y.
+  * undergoes - body/system X undergoes process Y.
     Example: massive star undergoes supernova.
+  * has_phase - process X has stage/phase Y.
+    Example: stellar evolution has_phase red giant phase.
   * causes - X causes Y.
-    Example: core collapse causes supernova.
-  * results_in - X results in outcome Y.
-    Example: supernova results_in neutron star.
-
-  Observation / spaceflight:
-  * discovered_by - X discovered by Y.
-    Example: neptune discovered_by johann galle.
-  * observed_by - X observed by instrument Y.
-    Example: distant galaxies observed_by hubble space telescope.
-  * studies - mission X studies target Y.
-    Example: cassini studies saturn.
-  * explored_by - body X explored by mission Y.
-    Example: mars explored_by perseverance.
-  * landed_on - spacecraft X landed on body Y.
-    Example: apollo 11 landed_on moon.
-  * flew_by - spacecraft X flew by body Y.
-    Example: voyager 2 flew_by neptune.
-  * launched_by - craft X launched by org Y.
-    Example: james webb space telescope launched_by nasa.
-
-  Type / property / theory:
-  * type_of - X is a kind of Y.
-    Example: red giant type_of star.
-  * characterized_by - X has defining feature Y.
-    Example: black hole characterized_by event horizon.
-  * described_by - X described by theory Y.
-    Example: spacetime curvature described_by general relativity.
-  * associated_with - association without a stated mechanism.
+    Example: gravitational collapse causes star formation.
+  * results_in - X results in Y.
+    Example: coronal mass ejection results_in geomagnetic storm.
+  * triggers - X initiates Y.
+    Example: solar flare triggers radio blackout.
+  * associated_with - X is associated with Y without direct causal claim.
     Example: dark matter associated_with galaxy rotation curves.
+  * evidence_for - X provides evidence for Y.
+    Example: cosmic microwave background evidence_for big bang model.
 
-# --- add_llm_relations_examples (in-context user/assistant/explanation dialogs)
+  Engineering and mission relations:
+  * launched_by - X was launched by Y.
+    Example: jwst launched_by ariane 5 rocket.
+  * launched_from - X was launched from Y.
+    Example: apollo 11 launched_from kennedy space center.
+  * operated_by - X is operated by Y.
+    Example: jwst operated_by nasa.
+  * built_by - X was built by Y.
+    Example: mars rover built_by jet propulsion laboratory.
+  * carries - X carries payload/component/instrument Y.
+    Example: cassini carries huygens probe.
+  * propelled_by - X is propelled by propulsion system Y.
+    Example: falcon 9 propelled_by merlin engines.
+  * uses - X uses method, resource, component, or principle Y.
+    Example: hohmann transfer uses two engine burns.
+  * controls - X controls Y.
+    Example: reaction wheel controls spacecraft attitude.
+  * required_for - X is necessary for Y.
+    Example: delta-v required_for orbital maneuver.
+  * enables - X makes Y possible or feasible.
+    Example: gravity assist enables outer planet mission.
+  * fails_due_to - X fails due to Y.
+    Example: mission fails_due_to communication loss.
+
+  Law, theory, classification, and property relations:
+  * governed_by - phenomenon X is governed by physical law Y.
+    Example: planetary orbits governed_by kepler's laws.
+  * described_by - X is described/modeled by theory Y.
+    Example: spacetime curvature described_by general relativity.
+  * predicted_by - X was predicted by theory/model Y.
+    Example: neptune predicted_by newtonian mechanics.
+  * proposed_by - theory/model X was proposed by person Y.
+    Example: general relativity proposed_by albert einstein.
+  * type_of - X is a type/subtype/instance of Y.
+    Example: mars type_of terrestrial planet.
+  * has_property - X has property or parameter Y.
+    Example: venus has_property dense atmosphere.
+  * characterized_by - X is characterized by feature/signature Y.
+    Example: black hole characterized_by event horizon.
+
+# --- add_llm_relations_examples ----------------------------------------------
 add_llm_relations_examples:
   - user: |-
       Input:
@@ -374,29 +699,8 @@ add_llm_relations_examples:
     explanation: |-
       The Sun is composed of hydrogen (and helium) -> composed_of.
       Hydrogen fuses into helium -> fuses_into.
+      The same text says the Sun is powered by fusion, but only one relation per head is requested, and 'composed_of' is the dominant one.
       helium and nuclear fusion are not framed as relation sources here -> [].
-
-  - user: |-
-      Input:
-      Sequence:
-      The Moon orbits the Earth. The Sun's gravity holds the planets of the Solar System in orbit.
-
-      heads: ["Moon", "Earth", "Sun", "planets", "Solar System"]
-
-      Output:
-    assistant: |-
-      {
-          "Moon": ["orbits"],
-          "Earth": [],
-          "Sun": ["exerts_gravity_on"],
-          "planets": ["orbits"],
-          "Solar System": []
-      }
-    explanation: |-
-      The Moon orbits the Earth -> orbits.
-      The Sun's gravity holds the planets -> exerts_gravity_on.
-      The planets orbit (are held in orbit) -> orbits.
-      Earth and Solar System are not relation sources here -> [].
 
   - user: |-
       Input:
@@ -423,154 +727,156 @@ add_llm_relations_examples:
   - user: |-
       Input:
       Sequence:
-      Apollo 11 landed on the Moon. The Hubble Space Telescope was launched by NASA and observes distant galaxies.
+      The Sun emits solar wind. Earth's magnetosphere surrounds Earth and interacts with the solar wind, reducing the direct impact of charged particles on the upper atmosphere.
 
-      heads: ["Apollo 11", "Moon", "Hubble Space Telescope", "NASA", "distant galaxies"]
+      heads: ["sun", "solar wind", "earth magnetosphere", "earth", "charged particles", "upper atmosphere"]
 
       Output:
     assistant: |-
       {
-          "Apollo 11": ["landed_on"],
-          "Moon": [],
-          "Hubble Space Telescope": ["launched_by"],
-          "NASA": [],
-          "distant galaxies": []
+          "sun": ["emits"],
+          "solar wind": ["interacts_with"],
+          "earth magnetosphere": ["surrounds"],
+          "earth": [],
+          "charged particles": [],
+          "upper atmosphere": []
       }
     explanation: |-
-      Apollo 11 landed on the Moon -> landed_on.
-      The Hubble Space Telescope was launched by NASA -> launched_by.
-      It also observes distant galaxies, but with one relation kept per head the dominant 'launched_by' is chosen.
-      Moon, NASA, distant galaxies are not relation sources here -> [].
+      The text explicitly states that the Sun emits solar wind -> emits.
+      The solar wind interacts with the magnetosphere -> interacts_with.
+      The magnetosphere surrounds Earth -> surrounds.
+      Other heads are not directly used as relation sources under the one-relation constraint.
 
   - user: |-
       Input:
       Sequence:
-      Planetary orbits are governed by Kepler's laws. The curvature of spacetime is described by general relativity.
+      The James Webb Space Telescope was launched by an Ariane 5 rocket and operates near the Sun-Earth L2 Lagrange point. Its infrared instruments observe distant galaxies and measure redshift.
 
-      heads: ["planetary orbits", "Kepler's laws", "spacetime", "general relativity"]
+      heads: ["james webb space telescope", "ariane 5 rocket", "sun-earth l2 lagrange point", "infrared instruments", "distant galaxies", "redshift"]
+
+      Output:
+    assistant: |-
+      {
+          "james webb space telescope": ["launched_by"],
+          "ariane 5 rocket": [],
+          "sun-earth l2 lagrange point": [],
+          "infrared instruments": ["observes"],
+          "distant galaxies": [],
+          "redshift": []
+      }
+    explanation: |-
+      JWST was launched by Ariane 5 -> launched_by.
+      Infrared instruments observe distant galaxies -> observes.
+      The same sentence also says the instruments measure redshift, but only one relation per head is requested here.
+
+  - user: |-
+      Input:
+      Sequence:
+      Planetary orbits are governed by Kepler's laws. The cosmic microwave background provides evidence for the Big Bang model.
+
+      heads: ["planetary orbits", "kepler's laws", "cosmic microwave background", "big bang model"]
 
       Output:
     assistant: |-
       {
           "planetary orbits": ["governed_by"],
-          "Kepler's laws": [],
-          "spacetime": ["described_by"],
-          "general relativity": []
+          "kepler's laws": [],
+          "cosmic microwave background": ["evidence_for"],
+          "big bang model": []
       }
     explanation: |-
       Planetary orbits are governed by Kepler's laws -> governed_by.
-      The curvature of spacetime is described by general relativity -> described_by.
-      Kepler's laws and general relativity are the tails here, not relation sources -> [].
+      The CMB is explicitly evidence for the Big Bang model -> evidence_for.
+      kepler's laws and big bang model are the tails here, not relation sources -> [].
 
 # =============================================================================
-# Extract phase (#1) content slots - consumed by prompts/extract.yaml.
+# Extract phase content slots
 # =============================================================================
 
-# Single-line scope phrase for the -Role-/-Goal- header.
-extract_kg_topic: 'astronomy, astrophysics, celestial bodies, and spaceflight'
+extract_kg_topic: 'space science, astronomy, astrophysics, planetary science, orbital mechanics, and space engineering'
 
-# 8-type list (period-terminated) for the -Entity Types- section.
-extract_entity_types_list: 'Celestial Body, Astronomical Process, Physical Concept, Cosmic Structure, Spacecraft, Mission, Physical Law, Organization.'
+extract_entity_types_list: 'Celestial Object, Astronomical Structure, Spacecraft System, Engineering Component, Physical Entity, Process, Event, Measurement, Conceptual Entity, Organization or Mission.'
 
-# Entity types for the user-side `Entity_types:` line.
-extract_user_entity_types: 'Celestial Body, Astronomical Process, Physical Concept, Cosmic Structure, Spacecraft, Mission, Physical Law, Organization'
+extract_user_entity_types: 'Celestial Object, Astronomical Structure, Spacecraft System, Engineering Component, Physical Entity, Process, Event, Measurement, Conceptual Entity, Organization or Mission'
 
-# Numbered subcategory block.
 extract_entity_subcategories: |-
-  1. Celestial Body: Star; Planet; Moon; Dwarf Planet; Asteroid; Comet; Galaxy; Black Hole; Neutron Star; White Dwarf; Red Giant; Nebula; Quasar; Pulsar
-  2. Astronomical Process: Nuclear Fusion; Stellar Evolution; Star Formation; Supernova; Accretion; Gravitational Collapse; Expansion of the Universe; Nucleosynthesis; Solar Flare; Eclipse
-  3. Physical Concept: Mass; Luminosity; Temperature; Redshift; Velocity; Distance; Gravity; Radiation; Light; Element; Energy; Spectrum; Wavelength
-  4. Cosmic Structure: Solar System; Galaxy Cluster; Orbit; Ring System; Interstellar Medium; Habitable Zone; Asteroid Belt; Kuiper Belt; Universe; Spacetime
-  5. Spacecraft: Probe; Satellite; Rover; Space Telescope; Rocket; Launch Vehicle; Space Station; Lander; Orbiter
-  6. Mission: Space Mission; Program; Crewed Mission; Flyby; Sample Return; Exploration Program
-  7. Physical Law: Physical Law; Theory; Model; Principle; Equation
-  8. Organization: Space Agency; Company; Observatory; Institution
+  1. Celestial Object: Star; Main-Sequence Star; Red Giant; Planet; Dwarf Planet; Moon; Asteroid; Comet; Meteoroid; Exoplanet; Galaxy; Galaxy Cluster; Nebula; Pulsar; Quasar; Black Hole; Neutron Star; White Dwarf; Brown Dwarf; Supernova Remnant; Star Cluster
+  2. Astronomical Structure: Solar System; Planetary System; Asteroid Belt; Kuiper Belt; Oort Cloud; Accretion Disk; Ring System; Magnetosphere; Atmosphere; Corona; Photosphere; Chromosphere; Interstellar Medium; Cosmic Web
+  3. Spacecraft System: Spacecraft; Satellite; Space Probe; Orbiter; Lander; Rover; Space Station; Launch Vehicle; Crew Vehicle; Telescope; Payload; CubeSat; Habitat Module; Reentry Vehicle; Space Tug
+  4. Engineering Component: Rocket Engine; Thruster; Propellant Tank; Solar Panel; Battery; Antenna; Reaction Wheel; Gyroscope; Star Tracker; Heat Shield; Radiator; Sensor; Camera; Spectrometer; Radar; Communication System; Guidance System
+  5. Physical Entity: Photon; Particle; Plasma; Cosmic Ray; Solar Wind; Magnetic Field; Gravitational Field; Radiation; Dust; Gas; Ice; Regolith; Atmosphere; Ion; Molecule; Element; Isotope
+  6. Process: Nuclear Fusion; Nucleosynthesis; Gravitational Collapse; Accretion; Stellar Evolution; Star Formation; Planet Formation; Orbital Insertion; Launch; Docking; Reentry; Atmospheric Entry; Tidal Heating; Erosion; Outgassing; Space Weather; Redshift; Gravitational Lensing
+  7. Event: Eclipse; Transit; Occultation; Meteor Shower; Solar Flare; Coronal Mass Ejection; Supernova; Gamma-Ray Burst; Collision; Launch Event; Flyby; Landing; Docking Event; Reentry Event
+  8. Measurement: Mass; Radius; Diameter; Luminosity; Temperature; Density; Distance; Velocity; Acceleration; Orbital Period; Semi-Major Axis; Inclination; Eccentricity; Redshift; Magnitude; Albedo; Spectral Line; Frequency; Wavelength; Thrust; Specific Impulse; Delta-V
+  9. Conceptual Entity: Orbit; Trajectory; Habitable Zone; Event Horizon; Roche Limit; Lagrange Point; Escape Velocity; Kepler's Laws; General Relativity; Newton's Law of Gravitation; Hubble's Law; Dark Matter; Dark Energy; Cosmological Constant; Reference Frame; Hohmann Transfer; Gravity Assist; Mission Objective
+  10. Organization or Mission: Space Agency; Observatory; Mission; Program; Launch Provider; Research Institution; NASA; ESA; ISRO; JAXA; Roscosmos; SpaceX; Artemis; Apollo; Voyager; Cassini; Hubble; James Webb Space Telescope
 
-# Worked example paragraph (matches few_shot_examples[0].text).
-extract_example_text: 'The Sun is a main-sequence star located in the Milky Way galaxy. It is composed mostly of hydrogen and helium and is powered by nuclear fusion in its core, where hydrogen fuses into helium. The Sun''s gravity holds the planets of the Solar System in orbit, a motion described by Kepler''s laws of planetary motion. In about five billion years the Sun will evolve into a red giant and finally collapse into a white dwarf. Much more massive stars instead end their lives in a supernova, which can leave behind a neutron star or a black hole. Jupiter, the largest planet, was explored by the Galileo spacecraft; the Galileo mission, launched by NASA in 1989, studied the Jovian system and its many moons.'
+extract_example_text: 'The James Webb Space Telescope was launched by an Ariane 5 rocket from the Guiana Space Centre. The observatory carries a segmented primary mirror and infrared instruments. These instruments observe distant galaxies and the interstellar medium, and measure redshift, allowing astronomers to study galaxy formation in the early universe. The telescope operates near the Sun-Earth L2 Lagrange point, where the Sun and Earth remain in roughly the same direction from the spacecraft. Its sunshield reduces thermal radiation from the Sun, Earth, and Moon, enabling sensitive infrared observations.'
 
-# Few-shot assistant response: entity tuples + relationship tuples +
-# {completion_delimiter}. Delimiter tokens stay literal. No trailing newline.
 extract_example_tuples: |-
-  ("entity"{tuple_delimiter}sun{tuple_delimiter}Celestial Body{tuple_delimiter}main-sequence star at the center of the Solar System, powered by nuclear fusion.)
+  ("entity"{tuple_delimiter}james webb space telescope{tuple_delimiter}Spacecraft System{tuple_delimiter}space observatory launched by an ariane 5 rocket, carrying a segmented primary mirror and infrared instruments.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}main-sequence star{tuple_delimiter}Celestial Body{tuple_delimiter}class of star, fusing hydrogen into helium in its core; the Sun is one.)
+  ("entity"{tuple_delimiter}ariane 5 rocket{tuple_delimiter}Spacecraft System{tuple_delimiter}launch vehicle described as launching the james webb space telescope.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}milky way{tuple_delimiter}Cosmic Structure{tuple_delimiter}galaxy in which the Sun is described as located.)
+  ("entity"{tuple_delimiter}guiana space centre{tuple_delimiter}Organization or Mission{tuple_delimiter}launch site from which the james webb space telescope was launched.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}hydrogen{tuple_delimiter}Physical Concept{tuple_delimiter}lightest element; the Sun's main constituent and the fuel that fuses into helium.)
+  ("entity"{tuple_delimiter}launch{tuple_delimiter}Event{tuple_delimiter}the launch of the james webb space telescope aboard an ariane 5 rocket from the guiana space centre.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}helium{tuple_delimiter}Physical Concept{tuple_delimiter}element produced when hydrogen fuses in the Sun's core.)
+  ("entity"{tuple_delimiter}segmented primary mirror{tuple_delimiter}Engineering Component{tuple_delimiter}mirror carried by the james webb space telescope.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}nuclear fusion{tuple_delimiter}Astronomical Process{tuple_delimiter}process powering the Sun, fusing hydrogen into helium in its core.)
+  ("entity"{tuple_delimiter}infrared instruments{tuple_delimiter}Engineering Component{tuple_delimiter}instruments carried by the james webb space telescope that observe distant galaxies and measure redshift.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}gravity{tuple_delimiter}Physical Concept{tuple_delimiter}force by which the Sun is described as holding the planets of the Solar System in orbit.)
+  ("entity"{tuple_delimiter}distant galaxies{tuple_delimiter}Celestial Object{tuple_delimiter}astronomical targets observed by the infrared instruments.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}planets{tuple_delimiter}Celestial Body{tuple_delimiter}bodies of the Solar System held in orbit by the Sun's gravity.)
+  ("entity"{tuple_delimiter}interstellar medium{tuple_delimiter}Astronomical Structure{tuple_delimiter}gas and dust between the stars, also observed by the infrared instruments.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}solar system{tuple_delimiter}Cosmic Structure{tuple_delimiter}the Sun together with the planets and bodies that orbit it.)
+  ("entity"{tuple_delimiter}redshift{tuple_delimiter}Measurement{tuple_delimiter}measurement made by the infrared instruments to study galaxy formation in the early universe.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}orbit{tuple_delimiter}Astronomical Process{tuple_delimiter}motion of the planets around the Sun, described as governed by Kepler's laws of planetary motion.)
+  ("entity"{tuple_delimiter}galaxy formation{tuple_delimiter}Process{tuple_delimiter}process studied using redshift measurements of distant galaxies.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}kepler's laws of planetary motion{tuple_delimiter}Physical Law{tuple_delimiter}laws described as governing the orbital motion of the planets around the Sun.)
+  ("entity"{tuple_delimiter}early universe{tuple_delimiter}Conceptual Entity{tuple_delimiter}cosmological epoch associated with galaxy formation studies.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}red giant{tuple_delimiter}Celestial Body{tuple_delimiter}late evolutionary stage the Sun will evolve into before collapsing.)
+  ("entity"{tuple_delimiter}sun-earth l2 lagrange point{tuple_delimiter}Conceptual Entity{tuple_delimiter}operational location of the james webb space telescope where the sun and earth remain in roughly the same direction from the spacecraft.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}white dwarf{tuple_delimiter}Celestial Body{tuple_delimiter}dense remnant the Sun will collapse into after the red-giant stage.)
+  ("entity"{tuple_delimiter}lagrange point{tuple_delimiter}Conceptual Entity{tuple_delimiter}class of gravitational equilibrium points in a two-body system; the sun-earth l2 point is one of them.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}supernova{tuple_delimiter}Astronomical Process{tuple_delimiter}explosive end of a massive star, described as leaving behind a neutron star or a black hole.)
+  ("entity"{tuple_delimiter}spacecraft{tuple_delimiter}Spacecraft System{tuple_delimiter}vehicle referred to in relation to the sun-earth l2 lagrange point geometry.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}neutron star{tuple_delimiter}Celestial Body{tuple_delimiter}dense remnant that can be left behind by a supernova.)
+  ("entity"{tuple_delimiter}sunshield{tuple_delimiter}Engineering Component{tuple_delimiter}component that reduces thermal radiation from the sun, earth, and moon.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}black hole{tuple_delimiter}Celestial Body{tuple_delimiter}remnant that can be left behind by a supernova of a massive star.)
+  ("entity"{tuple_delimiter}thermal radiation{tuple_delimiter}Physical Entity{tuple_delimiter}radiation reduced by the sunshield from the sun, earth, and moon.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}jupiter{tuple_delimiter}Celestial Body{tuple_delimiter}largest planet, described as explored by the Galileo spacecraft and host to many moons.)
+  ("entity"{tuple_delimiter}sun{tuple_delimiter}Celestial Object{tuple_delimiter}celestial object whose thermal radiation is reduced by the sunshield.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}galileo spacecraft{tuple_delimiter}Spacecraft{tuple_delimiter}spacecraft described as exploring Jupiter.)
+  ("entity"{tuple_delimiter}earth{tuple_delimiter}Celestial Object{tuple_delimiter}celestial object whose thermal radiation is reduced by the sunshield.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}galileo mission{tuple_delimiter}Mission{tuple_delimiter}mission launched by NASA in 1989 that studied the Jovian system and its moons.)
+  ("entity"{tuple_delimiter}moon{tuple_delimiter}Celestial Object{tuple_delimiter}celestial object whose thermal radiation is reduced by the sunshield.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}nasa{tuple_delimiter}Organization{tuple_delimiter}space agency described as launching the Galileo mission in 1989.)
+  ("entity"{tuple_delimiter}infrared observations{tuple_delimiter}Process{tuple_delimiter}sensitive observations enabled by reducing thermal radiation.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}jovian system{tuple_delimiter}Cosmic Structure{tuple_delimiter}Jupiter and its moons, described as studied by the Galileo mission.)
+  ("relationship"{tuple_delimiter}james webb space telescope{tuple_delimiter}ariane 5 rocket{tuple_delimiter}launched_by{tuple_delimiter}7)
   {record_delimiter}
-  ("entity"{tuple_delimiter}moons{tuple_delimiter}Celestial Body{tuple_delimiter}natural satellites of Jupiter, part of the Jovian system studied by the Galileo mission.)
+  ("relationship"{tuple_delimiter}james webb space telescope{tuple_delimiter}launch{tuple_delimiter}undergoes{tuple_delimiter}7)
   {record_delimiter}
-  ("relationship"{tuple_delimiter}sun{tuple_delimiter}main-sequence star{tuple_delimiter}type_of{tuple_delimiter}7)
+  ("relationship"{tuple_delimiter}james webb space telescope{tuple_delimiter}guiana space centre{tuple_delimiter}launched_from{tuple_delimiter}7)
   {record_delimiter}
-  ("relationship"{tuple_delimiter}sun{tuple_delimiter}milky way{tuple_delimiter}located_in{tuple_delimiter}5)
+  ("relationship"{tuple_delimiter}james webb space telescope{tuple_delimiter}segmented primary mirror{tuple_delimiter}carries{tuple_delimiter}7)
   {record_delimiter}
-  ("relationship"{tuple_delimiter}sun{tuple_delimiter}hydrogen{tuple_delimiter}composed_of{tuple_delimiter}7)
+  ("relationship"{tuple_delimiter}james webb space telescope{tuple_delimiter}infrared instruments{tuple_delimiter}carries{tuple_delimiter}7)
   {record_delimiter}
-  ("relationship"{tuple_delimiter}sun{tuple_delimiter}nuclear fusion{tuple_delimiter}powered_by{tuple_delimiter}7)
+  ("relationship"{tuple_delimiter}infrared instruments{tuple_delimiter}distant galaxies{tuple_delimiter}observes{tuple_delimiter}7)
   {record_delimiter}
-  ("relationship"{tuple_delimiter}hydrogen{tuple_delimiter}helium{tuple_delimiter}fuses_into{tuple_delimiter}7)
+  ("relationship"{tuple_delimiter}infrared instruments{tuple_delimiter}interstellar medium{tuple_delimiter}observes{tuple_delimiter}7)
   {record_delimiter}
-  ("relationship"{tuple_delimiter}sun{tuple_delimiter}gravity{tuple_delimiter}has_property{tuple_delimiter}5)
+  ("relationship"{tuple_delimiter}infrared instruments{tuple_delimiter}redshift{tuple_delimiter}measures{tuple_delimiter}7)
   {record_delimiter}
-  ("relationship"{tuple_delimiter}sun{tuple_delimiter}planets{tuple_delimiter}exerts_gravity_on{tuple_delimiter}7)
+  ("relationship"{tuple_delimiter}redshift{tuple_delimiter}galaxy formation{tuple_delimiter}evidence_for{tuple_delimiter}5)
   {record_delimiter}
-  ("relationship"{tuple_delimiter}planets{tuple_delimiter}sun{tuple_delimiter}orbits{tuple_delimiter}5)
+  ("relationship"{tuple_delimiter}james webb space telescope{tuple_delimiter}sun-earth l2 lagrange point{tuple_delimiter}located_in{tuple_delimiter}7)
   {record_delimiter}
-  ("relationship"{tuple_delimiter}sun{tuple_delimiter}solar system{tuple_delimiter}part_of{tuple_delimiter}5)
+  ("relationship"{tuple_delimiter}sun-earth l2 lagrange point{tuple_delimiter}lagrange point{tuple_delimiter}type_of{tuple_delimiter}5)
   {record_delimiter}
-  ("relationship"{tuple_delimiter}orbit{tuple_delimiter}kepler's laws of planetary motion{tuple_delimiter}described_by{tuple_delimiter}7)
+  ("relationship"{tuple_delimiter}sunshield{tuple_delimiter}thermal radiation{tuple_delimiter}absorbs{tuple_delimiter}5)
   {record_delimiter}
-  ("relationship"{tuple_delimiter}sun{tuple_delimiter}red giant{tuple_delimiter}evolves_into{tuple_delimiter}7)
-  {record_delimiter}
-  ("relationship"{tuple_delimiter}red giant{tuple_delimiter}white dwarf{tuple_delimiter}collapses_into{tuple_delimiter}5)
-  {record_delimiter}
-  ("relationship"{tuple_delimiter}supernova{tuple_delimiter}neutron star{tuple_delimiter}results_in{tuple_delimiter}7)
-  {record_delimiter}
-  ("relationship"{tuple_delimiter}supernova{tuple_delimiter}black hole{tuple_delimiter}results_in{tuple_delimiter}7)
-  {record_delimiter}
-  ("relationship"{tuple_delimiter}jupiter{tuple_delimiter}galileo spacecraft{tuple_delimiter}explored_by{tuple_delimiter}7)
-  {record_delimiter}
-  ("relationship"{tuple_delimiter}galileo mission{tuple_delimiter}nasa{tuple_delimiter}launched_by{tuple_delimiter}7)
-  {record_delimiter}
-  ("relationship"{tuple_delimiter}galileo mission{tuple_delimiter}jovian system{tuple_delimiter}studies{tuple_delimiter}5)
-  {record_delimiter}
-  ("relationship"{tuple_delimiter}jupiter{tuple_delimiter}moons{tuple_delimiter}has_satellite{tuple_delimiter}7)
-  {record_delimiter}
-  ("relationship"{tuple_delimiter}jupiter{tuple_delimiter}planets{tuple_delimiter}type_of{tuple_delimiter}5)
+  ("relationship"{tuple_delimiter}sunshield{tuple_delimiter}infrared observations{tuple_delimiter}enables{tuple_delimiter}7)
   {completion_delimiter}

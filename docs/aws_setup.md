@@ -282,6 +282,64 @@ aws iam update-access-key --user-name "$USER" \
 aws iam delete-access-key --user-name "$USER" --access-key-id AKIA_OLD
 ```
 
+## Step 10 — (optional) Bedrock Custom Model Import role
+
+Only needed to deploy a trained model to **Amazon Bedrock Custom Model Import
+(CMI)** — see `docs/inference_deployment.md §4`. This is a **separate service
+role** that *Bedrock itself* assumes to read the model from S3; it is **distinct
+from the `kg-si-pipeline` user** above (the pod's S3/CloudWatch identity), which
+must NOT be reused here. The deployable model is the `rl.merge_rl` output
+(`…/checkpoint-N/merged_final_model/` — full safetensors + config + tokenizer).
+
+Run once from **CloudShell** (or any admin profile):
+
+```bash
+ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+REGION=us-east-1
+ROLE=kg-si-bedrock-import-role
+MODEL_PREFIX="dss/shared/imported-models"      # where the merged model lives in s3://enlibra
+
+# 1) Trust policy — only Bedrock CMI in THIS account/region may assume the role
+#    (aws:SourceAccount / SourceArn guard against the confused-deputy problem).
+cat > /tmp/trust.json <<EOF
+{ "Version":"2012-10-17","Statement":[{
+  "Effect":"Allow","Principal":{"Service":"bedrock.amazonaws.com"},"Action":"sts:AssumeRole",
+  "Condition":{"StringEquals":{"aws:SourceAccount":"${ACCOUNT_ID}"},
+               "ArnLike":{"aws:SourceArn":"arn:aws:bedrock:${REGION}:${ACCOUNT_ID}:model-import-job/*"}}}]}
+EOF
+aws iam create-role --role-name "$ROLE" --assume-role-policy-document file:///tmp/trust.json
+
+# 2) Read-only on JUST the model prefix (scoped like KGSIPipelineS3Access).
+cat > /tmp/s3.json <<EOF
+{ "Version":"2012-10-17","Statement":[
+  {"Effect":"Allow","Action":["s3:GetObject"],"Resource":"arn:aws:s3:::enlibra/${MODEL_PREFIX}/*"},
+  {"Effect":"Allow","Action":["s3:ListBucket"],"Resource":"arn:aws:s3:::enlibra",
+   "Condition":{"StringLike":{"s3:prefix":["${MODEL_PREFIX}/*"]}}}]}
+EOF
+aws iam put-role-policy --role-name "$ROLE" \
+    --policy-name KGSIBedrockImportS3Read --policy-document file:///tmp/s3.json
+
+# 3) The role ARN — pass it to create-model-import-job:
+aws iam get-role --role-name "$ROLE" --query Role.Arn --output text
+```
+
+Then upload the merged model and create the import job:
+
+```bash
+# Upload the rl.merge_rl output (full safetensors + config + tokenizer):
+aws s3 sync <…/checkpoint-N/merged_final_model>/ s3://enlibra/${MODEL_PREFIX}/specialized-slm/
+
+aws bedrock create-model-import-job \
+    --imported-model-name specialized-slm \
+    --role-arn "$(aws iam get-role --role-name "$ROLE" --query Role.Arn --output text)" \
+    --model-data-source '{"s3DataSource":{"s3Uri":"s3://enlibra/'"${MODEL_PREFIX}"'/specialized-slm/"}}'
+```
+
+> **Architecture gate:** Bedrock CMI accepts only specific architectures. The
+> trained model is **Qwen3** — confirm Qwen3 is on the current supported list
+> before importing, else the job fails validation (fall back to a RunPod or
+> SageMaker endpoint). See `docs/inference_deployment.md §4`.
+
 ### Listing current state
 
 ```bash

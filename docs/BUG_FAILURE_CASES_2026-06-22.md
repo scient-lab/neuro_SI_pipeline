@@ -18,6 +18,14 @@ straddle two cases):
 | D | Fork-introduced modifications | ~10 | works | breaks | revert to upstream OR finish the fork modification |
 | **Total** | | **~27-29** | | | (the spread is because a few span two cases) |
 
+> **2026-06-26 update — second batch (last 4-5 days):** added a **5th failure
+> mode, Case E: silent success / data-integrity** (~6 bugs that *pass a green
+> end-to-end run* while a stage quietly produced empty, degraded, or orphaned
+> output). The headline shift: **batch 1 (Jun 22) was crashes** — a test run
+> finds them; **batch 2 was silence** — a test run does NOT. Full breakdown in
+> the [2026-06-26 follow-up](#2026-06-26-follow-up--the-bugs-shifted-from-crashes-to-silence)
+> at the end of this doc.
+
 Headline takeaway, free of personality:
 
 > The original upstream code was likely run end-to-end at Princeton on
@@ -465,6 +473,139 @@ Neutral framing for a status update:
 > change: smoke-validation gate before every merge, applied symmetrically
 > to upstream pulls and fork-side changes. Estimated cost per merge: ~30
 > minutes. Estimated time saved per skipped gate: full engineering day.
+
+---
+
+## 2026-06-26 follow-up: the bugs shifted from *crashes* to *silence*
+
+The Jun-22 batch above was mostly **crashes** — you find them by running the
+chain, which is exactly what the smoke gate does. The 4-5 days since surfaced a
+*different and more dangerous* class: stages that **report ✓ success while
+producing empty, degraded, or orphaned output**. A green end-to-end run does
+**NOT** catch these — the pipeline finishes, the manifest is all ✓, and the data
+is silently wrong. This is failure-mode **Case E**, and it dominates this batch.
+
+| Case | What it is | This batch | Caught by a green run? |
+|------|-----------|-----------:|:----------------------:|
+| **E** | **Silent success / data-integrity** (no crash, wrong output) | ~6 | **No** |
+| B | Genuine defect (no crash, but incorrect) | ~2 | partially |
+| C | Model / version drift | ~1 | no |
+| D | Fork-introduced | ~3 | partially |
+
+### Case E: Silent success / data-integrity
+
+Each returned `0` (✓) while doing nothing useful. The signature is a silent
+`return 0` or warn-and-continue on a missing/empty input. The smoke gate from
+batch 1 is necessary but **not sufficient** — these survive it.
+
+#### E.1: GraphMERT predictions never reach the KG
+
+- **What's wrong**: `predict_tails_gm` read the trained checkpoint from
+  `$GRAPHMERT_DIR/checkpoints`, but `train_mnm` writes it to `mlm_output`
+  (args_mlm.yaml). That dir never exists → the step silently `return 0` in 0s.
+  And even when run, it writes `predictions_graphmert/predictions.parquet`
+  while `combine_tails` reads only `predictions/*.csv` — different dir AND format.
+- **Effect**: the trained GraphMERT model's tails **never reach the KG**; the
+  run goes green with the LLM predictor as the only source.
+- **Fix**: corrected the path to `mlm_output`; fail-loud on a missing checkpoint;
+  loud warn on the still-unbuilt parquet→shard bridge.
+
+#### E.2: fact_score writes an empty KG on 100% rejection (exit 0)
+
+- **What's wrong**: a 100% reject (e.g. `fact_score_max_tokens` truncating
+  Qwen3's `<think>` before the verdict) wrote a 0-row `validated_triples.csv`
+  and exited 0.
+- **Effect**: the empty KG silently flows downstream into a seed-only curriculum.
+- **Fix**: `graphmert.fail_on_empty_validation` (default true) — refuse to write
+  a 0-row KG unless explicitly allowed.
+
+#### E.3: curriculum silently degrades to a seed-only 1-hop set
+
+- **What's wrong**: on an empty expansion, `calculate_hops.py` fell back to the
+  seed KG with `hop_distance=1` (warn only) — a 1-hop curriculum instead of
+  multi-hop.
+- **Effect**: the entire multi-hop-reasoning premise silently replaced by 1-hop.
+- **Fix**: `curriculum.allow_seed_only_fallback` (default false) — fail loud
+  unless opted in (smoke opts in for tiny scale).
+
+#### E.4: the merged KG was computed and discarded
+
+- **What's wrong**: `curriculum.path_traversal` read `validated_triples.csv`
+  (expansion-only) instead of `expand_kg`'s merged `final_relationships.parquet`.
+  The merge (dedup + relation-count filter) was orphaned; `expand_kg` even logged
+  a filename it never wrote (`expanded_kg.parquet`).
+- **Fix**: wired curriculum to the merged KG; fixed the false log line;
+  `expand_kg` now fails (not warn-skips) if it can't produce the merged KG.
+
+#### E.5: graphmert silently used the unvalidated seed KG
+
+- **What's wrong**: if the validate phase's output was missing/empty, graphmert
+  fell back to the raw (non-consensus) seed KG with only a warn.
+- **Fix**: `graphmert.allow_unvalidated_seed_kg` (default false) — fail loud;
+  treat an empty validated file as missing.
+
+#### E.6: merge_rl no-op when the profile isn't set
+
+- **What's wrong**: `merge_rl`'s `use_lora` gate defaulted false when
+  `SI_PROFILE` was unset on a standalone `--step merge_rl` run → it returned ✓
+  in 0s without merging (a real 8B merge takes ~47s).
+- **Effect**: no deployable RL model produced; the artifact silently never
+  existed — found only when the S3 import prefix came up empty.
+- **Fix (in progress)**: detect the adapter from the checkpoint
+  (`adapter_config.json` present → merge) instead of trusting the config flag,
+  and make any skip a loud warn.
+
+**Case E summary**: ~6 bugs. None crash. All pass a green smoke run. Every one
+is a `return 0` / warn-and-continue on a missing or empty input that should have
+been a hard stop.
+
+### Also this batch (existing categories)
+
+- **B (genuine defect)**: **GRPO rollout corruption** — `gradient_checkpointing`
+  stays active during the rollout because TRL's per-rollout disable doesn't
+  propagate through the PEFT/LoRA wrapper → garbage generations (the "Chinese
+  characters" symptom). Fix: a `gradient_checkpointing` config knob, false on
+  LoRA profiles. *(Also: answer-key balancing was non-reproducible under the
+  parallel generator — global `random` — fixed with a per-question hash-seeded RNG.)*
+- **D (fork-introduced)**: smoke `max_completion_length=256` (a fork override of
+  upstream's 1280) clipped Qwen3 before `<answer>` → flat reward → RL never
+  learned. Fix: 256→1024 (pilot 512→1280). Plus a **dead `max_input_examples`**
+  config (read by no code — renamed `expected_input_docs` + a loud over-size
+  warning) and a **chunking split-brain** (our config now drives graphrag's
+  chunk size via cli_overrides instead of a dead mirror knob).
+- **C (model drift)**: `fact_score_max_tokens=512` was anchored to gpt-oss's
+  *harmony* format (reasoning in a separate channel); Qwen3 inlines `<think>`,
+  so 512 truncated think+verdict → high reject. Bumped to 1024.
+
+### Evolved forward fix — a green run is necessary but NOT sufficient
+
+The Jun-22 fix was "**run the smoke chain before every merge**." That gate
+catches crashes (A/B/D). It does **NOT** catch Case E — those finish green. So
+the gate evolves:
+
+1. **Outcome validation, not just completion.** Each stage must assert its
+   output is *meaningful* — non-empty, correct schema, actually consumed by the
+   next stage — not merely "exited 0." (See the per-step OUTCOME probes /
+   `scripts/lib/step_quality.py` and the fail-on-empty guards added this batch.)
+2. **Fail loud by default; degrade only on explicit opt-in.** Every silent
+   `return 0` / warn-and-continue on a missing input is now a hard error unless
+   a profile opts in (smoke does, for tiny scale).
+3. **Trace producer→consumer paths.** The highest-value Case E bugs (E.1, E.4)
+   were path/format mismatches between a step's output and the next step's
+   input — verify the consumer actually reads what the producer writes.
+
+### For external communication (CEO, partners)
+
+> A second batch over 4-5 days surfaced ~12 more issues, but of a *different and
+> more dangerous* kind. Where the first batch were crashes that a test run
+> catches, this batch were **silent-success bugs** — the pipeline reports
+> success while a stage quietly produced empty or wrong data (e.g. the trained
+> model's predictions never reaching the knowledge graph; a failed validation
+> silently degrading the training set to a trivial 1-hop curriculum). These
+> survive a green run, so the engineering fix evolved from "run the pipeline
+> end-to-end" to "**validate each stage actually produced meaningful output.**"
+> All are now fixed or guarded to fail loudly, and the pipeline can no longer
+> report success on a silently-broken stage.
 
 ---
 

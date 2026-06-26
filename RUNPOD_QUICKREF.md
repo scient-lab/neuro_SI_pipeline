@@ -344,3 +344,47 @@ grep -rnE '\bdiabetes\b' --include='*.py' --include='*.yaml' \
 # OR remote summary one-shot
 ./scripts/runpod/remote.sh exec './scripts/stats.sh --steps'
 ```
+
+---
+
+## 14. Quality check (the OUTCOME column)
+
+`scripts/lib/step_quality.py` grades each **completed** step's *output* (triple counts,
+drop rates, KG density, Q&A counts, …) and writes a verdict — `pass` / `warn` /
+`fail` / `unknown` — into the manifest. That verdict is what fills the **OUTCOME**
+column in `./scripts/stats.sh`. It is orthogonal to STATUS: STATUS = did the step
+*run*; OUTCOME = did it *produce meaningful output*.
+
+**It runs automatically — usually you do nothing:**
+- **Inline:** `run_step` writes the phase's outcomes the moment a step completes.
+- **Backfill:** `scripts/monitor.sh` re-checks every `MONITOR_OUTCOME_INTERVAL`
+  (default **900s**) with `--only-missing`, to fill gaps if the pipeline was
+  killed mid-step. Set `MONITOR_OUTCOME_INTERVAL=0` to disable.
+
+```bash
+# View it (OUTCOME column appears next to STATUS)
+./scripts/stats.sh --steps
+
+# Manual: print the per-step quality table (read-only, no manifest write)
+python3 scripts/lib/step_quality.py
+
+# Manual: (re)compute + persist outcomes into the manifest now
+python3 scripts/lib/step_quality.py --write
+
+# Only fill steps that have no verdict yet (cheap; what the monitor uses)
+python3 scripts/lib/step_quality.py --write --only-missing
+
+# Limit to one phase; or emit machine-readable JSON
+python3 scripts/lib/step_quality.py --phase graphmert --write
+python3 scripts/lib/step_quality.py --json | jq
+```
+
+**Notes:**
+- Only **completed** steps get a verdict — pending/running stay blank (OUTCOME is
+  inherently post-completion; mid-step output is partial). For live "how's it
+  doing" use §4 (health/logs/ETA), not OUTCOME.
+- Needs `pyyaml` (imports `pipeline_config`). Inline runs in the phase venv, so
+  it's fine; the monitor auto-picks a phase venv's python (falls back to
+  `python3`) and is best-effort (`|| true`) so a miss never disturbs the run.
+- Resolves the manifest from `$OUTPUT_BASE/run_manifest.json` by default
+  (`--manifest` / `--output-base` to override).
