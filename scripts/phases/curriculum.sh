@@ -63,15 +63,28 @@ KG_MANIFEST="$CURRICULUM_DIR/kg_manifest.json"
 # --- Steps ---------------------------------------------------------------
 step_path_traversal() {
     log_info "curriculum :: path_traversal (calculate_hops.py)"
-    local KG_PATH="${KG_PATH:-$GRAPHMERT_DIR/final_kg/validated_triples.csv}"
-    # calculate_hops.py does pd.read_csv(seed_kg_path); use the CSV
-    # variant (extract.sh writes both .csv and .parquet from graphrag).
+    # KG_PATH = the FULL expanded KG (seed ∪ graphmert-validated expansions) =
+    # expand_kg's merge_kgs.py output (final_relationships.parquet). The earlier
+    # default (validated_triples.csv) was the PRE-merge, expansion-ONLY set, so
+    # the hop graph never saw the seed edges or the merge's dedup / relation-count
+    # filtering — the merged KG was computed and discarded. _load_kg auto-detects
+    # parquet, so pointing at the .parquet is fine.
+    local KG_PATH="${KG_PATH:-$GRAPHMERT_DIR/final_kg/final_relationships.parquet}"
     local SEED_KG="$GRAPHRAG_DIR/output/kg_final.csv"
+    # Seed-only fallback (empty expansion → seed-only 1-hop curriculum) is OFF by
+    # default: an empty kg_path now FAILS loudly instead of silently degrading.
+    # Profiles that expect a thin/empty expansion (smoke) opt in via
+    # curriculum.allow_seed_only_fallback=true.
+    local SEED_ONLY_ARGS=()
+    if [[ "$(get_phase_param curriculum allow_seed_only_fallback false)" == "true" ]]; then
+        SEED_ONLY_ARGS=(--allow-seed-only)
+    fi
     ( cd "$REPO_ROOT/3_si_curriculum" && \
       python calculate_hops.py \
           --kg_path      "$KG_PATH" \
           --seed_kg_path "$SEED_KG" \
-          --output_path  "$KG_MANIFEST" ) || { log_error "path_traversal failed"; return 1; }
+          --output_path  "$KG_MANIFEST" \
+          "${SEED_ONLY_ARGS[@]}" ) || { log_error "path_traversal failed"; return 1; }
     log_info "Hop manifest written: $KG_MANIFEST"
 }
 

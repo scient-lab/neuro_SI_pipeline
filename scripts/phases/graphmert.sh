@@ -56,15 +56,23 @@ PREDICT_TAILS_MODEL_ID=$(get_model_id predict_tails "")
 STABLE_TOKENIZER="$GRAPHMERT_DIR/stable_tokenizer"
 
 # Seed KG CSV (the format dataset_preprocessing_utils.py expects).
-# Prefer validated seed KG from validate phase (paper §4.2 two-LLM consensus).
-# Fall back to raw seed KG if validate phase was skipped.
+# Prefer the validated seed KG from the validate phase (paper §4.2 two-LLM
+# consensus). The validated file must EXIST and be NON-EMPTY (header + >=1 row);
+# an empty one (consensus dropped everything) is treated as missing. Using the
+# UNVALIDATED seed KG silently bypasses the consensus, so it is OPT-IN only —
+# otherwise fail loud rather than degrade quietly.
 VALIDATED_SEED_KG="$GRAPHRAG_DIR/output/kg_final_validated.csv"
-if [[ -f "$VALIDATED_SEED_KG" ]]; then
+if [[ -s "$VALIDATED_SEED_KG" ]] && [[ "$(wc -l < "$VALIDATED_SEED_KG")" -gt 1 ]]; then
     SEED_KG_CSV="$VALIDATED_SEED_KG"
     log_info "graphmert :: Using validated seed KG (from validate phase)"
-else
+elif [[ "$(get_phase_param graphmert allow_unvalidated_seed_kg false)" == "true" ]]; then
     SEED_KG_CSV="$GRAPHRAG_DIR/output/kg_final.csv"
-    log_warn "graphmert :: validate phase skipped — using unvalidated seed KG"
+    log_warn "graphmert :: validated seed KG missing/empty — using UNVALIDATED seed KG (graphmert.allow_unvalidated_seed_kg=true). Two-LLM consensus is BYPASSED."
+else
+    log_error "graphmert :: validated seed KG missing or empty at $VALIDATED_SEED_KG."
+    log_error "  Run the validate phase (two-LLM consensus) first, or set"
+    log_error "  graphmert.allow_unvalidated_seed_kg=true to proceed on the raw seed KG."
+    exit 1
 fi
 
 # args_mlm.yaml is a TEMPLATE with ${VAR} placeholders. Resolve once at phase
@@ -198,23 +206,36 @@ step_predict_tails() {
 
 step_predict_tails_gm() {
     log_info "graphmert :: predict_tails_gm (step 6b — utils/predict_tails.py)"
-    # Step 6b complements step 6: where predict_tails_llm.py uses vLLM
-    # to ask a generic causal LM to extract tails, this step runs the
-    # trained GraphMERT checkpoint as a masked-node-modeling probe and
-    # reads the top-k predictions off the first leaf slot. Both outputs
-    # feed combine_tails in step 7.
+    # Step 6b complements step 6: where predict_tails_llm.py uses vLLM to ask a
+    # generic causal LM to extract tails, this step runs the trained GraphMERT
+    # checkpoint as a masked-node-modeling probe and reads top-k predictions off
+    # the first leaf slot.
     #
-    # Skips silently if no trained checkpoint exists (e.g. quick smoke
-    # runs that bypass train_mnm). Operator can force-run via
-    # GRAPHMERT_PREDICT_TAILS_GM_REQUIRED=1.
-    local CKPT_ROOT="$GRAPHMERT_DIR/checkpoints"
-    if [[ ! -d "$CKPT_ROOT" ]]; then
-        if [[ "${GRAPHMERT_PREDICT_TAILS_GM_REQUIRED:-0}" == "1" ]]; then
-            log_error "predict_tails_gm: no trained checkpoint at $CKPT_ROOT (GRAPHMERT_PREDICT_TAILS_GM_REQUIRED=1)"
-            return 1
+    # CHECKPOINT PATH: train_mnm (step 5) writes to args_mlm.yaml::output_dir =
+    # ${GRAPHMERT_DIR}/mlm_output. This previously read ${GRAPHMERT_DIR}/checkpoints
+    # — a path that never exists — so the dir-missing branch ALWAYS hit and the
+    # step silently no-op'd, meaning the GraphMERT model never produced any tails.
+    local CKPT_ROOT="$GRAPHMERT_DIR/mlm_output"
+    # A valid checkpoint root either IS a checkpoint (config.json) or CONTAINS
+    # checkpoint-* subdirs (run_mlm writes checkpoint-NNN). get_best_checkpoint in
+    # predict_tails.py handles either.
+    local _have_ckpt=0
+    if [[ -d "$CKPT_ROOT" ]] && { [[ -f "$CKPT_ROOT/config.json" ]] || ls -d "$CKPT_ROOT"/checkpoint-* >/dev/null 2>&1; }; then
+        _have_ckpt=1
+    fi
+    if [[ "$_have_ckpt" -ne 1 ]]; then
+        # A missing checkpoint after train_mnm is a REAL failure (training failed,
+        # or the path is wrong) — FAIL LOUD by default, never silently skip. The
+        # only legitimate skip is a run that deliberately bypasses train_mnm; opt
+        # into that explicitly with GRAPHMERT_PREDICT_TAILS_GM_REQUIRED=0.
+        if [[ "${GRAPHMERT_PREDICT_TAILS_GM_REQUIRED:-1}" == "0" ]]; then
+            log_warn "predict_tails_gm: no GraphMERT checkpoint under $CKPT_ROOT — skipping by request (GRAPHMERT_PREDICT_TAILS_GM_REQUIRED=0); GraphMERT will NOT contribute tails."
+            return 0
         fi
-        log_info "  no trained checkpoint at $CKPT_ROOT — skipping (set GRAPHMERT_PREDICT_TAILS_GM_REQUIRED=1 to require)"
-        return 0
+        log_error "predict_tails_gm: no trained GraphMERT checkpoint under $CKPT_ROOT."
+        log_error "  train_mnm (step 5) writes it there (args_mlm.yaml::output_dir=\${GRAPHMERT_DIR}/mlm_output)."
+        log_error "  Did train_mnm run and succeed? To deliberately bypass GraphMERT tails, set GRAPHMERT_PREDICT_TAILS_GM_REQUIRED=0."
+        return 1
     fi
     # predict_tails.py expects a checkpoint dir with config.json, OR a
     # parent dir containing checkpoint-* — its get_best_checkpoint picks
@@ -235,6 +256,13 @@ step_predict_tails_gm() {
           --topk         "${GM_PRED_TOPK:-20}" \
           --batch_size   "${GM_PRED_BATCH_SIZE:-8}" ) \
         || { log_error "predict_tails_gm failed"; return 1; }
+    # KNOWN INTEGRATION GAP — do NOT assume GraphMERT tails reach the KG yet:
+    # this step writes predictions_graphmert/predictions.parquet, but combine_tails
+    # (step 7) reads ONLY predictions/predictions_shard*.csv (the predict_tails_llm
+    # output) — a different dir AND a different format. Until a parquet->shard
+    # bridge / merge is added to combine_tails, these predictions are produced but
+    # NOT merged into the validated KG. Warn loudly so a green run isn't misread.
+    log_warn "predict_tails_gm: wrote predictions_graphmert/predictions.parquet, but combine_tails (step 7) does not yet read it (reads predictions/*.csv). GraphMERT tails are NOT merged into the KG until that bridge is built."
 }
 
 step_validate_predictions() {
@@ -273,16 +301,24 @@ step_expand_kg() {
     log_info "graphmert :: expand_kg (merge validated tails into KG)"
     local VALIDATED="$GRAPHMERT_DIR/final_kg/validated_triples.csv"
     local SEED_KG="$GRAPHRAG_DIR/output/kg_final.parquet"
-    local FINAL="$GRAPHMERT_DIR/final_kg/expanded_kg.parquet"
+    # merge_kgs.py ALWAYS writes final_relationships.parquet into --outdir (it does
+    # not take an output name). This merged seed ∪ validated-expansion KG is what
+    # curriculum.path_traversal now consumes. The var previously said
+    # expanded_kg.parquet — a file merge_kgs never writes — so the success log
+    # named a nonexistent file and the merge looked orphaned.
+    local FINAL="$GRAPHMERT_DIR/final_kg/final_relationships.parquet"
     if [[ -f "$VALIDATED" && -f "$SEED_KG" ]]; then
         ( cd "$REPO_ROOT/1_seed_kg" && \
           python merge_kgs.py \
               --new "$VALIDATED" --old "$SEED_KG" \
               --outdir "$(dirname "$FINAL")" ) || { log_error "expand_kg merge failed"; return 1; }
+        log_info "Final expanded KG: $FINAL"
     else
-        log_warn "expand_kg: validated_triples.csv or seed kg missing; skipping merge"
+        # curriculum.path_traversal consumes $FINAL; without it that step fails.
+        # Don't pretend success — this is a real missing dependency.
+        log_error "expand_kg: validated_triples.csv or seed kg missing — cannot produce the merged KG ($FINAL), which curriculum.path_traversal requires."
+        return 1
     fi
-    log_info "Final expanded KG: $FINAL"
 }
 
 # --- Step dispatch -------------------------------------------------------

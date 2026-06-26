@@ -67,6 +67,10 @@ def parse_args():
     ap.add_argument("--max_model_len", type=int, default=None,
                     help="vLLM KV-cache cap; omit → graphmert.fact_score_max_model_len")
     ap.add_argument("--tensor_parallel_size", type=int, default=1)
+    ap.add_argument("--allow-empty", action="store_true",
+                    help="permit writing a 0-row validated CSV instead of failing "
+                         "(else a 100%% rejection is a hard error; see "
+                         "graphmert.fail_on_empty_validation)")
     return ap.parse_args()
 
 
@@ -198,6 +202,21 @@ def main():
     validated = df[df["both_agree_valid"]].drop(
         columns=["valid_model_1", "valid_model_2", "both_agree_valid"]
     )
+
+    # Fail-loud on a 100% rejection. An empty validated CSV silently degrades
+    # downstream: curriculum/calculate_hops falls back to a seed-only 1-hop
+    # curriculum, so a green run can hide a totally failed validation (e.g.
+    # max_tokens too low → every <think> truncated → all rejected). Refuse to
+    # write the empty artifact unless explicitly allowed.
+    from pipeline_config import get_phase_param
+    if len(validated) == 0 and not args.allow_empty \
+            and bool(get_phase_param('graphmert', 'fail_on_empty_validation', True)):
+        logger.error(
+            "fact_score: 0 of %d input triples validated (100%% rejected) — refusing "
+            "to write an empty KG. This usually means a real problem (max_tokens too "
+            "low, prompt, or model output). Override with --allow-empty or "
+            "graphmert.fail_on_empty_validation=false.", len(df))
+        _sys.exit(1)
 
     os.makedirs(os.path.dirname(os.path.abspath(args.output_csv)), exist_ok=True)
     validated.to_csv(args.output_csv, index=False)

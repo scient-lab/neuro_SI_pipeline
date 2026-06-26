@@ -213,6 +213,16 @@ run_step() {
         --exit-code "$rc" --log-file "$rellog"
     _cw_ship "$phase" "$step" "$logfile"
 
+    # Inline OUTCOME write: compute + persist this phase's output-quality verdicts
+    # so stats.sh's OUTCOME column populates the moment a step completes. Runs in
+    # the active phase venv (pyyaml present); best-effort — never fails the run.
+    # NOT --only-missing, so a re-run refreshes its phase's outcomes; the monitor's
+    # periodic --only-missing pass is the backfill if the pipeline dies mid-step.
+    if [[ "$rc" -eq 0 ]]; then
+        python3 "${REPO_ROOT}/scripts/lib/step_quality.py" \
+            --phase "$phase" --write >/dev/null 2>&1 || true
+    fi
+
     if [[ "$rc" -ne 0 ]]; then
         log_error "$phase.$step failed (exit $rc)"
         return "$rc"

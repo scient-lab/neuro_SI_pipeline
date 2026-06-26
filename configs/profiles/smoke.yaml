@@ -52,6 +52,12 @@ extract:
 # (6L/4H/256H/1024FFN, scalar LR 4e-4) — that combination was validated
 # to fit RTX 3060 12 GB on the medical pipeline. Smoke just shrinks epochs.
 graphmert:
+  # Smoke is a WIRING test at tiny scale: the 10-article seed + 2-epoch MNM may
+  # legitimately produce few/no validated expansion triples, which would trip the
+  # paper-grade fail-loud guards. Opt into the degraded paths (still LOUD-warned)
+  # so smoke runs end-to-end; pilot/paper keep the strict defaults.
+  fail_on_empty_validation: false
+  allow_unvalidated_seed_kg: true
   train_epochs: 2
   effective_batch_size: 8
   # NOTE: most graphmert TRAINING knobs still live in
@@ -68,6 +74,10 @@ graphmert:
     # max_nodes is DERIVED in architecture.py as root_nodes * (1 + num_leaves) — do not set
 
 curriculum:
+  # Allow the seed-only 1-hop fallback at smoke scale (see graphmert block above):
+  # a tiny graphmert run may produce no validated expansion, and smoke should
+  # still build a curriculum from the seed KG. pilot/paper fail loud instead.
+  allow_seed_only_fallback: true
   # 100-150 Q&A pairs: enough to exercise SFT training (need 50+ examples minimum).
   # At thinking_budget=1024, ~90 min total (acceptable smoke runtime).
   num_questions: 150

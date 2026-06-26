@@ -44,6 +44,11 @@
 #   --idle-min N    MONITOR_IDLE_MIN      0 (off)  liveness-stall minutes -> hang kill (needs
 #                                                  --kill-on-fail). GPU util for compute
 #                                                  phases; net rx rate for curriculum
+#   --outcome-interval N  MONITOR_OUTCOME_INTERVAL  900   backfill stats.sh OUTCOME
+#                                                  column every N sec (step_quality
+#                                                  --only-missing); 0=off. pipeline
+#                                                  writes outcomes inline per step;
+#                                                  this just fills crash/kill gaps.
 #   (none)          MONITOR_ENABLED       1        set 0 to disable the monitor entirely
 #
 # The kill toggles accept a bare flag (= on) OR an explicit 0|1 to mirror the
@@ -69,6 +74,7 @@ FAIL_GRACE="${MONITOR_FAIL_GRACE:-${MONITOR_TIMEOUT:-600}}"   # MONITOR_TIMEOUT 
 MAX_RUNTIME_RAW="${MONITOR_MAX_RUNTIME:-0}"
 DISK_CRIT="${MONITOR_DISK_CRIT:-95}"
 IDLE_MIN="${MONITOR_IDLE_MIN:-0}"
+OUTCOME_INTERVAL="${MONITOR_OUTCOME_INTERVAL:-900}"   # backfill stats OUTCOME column every N sec (0=off)
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -80,6 +86,7 @@ while [[ $# -gt 0 ]]; do
         --max-runtime)  MAX_RUNTIME_RAW="$2"; shift 2 ;;
         --disk-crit)    DISK_CRIT="$2"; shift 2 ;;
         --idle-min)     IDLE_MIN="$2"; shift 2 ;;
+        --outcome-interval) OUTCOME_INTERVAL="$2"; shift 2 ;;
         *) echo "monitor.sh: unknown arg '$1'" >&2; exit 2 ;;
     esac
 done
@@ -105,6 +112,13 @@ GPU_CSV="$HEALTH_DIR/health_gpu.csv"
 MANIFEST="$OUTPUT_BASE/run_manifest.json"
 LOG="$HEALTH_DIR/monitor.log"
 SAMPLER="$SCRIPT_DIR/lib/health_sample.py"
+QUALITY="$SCRIPT_DIR/lib/step_quality.py"
+# step_quality imports pipeline_config -> pyyaml, which the detached base env may
+# lack (the pyyaml landmine). Prefer a phase venv's python; fall back to python3.
+QUALITY_PY="python3"
+for _v in graphmert si_curriculum graphrag; do
+    [[ -x "$REPO_ROOT/.venvs/$_v/bin/python" ]] && { QUALITY_PY="$REPO_ROOT/.venvs/$_v/bin/python"; break; }
+done
 mkdir -p "$HEALTH_DIR"
 
 log_m() { echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] $*" | tee -a "$LOG"; }
@@ -150,11 +164,12 @@ read_summary() {
     for kv in $line; do k="${kv%%=*}"; v="${kv#*=}"; S["$k"]="$v"; done
 }
 
-log_m "monitor start: interval=${INTERVAL}s kill_on_fail=$KILL_ON_FAIL kill_on_complete=$KILL_ON_COMPLETE fail_grace=${FAIL_GRACE}s max_runtime=${MAX_RUNTIME}s disk_crit=${DISK_CRIT}% idle_min=${IDLE_MIN}m pod=${POD_ID:-<none>}"
+log_m "monitor start: interval=${INTERVAL}s kill_on_fail=$KILL_ON_FAIL kill_on_complete=$KILL_ON_COMPLETE fail_grace=${FAIL_GRACE}s max_runtime=${MAX_RUNTIME}s disk_crit=${DISK_CRIT}% idle_min=${IDLE_MIN}m outcome_interval=${OUTCOME_INTERVAL}s pod=${POD_ID:-<none>}"
 
 START=$(date +%s)
 fail_since=""
 idle_since=""
+last_outcome=$START
 
 while true; do
     sleep "$INTERVAL"
@@ -165,6 +180,14 @@ while true; do
         --system-csv "$SYS_CSV" --gpu-csv "$GPU_CSV" \
         --pod-id "$POD_ID" --disk-crit "$DISK_CRIT" 2>>"$LOG") || { log_m "WARN: sampler error"; continue; }
     read_summary "$summary"
+
+    # --- periodic OUTCOME backfill: fill step outcomes the inline run_step write
+    # missed (e.g. pipeline crashed/killed mid-step). --only-missing recomputes
+    # nothing already scored, so it's cheap. Best-effort — never disturbs the loop. ---
+    if [[ "$OUTCOME_INTERVAL" -gt 0 && -f "$MANIFEST" && $((now - last_outcome)) -ge "$OUTCOME_INTERVAL" ]]; then
+        "$QUALITY_PY" "$QUALITY" --manifest "$MANIFEST" --write --only-missing >>"$LOG" 2>&1 || true
+        last_outcome=$now
+    fi
 
     # --- max-runtime deadline (its own opt-in: only when set) ---
     if [[ "$MAX_RUNTIME" -gt 0 && $((now - START)) -ge "$MAX_RUNTIME" ]]; then

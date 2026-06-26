@@ -21,6 +21,7 @@ Output:
 
 import argparse
 import logging
+import sys
 from pathlib import Path
 
 import networkx as nx
@@ -39,6 +40,11 @@ def parse_args():
                          "graphrag-native source/target/description)")
     ap.add_argument("--output_path", required=True,
                     help="Output CSV path with hop_distance column added")
+    ap.add_argument("--allow-seed-only", action="store_true",
+                    help="if the expanded KG (kg_path) is empty, fall back to a "
+                         "seed-only 1-hop curriculum instead of failing. Off by "
+                         "default so an empty expansion fails loudly rather than "
+                         "silently degrading (curriculum.allow_seed_only_fallback)")
     return ap.parse_args()
 
 
@@ -143,11 +149,20 @@ def main():
     # themselves. At pilot/paper scale, full_df will have real expanded
     # triples and the original `compute_hop_distances` path runs.
     if len(full_df) == 0:
+        if not args.allow_seed_only:
+            logger.error(
+                "calculate_hops: kg_path (%s) has 0 rows — graphmert produced NO "
+                "validated expansion triples. Refusing to silently fall back to a "
+                "seed-only 1-hop curriculum (that would hide a failed graphmert / "
+                "validate stage). Pass --allow-seed-only "
+                "(curriculum.allow_seed_only_fallback=true) to permit it.",
+                args.kg_path)
+            sys.exit(1)
         logger.warning(
             "full_df (kg_path) has 0 rows — graphmert produced no validated "
-            "expansion triples. Falling back to the seed KG as the path "
-            "source with hop_distance=1, so curriculum can still generate "
-            "questions from seed triples."
+            "expansion triples. Falling back to the seed KG as the path source "
+            "with hop_distance=1 (--allow-seed-only set), so curriculum can still "
+            "generate questions from seed triples."
         )
         result_df = seed_df.copy()
         result_df["hop_distance"] = 1

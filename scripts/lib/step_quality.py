@@ -291,6 +291,9 @@ def main() -> int:
     ap.add_argument("--json", action="store_true", help="machine-readable output")
     ap.add_argument("--write", action="store_true",
                     help="persist outcome+reason into the manifest (for stats.sh OUTCOME column)")
+    ap.add_argument("--only-missing", action="store_true",
+                    help="only evaluate steps whose manifest outcome is still null "
+                         "(cheap backfill mode for the monitor's periodic pass)")
     a = ap.parse_args()
 
     ob = Path(a.output_base or os.environ.get("OUTPUT_BASE") or (REPO_ROOT / "outputs"))
@@ -312,6 +315,8 @@ def main() -> int:
         if a.phase and p.get("name") != a.phase:
             continue
         for s in p.get("steps", []):
+            if a.only_missing and s.get("outcome") is not None:
+                continue   # already scored — skip (cheap backfill)
             v = evaluate(p["name"], s, ob)
             rows.append({"phase": p["name"], "step": s.get("name"),
                          "status": s.get("status"), "outcome": v.outcome,
