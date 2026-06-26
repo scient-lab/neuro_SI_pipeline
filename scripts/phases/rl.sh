@@ -19,11 +19,12 @@ STEP_FILTER="${1:-all}"
 export PIPELINE_STEP_FILTER="$STEP_FILTER"
 
 PHASE_NAME=rl
-STEPS=(setup_reward train_grpo eval_rl)
+STEPS=(setup_reward train_grpo merge_rl eval_rl)
 PHASE_DESC="GRPO reinforcement learning on top of merged SFT checkpoint"
 STEP_DESCS=(
     "Build GRPO prompts + reward signals (data_prep.py)"
     "GRPO training on top of merged SFT model (rl_training.py)"
+    "Fold the GRPO LoRA adapter into the SFT-merged base (merge_lora.py)"
     "(no-op) run 3_si_curriculum/test_models/eval_models.py manually"
 )
 
@@ -120,6 +121,38 @@ step_train_grpo() {
           "${DS_ARGS[@]}" \
           --wandb_project       "${WANDB_PROJECT:-${SI_DOMAIN:-neuroscience}_rl_kg}" ) \
         || { log_error "rl.train_grpo failed"; return 1; }
+}
+
+step_merge_rl() {
+    log_info "rl :: merge_rl (merge_lora.py — fold GRPO adapter into the SFT-merged base)"
+    # Twin of sft.merge_lora: produce the final deployable FULL-weights model.
+    # Only LoRA RL (rl.use_lora=true, smoke/pilot) yields an adapter that needs
+    # folding; full-FT RL (use_lora=false, paper) already writes full safetensors
+    # checkpoints, so this is a no-op there. The GRPO adapter was trained ON TOP
+    # of the SFT-merged model, so that is the merge base (NOT the original base).
+    local USE_LORA
+    USE_LORA=$(get_phase_param rl use_lora false)
+    if [[ "$USE_LORA" != "true" && "$USE_LORA" != "True" && "$USE_LORA" != "1" ]]; then
+        log_info "  rl.use_lora=$USE_LORA — full-FT RL checkpoints are already full safetensors; no merge needed."
+        return 0
+    fi
+    if [[ -z "$SFT_MERGED_MODEL" || ! -d "$SFT_MERGED_MODEL" ]]; then
+        log_error "rl.merge_rl: SFT-merged base model not found (the GRPO adapter was trained on it). Run sft first or set SFT_MERGED_MODEL."
+        return 1
+    fi
+    # Newest RL checkpoint by mtime (same selector as sft.merge_lora — avoids a
+    # stale higher-numbered checkpoint left by a prior run).
+    local ADAPTER_DIR="${RL_ADAPTER_DIR:-$(ls -dt "$RL_CHECKPOINTS_DIR"/checkpoint-* 2>/dev/null | head -1)}"
+    if [[ -z "$ADAPTER_DIR" || ! -d "$ADAPTER_DIR" ]]; then
+        log_error "rl.merge_rl: no checkpoint found in $RL_CHECKPOINTS_DIR (run train_grpo first)"
+        return 1
+    fi
+    ( cd "$REPO_ROOT/3_si_curriculum/training" && \
+      python merge_lora.py \
+          --base_model   "$SFT_MERGED_MODEL" \
+          --adapter_path "$ADAPTER_DIR" ) \
+        || { log_error "rl.merge_rl failed"; return 1; }
+    log_info "Merged RL model (deployable full safetensors): $ADAPTER_DIR/merged_final_model/"
 }
 
 step_eval_rl() {
