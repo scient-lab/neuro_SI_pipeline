@@ -69,6 +69,9 @@ def main():
     ap.add_argument("model_path", help="HF checkpoint dir or hub id (model + tokenizer)")
     ap.add_argument("--prompt", default=None,
                     help="raw user prompt; default = a sample MCQ")
+    ap.add_argument("--prompt-file", default=None,
+                    help="read the user prompt from a file (overrides --prompt; "
+                         "avoids shell-quoting a long multi-line prompt)")
     ap.add_argument("--max-new-tokens", type=int, default=256)
     ap.add_argument("--dtype", default="bfloat16",
                     choices=["bfloat16", "float16", "float32"])
@@ -100,14 +103,21 @@ def main():
     if tok.pad_token_id is None:
         tok.pad_token = tok.eos_token
 
-    messages = ([{"role": "user", "content": a.prompt}] if a.prompt
+    # resolve the user prompt: --prompt-file > --prompt > built-in MCQ
+    if a.prompt_file:
+        with open(a.prompt_file, encoding="utf-8", errors="replace") as f:
+            user_prompt = f.read().strip()
+    else:
+        user_prompt = a.prompt  # may be None
+
+    messages = ([{"role": "user", "content": user_prompt}] if user_prompt
                 else [{"role": "system", "content": _SYSTEM},
                       {"role": "user", "content": _MCQ}])
     try:
         text = tok.apply_chat_template(messages, tokenize=False,
                                        add_generation_prompt=True)
     except Exception:  # noqa: BLE001 — model without a chat template
-        text = (a.prompt if a.prompt else f"{_SYSTEM}\n\n{_MCQ}")
+        text = (user_prompt if user_prompt else f"{_SYSTEM}\n\n{_MCQ}")
 
     inputs = tok(text, return_tensors="pt").to(device)
     gen = dict(max_new_tokens=a.max_new_tokens,
