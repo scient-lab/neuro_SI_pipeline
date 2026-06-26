@@ -487,7 +487,7 @@ extract_entity_subcategories: |-
   8. Organization: Space Agency; Company; Observatory; Institution
 
 # Worked example paragraph (matches few_shot_examples[0].text).
-extract_example_text: 'The Sun is a main-sequence star located in the Milky Way galaxy. It is composed mostly of hydrogen and helium and is powered by nuclear fusion in its core, where hydrogen fuses into helium. The Sun''s gravity holds the planets of the Solar System in orbit. In about five billion years the Sun will evolve into a red giant and finally collapse into a white dwarf. Much more massive stars instead end their lives in a supernova, which can leave behind a neutron star or a black hole.'
+extract_example_text: 'The Sun is a main-sequence star located in the Milky Way galaxy. It is composed mostly of hydrogen and helium and is powered by nuclear fusion in its core, where hydrogen fuses into helium. The Sun''s gravity holds the planets of the Solar System in orbit, a motion described by Kepler''s laws of planetary motion. In about five billion years the Sun will evolve into a red giant and finally collapse into a white dwarf. Much more massive stars instead end their lives in a supernova, which can leave behind a neutron star or a black hole. Jupiter, the largest planet, was explored by the Galileo spacecraft; the Galileo mission, launched by NASA in 1989, studied the Jovian system and its many moons.'
 
 # Few-shot assistant response: entity tuples + relationship tuples +
 # {completion_delimiter}. Delimiter tokens stay literal. No trailing newline.
@@ -496,27 +496,45 @@ extract_example_tuples: |-
   {record_delimiter}
   ("entity"{tuple_delimiter}main-sequence star{tuple_delimiter}Celestial Body{tuple_delimiter}class of star, fusing hydrogen into helium in its core; the Sun is one.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}milky way{tuple_delimiter}Celestial Body{tuple_delimiter}galaxy in which the Sun is located.)
+  ("entity"{tuple_delimiter}milky way{tuple_delimiter}Cosmic Structure{tuple_delimiter}galaxy in which the Sun is described as located.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}hydrogen{tuple_delimiter}Physical Concept{tuple_delimiter}lightest element; the Sun's main constituent and fusion fuel.)
+  ("entity"{tuple_delimiter}hydrogen{tuple_delimiter}Physical Concept{tuple_delimiter}lightest element; the Sun's main constituent and the fuel that fuses into helium.)
   {record_delimiter}
   ("entity"{tuple_delimiter}helium{tuple_delimiter}Physical Concept{tuple_delimiter}element produced when hydrogen fuses in the Sun's core.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}nuclear fusion{tuple_delimiter}Astronomical Process{tuple_delimiter}process powering the Sun, fusing hydrogen into helium.)
+  ("entity"{tuple_delimiter}nuclear fusion{tuple_delimiter}Astronomical Process{tuple_delimiter}process powering the Sun, fusing hydrogen into helium in its core.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}gravity{tuple_delimiter}Physical Concept{tuple_delimiter}force by which the Sun is described as holding the planets of the Solar System in orbit.)
   {record_delimiter}
   ("entity"{tuple_delimiter}planets{tuple_delimiter}Celestial Body{tuple_delimiter}bodies of the Solar System held in orbit by the Sun's gravity.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}solar system{tuple_delimiter}Cosmic Structure{tuple_delimiter}the Sun and the bodies that orbit it.)
+  ("entity"{tuple_delimiter}solar system{tuple_delimiter}Cosmic Structure{tuple_delimiter}the Sun together with the planets and bodies that orbit it.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}red giant{tuple_delimiter}Celestial Body{tuple_delimiter}late evolutionary stage the Sun will become before collapsing.)
+  ("entity"{tuple_delimiter}orbit{tuple_delimiter}Astronomical Process{tuple_delimiter}motion of the planets around the Sun, described as governed by Kepler's laws of planetary motion.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}kepler's laws of planetary motion{tuple_delimiter}Physical Law{tuple_delimiter}laws described as governing the orbital motion of the planets around the Sun.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}red giant{tuple_delimiter}Celestial Body{tuple_delimiter}late evolutionary stage the Sun will evolve into before collapsing.)
   {record_delimiter}
   ("entity"{tuple_delimiter}white dwarf{tuple_delimiter}Celestial Body{tuple_delimiter}dense remnant the Sun will collapse into after the red-giant stage.)
   {record_delimiter}
-  ("entity"{tuple_delimiter}supernova{tuple_delimiter}Astronomical Process{tuple_delimiter}explosive end of a massive star, leaving a neutron star or black hole.)
+  ("entity"{tuple_delimiter}supernova{tuple_delimiter}Astronomical Process{tuple_delimiter}explosive end of a massive star, described as leaving behind a neutron star or a black hole.)
   {record_delimiter}
   ("entity"{tuple_delimiter}neutron star{tuple_delimiter}Celestial Body{tuple_delimiter}dense remnant that can be left behind by a supernova.)
   {record_delimiter}
   ("entity"{tuple_delimiter}black hole{tuple_delimiter}Celestial Body{tuple_delimiter}remnant that can be left behind by a supernova of a massive star.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}jupiter{tuple_delimiter}Celestial Body{tuple_delimiter}largest planet, described as explored by the Galileo spacecraft and host to many moons.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}galileo spacecraft{tuple_delimiter}Spacecraft{tuple_delimiter}spacecraft described as exploring Jupiter.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}galileo mission{tuple_delimiter}Mission{tuple_delimiter}mission launched by NASA in 1989 that studied the Jovian system and its moons.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}nasa{tuple_delimiter}Organization{tuple_delimiter}space agency described as launching the Galileo mission in 1989.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}jovian system{tuple_delimiter}Cosmic Structure{tuple_delimiter}Jupiter and its moons, described as studied by the Galileo mission.)
+  {record_delimiter}
+  ("entity"{tuple_delimiter}moons{tuple_delimiter}Celestial Body{tuple_delimiter}natural satellites of Jupiter, part of the Jovian system studied by the Galileo mission.)
   {record_delimiter}
   ("relationship"{tuple_delimiter}sun{tuple_delimiter}main-sequence star{tuple_delimiter}type_of{tuple_delimiter}7)
   {record_delimiter}
@@ -528,9 +546,15 @@ extract_example_tuples: |-
   {record_delimiter}
   ("relationship"{tuple_delimiter}hydrogen{tuple_delimiter}helium{tuple_delimiter}fuses_into{tuple_delimiter}7)
   {record_delimiter}
-  ("relationship"{tuple_delimiter}sun{tuple_delimiter}planets{tuple_delimiter}exerts_gravity_on{tuple_delimiter}5)
+  ("relationship"{tuple_delimiter}sun{tuple_delimiter}gravity{tuple_delimiter}has_property{tuple_delimiter}5)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}sun{tuple_delimiter}planets{tuple_delimiter}exerts_gravity_on{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}planets{tuple_delimiter}sun{tuple_delimiter}orbits{tuple_delimiter}5)
   {record_delimiter}
   ("relationship"{tuple_delimiter}sun{tuple_delimiter}solar system{tuple_delimiter}part_of{tuple_delimiter}5)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}orbit{tuple_delimiter}kepler's laws of planetary motion{tuple_delimiter}described_by{tuple_delimiter}7)
   {record_delimiter}
   ("relationship"{tuple_delimiter}sun{tuple_delimiter}red giant{tuple_delimiter}evolves_into{tuple_delimiter}7)
   {record_delimiter}
@@ -539,4 +563,14 @@ extract_example_tuples: |-
   ("relationship"{tuple_delimiter}supernova{tuple_delimiter}neutron star{tuple_delimiter}results_in{tuple_delimiter}7)
   {record_delimiter}
   ("relationship"{tuple_delimiter}supernova{tuple_delimiter}black hole{tuple_delimiter}results_in{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}jupiter{tuple_delimiter}galileo spacecraft{tuple_delimiter}explored_by{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}galileo mission{tuple_delimiter}nasa{tuple_delimiter}launched_by{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}galileo mission{tuple_delimiter}jovian system{tuple_delimiter}studies{tuple_delimiter}5)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}jupiter{tuple_delimiter}moons{tuple_delimiter}has_satellite{tuple_delimiter}7)
+  {record_delimiter}
+  ("relationship"{tuple_delimiter}jupiter{tuple_delimiter}planets{tuple_delimiter}type_of{tuple_delimiter}5)
   {completion_delimiter}
