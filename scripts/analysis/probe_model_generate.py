@@ -76,7 +76,17 @@ def main():
     ap.add_argument("--dtype", default="bfloat16",
                     choices=["bfloat16", "float16", "float32"])
     ap.add_argument("--sample", action="store_true",
-                    help="sample (temp 0.6 / top_p 0.9) instead of greedy — mirrors GRPO")
+                    help="sample instead of greedy — mirrors GRPO")
+    ap.add_argument("--temperature", type=float, default=0.6,
+                    help="sampling temperature with --sample (GRPO: 0.6)")
+    ap.add_argument("--top-p", type=float, default=0.9,
+                    help="nucleus top_p with --sample (GRPO: 0.9)")
+    ap.add_argument("--repetition-penalty", type=float, default=None,
+                    help="HF repetition_penalty; GRPO rollout uses 1.15. The prime "
+                         "suspect for the multilingual-garbage drift over long gens.")
+    ap.add_argument("--min-new-tokens", type=int, default=None,
+                    help="force at least N new tokens (suppresses early EOS) — mirror "
+                         "GRPO's clipped_ratio=1.0 / never-terminating rollouts")
     ap.add_argument("--show", type=int, default=1500,
                     help="chars of completion to print (default 1500)")
     a = ap.parse_args()
@@ -122,13 +132,22 @@ def main():
     inputs = tok(text, return_tensors="pt").to(device)
     gen = dict(max_new_tokens=a.max_new_tokens,
                pad_token_id=tok.pad_token_id or tok.eos_token_id)
-    gen.update(do_sample=True, temperature=0.6, top_p=0.9) if a.sample \
-        else gen.update(do_sample=False)
+    if a.min_new_tokens is not None:
+        gen["min_new_tokens"] = a.min_new_tokens
+    if a.repetition_penalty is not None:
+        gen["repetition_penalty"] = a.repetition_penalty
+    if a.sample:
+        gen.update(do_sample=True, temperature=a.temperature, top_p=a.top_p)
+    else:
+        gen.update(do_sample=False)
 
     print(f"model: {a.model_path}")
-    print(f"device: {device} | dtype: {a.dtype} | "
-          f"{'sampled (T=0.6,p=0.9)' if a.sample else 'greedy'} | "
-          f"max_new_tokens: {a.max_new_tokens}")
+    _mode = (f"sampled (T={a.temperature},p={a.top_p})" if a.sample else "greedy")
+    _extra = "".join([
+        f" | rep_penalty={a.repetition_penalty}" if a.repetition_penalty else "",
+        f" | min_new_tokens={a.min_new_tokens}" if a.min_new_tokens else ""])
+    print(f"device: {device} | dtype: {a.dtype} | {_mode} | "
+          f"max_new_tokens: {a.max_new_tokens}{_extra}")
     try:
         with torch.no_grad():
             out = model.generate(**inputs, **gen)
