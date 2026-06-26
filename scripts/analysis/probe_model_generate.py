@@ -87,6 +87,15 @@ def main():
     ap.add_argument("--min-new-tokens", type=int, default=None,
                     help="force at least N new tokens (suppresses early EOS) — mirror "
                          "GRPO's clipped_ratio=1.0 / never-terminating rollouts")
+    # --- GRPO training-context replication (rl_training.py 648/700/557) ---
+    ap.add_argument("--no-cache", action="store_true",
+                    help="set model.config.use_cache=False during generation "
+                         "(rl_training.py:648 sets it for grad-checkpointing compat)")
+    ap.add_argument("--grad-checkpointing", action="store_true",
+                    help="enable gradient checkpointing before generating (RL: on)")
+    ap.add_argument("--train-mode", action="store_true",
+                    help="model.train() before generating — dropout active, as in the "
+                         "GRPO loop (rl_training.py:557)")
     ap.add_argument("--show", type=int, default=1500,
                     help="chars of completion to print (default 1500)")
     a = ap.parse_args()
@@ -112,6 +121,15 @@ def main():
     model.eval()
     if tok.pad_token_id is None:
         tok.pad_token = tok.eos_token
+
+    # Replicate the GRPO training context (to bisect which setting breaks the rollout)
+    if a.no_cache:
+        model.config.use_cache = False
+    if a.grad_checkpointing:
+        model.gradient_checkpointing_enable(
+            gradient_checkpointing_kwargs={"use_reentrant": False})
+    if a.train_mode:
+        model.train()  # AFTER eval() above — deliberately enables dropout
 
     # resolve the user prompt: --prompt-file > --prompt > built-in MCQ
     if a.prompt_file:
@@ -145,7 +163,10 @@ def main():
     _mode = (f"sampled (T={a.temperature},p={a.top_p})" if a.sample else "greedy")
     _extra = "".join([
         f" | rep_penalty={a.repetition_penalty}" if a.repetition_penalty else "",
-        f" | min_new_tokens={a.min_new_tokens}" if a.min_new_tokens else ""])
+        f" | min_new_tokens={a.min_new_tokens}" if a.min_new_tokens else "",
+        " | use_cache=False" if a.no_cache else "",
+        " | grad_ckpt" if a.grad_checkpointing else "",
+        " | train_mode(dropout)" if a.train_mode else ""])
     print(f"device: {device} | dtype: {a.dtype} | {_mode} | "
           f"max_new_tokens: {a.max_new_tokens}{_extra}")
     try:
