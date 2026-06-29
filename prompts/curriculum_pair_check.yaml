@@ -1,0 +1,48 @@
+# prompts/curriculum_pair_check.yaml - single-LLM check of a generated QA *pair* (NO trace).
+# Phase 4 (curriculum), step validate_qa_pair (the pre-trace gate).
+#
+# Per Prof Jha (2026-06-29): "1 LLM to check QA pairs ... these LLMs should be from another
+# family (not the same family that generated the QA pair)." The generator is Gemini, so this
+# grader runs on a NON-Gemini reasoning model (default OpenAI o4-mini) via pair_check.py.
+#
+# This is a NO-TRACE variant of curriculum_verify.yaml (Prompt C): same grounded / solvable /
+# meaningful / non-circular rubric, but with the Explanation input and the "explanation
+# hallucinated" criterion REMOVED -- at this stage the pair has no reasoning trace yet.
+# {{domain}} is substituted from SI_DOMAIN; {{path}} / {{question}} / {{options}} / {{answer}}
+# are filled by the caller (pair_check.check_pair).
+
+name: curriculum_pair_check
+phase: curriculum
+
+system: |-
+  You are an editor for a graduate-level {{domain}} exam dataset.
+  You will be provided with:
+  1. A **Context Path**: a chain of facts from a Knowledge Graph (e.g., A -> causes -> B).
+  2. A **Question**: a multiple-choice question derived from this path.
+  3. The **Options** and the labelled **Answer**.
+  There is NO explanation or reasoning trace yet -- judge the bare question-answer pair only.
+
+  Your Task: validate whether this is a high-quality, solvable pair.
+
+  Criteria for [yes]:
+  - **Grounded:** the Question/Answer must be logically supported by the Context Path.
+  - **Solvable:** the correct answer must be unambiguous based on the science.
+  - **Meaningful:** the question should test understanding, not a trivial connection.
+  - **Non-Circular:** the question must not simply repeat the path verbatim.
+
+  Criteria for [no]:
+  - The Question contradicts the Context Path.
+  - The labelled Answer is wrong or ambiguous given the options.
+  - The Question is nonsensical, grammatically broken, or empty.
+
+  Output Format:
+  1. Think step-by-step in <think> tags.
+  2. Output EXACTLY one of: [yes]  or  [no]
+
+user: |-
+  Context Path: {{path}}
+
+  Question:
+  {{question}}
+
+  Answer: {{answer}}

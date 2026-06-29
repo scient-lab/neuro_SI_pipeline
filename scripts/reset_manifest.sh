@@ -16,7 +16,7 @@
 # Usage:
 #   ./scripts/reset_failure.sh                                  # latest run
 #   ./scripts/reset_failure.sh --run <prefix>                   # specific run
-#   ./scripts/reset_failure.sh --mark curriculum.generate_qa=completed
+#   ./scripts/reset_failure.sh --mark curriculum.generate_qa_pair=completed
 #   ./scripts/reset_failure.sh --mark sft.train_lora=pending --mark rl.train_grpo=pending
 #   ./scripts/reset_failure.sh --dry-run                        # print plan, no changes
 #
@@ -187,8 +187,12 @@ if target_marks:
     now_iso = datetime.now(timezone.utc).isoformat()
     # Map of conventional artifact paths so finished_at gets a real timestamp.
     artifact_for = {
-        ('curriculum', 'generate_qa'): 'curriculum/curriculum.json',
-        ('curriculum', 'validate_qa'): 'curriculum_verified/curriculum_verified.json',
+        # 4-step flow: pair/validate_pair/item/validate_item all stream curriculum.jsonl;
+        # its mtime is a fine finished_at proxy (assemble emits the verified array).
+        ('curriculum', 'generate_qa_pair'): 'curriculum/curriculum.jsonl',
+        ('curriculum', 'validate_qa_pair'): 'curriculum/curriculum.jsonl',
+        ('curriculum', 'generate_qa_item'): 'curriculum/curriculum.jsonl',
+        ('curriculum', 'validate_qa_item'): 'curriculum/curriculum.jsonl',
         ('curriculum', 'assemble_curriculum'): 'curriculum_verified/curriculum_verified.json',
         ('extract', 'cache'): 'graphrag/output/kg_final.parquet',
     }

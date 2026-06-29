@@ -47,6 +47,12 @@ models:
   # revert together when vLLM gets upgraded.
   curriculum_check_a: Qwen/Qwen3-14B        # final two-LLM check (was openai/gpt-oss-20b)
   curriculum_check_b: mistralai/Mistral-Nemo-Instruct-2407
+  # Pair check (step validate_qa_pair) — 1 non-Gemini REASONING grader. Jha 2026-06-29
+  # cross-family rule: the generator is Gemini, so this grader must NOT be Gemini. OpenAI
+  # o-series (o3-mini), NOT gpt-4o (gpt-4o is not a reasoning model). base_url-driven
+  # (curriculum.pair_check_base_url): hosted OpenAI now; point at a local vLLM OpenAI server
+  # (e.g. gpt-oss-20b, vLLM>=0.10) later — no code change.
+  curriculum_pair_check: o3-mini
 
   # Phase 5: SFT (LoRA base model)
   base_sft: Qwen/Qwen3-14B
@@ -219,6 +225,10 @@ curriculum:
   allow_seed_only_fallback: false
   hop_range: [1, 5]
   num_questions: 30000   # paper-default; profiles can override
+  # generate_qa_pair over-provisions pairs by 1/expected_yield so ~num_questions survive
+  # validate_qa_pair (~40% drop) + validate_qa_item (~1-2% drop). Approximate (Jha 2026-06-29):
+  # tune from the observed per-step yields in curriculum_stats.json.
+  expected_yield: 0.55
   prune_fanout: 8
   qa_check_required: true   # Jha 2026-06-04 mandate
   # Gemini 2.5-flash thinking budget for the question-generation LLM call
@@ -262,6 +272,16 @@ curriculum:
   # here, so a bigger think budget. Heuristic, not derived (curriculum_verify.yaml
   # declares no generation cap). Raise if drop rate looks implausibly high.
   validate_qa_max_tokens: 1024
+
+  # --- Pair check (step validate_qa_pair): 1 non-Gemini REASONING grader, via the OpenAI
+  # SDK with a configurable base_url (curriculum_generator/pair_check.py). Hosted OpenAI by
+  # default; flip base_url to a local vLLM OpenAI-compatible server (gpt-oss-20b, vLLM>=0.10)
+  # with no code change. Grader model id is models.curriculum_pair_check (o4-mini).
+  pair_check_base_url: https://api.openai.com/v1   # local later: http://localhost:8000/v1
+  pair_check_api_key_env: OPENAI_API_KEY           # env var name holding the API key
+  # Generation cap. o-series models count hidden reasoning tokens against this, so keep it
+  # generous enough for reasoning + the final [yes]/[no] (cf. validate_qa_max_tokens rationale).
+  pair_check_max_tokens: 2048
 
 # --- Phase: sft (matches 3_si_curriculum/training/trainer.py) ------------
 sft:

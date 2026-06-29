@@ -4,10 +4,12 @@
 #
 # Maps our STEPS onto the Princeton README:
 #   path_traversal       calculate_hops.py — annotate KG triples with hop distance
-#   prune_paths          (configured inside generate_curriculum; not a separate script)
-#   generate_qa          generate_curriculum.py — Gemini-based Q&A items
-#   validate_qa          verify_questions.py — two-LLM consensus filter
-#   assemble_curriculum  (no-op — verify_questions writes the final JSON)
+#   prune_paths          (configured via hop_range inside generate_curriculum; no-op step)
+#   generate_qa_pair     generate_curriculum.py --stage pair          — Gemini bare QA pairs
+#   validate_qa_pair     generate_curriculum.py --stage validate_pair — 1 non-Gemini pair check
+#   generate_qa_item     generate_curriculum.py --stage item          — Gemini Pro reasoning trace
+#   validate_qa_item     verify_questions.py — 2 non-Gemini consensus (stamps per-grader verdicts)
+#   assemble_curriculum  filter stage==verified -> curriculum_verified.json (+ finalize stats)
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -21,14 +23,16 @@ STEP_FILTER="${1:-all}"
 export PIPELINE_STEP_FILTER="$STEP_FILTER"
 
 PHASE_NAME=curriculum
-STEPS=(path_traversal prune_paths generate_qa validate_qa assemble_curriculum)
-PHASE_DESC="Generate Q&A curriculum from final KG via n-hop paths + Gemini"
+STEPS=(path_traversal prune_paths generate_qa_pair validate_qa_pair generate_qa_item validate_qa_item assemble_curriculum)
+PHASE_DESC="Generate Q&A curriculum from final KG via n-hop paths + Gemini (4-step: pair/check/item/check)"
 STEP_DESCS=(
     "Find n-hop paths in the final KG (calculate_hops.py)"
-    "(configured via hop_range inside generate_curriculum; no separate step)"
-    "Generate Q&A items per path via Gemini (generate_curriculum.py)"
-    "2-LLM verification of Q&A items (verify_questions.py)"
-    "(no-op) verified output already lives in curriculum_verified.json"
+    "(configured via hop_range inside generate_curriculum; no-op step)"
+    "Generate bare QA pairs via Gemini (generate_curriculum.py --stage pair)"
+    "Check QA pairs — 1 non-Gemini reasoning LLM (--stage validate_pair)"
+    "Add reasoning trace via Gemini Pro (generate_curriculum.py --stage item)"
+    "Check QA items — 2 non-Gemini consensus (verify_questions.py)"
+    "Assemble stage==verified -> curriculum_verified.json (+ finalize stats)"
 )
 
 source_venv si_curriculum
@@ -59,6 +63,9 @@ NUM_QUESTIONS=$(get_phase_param curriculum num_questions 5000)
 # KG_MANIFEST is the hop-annotated KG (calculate_hops.py output) — NOT the
 # pipeline run_manifest.json. path_traversal writes it; generate_qa reads it.
 KG_MANIFEST="$CURRICULUM_DIR/kg_manifest.json"
+# The 4-step flow streams one working file (curriculum.jsonl) + a per-step stats file.
+CURRICULUM_JSONL="$CURRICULUM_DIR/curriculum.jsonl"
+CURRICULUM_STATS="$CURRICULUM_DIR/curriculum_stats.json"
 
 # --- Steps ---------------------------------------------------------------
 step_path_traversal() {
@@ -92,51 +99,83 @@ step_prune_paths() {
     log_info "curriculum :: prune_paths (configured via hop_range + HUB_REMOVAL_PERCENTILE inside generate_curriculum)"
 }
 
-step_generate_qa() {
-    log_info "curriculum :: generate_qa (generate_curriculum.py — Gemini)"
+step_generate_qa_pair() {
+    log_info "curriculum :: generate_qa_pair (generate_curriculum.py --stage pair — Gemini)"
     if [[ -z "${GOOGLE_API_KEY:-}" ]]; then
-        log_error "generate_qa needs GEMINI_API_KEY or GOOGLE_API_KEY in the environment"
+        log_error "generate_qa_pair needs GEMINI_API_KEY or GOOGLE_API_KEY in the environment"
         return 1
     fi
     ( cd "$REPO_ROOT/3_si_curriculum" && \
       python curriculum_generator/generate_curriculum.py \
+          --stage         pair \
           --manifest_path "$KG_MANIFEST" \
           --output_dir    "$CURRICULUM_DIR" \
           --target_count  "$NUM_QUESTIONS" \
           --api_key       "$GOOGLE_API_KEY" \
-          --seed          42 ) || { log_error "generate_qa failed"; return 1; }
-    log_info "Generated curriculum: $CURRICULUM_DIR/curriculum.json"
+          --seed          42 ) || { log_error "generate_qa_pair failed"; return 1; }
+    log_info "QA pairs written: $CURRICULUM_JSONL"
 }
 
-step_validate_qa() {
-    log_info "curriculum :: validate_qa (verify_questions.py — two-LLM consensus)"
-    if [[ -z "$CHECK_A" || -z "$CHECK_B" ]]; then
-        log_error "validate_qa needs models.curriculum_check_a and curriculum_check_b"
+step_validate_qa_pair() {
+    log_info "curriculum :: validate_qa_pair (pair_check — 1 non-Gemini reasoning LLM)"
+    # pair_check.py uses the OpenAI SDK with a configurable base_url
+    # (curriculum.pair_check_base_url). Hosted OpenAI needs the real key; a local
+    # vLLM OpenAI server accepts any non-empty value. Key var name is configurable.
+    local KEY_ENV
+    KEY_ENV=$(get_phase_param curriculum pair_check_api_key_env "OPENAI_API_KEY")
+    if [[ -z "${!KEY_ENV:-}" ]]; then
+        log_error "validate_qa_pair needs \$$KEY_ENV (OpenAI key, or any non-empty value for a local vLLM base_url)"
         return 1
     fi
-    local INPUT="$CURRICULUM_DIR/curriculum.json"
-    local VERIFIED="$OUTPUT_BASE/curriculum_verified"
-    mkdir -p "$VERIFIED"
+    ( cd "$REPO_ROOT/3_si_curriculum" && \
+      python curriculum_generator/generate_curriculum.py \
+          --stage      validate_pair \
+          --output_dir "$CURRICULUM_DIR" ) || { log_error "validate_qa_pair failed"; return 1; }
+}
+
+step_generate_qa_item() {
+    log_info "curriculum :: generate_qa_item (generate_curriculum.py --stage item — Gemini Pro trace)"
+    if [[ -z "${GOOGLE_API_KEY:-}" ]]; then
+        log_error "generate_qa_item needs GEMINI_API_KEY or GOOGLE_API_KEY in the environment"
+        return 1
+    fi
+    ( cd "$REPO_ROOT/3_si_curriculum" && \
+      python curriculum_generator/generate_curriculum.py \
+          --stage      item \
+          --output_dir "$CURRICULUM_DIR" \
+          --api_key    "$GOOGLE_API_KEY" ) || { log_error "generate_qa_item failed"; return 1; }
+}
+
+step_validate_qa_item() {
+    log_info "curriculum :: validate_qa_item (verify_questions.py — 2 non-Gemini consensus)"
+    if [[ -z "$CHECK_A" || -z "$CHECK_B" ]]; then
+        log_error "validate_qa_item needs models.curriculum_check_a and curriculum_check_b"
+        return 1
+    fi
     # vLLM init knobs (batch_size, tensor_parallel_size, gpu_memory_utilization,
     # max_model_len) come from configs/default.yaml::curriculum.validate_qa_*
-    # via get_phase_param inside verify_questions.py. Keeping them out of the
-    # CLI here means the YAML is the single source of truth — change a knob
-    # in default.yaml or a profile YAML, no shell script edit needed.
+    # via get_phase_param inside verify_questions.py — YAML is the single source.
     ( cd "$REPO_ROOT/3_si_curriculum" && \
       python curriculum_generator/verify_questions.py \
-          --input_json  "$INPUT" \
-          --output_json "$VERIFIED/curriculum_verified.json" \
-          --model_ids   "$CHECK_A" "$CHECK_B" ) \
-        || { log_error "validate_qa failed"; return 1; }
+          --curriculum_jsonl "$CURRICULUM_JSONL" \
+          --model_ids        "$CHECK_A" "$CHECK_B" ) \
+        || { log_error "validate_qa_item failed"; return 1; }
 }
 
 step_assemble_curriculum() {
-    local VERIFIED="$OUTPUT_BASE/curriculum_verified/curriculum_verified.json"
-    if [[ -f "$VERIFIED" ]]; then
-        log_info "curriculum :: assemble_curriculum (already written by verify_questions: $VERIFIED)"
-    else
-        log_warn "curriculum :: assemble_curriculum — verified curriculum missing"
+    log_info "curriculum :: assemble_curriculum (stage==verified -> curriculum_verified.json)"
+    local VERIFIED_DIR="$OUTPUT_BASE/curriculum_verified"
+    mkdir -p "$VERIFIED_DIR"
+    if [[ ! -f "$CURRICULUM_JSONL" ]]; then
+        log_error "assemble_curriculum: $CURRICULUM_JSONL missing — earlier steps must run first"
+        return 1
     fi
+    ( cd "$REPO_ROOT/3_si_curriculum" && \
+      python curriculum_generator/assemble_curriculum.py \
+          --curriculum_jsonl "$CURRICULUM_JSONL" \
+          --output_json      "$VERIFIED_DIR/curriculum_verified.json" \
+          --stats_path       "$CURRICULUM_STATS" ) \
+        || { log_error "assemble_curriculum failed"; return 1; }
 }
 
 # --- Step dispatch -------------------------------------------------------

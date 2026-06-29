@@ -34,6 +34,9 @@ from transformers import AutoTokenizer
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 import _tokenizer_compat  # noqa: F401, E402  # side effect: vLLM 0.7.3 + Qwen3 fix
 from pipeline_config import render_prompt, get_phase_param  # noqa: E402
+# 3_si_curriculum on path so the shared curriculum_io package import resolves.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from curriculum_generator import curriculum_io as cio  # noqa: E402
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -48,10 +51,14 @@ SYSTEM_PROMPT_QA_VALIDATION = render_prompt("curriculum_verify")["system"].strip
 
 def parse_args():
     ap = argparse.ArgumentParser(description="Two-LLM validation of generated Q&A items")
-    ap.add_argument("--input_json", required=True,
-                    help="Input JSON file with generated Q&A items")
-    ap.add_argument("--output_json", required=True,
-                    help="Output JSON file for validated Q&A items")
+    ap.add_argument("--input_json", default="",
+                    help="[legacy mode] Input JSON array of generated Q&A items")
+    ap.add_argument("--output_json", default="",
+                    help="[legacy mode] Output JSON array of validated Q&A items")
+    ap.add_argument("--curriculum_jsonl", default="",
+                    help="[stage mode] curriculum.jsonl; grade stage:item records in place")
+    ap.add_argument("--stats_path", default="",
+                    help="[stage mode] curriculum_stats.json (default: alongside the jsonl)")
     ap.add_argument("--model_ids", nargs="+", required=True,
                     help="Exactly 2 model paths for two-LLM validation")
     # vLLM init defaults read from configs/default.yaml::curriculum.validate_qa_*.
@@ -82,7 +89,7 @@ def parse_args():
 
 
 def build_validation_prompt(item: Dict) -> str:
-    context = item.get("path_string", item.get("context_path", ""))
+    context = item.get("path_string") or item.get("context_path") or cio.format_path(item.get("paths", []))
     question = item.get("question", "")
     answer = item.get("answer", "")
     explanation = item.get("explanation", item.get("thinking_trace", ""))
@@ -174,12 +181,8 @@ def validate_with_model(items: List[Dict], model_id: str,
     return results
 
 
-def main():
-    args = parse_args()
-
-    if len(args.model_ids) != 2:
-        raise ValueError("Exactly 2 model_ids required for two-LLM validation")
-
+def run_legacy(args) -> None:
+    """Legacy array-in / array-out mode (curriculum.json -> curriculum_verified.json)."""
     logger.info("Loading input: %s", args.input_json)
     with open(args.input_json, "r") as f:
         items = json.load(f)
@@ -212,6 +215,81 @@ def main():
     logger.info("Valid (both agree): %d (%.1f%%)", len(validated),
                 100 * len(validated) / max(len(items), 1))
     logger.info("Saved to: %s", args.output_json)
+
+
+def run_stage_validate_item(args) -> None:
+    """Stage mode (step validate_qa_item): grade stage:item records in curriculum.jsonl with
+    BOTH models, stamp check_a_verdict / check_b_verdict + stage (verified|drop), and write
+    per-grader yields (check_a_yield, check_b_yield, agreement_rate) to curriculum_stats.json.
+    """
+    stats_path = args.stats_path or os.path.join(
+        os.path.dirname(os.path.abspath(args.curriculum_jsonl)), "curriculum_stats.json")
+    records = list(cio.stream_records(args.curriculum_jsonl))
+    items = [r for r in records if r.get("stage") == cio.STAGE_ITEM]
+    logger.info("validate_qa_item: %d stage:item records (of %d total)", len(items), len(records))
+
+    if not items:
+        logger.warning("No stage:item records to validate in %s", args.curriculum_jsonl)
+        cio.write_stat(stats_path, "validate_qa_item", cio.yield_counts(0, 0))
+        return
+
+    if args.subset > 0:
+        items = items[:args.subset]
+        logger.info("Using subset of %d items", len(items))
+
+    scores_a = validate_with_model(
+        items, args.model_ids[0],
+        args.tensor_parallel_size, args.gpu_memory_utilization, args.batch_size,
+        max_model_len=args.max_model_len, max_tokens=args.max_tokens
+    )
+    scores_b = validate_with_model(
+        items, args.model_ids[1],
+        args.tensor_parallel_size, args.gpu_memory_utilization, args.batch_size,
+        max_model_len=args.max_model_len, max_tokens=args.max_tokens
+    )
+
+    n = len(items)
+    kept = a_yes = b_yes = agree = 0
+    for it, va, vb in zip(items, scores_a, scores_b):
+        va, vb = bool(va), bool(vb)
+        it["check_a_verdict"] = va
+        it["check_b_verdict"] = vb
+        a_yes += int(va)
+        b_yes += int(vb)
+        agree += int(va == vb)
+        if va and vb:
+            it["stage"] = cio.STAGE_VERIFIED
+            kept += 1
+        else:
+            it["stage"] = cio.STAGE_DROP
+            it["drop_reason"] = "consensus"
+
+    cio.write_all_jsonl(args.curriculum_jsonl, records)
+    counts = cio.yield_counts(
+        n, kept,
+        check_a_yield=round(a_yes / n, 4),
+        check_b_yield=round(b_yes / n, 4),
+        agreement_rate=round(agree / n, 4),
+        drop_reasons={"consensus": n - kept},
+    )
+    cio.write_stat(stats_path, "validate_qa_item", counts)
+    logger.info("validate_qa_item: kept %d/%d (A=%.1f%% B=%.1f%% agree=%.1f%%) -> %s",
+                kept, n, 100 * a_yes / n, 100 * b_yes / n, 100 * agree / n, args.curriculum_jsonl)
+
+
+def main():
+    args = parse_args()
+
+    if len(args.model_ids) != 2:
+        raise ValueError("Exactly 2 model_ids required for two-LLM validation")
+
+    if args.curriculum_jsonl:
+        run_stage_validate_item(args)
+    elif args.input_json:
+        run_legacy(args)
+    else:
+        raise ValueError(
+            "provide --curriculum_jsonl (stage mode) or --input_json + --output_json (legacy mode)")
 
 
 if __name__ == "__main__":

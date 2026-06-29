@@ -725,16 +725,15 @@ class QAGenerator:
             )
         return self._path_generator
 
-    def generate_from_path(self, path_data: Dict) -> Optional[Dict]:
-        """Generate a single Q&A item from a pre-loaded hop path (e.g. from
-        calculate_hops.py's manifest). Bypasses PathGenerator entirely —
-        runs the 6-step LLM pipeline on the supplied path.
+    def generate_pair_from_path(self, path_data: Dict) -> Optional[Dict]:
+        """Step 1 of the 4-step curriculum flow: generate a bare QA *pair* (no trace)
+        from a pre-loaded hop path. Used by `generate_curriculum.py --stage pair`.
 
         path_data shape (from generate_curriculum.load_paths_from_manifest):
             {"hop_count": int, "path": [{"start", "relation", "end"}, ...]}
-        Returns the full QA dict (question/answer/explanation/paths/source/
-        target/hop_count/question_and_explanation), or None on any pipeline
-        step's failure.
+        Returns {source_concept, target_concept, paths, question, answer, hop_count},
+        or None on failure. NO quality check, NO trace — those are separate steps
+        (validate_qa_pair / generate_qa_item).
         """
         path_steps = path_data.get("path") or []
         if not path_steps:
@@ -743,7 +742,9 @@ class QAGenerator:
         target_concept = str(path_steps[-1]["end"])
         paths = path_steps  # already in {start, relation, end} schema
 
-        # Step 1: generate question (LLM)
+        # generate question (LLM) → split → balance the answer key BEFORE any trace,
+        # so a later trace explains the post-shuffle letter (option content preserved;
+        # only its position/letter changes).
         question_full = self.llm.generate_question(
             source_concept=source_concept,
             target_concept=target_concept,
@@ -754,32 +755,7 @@ class QAGenerator:
         question, answer = self.llm.separate_question_and_answer(question_full)
         if not question or not answer:
             return None
-        # Balance the answer key BEFORE the trace is generated, so the trace
-        # explains the post-shuffle letter (content of the correct option is
-        # preserved; only its position/letter changes).
         question, answer = balance_answer_key(question, answer)
-
-        # Step 2: quality filter
-        if not self.llm.quality_filtering(question):
-            return None
-
-        # Step 3: thinking trace
-        explanation = self.llm.generate_thinking_trace(question, paths, answer)
-        if not explanation:
-            return None
-
-        # Step 4: length check
-        if not self.llm.trace_length_check(explanation):
-            return None
-
-        # Step 5: combine
-        combined = self.llm.combine_question_and_thinking_trace_with_answer(
-            question, explanation, answer,
-        )
-
-        # Step 6: correctness filter
-        if not self.llm.correctness_filtering(combined, paths):
-            return None
 
         return {
             "source_concept": source_concept,
@@ -787,10 +763,62 @@ class QAGenerator:
             "paths": paths,
             "question": question,
             "answer": answer,
-            "explanation": explanation,
-            "question_and_explanation": combined,
             "hop_count": path_data.get("hop_count"),
         }
+
+    def generate_item_from_pair(self, pair: Dict) -> Optional[Dict]:
+        """Step 3 of the 4-step curriculum flow: add a reasoning trace to a validated
+        pair, producing the full QA *item*. Used by `generate_curriculum.py --stage item`.
+
+        Takes a pair dict (from generate_pair_from_path) and returns it augmented with
+        {explanation, question_and_explanation}, or None on failure.
+
+        The inline Gemini `correctness_filtering` of the legacy flow is intentionally
+        REMOVED here (Jha 2026-06-29): it is a same-family check (Gemini grading Gemini)
+        and is superseded by the post-trace 2-LLM non-Gemini consensus (validate_qa_item).
+        """
+        question = pair["question"]
+        answer = pair["answer"]
+        paths = pair["paths"]
+
+        explanation = self.llm.generate_thinking_trace(question, paths, answer)
+        if not explanation:
+            return None
+        if not self.llm.trace_length_check(explanation):
+            return None
+        combined = self.llm.combine_question_and_thinking_trace_with_answer(
+            question, explanation, answer,
+        )
+        return {
+            **pair,
+            "explanation": explanation,
+            "question_and_explanation": combined,
+        }
+
+    def generate_from_path(self, path_data: Dict) -> Optional[Dict]:
+        """Legacy single-call pipeline (pair → quality → trace → correctness), preserved
+        UNCHANGED for `--stage all` and existing callers. The new 4-step flow instead uses
+        generate_pair_from_path + generate_item_from_pair with EXTERNAL non-Gemini checks
+        (validate_qa_pair / validate_qa_item).
+
+        Returns the full QA dict (question/answer/explanation/paths/source/target/
+        hop_count/question_and_explanation), or None on any step's failure.
+        """
+        pair = self.generate_pair_from_path(path_data)
+        if pair is None:
+            return None
+        # Legacy Gemini quality gate (the new flow replaces this with non-Gemini pair_check).
+        if not self.llm.quality_filtering(pair["question"]):
+            return None
+        item = self.generate_item_from_pair(pair)
+        if item is None:
+            return None
+        # Legacy Gemini correctness gate (the new flow replaces this with the 2-LLM consensus).
+        if not self.llm.correctness_filtering(
+            item["question_and_explanation"], item["paths"]
+        ):
+            return None
+        return item
 
     def generate_questions(self, k_hops: int = 1, category: str = None) -> Optional[Dict]:
         max_total_attempts = 10
