@@ -205,8 +205,17 @@ run_step() {
     # before we record its status; PIPESTATUS[0] is the step's code, not tee's.
     local rc=0
     set +e
+    # Effective-config self-recording: pipeline_config (imported by the step's
+    # python) flushes the config it ACTUALLY resolved to
+    # $OUTPUT_BASE/config/<phase>.<step>.yaml at process exit. SI_PHASE/SI_STEP
+    # attribute the file; OUTPUT_BASE (exported) gives python the run dir.
+    # Scoped to the step fn only — unset before the inline quality probe below
+    # so its config reads don't pollute the step's record.
+    export OUTPUT_BASE="${OUTPUT_BASE:-$(resolve_output_base)}"
+    export SI_PHASE="$phase" SI_STEP="$step"
     { "$fn" "$@"; } 2>&1 | tee "$logfile"
     rc=${PIPESTATUS[0]}
+    unset SI_PHASE SI_STEP
     set -e
 
     _manifest end-step --path "$PIPELINE_MANIFEST" --phase "$phase" --step "$step" \

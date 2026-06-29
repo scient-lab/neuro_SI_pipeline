@@ -116,6 +116,136 @@ def load_config() -> dict[str, Any]:
     return cfg
 
 
+# --- Effective-config ledger (runtime self-recording) --------------------
+# Every value resolved through the accessors below is recorded as
+# name -> {value, source-layer}; at process exit it is flushed to
+#     $OUTPUT_BASE/config/<SI_PHASE>.<SI_STEP>.yaml
+# so each pipeline STEP writes the config it ACTUALLY used — post-merge and
+# post-env-override — which a static snapshot of the input yaml cannot show.
+# `source: fallback` means the key was absent from EVERY config layer and the
+# hard-coded default arg won (the profile-key-name-trap tell). Push-only
+# provenance: it lives under outputs/, so the existing outputs->S3 sync carries
+# it; the repo's configs/ stay the single source of truth (never pulled over).
+
+import atexit as _atexit
+
+_MISSING = object()
+_LEDGER: dict[str, dict[str, Any]] = {"models": {}, "params": {}, "prompts": {}}
+_LAYER_PRECEDENCE = ("platform", "profile", "domain", "default")  # high -> low
+
+
+@lru_cache(maxsize=None)
+def _raw_layer(name: str) -> dict[str, Any]:
+    """One UN-merged config layer, read for source attribution."""
+    home = _REPO_ROOT
+    if name == "default":
+        return _read(home / "configs" / "default.yaml")
+    if name == "domain":
+        return _read(home / "domains" / f"{get_domain_name()}.yaml")
+    if name == "profile":
+        p = get_profile_name()
+        return _read(home / "configs" / "profiles" / f"{p}.yaml") if p else {}
+    if name == "platform":
+        pf = get_platform_name()
+        return _read(home / "configs" / "platforms" / f"{pf}.yaml") if pf else {}
+    return {}
+
+
+def _source_of(*path: str) -> str:
+    """Highest-precedence layer file that defines <path> (e.g.
+    ('models','extract') or ('graphmert','fact_score_max_tokens')); 'fallback'
+    if no layer has it (so the hard-coded default arg won)."""
+    for layer in _LAYER_PRECEDENCE:
+        node: Any = _raw_layer(layer)
+        for k in path:
+            if isinstance(node, dict) and k in node:
+                node = node[k]
+            else:
+                node = _MISSING
+                break
+        if node is not _MISSING:
+            return layer
+    return "fallback"
+
+
+def _record(bucket: str, name: str, value: Any, source: str) -> None:
+    _LEDGER[bucket][name] = {"value": value, "source": source}
+
+
+def _git_sha() -> str:
+    sha = os.environ.get("SI_GIT_SHA") or os.environ.get("GIT_SHA")
+    if sha:
+        return sha.strip()
+    try:
+        import subprocess
+        return subprocess.check_output(
+            ["git", "-C", str(_REPO_ROOT), "rev-parse", "--short", "HEAD"],
+            stderr=subprocess.DEVNULL, text=True).strip()
+    except Exception:
+        return ""
+
+
+def _now_iso() -> str:
+    try:
+        from datetime import datetime, timezone
+        return datetime.now(timezone.utc).isoformat(timespec="seconds")
+    except Exception:
+        return ""
+
+
+def _flush_ledger() -> None:
+    """Write the keys THIS process read to $OUTPUT_BASE/config/<phase>.<step>.yaml.
+    No-op unless something was read AND we're inside a pipeline step (SI_PHASE
+    set) — so ad-hoc imports / the monitor's quality probe don't litter. Never
+    raises: provenance must not break a run."""
+    if not any(_LEDGER.values()):
+        return
+    phase = os.environ.get("SI_PHASE", "").strip()
+    if not phase:
+        return
+    step = os.environ.get("SI_STEP", "").strip()
+    base = os.environ.get("OUTPUT_BASE", "").strip() or str(_REPO_ROOT / "outputs")
+    out_dir = Path(base) / "config"
+    path = out_dir / (f"{phase}.{step}.yaml" if step else f"{phase}.yaml")
+    run_id = os.environ.get("RUN_ID", "")
+    env_keys = ("SI_DOMAIN", "SI_PROFILE", "SI_PLATFORM", "RUN_ID", "CORPUS_PATH",
+                "OUTPUT_BASE", "SI_PHASE", "SI_STEP")
+    doc: dict[str, Any] = {
+        "_meta": {
+            "run_id": run_id, "phase": phase, "step": step,
+            "domain": get_domain_name(), "profile": get_profile_name() or "",
+            "platform": get_platform_name() or "", "git_sha": _git_sha(),
+            "written_at": _now_iso(), "pid": os.getpid(),
+        },
+        "env": {k: os.environ[k] for k in env_keys if k in os.environ},
+        "models": dict(_LEDGER["models"]),
+        "params": dict(_LEDGER["params"]),
+        "prompts": dict(_LEDGER["prompts"]),
+    }
+    try:
+        out_dir.mkdir(parents=True, exist_ok=True)
+        # Union keys with an existing SAME-run file, so the several python
+        # processes a step may spawn don't clobber each other (last value wins).
+        if path.is_file():
+            prev = _read(path)
+            if prev.get("_meta", {}).get("run_id") == run_id:
+                for b in ("models", "params", "prompts"):
+                    m = dict(prev.get(b, {}) or {})
+                    m.update(doc[b])
+                    doc[b] = m
+                if isinstance(prev.get("env"), dict):
+                    e = dict(prev["env"])
+                    e.update(doc["env"])
+                    doc["env"] = e
+        with open(path, "w") as f:
+            yaml.safe_dump(doc, f, default_flow_style=False, sort_keys=True)
+    except Exception:
+        pass  # provenance must never break a run
+
+
+_atexit.register(_flush_ledger)
+
+
 # --- Vocabulary helpers ---------------------------------------------------
 
 def get_domain(default: Optional[str] = None) -> Optional[str]:
@@ -252,17 +382,23 @@ def get_domain_expert_role() -> str:
 
 def get_model_id(key: str, default: Optional[str] = None) -> Optional[str]:
     """cfg['models'][key] or default. e.g. get_model_id('extract')."""
-    return (load_config().get("models") or {}).get(key, default)
+    val = (load_config().get("models") or {}).get(key, default)
+    _record("models", key, val, _source_of("models", key))
+    return val
 
 
 def get_phase_param(phase: str, key: str, default: Any = None) -> Any:
     """cfg[<phase>][<key>] or default."""
-    return (load_config().get(phase) or {}).get(key, default)
+    val = (load_config().get(phase) or {}).get(key, default)
+    _record("params", f"{phase}.{key}", val, _source_of(phase, key))
+    return val
 
 
 def get_platform_param(key: str, default: Any = None) -> Any:
     """cfg['platform'][<key>] or default."""
-    return (load_config().get("platform") or {}).get(key, default)
+    val = (load_config().get("platform") or {}).get(key, default)
+    _record("params", f"platform.{key}", val, _source_of("platform", key))
+    return val
 
 
 # --- Exception / retry semantics loader -----------------------------------
@@ -314,7 +450,9 @@ def get_prompt(name: str) -> dict[str, Any]:
     domain = get_domain_name()
     override = _REPO_ROOT / "prompts" / "overrides" / domain / f"{name}.yaml"
     if override.is_file():
+        _record("prompts", name, f"prompts/overrides/{domain}/{name}.yaml", "override")
         return _read(override)
+    _record("prompts", name, f"prompts/{name}.yaml", "canonical")
     return _read(_REPO_ROOT / "prompts" / f"{name}.yaml")
 
 
