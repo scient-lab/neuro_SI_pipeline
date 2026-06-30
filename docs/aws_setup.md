@@ -81,7 +81,7 @@ cat > /tmp/${POLICY}.json <<EOF
     {
       "Sid": "ListBucketDssOnly",
       "Effect": "Allow",
-      "Action": "s3:ListBucket",
+      "Action": ["s3:ListBucket", "s3:ListBucketVersions"],
       "Resource": "arn:aws:s3:::${BUCKET}",
       "Condition": {
         "StringLike": {
@@ -96,6 +96,7 @@ cat > /tmp/${POLICY}.json <<EOF
         "s3:GetObject",
         "s3:PutObject",
         "s3:DeleteObject",
+        "s3:DeleteObjectVersion",
         "s3:GetObjectAcl",
         "s3:PutObjectAcl"
       ],
@@ -111,8 +112,24 @@ aws iam put-user-policy \
     --policy-document file:///tmp/${POLICY}.json
 ```
 
-**What this allows:** list + read + write + delete inside `s3://enlibra/dss/*`.
+**What this allows:** list (incl. object versions) + read + write + delete
+(incl. old versions) inside `s3://enlibra/dss/*`.
 **What it forbids:** touching other prefixes in `enlibra` or other buckets.
+
+> **Why the version actions?** `s3:ListBucketVersions` + `s3:DeleteObjectVersion`
+> are what `scripts/s3_prune_runs.sh` needs to retire old runs under
+> `dss/runs/`. On a **versioned** bucket a plain `aws s3 rm` only writes
+> delete-markers — the old versions (and their storage cost) linger; these two
+> actions let the prune actually purge them. They're harmless on an unversioned
+> bucket. `s3:ListBucketVersions` sits in the conditioned list statement, so it
+> stays scoped to `dss` like `s3:ListBucket` and never widens beyond the program
+> namespace.
+>
+> **Upgrading an existing user:** inline policies are overwritten in place, so
+> just re-run this Step 3 block (from CloudShell or an admin profile) — no
+> delete-first needed. A `kg-si-pipeline` whose `s3 rm` worked but hit
+> `AccessDenied … ListBucketVersions` was on the pre-version policy; re-running
+> this fixes it.
 
 ## Step 4 — CloudWatch Logs policy (write under `/enlibra/dss/runs/*`)
 
@@ -232,6 +249,10 @@ The smoke tests below use the new `kg-si` profile (Step 7).
 ```bash
 # Should list the dss/ prefix
 aws --profile kg-si s3 ls s3://enlibra/dss/
+
+# Should succeed — write+delete round-trip inside dss/ (validates the prune grant)
+echo probe | aws --profile kg-si s3 cp - s3://enlibra/dss/runs/_probe/x.txt
+aws --profile kg-si s3 rm s3://enlibra/dss/runs/_probe/ --recursive
 
 # Should be DENIED — proves the policy is correctly scoped
 aws --profile kg-si s3 ls s3://enlibra/
@@ -356,6 +377,7 @@ aws logs describe-log-groups --log-group-name-prefix /enlibra/dss/ --profile kg-
 | Symptom | Likely cause | Fix |
 |---|---|---|
 | `AccessDenied` on `s3 sync` | IAM key not loaded on the pod | Check `cat $SI_HOME/.env` on the pod has `AWS_ACCESS_KEY_ID` |
+| `s3_prune_runs.sh` lists runs but `AccessDenied` on delete / `ListBucketVersions` | `kg-si-pipeline` on the pre-version S3 policy | Re-run **Step 3** to overwrite `KGSIPipelineS3Access` with the version actions (it now grants `s3:DeleteObjectVersion` + `s3:ListBucketVersions`) |
 | `CloudWatch ship failed for X/Y (non-fatal)` in pipeline logs | Log group missing OR policy ARN mismatch | Re-run Step 5; double-check `LOG_GROUP_PREFIX` in Step 4 matches the actual group name |
 | `cw_ship: boto3 not installed; skipping CloudWatch push` | uv missing on pod fallback path | Confirm uv installed in bootstrap (Step 2 in `scripts/runpod/bootstrap.sh`) |
 | `s3 sync` succeeds locally but fails on pod | Region mismatch | `AWS_DEFAULT_REGION` must be set; bucket region detection sometimes fails on first call |
