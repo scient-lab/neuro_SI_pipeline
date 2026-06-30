@@ -280,7 +280,12 @@ for var in RUNPOD_CLOUD_TYPE RUNPOD_DISK_GB RUNPOD_NUM_GPUS; do
     fi
 done
 
-POD_NAME="${POD_NAME:-neuro-si-${SI_PROFILE}-$(date -u +%Y%m%d-%H%M)}"
+# Pod name: dss-<domain>-<profile>-<UTC date>-<UTC time>, e.g.
+# dss-neuroscience-pilot-20260630-1213. Domain-agnostic (was hardcoded
+# neuro-si); SI_DOMAIN comes from .env.runpod / env (falls back to neuroscience).
+# --name still overrides. Lowercased + non-alnum→'-' so RunPod accepts it.
+_pod_domain=$(printf '%s' "${SI_DOMAIN:-neuroscience}" | tr '[:upper:]' '[:lower:]' | tr -c 'a-z0-9' '-' | sed -E 's/-+/-/g; s/^-|-$//g')
+POD_NAME="${POD_NAME:-dss-${_pod_domain}-${SI_PROFILE}-$(date -u +%Y%m%d-%H%M)}"
 
 # --- build POST body -----------------------------------------------------
 build_post_body() {
