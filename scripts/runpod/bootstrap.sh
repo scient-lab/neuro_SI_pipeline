@@ -27,6 +27,7 @@
 #   GRAPHMERT_UMLS_REPO  scient-lab/graphmert_umls      (vendors `graphrag`)
 #   GRAPHMERT_UMLS_BRANCH dev
 #   GEMINI_API_KEY       (required for curriculum phases)
+#   OPENAI_API_KEY       (curriculum pair-check / validate_qa_pair; hosted o3-mini)
 #   HF_TOKEN             (required for gated HF models)
 #   WANDB_API_KEY        (optional)
 #   STAGES               all | graphrag | graphmert | si_curriculum | csv list
@@ -201,6 +202,7 @@ echo "=== write $SI_HOME/.env ==="
 ENV_FILE="$SI_HOME/.env"
 {
     [[ -n "${GEMINI_API_KEY:-}" ]] && echo "GEMINI_API_KEY=$GEMINI_API_KEY"
+    [[ -n "${OPENAI_API_KEY:-}" ]] && echo "OPENAI_API_KEY=$OPENAI_API_KEY"
     [[ -n "${HF_TOKEN:-}"       ]] && echo "HF_TOKEN=$HF_TOKEN"
     [[ -n "${WANDB_API_KEY:-}"  ]] && echo "WANDB_API_KEY=$WANDB_API_KEY"
     # AWS / S3 — symmetric path model:

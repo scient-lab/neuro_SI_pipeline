@@ -110,6 +110,7 @@ warn_if_unset() {
 }
 warn_if_unset GITHUB_TOKEN
 warn_if_unset GEMINI_API_KEY
+warn_if_unset OPENAI_API_KEY
 warn_if_unset HF_TOKEN
 
 # --- profile hardware defaults -------------------------------------------
@@ -291,7 +292,7 @@ env = {
     "GITHUB_REPO":   os.environ["GITHUB_REPO"],
     "GITHUB_BRANCH": os.environ["GITHUB_BRANCH"],
 }
-for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "HF_TOKEN", "WANDB_API_KEY",
+for k in ("GITHUB_TOKEN", "GEMINI_API_KEY", "OPENAI_API_KEY", "HF_TOKEN", "WANDB_API_KEY",
           "S3_URI", "CORPUS_PATH", "AWS_ACCESS_KEY_ID",
           "AWS_SECRET_ACCESS_KEY", "AWS_DEFAULT_REGION",
           "S3_SYNC_INTERVAL_SEC", "AWS_CLOUDWATCH_LOG_GROUP",
