@@ -63,6 +63,31 @@ require() {
 }
 require GITHUB_TOKEN || exit 1
 
+# --- 0. GPU pre-flight (fail fast before apt/uv/clone/venv) ---------------
+# nvidia-smi (NVML) passes even when the CUDA driver context can't init — e.g. the
+# container gets /dev/nvidia2 with no /dev/nvidia0 and lacks CAP_MKNOD to patch it.
+# So we probe a REAL CUDA context. The runpod/pytorch base image ships torch in the
+# system python, so this needs no project venv (they don't exist yet here).
+gpu_preflight() {
+    if ! command -v nvidia-smi >/dev/null 2>&1 || ! nvidia-smi >/dev/null 2>&1; then
+        echo "✗ GPU pre-flight: nvidia-smi missing/failed — no usable GPU. Terminate & relaunch." >&2
+        return 1
+    fi
+    if python3 -c "import torch" >/dev/null 2>&1; then
+        if ! python3 -c "import torch,sys; sys.exit(0 if torch.cuda.is_available() else 1)" >/dev/null 2>&1; then
+            echo "✗ GPU pre-flight: nvidia-smi OK but torch.cuda.is_available()=False." >&2
+            echo "  GPU mis-mapped on this node (often /dev/nvidia0 missing; no CAP_MKNOD to fix)." >&2
+            echo "  TERMINATE this pod and launch a fresh one. Device nodes:" >&2
+            ls -l /dev/nvidia* 2>/dev/null | sed 's/^/    /' >&2 || true
+            return 1
+        fi
+        echo "✓ GPU pre-flight: CUDA context OK"
+    else
+        echo "  ⚠ GPU pre-flight: system torch absent; ran nvidia-smi only (mis-map could slip through)." >&2
+    fi
+}
+gpu_preflight || exit 1
+
 # --- 1. apt install ------------------------------------------------------
 # NOTE: we deliberately do NOT apt-install awscli here. The Debian/Ubuntu
 # awscli (v1) rides on the system botocore, which imports

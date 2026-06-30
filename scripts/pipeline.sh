@@ -70,6 +70,8 @@ STEPS="all"
 LIST_ONLY=0
 FINAL=0
 RESUME=0
+SKIP_PREFLIGHT=0
+PREFLIGHT_DEEP=0
 
 ALL_PHASES=(extract validate graphmert curriculum sft rl)
 
@@ -181,6 +183,8 @@ while [[ $# -gt 0 ]]; do
         --list)     LIST_ONLY=1; shift ;;
         --final)    FINAL=1; shift ;;
         --resume)   RESUME=1; shift ;;
+        --skip-preflight)  SKIP_PREFLIGHT=1; shift ;;
+        --deep-preflight)  PREFLIGHT_DEEP=1; shift ;;
         -h|--help)  usage; exit 0 ;;
         *)          log_error "Unknown flag: $1"; usage; exit 2 ;;
     esac
@@ -218,6 +222,17 @@ else
             log_error "Unknown phase: $p"; exit 2;
         }
     done
+fi
+
+# --- Pre-flight (run-time env/venv/GPU validation; --skip-preflight to bypass) ----------
+if [[ "$SKIP_PREFLIGHT" -eq 0 ]]; then
+    preflight_args=(--phases "$PHASES" --domain "$DOMAIN" --platform "$PLATFORM")
+    [[ -n "$PROFILE" ]] && preflight_args+=(--profile "$PROFILE")
+    [[ "$PREFLIGHT_DEEP" -eq 1 ]] && preflight_args+=(--deep)
+    "$SCRIPT_DIR/preflight.sh" "${preflight_args[@]}" || {
+        log_error "Pre-flight failed — aborting before any compute. Fix the items above, or re-run with --skip-preflight (not recommended)."
+        exit 2
+    }
 fi
 
 # --- Run identity + manifest -----------------------------------------------
