@@ -405,6 +405,18 @@ expectations:
     preprocess:
       min_grounding_success: 1      # 0 → fail (no trainable samples; the success==0 dead end)
   curriculum:
-    generate_qa:
-      # got vs the profile's OWN curriculum.num_questions (not duplicated here)
+    # 4-step flow — per-step yields read from curriculum_stats.json[step] (out/in).
+    validate_qa_pair:               # 1-LLM non-Gemini pair check (~40% drop → ~0.55-0.65)
+      yield_fail_low: 0.20          # < → fail (over-rejecting / broken grader)
+      yield_warn_low: 0.40          # < → warn (low yield)
+      yield_warn_high: 0.90         # > → warn (barely dropping → check may be a no-op)
+    generate_qa_item:               # Gemini-Pro trace generation on validated pairs
+      yield_fail_low: 0.50          # < → fail (many trace failures)
+      yield_warn_low: 0.85          # < → warn (trace failures elevated)
+    validate_qa_item:               # 2-LLM consensus (~1-2% drop → ~0.98)
+      yield_fail_low: 0.50          # < → fail
+      yield_warn_low: 0.90          # < → warn (below the expected ~98%)
+      grader_yield_fail_low: 0.05   # a single grader keeping <5% = broken (truncated <think>)
+    assemble_curriculum:
+      # final verified count vs the profile's OWN curriculum.num_questions (not duplicated)
       frac_of_target_warn: 0.5      # < 50% of target → warn

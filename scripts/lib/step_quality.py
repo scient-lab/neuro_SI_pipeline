@@ -203,33 +203,141 @@ def probe_preprocess(c: Ctx) -> V:
     return V(PASS, f"grounding success == {success}", {"success": success})
 
 
-def probe_generate_qa(c: Ctx) -> V:
-    """Q&A produced vs the profile's OWN configured target (num_questions) —
-    anchored to existing config, so no per-profile threshold needed."""
-    path = c.ob / "curriculum" / "curriculum.json"
-    if not path.exists():
-        return V(FAIL, "no curriculum.json produced")
+def _curriculum_stats(ob: Path):
+    """curriculum_stats.json (per-step {in, out, dropped, yield, ...}) or None if absent.
+    Written by each 4-step curriculum stage during its streaming pass."""
+    p = ob / "curriculum" / "curriculum_stats.json"
+    if not p.exists():
+        return None
     try:
-        data = json.loads(path.read_text())
-        got = len(data) if isinstance(data, list) else 0
+        return json.loads(p.read_text())
     except Exception:
-        return V(FAIL, "curriculum.json present but unreadable/non-list")
+        return None
+
+
+def _stat_rec(c: Ctx, step: str):
+    return (_curriculum_stats(c.ob) or {}).get(step)
+
+
+def probe_generate_qa_pair(c: Ctx) -> V:
+    """Bare QA pairs produced (generate_qa_pair over-provisions by 1/expected_yield)."""
+    rec = _stat_rec(c, "generate_qa_pair")
+    if not rec:
+        return V(UNKNOWN, "no generate_qa_pair stats yet")
+    got = int(rec.get("out", 0) or 0)
+    target = rec.get("target")
+    m = {"pairs": got, "target": target}
+    if got == 0:
+        return V(FAIL, "0 QA pairs generated", m)
+    if target and got < 0.5 * target:
+        return V(WARN, f"{got} pairs < 50% of over-provisioned target {target}", m)
+    return V(PASS, f"{got} QA pairs" + (f" (target {target})" if target else ""), m)
+
+
+def probe_validate_qa_pair(c: Ctx) -> V:
+    """Pair-check yield — Jha's 1-LLM non-Gemini check drops ~40% (expect ~0.55-0.65).
+    Too high = the check is a no-op; too low = over-rejecting / a broken grader."""
+    rec = _stat_rec(c, "validate_qa_pair")
+    if not rec:
+        return V(UNKNOWN, "no validate_qa_pair stats yet")
+    n_in = int(rec.get("in", 0) or 0); n_out = int(rec.get("out", 0) or 0)
+    if n_in == 0:
+        return V(FAIL, "0 pairs to check", {"in": 0})
+    y = rec.get("yield", n_out / n_in)
+    m = {"in": n_in, "out": n_out, "yield": round(y, 3)}
+    lo_fail = exp("curriculum", "validate_qa_pair", "yield_fail_low", 0.20)
+    lo_warn = exp("curriculum", "validate_qa_pair", "yield_warn_low", 0.40)
+    hi_warn = exp("curriculum", "validate_qa_pair", "yield_warn_high", 0.90)
+    if y < lo_fail:
+        return V(FAIL, f"pair-check kept {y*100:.0f}% (<{lo_fail*100:.0f}% → over-rejecting/broken grader)", m)
+    if y < lo_warn:
+        return V(WARN, f"pair-check kept {y*100:.0f}% ({n_out}/{n_in}; below expected ~60%)", m)
+    if y > hi_warn:
+        return V(WARN, f"pair-check kept {y*100:.0f}% (>{hi_warn*100:.0f}% → check may be a no-op)", m)
+    return V(PASS, f"pair-check kept {y*100:.0f}% ({n_out}/{n_in})", m)
+
+
+def probe_generate_qa_item(c: Ctx) -> V:
+    """Trace-generation yield (Gemini-Pro). Mostly succeeds; low = trace failures."""
+    rec = _stat_rec(c, "generate_qa_item")
+    if not rec:
+        return V(UNKNOWN, "no generate_qa_item stats yet")
+    n_in = int(rec.get("in", 0) or 0); n_out = int(rec.get("out", 0) or 0)
+    if n_in == 0:
+        return V(FAIL, "0 validated pairs to trace", {"in": 0})
+    y = rec.get("yield", n_out / n_in)
+    m = {"in": n_in, "out": n_out, "yield": round(y, 3)}
+    lo_fail = exp("curriculum", "generate_qa_item", "yield_fail_low", 0.50)
+    lo_warn = exp("curriculum", "generate_qa_item", "yield_warn_low", 0.85)
+    if y < lo_fail:
+        return V(FAIL, f"trace-gen kept {y*100:.0f}% (<{lo_fail*100:.0f}% → many trace failures)", m)
+    if y < lo_warn:
+        return V(WARN, f"trace-gen kept {y*100:.0f}% (trace failures elevated)", m)
+    return V(PASS, f"trace-gen kept {y*100:.0f}% ({n_out}/{n_in})", m)
+
+
+def probe_validate_qa_item(c: Ctx) -> V:
+    """2-LLM consensus yield (~0.98 expected). Also guards each grader: one keeping
+    ~0% (all [no]) is the truncated-<think> 97%-reject failure mode."""
+    rec = _stat_rec(c, "validate_qa_item")
+    if not rec:
+        return V(UNKNOWN, "no validate_qa_item stats yet")
+    n_in = int(rec.get("in", 0) or 0); n_out = int(rec.get("out", 0) or 0)
+    if n_in == 0:
+        return V(FAIL, "0 items to check", {"in": 0})
+    y = rec.get("yield", n_out / n_in)
+    ca = rec.get("check_a_yield"); cb = rec.get("check_b_yield"); agree = rec.get("agreement_rate")
+    m = {"in": n_in, "out": n_out, "yield": round(y, 3), "check_a": ca, "check_b": cb, "agree": agree}
+    floor = exp("curriculum", "validate_qa_item", "grader_yield_fail_low", 0.05)
+    if ca is not None and ca < floor:
+        return V(FAIL, f"grader A kept only {ca*100:.0f}% — likely broken (truncated <think>?)", m)
+    if cb is not None and cb < floor:
+        return V(FAIL, f"grader B kept only {cb*100:.0f}% — likely broken", m)
+    ab = "" if ca is None or cb is None else f"; A={ca*100:.0f}% B={cb*100:.0f}%"
+    lo_fail = exp("curriculum", "validate_qa_item", "yield_fail_low", 0.50)
+    lo_warn = exp("curriculum", "validate_qa_item", "yield_warn_low", 0.90)
+    if y < lo_fail:
+        return V(FAIL, f"consensus kept {y*100:.0f}% (<{lo_fail*100:.0f}%{ab})", m)
+    if y < lo_warn:
+        return V(WARN, f"consensus kept {y*100:.0f}% (below expected ~98%{ab})", m)
+    return V(PASS, f"consensus kept {y*100:.0f}% ({n_out}/{n_in}{ab})", m)
+
+
+def probe_assemble_curriculum(c: Ctx) -> V:
+    """Final verified Q&A count vs the profile's OWN curriculum.num_questions."""
+    rec = _stat_rec(c, "assemble_curriculum")
+    got = rec.get("out") if rec is not None else None
+    if got is None:
+        path = c.ob / "curriculum_verified" / "curriculum_verified.json"
+        if not path.exists():
+            return V(FAIL, "no curriculum_verified.json produced")
+        try:
+            data = json.loads(path.read_text())
+            got = len(data) if isinstance(data, list) else 0
+        except Exception:
+            return V(FAIL, "curriculum_verified.json unreadable/non-list")
+    got = int(got or 0)
     target = int(phase_param("curriculum", "num_questions", 0) or 0)
     if got == 0:
-        return V(FAIL, "0 Q&A items generated", {"got": 0, "target": target})
+        return V(FAIL, "0 verified Q&A items", {"got": 0, "target": target})
     if target:
-        frac_warn = exp("curriculum", "generate_qa", "frac_of_target_warn", 0.5)
+        frac_warn = exp("curriculum", "assemble_curriculum", "frac_of_target_warn", 0.5)
         if got < frac_warn * target:
-            return V(WARN, f"{got} Q&A < {int(frac_warn*100)}% of target {target}", {"got": got, "target": target})
-        return V(PASS, f"{got} Q&A (target {target})", {"got": got, "target": target})
-    return V(PASS, f"{got} Q&A items", {"got": got})
+            return V(WARN, f"{got} verified Q&A < {int(frac_warn*100)}% of target {target}", {"got": got, "target": target})
+        return V(PASS, f"{got} verified Q&A (target {target})", {"got": got, "target": target})
+    return V(PASS, f"{got} verified Q&A items", {"got": got})
 
 
 PROBES = {
     ("extract", "extract_triples"): probe_extract_triples,
     ("validate", "seed_kg_consensus"): probe_seed_kg_consensus,
     ("graphmert", "preprocess"): probe_preprocess,
-    ("curriculum", "generate_qa"): probe_generate_qa,
+    # curriculum 4-step flow — yields read from curriculum_stats.json[step]
+    ("curriculum", "generate_qa_pair"): probe_generate_qa_pair,
+    ("curriculum", "validate_qa_pair"): probe_validate_qa_pair,
+    ("curriculum", "generate_qa_item"): probe_generate_qa_item,
+    ("curriculum", "validate_qa_item"): probe_validate_qa_item,
+    ("curriculum", "assemble_curriculum"): probe_assemble_curriculum,
 }
 
 
