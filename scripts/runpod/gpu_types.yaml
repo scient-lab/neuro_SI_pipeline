@@ -1,0 +1,72 @@
+# RunPod available GPU types — catalog for scripts/runpod/launch.sh.
+#
+# Source: RunPod GPU availability list, captured 2026-06-29.
+# `name` strings are VERBATIM RunPod API `displayName` values — including the
+# duplicate / variant spellings the API returns (double spaces, "RTX 3080TI",
+# "NVIDIA RTX A30"); any name-matching code MUST use them exactly as written.
+# `vram_gb` = on-board VRAM, used for the profile VRAM bands (launch.sh tries
+# high VRAM first). Values marked `# approx` are the well-known chip spec but
+# were not confirmed against this RunPod listing — verify before relying on them.
+#
+# Profile VRAM bands (configs/profiles/*.yaml):
+#   smoke : 32-48 GB     pilot : 80-96 GB     paper : 96-288 GB
+# Entries below 32 GB do not satisfy any current profile band (listed for
+# completeness / single-step local-style runs).
+
+gpus:
+  # ---- paper band (96-288 GB) -------------------------------------------
+  - { name: "AMD Instinct MI300X OAM",                                vram_gb: 192 }
+  - { name: "NVIDIA B200",                                            vram_gb: 180 }  # approx (RunPod lists ~180; chip spec 192)
+  - { name: "NVIDIA H200",                                            vram_gb: 141 }
+  - { name: "NVIDIA H200 NVL",                                        vram_gb: 141 }
+  - { name: "NVIDIA RTX PRO 6000 Blackwell Server Edition",           vram_gb: 96 }
+  - { name: "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",      vram_gb: 96 }
+  - { name: "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition", vram_gb: 96 }
+
+  # ---- pilot band (80-96 GB) --------------------------------------------
+  - { name: "NVIDIA H100 NVL",                                        vram_gb: 94 }
+  - { name: "NVIDIA H100 80GB HBM3",                                  vram_gb: 80 }
+  - { name: "NVIDIA H100 PCIe",                                       vram_gb: 80 }
+  - { name: "NVIDIA A100-SXM4-80GB",                                  vram_gb: 80 }
+  - { name: "NVIDIA A100 80GB PCIe",                                  vram_gb: 80 }
+
+  # ---- smoke band (32-48 GB) --------------------------------------------
+  - { name: "NVIDIA A40",                                             vram_gb: 48 }
+  - { name: "NVIDIA L40S",                                            vram_gb: 48 }
+  - { name: "NVIDIA L40",                                             vram_gb: 48 }
+  - { name: "NVIDIA RTX 6000 Ada Generation",                         vram_gb: 48 }
+  - { name: "NVIDIA RTX A6000",                                       vram_gb: 48 }
+  - { name: "NVIDIA GeForce RTX 5090",                                vram_gb: 32 }
+  - { name: "NVIDIA RTX 5000 Ada Generation",                         vram_gb: 32 }
+  - { name: "NVIDIA A5000 Ada",                                       vram_gb: 32 }  # approx
+  - { name: "Tesla V100-SXM2-32GB",                                   vram_gb: 32 }
+  - { name: "Tesla V100-PCIE-32GB",                                   vram_gb: 32 }
+
+  # ---- below smoke band (< 32 GB) ---------------------------------------
+  - { name: "NVIDIA GeForce RTX 4090",                                vram_gb: 24 }
+  - { name: "NVIDIA GeForce RTX 3090",                                vram_gb: 24 }
+  - { name: "NVIDIA GeForce RTX 3090 Ti",                             vram_gb: 24 }
+  - { name: "NVIDIA RTX A5000",                                       vram_gb: 24 }
+  - { name: "NVIDIA L4",                                              vram_gb: 24 }
+  - { name: "NVIDIA A30",                                             vram_gb: 24 }
+  - { name: "NVIDIA  A30",                                            vram_gb: 24 }  # API variant (double space) of "NVIDIA A30"
+  - { name: "NVIDIA RTX A30",                                         vram_gb: 24 }  # API variant of "NVIDIA A30"
+  - { name: "NVIDIA RTX A4500",                                       vram_gb: 20 }
+  - { name: "NVIDIA  RTX A4500",                                      vram_gb: 20 }  # API variant (double space) of "NVIDIA RTX A4500"
+  - { name: "NVIDIA RTX 4000 Ada Generation",                         vram_gb: 20 }
+  - { name: "NVIDIA RTX 4000 SFF Ada Generation",                     vram_gb: 20 }
+  - { name: "NVIDIA RTX A4000",                                       vram_gb: 16 }
+  - { name: "NVIDIA RTX 2000 Ada Generation",                         vram_gb: 16 }
+  - { name: "NVIDIA GeForce RTX 4080",                                vram_gb: 16 }
+  - { name: "NVIDIA GeForce RTX 4080 SUPER",                          vram_gb: 16 }
+  - { name: "NVIDIA GeForce RTX 5080",                                vram_gb: 16 }
+  - { name: "Tesla T4",                                               vram_gb: 16 }
+  - { name: "Tesla V100-PCIE-16GB",                                   vram_gb: 16 }
+  - { name: "Tesla V100-SXM2-16GB",                                   vram_gb: 16 }
+  - { name: "Tesla V100-FHHL-16GB",                                   vram_gb: 16 }
+  - { name: "NVIDIA GeForce RTX 3080 Ti",                             vram_gb: 12 }
+  - { name: "NVIDIA GeForce RTX 3080TI",                              vram_gb: 12 }  # API variant spelling of "RTX 3080 Ti"
+  - { name: "NVIDIA GeForce RTX 4070 Ti",                             vram_gb: 12 }
+  - { name: "NVIDIA GeForce RTX 3080",                                vram_gb: 10 }
+  - { name: "NVIDIA GeForce RTX 3070",                                vram_gb: 8 }
+  - { name: "NVIDIA RTX A2000",                                       vram_gb: 6 }   # approx (A2000 ships in 6 GB and 12 GB)

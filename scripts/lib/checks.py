@@ -19,6 +19,7 @@ file presence (so HEALTH runs under any venv).
 from __future__ import annotations
 
 import csv
+import json
 import re
 import sys
 from pathlib import Path
@@ -100,9 +101,13 @@ def path_state(ob: Path, pattern: str) -> dict:
     for m in matches:
         if m.is_dir():
             st["size"] += sum(f.stat().st_size for f in m.rglob("*") if f.is_file())
-            n_txt = sum(1 for _ in m.glob("*.txt"))
-            if n_txt:
-                rows += n_txt; have_rows = True   # dir-of-docs → file count as "rows"
+            hf = _hf_rows(m)        # HuggingFace dataset dir → num_examples
+            if hf is not None:
+                rows += hf; have_rows = True       # catches "schema declared, 0 rows"
+            else:
+                n_txt = sum(1 for _ in m.glob("*.txt"))
+                if n_txt:
+                    rows += n_txt; have_rows = True  # dir-of-docs → file count as "rows"
             continue
         st["size"] += m.stat().st_size
         if m.suffix == ".csv":
@@ -128,6 +133,21 @@ def _parquet_rows(p: Path):
         return len(df), list(df.columns)
     except Exception:
         return None, None
+
+
+def _hf_rows(d: Path):
+    """A HuggingFace dataset dir's row count via dataset_info.json::splits
+    (stdlib, no `datasets` import). None if not an HF dataset dir."""
+    info = d / "dataset_info.json"
+    if not info.is_file():
+        return None
+    try:
+        splits = (json.loads(info.read_text()).get("splits") or {})
+        if isinstance(splits, dict):
+            return sum(int(s.get("num_examples", 0) or 0) for s in splits.values())
+    except Exception:
+        return None
+    return None
 
 
 # --- failure localizer (Class 1: thrown exceptions) -------------------------
@@ -313,3 +333,117 @@ spec("extract", "cache",
      inputs=["graphrag/output/*relationships*.parquet"],
      outputs=["graphrag/output/kg_final.csv", "graphrag/output/kg_final.parquet"],
      sample=_sample_kg_final)
+
+
+def _sample_csv(rel: str, ncols: int = 3):
+    """Sample factory: first N data rows of a CSV as 'c0 | c1 | c2'."""
+    def _s(ob: Path, n: int) -> list[str]:
+        p = ob / rel
+        if not p.exists():
+            return []
+        out = []
+        with p.open(newline="", errors="replace") as f:
+            r = csv.reader(f)
+            next(r, None)
+            for i, row in enumerate(r):
+                if i >= n:
+                    break
+                out.append(" | ".join((row + [""] * ncols)[:ncols]))
+        return out
+    return _s
+
+
+# --- validate ---------------------------------------------------------------
+spec("validate", "seed_kg_consensus",
+     inputs=["graphrag/output/kg_final.csv"],
+     outputs=["graphrag/output/kg_final_validated.csv"],
+     sample=_sample_csv("graphrag/output/kg_final_validated.csv"))
+
+
+# --- graphmert --------------------------------------------------------------
+spec("graphmert", "tokenize",
+     outputs=["graphmert/tokenized_inputs", "graphmert/stable_tokenizer"])
+
+spec("graphmert", "preprocess",
+     inputs=["graphrag/output/kg_final.csv"],
+     outputs=["graphmert/dataset/preprocessed_train", "graphmert/dataset/preprocessed_eval",
+              "graphmert/head_positions",
+              "graphmert/llm_relations/relations_cleaned_train",
+              "graphmert/llm_relations/relations_cleaned_eval"])
+
+spec("graphmert", "train_mnm",
+     inputs=["graphmert/dataset/preprocessed_train"],
+     outputs=["graphmert/checkpoints"])
+
+spec("graphmert", "validate_predictions",
+     outputs=["graphmert/final_kg/validated_triples.csv"],
+     sample=_sample_csv("graphmert/final_kg/validated_triples.csv"))
+
+spec("graphmert", "expand_kg",
+     inputs=["graphmert/final_kg/validated_triples.csv"],
+     outputs=["graphmert/final_kg/final_relationships.parquet"])
+# predict_tails / predict_tails_gm: generic localizer + quality probe (outputs vary).
+
+
+# --- curriculum -------------------------------------------------------------
+def _sample_qa(ob: Path, n: int) -> list[str]:
+    p = ob / "curriculum_verified" / "curriculum_verified.json"
+    if not p.exists():
+        return []
+    try:
+        data = json.loads(p.read_text())
+    except Exception:
+        return []
+    if not isinstance(data, list):
+        return []
+    out = []
+    for item in data[:n]:
+        if isinstance(item, dict):
+            q = (item.get("question") or item.get("Question")
+                 or item.get("mcq") or item.get("prompt") or "")
+        else:
+            q = str(item)
+        q = " ".join(str(q).split())
+        out.append((q[:100] + "…") if len(q) > 100 else q)
+    return out
+
+
+spec("curriculum", "path_traversal",
+     outputs=["curriculum/kg_manifest.json"])
+
+spec("curriculum", "generate_qa_pair",
+     inputs=["curriculum/kg_manifest.json"],
+     outputs=["curriculum/curriculum.jsonl", "curriculum/curriculum_stats.json"])
+
+spec("curriculum", "assemble_curriculum",
+     inputs=["curriculum/curriculum.jsonl"],
+     outputs=["curriculum_verified/curriculum_verified.json"],
+     sample=_sample_qa)
+# validate_qa_pair / generate_qa_item / validate_qa_item: quality probes (yields
+# from curriculum_stats.json) + generic localizer; they mutate the shared jsonl.
+
+
+# --- sft --------------------------------------------------------------------
+spec("sft", "prepare_data",
+     inputs=["curriculum_verified/curriculum_verified.json"],
+     outputs=["sft_dataset"])
+
+spec("sft", "train_lora",
+     inputs=["sft_dataset"],
+     outputs=["sft_checkpoints/checkpoint-*"])
+
+spec("sft", "merge_lora",
+     inputs=["sft_checkpoints/checkpoint-*"],
+     outputs=["sft_checkpoints/checkpoint-*/merged_final_model"])
+# eval_sft: no-op step (operator runs eval_models.py separately) → generic.
+
+
+# --- rl ---------------------------------------------------------------------
+spec("rl", "train_grpo",
+     inputs=["sft_checkpoints/checkpoint-*/merged_final_model"],
+     outputs=["rl_checkpoints/checkpoint-*"])
+
+spec("rl", "merge_rl",
+     inputs=["rl_checkpoints/checkpoint-*"],
+     outputs=["rl_checkpoints/checkpoint-*/merged_final_model"])
+# setup_reward / eval_rl: generic localizer (data_prep output path varies; eval is no-op).

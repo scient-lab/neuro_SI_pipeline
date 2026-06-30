@@ -39,11 +39,14 @@
 #   ./scripts/diagnose.sh --phase curriculum                    # live generate_qa status
 #   watch -n 10 ./scripts/diagnose.sh --phase curriculum        # live polling
 #   ./scripts/diagnose.sh --run <prefix>                        # specific historical run
-#   ./scripts/diagnose.sh --quiet                               # VERDICT + failures only
+#   ./scripts/diagnose.sh                                       # DEFAULT: standardized view (all
+#                                                               #   phases; status + exception(file:line) + I/O contract)
+#   ./scripts/diagnose.sh --phase graphmert --json              # standardized, machine-readable
+#   ./scripts/diagnose.sh --legacy                              # old §-section view
+#   ./scripts/diagnose.sh --legacy --deep --phase extract       # deep introspection (legacy-only;
+#                                                               #   --deep implies --legacy)
+#   ./scripts/diagnose.sh --quiet                               # (legacy) VERDICT + failures only
 #   ./scripts/diagnose.sh --tee <file>                          # also write to file
-#   ./scripts/diagnose.sh --std                                 # standardized view (all phases;
-#                                                               #   status + exception(file:line) + I/O contract)
-#   ./scripts/diagnose.sh --std --phase graphmert --json        # standardized, machine-readable
 #   ./scripts/diagnose.sh --help
 
 set -euo pipefail
@@ -89,7 +92,7 @@ TEE_FILE=""
 DEEP=0
 PHASE_FILTER=""
 STEP_FILTER=""
-STD=0
+LEGACY=0
 JSON_MODE=0
 
 usage() { sed -n '2,/^$/p' "${BASH_SOURCE[0]}" | sed 's/^# \?//'; }
@@ -101,9 +104,9 @@ while [[ $# -gt 0 ]]; do
         --step)   STEP_FILTER="$2"; shift 2 ;;
         --quiet)  QUIET=1; shift ;;
         --tee)    TEE_FILE="$2"; shift 2 ;;
-        --deep)   DEEP=1; shift ;;
-        --std)    STD=1; shift ;;     # standardized view (scripts/lib/checks_view.py)
-        --json)   JSON_MODE=1; shift ;;  # only with --std
+        --deep)   DEEP=1; LEGACY=1; shift ;;   # deep introspection is legacy-only
+        --legacy) LEGACY=1; shift ;;           # old §-section view (default is standardized)
+        --json)   JSON_MODE=1; shift ;;        # standardized view only
         --help|-h) usage; exit 0 ;;
         *) echo "unknown arg: $1" >&2; usage >&2; exit 1 ;;
     esac
@@ -132,12 +135,12 @@ if [[ -n "$TEE_FILE" ]]; then
     exec > >(tee -a "$TEE_FILE") 2>&1
 fi
 
-# --- standardized view (--std): dispatch to the shared checks engine --------
-# Opt-in for now: renders scripts/lib/checks_view.py (HEALTH lens — status +
-# exception(file:line) + I/O-contract state). The legacy §-sections below stay
-# the default until all phases are ported. See
+# --- DEFAULT view: dispatch to the shared checks engine ---------------------
+# The standardized HEALTH lens (status + exception(file:line) + I/O-contract
+# state) is the default for ALL phases. Pass --legacy (or --deep, which needs
+# it) for the old §-sections below. See
 # docs/DIAGNOSE_ANALYSIS_STANDARDIZATION_PLAN_2026-06-29.md.
-if [[ "$STD" -eq 1 ]]; then
+if [[ "$LEGACY" -eq 0 ]]; then
     sv=( "$PY" "$SCRIPT_DIR/lib/checks_view.py" --lens health --output-base "$OUTPUT_BASE" )
     [[ -n "$PHASE_FILTER" ]] && sv+=( --phase "$PHASE_FILTER" )
     [[ -n "$STEP_FILTER" ]]  && sv+=( --step "$STEP_FILTER" )
@@ -219,12 +222,20 @@ echo "Generated  : $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
 if should_run extract; then
 section "1. Corpus"
 CORPUS_RESOLVED="${CORPUS_PATH:-}"
+# Expand {SI_DOMAIN}/{SI_PROFILE} tokens (diagnose may run standalone, before
+# pipeline.sh's central expansion). Mirrors lib/common.sh::expand_path_tokens.
+CORPUS_RESOLVED="${CORPUS_RESOLVED//\{SI_DOMAIN\}/${SI_DOMAIN:-}}"
+CORPUS_RESOLVED="${CORPUS_RESOLVED//\{SI_PROFILE\}/${SI_PROFILE:-}}"
 if [[ -z "$CORPUS_RESOLVED" ]]; then
     mark_warn "CORPUS_PATH not set in .env — skipping corpus size check"
 else
-    # CORPUS_PATH is RELATIVE to REPO_ROOT in our symmetric s3-mirror model.
-    # It can point to either a directory OR a single file — handle both.
-    CORPUS_TGT="$REPO_ROOT/$CORPUS_RESOLVED"
+    # Absolute CORPUS_PATH is used as-is; relative is anchored at REPO_ROOT
+    # (symmetric s3-mirror model). Either may be a directory OR a single file.
+    if [[ "$CORPUS_RESOLVED" == /* ]]; then
+        CORPUS_TGT="${CORPUS_RESOLVED%/}"
+    else
+        CORPUS_TGT="$REPO_ROOT/$CORPUS_RESOLVED"
+    fi
     if [[ -f "$CORPUS_TGT" ]]; then
         # Single-file corpus (e.g. one textbook).
         BYTES=$(stat -c%s "$CORPUS_TGT" 2>/dev/null || stat -f%z "$CORPUS_TGT")

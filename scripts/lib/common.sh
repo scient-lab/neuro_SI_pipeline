@@ -108,6 +108,48 @@ resolve_output_base() {
     fi
 }
 
+# expand_path_tokens <path> <domain> <profile>
+# Expand {SI_DOMAIN} / {SI_PROFILE} template tokens in a path against the
+# EFFECTIVE resolved domain/profile — so e.g. CORPUS_PATH=corpus/{SI_DOMAIN}/smoke
+# follows a --domain CLI override, not the .env-time value. Idempotent: a
+# token-free path is returned unchanged, so it's safe to call more than once
+# (pipeline.sh centrally + a phase script defensively when run standalone). Fails
+# LOUD (non-zero + log) when a token is present but its value is empty, instead
+# of silently emitting a `corpus//smoke` path. Echoes the expanded path.
+expand_path_tokens() {
+    local p="$1" domain="${2:-}" profile="${3:-}"
+    if [[ "$p" == *'{SI_DOMAIN}'* ]]; then
+        if [[ -z "$domain" ]]; then
+            log_error "expand_path_tokens: '$p' contains {SI_DOMAIN} but the domain is empty"
+            return 1
+        fi
+        p="${p//\{SI_DOMAIN\}/$domain}"
+    fi
+    if [[ "$p" == *'{SI_PROFILE}'* ]]; then
+        if [[ -z "$profile" ]]; then
+            log_error "expand_path_tokens: '$p' contains {SI_PROFILE} but the profile is empty"
+            return 1
+        fi
+        p="${p//\{SI_PROFILE\}/$profile}"
+    fi
+    printf '%s' "$p"
+}
+
+# corpus_abs_path <corpus_path> [repo_root]
+# Resolve a corpus path to an absolute filesystem path. An ABSOLUTE input (leading
+# /) is a local mount / external dir and is used AS-IS; a RELATIVE input is
+# anchored at REPO_ROOT — the symmetric S3-mirror model where
+# ${REPO_ROOT}/${CORPUS_PATH} mirrors ${S3_URI}/${CORPUS_PATH}. Trailing slash is
+# trimmed. Echoes the absolute path.
+corpus_abs_path() {
+    local p="$1" root="${2:-${REPO_ROOT:-$(pwd)}}"
+    if [[ "$p" == /* ]]; then
+        printf '%s' "${p%/}"
+    else
+        printf '%s' "${root%/}/${p%/}"
+    fi
+}
+
 # require_python_step <step_name> <description>
 # Helper that runs a python command inside a (...) subshell so a step failure
 # doesn't kill the whole phase. Logs the outcome. Use like:

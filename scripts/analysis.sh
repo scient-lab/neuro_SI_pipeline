@@ -28,10 +28,12 @@
 #   ./scripts/analysis.sh --json                            # machine output
 #   ./scripts/analysis.sh --top 20                          # top-K relations/heads
 #   ./scripts/analysis.sh --quiet                           # WARN/FAIL only
+#   ./scripts/analysis.sh                                   # DEFAULT: standardized view (all phases)
+#   ./scripts/analysis.sh --phase extract --sample          # standardized + seed-KG preview
 #   ./scripts/analysis.sh --run <prefix>                    # historical run
 #   ./scripts/analysis.sh --tee report.md                   # also write to file
-#   ./scripts/analysis.sh --std                             # standardized view (all phases)
-#   ./scripts/analysis.sh --std --phase extract --sample    # standardized + seed-KG preview
+#   ./scripts/analysis.sh --legacy                          # old per-phase analyzers (rich metrics)
+#   ./scripts/analysis.sh --legacy --phase extract --csv f  # legacy + CSV override (implies --legacy)
 #
 # Exit: 0 clean, 1 on FAILs, 2 on WARN-only (composable with CI).
 
@@ -48,20 +50,20 @@ JSON_MODE=0
 QUIET=0
 RUN_PREFIX=""
 TEE_FILE=""
-STD=0
+LEGACY=0
 SAMPLE=""
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --phase)   PHASE_FILTER="$2"; shift 2 ;;
         --step)    STEP_FILTER="$2"; shift 2 ;;
-        --csv)     CSV_OVERRIDE="$2"; shift 2 ;;
+        --csv)     CSV_OVERRIDE="$2"; LEGACY=1; shift 2 ;;   # CSV override is legacy-only
         --top)     TOP_K="$2"; shift 2 ;;
         --json)    JSON_MODE=1; shift ;;
         --quiet)   QUIET=1; shift ;;
         --run)     RUN_PREFIX="$2"; shift 2 ;;
         --tee)     TEE_FILE="$2"; shift 2 ;;
-        --std)     STD=1; shift ;;     # standardized view (scripts/lib/checks_view.py)
+        --legacy)  LEGACY=1; shift ;;   # old per-phase analyzers (default is standardized)
         --sample)  if [[ "${2:-}" =~ ^[0-9]+$ ]]; then SAMPLE="$2"; shift 2; else SAMPLE=5; shift; fi ;;
         -h|--help) sed -n '/^#/p' "$0" | sed 's/^# \?//'; exit 0 ;;
         *)         echo "unknown arg: $1" >&2; exit 1 ;;
@@ -84,11 +86,12 @@ done
 LIB_DIR="$SCRIPT_DIR/lib"
 EXIT_CODE=0
 
-# --- standardized view (--std): dispatch to the shared checks engine --------
-# Opt-in: scripts/lib/checks_view.py (QUALITY lens — graded probe + --sample
-# preview). The legacy per-phase analyzers stay default until all phases port.
-# See docs/DIAGNOSE_ANALYSIS_STANDARDIZATION_PLAN_2026-06-29.md.
-if [[ "$STD" -eq 1 ]]; then
+# --- DEFAULT view: dispatch to the shared checks engine ---------------------
+# The standardized QUALITY lens (graded probe + --sample preview) is the
+# default for ALL phases. Pass --legacy for the old per-phase analyzers (richer
+# diversity/balance/curve metrics, --csv/--top). See
+# docs/DIAGNOSE_ANALYSIS_STANDARDIZATION_PLAN_2026-06-29.md.
+if [[ "$LEGACY" -eq 0 ]]; then
     sv=( "$PY" "$LIB_DIR/checks_view.py" --lens quality \
          --output-base "${OUTPUT_BASE:-$REPO_ROOT/outputs}" )
     [[ -n "$PHASE_FILTER" ]] && sv+=( --phase "$PHASE_FILTER" )

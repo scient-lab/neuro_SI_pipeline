@@ -212,6 +212,18 @@ if [[ -n "$PROFILE" ]]; then
     [[ -f "$profile_file" ]] || { log_error "Missing profile file: $profile_file"; exit 2; }
 fi
 
+# Expand {SI_DOMAIN} / {SI_PROFILE} template tokens in CORPUS_PATH against the
+# EFFECTIVE resolved domain/profile (honors a --domain override, not the
+# .env-time value). Done HERE, once, BEFORE preflight + manifest init + every
+# phase, so all downstream consumers (extract, preflight, diagnose, sync_corpus,
+# the config ledger, the pod .env writer) see the SAME expanded path. Token-free
+# and absolute paths pass through unchanged. Export so children inherit it.
+if [[ -n "${CORPUS_PATH:-}" ]]; then
+    CORPUS_PATH="$(expand_path_tokens "$CORPUS_PATH" "$DOMAIN" "$PROFILE")" \
+        || { log_error "CORPUS_PATH token expansion failed — fix CORPUS_PATH or pass --domain"; exit 1; }
+    export CORPUS_PATH
+fi
+
 # Resolve phase list
 if [[ "$PHASES" == "all" ]]; then
     selected_phases=("${ALL_PHASES[@]}")

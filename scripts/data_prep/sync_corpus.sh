@@ -30,6 +30,14 @@ done
 
 : "${S3_URI:?S3_URI must be set (e.g. s3://enlibra/dss)}"
 : "${CORPUS_PATH:?CORPUS_PATH must be set (e.g. corpus/neuroscience/source_txt)}"
+# CORPUS_PATH here names a prefix SHARED by S3 and the repo
+# (${S3_URI}/${CORPUS_PATH} ↔ ${REPO_ROOT}/${CORPUS_PATH}), so it must be
+# relative. An absolute path is a local-only mount that has no S3 counterpart —
+# fail loud rather than silently mirror it to a bogus s3://.../mnt/... key.
+if [[ "$CORPUS_PATH" == /* ]]; then
+    echo "sync_corpus: CORPUS_PATH must be RELATIVE (got absolute '$CORPUS_PATH'); absolute paths are local-only and can't be S3-synced." >&2
+    exit 1
+fi
 command -v aws >/dev/null 2>&1 || { echo "aws CLI not found"; exit 1; }
 
 PROFILE_FLAG=""

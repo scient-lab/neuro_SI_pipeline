@@ -93,12 +93,16 @@ fi
 if runs extract; then
     echo "  [data]"
     corpus="${CORPUS_PATH:-corpus/$DOMAIN/source_txt}"
-    if [[ -e "$REPO_ROOT/$corpus" ]]; then
+    # Tokens are normally pre-expanded by pipeline.sh; expand defensively for a
+    # standalone preflight run (fall back to the raw value if a token is unfilled).
+    corpus="$(expand_path_tokens "$corpus" "$DOMAIN" "${SI_PROFILE:-}" 2>/dev/null || printf '%s' "$corpus")"
+    corpus_abs="$(corpus_abs_path "$corpus" "$REPO_ROOT")"
+    if [[ -e "$corpus_abs" ]]; then
         ok "corpus present: $corpus"
-    elif [[ -n "${S3_URI:-}" ]]; then
+    elif [[ -n "${S3_URI:-}" && "$corpus" != /* ]]; then
         ok "corpus via S3: $S3_URI/$corpus (extract pulls if local is empty)"
     else
-        fail "no corpus: $REPO_ROOT/$corpus missing and S3_URI unset"
+        fail "no corpus: $corpus_abs missing${S3_URI:+; S3 fallback only applies to relative paths}"
     fi
 fi
 

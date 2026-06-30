@@ -47,26 +47,39 @@ GRAPHRAG_DIR="$OUTPUT_BASE/graphrag"
 # Functions workflow) the caller knows where the corpus is mounted / staged in
 # S3 and MUST set CORPUS_PATH. Fail fast and loud if it's missing rather than
 # silently reading the wrong or empty corpus.
-#   local:  ${REPO_ROOT}/${CORPUS_PATH}     cloud:  ${S3_URI}/${CORPUS_PATH}
-# CORPUS_PATH may be a directory of .txt files OR a single .txt file.
+#   relative: ${REPO_ROOT}/${CORPUS_PATH}   cloud: ${S3_URI}/${CORPUS_PATH}
+#   absolute: ${CORPUS_PATH} used as-is (a local mount / external dir, local-only)
+# CORPUS_PATH may be a directory of .txt files OR a single .txt file, and may use
+# {SI_DOMAIN} / {SI_PROFILE} tokens (expanded at runtime against the effective
+# domain/profile — e.g. corpus/{SI_DOMAIN}/smoke).
 # REPO_ROOT is exported by pipeline.sh; on the pod it equals SI_HOME.
 if [[ -z "${CORPUS_PATH:-}" ]]; then
     log_error "CORPUS_PATH is not set — it is REQUIRED (no input_dir, no default)."
     log_error "  point it at the corpus dir or .txt file, e.g.:"
     log_error "    local smoke : CORPUS_PATH=corpus/${SI_DOMAIN:-<domain>}/smoke"
-    log_error "    pilot/paper : CORPUS_PATH=corpus/${SI_DOMAIN:-<domain>}/source_txt"
+    log_error "    domain-tmpl : CORPUS_PATH=corpus/{SI_DOMAIN}/smoke   (expanded at runtime)"
+    log_error "    absolute    : CORPUS_PATH=/mnt/data/my_corpus        (local mount, used as-is)"
     log_error "    orchestrated: CORPUS_PATH=<mounted dir or S3 prefix under \$S3_URI>"
     exit 1
 fi
+
+# Defensive: if invoked standalone (not via pipeline.sh) the {SI_DOMAIN}/
+# {SI_PROFILE} tokens won't have been expanded yet. Idempotent — a no-op once
+# pipeline.sh has already expanded (no tokens remain).
+CORPUS_PATH="$(expand_path_tokens "$CORPUS_PATH" "${SI_DOMAIN:-}" "${SI_PROFILE:-}")" \
+    || { log_error "CORPUS_PATH token expansion failed"; exit 1; }
 INPUT_DIR_REPO="$CORPUS_PATH"
 
-ABS_INPUT="$REPO_ROOT/$INPUT_DIR_REPO"
-ABS_INPUT="${ABS_INPUT%/}"
+# Absolute CORPUS_PATH (leading /) is used as-is; relative is anchored at
+# REPO_ROOT (S3-mirror model). corpus_abs_path trims the trailing slash.
+ABS_INPUT="$(corpus_abs_path "$INPUT_DIR_REPO" "$REPO_ROOT")"
 
 # Auto-pull from S3 when local is missing/empty AND we have both env vars
 # set. Skip auto-pull for committed fixtures (paths containing /smoke/).
 need_pull=0
-if [[ "$INPUT_DIR_REPO" == *"/smoke/"* || "$INPUT_DIR_REPO" == *"/smoke" ]]; then
+if [[ "$INPUT_DIR_REPO" == /* ]]; then
+    : # absolute = local mount / external dir; not an S3-relative prefix, never pull
+elif [[ "$INPUT_DIR_REPO" == *"/smoke/"* || "$INPUT_DIR_REPO" == *"/smoke" ]]; then
     : # committed fixture, never pull
 elif [[ -n "${S3_URI:-}" ]]; then
     if [[ "$ABS_INPUT" == *.txt ]]; then
