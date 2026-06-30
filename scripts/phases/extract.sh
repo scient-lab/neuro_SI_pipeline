@@ -134,8 +134,9 @@ if [[ ! -f "$GRAPHRAG_DIR/settings.yaml" ]]; then
     log_info "Staged settings.yaml at $GRAPHRAG_DIR/settings.yaml"
 fi
 
-# Model for step 3 (LLM extraction). vllm-loadable path (HF id or local).
-MODEL_ID=$(get_model_id extract "")
+# models.extract (the LLM-extraction model) is resolved INSIDE step_extract_triples — where
+# run_step has set SI_PHASE/SI_STEP — so pipeline_config records it to the per-step config
+# ledger that config.sh --models reads (a top-level resolve here would go unrecorded).
 
 # Helper that runs a graphrag step.
 graphrag_step() {
@@ -159,6 +160,8 @@ step_chunk() {
 step_extract_triples() {
     log_info "extract :: extract_triples (graphrag step 2 + step 3)"
     graphrag_step 2 || { log_error "extract.extract_triples step 2 failed"; return 1; }
+    local MODEL_ID
+    MODEL_ID=$(get_model_id extract "")
     if [[ -z "$MODEL_ID" ]]; then
         log_error "extract.extract_triples step 3 needs models.extract in configs/default.yaml or domain override"
         return 1

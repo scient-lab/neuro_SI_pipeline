@@ -43,8 +43,9 @@ GRAPHMERT_DIR="$OUTPUT_BASE/graphmert"
 CURRICULUM_DIR="$OUTPUT_BASE/curriculum"
 mkdir -p "$CURRICULUM_DIR"
 
-CHECK_A=$(get_model_id curriculum_check_a "")
-CHECK_B=$(get_model_id curriculum_check_b "")
+# curriculum_check_a/b (the 2-LLM consensus graders) are resolved INSIDE step_validate_qa_item —
+# where SI_PHASE/SI_STEP are set — so pipeline_config records them to the per-step config ledger
+# that config.sh --models reads (a top-level resolve here would go unrecorded).
 
 # generate_curriculum.py needs Gemini API access. The Gemini SDK reads
 # GOOGLE_API_KEY from env, but operators typically set GEMINI_API_KEY in
@@ -148,6 +149,9 @@ step_generate_qa_item() {
 
 step_validate_qa_item() {
     log_info "curriculum :: validate_qa_item (verify_questions.py — 2 non-Gemini consensus)"
+    local CHECK_A CHECK_B
+    CHECK_A=$(get_model_id curriculum_check_a "")
+    CHECK_B=$(get_model_id curriculum_check_b "")
     if [[ -z "$CHECK_A" || -z "$CHECK_B" ]]; then
         log_error "validate_qa_item needs models.curriculum_check_a and curriculum_check_b"
         return 1
