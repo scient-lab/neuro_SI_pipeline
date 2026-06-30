@@ -272,13 +272,23 @@ class GraphMertGraphNodeFeature(nn.Module):
                                 node_feature[tail_start[0], tail_start[1] + tail_idx + self.root_nodes] += final_embed
 
                 except Exception as e:
-                    logger.error(
-                        f'ERROR: Error in GraphMertGraphNodeFeature: {e}'
-                        f'rel_idx: {rel_idx}'
-                        f'rel_idx.size: {rel_idx.size}'
-                        f'leaf_idx: {torch.nonzero(input_nodes[:, self.root_nodes:, :][..., 0] != self.pad_token_id)}'
-                        f'you may ignore it if this is a rare error'
-                    )
+                    # Log SHAPES and repr(e) only — never interpolate live CUDA
+                    # tensor *contents* (f'{rel_idx}') or launch new CUDA ops
+                    # (torch.nonzero, tensor repr/reshape). If the original error is
+                    # a device-side assert it poisons the CUDA context, so any such
+                    # op re-raises and MASKS the real cause — which is exactly how
+                    # this handler used to hide the error it was meant to report.
+                    # tensor.shape is cached CPU metadata, safe on a poisoned context.
+                    # The inner guard ensures a logging failure can never crash train.
+                    try:
+                        logger.error(
+                            'Error in GraphMertGraphNodeFeature: %r | '
+                            'rel_idx.shape=%s input_nodes.shape=%s '
+                            '(you may ignore if this is a rare, non-CUDA error)',
+                            e, tuple(rel_idx.shape), tuple(input_nodes.shape))
+                    except Exception:  # noqa: BLE001 — diagnostics must never raise
+                        logger.error('Error in GraphMertGraphNodeFeature: %r '
+                                     '(secondary error while logging)', e)
         
         graph_token_feature = self.graph_token.weight.unsqueeze(0).repeat(n_graph, 1, 1)
         graph_node_feature = torch.cat([graph_token_feature, node_feature], dim=1)

@@ -68,6 +68,13 @@ preprocessing_num_workers: 0
 overwrite_cache: true
 
 # ===================== GRAPHMERT SETTINGS =====================
+# num_relationships sizes the relation embeddings. It is AUTO-DERIVED at train
+# time from relation_map.json (the domain's actual relation set) — see
+# mlm_utils.resolve_num_relationships. This value is only a FLOOR: the derived
+# size wins when larger (e.g. space has 67 relations), and a value smaller than
+# the KG is corrected (with a warning) so it can never overflow the embedding
+# (which would crash with a CUDA device-side assert at train step 0). Leave as a
+# safe lower bound; do NOT rely on it to match a specific domain.
 num_relationships: 43
 graph_types:
   - root_undirected

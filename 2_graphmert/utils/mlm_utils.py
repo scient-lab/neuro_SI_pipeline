@@ -10,6 +10,7 @@ The stable tokenizer path must be set in args_mlm.yaml under `tokenizer_name`.
 import os
 import sys
 import math
+import json
 import shutil
 import logging
 import random
@@ -155,6 +156,48 @@ class GraphMertTailSlotDataCollator:
         }
 
 
+def resolve_num_relationships(num_relationships_cfg, relation_map_path):
+    """Size the relation embeddings to cover every relation id the dataset uses.
+
+    The relation embeddings (relation_encoder / relation_matrix_encoder =
+    nn.Embedding(num_relationships + 1, ...)) are indexed by relation ids that
+    come from relation_map.json — build_relation_map maps the domain's relations
+    to ids 1..N. The embedding MUST cover the largest id there, so we DERIVE the
+    size from that map (mirroring vocab_size = len(tokenizer)) rather than trust a
+    hardcoded config value: a too-small value silently overflows the embedding and
+    triggers a CUDA device-side assert at train step 0 (e.g. the space domain has
+    67 relations vs a stale default of 43).
+
+    The configured value is only a FLOOR — an explicit larger value keeps its
+    headroom; a too-small one is corrected (with a warning), never used as-is.
+    """
+    cfg = num_relationships_cfg or 0
+    if relation_map_path and os.path.exists(relation_map_path):
+        with open(relation_map_path) as f:
+            rel_map = json.load(f)
+        # relation_map is {relation: id}; ids are 1..N, so the largest id is the
+        # required upper bound (use max(id), robust to any future numbering).
+        data_n = max((int(v) for v in rel_map.values()), default=0)
+        if cfg and cfg < data_n:
+            logger.warning(
+                "num_relationships=%d (config) < %d relations in %s; using %d to "
+                "avoid an out-of-range relation embedding (CUDA device-side assert).",
+                cfg, data_n, relation_map_path, data_n)
+        resolved = max(cfg, data_n)
+        logger.info("num_relationships=%d (derived from %s; config floor=%d)",
+                    resolved, relation_map_path, cfg)
+        return resolved
+    if cfg:
+        logger.warning(
+            "relation_map not found at %r; falling back to configured "
+            "num_relationships=%d (verify it covers the KG's relations).",
+            relation_map_path, cfg)
+        return cfg
+    raise ValueError(
+        f"num_relationships unset and relation_map not found at {relation_map_path!r}; "
+        "cannot size the relation embeddings — run dataset preprocessing first.")
+
+
 def main(yaml_file: str):
     parser = HfArgumentParser((ModelArguments, DataTrainingArguments, TrainingArguments, PreprocessingArguments))
     model_args, data_args, training_args, preprocessing_args = parser.parse_yaml_file(yaml_file, allow_extra_keys=True)
@@ -172,7 +215,8 @@ def main(yaml_file: str):
     else:
         config = CONFIG_MAPPING[model_args.model_type]()
 
-    config.num_relationships = model_args.num_relationships
+    config.num_relationships = resolve_num_relationships(
+        model_args.num_relationships, preprocessing_args.relation_map_path)
     config.graph_types = model_args.graph_types
     config.mlm_sbo = model_args.mlm_sbo
     config.relation_emb_dropout = model_args.relation_emb_dropout
