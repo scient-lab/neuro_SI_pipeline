@@ -317,6 +317,11 @@ manifest_all=$(IFS=,; echo "${ALL_PHASES[*]}")
 _pipeline_pid=$$
 _pipeline_pgid=$(ps -o pgid= -p $$ | tr -d ' ')
 
+# --resume: tell init's merge path to PRESERVE prior phase/step statuses (so
+# completed work is skipped) rather than reset the selected phases to pending.
+_resume_init_flag=()
+[[ "$RESUME" -eq 1 ]] && _resume_init_flag=(--resume)
+
 python3 "$SCRIPT_DIR/lib/manifest.py" init \
     --path "$MANIFEST" \
     --phases-dir "$SCRIPT_DIR/phases" \
@@ -333,6 +338,7 @@ python3 "$SCRIPT_DIR/lib/manifest.py" init \
     --pgid "$_pipeline_pgid" \
     --corpus-path "${CORPUS_PATH:-}" \
     --runpod-pod-id "${RUNPOD_POD_ID:-}" \
+    "${_resume_init_flag[@]}" \
     || log_warn "manifest init failed — run will proceed uninstrumented"
 
 # Mark the run failed on any unexpected exit (set -e abort, signal, etc.)

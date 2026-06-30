@@ -297,12 +297,18 @@ def cmd_init(a) -> None:
         run = existing["run"]
         prior = {p["name"]: p for p in run.get("phases", [])}
         union = set(run.get("selected_phases", [])) | set(selected)
+        resume = getattr(a, "resume", False)
         new_phases = []
         for name in phase_order:
             if name not in union:
                 continue
-            if name in selected:
-                new_phases.append(_fresh_phase(cat_by_name[name]))  # (re)run now
+            # --resume PRESERVES prior records (completed/failed/pending) so the
+            # caller can skip already-completed steps and re-run only the rest.
+            # Without --resume, a SELECTED phase is reset to fresh = forced re-run
+            # under the same RUN_ID. Either way, a newly-selected phase with no
+            # prior record starts fresh.
+            if name in selected and not resume:
+                new_phases.append(_fresh_phase(cat_by_name[name]))  # forced (re)run
             else:
                 new_phases.append(prior.get(name, _fresh_phase(cat_by_name[name])))
         run["phases"] = new_phases
@@ -637,6 +643,10 @@ def main() -> int:
     # S3-synced manifest carries the pod id for an out-of-band watchdog
     # (scripts/monitor_pipeline.sh / a Lambda) to stop the pod on failure/stall.
     p.add_argument("--runpod-pod-id", default="")
+    # --resume: on the merge path, PRESERVE prior phase/step statuses (so the
+    # caller can skip already-completed steps) instead of resetting the selected
+    # phases to pending. Without it, a re-selected phase is reset = forced re-run.
+    p.add_argument("--resume", action="store_true")
     p.set_defaults(func=cmd_init)
 
     p = sub.add_parser("start-phase")
