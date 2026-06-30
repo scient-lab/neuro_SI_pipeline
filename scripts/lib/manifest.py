@@ -532,6 +532,29 @@ def cmd_resume_info(a) -> int:
     return 0
 
 
+def cmd_status(a) -> int:
+    """Print a phase's status to stdout (or a step's, with --step): one of the
+    STATUS_ENUM values, or 'absent' if the phase/step isn't in the manifest.
+    Used by pipeline.sh / run_step for --resume skip-completed decisions. Never
+    raises (prints 'absent' on a missing/unreadable manifest) so the caller can
+    safely default to running the step."""
+    try:
+        data = _load(a.path)
+    except Exception:
+        print("absent")
+        return 0
+    p = _find((data.get("run") or {}).get("phases", []) or [], a.phase)
+    if not p:
+        print("absent")
+        return 0
+    if a.step:
+        s = _find(p.get("steps", []) or [], a.step)
+        print(s.get("status", "absent") if s else "absent")
+    else:
+        print(p.get("status", "absent"))
+    return 0
+
+
 def cmd_finalize(a) -> None:
     def fn(d):
         d["run"]["status"] = a.status
@@ -669,6 +692,12 @@ def main() -> int:
     p.add_argument("--profile", default="")
     p.add_argument("--domain", default="")
     p.set_defaults(func=cmd_resume_info)
+
+    p = sub.add_parser("status", help="print a phase/step status (for --resume)")
+    p.add_argument("--path", required=True)
+    p.add_argument("--phase", required=True)
+    p.add_argument("--step", default="")
+    p.set_defaults(func=cmd_status)
 
     p = sub.add_parser("finalize")
     p.add_argument("--path", required=True)

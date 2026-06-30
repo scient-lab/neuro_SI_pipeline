@@ -94,18 +94,23 @@ Options:
   --final     Force the run's terminal status to "completed" (+ _SUCCESS) at
               the end of this invocation, even if the last canonical phase
               (rl) wasn't selected. Use to close out a partial pipeline.
-  --resume    Adopt the RUN_ID from the existing outputs/run_manifest.json
-              instead of starting a fresh run — no need to hand-copy the id.
-              Refuses (with a clear reason) if the run already completed or its
-              profile/domain doesn't match what you passed. An explicit
-              RUN_ID in the env still wins (force).
+  --resume    Continue the existing run in outputs/run_manifest.json: adopt its
+              RUN_ID and SKIP phases/steps already 'completed', re-running only
+              failed / pending / interrupted ones (resume from where it stopped).
+              So bare --resume continues the whole pipeline; --resume --phase X
+              continues within X. To force a completed step to re-run, drop
+              --resume (export RUN_ID + --phase) instead. Refuses (with a clear
+              reason) if the run already completed or its profile/domain doesn't
+              match what you passed. An explicit RUN_ID in the env still wins.
 
 Run identity:
   RUN_ID is generated per invocation (<utc>-<profile>-<sha>); each run is FRESH
   by default. To continue a previous run (shared manifest / logs dir / S3
   prefix), either pass --resume (auto-reads the manifest's RUN_ID) or export
   RUN_ID explicitly:
-    # easiest — resume the run sitting in outputs/ (e.g. after a phase failed):
+    # easiest — resume the run in outputs/ from where it failed (skips completed):
+    ./scripts/pipeline.sh --profile smoke --resume
+    # or scope the resume to specific phases:
     ./scripts/pipeline.sh --profile smoke --resume --phase sft,rl
     # or pin it by hand across separate invocations:
     export RUN_ID=$(date -u +%Y%m%d-%H%M%S)-pilot-$(git rev-parse --short HEAD)
@@ -362,6 +367,8 @@ export REPO_ROOT OUTPUT_BASE RUN_ID
 # Consumed by lib/common.sh::run_step for per-step manifest updates + logging.
 export PIPELINE_MANIFEST="$MANIFEST"
 export PIPELINE_LOG_DIR="$LOG_DIR"
+# --resume: run_step consults this to skip steps already 'completed' in the manifest.
+export PIPELINE_RESUME="$RESUME"
 
 # shellcheck source=platforms/local.sh
 source "$platform_script"
@@ -411,6 +418,19 @@ _start_background_sync
 
 for phase in "${selected_phases[@]}"; do
     phase_script="$SCRIPT_DIR/phases/${phase}.sh"
+
+    # --resume: skip phases already fully 'completed' (don't re-stamp or re-run,
+    # preserving their original timestamps). Partially-completed and failed phases
+    # still run; their finished steps are skipped at the step level (run_step).
+    if [[ "$RESUME" -eq 1 ]]; then
+        _phase_st=$(python3 "$SCRIPT_DIR/lib/manifest.py" status \
+            --path "$MANIFEST" --phase "$phase" 2>/dev/null || echo "")
+        if [[ "$_phase_st" == "completed" ]]; then
+            log_info "── Phase: $phase (skipped — already completed, --resume) ──"
+            continue
+        fi
+    fi
+
     log_file="$LOG_DIR/${phase}.log"
     rel_log="${log_file#"$REPO_ROOT"/}"
     log_info "── Phase: $phase  (log: ${rel_log}) ─────────────"

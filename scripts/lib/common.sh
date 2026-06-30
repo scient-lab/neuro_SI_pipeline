@@ -233,6 +233,19 @@ run_step() {
         return 0
     fi
 
+    # --resume: skip steps already 'completed' in this run's manifest, leaving
+    # their status/timestamps intact (we return BEFORE re-stamping). failed,
+    # pending, running (interrupted) and skipped steps fall through and run.
+    if [[ "${PIPELINE_RESUME:-0}" == "1" && -n "${PIPELINE_MANIFEST:-}" ]]; then
+        local _resume_st
+        _resume_st=$(python3 "${REPO_ROOT}/scripts/lib/manifest.py" status \
+            --path "$PIPELINE_MANIFEST" --phase "$phase" --step "$step" 2>/dev/null || echo "")
+        if [[ "$_resume_st" == "completed" ]]; then
+            log_info "$phase :: $step (skipped — already completed, --resume)"
+            return 0
+        fi
+    fi
+
     local logdir="${PIPELINE_LOG_DIR:-$(resolve_output_base)/logs/adhoc}/${phase}"
     mkdir -p "$logdir"
     local logfile="$logdir/${step}.log"
