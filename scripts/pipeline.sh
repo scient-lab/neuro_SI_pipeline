@@ -60,7 +60,9 @@ fi
 wandb_autodisable
 
 # --- Defaults ---------------------------------------------------------------
-DOMAIN="neuroscience"
+# SI_DOMAIN (from the auto-sourced .env above) seeds the default so a pod / .env can
+# select the domain without an explicit --domain flag; --domain still overrides.
+DOMAIN="${SI_DOMAIN:-neuroscience}"
 PROFILE=""
 PLATFORM="local"
 PHASES="all"

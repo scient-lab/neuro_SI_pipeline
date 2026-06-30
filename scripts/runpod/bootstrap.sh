@@ -201,6 +201,9 @@ fi
 echo "=== write $SI_HOME/.env ==="
 ENV_FILE="$SI_HOME/.env"
 {
+    # SI_DOMAIN: pipeline.sh seeds DOMAIN from ${SI_DOMAIN:-neuroscience}, so persisting it
+    # here makes the pod run the right domain with no explicit --domain flag.
+    [[ -n "${SI_DOMAIN:-}"      ]] && echo "SI_DOMAIN=$SI_DOMAIN"
     [[ -n "${GEMINI_API_KEY:-}" ]] && echo "GEMINI_API_KEY=$GEMINI_API_KEY"
     [[ -n "${OPENAI_API_KEY:-}" ]] && echo "OPENAI_API_KEY=$OPENAI_API_KEY"
     [[ -n "${HF_TOKEN:-}"       ]] && echo "HF_TOKEN=$HF_TOKEN"
