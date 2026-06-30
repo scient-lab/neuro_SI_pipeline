@@ -9,7 +9,7 @@
 # Flags:
 #   --steps      / -s    Nested step rows under each phase
 #   --live       / -l    Auto-refresh every --interval seconds (default 5)
-#   --resources  / -r    Add CPU/RAM/GPU/VRAM gauges
+#   --resources  / -r    Add CPU/RAM/GPU/VRAM/DISK gauges + network I/O (RX/TX)
 #   --interval N         Live refresh rate (seconds; min 1)
 #   --run <prefix>       Specific historical run (default: latest)
 #   --no-color           Disable ANSI colors
@@ -19,7 +19,7 @@
 #   ./scripts/stats.sh --steps                      # nested step rows under each phase
 #   ./scripts/stats.sh --live                       # refresh every 5s
 #   ./scripts/stats.sh --live --interval 2          # custom refresh
-#   ./scripts/stats.sh --live --resources           # add CPU/RAM/GPU/VRAM gauges
+#   ./scripts/stats.sh --live --resources           # add CPU/RAM/GPU/VRAM/DISK + network gauges
 #   ./scripts/stats.sh --steps --live --resources   # all-in-one operator view
 #   ./scripts/stats.sh -s -l -r                     # same, short-form
 #   ./scripts/stats.sh --run <prefix>               # historical run
@@ -144,7 +144,7 @@ TABLE_W=105
 BAR_W=50         # was 20 — wider gauge gives finer visual resolution
 HIST_W=80        # last 80 samples per metric in --live mode (~6.5 min at 5s refresh)
 SPARK_CHARS=$(( HIST_W / 2 ))   # braille packs 2 samples per char → 40 chars wide
-declare -a HIST_cpu HIST_ram HIST_gpu HIST_vram HIST_disk
+declare -a HIST_cpu HIST_ram HIST_gpu HIST_vram HIST_disk HIST_netrx HIST_nettx
 
 # Disk usage changes slowly and `df` is comparatively expensive — sample at
 # 1/DISK_INTERVAL_MULT the rate of other metrics. With --interval=5s and
@@ -152,6 +152,21 @@ declare -a HIST_cpu HIST_ram HIST_gpu HIST_vram HIST_disk
 DISK_INTERVAL_MULT=10
 declare -i DISK_TICK=0
 DISK_CACHED=""
+
+# Network throughput state. Rates are the delta of the cumulative
+# /proc/net/dev byte counters between frames (zero added latency in --live;
+# a one-off 0.25s self-sample on the first/one-shot frame, like sample_cpu_pct).
+# The sparkline + the (hidden) percent scale against NET_MAX_MBPS so the gauge
+# is link-agnostic; the right-hand value always shows the TRUE rate. Override
+# NET_MAX_MBPS for faster pod uplinks (e.g. 1250 for ~10 Gbit/s).
+NET_MAX_MBPS="${NET_MAX_MBPS:-125}"   # gauge ceiling only (125 MB/s ≈ 1 Gbit/s)
+NET_PREV_RX=-1
+NET_PREV_TX=-1
+NET_PREV_T=""
+NET_PEAK_RX=0
+NET_PEAK_TX=0
+NET_SESS_RX=0   # cumulative bytes this session (running sum of per-frame deltas)
+NET_SESS_TX=0
 
 # push_hist <buffer-name> <value>
 push_hist() {
@@ -240,7 +255,7 @@ sys.stdout.write(s + ' ' * max(0, w - len(s)))" "$str" "$w"
 }
 
 render_metric() {
-    local label=$1 pct=$2 hist_key=${3:-} detail=${4:-}
+    local label=$1 pct=$2 hist_key=${3:-} detail=${4:-} right=${5:-}
     # Track current column position so we can size the detail field to
     # right-align PCT at TABLE_W regardless of whether sparkline is shown.
     local prefix_w=$(( 2 + 8 + 1 ))   # "  LABEL(8) " = 11 cols
@@ -250,12 +265,18 @@ render_metric() {
         printf "  "
         prefix_w=$(( prefix_w + SPARK_CHARS + 2 ))
     fi
-    # Detail field width: fill up to (TABLE_W - 5), leaving " PCT%" suffix.
-    local detail_w=$(( TABLE_W - prefix_w - 5 ))
+    # Right-hand value: a percent by default, or a caller-supplied string
+    # (e.g. "12.3 MB/s" for network, where a rate is the honest metric and a
+    # percent would be a fiction). Sized dynamically so pct/rate share the same
+    # right edge at TABLE_W regardless of width. rv is ASCII, so ${#rv} (= byte
+    # count == display cols here) is safe without the python codepoint dance.
+    local rv
+    if [[ -n "$right" ]]; then rv="$right"; else rv="$(printf '%3d%%' "$pct")"; fi
+    local detail_w=$(( TABLE_W - prefix_w - 1 - ${#rv} ))
     [[ "$detail_w" -lt 1 ]] && detail_w=1
     # ${EOL} = erase-to-EOL (or empty on non-tty). Cleans up tail-garbage
     # from a longer previous frame in --live mode.
-    printf "%s %3d%%%s\n" "$(_pad_display "$detail" "$detail_w")" "$pct" "$EOL"
+    printf "%s %s%s\n" "$(_pad_display "$detail" "$detail_w")" "$rv" "$EOL"
 }
 
 # Cheap CPU% via /proc/stat (no busybox-vs-procps top quirks).
@@ -317,6 +338,65 @@ sample_gpu() {
         | sed 's/, /,/g'
 }
 
+# Sum cumulative RX/TX bytes across all non-loopback interfaces from
+# /proc/net/dev. Outputs: "<rx_bytes> <tx_bytes>" ("0 0" if unreadable).
+# Per-iface line: "  eth0: <rxbytes> <rxpkts> ... <txbytes(=field 9)> ...".
+_net_counters() {
+    awk '
+        NR>2 {
+            split($0, kv, ":")
+            iface = kv[1]; gsub(/ /, "", iface)
+            if (iface == "lo") next
+            split(kv[2], f, " ")
+            rx += f[1]; tx += f[9]
+        }
+        END { printf "%d %d\n", rx+0, tx+0 }
+    ' /proc/net/dev 2>/dev/null || echo "0 0"
+}
+
+# Network RX/TX rate in MB/s. Delta of the cumulative counters vs the previous
+# frame (NET_PREV_*); on the first call (one-shot, or the first live frame)
+# there is no previous sample, so take a quick 0.25s self-delta — mirrors
+# sample_cpu_pct. Outputs: "<rx_mbps> <tx_mbps>" (1 decimal each).
+sample_net() {
+    local rx tx now drx dtx dt
+    read -r rx tx <<< "$(_net_counters)"
+    now=$(date +%s.%N 2>/dev/null || echo 0)
+    if [[ "$NET_PREV_RX" -lt 0 ]]; then
+        sleep 0.25
+        local rx2 tx2
+        read -r rx2 tx2 <<< "$(_net_counters)"
+        drx=$(( rx2 - rx )); dtx=$(( tx2 - tx )); dt="0.25"
+        NET_PREV_RX=$rx2; NET_PREV_TX=$tx2; NET_PREV_T=$now
+    else
+        drx=$(( rx - NET_PREV_RX )); dtx=$(( tx - NET_PREV_TX ))
+        dt=$(awk -v a="$now" -v b="$NET_PREV_T" 'BEGIN{d=a-b; if (d<=0) d=1; printf "%.3f", d}')
+        NET_PREV_RX=$rx; NET_PREV_TX=$tx; NET_PREV_T=$now
+    fi
+    # Clamp counter resets / iface removal (negative delta) to 0.
+    (( drx < 0 )) && drx=0
+    (( dtx < 0 )) && dtx=0
+    # Cumulative session total = running sum of clamped deltas. Since NET_PREV
+    # always holds the last-read counter, this equals (latest - first): exact,
+    # no gaps or double-counting across frames.
+    NET_SESS_RX=$(( NET_SESS_RX + drx ))
+    NET_SESS_TX=$(( NET_SESS_TX + dtx ))
+    awk -v drx="$drx" -v dtx="$dtx" -v dt="$dt" 'BEGIN{
+        if (dt <= 0) dt = 1
+        printf "%.1f %.1f\n", (drx/dt)/1048576, (dtx/dt)/1048576
+    }'
+}
+
+# Human-readable byte size: "4.2 GB" / "812.0 MB" / "5 B". Used for NET session
+# totals. Single decimal above the byte level, matching the GB detail style.
+_fmt_bytes() {
+    awk -v b="${1:-0}" 'BEGIN{
+        split("B KB MB GB TB PB", u, " "); i=1
+        while (b >= 1024 && i < 6) { b/=1024; i++ }
+        if (i==1) printf "%d %s", b, u[i]; else printf "%.1f %s", b, u[i]
+    }'
+}
+
 render_system() {
     # Pass per-metric history-buffer keys only when in --live mode. The
     # one-shot invocation has empty buffers (single sample at most), which
@@ -324,8 +404,10 @@ render_system() {
     # not informative. render_metric treats an empty key as "skip sparkline".
     # Must initialize unconditionally for `set -u` compatibility.
     local hkey_cpu="" hkey_ram="" hkey_gpu="" hkey_vram="" hkey_disk=""
+    local hkey_netrx="" hkey_nettx=""
     if [[ "$LIVE" -eq 1 ]]; then
         hkey_cpu=cpu; hkey_ram=ram; hkey_gpu=gpu; hkey_vram=vram; hkey_disk=disk
+        hkey_netrx=netrx; hkey_nettx=nettx
     fi
 
     # Separator extends to TABLE_W so it visually reaches the same right
@@ -392,6 +474,37 @@ render_system() {
         local disk_detail="${disk_used} / ${disk_total} GB"
         [[ "$disk_mnt" != "/" ]] && disk_detail+="    ${disk_mnt}"
         render_metric "DISK" "$disk_pct" "$hkey_disk" "$disk_detail"
+    fi
+
+    # Network throughput (RX/TX MB/s) — useful for watching S3 sync / model
+    # pulls / the remote-vLLM extraction traffic. The right-hand value is the
+    # TRUE rate; the sparkline/percent scale against NET_MAX_MBPS (link-agnostic
+    # gauge). Two rows mirror the GPU/VRAM pair so each direction sparklines
+    # independently (RX spikes on downloads, TX spikes on S3 push).
+    local net_line rx_mbps tx_mbps rx_pct tx_pct rx_detail tx_detail
+    net_line="$(sample_net)"
+    read -r rx_mbps tx_mbps <<< "$net_line"
+    rx_pct=$(awk -v r="$rx_mbps" -v m="$NET_MAX_MBPS" 'BEGIN{p=(m>0)?100*r/m:0; if(p>100)p=100; printf "%d", p}')
+    tx_pct=$(awk -v r="$tx_mbps" -v m="$NET_MAX_MBPS" 'BEGIN{p=(m>0)?100*r/m:0; if(p>100)p=100; printf "%d", p}')
+    push_hist netrx "$rx_pct"
+    push_hist nettx "$tx_pct"
+    # Session peak per direction (context for the sparkline) — shown only in
+    # --live mode, where multiple samples make a peak meaningful.
+    NET_PEAK_RX=$(awk -v a="$rx_mbps" -v b="$NET_PEAK_RX" 'BEGIN{printf "%.1f", (a>b)?a:b}')
+    NET_PEAK_TX=$(awk -v a="$tx_mbps" -v b="$NET_PEAK_TX" 'BEGIN{printf "%.1f", (a>b)?a:b}')
+    rx_detail=""; tx_detail=""
+    if [[ "$LIVE" -eq 1 ]]; then
+        rx_detail="peak ${NET_PEAK_RX} MB/s"; tx_detail="peak ${NET_PEAK_TX} MB/s"
+    fi
+    render_metric "NET RX" "$rx_pct" "$hkey_netrx" "$rx_detail" "${rx_mbps} MB/s"
+    render_metric "NET TX" "$tx_pct" "$hkey_nettx" "$tx_detail" "${tx_mbps} MB/s"
+    # Cumulative session total — only meaningful across multiple samples, so
+    # --live only (one-shot's single 0.25s window would read as ~0). Label is
+    # ASCII ("NET") because printf %-Ns byte-pads; the Σ goes in the detail,
+    # which is rendered codepoint-aware via _pad_display.
+    if [[ "$LIVE" -eq 1 ]]; then
+        render_metric "NET" 0 "" "Σ session total" \
+            "↓ $(_fmt_bytes "$NET_SESS_RX")   ↑ $(_fmt_bytes "$NET_SESS_TX")"
     fi
 }
 

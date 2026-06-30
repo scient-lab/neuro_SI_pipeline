@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/scient-lab/neuro_SI_pipeline/blob/orchestration/docs/run_manifest.schema.json",
+  "title": "neuro_SI_pipeline run manifest",
+  "description": "Schema for run_manifest.json, the single source of truth for pipeline run status. Produced and atomically (lock-guarded) mutated by scripts/lib/manifest.py, so it is safe to poll mid-run. Two halves: 'meta' is the STATIC catalog (what phases/steps CAN run, with descriptions); 'run' is the LIVE per-run state (what DID run, with timestamps/exit codes/quality outcomes). Key distinction: a step's `status` answers 'did it RUN' (pending|running|completed|failed|skipped); its `outcome` answers 'did it PRODUCE meaningful output' (pass|warn|fail|skip|unknown), written post-hoc by step_quality.py and independent of status. All timestamps are RFC3339 / ISO-8601 with a timezone offset, second precision (e.g. 2026-06-17T14:15:23+00:00).",
+  "type": "object",
+  "required": ["schema_version", "meta", "run"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Manifest schema version. Currently 1.0. Note: a few fields (runpod_pod_id, step.outcome, step.outcome_reason) were added within 1.0 without a version bump, so consumers should treat them as optional/nullable for forward+backward compatibility."
+    },
+    "meta": { "$ref": "#/$defs/meta" },
+    "run": { "$ref": "#/$defs/run" }
+  },
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": ["pending", "running", "completed", "failed", "skipped"],
+      "description": "Execution state. Run-level is in practice running|completed|failed; phase/step also use pending|skipped."
+    },
+    "outcome": {
+      "type": ["string", "null"],
+      "enum": ["pass", "warn", "fail", "skip", "unknown", null],
+      "description": "Output-quality verdict, ORTHOGONAL to status. null until a step_quality.py probe runs. pass=meaningful output; warn=produced but suspicious; fail=empty/broken output despite running; skip=not applicable; unknown=can't tell."
+    },
+    "timestamp": {
+      "type": ["string", "null"],
+      "description": "RFC3339 / ISO-8601 with tz offset, second precision; null when not yet set."
+    },
+    "errorInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["message", "exit_code", "log_tail"],
+      "description": "Captured for a failed phase/step. log_tail is best-effort (may be []).",
+      "properties": {
+        "message": { "type": "string" },
+        "exit_code": { "type": "integer" },
+        "log_tail": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Last N non-empty lines of the step/phase log at failure time."
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status_enum", "timestamp_format", "phases"],
+      "description": "Static catalog — what CAN run. Derived from the phases/*.sh scripts at init; identical across runs of the same code.",
+      "properties": {
+        "status_enum": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "The legal status values, echoed for self-describing consumers."
+        },
+        "timestamp_format": { "type": "string" },
+        "phases": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/catalogPhase" }
+        }
+      }
+    },
+    "catalogPhase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "description", "steps"],
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "steps": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/catalogStep" }
+        }
+      }
+    },
+    "catalogStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "description"],
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Live per-run state — what DID run.",
+      "required": [
+        "run_id", "status", "domain", "profile", "platform",
+        "git_sha", "git_branch", "step_filter",
+        "started_at", "finished_at", "current_phase",
+        "pid", "pgid", "corpus_path",
+        "progress", "estimated_completion_at",
+        "selected_phases", "phases"
+      ],
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "description": "<UTC YYYYMMDD-HHMMSS>-<profile>-<git-short-sha>. Sorts chronologically; profile/sha embedded."
+        },
+        "status": { "$ref": "#/$defs/status" },
+        "domain": { "type": "string" },
+        "profile": { "type": "string" },
+        "platform": { "type": "string" },
+        "git_sha": { "type": "string" },
+        "git_branch": { "type": "string" },
+        "step_filter": {
+          "type": "string",
+          "description": "Which steps were requested (e.g. 'all' or a comma list)."
+        },
+        "started_at": { "$ref": "#/$defs/timestamp" },
+        "finished_at": { "$ref": "#/$defs/timestamp" },
+        "resumed_at": {
+          "$ref": "#/$defs/timestamp",
+          "description": "Optional. Present only on resumed runs. ETA anchors here instead of started_at so a restart's ETA isn't computed off the original start."
+        },
+        "current_phase": {
+          "type": ["string", "null"],
+          "description": "Phase currently executing, or null between phases / at terminal state."
+        },
+        "pid": {
+          "type": ["integer", "null"],
+          "description": "pipeline.sh PID (for kill_pipeline.sh)."
+        },
+        "pgid": {
+          "type": ["integer", "null"],
+          "description": "pipeline.sh process-group ID (kills the whole tree incl. vLLM workers)."
+        },
+        "corpus_path": { "type": ["string", "null"] },
+        "runpod_pod_id": {
+          "type": ["string", "null"],
+          "description": "Optional (added within schema 1.0). RunPod pod id when running on RunPod, else null/absent."
+        },
+        "progress": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Weighted completion fraction 0..1 (per-phase weights; rl/curriculum carry most). Rough — a long single step won't refresh it until it ends."
+        },
+        "estimated_completion_at": {
+          "$ref": "#/$defs/timestamp",
+          "description": "ABSOLUTE projected finish time (read remaining = est - now). Snapshot at the last transition; null when not computable (progress 0 or terminal)."
+        },
+        "selected_phases": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Phases included in THIS invocation (subset of meta.phases)."
+        },
+        "phases": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/runPhase" }
+        },
+        "failure": {
+          "$ref": "#/$defs/failure",
+          "description": "Optional. Present only when the run failed; a convenience summary of the first failed phase/step so consumers don't walk the tree. Cleared on a later successful run."
+        }
+      }
+    },
+    "runPhase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "status", "started_at", "finished_at", "exit_code", "log_file", "steps"],
+      "properties": {
+        "name": { "type": "string" },
+        "status": { "$ref": "#/$defs/status" },
+        "started_at": { "$ref": "#/$defs/timestamp" },
+        "finished_at": { "$ref": "#/$defs/timestamp" },
+        "exit_code": { "type": ["integer", "null"] },
+        "log_file": {
+          "type": ["string", "null"],
+          "description": "Repo-relative path to the phase log; resolve against $REPO_ROOT."
+        },
+        "error": {
+          "$ref": "#/$defs/errorInfo",
+          "description": "Optional. Present only when status == failed."
+        },
+        "steps": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/runStep" }
+        }
+      }
+    },
+    "runStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "status", "started_at", "finished_at", "exit_code", "log_file", "cw_log_stream"],
+      "properties": {
+        "name": { "type": "string" },
+        "status": { "$ref": "#/$defs/status" },
+        "started_at": { "$ref": "#/$defs/timestamp" },
+        "finished_at": { "$ref": "#/$defs/timestamp" },
+        "exit_code": { "type": ["integer", "null"] },
+        "log_file": {
+          "type": ["string", "null"],
+          "description": "Repo-relative path to the per-step log; resolve against $REPO_ROOT."
+        },
+        "cw_log_stream": {
+          "type": ["string", "null"],
+          "description": "CloudWatch log-stream name when CW shipping is configured, else null."
+        },
+        "outcome": {
+          "allOf": [{ "$ref": "#/$defs/outcome" }],
+          "description": "Optional (added within schema 1.0). Quality verdict; null until probed, may be absent in older manifests."
+        },
+        "outcome_reason": {
+          "type": ["string", "null"],
+          "description": "Optional. Human-readable reason behind `outcome` (e.g. '128 triples / 12 docs = 10.7/doc'). May be absent in older manifests."
+        },
+        "error": {
+          "$ref": "#/$defs/errorInfo",
+          "description": "Optional. Present only when status == failed."
+        }
+      }
+    },
+    "failure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["phase", "exit_code", "at", "error"],
+      "description": "Top-level summary of the first failed phase, with the first failed step inside it (if any).",
+      "properties": {
+        "phase": { "type": "string" },
+        "exit_code": { "type": ["integer", "null"] },
+        "at": {
+          "type": "string",
+          "description": "When the failure happened (step finish time if available, else phase finish time, else now)."
+        },
+        "error": { "$ref": "#/$defs/errorInfo" },
+        "step": {
+          "type": "string",
+          "description": "Optional. First failed step within the phase."
+        },
+        "step_error": {
+          "$ref": "#/$defs/errorInfo",
+          "description": "Optional. Error for the failed step (present iff `step` is)."
+        }
+      }
+    }
+  }
+}
