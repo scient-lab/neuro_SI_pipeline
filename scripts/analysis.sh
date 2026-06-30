@@ -30,6 +30,8 @@
 #   ./scripts/analysis.sh --quiet                           # WARN/FAIL only
 #   ./scripts/analysis.sh --run <prefix>                    # historical run
 #   ./scripts/analysis.sh --tee report.md                   # also write to file
+#   ./scripts/analysis.sh --std                             # standardized view (all phases)
+#   ./scripts/analysis.sh --std --phase extract --sample    # standardized + seed-KG preview
 #
 # Exit: 0 clean, 1 on FAILs, 2 on WARN-only (composable with CI).
 
@@ -46,6 +48,8 @@ JSON_MODE=0
 QUIET=0
 RUN_PREFIX=""
 TEE_FILE=""
+STD=0
+SAMPLE=""
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -57,6 +61,8 @@ while [[ $# -gt 0 ]]; do
         --quiet)   QUIET=1; shift ;;
         --run)     RUN_PREFIX="$2"; shift 2 ;;
         --tee)     TEE_FILE="$2"; shift 2 ;;
+        --std)     STD=1; shift ;;     # standardized view (scripts/lib/checks_view.py)
+        --sample)  if [[ "${2:-}" =~ ^[0-9]+$ ]]; then SAMPLE="$2"; shift 2; else SAMPLE=5; shift; fi ;;
         -h|--help) sed -n '/^#/p' "$0" | sed 's/^# \?//'; exit 0 ;;
         *)         echo "unknown arg: $1" >&2; exit 1 ;;
     esac
@@ -77,6 +83,24 @@ done
 
 LIB_DIR="$SCRIPT_DIR/lib"
 EXIT_CODE=0
+
+# --- standardized view (--std): dispatch to the shared checks engine --------
+# Opt-in: scripts/lib/checks_view.py (QUALITY lens — graded probe + --sample
+# preview). The legacy per-phase analyzers stay default until all phases port.
+# See docs/DIAGNOSE_ANALYSIS_STANDARDIZATION_PLAN_2026-06-29.md.
+if [[ "$STD" -eq 1 ]]; then
+    sv=( "$PY" "$LIB_DIR/checks_view.py" --lens quality \
+         --output-base "${OUTPUT_BASE:-$REPO_ROOT/outputs}" )
+    [[ -n "$PHASE_FILTER" ]] && sv+=( --phase "$PHASE_FILTER" )
+    [[ -n "$STEP_FILTER" ]]  && sv+=( --step "$STEP_FILTER" )
+    [[ -n "$RUN_PREFIX" ]]   && sv+=( --run "$RUN_PREFIX" )
+    [[ "$JSON_MODE" -eq 1 ]] && sv+=( --json )
+    [[ -n "$SAMPLE" ]]       && sv+=( --sample "$SAMPLE" )
+    if [[ -n "$TEE_FILE" ]]; then
+        "${sv[@]}" | tee -a "$TEE_FILE"; exit "${PIPESTATUS[0]}"
+    fi
+    exec "${sv[@]}"
+fi
 
 run_phase() {
     local phase="$1"

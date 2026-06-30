@@ -41,6 +41,9 @@
 #   ./scripts/diagnose.sh --run <prefix>                        # specific historical run
 #   ./scripts/diagnose.sh --quiet                               # VERDICT + failures only
 #   ./scripts/diagnose.sh --tee <file>                          # also write to file
+#   ./scripts/diagnose.sh --std                                 # standardized view (all phases;
+#                                                               #   status + exception(file:line) + I/O contract)
+#   ./scripts/diagnose.sh --std --phase graphmert --json        # standardized, machine-readable
 #   ./scripts/diagnose.sh --help
 
 set -euo pipefail
@@ -86,6 +89,8 @@ TEE_FILE=""
 DEEP=0
 PHASE_FILTER=""
 STEP_FILTER=""
+STD=0
+JSON_MODE=0
 
 usage() { sed -n '2,/^$/p' "${BASH_SOURCE[0]}" | sed 's/^# \?//'; }
 
@@ -97,6 +102,8 @@ while [[ $# -gt 0 ]]; do
         --quiet)  QUIET=1; shift ;;
         --tee)    TEE_FILE="$2"; shift 2 ;;
         --deep)   DEEP=1; shift ;;
+        --std)    STD=1; shift ;;     # standardized view (scripts/lib/checks_view.py)
+        --json)   JSON_MODE=1; shift ;;  # only with --std
         --help|-h) usage; exit 0 ;;
         *) echo "unknown arg: $1" >&2; usage >&2; exit 1 ;;
     esac
@@ -123,6 +130,20 @@ if [[ -n "$TEE_FILE" ]]; then
     mkdir -p "$(dirname "$TEE_FILE")"
     : > "$TEE_FILE"
     exec > >(tee -a "$TEE_FILE") 2>&1
+fi
+
+# --- standardized view (--std): dispatch to the shared checks engine --------
+# Opt-in for now: renders scripts/lib/checks_view.py (HEALTH lens — status +
+# exception(file:line) + I/O-contract state). The legacy §-sections below stay
+# the default until all phases are ported. See
+# docs/DIAGNOSE_ANALYSIS_STANDARDIZATION_PLAN_2026-06-29.md.
+if [[ "$STD" -eq 1 ]]; then
+    sv=( "$PY" "$SCRIPT_DIR/lib/checks_view.py" --lens health --output-base "$OUTPUT_BASE" )
+    [[ -n "$PHASE_FILTER" ]] && sv+=( --phase "$PHASE_FILTER" )
+    [[ -n "$STEP_FILTER" ]]  && sv+=( --step "$STEP_FILTER" )
+    [[ -n "$RUN_ID" ]]       && sv+=( --run "$RUN_ID" )
+    [[ "$JSON_MODE" -eq 1 ]] && sv+=( --json )
+    exec "${sv[@]}"
 fi
 
 # --- run id resolution ------------------------------------------------------
