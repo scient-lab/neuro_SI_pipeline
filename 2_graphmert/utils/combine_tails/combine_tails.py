@@ -162,12 +162,6 @@ def filter_scientific_triples(df: pd.DataFrame, llm: LLM, tokenizer, microbatch:
             # on or off — re.sub is a no-op when no <think> block exists.
             text = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip().lower()
             is_valid = text.startswith("yes") or text.startswith("true")
-            # TEMP DEBUG (remove after diagnosing 100%-reject): dump the first few
-            # raw plausibility responses. closed_think flags a <think> that never
-            # closed (truncation); the raw text shows preamble vs genuine-no.
-            if start == 0 and row_idx < 4:
-                logger.info("RAW[%d] closed_think=%s valid=%s :: %r",
-                            row_idx, ("</think>" in raw), is_valid, raw[:800])
             row = batch.iloc[row_idx].to_dict()
             row["llm_valid"] = is_valid
             results.append(row)
