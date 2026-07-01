@@ -160,6 +160,15 @@ do_predict: false
 overwrite_output_dir: true
 resume_from_checkpoint: false
 remove_unused_columns: false
-save_safetensors: false
+# Save as safetensors, NOT pickle .bin. transformers 4.57's CVE-2025-32434 gate
+# refuses to torch.load a pickle checkpoint unless torch>=2.6; our vLLM-0.7.3 pin
+# holds torch at 2.5.1, so predict_tails_gm's from_pretrained on a .bin throws
+# ValueError. safetensors loads skip that gate. GraphMertForMaskedLM already drops
+# the tied MLM-head weights on save (_keys_to_ignore_on_save) and re-ties on load,
+# so tied-weight serialization is handled the same as the .bin path. Upstream keeps
+# this false because it runs torch>=2.6 (no gate); the flip is specific to our torch
+# pin. After flipping, RE-RUN train_mnm — the existing .bin checkpoint is NOT
+# auto-converted.
+save_safetensors: true
 save_total_limit: 4
 log_level: info
