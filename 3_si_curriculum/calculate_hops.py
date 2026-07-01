@@ -148,26 +148,41 @@ def main():
     # an actual hop-graph distance — seed entities are at distance 0 from
     # themselves. At pilot/paper scale, full_df will have real expanded
     # triples and the original `compute_hop_distances` path runs.
-    if len(full_df) == 0:
+    # "No usable expansion" has TWO manifestations, treated identically:
+    #   (a) full_df empty            — validate produced 0 triples.
+    #   (b) full_df == seed, all 0   — expand_kg merged seed + 0 NOVEL edges, so
+    #       every entity is a seed entity at BFS distance 0. This is the common
+    #       smoke reality; the earlier `len==0` check missed it because the seed
+    #       is carried through the merge (full_df is NON-empty, but nothing lands
+    #       in hop>=1). curriculum.hop_range starts at 1, so an all-hop-0 KG has
+    #       no paths to build questions from — same outcome as empty.
+    # Both mean "graphmert added nothing curriculum can traverse" → fail loud by
+    # default; seed-only 1-hop when --allow-seed-only is set.
+    if len(full_df) > 0:
+        result_df = compute_hop_distances(full_df, seed_df)
+        has_expansion = bool((result_df["hop_distance"] >= 1).any())
+    else:
+        has_expansion = False
+
+    if not has_expansion:
+        n = len(full_df)
+        reason = "0 validated triples" if n == 0 else \
+            f"all {n} triples are seed entities at hop 0 (no novel expansion edges)"
         if not args.allow_seed_only:
             logger.error(
-                "calculate_hops: kg_path (%s) has 0 rows — graphmert produced NO "
-                "validated expansion triples. Refusing to silently fall back to a "
-                "seed-only 1-hop curriculum (that would hide a failed graphmert / "
-                "validate stage). Pass --allow-seed-only "
-                "(curriculum.allow_seed_only_fallback=true) to permit it.",
-                args.kg_path)
+                "calculate_hops: kg_path (%s) has no expansion paths — %s. "
+                "Refusing to silently fall back to a seed-only 1-hop curriculum "
+                "(that would hide a failed graphmert / validate stage). Pass "
+                "--allow-seed-only (curriculum.allow_seed_only_fallback=true) to "
+                "permit it.",
+                args.kg_path, reason)
             sys.exit(1)
         logger.warning(
-            "full_df (kg_path) has 0 rows — graphmert produced no validated "
-            "expansion triples. Falling back to the seed KG as the path source "
-            "with hop_distance=1 (--allow-seed-only set), so curriculum can still "
-            "generate questions from seed triples."
-        )
+            "No expansion paths (%s) — falling back to the seed KG as the path "
+            "source with hop_distance=1 (--allow-seed-only set), so curriculum "
+            "can still generate questions from seed triples.", reason)
         result_df = seed_df.copy()
         result_df["hop_distance"] = 1
-    else:
-        result_df = compute_hop_distances(full_df, seed_df)
 
     output_path = Path(args.output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
