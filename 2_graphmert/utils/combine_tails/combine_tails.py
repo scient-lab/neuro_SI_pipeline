@@ -118,7 +118,7 @@ def load_all_shard_csvs(pred_dir: str) -> pd.DataFrame:
 
 
 def filter_scientific_triples(df: pd.DataFrame, llm: LLM, tokenizer, microbatch: int,
-                              no_think: bool = False) -> pd.DataFrame:
+                              no_think: bool = False, max_tokens: int = 2048) -> pd.DataFrame:
     """Use LLM to filter triples to scientifically plausible ones only.
 
     no_think: append "/no_think" to suppress Qwen3 <think>. Default False —
@@ -144,11 +144,13 @@ def filter_scientific_triples(df: pd.DataFrame, llm: LLM, tokenizer, microbatch:
             ]
             prompts.append(messages)
 
-        # max_tokens=512 is enough for Qwen3 thinking block + 1-token YES/NO
-        # answer. The previous 10-token budget cut off Qwen3 mid-<think> and
-        # the parser then saw raw thinking instead of the answer (100%
-        # rejection on smoke). Cheap to leave at 512 even when no_think is on.
-        sampling = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=512)
+        # max_tokens must fit Qwen3's <think> block + the 1-token YES/NO answer.
+        # 512 (and the earlier 10) truncated mid-<think>, so </think> never
+        # emitted, the strip regex below no-op'd, and the parser saw raw thinking
+        # → 100% rejection on smoke. Now config-driven via
+        # graphmert.combine_tails_max_tokens (default 2048) so it can't silently
+        # regress. It's a ceiling, not a target.
+        sampling = SamplingParams(temperature=0.0, top_p=1.0, max_tokens=max_tokens)
         outputs = llm.chat(prompts, sampling_params=sampling)
 
         for row_idx, out in enumerate(outputs):
@@ -199,6 +201,10 @@ def main():
     combine_max_model_len = get_phase_param('graphmert', 'combine_tails_max_model_len', 4096)
     combine_tp_size = get_phase_param('graphmert', 'combine_tails_tensor_parallel_size', 1)
     combine_gpu_mem = get_phase_param('graphmert', 'combine_tails_gpu_memory_utilization', 0.90)
+    # Sampling cap for the plausibility YES/NO (see graphmert.combine_tails_max_tokens
+    # in configs/default.yaml — replaces the hardcoded 512 that truncated Qwen3's
+    # <think> and rejected 100% of triples on smoke).
+    combine_max_tokens = int(get_phase_param('graphmert', 'combine_tails_max_tokens', 2048))
     logger.info("vLLM init: max_model_len=%d tp_size=%d gpu_mem_util=%s",
                 combine_max_model_len, combine_tp_size, combine_gpu_mem)
     llm = LLM(model=args.model_id, trust_remote_code=True,
@@ -218,7 +224,8 @@ def main():
         logger.warning("could not read graphmert.combine_tails_no_think (%s) — defaulting False", e)
         no_think = False
 
-    filtered = filter_scientific_triples(df, llm, tokenizer, args.internal_microbatch, no_think=no_think)
+    filtered = filter_scientific_triples(df, llm, tokenizer, args.internal_microbatch,
+                                         no_think=no_think, max_tokens=combine_max_tokens)
 
     scientific_only = filtered[filtered["llm_valid"] == True].drop(columns=["llm_valid"])
     out_csv = os.path.join(args.output_dir, "final_kg_scientific_only.csv")

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# scripts/reset_failure.sh — clear a failed pipeline run's terminal state
+# scripts/reset_manifest.sh — clear a failed pipeline run's terminal state
 # so it can be resumed.
 #
 # What it does:
@@ -14,11 +14,11 @@
 #   - The pipeline.sh process itself (run separately after this script returns)
 #
 # Usage:
-#   ./scripts/reset_failure.sh                                  # latest run
-#   ./scripts/reset_failure.sh --run <prefix>                   # specific run
-#   ./scripts/reset_failure.sh --mark curriculum.generate_qa_pair=completed
-#   ./scripts/reset_failure.sh --mark sft.train_lora=pending --mark rl.train_grpo=pending
-#   ./scripts/reset_failure.sh --dry-run                        # print plan, no changes
+#   ./scripts/reset_manifest.sh                                  # latest run
+#   ./scripts/reset_manifest.sh --run <prefix>                   # specific run
+#   ./scripts/reset_manifest.sh --mark curriculum.generate_qa_pair=completed
+#   ./scripts/reset_manifest.sh --mark sft.train_lora=pending --mark rl.train_grpo=pending
+#   ./scripts/reset_manifest.sh --dry-run                        # print plan, no changes
 #
 # --mark <phase.step=status>:
 #   Override a specific step's status. Common values: pending / completed /

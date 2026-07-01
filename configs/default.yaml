@@ -168,6 +168,14 @@ graphmert:
   # predict_tails if needed.
   combine_tails_max_model_len: 4096
   combine_tails_tensor_parallel_size: 1
+  # Sampling cap for the plausibility YES/NO generation. Was HARDCODED at 512 in
+  # combine_tails.py, which caused 100% rejection on smoke: Qwen3's <think> block
+  # (smoke.yaml notes ~400-1000 think tokens) never closed within 512, so the
+  # </think>-strip regex no-op'd and every answer read as "<think>..." → forced
+  # invalid. Same anti-truncation reasoning as extract.max_tokens: enough for the
+  # think block + the 1-token YES/NO, headroom included. It is a CEILING, not a
+  # target — the model stops at the answer, so a high cap does not slow runs.
+  combine_tails_max_tokens: 2048
   # ----- Per-step Qwen3 <think>...</think> control -----
   # Defaults all FALSE (thinking ON) for the same reason as
   # extract.extract_triples_no_think — empirical regression on Purves
