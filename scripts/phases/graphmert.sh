@@ -62,10 +62,14 @@ STABLE_TOKENIZER="$GRAPHMERT_DIR/stable_tokenizer"
 # UNVALIDATED seed KG silently bypasses the consensus, so it is OPT-IN only —
 # otherwise fail loud rather than degrade quietly.
 VALIDATED_SEED_KG="$GRAPHRAG_DIR/output/kg_final_validated.csv"
+# get_phase_param yields "True"/"False" (capitalized) for YAML bools; match all
+# truthy spellings so this opt-in isn't silently dropped (same trap as
+# curriculum.sh / rl.sh — a bare == "true" fails on "True").
+_allow_unvalidated=$(get_phase_param graphmert allow_unvalidated_seed_kg false)
 if [[ -s "$VALIDATED_SEED_KG" ]] && [[ "$(wc -l < "$VALIDATED_SEED_KG")" -gt 1 ]]; then
     SEED_KG_CSV="$VALIDATED_SEED_KG"
     log_info "graphmert :: Using validated seed KG (from validate phase)"
-elif [[ "$(get_phase_param graphmert allow_unvalidated_seed_kg false)" == "true" ]]; then
+elif [[ "$_allow_unvalidated" == "true" || "$_allow_unvalidated" == "True" || "$_allow_unvalidated" == "1" ]]; then
     SEED_KG_CSV="$GRAPHRAG_DIR/output/kg_final.csv"
     log_warn "graphmert :: validated seed KG missing/empty — using UNVALIDATED seed KG (graphmert.allow_unvalidated_seed_kg=true). Two-LLM consensus is BYPASSED."
 else

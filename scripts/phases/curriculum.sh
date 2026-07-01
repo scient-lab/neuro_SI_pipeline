@@ -84,7 +84,13 @@ step_path_traversal() {
     # Profiles that expect a thin/empty expansion (smoke) opt in via
     # curriculum.allow_seed_only_fallback=true.
     local SEED_ONLY_ARGS=()
-    if [[ "$(get_phase_param curriculum allow_seed_only_fallback false)" == "true" ]]; then
+    # get_phase_param returns Python's "True"/"False" (capitalized) for YAML
+    # bools, so match all truthy spellings — same guard as rl.sh:91. A bare
+    # == "true" silently dropped smoke's allow_seed_only_fallback=true, so
+    # calculate_hops failed loud on the all-hop-0 KG instead of falling back.
+    local _allow_seed_only
+    _allow_seed_only=$(get_phase_param curriculum allow_seed_only_fallback false)
+    if [[ "$_allow_seed_only" == "true" || "$_allow_seed_only" == "True" || "$_allow_seed_only" == "1" ]]; then
         SEED_ONLY_ARGS=(--allow-seed-only)
     fi
     ( cd "$REPO_ROOT/3_si_curriculum" && \
