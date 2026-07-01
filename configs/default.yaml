@@ -434,6 +434,9 @@ expectations:
       # Qwen3-14B bf16 ≈ 28 GB; a LoRA adapter is ~100s of MB. Profile-free byte
       # count — below this = adapter-only / truncated merge (not a real fold).
       min_merged_bytes: 1000000000   # 1 GB
+    train_lora:                       # read by scripts/lib/analysis_sft.py
+      final_loss_warn_high: 3.0       # final train_loss above → warn (barely trained)
+      token_acc_warn_low: 0.40        # mean_token_accuracy below → warn
   rl:
     merge_rl:
       # Same floor as sft.merge_lora. merge_rl ALSO self-anchors against the
@@ -442,3 +445,8 @@ expectations:
       # folds nothing → merged RL == SFT (the "RL ≈ SFT" no-op) → fail.
       min_merged_bytes: 1000000000   # 1 GB
       size_match_tol: 0.01           # merged-RL total_size within ±1% of SFT-merged
+    train_grpo:                       # read by scripts/lib/analysis_rl.py
+      reward_improve_min: 0.0         # (last-window − first-window) reward must exceed → else warn (RL didn't learn)
+      kl_warn_high: 0.5               # final KL above → warn (policy drifting far from the reference)
+      clipped_ratio_warn: 0.30        # final fraction of completions hitting max_len → warn (truncated reasoning)
+      grad_norm_warn_high: 100.0      # grad-norm spikes above → warn (instability)
