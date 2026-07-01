@@ -428,3 +428,17 @@ expectations:
     assemble_curriculum:
       # final verified count vs the profile's OWN curriculum.num_questions (not duplicated)
       frac_of_target_warn: 0.5      # < 50% of target → warn
+  sft:
+    merge_lora:
+      # Floor (bytes) to call merged_final_model a FULL model vs just the adapter.
+      # Qwen3-14B bf16 ≈ 28 GB; a LoRA adapter is ~100s of MB. Profile-free byte
+      # count — below this = adapter-only / truncated merge (not a real fold).
+      min_merged_bytes: 1000000000   # 1 GB
+  rl:
+    merge_rl:
+      # Same floor as sft.merge_lora. merge_rl ALSO self-anchors against the
+      # SFT-merged base the GRPO adapter was trained on: the merged RL model must
+      # be ~the same size AND differ from it byte-wise. An all-zero GRPO adapter
+      # folds nothing → merged RL == SFT (the "RL ≈ SFT" no-op) → fail.
+      min_merged_bytes: 1000000000   # 1 GB
+      size_match_tol: 0.01           # merged-RL total_size within ±1% of SFT-merged

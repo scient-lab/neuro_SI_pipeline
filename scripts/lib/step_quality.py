@@ -33,6 +33,7 @@ import argparse
 import csv
 import json
 import os
+import struct
 import sys
 from pathlib import Path
 
@@ -328,6 +329,175 @@ def probe_assemble_curriculum(c: Ctx) -> V:
     return V(PASS, f"{got} verified Q&A items", {"got": got})
 
 
+# --- sft / rl merge probes ----------------------------------------------------
+# Stdlib-only: .safetensors headers are parsed by hand (8-byte little-endian
+# length + JSON), so this module keeps its "imports under ANY venv" property —
+# no torch/safetensors. The failure these catch: a step marked "completed" whose
+# merge folds an UNTRAINED adapter (LoRA B still 0) → merged model is a byte-copy
+# of the base ("RL ≈ SFT" no-op). A zero tensor is literally all-0x00 bytes, so a
+# byte scan is enough — no dtype decoding required.
+def _truthy(v) -> bool:
+    return str(v).strip().lower() in ("1", "true", "yes", "on")
+
+
+def _st_header(path: Path):
+    """(header_dict, data_start) for a .safetensors file, or (None, None) on any
+    error so a probe degrades to UNKNOWN instead of crashing."""
+    try:
+        with path.open("rb") as f:
+            n = struct.unpack("<Q", f.read(8))[0]
+            hdr = json.loads(f.read(n))
+        return hdr, 8 + n
+    except Exception:
+        return None, None
+
+
+def _newest(ob: Path, pattern: str):
+    """Newest glob(pattern) match by mtime — mirrors the shells' `ls -dt | head -1`
+    (NOT alphabetical, which grabs a stale higher-numbered checkpoint). None if
+    nothing matches."""
+    try:
+        ps = sorted(ob.glob(pattern), key=lambda p: p.stat().st_mtime, reverse=True)
+        return ps[0] if ps else None
+    except Exception:
+        return None
+
+
+def _lora_B_nonzero(adapter: Path):
+    """(#non-zero, #total) LoRA-B tensors in an adapter. PEFT inits B=0; if
+    training never moved it the tensor is all-0x00 ⇒ the merge folds nothing."""
+    hdr, base = _st_header(adapter)
+    if not hdr:
+        return (0, 0)
+    nz = tot = 0
+    try:
+        with adapter.open("rb") as f:
+            for name, meta in hdr.items():
+                if name == "__metadata__" or "lora_B" not in name:
+                    continue
+                tot += 1
+                s, e = meta["data_offsets"]
+                f.seek(base + s)
+                if any(f.read(e - s)):          # any non-zero byte
+                    nz += 1
+    except Exception:
+        return (nz, tot)
+    return (nz, tot)
+
+
+def _merged_total_size(mdir: Path):
+    """Declared param bytes of a merged model: index metadata.total_size when
+    sharded, else the lone model.safetensors size. None if neither is present."""
+    idx = mdir / "model.safetensors.index.json"
+    if idx.exists():
+        try:
+            return json.loads(idx.read_text()).get("metadata", {}).get("total_size")
+        except Exception:
+            return None
+    single = mdir / "model.safetensors"
+    try:
+        return single.stat().st_size if single.exists() else None
+    except Exception:
+        return None
+
+
+def _targeted_base_weight(adapter: Path):
+    """A base-model weight the adapter modifies (derived from a lora_A key), so a
+    merged-vs-base byte diff is guaranteed to land on a changed tensor."""
+    hdr, _ = _st_header(adapter)
+    if not hdr:
+        return None
+    for name in hdr:
+        if "lora_A" in name:
+            return name.split(".lora_A")[0].replace("base_model.model.", "") + ".weight"
+    return None
+
+
+def _merged_tensor_bytes(mdir: Path, weight: str):
+    """Raw bytes of `weight` from a merged model dir (follows the shard index), or
+    None."""
+    idx = mdir / "model.safetensors.index.json"
+    if idx.exists():
+        try:
+            shard = json.loads(idx.read_text())["weight_map"].get(weight)
+        except Exception:
+            return None
+        if not shard:
+            return None
+        target = mdir / shard
+    else:
+        target = mdir / "model.safetensors"
+    hdr, base = _st_header(target)
+    if not hdr or weight not in hdr:
+        return None
+    s, e = hdr[weight]["data_offsets"]
+    try:
+        with target.open("rb") as f:
+            f.seek(base + s)
+            return f.read(e - s)
+    except Exception:
+        return None
+
+
+def _merge_verdict(ckpt: Path, phase: str, step: str, base_merged: Path = None) -> V:
+    """Shared sft/rl 'is the merge real?' logic. ckpt holds adapter_model.safetensors
+    + merged_final_model/. base_merged (rl only) = the SFT-merged dir the GRPO
+    adapter was trained on, enabling a differ-from-base check."""
+    adapter = ckpt / "adapter_model.safetensors"
+    merged = ckpt / "merged_final_model"
+    size = _merged_total_size(merged)
+    if size is None:
+        return V(FAIL, "no full model in merged_final_model/ (adapter only?)")
+    floor = exp(phase, step, "min_merged_bytes", 1_000_000_000)
+    gb = size / 1e9
+    m = {"merged_gb": round(gb, 2)}
+    if size < floor:
+        return V(FAIL, f"merged only {gb:.2f} GB (<{floor/1e9:.1f} GB → adapter-only / truncated)", m)
+    nz, tot = _lora_B_nonzero(adapter)
+    if tot:
+        m["lora_B"] = f"{nz}/{tot} nonzero"
+    if tot and nz == 0:
+        return V(FAIL, f"merged {gb:.1f} GB but all {tot} lora_B are zero — adapter untrained, merge is a base copy", m)
+    if base_merged is not None:
+        bsize = _merged_total_size(base_merged)
+        if bsize:
+            tol = exp(phase, step, "size_match_tol", 0.01)
+            if abs(size - bsize) > tol * bsize:
+                return V(WARN, f"merged {gb:.1f} GB vs SFT base {bsize/1e9:.1f} GB (>{tol*100:.0f}% size gap — wrong base?)", m)
+        w = _targeted_base_weight(adapter)
+        a = _merged_tensor_bytes(merged, w) if w else None
+        b = _merged_tensor_bytes(base_merged, w) if w else None
+        if a is not None and b is not None:
+            if a == b:
+                return V(FAIL, "merged weights == SFT base — empty GRPO adapter, RL had no effect", m)
+            m["differs_from_sft_base"] = True
+            return V(PASS, f"merged {gb:.1f} GB, weights differ from SFT base ✓" + (f" ({m['lora_B']})" if tot else ""), m)
+    return V(PASS, f"merged full model {gb:.1f} GB" + (f" ({m['lora_B']})" if tot else ""), m)
+
+
+def probe_merge_lora(c: Ctx) -> V:
+    """SFT LoRA fold: the newest sft checkpoint must yield a full merged model
+    whose adapter actually trained (lora_B non-zero)."""
+    ckpt = _newest(c.ob, "sft_checkpoints/checkpoint-*")
+    if ckpt is None:
+        return V(FAIL, "no sft checkpoint to merge")
+    return _merge_verdict(ckpt, "sft", "merge_lora")
+
+
+def probe_merge_rl(c: Ctx) -> V:
+    """RL fold: SKIP cleanly for full-FT RL (use_lora=false → checkpoints are
+    already full weights, no adapter). For LoRA-RL the merged model must be
+    full-size, from a trained adapter, and byte-different from the SFT base."""
+    if not _truthy(phase_param("rl", "use_lora", False)):
+        return V(SKIP, "full-FT RL (use_lora=false): checkpoints already full weights, no merge")
+    ckpt = _newest(c.ob, "rl_checkpoints/checkpoint-*")
+    if ckpt is None:
+        return V(FAIL, "no rl checkpoint to merge")
+    sft_ckpt = _newest(c.ob, "sft_checkpoints/checkpoint-*")
+    base = (sft_ckpt / "merged_final_model") if sft_ckpt else None
+    return _merge_verdict(ckpt, "rl", "merge_rl", base_merged=base)
+
+
 PROBES = {
     ("extract", "extract_triples"): probe_extract_triples,
     ("validate", "seed_kg_consensus"): probe_seed_kg_consensus,
@@ -338,6 +508,9 @@ PROBES = {
     ("curriculum", "generate_qa_item"): probe_generate_qa_item,
     ("curriculum", "validate_qa_item"): probe_validate_qa_item,
     ("curriculum", "assemble_curriculum"): probe_assemble_curriculum,
+    # sft / rl: "is the merge real?" — full model + trained adapter (+ rl differs from sft)
+    ("sft", "merge_lora"): probe_merge_lora,
+    ("rl", "merge_rl"): probe_merge_rl,
 }
 
 
