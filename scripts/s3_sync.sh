@@ -43,7 +43,11 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+# scripts/s3_sync.sh is ONE level under the repo root (was scripts/data_prep/
+# sync_outputs.sh — two levels — hence the old `../..`). Anchor at `..` so
+# REPO_ROOT (and thus $REPO_ROOT/.env and the OUTPUT_BASE default) resolve to
+# the repo, not its parent (/workspace).
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 # Auto-source $REPO_ROOT/.env so S3_URI / AWS_* / S3_SYNC_INTERVAL_SEC reach
 # the script when invoked standalone (e.g. from a second ssh session).
