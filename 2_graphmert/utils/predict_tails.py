@@ -205,8 +205,12 @@ def main():
     # --- DATA PREPARATION ---
     # We iterate through the raw text dataset and create "Probe" samples.
     # Each sample asks: "Given this text and Head X with Relation Y, what is the Tail?"
-    for ex in raw_ds:
-        cid = ex["id"]
+    for i, ex in enumerate(raw_ds):
+        # Upstream producer (clean_llm_relations.py) doesn't write an 'id'
+        # column; fall back to the row index so predictions stay traceable.
+        # Mirrors the twin predict_tails_llm.py:168 (ex.get("id", i)) — that
+        # path already defends this; the GraphMERT port (aa8a5ff) missed it.
+        cid = ex.get("id", i)
         heads_rel = json.loads(ex["cleaned_relations_json"])
         head_positions = json.loads(ex["head_positions"])
         
