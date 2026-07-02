@@ -190,8 +190,8 @@ Previously a no-op (the consensus check ran inline in graphmert/curriculum). It 
 | `train_mnm` (5) | `graphmert/mlm_cache/{train,validation}/ready_for_training/` + `graphmert/args_mlm.resolved.yaml` | `graphmert/mlm_output/checkpoint-*/` | HF checkpoint dirs |
 | `predict_tails` (6) | `llm_relations/relations_cleaned_eval/` + the `predict_tails` vLLM model (`configs/default.yaml::models.predict_tails`) | `graphmert/predictions/predictions_shard_*.csv` | CSV (vLLM-generated tails, `predict_tails_llm.py`) |
 | `predict_tails_gm` (6b) | `mlm_output/checkpoint-*/` + `llm_relations/relations_cleaned_eval/` + `dataset/relation_map.json` + `stable_tokenizer/` | `graphmert/predictions_graphmert/predictions.parquet` | parquet (GraphMERT-MLM top-k tails, `utils/predict_tails.py`). **Not yet merged downstream** — `combine_tails` (7) still reads only `predictions/*.csv`. |
-| `validate_predictions` 7a (combine_tails) | `graphmert/predictions/*.csv` | `graphmert/combined/final_kg_all.csv`, `final_kg_scientific_only.csv`, `combined/expanded_triples.csv` | CSV |
-| `validate_predictions` 7b (fact_score) | `graphmert/combined/expanded_triples.csv` + Gemini | `graphmert/final_kg/validated_triples.csv` | CSV (2-LLM-checked triples) |
+| `validate_predictions` 7a (combine_tails) | `graphmert/predictions/*.csv` | `graphmert/combined/final_kg_combined.csv` | CSV (merge + deduplicate only — no LLM filter, per dc5bb46) |
+| `validate_predictions` 7b (fact_score) | `graphmert/combined/final_kg_combined.csv` + two LLMs (validate_a/b) | `graphmert/final_kg/validated_triples.csv` | CSV (2-LLM consensus — sole quality gate) |
 | `expand_kg` | `graphmert/final_kg/validated_triples.csv` + `graphrag/output/kg_final.parquet` | `graphmert/final_kg/expanded_kg.parquet` | parquet (seed KG ∪ validated expansions) |
 
 ### Phase 4 — curriculum  (venv: si_curriculum)

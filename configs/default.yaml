@@ -163,25 +163,15 @@ graphmert:
   predict_tensor_parallel_size: 1
   predict_max_model_len: 8192
   predict_gpu_memory_utilization: 0.90
-  # Combine-tails LLM init (2_graphmert/utils/combine_tails/combine_tails.py)
-  # — separate keys so combine_tails can run on a different GPU profile than
-  # predict_tails if needed.
-  combine_tails_max_model_len: 4096
-  combine_tails_tensor_parallel_size: 1
-  # Sampling cap for the plausibility YES/NO generation. Was HARDCODED at 512 in
-  # combine_tails.py, which caused 100% rejection on smoke: Qwen3's <think> block
-  # (smoke.yaml notes ~400-1000 think tokens) never closed within 512, so the
-  # </think>-strip regex no-op'd and every answer read as "<think>..." → forced
-  # invalid. Same anti-truncation reasoning as extract.max_tokens: enough for the
-  # think block + the 1-token YES/NO, headroom included. It is a CEILING, not a
-  # target — the model stops at the answer, so a high cap does not slow runs.
-  combine_tails_max_tokens: 2048
+  # combine_tails is a pure merge/deduplicate step (no LLM) per upstream dc5bb46
+  # — quality gating is fact_score.py alone. No LLM-init / sampling knobs needed.
   # ----- Per-step Qwen3 <think>...</think> control -----
   # Defaults all FALSE (thinking ON) for the same reason as
   # extract.extract_triples_no_think — empirical regression on Purves
   # showed quality collapse without thinking. Pair with extract.max_tokens
   # >= 32768 to keep responses from truncating mid-output. One knob per
-  # LLM-using script (6 total across extract + graphmert).
+  # LLM-using script (5 total across extract + graphmert; combine_tails is
+  # merge/dedup only and uses no LLM).
   #
   # Pattern-match: text → entities (substep of preprocess).
   entity_discovery_no_think: false
@@ -189,8 +179,6 @@ graphmert:
   add_llm_relations_no_think: false
   # Constrained generation: head + relation → list of plausible tails.
   predict_tails_no_think: false
-  # Dedup/normalize tail prediction shards (substep of validate_predictions).
-  combine_tails_no_think: false
   # Judgment: (head, relation, tail) → "is this triple factually consistent?"
   # Keep thinking ON (false) — /no_think empirically tanks accuracy (same finding
   # as extract_triples_no_think on the Purves corpus; reasoning is load-bearing).

@@ -275,24 +275,18 @@ step_validate_predictions() {
     ( cd "$REPO_ROOT/2_graphmert" && \
       python utils/combine_tails/combine_tails.py \
           --pred_dir   "$GRAPHMERT_DIR/predictions" \
-          --output_dir "$GRAPHMERT_DIR/combined" \
-          --model_id   "$EXTRACT_MODEL_ID" \
-          --tokenizer  "$STABLE_TOKENIZER" ) || { log_error "combine_tails failed"; return 1; }
+          --output_dir "$GRAPHMERT_DIR/combined" ) || { log_error "combine_tails failed"; return 1; }
     if [[ -z "$VALIDATE_A" || -z "$VALIDATE_B" ]]; then
         log_error "fact_score needs models.validate_a and validate_b in configs/default.yaml"
         return 1
     fi
     log_info "  fact_score (two-LLM agreement)"
-    # combine_tails writes final_kg_scientific_only.csv (head/relation/tail
-    # columns, post-LLM scientific filter). The earlier reference to
-    # "expanded_triples.csv" here was a filename that no producer in the
-    # repo ever writes — third naming mismatch with combine_tails from
-    # 33823cb, alongside the predictions_shard / exploded filter bug and
-    # the in-function import shadow. fact_score.py:10 docstring example
-    # confirms final_kg_scientific_only.csv is the expected input.
+    # combine_tails writes final_kg_combined.csv (head/relation/tail columns,
+    # merge + deduplicate only — no LLM filter, per upstream dc5bb46). fact_score
+    # below is the sole quality gate on the expanded KG (two-LLM consensus).
     ( cd "$REPO_ROOT/2_graphmert" && \
       python utils/llm_scores/fact_score.py \
-          --input_csv   "$GRAPHMERT_DIR/combined/final_kg_scientific_only.csv" \
+          --input_csv   "$GRAPHMERT_DIR/combined/final_kg_combined.csv" \
           --output_csv  "$GRAPHMERT_DIR/final_kg/validated_triples.csv" \
           --model_ids   "$VALIDATE_A" "$VALIDATE_B" \
           --batch_size  64 \

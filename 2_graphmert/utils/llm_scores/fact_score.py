@@ -7,7 +7,7 @@ A triple is kept only when BOTH models agree it is valid.
 
 Usage:
   python utils/llm_scores/fact_score.py \\
-    --input_csv   ${OUTPUT_BASE}/graphmert/graphmert_kg/combined/final_kg_scientific_only.csv \\
+    --input_csv   ${OUTPUT_BASE}/graphmert/graphmert_kg/combined/final_kg_combined.csv \\
     --output_csv  ${OUTPUT_BASE}/final_kg/validated_final_kg.csv \\
     --model_ids   /path/to/mistral-nemo-12b /path/to/qwen3-14b
 
