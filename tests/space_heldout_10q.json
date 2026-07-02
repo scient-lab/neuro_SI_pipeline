@@ -1,0 +1,87 @@
+[
+  {
+    "question_and_explanation": "<Question>\nOur nearest star holds itself up against its own gravity by a nuclear process in its core, in which the most abundant element in the universe is steadily converted into the second-most abundant, liberating enormous energy. Which nuclear conversion powers the star?\n</Question>\n<Options>\nA. Hydrogen into helium via nuclear fusion\nB. Helium into carbon via the triple-alpha process\nC. Uranium into lead via radioactive decay\nD. Oxygen into silicon via fusion\n</Options>\n<Explanation>In the Sun's core, hydrogen fuses into helium via the proton-proton chain, releasing the energy that supports the star against gravitational collapse.</Explanation>\n<Answer>A</Answer>",
+    "k_hops": 1,
+    "paths": [
+      "Hydrogen -> fuses_into -> Helium"
+    ]
+  },
+  {
+    "question_and_explanation": "<Question>\nA widely used astronomical unit is often mistaken for a measure of time because of its name, yet it actually quantifies the span covered by light traveling through a vacuum over one year (about 9.46 trillion km). What does this unit measure?\n</Question>\n<Options>\nA. Elapsed time\nB. Speed\nC. Distance\nD. Mass\n</Options>\n<Explanation>A light-year is a unit of distance: the distance light travels in one year, not a duration.</Explanation>\n<Answer>C</Answer>",
+    "k_hops": 1,
+    "paths": [
+      "Light-year -> measures -> Distance"
+    ]
+  },
+  {
+    "question_and_explanation": "<Question>\nA probe launched in 1977, now the most distant human-made object and traveling through interstellar space, is far too remote for sunlight to power it. Its electrical systems instead run on a generator that converts heat released by the natural decay of a radioactive isotope. What is the ultimate source of the spacecraft's electrical power?\n</Question>\n<Options>\nA. Solar panels charged by starlight\nB. Rechargeable chemical batteries\nC. An onboard nuclear fission reactor\nD. Heat from the radioactive decay of a plutonium isotope (an RTG)\n</Options>\n<Explanation>Voyager 1 is powered by a radioisotope thermoelectric generator (RTG) that converts heat from the decay of plutonium-238 into electricity.</Explanation>\n<Answer>D</Answer>",
+    "k_hops": 2,
+    "paths": [
+      "Voyager 1 -> powered_by -> RTG",
+      "RTG -> powered_by -> radioactive decay of Plutonium-238"
+    ]
+  },
+  {
+    "question_and_explanation": "<Question>\nA launch vehicle climbs not by pushing against the ground or air, but by expelling mass at high velocity in one direction. The forward force it feels is a direct consequence of a fundamental mechanical principle relating action and reaction. Which principle, and what force does it produce?\n</Question>\n<Options>\nA. Conservation of angular momentum, producing torque\nB. Newton's third law of motion, producing thrust\nC. Bernoulli's principle, producing aerodynamic lift\nD. Newton's law of gravitation, producing weight\n</Options>\n<Explanation>A rocket accelerates by expelling exhaust; the reaction to that expelled momentum (Newton's third law) is the thrust that drives it forward.</Explanation>\n<Answer>B</Answer>",
+    "k_hops": 2,
+    "paths": [
+      "Rocket -> governed_by -> Newton's third law of motion",
+      "Newton's third law -> results_in -> Thrust"
+    ]
+  },
+  {
+    "question_and_explanation": "<Question>\nWhen a star far more massive than the Sun exhausts its nuclear fuel, its core can no longer resist gravity and collapses catastrophically. For the heaviest cores the endpoint is an object so dense that nothing, not even light, can escape from within a certain surface. What is that surface called?\n</Question>\n<Options>\nA. The event horizon\nB. The photosphere\nC. The Roche limit\nD. The heliopause\n</Options>\n<Explanation>A massive star's core collapses into a black hole, whose defining boundary, the surface of no return, is the event horizon.</Explanation>\n<Answer>A</Answer>",
+    "k_hops": 2,
+    "paths": [
+      "Massive star -> collapses_into -> Black hole",
+      "Black hole -> boundary_of -> Event horizon"
+    ]
+  },
+  {
+    "question_and_explanation": "<Question>\nConsider our own star at the end of its life. Once it depletes the hydrogen in its core, it will swell into a large, cool-surfaced luminous star. Then, because its mass is too modest to fuse the heaviest elements, it will cast off its outer layers and leave behind a dense, roughly Earth-sized remnant. What is that final remnant?\n</Question>\n<Options>\nA. A neutron star\nB. A stellar-mass black hole\nC. A supernova remnant nebula\nD. A white dwarf\n</Options>\n<Explanation>The Sun will become a red giant, shed its outer layers as a planetary nebula, and leave a white dwarf. Neutron stars and black holes are the endpoints of much more massive stars.</Explanation>\n<Answer>D</Answer>",
+    "k_hops": 3,
+    "paths": [
+      "Sun -> evolves_into -> Red giant",
+      "Red giant -> sheds -> planetary nebula (outer layers)",
+      "Red giant core -> collapses_into -> White dwarf"
+    ]
+  },
+  {
+    "question_and_explanation": "<Question>\nThe universe's earliest minutes produced only the lightest chemical elements. Gravity later gathered these primordial elements into the first stars, where they became the fuel for the fusion that makes stars shine. Which two elements dominate that primordial composition and the cores of new stars?\n</Question>\n<Options>\nA. Carbon and oxygen\nB. Iron and nickel\nC. Hydrogen and helium\nD. Silicon and magnesium\n</Options>\n<Explanation>Big Bang nucleosynthesis produced mostly hydrogen and helium, which gravity later assembled into the first stars as fusion fuel.</Explanation>\n<Answer>C</Answer>",
+    "k_hops": 3,
+    "paths": [
+      "Big Bang -> produces -> Hydrogen and Helium",
+      "Hydrogen and Helium -> gathered_into -> First stars",
+      "First stars -> fuses -> energy (starlight)"
+    ]
+  },
+  {
+    "question_and_explanation": "<Question>\nA large optical instrument gathers and focuses faint light from remote galaxies. Astronomers found that the light from most such galaxies is systematically shifted toward longer, redder wavelengths, and the more distant the galaxy, the greater the shift. This telescope-enabled observation became key evidence for what large-scale phenomenon?\n</Question>\n<Options>\nA. The rotation of the Milky Way\nB. The expansion of the universe\nC. Dark-matter halos around galaxies\nD. Supermassive black holes at galactic centers\n</Options>\n<Explanation>Telescopes reveal that distant galaxies' light is redshifted in proportion to distance (Hubble's law), which is evidence that the universe is expanding.</Explanation>\n<Answer>B</Answer>",
+    "k_hops": 3,
+    "paths": [
+      "Telescope -> observes -> Distant galaxies",
+      "Distant galaxies -> emit -> redshifted light",
+      "Redshift -> evidence_for -> Expansion of the universe"
+    ]
+  },
+  {
+    "question_and_explanation": "<Question>\nLaunched in 1977, a probe used a close pass by the Solar System's largest planet to bend its path and gain speed without burning fuel. That boost helped carry it past the outer planets and, decades later, beyond the bubble of charged particles streaming from the Sun, into the space between the stars. (1) Which planet gave the boost, and (2) what is the name of the boundary it ultimately crossed?\n</Question>\n<Options>\nA. Saturn; the event horizon\nB. Mars; the Karman line\nC. Jupiter; the Roche limit\nD. Jupiter; the heliopause\n</Options>\n<Explanation>Voyager 1 used a gravity assist at Jupiter to gain speed, then eventually crossed the heliopause, the outer boundary of the Sun's solar-wind bubble (the heliosphere), into interstellar space.</Explanation>\n<Answer>D</Answer>",
+    "k_hops": 4,
+    "paths": [
+      "Voyager 1 -> flies_by -> Jupiter",
+      "Jupiter -> accelerates -> Voyager 1 (gravity assist)",
+      "Voyager 1 -> transfers_to -> outer Solar System",
+      "Voyager 1 -> crosses -> Heliopause (boundary_of Heliosphere)"
+    ]
+  },
+  {
+    "question_and_explanation": "<Question>\nThe Solar System began as a vast, slowly rotating cloud of gas and dust. Gravity made the cloud contract; most of its material gathered at the center and ignited as a star, while the rest settled into a disk that became the planets. Today those planets trace closed paths around the central star. (1) What process started the system's formation from the cloud, and (2) what keeps the planets on their paths now?\n</Question>\n<Options>\nA. Gravitational collapse of the cloud; the Sun's gravity\nB. Nuclear fusion within the cloud; planetary magnetic fields\nC. A passing supernova shockwave alone; the Sun's radiation pressure\nD. Tidal forces from a passing star; mutual collisions between planets\n</Options>\n<Explanation>The solar nebula underwent gravitational collapse to form the Sun and a protoplanetary disk that produced the planets; the Sun's gravity now holds those planets in orbit.</Explanation>\n<Answer>A</Answer>",
+    "k_hops": 4,
+    "paths": [
+      "Molecular cloud -> undergoes -> gravitational collapse",
+      "Gravitational collapse -> forms -> Sun (and protoplanetary disk)",
+      "Protoplanetary disk -> forms -> planets",
+      "Sun -> exerts_gravity_on -> planets -> results_in -> orbits"
+    ]
+  }
+]
