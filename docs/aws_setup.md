@@ -318,7 +318,7 @@ Run once from **CloudShell** (or any admin profile):
 ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 REGION=us-east-1
 ROLE=kg-si-bedrock-import-role
-MODEL_PREFIX="dss/shared/imported-models"      # where the merged model lives in s3://enlibra
+MODEL_PREFIX="dss/shared/models"      # where s3_sync/promote land the merged model in s3://enlibra
 
 # 1) Trust policy — only Bedrock CMI in THIS account/region may assume the role
 #    (aws:SourceAccount / SourceArn guard against the confused-deputy problem).
@@ -330,12 +330,23 @@ cat > /tmp/trust.json <<EOF
 EOF
 aws iam create-role --role-name "$ROLE" --assume-role-policy-document file:///tmp/trust.json
 
-# 2) Read-only on JUST the model prefix (scoped like KGSIPipelineS3Access).
-cat > /tmp/s3.json <<EOF
+# 2) Read-only on the model prefixes (scoped like KGSIPipelineS3Access). Grants
+#    read on BOTH dss/shared/models/* (where s3_sync + promote land the merged
+#    model — the shared/models/ prefix created in Step 1) AND the legacy
+#    dss/shared/imported-models/* prefix. Both s3:GetObject (read the files) and
+#    s3:ListBucket (Bedrock enumerates the model dir) are required.
+cat > /tmp/s3.json <<'EOF'
 { "Version":"2012-10-17","Statement":[
-  {"Effect":"Allow","Action":["s3:GetObject"],"Resource":"arn:aws:s3:::enlibra/${MODEL_PREFIX}/*"},
+  {"Effect":"Allow","Action":["s3:GetObject"],
+   "Resource":[
+     "arn:aws:s3:::enlibra/dss/shared/models/*",
+     "arn:aws:s3:::enlibra/dss/shared/imported-models/*"
+   ]},
   {"Effect":"Allow","Action":["s3:ListBucket"],"Resource":"arn:aws:s3:::enlibra",
-   "Condition":{"StringLike":{"s3:prefix":["${MODEL_PREFIX}/*"]}}}]}
+   "Condition":{"StringLike":{"s3:prefix":[
+     "dss/shared/models/*",
+     "dss/shared/imported-models/*"
+   ]}}}]}
 EOF
 aws iam put-role-policy --role-name "$ROLE" \
     --policy-name KGSIBedrockImportS3Read --policy-document file:///tmp/s3.json
