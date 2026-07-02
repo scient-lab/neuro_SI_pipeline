@@ -194,7 +194,7 @@ if target_marks:
         ('curriculum', 'generate_qa_item'): 'curriculum/curriculum.jsonl',
         ('curriculum', 'validate_qa_item'): 'curriculum/curriculum.jsonl',
         ('curriculum', 'assemble_curriculum'): 'curriculum_verified/curriculum_verified.json',
-        ('extract', 'cache'): 'graphrag/output/kg_final.parquet',
+        ('extract', 'finalize_seed_kg'): 'graphrag/output/kg_final.parquet',
     }
 
     # Manifest schema uses {'name': 'curriculum', 'steps': [{'name': 'generate_qa', ...}]}

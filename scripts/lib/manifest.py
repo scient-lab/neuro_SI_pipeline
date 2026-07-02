@@ -268,8 +268,8 @@ def _project_step(step_id: str, order: int, sy: dict | None) -> dict:
     return {
         "id": step_id,                 # frozen join key (from the YAML key)
         "order": order,                # from YAML step order
-        "display_name": sy.get("display_name", step_id),
-        "short_description": sy.get("short_description", ""),
+        "name": sy.get("name", step_id),
+        "short_desc": sy.get("short_desc", ""),
         "description": sy.get("description", ""),
         "ref": sy.get("ref") or {},
         "kind": sy.get("kind", ""),
@@ -283,8 +283,8 @@ def _project_phase(phase_id: str, order: int, yph: dict | None) -> dict:
     return {
         "id": phase_id,
         "order": order,
-        "display_name": yph.get("display_name", phase_id),
-        "short_description": yph.get("short_description", ""),
+        "name": yph.get("name", phase_id),
+        "short_desc": yph.get("short_desc", ""),
         "description": yph.get("description", ""),
         "ref": yph.get("ref") or {},
         "virtual": bool(yph.get("virtual", False)),
@@ -398,6 +398,17 @@ def cmd_conformance(a) -> int:
         return 0
     sys.stderr.write("[conformance] OK — every code STEP maps to a catalog id and every "
                      "catalog step is covered.\n")
+    return 0
+
+
+def cmd_step_aliases(a) -> int:
+    """Print the catalog's id_aliases as `old_id<TAB>current_id`, one per line,
+    to stdout. Consumed by common.sh (step_enabled) to resolve a renamed
+    `--step <old_id>` to its current id. Called under a phase venv (pyyaml
+    present); degrades to no output if the catalog can't be read."""
+    ycat = _load_yaml_catalog(a.catalog_yaml)
+    for old, new in (ycat.get("id_aliases") or {}).items():
+        sys.stdout.write(f"{old}\t{new}\n")
     return 0
 
 
@@ -896,6 +907,11 @@ def main() -> int:
     p.add_argument("--warn-only", action="store_true",
                    help="report drift but exit 0 (default: exit 2 on unexpected drift)")
     p.set_defaults(func=cmd_conformance)
+
+    p = sub.add_parser("step-aliases",
+                       help="print id_aliases (old<TAB>current) for --step back-compat resolution")
+    p.add_argument("--catalog-yaml", required=True, help="path to configs/pipeline_catalog.yaml")
+    p.set_defaults(func=cmd_step_aliases)
 
     a = ap.parse_args()
     # Most subcommands mutate and return None (→ exit 0); resume-info returns an

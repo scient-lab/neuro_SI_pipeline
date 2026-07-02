@@ -3,9 +3,9 @@
 # Delegates to 3_si_curriculum/RL. Venv: si_curriculum.
 #
 # Maps our STEPS onto the Princeton README:
-#   setup_reward   data_prep.py (env-var-driven) — prepare the RL dataset
-#   train_grpo     rl_training.py — GRPO loop (uses TrainingConfig wired to merged config)
-#   eval_rl        (no-op — operator runs test_models/eval_models.py separately)
+#   prepare_rl_dataset  data_prep.py (env-var-driven) — prepare the RL dataset
+#   train_grpo          rl_training.py — GRPO loop (uses TrainingConfig wired to merged config)
+#   eval_rl             (no-op — operator runs test_models/eval_models.py separately)
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -19,7 +19,7 @@ STEP_FILTER="${1:-all}"
 export PIPELINE_STEP_FILTER="$STEP_FILTER"
 
 PHASE_NAME=rl
-STEPS=(setup_reward train_grpo merge_rl eval_rl)
+STEPS=(prepare_rl_dataset train_grpo merge_rl eval_rl)
 PHASE_DESC="GRPO reinforcement learning on top of merged SFT checkpoint"
 STEP_DESCS=(
     "Build GRPO prompts + reward signals (data_prep.py)"
@@ -49,7 +49,7 @@ fi
 DEEPSPEED_CFG="${DEEPSPEED_CFG:-$REPO_ROOT/3_si_curriculum/RL/deepspeed_config.json}"
 
 # --- Steps ---------------------------------------------------------------
-step_setup_reward() {
+step_prepare_rl_dataset() {
     # audit bug #10 fix: data_prep.py's "rl" mode no longer chains into
     # preprocess_grpo_dataset by default — it just slices the verified
     # curriculum JSON and saves as a DatasetDict, leaving the
@@ -58,10 +58,10 @@ step_setup_reward() {
     # (Previously both data_prep AND rl_training preprocessed, and the
     # second call hit KeyError 'question_and_explanation' because the
     # column was discarded by the first pass.)
-    log_info "rl :: setup_reward (data_prep.py — slice only; rl_training preprocesses)"
+    log_info "rl :: prepare_rl_dataset (data_prep.py — slice only; rl_training preprocesses)"
     INPUT_PATH="$VERIFIED_CURRICULUM" OUTPUT_PATH="$RL_DATASET_DIR" \
         python "$REPO_ROOT/3_si_curriculum/RL/data_prep.py" \
-        || { log_error "rl.setup_reward failed"; return 1; }
+        || { log_error "rl.prepare_rl_dataset failed"; return 1; }
 }
 
 step_train_grpo() {

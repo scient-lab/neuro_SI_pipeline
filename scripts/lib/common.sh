@@ -30,15 +30,43 @@ require_env() {
     fi
 }
 
+# --step back-compat: a renamed step's OLD id in --step still resolves to its
+# current id via the catalog's id_aliases (e.g. normalize -> build_graph), so an
+# old invocation runs the intended step instead of silently no-op'ing. Loaded
+# ONCE per phase-script process, lazily, under the active phase venv (pyyaml
+# present); degrades to no aliases if the catalog can't be read. bash 4+ (assoc
+# arrays) — already required elsewhere in the pipeline.
+declare -A _STEP_ALIAS_MAP
+declare -A _STEP_ALIAS_WARNED
+_STEP_ALIASES_LOADED=0
+_load_step_aliases() {
+    [[ "$_STEP_ALIASES_LOADED" == "1" ]] && return 0
+    _STEP_ALIASES_LOADED=1
+    [[ -n "${REPO_ROOT:-}" ]] || return 0
+    local cat="${REPO_ROOT}/configs/pipeline_catalog.yaml"
+    [[ -f "$cat" ]] || return 0
+    local old new
+    while IFS=$'\t' read -r old new; do
+        [[ -n "$old" && -n "$new" ]] && _STEP_ALIAS_MAP["$old"]="$new"
+    done < <(python3 "${REPO_ROOT}/scripts/lib/manifest.py" step-aliases --catalog-yaml "$cat" 2>/dev/null || true)
+}
+
 # step_enabled <step_name>
-# Returns 0 if the step should run given PIPELINE_STEP_FILTER.
+# Returns 0 if the step should run given PIPELINE_STEP_FILTER. An old (renamed)
+# id in the filter is resolved to its current id via id_aliases (warned once).
 step_enabled() {
     local step="$1"
     local filter="${PIPELINE_STEP_FILTER:-all}"
     [[ "$filter" == "all" ]] && return 0
+    _load_step_aliases
     IFS=',' read -ra wanted <<< "$filter"
     for w in "${wanted[@]}"; do
-        [[ "$w" == "$step" ]] && return 0
+        local wr="${_STEP_ALIAS_MAP[$w]:-$w}"
+        if [[ "$wr" != "$w" && -z "${_STEP_ALIAS_WARNED[$w]:-}" ]]; then
+            log_warn "--step '$w' was renamed to '$wr' — resolving it (update your --step to '$wr')"
+            _STEP_ALIAS_WARNED["$w"]=1
+        fi
+        [[ "$wr" == "$step" ]] && return 0
     done
     return 1
 }

@@ -329,7 +329,7 @@ spec("extract", "extract_triples",
      outputs=["graphrag/output/*entities*.parquet", "graphrag/output/*relationships*.parquet"],
      inspect=["replay one chunk: ./scripts/diagnose_llm_extraction.sh"])
 
-spec("extract", "cache",
+spec("extract", "finalize_seed_kg",
      inputs=["graphrag/output/*relationships*.parquet"],
      outputs=["graphrag/output/kg_final.csv", "graphrag/output/kg_final.parquet"],
      sample=_sample_kg_final)
@@ -446,4 +446,4 @@ spec("rl", "train_grpo",
 spec("rl", "merge_rl",
      inputs=["rl_checkpoints/checkpoint-*"],
      outputs=["rl_checkpoints/checkpoint-*/merged_final_model"])
-# setup_reward / eval_rl: generic localizer (data_prep output path varies; eval is no-op).
+# prepare_rl_dataset / eval_rl: generic localizer (data_prep output path varies; eval is no-op).

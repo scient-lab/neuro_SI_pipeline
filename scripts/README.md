@@ -166,8 +166,8 @@ All paths below are relative to `$OUTPUT_BASE` (default: `$REPO_ROOT/outputs/`).
 | stage-input | `$REPO_ROOT/$CORPUS_PATH/*.txt` | `graphrag/input/*.txt` | UTF-8 text, copied (not symlinked) |
 | `chunk` (graphrag #1) | `graphrag/input/*.txt`, `graphrag/settings.yaml` | `graphrag/output/text_units` (HF storage) | parquet |
 | `extract_triples` (graphrag #2+#3) | `graphrag/output/text_units` | `graphrag/output/extracted_graph_responses_<RELATION_SET>_<start>-<end>.json` | JSON (vLLM raw output per chunk) |
-| `normalize` (graphrag #4) | `extracted_graph_responses_*.json` + `text_units` | `graphrag/output/entities`, `graphrag/output/relationships` | parquet (graphrag storage) |
-| `cache` (graphrag #5) | `entities`, `relationships` | `graphrag/output/final_entities.parquet`, `final_relationships.parquet`, `kg_final.csv`, `kg_final.parquet`, `relation_counts_<RELATION_SET>_<ts>.txt` | parquet + CSV. `kg_final.{csv,parquet}` are columns `[head, relation, tail]` — the seed KG. |
+| `build_graph` (graphrag #4) | `extracted_graph_responses_*.json` + `text_units` | `graphrag/output/entities`, `graphrag/output/relationships` | parquet (graphrag storage) |
+| `finalize_seed_kg` (graphrag #5) | `entities`, `relationships` | `graphrag/output/final_entities.parquet`, `final_relationships.parquet`, `kg_final.csv`, `kg_final.parquet`, `relation_counts_<RELATION_SET>_<ts>.txt` | parquet + CSV. `kg_final.{csv,parquet}` are columns `[head, relation, tail]` — the seed KG. |
 
 ### Phase 2 — validate  (venv: graphmert)
 
@@ -219,7 +219,7 @@ Previously a no-op (the consensus check ran inline in graphmert/curriculum). It 
 
 | Step | Reads | Writes | Format |
 |---|---|---|---|
-| `setup_reward` (data_prep) | `curriculum_verified/curriculum_verified.json` | `rl_dataset/` | HF Dataset (GRPO prompts + reward signals) |
+| `prepare_rl_dataset` (data_prep) | `curriculum_verified/curriculum_verified.json` | `rl_dataset/` | HF Dataset (GRPO prompts + reward signals) |
 | `train_grpo` (rl_training) | `sft_checkpoints/checkpoint-*/merged_final_model/` + `rl_dataset/` + `3_si_curriculum/RL/deepspeed_config.json` | `rl_checkpoints/checkpoint-*/` | HF checkpoint |
 | `merge_rl` (merge_lora) | `rl_checkpoints/checkpoint-*/` (GRPO adapter) + the SFT-merged base | `rl_checkpoints/checkpoint-*/merged_final_model/` | Merged HF model (deployable full safetensors). No-op when `rl.use_lora=false` (full-FT checkpoints are already full weights). |
 | `eval_rl` | (no-op — operator runs `eval_models.py` separately) | — | — |

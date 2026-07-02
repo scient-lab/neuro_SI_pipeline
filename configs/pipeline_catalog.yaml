@@ -13,15 +13,15 @@
 # execution changes.
 # ============================================================================
 
-schema_version: 1        # bump when a catalog ENTRY's shape changes (field add/rename)
+schema_version: 2        # bump when a catalog ENTRY's shape changes (field add/rename)
 catalog_version: 1       # bump when STRUCTURE changes (phase/step add/remove/reorder/id-rename)
 
 # ---- self schema: documents the shape below (not consumed at runtime) -------
 _schema:
   keyed_by: "phase id -> steps -> step id (snake_case, frozen; must match STEPS in scripts/phases/*.sh)"
   authored_here:                 # human copy — edit freely (display/desc are cosmetic; ref is provenance)
-    display_name:      "string — short human label from paper/README"
-    short_description: "string — one line, for dashboard rows"
+    name:      "string — short human label from paper/README"
+    short_desc: "string — one line, for dashboard rows"
     description:       "block string — multi-line detail, for the UI detail panel"
     ref:                         # structured provenance; all sub-fields optional
       paper_name: "string — paper title / short name"
@@ -49,13 +49,16 @@ _schema:
 # scripts/phases/*.sh and the standardized ids above, so conformance passes
 # WITHOUT yet touching execution code. Both shrink to empty as Phase A/B land.
 #
-# id_aliases: a code STEP still uses the OLD id (key); it corresponds to the
-#   catalog id (value). Deferred code rename removes the entry. (Also the source
-#   of truth for resolving an old `--step <old_id>` to its current name.)
+# id_aliases: a renamed step's OLD id (key) -> its current catalog id (value).
+#   PERMANENT back-compat map. `manifest.py step-aliases` feeds it to common.sh
+#   so an old `--step <old_id>` still resolves (with a deprecation warning)
+#   instead of silently no-op'ing, and old run manifests stay interpretable.
+#   Conformance also consults it while a code STEP still uses an old id — but the
+#   3 below were RENAMED in code in Phase A1, so they are now back-compat only.
 id_aliases:
-  normalize:    build_graph        # extract.sh  step_normalize    -> catalog build_graph
-  cache:        finalize_seed_kg   # extract.sh  step_cache        -> catalog finalize_seed_kg
-  setup_reward: prepare_rl_dataset # rl.sh       step_setup_reward -> catalog prepare_rl_dataset
+  normalize:    build_graph        # extract.sh (renamed A1: step_build_graph)
+  cache:        finalize_seed_kg   # extract.sh (renamed A1: step_finalize_seed_kg)
+  setup_reward: prepare_rl_dataset # rl.sh      (renamed A1: step_prepare_rl_dataset)
 #
 # split_pending: one COARSE code STEP (key) maps to the CONTIGUOUS catalog steps
 #   (value) it will be split into in Phase B (an execution change — new run_step
@@ -71,8 +74,8 @@ phases:
 
   # -------------------------------------------------------------------------
   extract:
-    display_name: "Extract"
-    short_description: "Parse the corpus and extract a seed knowledge graph."
+    name: "Extract"
+    short_desc: "Parse the corpus and extract a seed knowledge graph."
     description: |
       Phase 1: parse the source PDF into text units and extract typed entities +
       directed relational triples with an LLM, producing the seed KG
@@ -80,20 +83,20 @@ phases:
     ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.1", page: "7-8", readme: "P1", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-1--seed-kg-generation" }
     steps:
       parse_pdf:
-        display_name: "Parse PDF"
-        short_description: "Convert the source PDF into raw text."
+        name: "Parse PDF"
+        short_desc: "Convert the source PDF into raw text."
         description: "Digitised-PDF → structured text units, before chunking."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.1", page: "7", readme: "", readme_url: "" }
         kind: transform
       chunk:
-        display_name: "Chunk text"
-        short_description: "Sliding-window chunker into ~300-token segments."
+        name: "Chunk text"
+        short_desc: "Sliding-window chunker into ~300-token segments."
         description: "Overlapping ~300-token segments + document records for extraction."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.1", page: "7", readme: "P1 §1.3", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-1--seed-kg-generation" }
         kind: transform
       extract_triples:
-        display_name: "LLM extraction"
-        short_description: "Qwen3-14B extracts typed entities + relational triples per chunk."
+        name: "LLM extraction"
+        short_desc: "Qwen3-14B extracts typed entities + relational triples per chunk."
         description: |
           Each text unit is processed by an open-weight Qwen3-14B LM to extract
           entities in a closed ontology and directed relational triples (closed
@@ -101,22 +104,22 @@ phases:
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.1", page: "7-8", readme: "P1 §1.4", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-1--seed-kg-generation" }
         kind: llm
       build_graph:
-        display_name: "Build graph"
-        short_description: "Parse extraction responses into entity + relationship tables."
+        name: "Build graph"
+        short_desc: "Parse extraction responses into entity + relationship tables."
         description: "graphrag step 4 — parse the LLM responses into the entity/relationship graph tables."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.1", page: "7-8", readme: "P1 §1.5", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-1--seed-kg-generation" }
         kind: transform
       finalize_seed_kg:
-        display_name: "Finalise seed KG"
-        short_description: "Write kg_final.{csv,parquet} — the seed KG deliverable."
+        name: "Finalise seed KG"
+        short_desc: "Write kg_final.{csv,parquet} — the seed KG deliverable."
         description: "graphrag step 5 — finalise and write the seed KG every downstream phase consumes."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.1", page: "8", readme: "P1 §1.5", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-1--seed-kg-generation" }
         kind: transform
 
   # -------------------------------------------------------------------------
   validate:
-    display_name: "Validate"
-    short_description: "Two-LLM consensus filter on the seed KG."
+    name: "Validate"
+    short_desc: "Two-LLM consensus filter on the seed KG."
     description: |
       Phase 2: every seed triple is judged Yes/No by two independent LLM families
       (gpt-oss-20b + Mistral-Nemo-12B); a triple is kept only on full consensus.
@@ -124,8 +127,8 @@ phases:
     ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.2", page: "8", readme: "", readme_url: "" }
     steps:
       seed_kg_consensus:
-        display_name: "Two-LLM validation"
-        short_description: "Keep seed triples only if two LLM families both vote Yes."
+        name: "Two-LLM validation"
+        short_desc: "Keep seed triples only if two LLM families both vote Yes."
         description: |
           The Two-LLM Validation Strategy applied to the seed KG. No distinct
           README step — reuses graphmert's fact-scoring.
@@ -134,8 +137,8 @@ phases:
 
   # -------------------------------------------------------------------------
   graphmert:
-    display_name: "GraphMERT Expansion"
-    short_description: "Train GraphMERT and expand the KG with predicted tails."
+    name: "GraphMERT Expansion"
+    short_desc: "Train GraphMERT and expand the KG with predicted tails."
     description: |
       Phase 3: train GraphMERT (masked-node-modeling) on the validated seed KG,
       then predict novel tails, combine them into triples, re-validate via the
@@ -143,60 +146,60 @@ phases:
     ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.3", page: "8", readme: "P2", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-2--graphmert-expansion" }
     steps:
       tokenize:
-        display_name: "Tokenise"
-        short_description: "Tokenise the corpus + create the stable tokenizer."
+        name: "Tokenise"
+        short_desc: "Tokenise the corpus + create the stable tokenizer."
         description: "Adds fixed [PAD]/[MASK] ids; every downstream step loads this tokenizer."
         ref: { paper_name: "GraphMERT", arxiv_url: "https://arxiv.org/abs/2510.09580v2", section: "5.1.1", page: "23", readme: "P2 §2.1", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-2--graphmert-expansion" }
         kind: transform
       entity_discovery:
-        display_name: "Entity discovery"
-        short_description: "Mine head-entity mentions in each tokenized chunk (LLM)."
+        name: "Entity discovery"
+        short_desc: "Mine head-entity mentions in each tokenized chunk (LLM)."
         description: |
           'Entity Linking' step. In GraphMERT (medical) this used SapBERT+UMLS; the
           neuroscience pipeline replaces that with LLM/closed-vocab head discovery.
         ref: { paper_name: "GraphMERT", arxiv_url: "https://arxiv.org/abs/2510.09580v2", section: "4.3.1", page: "17", readme: "P2 §2.2", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-2--graphmert-expansion" }
         kind: llm
       find_heads:
-        display_name: "Find head positions"
-        short_description: "Locate exact token positions of discovered heads."
+        name: "Find head positions"
+        short_desc: "Locate exact token positions of discovered heads."
         description: "Maps each discovered head entity to exact token positions in the chunk."
         ref: { paper_name: "GraphMERT", arxiv_url: "https://arxiv.org/abs/2510.09580v2", section: "4.3.1", page: "17", readme: "P2 §2.2", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-2--graphmert-expansion" }
         kind: transform
       add_relations:
-        display_name: "Relation matching"
-        short_description: "Assign seed-KG relations to discovered entities via LLM."
+        name: "Relation matching"
+        short_desc: "Assign seed-KG relations to discovered entities via LLM."
         description: "'Contextual Triple Selection' — attach relations to head entities."
         ref: { paper_name: "GraphMERT", arxiv_url: "https://arxiv.org/abs/2510.09580v2", section: "4.3.2", page: "17", readme: "P2 §2.3", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-2--graphmert-expansion" }
         kind: llm
       clean_relations:
-        display_name: "Clean relations"
-        short_description: "Filter/clean and split relations into train/eval."
+        name: "Clean relations"
+        short_desc: "Filter/clean and split relations into train/eval."
         description: "Cleans and validates matched relations; splits into train/eval datasets."
         ref: { paper_name: "GraphMERT", arxiv_url: "https://arxiv.org/abs/2510.09580v2", section: "4.3.2", page: "17", readme: "P2 §2.3", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-2--graphmert-expansion" }
         kind: transform
       build_dataset:
-        display_name: "Build training dataset"
-        short_description: "Co-occurrence grounding → GraphMERT training samples."
+        name: "Build training dataset"
+        short_desc: "Co-occurrence grounding → GraphMERT training samples."
         description: |
           'Seed KG Injection' — for each (head, relation, tail), find text where head
           AND tail co-occur and build the leafy-chain-graph training samples.
         ref: { paper_name: "GraphMERT", arxiv_url: "https://arxiv.org/abs/2510.09580v2", section: "4.3.3", page: "18", readme: "P2 §2.4", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-2--graphmert-expansion" }
         kind: transform
       train_mnm:
-        display_name: "Train GraphMERT"
-        short_description: "Masked-node-modeling training of GraphMERT."
+        name: "Train GraphMERT"
+        short_desc: "Masked-node-modeling training of GraphMERT."
         description: "6 layers / 12 heads / 512 root nodes / 3 leaves; MNM objective."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.3", page: "8", readme: "P2 §2.5", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-2--graphmert-expansion" }
         kind: train
       predict_tails:
-        display_name: "Predict tails (LLM)"
-        short_description: "vLLM causal LM predicts novel tails for held-out heads."
+        name: "Predict tails (LLM)"
+        short_desc: "vLLM causal LM predicts novel tails for held-out heads."
         description: "The LLM tail-prediction path. Feeds combine tails."
         ref: { paper_name: "GraphMERT", arxiv_url: "https://arxiv.org/abs/2510.09580v2", section: "4.4", page: "19-20", readme: "P2 §2.6", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-2--graphmert-expansion" }
         kind: llm
       predict_tails_gm:
-        display_name: "Predict tails (GraphMERT MNM)"
-        short_description: "Trained GraphMERT predicts top-k tail tokens (masked-node-modeling)."
+        name: "Predict tails (GraphMERT MNM)"
+        short_desc: "Trained GraphMERT predicts top-k tail tokens (masked-node-modeling)."
         description: |
           The paper's Phase-3 tail predictor (GraphMERT MNM). Currently its output is
           NOT merged into the KG (see COMBINE_TAILS_MISWIRING §8) — rename/retire
@@ -204,8 +207,8 @@ phases:
         ref: { paper_name: "GraphMERT", arxiv_url: "https://arxiv.org/abs/2510.09580v2", section: "4.4", page: "19-20", readme: "", readme_url: "" }
         kind: graphmert
       combine_tails:
-        display_name: "Combine tails"
-        short_description: "Merge predicted tail tokens into deduplicated triples."
+        name: "Combine tails"
+        short_desc: "Merge predicted tail tokens into deduplicated triples."
         description: |
           Merges the per-shard predicted-tail CSVs into a single KG and
           deduplicates on (head, relation, tail). Pure transform — no LLM.
@@ -215,22 +218,22 @@ phases:
         ref: { paper_name: "GraphMERT", arxiv_url: "https://arxiv.org/abs/2510.09580v2", section: "4.4", page: "19-20", readme: "P2 §2.7", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-2--graphmert-expansion" }
         kind: transform
       fact_score:
-        display_name: "Two-LLM fact validation"
-        short_description: "Sole quality gate — two-LLM consensus on the merged expansion."
+        name: "Two-LLM fact validation"
+        short_desc: "Sole quality gate — two-LLM consensus on the merged expansion."
         description: "Two-LLM Yes/No consensus (same gate as the seed KG), applied to the merged GraphMERT expansion. The ONLY quality filter in Part 2 — combine_tails only merges/dedups, it does not filter."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.3", page: "8", readme: "P2 §2.7", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-2--graphmert-expansion" }
         kind: llm
       expand_kg:
-        display_name: "Expand KG"
-        short_description: "Merge seed KG + validated expansion into the final KG."
+        name: "Expand KG"
+        short_desc: "Merge seed KG + validated expansion into the final KG."
         description: "Seed ∪ validated-expansion → final_relationships.parquet."
         ref: { paper_name: "GraphMERT", arxiv_url: "https://arxiv.org/abs/2510.09580v2", section: "4.4", page: "20", readme: "P2 §2.7", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-2--graphmert-expansion" }
         kind: transform
 
   # -------------------------------------------------------------------------
   curriculum:
-    display_name: "Curriculum Generation"
-    short_description: "Traverse KG paths → multi-hop QA curriculum (Gemini + two-LLM check)."
+    name: "Curriculum Generation"
+    short_desc: "Traverse KG paths → multi-hop QA curriculum (Gemini + two-LLM check)."
     description: |
       Phase 4: depth-first traversal of the final KG for 1-5 hop paths, pruned for
       informativeness, converted to natural-language MCQs with CoT traces, then
@@ -238,52 +241,52 @@ phases:
     ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.4", page: "9", readme: "P3", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
     steps:
       path_traversal:
-        display_name: "Path traversal"
-        short_description: "Depth-first traversal of the KG for 1-5 hop paths."
+        name: "Path traversal"
+        short_desc: "Depth-first traversal of the KG for 1-5 hop paths."
         description: "Annotates KG triples with hop distance; builds the multi-hop path manifest."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.4", page: "9", readme: "P3 §3.1", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: transform
       prune_paths:
-        display_name: "Prune paths"
-        short_description: "Hub-node removal / relation filtering / transitive-redundancy pruning."
+        name: "Prune paths"
+        short_desc: "Hub-node removal / relation filtering / transitive-redundancy pruning."
         description: "Config-driven pruning inside generate_curriculum (no-op orchestration step)."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.4", page: "9", readme: "P3 §3.1", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: noop
       generate_qa_pair:
-        display_name: "Generate QA pairs"
-        short_description: "Gemini generates bare MCQ Q&A pairs from sampled paths."
+        name: "Generate QA pairs"
+        short_desc: "Gemini generates bare MCQ Q&A pairs from sampled paths."
         description: "Stage 'pair' — natural-language MCQs from KG paths."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.4", page: "9", readme: "P3 §3.1", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: llm
       validate_qa_pair:
-        display_name: "Validate QA pairs"
-        short_description: "One non-Gemini reasoning LLM checks each pair."
+        name: "Validate QA pairs"
+        short_desc: "One non-Gemini reasoning LLM checks each pair."
         description: "Stage 'validate_pair' — a single-LLM correctness check on QA pairs."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.4", page: "9", readme: "P3 §3.2", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: llm
       generate_qa_item:
-        display_name: "Generate QA items (CoT)"
-        short_description: "Gemini adds step-by-step reasoning traces."
+        name: "Generate QA items (CoT)"
+        short_desc: "Gemini adds step-by-step reasoning traces."
         description: "Stage 'item' — attach <think>/<answer> CoT reasoning traces to each pair."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.4", page: "9", readme: "P3 §3.1", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: llm
       validate_qa_item:
-        display_name: "Two-LLM QA verification"
-        short_description: "Two non-Gemini LLMs cross-check final QA items."
+        name: "Two-LLM QA verification"
+        short_desc: "Two non-Gemini LLMs cross-check final QA items."
         description: "Two-LLM consensus on final items (stamps per-grader verdicts)."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.4", page: "9", readme: "P3 §3.2", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: llm
       assemble_curriculum:
-        display_name: "Assemble curriculum"
-        short_description: "Assemble verified items into the final curriculum."
+        name: "Assemble curriculum"
+        short_desc: "Assemble verified items into the final curriculum."
         description: "Collate verified QA items into curriculum_verified.json for SFT/RL."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.4", page: "9-10", readme: "", readme_url: "" }
         kind: transform
 
   # -------------------------------------------------------------------------
   sft:
-    display_name: "Supervised Fine-Tuning"
-    short_description: "LoRA SFT on the verified curriculum."
+    name: "Supervised Fine-Tuning"
+    short_desc: "LoRA SFT on the verified curriculum."
     description: |
       Phase 5 (SFT half): LoRA SFT on 1-hop and 2-hop QA items to instil axiomatic
       facts and the <think>/<answer> CoT format, then merge the adapter into
@@ -291,34 +294,34 @@ phases:
     ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.5", page: "10", readme: "P3", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
     steps:
       prepare_data:
-        display_name: "Prepare SFT dataset"
-        short_description: "Tokenise curriculum Q&A into the SFT dataset."
+        name: "Prepare SFT dataset"
+        short_desc: "Tokenise curriculum Q&A into the SFT dataset."
         description: "Apply chat template; emit train/test DatasetDict."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.5", page: "10", readme: "P3 §3.3", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: transform
       train_lora:
-        display_name: "SFT training (LoRA)"
-        short_description: "LoRA fine-tune the base model on the curriculum."
+        name: "SFT training (LoRA)"
+        short_desc: "LoRA fine-tune the base model on the curriculum."
         description: "LoRA SFT (TRL SFTTrainer)."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.5", page: "10", readme: "P3 §3.4", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: train
       merge_lora:
-        display_name: "Merge LoRA adapter"
-        short_description: "Fold the SFT LoRA adapter into full-precision base weights."
+        name: "Merge LoRA adapter"
+        short_desc: "Fold the SFT LoRA adapter into full-precision base weights."
         description: "Deployable full-weights SFT model for RL."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.5", page: "10", readme: "P3 §3.5", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: transform
       eval_sft:
-        display_name: "Evaluate SFT"
-        short_description: "(operator-run) multi-checkpoint eval."
+        name: "Evaluate SFT"
+        short_desc: "(operator-run) multi-checkpoint eval."
         description: "No-op in the pipeline; operator runs multi-checkpoint eval separately."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "6.4", page: "18", readme: "P3 Step 8", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: noop
 
   # -------------------------------------------------------------------------
   rl:
-    display_name: "Reinforcement Learning"
-    short_description: "GRPO with KG-path-derived reward on the merged SFT model."
+    name: "Reinforcement Learning"
+    short_desc: "GRPO with KG-path-derived reward on the merged SFT model."
     description: |
       Phase 5 (RL half): GRPO on held-out 2-hop prompts, rewarding KG-path-grounded
       reasoning (implicit, verifiable reward from path traversal), starting from the
@@ -326,28 +329,28 @@ phases:
     ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.5", page: "10", readme: "P3", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
     steps:
       prepare_rl_dataset:
-        display_name: "Prepare RL dataset"
-        short_description: "Slice the verified curriculum into GRPO prompts + path rewards."
+        name: "Prepare RL dataset"
+        short_desc: "Slice the verified curriculum into GRPO prompts + path rewards."
         description: "Build GRPO prompts and KG-path reward signals."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "3.2", page: "5", readme: "P3 §3.6", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: transform
       train_grpo:
-        display_name: "RL training (GRPO)"
-        short_description: "GRPO loop with KG-path reward, gated on answer correctness."
+        name: "RL training (GRPO)"
+        short_desc: "GRPO loop with KG-path reward, gated on answer correctness."
         description: "GRPO on the merged SFT model; reward from KG path traversal."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "4.5", page: "10", readme: "P3 §3.7", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: train
       merge_rl:
-        display_name: "Merge RL adapter"
-        short_description: "Fold the GRPO LoRA adapter into the SFT-merged base."
+        name: "Merge RL adapter"
+        short_desc: "Fold the GRPO LoRA adapter into the SFT-merged base."
         description: |
           No paper counterpart — the paper's RL is full-parameter (no LoRA), so no
           adapter merge. This is our single-GPU LoRA-RL path (twin of merge_lora).
         ref: { paper_name: "", arxiv_url: "", section: "", page: "", readme: "", readme_url: "" }
         kind: transform
       eval_rl:
-        display_name: "Evaluate RL"
-        short_description: "(operator-run) multi-checkpoint eval."
+        name: "Evaluate RL"
+        short_desc: "(operator-run) multi-checkpoint eval."
         description: "No-op in the pipeline; operator runs multi-checkpoint eval separately."
         ref: { paper_name: "KG-Driven Expert-Level Reasoning for Neuroscience", arxiv_url: "https://arxiv.org/abs/2605.25183v2", section: "6", page: "12", readme: "P3 Step 8", readme_url: "https://github.com/scient-lab/neuro_SI_pipeline/blob/main/README.md#part-3--si-curriculum-sft--rl" }
         kind: noop
@@ -356,8 +359,8 @@ phases:
   # PRODUCT phase (not in the research pipeline / papers). virtual:true until a
   # scripts/phases/deploy.sh exists — the drift check skips virtual phases.
   deploy:
-    display_name: "Deploy"
-    short_description: "Serve the trained SLM for chat and mark it Ready."
+    name: "Deploy"
+    short_desc: "Serve the trained SLM for chat and mark it Ready."
     virtual: true
     description: |
       Takes the final merged RL checkpoint and stands up the chat endpoint, then
@@ -366,26 +369,26 @@ phases:
     ref: { paper_name: "", arxiv_url: "", section: "", page: "", readme: "", readme_url: "" }
     steps:
       register_model:
-        display_name: "Register model"
-        short_description: "Version + register the final RL checkpoint (registry / S3)."
+        name: "Register model"
+        short_desc: "Version + register the final RL checkpoint (registry / S3)."
         description: "Package and register the deployable merged RL model as a versioned SLM artifact."
         ref: { paper_name: "", arxiv_url: "", section: "", page: "", readme: "", readme_url: "" }
         kind: deploy
       serve_endpoint:
-        display_name: "Serve endpoint"
-        short_description: "Launch the inference/chat endpoint for the model."
+        name: "Serve endpoint"
+        short_desc: "Launch the inference/chat endpoint for the model."
         description: "Stand up the serving backend (e.g. a vLLM server / API) for the registered model."
         ref: { paper_name: "", arxiv_url: "", section: "", page: "", readme: "", readme_url: "" }
         kind: deploy
       smoke_chat:
-        display_name: "Smoke chat"
-        short_description: "Send a health prompt and verify a coherent response."
+        name: "Smoke chat"
+        short_desc: "Send a health prompt and verify a coherent response."
         description: "Post-deploy healthcheck — one chat turn to confirm the endpoint answers sanely."
         ref: { paper_name: "", arxiv_url: "", section: "", page: "", readme: "", readme_url: "" }
         kind: llm
       mark_ready:
-        display_name: "Mark ready"
-        short_description: "Flip the SLM to Ready and enable Continue chat."
+        name: "Mark ready"
+        short_desc: "Flip the SLM to Ready and enable Continue chat."
         description: "Publish the SLM as Ready in the product and expose the chat UI (\"Continue chat\")."
         ref: { paper_name: "", arxiv_url: "", section: "", page: "", readme: "", readme_url: "" }
         kind: deploy

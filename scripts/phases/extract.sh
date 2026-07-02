@@ -19,10 +19,10 @@ export PIPELINE_STEP_FILTER="$STEP_FILTER"
 #   parse_pdf         no-op (we feed pre-extracted .txt files in input_dir)
 #   chunk             graphrag step 1 (chunking)
 #   extract_triples   graphrag step 2 (documents) + step 3 (LLM extraction)
-#   normalize         graphrag step 4 (parse responses)
-#   cache             graphrag step 5 (clean + finalize seed KG)
+#   build_graph       graphrag step 4 (parse responses)
+#   finalize_seed_kg  graphrag step 5 (clean + finalize seed KG)
 PHASE_NAME=extract
-STEPS=(parse_pdf chunk extract_triples normalize cache)
+STEPS=(parse_pdf chunk extract_triples build_graph finalize_seed_kg)
 PHASE_DESC="Build seed KG from text corpus (graphrag)"
 STEP_DESCS=(
     "(no-op) corpus arrives pre-extracted as .txt"
@@ -182,14 +182,14 @@ step_extract_triples() {
     graphrag_step 3 "--model_id $MODEL_ID" || { log_error "extract.extract_triples step 3 failed"; return 1; }
 }
 
-step_normalize() {
-    log_info "extract :: normalize (graphrag step 4 — parse LLM responses)"
-    graphrag_step 4 || { log_error "extract.normalize failed"; return 1; }
+step_build_graph() {
+    log_info "extract :: build_graph (graphrag step 4 — parse LLM responses)"
+    graphrag_step 4 || { log_error "extract.build_graph failed"; return 1; }
 }
 
-step_cache() {
-    log_info "extract :: cache (graphrag step 5 — finalize seed KG)"
-    graphrag_step 5 || { log_error "extract.cache failed"; return 1; }
+step_finalize_seed_kg() {
+    log_info "extract :: finalize_seed_kg (graphrag step 5 — finalize seed KG)"
+    graphrag_step 5 || { log_error "extract.finalize_seed_kg failed"; return 1; }
     # graphrag writes final_relationships.parquet (cols source/target/relation),
     # but downstream code expects:
     #   - kg_final.csv      (head, relation, tail) — for graphmert step 4 + curriculum calculate_hops
@@ -204,7 +204,7 @@ out = df[['source','target','relation']].rename(columns={'source':'head','target
 out.to_csv('$GRAPHRAG_DIR/output/kg_final.csv', index=False)
 out.to_parquet('$GRAPHRAG_DIR/output/kg_final.parquet', index=False)
 print(f'wrote {len(out)} triples to kg_final.csv and kg_final.parquet')
-" ) || { log_error "extract.cache write_seed_kg failed"; return 1; }
+" ) || { log_error "extract.finalize_seed_kg write_seed_kg failed"; return 1; }
     log_info "Seed KG written: $GRAPHRAG_DIR/output/kg_final.{csv,parquet}"
 }
 

@@ -163,8 +163,8 @@ step_preprocess() {
     # Step 4: run_dataset_preprocessing (co-occurrence grounding)
     log_info "  step 4: run_dataset_preprocessing"
     # dataset_preprocessing_utils.py does pd.read_csv(seed_kg_path), so
-    # we consume kg_final.csv (extract.sh's cache step writes both .csv
-    # and .parquet from graphrag).
+    # we consume kg_final.csv (extract.sh's finalize_seed_kg step writes both
+    # .csv and .parquet from graphrag).
     ( cd "$REPO_ROOT/2_graphmert" && \
       python run_dataset_preprocessing.py \
           --yaml_file    "$ARGS_MLM_YAML" \
