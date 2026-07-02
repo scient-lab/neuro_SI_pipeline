@@ -42,15 +42,21 @@ schema_version: 1
 
 phases:
 
+  # Migrated (B.4): the pipeline HEAD, all 5 steps placeholder:false. parse_pdf is
+  # the corpus INGEST step — its entrypoint runs scripts/lib/stage_corpus.sh (the
+  # SAME staging extract.sh calls; the phase-level preamble is now step-owned). The
+  # other 4 wrap 1_seed_kg/graphrag_index.py --step N.
   extract:
-    parse_pdf:         { placeholder: true, venv: graphrag, entrypoint: scripts/entrypoints/extract_parse_pdf.py,        output: graphrag/input/*.txt }
-    chunk:             { placeholder: true, venv: graphrag, entrypoint: scripts/entrypoints/extract_chunk.py,            output: "" }
-    extract_triples:   { placeholder: true, venv: graphrag, entrypoint: scripts/entrypoints/extract_extract_triples.py,  output: "" }
-    build_graph:       { placeholder: true, venv: graphrag, entrypoint: scripts/entrypoints/extract_build_graph.py,      output: "" }   # graphrag-internal step-4 tables; finalize writes the deliverable
-    finalize_seed_kg:  { placeholder: true, venv: graphrag, entrypoint: scripts/entrypoints/extract_finalize_seed_kg.py, output: graphrag/output/kg_final.csv }
+    parse_pdf:         { placeholder: false, venv: graphrag, entrypoint: scripts/entrypoints/extract_parse_pdf.py,        output: graphrag/input/*.txt }
+    chunk:             { placeholder: false, venv: graphrag, entrypoint: scripts/entrypoints/extract_chunk.py,            output: "" }
+    extract_triples:   { placeholder: false, venv: graphrag, entrypoint: scripts/entrypoints/extract_extract_triples.py,  output: "" }
+    build_graph:       { placeholder: false, venv: graphrag, entrypoint: scripts/entrypoints/extract_build_graph.py,      output: "" }   # graphrag-internal step-4 tables; finalize writes the deliverable
+    finalize_seed_kg:  { placeholder: false, venv: graphrag, entrypoint: scripts/entrypoints/extract_finalize_seed_kg.py, output: graphrag/output/kg_final.csv }
 
+  # Migrated (B.3): single-step phase, all steps placeholder:false. graphmert venv
+  # runs on a graphrag artifact (cross-tool handoff kg_final.csv → *_validated.csv).
   validate:
-    seed_kg_consensus: { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/validate_seed_kg_consensus.py, output: graphrag/output/kg_final_validated.csv }
+    seed_kg_consensus: { placeholder: false, venv: graphmert, entrypoint: scripts/entrypoints/validate_seed_kg_consensus.py, output: graphrag/output/kg_final_validated.csv }
 
   graphmert:
     tokenize:          { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_tokenize.py,         output: graphmert/stable_tokenizer }
