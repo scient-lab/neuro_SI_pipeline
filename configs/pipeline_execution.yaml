@@ -82,11 +82,14 @@ phases:
     merge_lora:   { placeholder: false, venv: si_curriculum, entrypoint: scripts/entrypoints/sft_merge_lora.py,   output: sft_checkpoints/checkpoint-*/merged_final_model/ }
     eval_sft:     { placeholder: false, output: "" }   # noop (kind:noop in catalog) — runner records, no exec
 
+  # Second fully-migrated phase (B.2): sft's twin — all steps placeholder:false
+  # (3 entrypoints + 1 noop). train_grpo/merge_rl consume the §5.1 cross-phase
+  # handoff (sft.merge_lora's merged model) via the entrypoint's newest-mtime glob.
   rl:
-    prepare_rl_dataset: { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/rl_prepare_rl_dataset.py, output: rl_dataset/ }
-    train_grpo:         { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/rl_train_grpo.py,         output: rl_checkpoints/checkpoint-* }
-    merge_rl:           { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/rl_merge_rl.py,           output: rl_checkpoints/checkpoint-*/merged_final_model/ }
-    eval_rl:            { placeholder: true, output: "" }   # noop (kind:noop in catalog) — nothing to execute
+    prepare_rl_dataset: { placeholder: false, venv: si_curriculum, entrypoint: scripts/entrypoints/rl_prepare_rl_dataset.py, output: rl_dataset/ }
+    train_grpo:         { placeholder: false, venv: si_curriculum, entrypoint: scripts/entrypoints/rl_train_grpo.py,         output: rl_checkpoints/checkpoint-* }
+    merge_rl:           { placeholder: false, venv: si_curriculum, entrypoint: scripts/entrypoints/rl_merge_rl.py,           output: rl_checkpoints/checkpoint-*/merged_final_model/ }
+    eval_rl:            { placeholder: false, output: "" }   # noop (kind:noop in catalog) — runner records, no exec
 
   # PRODUCT phase — virtual at the phase level in the catalog (no scripts/phases/deploy.sh).
   # venv is a best guess (serving TBD); outputs that aren't files (ARN/URL) are blank.
