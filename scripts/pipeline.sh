@@ -72,6 +72,7 @@ FINAL=0
 RESUME=0
 SKIP_PREFLIGHT=0
 PREFLIGHT_DEEP=0
+USE_RUNNER=0
 
 ALL_PHASES=(extract validate graphmert curriculum sft rl)
 
@@ -102,6 +103,10 @@ Options:
               --resume (export RUN_ID + --phase) instead. Refuses (with a clear
               reason) if the run already completed or its profile/domain doesn't
               match what you passed. An explicit RUN_ID in the env still wins.
+  --runner    Execute phases that have a binding in configs/pipeline_execution.yaml
+              via the data-driven runner (scripts/lib/run_phase.py) instead of
+              their bash scripts/phases/<phase>.sh. OPT-IN (default: bash path).
+              Un-bound phases always use bash. Requires uv (+ pyyaml).
 
 Run identity:
   RUN_ID is generated per invocation (<utc>-<profile>-<sha>); each run is FRESH
@@ -190,6 +195,7 @@ while [[ $# -gt 0 ]]; do
         --resume)   RESUME=1; shift ;;
         --skip-preflight)  SKIP_PREFLIGHT=1; shift ;;
         --deep-preflight)  PREFLIGHT_DEEP=1; shift ;;
+        --runner)   USE_RUNNER=1; shift ;;
         -h|--help)  usage; exit 0 ;;
         *)          log_error "Unknown flag: $1"; usage; exit 2 ;;
     esac
@@ -379,6 +385,34 @@ export PIPELINE_RESUME="$RESUME"
 # shellcheck source=platforms/local.sh
 source "$platform_script"
 
+# --- Phase B: data-driven runner routing (coexistence) ----------------------
+# A phase is executed by the generic runner (scripts/lib/run_phase.py) IFF it has
+# an execution binding in configs/pipeline_execution.yaml; every other phase keeps
+# its bash scripts/phases/<phase>.sh path. The runner reads YAML (needs pyyaml,
+# which the top-level python3 lacks) so it's invoked via uv's ephemeral env — the
+# same pattern common.sh uses. If pipeline_execution.yaml is absent OR uv/pyyaml
+# is unavailable, NO phase is migrated and the pipeline behaves exactly as before
+# (the bash phase scripts remain the fallback until Phase C deletes them).
+RUN_PHASE_PY="$SCRIPT_DIR/lib/run_phase.py"
+EXEC_YAML="$REPO_ROOT/configs/pipeline_execution.yaml"
+_runner_py() { uv run --no-project --quiet --with pyyaml python3 "$RUN_PHASE_PY" "$@"; }
+# OPT-IN via --runner: the runner path is dormant by default so migrated phases
+# keep their proven bash scripts/phases/*.sh path until an operator explicitly
+# opts in (e.g. for the RunPod smoke that validates the entrypoints). Once a
+# phase's entrypoints are proven, it can become the default (or Phase C deletes
+# the bash script). Without --runner, behavior is byte-for-byte the old path.
+MIGRATED_PHASES=""
+if [[ "$USE_RUNNER" -eq 1 ]]; then
+    if [[ -f "$EXEC_YAML" ]] && command -v uv >/dev/null 2>&1; then
+        MIGRATED_PHASES=$(_runner_py --list-migrated 2>/dev/null || true)
+        [[ -n "$MIGRATED_PHASES" ]] && log_info "Data-driven runner (--runner): phases via pipeline_execution.yaml -> $(echo $MIGRATED_PHASES | tr '\n' ' ')"
+    else
+        log_warn "--runner given but $([[ -f "$EXEC_YAML" ]] || echo "no $EXEC_YAML"; command -v uv >/dev/null 2>&1 || echo "uv not on PATH") — falling back to bash phase scripts."
+    fi
+fi
+_phase_is_migrated() { [[ -n "$MIGRATED_PHASES" ]] && printf '%s\n' $MIGRATED_PHASES | grep -qx "$1"; }
+_exec_migrated_phase() { _runner_py --phase "$1"; }
+
 _s3_sync_if_configured() {
     # Push outputs to s3://$S3_URI/runs/$RUN_ID/outputs/. No-op when S3_URI
     # isn't set (local workstation case). Non-fatal — sync failure prints a
@@ -448,7 +482,12 @@ for phase in "${selected_phases[@]}"; do
     # and finalize). PIPESTATUS[0] is the phase's code, not tee's — pipefail
     # alone wouldn't let us run end-phase before set -e kills the script.
     set +e
-    exec_phase_on_platform "$phase_script" "$STEPS" 2>&1 | tee "$log_file"
+    if _phase_is_migrated "$phase"; then
+        log_info "  (via data-driven runner: configs/pipeline_execution.yaml -> run_phase.py)"
+        _exec_migrated_phase "$phase" 2>&1 | tee "$log_file"
+    else
+        exec_phase_on_platform "$phase_script" "$STEPS" 2>&1 | tee "$log_file"
+    fi
     phase_rc=${PIPESTATUS[0]}
     set -e
 

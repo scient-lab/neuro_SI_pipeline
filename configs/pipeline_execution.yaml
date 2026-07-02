@@ -1,0 +1,97 @@
+# configs/pipeline_execution.yaml
+# ============================================================================
+# RUNNER + DATA-FLOW spec — everything MACHINE about each step, keyed by
+# <phase>.<step> (the frozen catalog ids). Companion to
+# configs/pipeline_catalog.yaml, which owns the HUMAN/UI/structure side (name,
+# short_desc, description, ref, `kind`, order). Joined to run_manifest.json by id.
+#
+# This is the SINGLE machine-facing file — it replaced configs/pipeline_artifacts.yaml
+# (step outputs folded in as `output`). The catalog stays pure human prose; the
+# runner (scripts/lib/run_phase.py) and the disposable data-flow diagram
+# (scripts/catalog_mermaid.py) read this.
+#
+# Per-step fields:
+#   placeholder true  = NOT yet migrated to a runner entrypoint (the entrypoint
+#                       file may not exist yet; the step still runs via
+#                       scripts/phases/<phase>.sh). false = implemented — the
+#                       entrypoint exists and run_phase.py executes it (or it is a
+#                       handled noop). (Named `placeholder` to avoid clashing with
+#                       the catalog's phase-level `virtual` = "no phase script".)
+#   venv        .venvs/<venv> whose python runs the entrypoint.
+#   entrypoint  repo-relative, self-resolving entrypoint. Declared for every step
+#               (the planned path) EXCEPT noops (kind:noop in the catalog — nothing
+#               to execute).
+#   output      the step's canonical OUTPUT artifact, relative to $OUTPUT_BASE
+#               (`*` = a run-varying component, e.g. checkpoint-<N>); "" when the
+#               step writes no separate file at this granularity. Declared for the
+#               diagram + validation + the §5.1 hand-off. When it is a RESOLVABLE
+#               relative path (no `*`, no spaces) the runner resolves it against
+#               $OUTPUT_BASE and injects it as $STEP_OUTPUT — the entrypoint uses
+#               that instead of hardcoding the path. Run-varying / non-path outputs
+#               are left for the entrypoint to resolve. INPUT is NOT declared — a
+#               step's input is the upstream step's output.
+#
+# `kind` is NOT duplicated here — it lives once in the catalog (single source);
+# run_phase.py reads it from there.
+#
+# A phase is routed through run_phase.py (via `pipeline.sh --runner`) ONLY when
+# ALL its steps are placeholder:false; any placeholder:true step keeps the whole
+# phase on the bash path (coexistence). Today only `sft` is fully migrated.
+# ============================================================================
+schema_version: 1
+
+phases:
+
+  extract:
+    parse_pdf:         { placeholder: true, venv: graphrag, entrypoint: scripts/entrypoints/extract_parse_pdf.py,        output: graphrag/input/*.txt }
+    chunk:             { placeholder: true, venv: graphrag, entrypoint: scripts/entrypoints/extract_chunk.py,            output: "" }
+    extract_triples:   { placeholder: true, venv: graphrag, entrypoint: scripts/entrypoints/extract_extract_triples.py,  output: "" }
+    build_graph:       { placeholder: true, venv: graphrag, entrypoint: scripts/entrypoints/extract_build_graph.py,      output: "" }   # graphrag-internal step-4 tables; finalize writes the deliverable
+    finalize_seed_kg:  { placeholder: true, venv: graphrag, entrypoint: scripts/entrypoints/extract_finalize_seed_kg.py, output: graphrag/output/kg_final.csv }
+
+  validate:
+    seed_kg_consensus: { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/validate_seed_kg_consensus.py, output: graphrag/output/kg_final_validated.csv }
+
+  graphmert:
+    tokenize:          { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_tokenize.py,         output: graphmert/stable_tokenizer }
+    entity_discovery:  { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_entity_discovery.py, output: "" }
+    find_heads:        { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_find_heads.py,       output: graphmert/head_positions }
+    add_relations:     { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_add_relations.py,    output: "" }
+    clean_relations:   { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_clean_relations.py,  output: "" }
+    build_dataset:     { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_build_dataset.py,    output: graphmert/dataset/ }
+    train_mnm:         { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_train_mnm.py,        output: graphmert/mlm_output/checkpoint-* }
+    predict_tails:     { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_predict_tails.py,    output: graphmert/predictions/*.csv }
+    predict_tails_gm:  { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_predict_tails_gm.py, output: graphmert/predictions_graphmert/predictions.parquet }
+    combine_tails:     { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_combine_tails.py,    output: graphmert/combined/final_kg_combined.csv }
+    fact_score:        { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_fact_score.py,       output: graphmert/final_kg/validated_triples.csv }
+    expand_kg:         { placeholder: true, venv: graphmert, entrypoint: scripts/entrypoints/graphmert_expand_kg.py,        output: graphmert/final_kg/final_relationships.parquet }
+
+  curriculum:
+    path_traversal:      { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/curriculum_path_traversal.py,      output: curriculum/kg_manifest.json }
+    prune_paths:         { placeholder: true, output: "" }   # noop (kind:noop in catalog) — nothing to execute
+    generate_qa_pair:    { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/curriculum_generate_qa_pair.py,    output: curriculum/curriculum.jsonl }
+    validate_qa_pair:    { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/curriculum_validate_qa_pair.py,    output: curriculum/curriculum.jsonl }
+    generate_qa_item:    { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/curriculum_generate_qa_item.py,    output: curriculum/curriculum.jsonl }
+    validate_qa_item:    { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/curriculum_validate_qa_item.py,    output: curriculum/curriculum.jsonl }
+    assemble_curriculum: { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/curriculum_assemble_curriculum.py, output: curriculum_verified/curriculum_verified.json }
+
+  # First fully-migrated phase: all steps placeholder:false (3 entrypoints + 1 noop).
+  sft:
+    prepare_data: { placeholder: false, venv: si_curriculum, entrypoint: scripts/entrypoints/sft_prepare_data.py, output: sft_dataset/ }
+    train_lora:   { placeholder: false, venv: si_curriculum, entrypoint: scripts/entrypoints/sft_train_lora.py,   output: sft_checkpoints/checkpoint-* }
+    merge_lora:   { placeholder: false, venv: si_curriculum, entrypoint: scripts/entrypoints/sft_merge_lora.py,   output: sft_checkpoints/checkpoint-*/merged_final_model/ }
+    eval_sft:     { placeholder: false, output: "" }   # noop (kind:noop in catalog) — runner records, no exec
+
+  rl:
+    prepare_rl_dataset: { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/rl_prepare_rl_dataset.py, output: rl_dataset/ }
+    train_grpo:         { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/rl_train_grpo.py,         output: rl_checkpoints/checkpoint-* }
+    merge_rl:           { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/rl_merge_rl.py,           output: rl_checkpoints/checkpoint-*/merged_final_model/ }
+    eval_rl:            { placeholder: true, output: "" }   # noop (kind:noop in catalog) — nothing to execute
+
+  # PRODUCT phase — virtual at the phase level in the catalog (no scripts/phases/deploy.sh).
+  # venv is a best guess (serving TBD); outputs that aren't files (ARN/URL) are blank.
+  deploy:
+    register_model: { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/deploy_register_model.py, output: "" }
+    serve_endpoint: { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/deploy_serve_endpoint.py, output: "" }
+    smoke_chat:     { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/deploy_smoke_chat.py,     output: smoke_result.json }
+    mark_ready:     { placeholder: true, venv: si_curriculum, entrypoint: scripts/entrypoints/deploy_mark_ready.py,     output: _READY }
