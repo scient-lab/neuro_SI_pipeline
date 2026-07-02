@@ -28,3 +28,9 @@ slurm_logs/*.err
 
 # Temporary files
 tmp/
+
+# Generated pipeline catalog — a pure yaml->json derive of
+# configs/pipeline_catalog.yaml (the single authored source). Regenerated on
+# demand for stdlib readers / S3+UI publish via `manifest.py catalog`; never a
+# committed second source.
+configs/pipeline_catalog.json

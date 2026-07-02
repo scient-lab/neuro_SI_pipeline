@@ -233,6 +233,175 @@ def build_catalog(phases_dir: str, phase_order: list[str]) -> list[dict]:
 
 
 # --------------------------------------------------------------------------
+# Catalog projection (yaml -> json) + conformance check
+# --------------------------------------------------------------------------
+# configs/pipeline_catalog.yaml is the SINGLE authored source of pipeline
+# structure (phases, step ids, order, human copy). Two BUILD-time subcommands
+# operate on it:
+#   catalog     — project the YAML verbatim into pipeline_catalog.json (the
+#                 static UI/S3 artifact). No code merge: ids/structure come
+#                 solely from the YAML, so a generated artifact can only ever
+#                 contain the YAML's names.
+#   conformance — check the code STEPS (scripts/phases/*.sh) still agree with
+#                 the catalog ids, absorbing the documented migration gaps
+#                 (id_aliases + split_pending) so it stays green until Phase B.
+# Unlike the rest of this module (stdlib-only, runs on every step under any
+# venv), these are run once per catalog_version and may assume pyyaml —
+# imported lazily inside _load_yaml_catalog so importing this module for the
+# hot-path commands never pulls in a non-stdlib dependency.
+def _load_yaml_catalog(path: str) -> dict:
+    try:
+        import yaml  # lazy: build-time only, keeps the hot path stdlib-only
+    except ImportError:
+        sys.stderr.write(
+            "manifest.py catalog needs pyyaml (build-time only) — run it in a "
+            "venv that has it (any pipeline venv), not the minimal hot-path env.\n"
+        )
+        raise SystemExit(3)
+    with open(path) as f:
+        return yaml.safe_load(f) or {}
+
+
+def _project_step(step_id: str, order: int, sy: dict | None) -> dict:
+    """One catalog step, projected verbatim from the YAML (id/order + human copy)."""
+    sy = sy or {}
+    return {
+        "id": step_id,                 # frozen join key (from the YAML key)
+        "order": order,                # from YAML step order
+        "display_name": sy.get("display_name", step_id),
+        "short_description": sy.get("short_description", ""),
+        "description": sy.get("description", ""),
+        "ref": sy.get("ref") or {},
+        "kind": sy.get("kind", ""),
+    }
+
+
+def _project_phase(phase_id: str, order: int, yph: dict | None) -> dict:
+    yph = yph or {}
+    ysteps = yph.get("steps") or {}
+    steps = [_project_step(sid, o, sy) for o, (sid, sy) in enumerate(ysteps.items())]
+    return {
+        "id": phase_id,
+        "order": order,
+        "display_name": yph.get("display_name", phase_id),
+        "short_description": yph.get("short_description", ""),
+        "description": yph.get("description", ""),
+        "ref": yph.get("ref") or {},
+        "virtual": bool(yph.get("virtual", False)),
+        "steps": steps,
+    }
+
+
+def cmd_catalog(a) -> int:
+    """Project configs/pipeline_catalog.yaml -> pipeline_catalog.json verbatim
+    (pure yaml->json; NO code merge). Structure + ids come solely from the YAML —
+    the single authored source — so the generated artifact can only ever contain
+    the YAML's names. Conformance (code STEPS vs catalog ids) is a SEPARATE check;
+    see `manifest.py conformance`. Always returns 0 (drift is not this command's job).
+    """
+    ycat = _load_yaml_catalog(a.catalog_yaml)
+    yphases = ycat.get("phases") or {}
+    phases = [_project_phase(pid, o, yphases[pid]) for o, pid in enumerate(yphases)]
+
+    out = {
+        "schema_version": ycat.get("schema_version"),
+        "catalog_version": ycat.get("catalog_version"),
+        "generated_by": "scripts/lib/manifest.py catalog",
+        "note": ("Static pipeline structure + human metadata, projected verbatim from "
+                 "configs/pipeline_catalog.yaml (the single authored source). Join "
+                 "run_manifest.json on phase.id / step.id. Do not hand-edit — "
+                 "regenerate from the YAML."),
+        # Migration reconciliation (see the YAML): old code id -> catalog id, and
+        # coarse code step -> the catalog steps it will split into in Phase B.
+        "id_aliases": ycat.get("id_aliases") or {},
+        "split_pending": ycat.get("split_pending") or {},
+        "phases": phases,
+    }
+
+    os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
+    with open(a.out, "w") as f:
+        json.dump(out, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+
+    n_steps = sum(len(p["steps"]) for p in phases)
+    sys.stderr.write(f"[catalog] wrote {a.out}: {len(phases)} phases, {n_steps} steps, "
+                     f"catalog_version={out['catalog_version']} (pure projection of "
+                     f"{os.path.basename(a.catalog_yaml)})\n")
+    return 0
+
+
+def cmd_conformance(a) -> int:
+    """Check the code STEPS (scripts/phases/*.sh) still conform to the catalog ids.
+
+    The catalog is the single source; the code must map onto it. Two documented,
+    temporary migration gaps are absorbed from the YAML so this stays green until
+    Phase B lands the execution changes:
+      id_aliases    — a code STEP still uses the OLD id (left); it corresponds to
+                      the catalog id (right). The code rename is deferred.
+      split_pending — one COARSE code STEP (left) maps to the CONTIGUOUS catalog
+                      steps (right) it will be split into in Phase B; until then the
+                      single code step legitimately covers all of them.
+    Anything not accounted for that way is UNEXPECTED drift. virtual:true phases
+    (no phase script yet) are exempt. Returns 2 on unexpected drift unless
+    --warn-only.
+    """
+    ycat = _load_yaml_catalog(a.catalog_yaml)
+    yphases = ycat.get("phases") or {}
+    aliases = ycat.get("id_aliases") or {}          # old_code_id -> catalog_id
+    split_pending = ycat.get("split_pending") or {}  # phase -> {code_step: [catalog_step,...]}
+
+    drift = []       # (phase_id, "code_unmapped"|"catalog_uncovered", id)
+    absorbed = 0     # count of gaps quietly resolved via alias/split (reported as info)
+
+    for phase_id, yph in yphases.items():
+        yph = yph or {}
+        if yph.get("virtual"):
+            continue
+        catalog_ids = list((yph.get("steps") or {}).keys())
+        catalog_set = set(catalog_ids)
+        _d, code_steps, _dd = parse_phase_file(
+            os.path.join(a.phases_dir, f"{phase_id}.sh"))
+        ph_splits = split_pending.get(phase_id) or {}
+
+        covered = set()  # catalog ids accounted for by some code step
+        for cs in code_steps:
+            if cs in catalog_set:
+                covered.add(cs)
+            elif cs in aliases and aliases[cs] in catalog_set:
+                covered.add(aliases[cs]); absorbed += 1
+            elif cs in ph_splits:
+                # coarse step covers the catalog steps it will split into
+                covered.update(t for t in ph_splits[cs] if t in catalog_set)
+                absorbed += 1
+            else:
+                drift.append((phase_id, "code_unmapped", cs))
+        for cid in catalog_ids:
+            if cid not in covered:
+                drift.append((phase_id, "catalog_uncovered", cid))
+
+    if absorbed:
+        sys.stderr.write(f"[conformance] {absorbed} documented gap(s) absorbed via "
+                         f"id_aliases / split_pending (see pipeline_catalog.yaml).\n")
+    if drift:
+        sys.stderr.write(f"[conformance] DRIFT — {len(drift)} unexpected mismatch(es) "
+                         f"(STEPS in scripts/phases/*.sh vs pipeline_catalog.yaml):\n")
+        for phase_id, kind, sid in drift:
+            if kind == "code_unmapped":
+                sys.stderr.write(f"  - {phase_id}.{sid}: code STEP maps to no catalog id "
+                                 f"(add it to the catalog, or declare id_aliases/split_pending)\n")
+            else:
+                sys.stderr.write(f"  - {phase_id}.{sid}: catalog step not covered by any code STEP "
+                                 f"(implement it, or declare it under split_pending)\n")
+        if not a.warn_only:
+            sys.stderr.write("[conformance] exiting 2 (drift). Use --warn-only to report + pass.\n")
+            return 2
+        return 0
+    sys.stderr.write("[conformance] OK — every code STEP maps to a catalog id and every "
+                     "catalog step is covered.\n")
+    return 0
+
+
+# --------------------------------------------------------------------------
 # Subcommands
 # --------------------------------------------------------------------------
 def _fresh_phase(cat_phase: dict) -> dict:
@@ -713,6 +882,20 @@ def main() -> int:
     p.add_argument("--path", required=True)
     p.add_argument("--status", required=True, choices=["completed", "failed"])
     p.set_defaults(func=cmd_finalize)
+
+    p = sub.add_parser("catalog",
+                       help="project pipeline_catalog.yaml -> pipeline_catalog.json (pure yaml->json)")
+    p.add_argument("--catalog-yaml", required=True, help="path to configs/pipeline_catalog.yaml")
+    p.add_argument("--out", required=True, help="output pipeline_catalog.json path")
+    p.set_defaults(func=cmd_catalog)
+
+    p = sub.add_parser("conformance",
+                       help="check code STEPS (scripts/phases/*.sh) conform to the catalog ids")
+    p.add_argument("--catalog-yaml", required=True, help="path to configs/pipeline_catalog.yaml")
+    p.add_argument("--phases-dir", required=True, help="scripts/phases/ (code STEPS to check)")
+    p.add_argument("--warn-only", action="store_true",
+                   help="report drift but exit 0 (default: exit 2 on unexpected drift)")
+    p.set_defaults(func=cmd_conformance)
 
     a = ap.parse_args()
     # Most subcommands mutate and return None (→ exit 0); resume-info returns an
